@@ -1,0 +1,33 @@
+project:
+  type: book
+
+toc-depth: 1
+page-navigation: true
+
+book:
+  title: "Introduction to Git"
+  author: "Thomas Bøjer Rasmussen"
+  sidebar:
+    style: docked
+    background: light
+  search: true
+  repo-url: https://github.com/thomas-rasmussen/git-tutorial
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - summary.qmd
+    - references.qmd
+  page-footer:
+    background: dark
+    border: true
+    right:
+      - icon: github
+        href: https://github.com/thomas-rasmussen/git-tutorial
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: minty
+
+
