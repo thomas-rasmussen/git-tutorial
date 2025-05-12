@@ -1,0 +1,196 @@
+---
+title: "Introduction to Git"
+title-slide-attributes:
+  data-background-image: ./diagrams/title-slide-background.svg
+  data-background-size: 90%
+  data-background-opacity: "0.5"
+format:
+  revealjs:
+    embed-resources: true
+    theme: default
+---
+
+# Overview
+
+- Part I - Basic Git
+
+- Part II - Branching and remotes
+
+- Part III - Advanced topics
+
+
+# Part I - Basic Git
+
+
+## Prerequisites
+
+- Working on a Windows machine
+
+- Has [Git for Windows](https://gitforwindows.org/){target="_blank"} installed
+
+- Basic configuration of Git, ie set name/email/core.editor
+
+
+## Part I - Introduction to Git
+
+What is Git?
+
+Configuring Git
+
+Introduction to basic commands and use of Git
+
+
+## What is Git?
+
+Git is a distributed version control system (DVCS)
+
+Software that tracks versions of files
+
+Each version is a snapshot of the files at that point
+
+
+
+::: {.notes}
+Git is a **distributed** version control system (DVCS). A version control
+system (VCS) is software that tracks versions of files. In contrast to
+**centralized** VCS's, A DVCS does not  have a central code repository where files
+are stoed. Instead every user has the entire history of versions of files.
+
+Git stores versions of files as "snapshots" in contrasts to many other VCS's
+where differences between versions of files are stored.
+:::
+
+## Why should you use Git to version control your code?
+
+Manually storing old versions of code manually is haphazard and of limited use.
+Using Git can help with:
+
+- Switching back and forth between different versions of files
+
+- Seeing exact differences between versions of code
+
+- Facilitate working multiple people on the same code.
+
+::: {.notes}
+
+:::
+
+
+
+
+## Configuration of Git
+
+So how do we get started:
+
+- Download Git for windows
+
+- Configure Git Bash
+
+
+::: {.notes}
+We assume that the reader has already installed Git for Windows and has configured
+the Git Bash (set user credentials and default editor). If not, see notes document for a guide.
+:::
+
+
+## Initialize a Git repository
+
+Make a local directory into a Git repository:
+
+1) Change directory to local directory using cd command
+
+:::{.callout-note appearance="minimal" style="font-family: monospace"}
+cd "S:/some path/probably/with spaces"
+:::
+
+2) Use git init command to initialize Git repository in folder
+
+:::{.callout-note appearance="minimal" style="font-family: monospace"}
+git init
+:::
+
+
+::: {.notes}
+
+Note that it is only necessary to quote the filepath with the cd
+command if the filepath contains spaces.
+
+The file directory is shown as  "/s/some path/probably/with spaces"in Git Bash.
+This form can also be used, ie "cd /s/some path/probably/with space".
+
+It is often easier to right click (or shift+right click on Windows 11) on the folder
+of interest and select "Open with Git Bash here".
+
+Running git init in a directory creates a new subdirectory named ".git" that contains
+all of your necessary repository files. We will not talk about what the content of ".git"
+is at this point, but might come back to some of it later.
+
+:::
+
+## Running example I
+
+Start a running example of live coding at this point?
+
+::: {.notes}
+
+1) Make a directory
+2) Change directory in Git Bash to the newly created directory
+2) Make a plain README text file in the directory. Do it using touch/echo commands
+   to showcase using Git Bash.
+
+:::
+
+## Recording changes
+
+
+## The lifecycle of the status of files
+
+![](diagrams/lifecycle-status-files.svg){width=90% fig-align="center"}
+
+::: {.aside}
+Adaptation of diagram from Pro Git p. 26
+:::
+
+
+::: {.notes}
+
+:::
+
+# Part II - Branching and remotes
+
+## Part II - Branching and remoteso
+
+- Part II: Using git in day to day work
+  - Simple ways of using Git in projects
+  - Initialize a repository in an existing directory
+  - Branching
+  - Exercises meant to illustrate a simple but good workflow
+
+::: {.notes}
+
+:::
+
+
+# Part III - Advanced topics
+
+## Part III - Advanced topics
+
+- Advanced commands. Like reset, rebase, diff etc
+- Remotes
+- GitHub
+- Aliases
+- Collaboration on a codebase
+- Distributed workflows.
+- Git GUI/IDE's. What are popular choices. Pro's and con's over using only Git Bash. 
+- Version controlling output. Can it be justified in practice? Probably, but when and to
+  what extent. What should you be extra cautious about when doing this? Large files and many commits?
+- Recovering lost code. What do you do if you mess up and delete important files / commits.
+- Git versus Subversion / distributed versus centralized VCS's.
+
+::: {.notes}
+Advanced/non-essential stand-alone topics that could be slides and/or included in the notes. 
+Some of there topics will likely be incorporated into one of the earlier sections
+:::
+
+
+
