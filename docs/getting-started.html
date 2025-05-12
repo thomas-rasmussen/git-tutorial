@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.24">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>2&nbsp; Getting started – Git tutorial</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./github.html" rel="next">
+<link href="./introduction-to-git.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-704d8d96d8bd6a3a18507fa617f49d29.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="custom-js.js"></script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./introduction-to-git.html">Part I</a></li><li class="breadcrumb-item"><a href="./getting-started.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Getting started</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Git tutorial</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/thomas-rasmussen/git-tutorial" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part I</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./introduction-to-git.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to Git</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./getting-started.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Getting started</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part II</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./github.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">GitHub</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./the-dot-git-folder.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The .git folder</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./git-for-windows.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Git for Windows</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./graphical-user-interfaces.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Graphical User Interfaces (GUI’s)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./configuration_of_git.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Configuration of Git</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./resources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Resources</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#sec-basic-git-configuration-of-git" id="toc-sec-basic-git-configuration-of-git" class="nav-link active" data-scroll-target="#sec-basic-git-configuration-of-git"><span class="header-section-number">2.1</span> Basic configuration of Git</a>
+  <ul class="collapse">
+  <li><a href="#change-the-core-editor" id="toc-change-the-core-editor" class="nav-link" data-scroll-target="#change-the-core-editor">Change the core editor</a></li>
+  <li><a href="#identify-yourself" id="toc-identify-yourself" class="nav-link" data-scroll-target="#identify-yourself">Identify yourself</a></li>
+  </ul></li>
+  <li><a href="#initializing-and-cloning-git-repositories" id="toc-initializing-and-cloning-git-repositories" class="nav-link" data-scroll-target="#initializing-and-cloning-git-repositories"><span class="header-section-number">2.2</span> Initializing and cloning Git repositories</a>
+  <ul class="collapse">
+  <li><a href="#initialize-a-new-git-repository" id="toc-initialize-a-new-git-repository" class="nav-link" data-scroll-target="#initialize-a-new-git-repository">Initialize a new Git repository</a></li>
+  <li><a href="#clone-an-existing-git-repository" id="toc-clone-an-existing-git-repository" class="nav-link" data-scroll-target="#clone-an-existing-git-repository">Clone an existing Git repository</a></li>
+  </ul></li>
+  <li><a href="#lifecycle-of-files" id="toc-lifecycle-of-files" class="nav-link" data-scroll-target="#lifecycle-of-files"><span class="header-section-number">2.3</span> Lifecycle of files</a></li>
+  <li><a href="#checking-the-state-of-files" id="toc-checking-the-state-of-files" class="nav-link" data-scroll-target="#checking-the-state-of-files"><span class="header-section-number">2.4</span> Checking the state of files</a></li>
+  <li><a href="#adding-files-to-the-index" id="toc-adding-files-to-the-index" class="nav-link" data-scroll-target="#adding-files-to-the-index"><span class="header-section-number">2.5</span> Adding files to the index</a></li>
+  <li><a href="#committing-files-to-the-repository" id="toc-committing-files-to-the-repository" class="nav-link" data-scroll-target="#committing-files-to-the-repository"><span class="header-section-number">2.6</span> Committing files to the repository</a></li>
+  <li><a href="#sec-getting-started-example" id="toc-sec-getting-started-example" class="nav-link" data-scroll-target="#sec-getting-started-example"><span class="header-section-number">2.7</span> Example</a></li>
+  <li><a href="#accessing-manual-pages" id="toc-accessing-manual-pages" class="nav-link" data-scroll-target="#accessing-manual-pages"><span class="header-section-number">2.8</span> Accessing manual pages</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">2.9</span> Exercises</a>
+  <ul class="collapse">
+  <li><a href="#exercise-1---create-a-new-git-repository" id="toc-exercise-1---create-a-new-git-repository" class="nav-link" data-scroll-target="#exercise-1---create-a-new-git-repository">Exercise 1 - Create a new Git repository</a></li>
+  <li><a href="#exercise-2---using-the-manual-pages" id="toc-exercise-2---using-the-manual-pages" class="nav-link" data-scroll-target="#exercise-2---using-the-manual-pages">Exercise 2 - Using the manual pages</a></li>
+  <li><a href="#exercise-3---clone-a-git-repository" id="toc-exercise-3---clone-a-git-repository" class="nav-link" data-scroll-target="#exercise-3---clone-a-git-repository">Exercise 3 - Clone a Git repository</a></li>
+  <li><a href="#exercise-4---turn-an-existing-directory-into-a-git-repository" id="toc-exercise-4---turn-an-existing-directory-into-a-git-repository" class="nav-link" data-scroll-target="#exercise-4---turn-an-existing-directory-into-a-git-repository">Exercise 4 - Turn an existing directory into a Git repository</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./introduction-to-git.html">Part I</a></li><li class="breadcrumb-item"><a href="./getting-started.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Getting started</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Getting started</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>In this chapter we will look at some basic configurations of Git, introduce the most basic Git commands, talk about the different states of files, and finally how you can find help on how to use Git commands.</p>
+<section id="sec-basic-git-configuration-of-git" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="sec-basic-git-configuration-of-git"><span class="header-section-number">2.1</span> Basic configuration of Git</h2>
+<p>First of all, we need to do some basic configurations of Git, which we will do using the <code>git config</code> command. Here we will only briefly explain what commands to type in the terminal without any explanation on how commands actually work, and what exactly they do. If you want to learn more about how to configure Git, see <a href="configuration_of_git.html" class="quarto-xref"><span>Appendix C</span></a>.</p>
+<section id="change-the-core-editor" class="level3">
+<h3 class="anchored" data-anchor-id="change-the-core-editor">Change the core editor</h3>
+<p>The first, and most important, thing we need to configure, is the text editor that Git opens when you need to type in a message. Git for Windows comes with a Vim installation, and by default Git uses Vim as a text editor. Vim is amazing, but it is also a complete mystery to people who do not know how it works.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> To change the default editor to Notepad, which is pre-installed on Windows, write the following command in your terminal:</p>
+<pre class="git-command">$ git config set --global core.editor notepad
+</pre>
+<p>This tells Git to use Notepad as a text editor in all your Git repositories.</p>
+</section>
+<section id="identify-yourself" class="level3">
+<h3 class="anchored" data-anchor-id="identify-yourself">Identify yourself</h3>
+<p>Another thing you should configure in your Git installation is your username and email. Every commit you make to your Git repository contains information on the identity of the person who made it, and this information should be informative, i.e.&nbsp;be your real name and email. This ensures that if you are collaborating on a Git repository or sharing the repository online, it is clear to others who made what commits to the repository. You can set your username and email by writing the following commands in your terminal:</p>
+<pre class="git-command">$ git config set --global user.name "Your name"
+$ git config set --global user.email "your@email.com"
+</pre>
+</section>
+</section>
+<section id="initializing-and-cloning-git-repositories" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="initializing-and-cloning-git-repositories"><span class="header-section-number">2.2</span> Initializing and cloning Git repositories</h2>
+<p>To start using Git, we need to either initialize a new Git repository, or clone an existing one.</p>
+<section id="initialize-a-new-git-repository" class="level3">
+<h3 class="anchored" data-anchor-id="initialize-a-new-git-repository">Initialize a new Git repository</h3>
+<p>To initialize a Git repository in a directory, <code>cd</code> to the directory and use the <code>git init</code> command. This creates an empty Git repository in a new (hidden) subdirectory named “.git”.</p>
+<pre class="git-command">$ cd ~ # Change working directory to the home directory
+$ mkdir new-git-repository # Make a new directory in home directory
+$ cd new-git-repo # Change working directory
+$ git init # Initialize Git repository
+$ ls -A # List all subdirectories
+.git/
+</pre>
+</section>
+<section id="clone-an-existing-git-repository" class="level3">
+<h3 class="anchored" data-anchor-id="clone-an-existing-git-repository">Clone an existing Git repository</h3>
+<p>You can clone an existing Git repository using the <code>git clone</code> command. This makes a copy of the repository in a new directory in the working directory.</p>
+<p>You can clone a repository from anyway, e.g.&nbsp;from another folder on your machine, from a folder on a network drive, or from a url. The code for this tutorial is on available on Github. You could clone the repository by using the command below:</p>
+<pre class="git-command">$ git clone "https://github.com/thomas-rasmussen/git-tutorial.git"
+</pre>
+<p>This will clone the repository in a folder named “git-tutorial” in your current work directory.</p>
+</section>
+</section>
+<section id="lifecycle-of-files" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="lifecycle-of-files"><span class="header-section-number">2.3</span> Lifecycle of files</h2>
+<p>Whether you have initialized a new Git repository or cloned an existing one, you now have a Git repository on your local computer. At this point we are going to take a moment to talk about the different states that files in Git repository can be in.</p>
+<p>Each file in a Git repository can be in one of two states: <em>tracked</em> or <em>untracked</em>. Tracked files are files that Git know about, i.e.&nbsp;files that were included in the last snapshot and files that are staged. These files can be unmodified, modified, or staged, but they are all tracked. Untracked files is everything else.</p>
+<p>When you edit a tracked file, Git sees it as modified since it is different from the last snapshot. You can then stage files for the next commit, and finally commit them. When you commit the file to a snapshot, the file goes back to being viewed as unmodified. You then then continue editing, staging and commiting files, and thus the cycle repeats.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./diagrams/lifecycle-status-files.svg" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption>Life cycle of files</figcaption>
+</figure>
+</div>
+</section>
+<section id="checking-the-state-of-files" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="checking-the-state-of-files"><span class="header-section-number">2.4</span> Checking the state of files</h2>
+<p>So how do we check the state of our files? The main command to do this is <code>git status</code>. If you run this command right after cloning a repository or commiting a snapshot of your files, you will see something like this.</p>
+<pre class="git-command">$ git status
+On branch main
+nothing to commit, working tree clean
+</pre>
+<p>As the message states, the working tree is clean, i.e.&nbsp;the files in the repository are all unmodified with respect to the last commit. Furthermore, there are no untracked files in the repository, or they would be listed.</p>
+</section>
+<section id="adding-files-to-the-index" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="adding-files-to-the-index"><span class="header-section-number">2.5</span> Adding files to the index</h2>
+<p>To update the index, we use the <code>git add</code> command. This will update the index using the current content of the working tree, which can include updating files that are already in the index, include new files, or remove files that are no longer in the working tree. The index holds a snapshot of the content that we want to include in our next commit. To update the index based on all files in the repository you can use the commmand</p>
+<pre class="git-command">$ git add .
+</pre>
+<p>The “.” means “current directory”. You can also specify individual files to add to the index:</p>
+<pre class="git-command">$git add file_a.txt file_b.txt
+</pre>
+</section>
+<section id="committing-files-to-the-repository" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="committing-files-to-the-repository"><span class="header-section-number">2.6</span> Committing files to the repository</h2>
+<p>We can commit files to the repository with the <code>git commit</code> command. This commands uses the current content of the index to create a new commit to the repository.</p>
+<pre class="git-command">$ git commit -m"Commit message"
+</pre>
+<p>If you do not specify a commit message with the <code>-m</code> option, Git will open a text editor, and request that you enter one there. After typing the commit message, save the file, and exit the editor.</p>
+</section>
+<section id="sec-getting-started-example" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="sec-getting-started-example"><span class="header-section-number">2.7</span> Example</h2>
+<p>Let’s create our own Git repository from scratch to illustrate the concepts that have been introduced so far. First, we initialize a new Git repository in the home directory, and <code>cd</code> into the directory.</p>
+<pre class="git-command">$ cd ~
+$ mkdir git-tutorial-example
+$ cd git-tutorial-example
+$ git init
+</pre>
+<p>Lets run <code>git status</code> to see the status of the working tree at this point.</p>
+<pre class="git-command">$ git status
+On branch main
+
+No commits yet
+
+nothing to commit (create/copy files and use "git add" to track)
+</pre>
+<p>As expected we are told that nothing has been committed to the repository, and that no files are tracked.</p>
+<p>Next, we create a new file in the directory.</p>
+<pre class="git-command">$ echo "Content of file_a.txt" &gt; file_a.txt
+</pre>
+<p>If we run <code>git status</code> again:</p>
+<pre class="git-command">$ git status
+On branch main
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        <span style="color:red">file_a.txt</span>
+
+nothing added to commit but untracked files present (use "git add" to track)
+</file></pre>
+<p>Git now notifies us about the presence on an untracked file in the repository. Lets add the file to the index for the next commit, and run <code>git status</code> once more:</p>
+<pre class="git-command">$ git add file_a.txt
+$ git status
+On branch main
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        <span style="color:green">new file:   file_a.txt</span>
+</file></pre>
+<p>Git now tells us that file_a.txt has been added to the index and will be included, in its current state, to the next commit. Finally, lets commit the file to the repository and run <code>git status</code> a final time:</p>
+<pre class="git-command">$ git commit file_a.txt -m"Add file_a.txt to repository"
+$ git status
+On branch main
+nothing to commit, working tree clean
+</pre>
+<p>Git now informs us that there is nothing to commit and that the working tree is clean. This is because the current state of file_a.txt is the same as the state of file_a.txt in the repository.</p>
+</section>
+<section id="accessing-manual-pages" class="level2" data-number="2.8">
+<h2 data-number="2.8" class="anchored" data-anchor-id="accessing-manual-pages"><span class="header-section-number">2.8</span> Accessing manual pages</h2>
+<p>We will end this chapter with a note on how to access the comprehensive manual help page for any of the Git commands. The manual pages can be accessed in different equivalent ways one of which is:</p>
+<pre class="git-command">$ git help &lt;command&gt;
+</pre>
+<p>For example, to get the manual page for the <code>git add</code> command run</p>
+<pre class="git-command">$ git help add
+</pre>
+<p>These manual pages are nice because they can be accessed anywhere, even offline. A short summary on how to use the command can also be printed in the terminal by using the <code>-h</code> option with a git command:</p>
+<pre class="git-command">$ git help add -h
+usage: git add [<options>] [--] <pathspec>...
+
+    -n, --[no-]dry-run    dry run
+    -v, --[no-]verbose    be verbose
+
+    -i, --[no-]interactive
+                          interactive picking
+    -p, --[no-]patch      select hunks interactively
+    -U, --unified &lt;n&gt;     generate diffs with &lt;n&gt; lines context
+    --inter-hunk-context &lt;n&gt;
+                          show context between diff hunks up to the specified number of lines
+    -e, --[no-]edit       edit current diff and apply
+    -f, --[no-]force      allow adding otherwise ignored files
+    -u, --[no-]update     update tracked files
+    --[no-]renormalize    renormalize EOL of tracked files (implies -u)
+    -N, --[no-]intent-to-add
+                          record only the fact that the path will be added later
+    -A, --[no-]all        add changes from all tracked and untracked files
+    --[no-]ignore-removal ignore paths removed in the working tree (same as --no-all)
+    --[no-]refresh        don't add, only refresh the index
+    --[no-]ignore-errors  just skip files which cannot be added because of errors
+    --[no-]ignore-missing check if - even missing - files are ignored in dry run
+    --[no-]sparse         allow updating entries outside of the sparse-checkout cone
+    --[no-]chmod (+|-)x   override the executable bit of the listed files
+    --[no-]pathspec-from-file <file>
+                          read pathspec from file
+    --[no-]pathspec-file-nul
+                          with --pathspec-from-file, pathspec elements are separated with NUL character
+</file></pathspec></options></pre>
+</section>
+<section id="exercises" class="level2" data-number="2.9">
+<h2 data-number="2.9" class="anchored" data-anchor-id="exercises"><span class="header-section-number">2.9</span> Exercises</h2>
+<section id="exercise-1---create-a-new-git-repository" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-1---create-a-new-git-repository">Exercise 1 - Create a new Git repository</h3>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Exercise">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Exercise
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p>Initialize an empty Git repository in a new subdirectory of your home directory named “ex-init-repo”.</p></li>
+<li><p><code>cd</code> into the directory</p></li>
+<li><p>Create a file (any file will do).</p></li>
+<li><p>Add the file to the index.</p></li>
+<li><p>Commit the file to the repository.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Hint">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Look at the example in section <a href="#sec-getting-started-example" class="quarto-xref"><span>Section 2.7</span></a>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-important no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre class="git-command">$ cd ~ # Make sure the working directory is set to the home directory
+$ mkdir ex-init-repo # Make a new subdirectory
+$ cd ex-init-repo # cd to new directory
+$ git init # Initialize git repository
+$ echo "Some content" &gt; file.txt # Create a file in the directory
+$ git add file.txt # Add file to index
+$ git commit -m"Commit message" # Commit to repository
+</pre>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-2---using-the-manual-pages" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-2---using-the-manual-pages">Exercise 2 - Using the manual pages</h3>
+<p>In this exercise we will practice using the manual pages. First lets construct a simple git repository with different files in different states.</p>
+<pre class="git-command">$ cd ~
+$ mkdir ex-man-pages
+$ cd ex-man-pages
+$ git init
+$ echo "Content of file1" &gt; file1.txt
+$ git add file1.txt
+$ git commit -m"Add file1.txt"
+$ rm file1.txt
+$ echo "Content of file2" &gt; file2.txt
+$ echo "Content of file3" &gt; file3.txt
+$ git add file2.txt
+</pre>
+<p>If we run <code>git status</code> on the repository in this state we get the following output in the terminal</p>
+<pre class="git-command">$ git status
+On branch main
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        <span style="color:green">new file:   file2.txt</span>
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        <span style="color:red">deleted:    file1.txt</span>
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        <span style="color:red">file3.txt</span>
+</file></file></file></file></pre>
+<p>The output is rather verbose, and with more files (which is common) it quickly becomes unnecessarily hard to get an overview. It would be great if we could get the output from <code>git status</code> in a shorter, more condense, format.</p>
+<ol type="1">
+<li>Look at the <code>git status</code> command documentation, and find an option that can be used to show the status concisely.</li>
+</ol>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Hint">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>You can either look at the “OPTIONS” section of manual page using the <code>git help status</code>, or you can use <code>git status -h</code> to get get a quick overview of how to use the command.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The option we are looking for is <code>-s</code>.</p>
+<pre class="git-command">$ git status -s
+ <span style="color:red">D</span> file1.txt
+<span style="color:green">A</span>  file2.txt
+<span style="color:red">??</span> file3.txt
+
+</pre>
+</div>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Read further into the documentation and find the section explaining the notation used in the short short format. You can skim through the documentation if you want to, but you don’t need to use time trying to understand it.</li>
+</ol>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>In this case we need to read a little further in the manual page for <code>git status</code>. The information we are looking for can be found in the “Short Format” subsection of the section “OUTPUT”.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-3---clone-a-git-repository" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-3---clone-a-git-repository">Exercise 3 - Clone a Git repository</h3>
+<p>In this exercise we will practice cloning an existing repository, namely the repository you created in the first exercise.</p>
+<ol type="1">
+<li><p>Make a directory called “ex-clone-repo” in your home directory and <code>cd</code> into it.</p></li>
+<li><p>Clone the repository from the first exercise.</p></li>
+</ol>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre class="git-command">$ cd ~
+$ mkdir ex-clone-repo
+$ cd ex-clone-repo
+$ git clone ../ex-init-repo # Clones the ex-init-repo repository located in the parent directory (..)
+</pre>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-4---turn-an-existing-directory-into-a-git-repository" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-4---turn-an-existing-directory-into-a-git-repository">Exercise 4 - Turn an existing directory into a Git repository</h3>
+<p>Try to make an existing project/folder into a Git repository, and add and commit files to the repository. Consider the following types of files and whether or not it is a good idea to version control them:</p>
+<ol type="1">
+<li><p>Source code</p></li>
+<li><p>Generated files</p></li>
+<li><p>Data</p></li>
+<li><p>Personal IDE config files. for example the content of the hidden folder <code>.Rproj.user</code> for Rstudio users.</p></li>
+</ol>
+<p>At this point you might wonder if it is possible to tell Git to ignore certain files and file types, so that the worktree is not clogged with untracked files. Yes, it most certainly can. We will get back to that later in the tutorial.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="&quot;Solution&quot;">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>“Solution”
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>We will get back to this subject later in the tutorial, but generally speaking you should version control your code, not your output. so:</p>
+<ol type="1">
+<li><p>Definitely yes.</p></li>
+<li><p>Probably not. You can always generate them from the code. In some cases generated file can take a long time to generate, and are small in size. In that case, it might be convenient to just version control such files if we know we might need to look at different version of the files.</p></li>
+<li><p>Depends. If the data is generated from your code, then probably not. If it is “raw” data then maybe.</p></li>
+<li><p>Almost certainly no. Especially not if you are collaborating on a project with other people.</p></li>
+</ol>
+</div>
+</div>
+</div>
+
+
+</section>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>If you open Vim by accident, type <code>&lt;Esc&gt;:q!&lt;Enter&gt;</code> to exit it. Pressing <code>&lt;Esc&gt;</code> is to make sure you are in normal mode before typing anything else, and <code>:q!</code> is a command to quit Vim and discard any unsaved changes.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./introduction-to-git.html" class="pagination-link" aria-label="Introduction to Git">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to Git</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./github.html" class="pagination-link" aria-label="GitHub">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">GitHub</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

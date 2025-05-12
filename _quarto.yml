@@ -1,13 +1,14 @@
 project:
   type: book
   output-dir: docs
-
-toc-depth: 1
+  preview: 
+    browser: true
+    watch-inputs: true
+    
+  
 page-navigation: true
-
 book:
-  title: "Introduction to Git"
-  author: "Thomas Bøjer Rasmussen"
+  title: "Git tutorial"
   sidebar:
     style: docked
     background: light
@@ -15,20 +16,33 @@ book:
   repo-url: https://github.com/thomas-rasmussen/git-tutorial
   chapters:
     - index.qmd
-    - intro.qmd
-    - summary.qmd
-    - references.qmd
-  page-footer:
-    background: dark
-    border: true
-    right:
-      - icon: github
-        href: https://github.com/thomas-rasmussen/git-tutorial
-
-bibliography: references.bib
+    - part: "Part I"
+      chapters:
+      - introduction-to-git.qmd
+      - getting-started.qmd
+    - part: "Part II"
+      chapters:
+      - github.qmd
+      - the-dot-git-folder.qmd
+      
+  appendices:
+    - git-for-windows.qmd
+    - graphical-user-interfaces.qmd
+    - configuration_of_git.qmd
+    - resources.qmd
 
 format:
   html:
+    number-sections: true
+    number-depth: 2
+    toc: true
+    toc-expand: true
+    toc-depth: 3
+    css: styles.css
     theme: minty
+    include-in-header:
+      text: |
+       <script src="custom-js.js"></script>
+
 
 

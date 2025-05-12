@@ -1,0 +1,21 @@
+# Resources
+
+## General resources{.unnumbered}
+
+**Official documentation**<br>
+The [official documentation](https://git-scm.com/docs){target="_blank"} on Git is extensive and a great resource for learning about Git, and how to use specific commands. The official documentation also includes the freely available book [Pro Git]( https://git-scm.com/book/en/v2){target="_blank"}, which is well worth a read.
+
+**Git exercises**<br>
+<https://gitexercises.fracz.com/>{target="_blank"}
+
+**boot.dev**<br>
+[boot.dev](https://www.boot.dev/) has two great courses on Git.
+
+
+## Resources specifically aimed at R users{.unnumbered}
+
+**Happy Git and GitHub for the useR**<br>
+<https://happygitwithr.com/>{target="_blank"}
+
+**Chapter on Git in "Intro Reproductible Research in R"**<br>
+<https://r-cubed-intro.rostools.org/sessions/version-control>{target="_blank"}

@@ -1,0 +1,52 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/26.0.16 Chrome/132.0.6834.196 Electron/34.2.0 Safari/537.36" version="26.0.16">
+  <diagram name="Page-1" id="CDJjjE_HsOS4GCW2QY6j">
+    <mxGraphModel dx="1420" dy="942" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="1920" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="9XNiOfx3QlyoS_Myu1O6-1" value="" style="rounded=0;whiteSpace=wrap;html=1;perimeterSpacing=1;glass=0;shadow=0;" parent="1" vertex="1">
+          <mxGeometry x="40" y="40" width="480" height="440" as="geometry" />
+        </mxCell>
+        <mxCell id="9XNiOfx3QlyoS_Myu1O6-2" value="Local computer" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;strokeColor=none;" parent="1" vertex="1">
+          <mxGeometry x="115" y="50" width="370" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="9XNiOfx3QlyoS_Myu1O6-3" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="290" y="240" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="9XNiOfx3QlyoS_Myu1O6-4" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="300" y="275" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="9XNiOfx3QlyoS_Myu1O6-5" value="file.txt" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="70" y="360" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="9XNiOfx3QlyoS_Myu1O6-6" value="" style="rounded=0;whiteSpace=wrap;html=1;perimeterSpacing=0;" parent="1" vertex="1">
+          <mxGeometry x="220" y="85" width="280" height="370" as="geometry" />
+        </mxCell>
+        <mxCell id="9XNiOfx3QlyoS_Myu1O6-7" value="Database" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;strokeColor=none;" parent="1" vertex="1">
+          <mxGeometry x="300" y="110" width="120" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="9XNiOfx3QlyoS_Myu1O6-17" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="9XNiOfx3QlyoS_Myu1O6-9" target="9XNiOfx3QlyoS_Myu1O6-11" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9XNiOfx3QlyoS_Myu1O6-9" value="Version 2&lt;div&gt;file.txt&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="300" y="260" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="9XNiOfx3QlyoS_Myu1O6-16" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="9XNiOfx3QlyoS_Myu1O6-10" target="9XNiOfx3QlyoS_Myu1O6-9" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9XNiOfx3QlyoS_Myu1O6-10" value="&lt;font&gt;Version 1&lt;/font&gt;&lt;div&gt;&lt;font&gt;file.txt&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="300" y="160" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="9XNiOfx3QlyoS_Myu1O6-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="9XNiOfx3QlyoS_Myu1O6-11" target="9XNiOfx3QlyoS_Myu1O6-5" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9XNiOfx3QlyoS_Myu1O6-11" value="Version 3&lt;div&gt;file.txt&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="300" y="360" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="9XNiOfx3QlyoS_Myu1O6-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="9XNiOfx3QlyoS_Myu1O6-1" target="9XNiOfx3QlyoS_Myu1O6-1" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
