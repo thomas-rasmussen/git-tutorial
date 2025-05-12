@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Git tutorial</title>
+<title>3&nbsp; GitHub – Git tutorial</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,7 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./introduction-to-git.html" rel="next">
+<link href="./the-dot-git-folder.html" rel="next">
+<link href="./basic-git.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -74,7 +75,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-sidebar docked slimcontent quarto-light">
+<body class="nav-sidebar docked quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -83,7 +84,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Preface</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./github.html">Part II</a></li><li class="breadcrumb-item"><a href="./github.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">GitHub</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -113,7 +114,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
@@ -151,7 +152,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./github.html" class="sidebar-item-text sidebar-link">
+  <a href="./github.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">GitHub</span></span></a>
   </div>
 </li>
@@ -197,26 +198,15 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a>
-  <ul class="collapse">
-  <li><a href="#structure-of-tutorial" id="toc-structure-of-tutorial" class="nav-link" data-scroll-target="#structure-of-tutorial">Structure of tutorial</a></li>
-  <li><a href="#prerequisites" id="toc-prerequisites" class="nav-link" data-scroll-target="#prerequisites">Prerequisites</a></li>
-  <li><a href="#examples-and-exercises" id="toc-examples-and-exercises" class="nav-link" data-scroll-target="#examples-and-exercises">Examples and exercises</a></li>
-  </ul></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
-<main class="content page-columns page-full" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./github.html">Part II</a></li><li class="breadcrumb-item"><a href="./github.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">GitHub</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Git tutorial</h1>
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">GitHub</span></h1>
 </div>
 
 
@@ -233,43 +223,18 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p><img src="diagrams/title-slide-background.svg" class="img-fluid"></p>
-<section id="preface" class="level1 unnumbered page-columns page-full">
-<h1 class="unnumbered">Preface</h1>
-<div style="display:flex">
-<div style="flex:70%;margin-right:1em;">
-<p>There is no shortage of tutorials on Git. Unfortunately, it is easy to end up in the situation depicted in the webcomic, if your introduction to Git is based on a (short) tutorial on how to <strong>use</strong> Git.</p>
-<p>The aim of this tutorial is to give a more thorough and technical introduction to Git, accompanied by a lot of examples and exercises that will not only teach you how to use Git, but also help you <strong>understand</strong> Git, at least on a superficial level.</p>
-<p>This tutorial focuses on learning Git using terminal commands instead of relying on GUI’s to help with the more complicated aspects of using Git. This can make certain task more difficult to get started with, but it will also force you to better understand how Git actually works, which will help you in the long run.</p>
-</div>
-<div style="margin:1em;">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://imgs.xkcd.com/comics/git.png" class="img-fluid figure-img"></p>
-<figcaption>https://xkcd.com/1597/</figcaption>
-</figure>
-</div>
-</div>
-</div>
-
-<div class="no-row-height column-margin column-container"><div class="">
-<p>Webcomic title text:<br> “If that doesn’t fix it, git.txt contains the phone number of a friend of mine who understands git. Just wait through a few minutes of ‘It’s really pretty simple, just think of branches as…’ and eventually you’ll learn the commands that will fix everything.”</p>
-</div></div><section id="structure-of-tutorial" class="level2">
-<h2 class="anchored" data-anchor-id="structure-of-tutorial">Structure of tutorial</h2>
-<p>This tutorial is structured in two parts. Part I covers how to use all the basic Git commands and how Git works. Part II includes stand-alone chapters on more advanced topics. These chapters are not essential to learning how to use Git, and can be read to the extent they are relevant and of interest. Finally, the tutorial includes appendices on miscellaneous topics.</p>
-</section>
-<section id="prerequisites" class="level2">
-<h2 class="anchored" data-anchor-id="prerequisites">Prerequisites</h2>
-<p>The only prerequisite for this tutorial is that you are on a Windows machine and have Git BASH installed. See <a href="git-for-windows.html" class="quarto-xref"><span>Appendix A — Git for Windows</span></a> for more details. Although this tutorial assumes you are using Git BASH on a Windows machine, it should be easy to follow the tutorial if you are using another command line program on another operation system.</p>
-</section>
-<section id="examples-and-exercises" class="level2">
-<h2 class="anchored" data-anchor-id="examples-and-exercises">Examples and exercises</h2>
-<p>The tutorial includes (running) examples illustrating all the commands that are introduced. Each chapter also concludes with a set of exercises. The tutorial uses terminal commands to create/modify/delete files in examples and exercises. You are encouraged to also you Git BASH commands to create/modify/delete files in exercises, but if you are more comfortable with point-and-click approaches to this, that is of course also fine.</p>
-<p>The code illustrated in examples and exercises is not set-up so that it can be copy+pasted and run into a terminal to easily execute them. This is on purpose. The reason for this is that the best way to become comfortable with using terminal commands and remember how to use Git commands is to use them ad nauseam.</p>
+<p>GitHub is a host for Git repositories. There are many other sites that also hosts Git repositories, but Git is by far the most popular one. Hosting Git repositories online makes it easy to share code and collaborate with others.</p>
+<ul>
+<li><p>Describe how to setup an account? Maybe put in an appendix?</p></li>
+<li><p>Describe how to authenticate yourself to your GitHub account so that you can push to your repositories. Describe SSH and/or HTTPS approach?</p></li>
+<li><p>Describe how GitHub can be used as a remote branch in projects</p></li>
+<li><p>Also get into “GitHub flow” and describe how GitHub can be used to contribute to projects but forking a repo and making pull requests?</p></li>
+<li><p>Talk about issues. Both as a way to make notes on bug and future things to implement in your own projects, but also as a way to collaborate iwth others.</p></li>
+<li><p>GitHub pages: Probably mention that GitHub can be used to host html files, i.e.&nbsp;we can host static websites on GitHub.</p></li>
+<li><p>Namedrop other GitHub features?</p></li>
+</ul>
 
 
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -673,10 +638,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./basic-git.html" class="pagination-link" aria-label="Basic Git">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Basic Git</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./introduction-to-git.html" class="pagination-link" aria-label="Introduction to Git">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to Git</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./the-dot-git-folder.html" class="pagination-link" aria-label="The .git folder">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The .git folder</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

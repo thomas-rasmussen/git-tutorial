@@ -1,0 +1,12 @@
+# Further reading
+
+The [official documentation](https://git-scm.com/docs){target="_blank"} is always a good place to start if you want to learn more about what commands are available and how they work. In particular, the freely available book [Pro Git]( https://git-scm.com/book/en/v2){target="_blank"} is well worth a read. Beside that, here is a short list of curated resources that could be of interest:
+
+**Chapter on Git in "Intro Reproductible Research in R"**<br>
+<https://r-cubed-intro.rostools.org/sessions/version-control>{target="_blank"}
+
+**Git exercises**<br>
+<https://gitexercises.fracz.com/>{target="_blank"}
+
+**Happy Git and GitHub for the useR**<br>
+<https://happygitwithr.com/>{target="_blank"}

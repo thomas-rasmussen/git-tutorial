@@ -1,0 +1,128 @@
+# Basic Git
+
+In this chapter we will introduce the set of Git commands that makes it possible to do the majority of what you will be doing when using Git.
+
+
+## Initializing and cloning Git repositories
+
+To get started with using Git we need to either initialize a new Git repository in an existing project where we want to version control the file, or clone an existing Git repository.
+
+### Initialize a new Git repository
+
+To initialize a Git repository in an existing directory, we change the work directory to the directory using `cd` then use the `git init` command. This creates a new subfolder named ".git" that contains all of the necessary repository files - a Git repository skeleton. We will not discuss the contents of the ".git" folder here. The content of the ".git" folder is not important right now. We will get back to that later.
+
+We have now initialized a Git repository, but we are not yet tracking any files. We can start tracking files by using the `git add` command. Finally, we can commit the initial state of the file with `git commit`. 
+We will go over how to use `git add` and `git commit`in detail later, but for now lets just show an example of how you could initialize a Git repository in an existing folder.
+
+<pre class="bash-terminal">
+<span class="git-insert">~</span>
+$ cd /c/path/to/dir # Change working directory
+<span class="git-insert">/c/path/to/dir</span>
+$ git init # Initialize git repo
+<span class="git-insert">/c/path/to/dir</span>
+$ git add . # Track all files
+<span class="git-insert">/c/path/to/dir</span>
+$ git commit -m"Initial commit" # Commit files
+</pre>
+
+### Clone an existing Git repository
+
+The other way to get started is to make a clone of an existing Git repository using `git clone`. This commands make a local clone of an existing Git repository in a folder in the current work directory. Note that the clone of the Git repository is not just a copy of the current version of files in the Git repository, but a clone of the *entire* Git repository, i.e. the entire history of version of files. It is possible to clone repositories both from the internet, e.g. from a hosting service like GitHub, or repositories located somewhere else on your computer, e.g. on a network drive. Below we show an example of how to clone a repository from GitHub and from a local folder.
+
+<pre class="bash-terminal">
+<span class="git-insert">~</span>
+$ git clone https://github.com/some-user/git-repo-name
+<span class="git-insert">~</span>
+$ git clone /f/dir/on/other/drive
+</pre>
+
+## Lifecycle of files
+
+Whether you have initialized a new Git repository or cloned an existing one, you now have a Git repository on your local computer. At this point we are going to take a moment to talk about the different states that files in Git repository can be in.
+
+Each file in a Git repository can be in one of two states: *tracked* or *untracked*. Tracked files are files that Git know about, i.e. files that were included in the last snapshot and files that are staged. These files can be unmodified, modified, or staged, but they are all tracked. Untracked files is everything else.
+
+When you edit a tracked file, Git sees it as modified since it is different from the last snapshot. You can then stage files for the next commit, and finally commit them. When you commit the file to a snapshot, the file goes back to being viewed as unmodified. You then then continue editing, staging and commiting files, and thus the cycle repeats.
+
+![Life cycle of files](diagrams/lifecycle-status-files.svg){width=100%}
+
+## Checking the state of files
+
+So how do we check the state of our files? The main command to do this is `git status`. If you run this command right after cloning a repository or commiting a snapshot of your files, you will see something like this.
+
+<pre class="bash-terminal">
+<span class="git-insert">~/git_test</span> <span class="git-branch">(main)</span>
+$ git status
+On branch main
+nothing to commit, working tree clean
+</pre>
+
+As the message states, the working tree is clean, i.e. the files in the repository are all unmodified with respect to the last commit. Furthermore, there are no untracked files in the repository, or they would be listed. The message also informs us that we are on the main branch. The name of the branch we are currently on is also always displayed at the end of the first line. We will not talk about branches/branching yet, for now we are always going to be on the main branch (or master branch is you are running an older version of Git).
+
+
+
+
+## Where to get help
+
+TODO: this section should be somewhere in this chapter
+
+If you need help with how to use a Git, all of the commands have a comprehensive manual page that can be accessed in multiple ways. One such way is to use the `git help` command:
+
+<pre class="git-command">
+$ git help &lt;verb&gt;
+</pre>
+
+For example, if you want to access the manual page for the `add` command you can run the following command.
+
+<pre class="git-command">
+$ git help add
+</pre>
+
+A concise version of the manual page for a command showing the available options can also be output by using the `-h` option with a command, like so
+
+<pre class="git-command">
+$ git add -h
+</pre>
+
+
+
+## Exercises
+
+### Exercise - Initiate a Git repository
+
+1. Intialize a Git repository in a folder.
+
+2. Start tracking the files in the folder.
+
+3. Commit the initial state of the files to the repository.
+
+For this exercise you can use any folder of files that you want, for example an existing project that you want to version control using Git. You can also use the below code to create a simple folder with a single file in your home directory.
+
+<pre class="bash-terminal">
+<span class="bash-insert">/c/some/folder</span>
+$ cd
+<span class="git-insert">~</span>
+$ rm -rf git_example
+<span class="git-insert">~</span>
+$ mkdir git_example
+<span class="git-insert">~</span>
+$ cd git_example
+<span class="git-insert">~/git_example</span>
+$ echo "file_a content" > file_a.txt
+</pre>
+
+::: {.callout-note title="Solution" collapse="true" icon="false"}
+The solution assumes the folder we are working in is located at "~/git_example". If you are using another folder, start by using `cd` to change the working directory.
+
+<pre class="bash-terminal">
+<span class="git-insert">~/git_example</span>
+$ git init
+<span class="git-insert">~/git_example</span>
+$ git add .
+<span class="git-insert">~/git_example</span>
+$ git commit -m"Initial commit"
+</pre>
+:::
+
+
+### Exercise - Clone a Git repository

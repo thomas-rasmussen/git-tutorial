@@ -1,0 +1,3 @@
+# The .git folder
+
+Make a chapter focused on explaining what some of all the stuff in the .git folder is? Some of it might be explained in other parts of the book? This chapter might correspond 1-to-1 with the Git internals chapter in Pro git?

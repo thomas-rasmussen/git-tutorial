@@ -1,9 +1,45 @@
+
+![](diagrams/title-slide-background.svg)
+
 # Preface {.unnumbered}
 
-This is a Quarto book.
 
-To learn more about Quarto books visit <https://quarto.org/docs/books>.
+<div style="display:flex">
+<div style="flex:70%;margin-right:1em;">
 
-```{r}
-1 + 1
-```
+There is no shortage of tutorials on Git. Unfortunately, it is easy to end up in the situation depicted in the webcomic, if your introduction to Git is based on a (short) tutorial on how to **use** Git.
+
+The aim of this tutorial is to give a more thorough and technical introduction to Git, accompanied by a lot of examples and exercises that will not only teach you how to use Git, but also help you **understand** Git, at least on a superficial level.
+
+This tutorial focuses on learning Git using terminal commands instead of relying on GUI's to help with the more complicated aspects of using Git. This can make certain task more difficult to get started with, but it will also force you to better understand how Git actually works, which will help you in the long run.
+
+</div>
+<div style="margin:1em;">
+![https://xkcd.com/1597/](https://imgs.xkcd.com/comics/git.png)
+</div>
+</div>
+
+::: {.column-margin}
+Webcomic title text:<br>
+"If that doesn't fix it, git.txt contains the phone number of a friend of mine who understands git. Just wait through a few minutes of 'It's really pretty simple, just think of branches as...' and eventually you'll learn the commands that will fix everything."
+:::
+
+## Structure of tutorial
+
+This tutorial is structured in two parts. Part I covers how to use all the basic Git commands and how Git works. Part II includes stand-alone chapters on more advanced topics. These chapters are not essential to learning how to use Git, and can be read to the extent they are relevant and of interest. Finally, the tutorial includes appendices on miscellaneous topics.
+
+## Prerequisites
+
+The only prerequisite for this tutorial is that you are on a Windows machine and have Git BASH installed. See @sec-git-for-windows for more details. Although this tutorial assumes you are using Git BASH on a Windows machine, it should be easy to follow the tutorial if you are using another command line program on another operation system.
+
+## Examples and exercises
+
+The tutorial includes (running) examples illustrating all the commands that are introduced. Each chapter also concludes with a set of exercises. The tutorial uses terminal commands to create/modify/delete files in examples and exercises. You are encouraged to also you Git BASH commands to create/modify/delete files in exercises, but if you are more comfortable with point-and-click approaches to this, that is of course also fine.
+
+The code illustrated in examples and exercises is not set-up so that it can be copy+pasted and run into a terminal to easily execute them. This is on purpose. The reason for this is that the best way to become comfortable with using terminal commands and remember how to use Git commands is to use them ad nauseam.
+
+
+
+
+
+

@@ -1,0 +1,35 @@
+# Graphical User Interfaces (GUI's)
+
+There exists a plethora of GUI's that can make using Git a more smooth experience. With a GUI you can point-and-click your way through everything you need to do, GUI's can help trivialize complicated tasks, they can make beautiful graphical visualizations of complicated commit histories, and so on.
+
+The general advice of this tutorial is to not use a GUI if you don't need to, especially if you are new to Git. Learning Git using a GUI is shortsighted. It might make it easier to get started, but it can have a negative impact on your ability to understand how Git works, which might be problematic in the long run.
+
+Below we will briefly list some of pro's and con's of using GUI's and leave it at that.
+
+## Pro's {.unnumbered .unlisted}
+
+**Point-and-click interface**<br>
+In GUI's you can point-and-click your way through everything, which makes using Git a more smooth and less technical experience, which is preferable to some people.
+
+**Facilitation of complicated tasks**<br>
+A lot of GUI's comes with a ton of features that can make it a lot easier to manage a Git repository, perform complicated tasks, facilitate collaboration etc.
+
+**Graphical visualizations of commit histories**<br>
+Any decent GUI provides a graphical visualization of your commit history, which is especially valuable if you are working on a project with an extensive and complicated commit history. 
+
+## Con's {.unnumbered .unlisted}
+
+**Point-and-click interface**<br>
+Being able to point-and-click your way through everything means that you will most likely be doing exactly that. Which means that you will not learn any Git, and it will make it harder to remember things that you do actually know how to do at the terminal. 
+
+**Facilitation of complicated tasks**<br>
+Having a GUI facilitate complicated tasks can be very helpful, but again comes with the caveat that you yourself will might not in fact learn anything.
+
+**Access to your preferred GUI**<br>
+If you are dependent on using a specific GUI to use Git, this might become problematic if you are all of a sudden forced to work in an environment where you do not have access to that specific GUI, or any other GUI for that matter.
+
+**Might only have access to a limited set of Git commands**<br>
+GUI's do not come with a complete implementation of all Git commands. Some (advanced) Git commands are only available through terminal commands.
+
+
+

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>2&nbsp; Summary – Introduction to Git</title>
+<title>2&nbsp; Basic Git – Git tutorial</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,41 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -65,8 +30,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./references.html" rel="next">
-<link href="./intro.html" rel="prev">
+<link href="./github.html" rel="next">
+<link href="./introduction-to-git.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -76,7 +41,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-de070a7b0ab54f8780927367ac907214.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-88f3930d581a8b80ca6185ab4b1ab242.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-9c3c9749beb716605badaba237ef973c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -104,8 +69,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="custom-js.js"></script>
 
 
+<link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="nav-sidebar docked quarto-light">
@@ -117,7 +84,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./summary.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Summary</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./introduction-to-git.html">Part I</a></li><li class="breadcrumb-item"><a href="./basic-git.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Basic Git</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -132,7 +99,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Introduction to Git</a> 
+      <a href="./">Git tutorial</a> 
         <div class="sidebar-tools-main">
     <a href="https://github.com/thomas-rasmussen/git-tutorial" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
 </div>
@@ -151,38 +118,113 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part I</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  <a href="./introduction-to-git.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to Git</span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./summary.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+  <a href="./basic-git.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Basic Git</span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part II</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">References</span></a>
+  <a href="./github.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">GitHub</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./the-dot-git-folder.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The .git folder</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./git-for-windows.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Git for Windows</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./graphical-user-interfaces.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Graphical User Interfaces (GUI’s)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./further-reading.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Further reading</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#initializing-and-cloning-git-repositories" id="toc-initializing-and-cloning-git-repositories" class="nav-link active" data-scroll-target="#initializing-and-cloning-git-repositories"><span class="header-section-number">2.1</span> Initializing and cloning Git repositories</a>
+  <ul class="collapse">
+  <li><a href="#initialize-a-new-git-repository" id="toc-initialize-a-new-git-repository" class="nav-link" data-scroll-target="#initialize-a-new-git-repository"><span class="header-section-number">2.1.1</span> Initialize a new Git repository</a></li>
+  <li><a href="#clone-an-existing-git-repository" id="toc-clone-an-existing-git-repository" class="nav-link" data-scroll-target="#clone-an-existing-git-repository"><span class="header-section-number">2.1.2</span> Clone an existing Git repository</a></li>
+  </ul></li>
+  <li><a href="#lifecycle-of-files" id="toc-lifecycle-of-files" class="nav-link" data-scroll-target="#lifecycle-of-files"><span class="header-section-number">2.2</span> Lifecycle of files</a></li>
+  <li><a href="#checking-the-state-of-files" id="toc-checking-the-state-of-files" class="nav-link" data-scroll-target="#checking-the-state-of-files"><span class="header-section-number">2.3</span> Checking the state of files</a></li>
+  <li><a href="#where-to-get-help" id="toc-where-to-get-help" class="nav-link" data-scroll-target="#where-to-get-help"><span class="header-section-number">2.4</span> Where to get help</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">2.5</span> Exercises</a>
+  <ul class="collapse">
+  <li><a href="#exercise---initiate-a-git-repository" id="toc-exercise---initiate-a-git-repository" class="nav-link" data-scroll-target="#exercise---initiate-a-git-repository"><span class="header-section-number">2.5.1</span> Exercise - Initiate a Git repository</a></li>
+  <li><a href="#exercise---clone-a-git-repository" id="toc-exercise---clone-a-git-repository" class="nav-link" data-scroll-target="#exercise---clone-a-git-repository"><span class="header-section-number">2.5.2</span> Exercise - Clone a Git repository</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./introduction-to-git.html">Part I</a></li><li class="breadcrumb-item"><a href="./basic-git.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Basic Git</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Summary</span></h1>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Basic Git</span></h1>
 </div>
 
 
@@ -199,15 +241,120 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>In summary, this book has no content whatsoever.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
+<p>In this chapter we will introduce the set of Git commands that makes it possible to do the majority of what you will be doing when using Git.</p>
+<section id="initializing-and-cloning-git-repositories" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="initializing-and-cloning-git-repositories"><span class="header-section-number">2.1</span> Initializing and cloning Git repositories</h2>
+<p>To get started with using Git we need to either initialize a new Git repository in an existing project where we want to version control the file, or clone an existing Git repository.</p>
+<section id="initialize-a-new-git-repository" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="initialize-a-new-git-repository"><span class="header-section-number">2.1.1</span> Initialize a new Git repository</h3>
+<p>To initialize a Git repository in an existing directory, we change the work directory to the directory using <code>cd</code> then use the <code>git init</code> command. This creates a new subfolder named “.git” that contains all of the necessary repository files - a Git repository skeleton. We will not discuss the contents of the “.git” folder here. The content of the “.git” folder is not important right now. We will get back to that later.</p>
+<p>We have now initialized a Git repository, but we are not yet tracking any files. We can start tracking files by using the <code>git add</code> command. Finally, we can commit the initial state of the file with <code>git commit</code>. We will go over how to use <code>git add</code> and <code>git commit</code>in detail later, but for now lets just show an example of how you could initialize a Git repository in an existing folder.</p>
+<pre class="bash-terminal"><span class="git-insert">~</span>
+$ cd /c/path/to/dir # Change working directory
+<span class="git-insert">/c/path/to/dir</span>
+$ git init # Initialize git repo
+<span class="git-insert">/c/path/to/dir</span>
+$ git add . # Track all files
+<span class="git-insert">/c/path/to/dir</span>
+$ git commit -m"Initial commit" # Commit files
+</pre>
+</section>
+<section id="clone-an-existing-git-repository" class="level3" data-number="2.1.2">
+<h3 data-number="2.1.2" class="anchored" data-anchor-id="clone-an-existing-git-repository"><span class="header-section-number">2.1.2</span> Clone an existing Git repository</h3>
+<p>The other way to get started is to make a clone of an existing Git repository using <code>git clone</code>. This commands make a local clone of an existing Git repository in a folder in the current work directory. Note that the clone of the Git repository is not just a copy of the current version of files in the Git repository, but a clone of the <em>entire</em> Git repository, i.e.&nbsp;the entire history of version of files. It is possible to clone repositories both from the internet, e.g.&nbsp;from a hosting service like GitHub, or repositories located somewhere else on your computer, e.g.&nbsp;on a network drive. Below we show an example of how to clone a repository from GitHub and from a local folder.</p>
+<pre class="bash-terminal"><span class="git-insert">~</span>
+$ git clone https://github.com/some-user/git-repo-name
+<span class="git-insert">~</span>
+$ git clone /f/dir/on/other/drive
+</pre>
+</section>
+</section>
+<section id="lifecycle-of-files" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="lifecycle-of-files"><span class="header-section-number">2.2</span> Lifecycle of files</h2>
+<p>Whether you have initialized a new Git repository or cloned an existing one, you now have a Git repository on your local computer. At this point we are going to take a moment to talk about the different states that files in Git repository can be in.</p>
+<p>Each file in a Git repository can be in one of two states: <em>tracked</em> or <em>untracked</em>. Tracked files are files that Git know about, i.e.&nbsp;files that were included in the last snapshot and files that are staged. These files can be unmodified, modified, or staged, but they are all tracked. Untracked files is everything else.</p>
+<p>When you edit a tracked file, Git sees it as modified since it is different from the last snapshot. You can then stage files for the next commit, and finally commit them. When you commit the file to a snapshot, the file goes back to being viewed as unmodified. You then then continue editing, staging and commiting files, and thus the cycle repeats.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="diagrams/lifecycle-status-files.svg" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption>Life cycle of files</figcaption>
+</figure>
+</div>
+</section>
+<section id="checking-the-state-of-files" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="checking-the-state-of-files"><span class="header-section-number">2.3</span> Checking the state of files</h2>
+<p>So how do we check the state of our files? The main command to do this is <code>git status</code>. If you run this command right after cloning a repository or commiting a snapshot of your files, you will see something like this.</p>
+<pre class="bash-terminal"><span class="git-insert">~/git_test</span> <span class="git-branch">(main)</span>
+$ git status
+On branch main
+nothing to commit, working tree clean
+</pre>
+<p>As the message states, the working tree is clean, i.e.&nbsp;the files in the repository are all unmodified with respect to the last commit. Furthermore, there are no untracked files in the repository, or they would be listed. The message also informs us that we are on the main branch. The name of the branch we are currently on is also always displayed at the end of the first line. We will not talk about branches/branching yet, for now we are always going to be on the main branch (or master branch is you are running an older version of Git).</p>
+</section>
+<section id="where-to-get-help" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="where-to-get-help"><span class="header-section-number">2.4</span> Where to get help</h2>
+<p>TODO: this section should be somewhere in this chapter</p>
+<p>If you need help with how to use a Git, all of the commands have a comprehensive manual page that can be accessed in multiple ways. One such way is to use the <code>git help</code> command:</p>
+<pre class="git-command">$ git help &lt;verb&gt;
+</pre>
+<p>For example, if you want to access the manual page for the <code>add</code> command you can run the following command.</p>
+<pre class="git-command">$ git help add
+</pre>
+<p>A concise version of the manual page for a command showing the available options can also be output by using the <code>-h</code> option with a command, like so</p>
+<pre class="git-command">$ git add -h
+</pre>
+</section>
+<section id="exercises" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="exercises"><span class="header-section-number">2.5</span> Exercises</h2>
+<section id="exercise---initiate-a-git-repository" class="level3" data-number="2.5.1">
+<h3 data-number="2.5.1" class="anchored" data-anchor-id="exercise---initiate-a-git-repository"><span class="header-section-number">2.5.1</span> Exercise - Initiate a Git repository</h3>
+<ol type="1">
+<li><p>Intialize a Git repository in a folder.</p></li>
+<li><p>Start tracking the files in the folder.</p></li>
+<li><p>Commit the initial state of the files to the repository.</p></li>
+</ol>
+<p>For this exercise you can use any folder of files that you want, for example an existing project that you want to version control using Git. You can also use the below code to create a simple folder with a single file in your home directory.</p>
+<pre class="bash-terminal"><span class="bash-insert">/c/some/folder</span>
+$ cd
+<span class="git-insert">~</span>
+$ rm -rf git_example
+<span class="git-insert">~</span>
+$ mkdir git_example
+<span class="git-insert">~</span>
+$ cd git_example
+<span class="git-insert">~/git_example</span>
+$ echo "file_a content" &gt; file_a.txt
+</pre>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The solution assumes the folder we are working in is located at “~/git_example”. If you are using another folder, start by using <code>cd</code> to change the working directory.</p>
+<pre class="bash-terminal"><span class="git-insert">~/git_example</span>
+$ git init
+<span class="git-insert">~/git_example</span>
+$ git add .
+<span class="git-insert">~/git_example</span>
+$ git commit -m"Initial commit"
+</pre>
 </div>
 </div>
+</div>
+</section>
+<section id="exercise---clone-a-git-repository" class="level3" data-number="2.5.2">
+<h3 data-number="2.5.2" class="anchored" data-anchor-id="exercise---clone-a-git-repository"><span class="header-section-number">2.5.2</span> Exercise - Clone a Git repository</h3>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -611,37 +758,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./intro.html" class="pagination-link" aria-label="Introduction">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span>
+      <a href="./introduction-to-git.html" class="pagination-link" aria-label="Introduction to Git">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to Git</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./references.html" class="pagination-link" aria-label="References">
-        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./github.html" class="pagination-link" aria-label="GitHub">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">GitHub</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
-    <div class="nav-footer-left">
-      &nbsp;
-    </div>   
-    <div class="nav-footer-center">
-      &nbsp;
-    </div>
-    <div class="nav-footer-right">
-      <ul class="footer-items list-unstyled">
-    <li class="nav-item compact">
-    <a class="nav-link active" href="https://github.com/thomas-rasmussen/git-tutorial" aria-current="page">
-      <i class="bi bi-github" role="img">
-</i> 
-    </a>
-  </li>  
-</ul>
-    </div>
-  </div>
-</footer>
 
 
 

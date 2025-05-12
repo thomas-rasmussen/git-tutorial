@@ -1,0 +1,522 @@
+# Git for Windows {#sec-git-for-windows}
+
+[Git for Windows](https://gitforwindows.org/){target="_blank"} is a set of tools for Windows users. Of main interest, Git for Windows provides a Bash emulation used to run Git from the command line. Using Git Bash, Windows users can use "git" commands exactly like one would do in Linux and Unix environments. Besides the full set of Git core commands, Git Bash is also packaged with additional shell commands that can be useful.
+
+When you open Git Bash, you will see something like this:
+
+<pre class="bash-terminal">
+<span class="git-insert">~</span>
+$
+</pre>
+
+The [user_id@computer_id]{class="bash-green"} is an ID based on name of the user that is logged in, and the name of the device running Git Bash. The [MINGW64]{class="bash-pink"} part is the name of the compiler used to build Git Bash. The [~]{class="bash-gold"} at the end of the first line indicates the current directory. A tilde means that the current directory is the home directory of the user.
+
+## Shortcut keys
+
+An extensive list of available commands in Bash can be found [here](https://ss64.com/bash/syntax-keyboard.html){target="_blank"}. Not all of them are available in Git Bash. Below is a short list of useful shortcut keys.
+
+```{=html}
+<div style="margin-top:2em; margin-bottom:2em">
+<table class="table-striped">
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Shortcut</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="font-weight:bold">Moving the cursor</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Go to beginning of line (Home)</td>
+      <td style="font-family:monospace">Ctrl+a</td>
+    </tr>
+    <tr>
+      <td>Go to end of line (End)</td>
+      <td style="font-family:monospace">Ctrl+e</td>
+    </tr>
+    <tr>
+      <td>Previous command (Up arrow)</td>
+      <td style="font-family:monospace">Ctrl+p</td>
+    </tr>
+    <tr>
+      <td>Next command (Down arrow)</td>
+      <td style="font-family:monospace">Ctrl+n</td>
+    </tr>
+    <tr>
+      <td>Go left/back one word</td>
+      <td style="font-family:monospace">Alt+b</td>
+    </tr>
+    <tr>
+      <td>Go right/forward one word</td>
+      <td style="font-family:monospace">Alt+f</td>
+    </tr>
+    <tr>
+      <td>Go forward one character</td>
+      <td style="font-family:monospace">Ctrl+f</td>
+    </tr>
+    <tr>
+      <td>Go backward one character</td>
+      <td style="font-family:monospace">Ctrl+b</td>
+    </tr>
+    <tr>
+      <td style="font-weight:bold">Editing</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Copy</td>
+      <td style="font-family:monospace">Ctrl+ins</td>
+    </tr>
+    <tr>
+      <td>Paste</td>
+      <td style="font-family:monospace">Shift+ins</td>
+    </tr>
+    <tr>
+      <td>Clear the screen</td>
+      <td style="font-family:monospace">Ctrl+l</td>
+    </tr>
+    <tr>
+      <td>Delete the character before the cursor (Backspace)</td>
+      <td style="font-family:monospace">Ctrl+h</td>
+    </tr>
+    <tr>
+      <td>Delete the character after the cursor</td>
+      <td style="font-family:monospace">Ctrl+d</td>
+    </tr>
+    <tr>
+      <td style="font-weight:bold">Process control</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Interrupt/kill current process (SIGINT)</td>
+      <td style="font-family:monospace">Ctrl+c</td>
+    </tr>  </tbody>
+</table>
+</div>
+```
+
+Windows users are used to using {{< kbd Ctrl+c>}} and {{< kbd Ctrl+v>}} to "Copy" and "Paste", but these shortcuts are not available in Git Bash, since they are reserved for other commands. it is possible to enable "Copy" using {{< kbd Ctrl+Shift+c>}} and "Paste" using {{< kbd Ctrl+Shift+v>}}, by right-clicking in the terminal, navigating to [Options>Keys]{style="font-family:monospace"}, and checking the "Ctrl+Shift+letter shortcuts" box.
+
+## Git BASH commands
+
+It is not easy to understand what commands are (or are not) available in Git Bash, why they are (or are not) available, nor is it straight forward to find documentation on them. Some commands have documentation that can be accessed by typing `help [command-name]` in the terminal. More generally speaking, CMD, PowerShell, and BASH command documentation can be found many different places, for example [here](https://ss64.com/){target="_blank"}.
+
+Here we will introduce a few basic commands most of which are used extensively in this tutorial. We will also provide some focused documentation that covers how the commands are used in this tutorial, alongside links to more extensive documentation.
+
+```{=html}
+<div style="margin-top:2em;margin-bottom:2em;">
+<table class="table-striped">
+  <thead>
+    <tr>
+      <th style="width:25%">Command</th>
+      <th style="width:75%">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="font-family:monospace">cd</td>
+      <td>Change working directory</td>
+    </tr>
+    <tr>
+      <td style="font-family:monospace">clear</td>
+      <td>Clear terminal window</td>
+    </tr>
+    <tr>
+      <td style="font-family:monospace">echo > / echo >></td>
+      <td>Create file / append content to file</td>
+    </tr>
+    <tr>
+      <td style="font-family:monospace">ls</td>
+      <td>List directory content</td>
+    </tr>
+    <tr>
+      <td style="font-family:monospace">mkdir</td>
+      <td>Create folder</td>
+    </tr>
+    <tr>
+      <td style="font-family:monospace">pwd</td>
+      <td>Print working directory</td>
+    </tr>
+    <tr>
+      <td style="font-family:monospace">rm</td>
+      <td>Remove files</td>
+    </tr>
+    <tr>
+      <td style="font-family:monospace">start</td>
+      <td>Start a program/open a file/open a directory</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+```
+
+## Note on command options
+
+Most of the commands listed here can take different options, e.g. `ls` has an `-a` and a `-1` option. It is possible to use multiple options at once on the form `ls -a1` instead of the more verbose form `ls -a -1`.
+
+### cd
+
+**Syntax:** `cd [DIR]`<br>
+
+**Description:**<br>
+Change the current directory to `DIR`.
+
+If `DIR` is not provided, changes the current directory to the value of the \$HOME shell variable, i.e. the home directory of the user. `cd -` changes the working directory to the previous working directory ( "-" is converted to \$OLDPWD).
+
+Note that forward slashes (/) are used to specify file paths, and that paths can be both on the form [C:/path/to/directory]{style="font-family:monospace"} and [/c/path/to/directory]{style="font-family:monospace"}
+
+If the file path contains spaces, enclose the file path in (double) quotes.
+
+Git for Windows also comes with shell integration, so an alternative to using `cd` we can change the working directory by navigating to the folder in Windows explorer, right click on the folder (shift+right click on Windows 11) and select "Open Git Bash here".
+
+**Link to documentation:**<br>
+<https://ss64.com/bash/cd.html>{target="_blank"}
+
+
+#### Example - Change directory
+
+We can use `cd` to change the working directory by providing a file path to the directory.
+
+<pre class="bash-terminal">
+<span class="git-insert">~</span>
+$ cd C:/path/to/directory
+<span class="git-insert">/c/path/to/directory</span>
+$
+</pre>
+
+Note that the working directory was set as [C:/path/to/directory]{style="font-family:monospace"}, but is displayed on the form [/c/path/to/directory]{style="font-family:monospace"}
+
+#### Example - file path with spaces
+
+If a file path contains spaces, enclose the file path in (double) quotes.
+
+<pre class="bash-terminal">
+<span class="git-insert">~</span>
+$ cd "/c/path/to/some directory"
+<span class="git-insert">/c/path/to/some directory</span>
+$
+</pre>
+
+#### Example - Change to subdirectory
+
+To change the current working directory to a subdirectory of the current working
+directory, we can simple set `DIR` to the subdirectory name.
+
+<pre class="bash-terminal">
+<span class="git-insert">/c/path/to/dir</span>
+$ cd subfolder
+<span class="git-insert">/c/path/to/dir/subfolder</span>
+$
+</pre>
+
+#### Example - Change to parent directory
+
+We can change the working directory to the parent directory by setting `DIR` to "..".
+
+<pre class="bash-terminal">
+<span class="git-insert">/c/path/to/dir</span>
+$ cd ..
+<span class="git-insert">/c/path/to</span>
+$
+</pre>
+
+You can also use ".." more generally when specifying a file path, to denote the parent directory
+
+<pre class="bash-terminal"">
+<span class="git-insert">/c/path/to/dir_a</span>
+$ cd ../dir_b
+<span class="git-insert">/c/path/to/dir_b</span>
+$
+</pre>
+
+#### Example - Change to previous directory
+
+We can change the working directory to the previous working directory by setting `DIR` to "-".
+
+<pre class="bash-terminal">
+<span class="git-insert">/c/current/cd/dir</span>
+$ cd -
+<span class="git-insert">/c/previous/cd/dir</span>
+$
+</pre>
+
+#### Example - Changing working directory to user's home directory
+
+We can set the current working directory to the user's home directory by not specifying `DIR`, or by setting `DIR` to "~".
+
+<pre class="bash-terminal">
+<span class="git-insert">/c/current/dir</span>
+$ cd ~
+<span class="git-insert">~</span>
+$ cd -
+<span class="git-insert">/c/current/dir</span>
+$ cd
+<span class="git-insert">~</span>
+$
+</pre>
+
+### clear
+
+**Syntax:** `clear`
+
+**Description:**<br>
+Clear the terminal screen.
+
+**Link to documentation:**<br>
+No documentation available.
+
+#### Example
+
+Imagine we had the history shown in the terminal below, ending with a `clear` command.
+
+<pre class="bash-terminal">
+<span class="git-insert">~</span>
+$ cd C:/path/to/directory
+<span class="git-insert">/c/path/to/directory</span>
+$ clear
+</pre>
+
+This would result in the terminal shown below.
+
+<pre class="bash-terminal">
+<span class="git-insert">/c/path/to/directory</span>
+$
+</pre>
+
+Clearing the terminal screen can also be done using the shortcut key {{< kbd Ctrl+l>}}
+
+### echo > / echo >>
+
+**Syntax:** `echo [STRING] >> [FILE]`
+
+**Description:**<br>
+Append `STRING` content to `FILE` using the ">>" redirection operator. If the file does not exist it will be created. If ">>" is replaced with ">" then the
+given `STRING` overwrites the content of `FILE`.
+
+**Link to documentation:**<br>
+<https://ss64.com/bash/echo.html>{target="_blank"}
+
+#### Example - Create empty text file
+
+You can create an empty file by not providing any `STRING` and using the ">" redirection operator (this will overwrite the any existing file with the same name).
+
+<pre class="bash-terminal">
+<span class="git-insert">~</span>
+$ echo > empty_file.txt
+</pre>
+
+
+```{=html}
+<div class="notepad-file">
+<div class="notepad-header">empty_file.txt</div>
+<div class="notepad-body">
+&#x2800;
+</div>
+</div>
+```
+
+#### Example - Create text file with content
+
+We can create a new text file with some content in it (or overwrite an existing file) by using the ">" redirection operator and by providing a `STRING` with the content.
+
+<pre class="bash-terminal">
+<span class="git-insert">~</span>
+$ echo "Some content" > new_file.txt
+</pre>
+
+```{=html}
+<div class="notepad-file">
+<div class="notepad-header">new_file.txt</div>
+<div class="notepad-body">
+Some content
+</div>
+</div>
+```
+
+#### Example - Append content to existing text file
+
+To append content to an existing text file use the ">>" redirection operator.
+
+<pre class="bash-terminal">
+<span class="git-insert">~</span>
+$ echo "Some content" > append_file.txt
+<span class="git-insert">~</span>
+$ echo "Some more content" >> append_file.txt
+</pre>
+
+```{=html}
+<div class="notepad-file">
+<div class="notepad-header">append_file.txt</div>
+<div class="notepad-body">
+Some content<br>
+Some more content
+</div>
+</div>
+```
+
+### ls
+
+**Syntax:** `ls [OPTIONS] [DIR]`<br>
+
+List directory content.
+
+List directories and files in `DIR`. If `DIR` is not provided, lists the content of the current working directory. Content is listed alphabetically.
+
+**OPTIONS:**<br>
+**-a**<br>
+Do not ignore entries starting with dot (.), i.e. hidden files.<br>
+**-1**<br>
+List one file per line.<br>
+
+**Link to documentation:**<br>
+<https://ss64.com/bash/ls.html>{target="_blank"}
+
+#### Example - List content of work directory
+
+If we want to see a list of content in the current work directory, we can use `ls`.
+
+<pre class="bash-terminal">
+<span class="git-insert">/c/some/dir</span>
+$ ls
+<span class="bash-violet">dir_a</span>/ file_a.txt file_c.txt file_e.txt
+<span class="bash-violet">dir_b</span>/ file_b.txt file_d.txt file_f.txt
+</pre>
+
+By default multiple entries are listed in each line and directories are colour-coded and has a "/" suffix.
+
+#### Example - List all content of a directory
+
+By default, entries starting with a dot (.), i.e. hidden files, are ignored. Use the "-a" option to list all files.
+<pre class="bash-terminal">
+<span class="git-insert">/c/some/git_repo</span>
+$ ls -a
+<span class="bash-violet">.git</span>/ file_a.txt file_c.txt file_e.txt
+.gitignore file_b.txt file_d.txt file_f.txt
+</pre>
+
+
+#### Example - List one entry per line
+
+We can use the "-1" option to list only one entry per line.
+
+<pre class="bash-terminal">
+<span class="git-insert">/c/some/dir</span>
+$ ls -1
+<span class="bash-violet">dir_a</span>/
+<span class="bash-violet">dir_b</span>/
+file_a.txt
+file_b.txt
+file_c.txt
+file_d.txt
+file_e.txt
+file_f.txt
+</pre>
+
+### mkdir
+
+**Syntax:** `mk [FOLDER]`<br>
+
+Create folder.
+
+Create a new folder with name `FOLDER` in the current working directory, if it does not already exists. If the folder name contains spaces enclose the name in quotes.
+
+**Link to documentation:**<br>
+<https://ss64.com/bash/mkdir.html>{target="_blank"}
+
+#### Example
+
+Create new folders. Note that we don't have to enclose the folder name in quotes if it contains no spaces.
+
+<pre class="bash-terminal">
+<span class="git-insert">/c/some/dir</span>
+$ ls -1
+file_a.txt
+file_b.txt
+<span class="git-insert">/c/some/dir</span>
+$ mkdir new-folder
+<span class="git-insert">/c/some/dir</span>
+$ mkdir "new-folder"
+<span class="git-insert">/c/some/dir</span>
+$ ls -1
+<span class="bash-violet">new-folder</span>/
+<span class="bash-violet">'new folder'</span>/
+file_a.txt
+file_b.txt
+</pre>
+
+### pwd
+
+**Syntax:** `pwd`<br>
+
+Print working directory.
+
+**Link to documentation:**<br>
+<https://ss64.com/bash/pwd.html>{target="_blank"}
+
+#### Example
+
+When working with Git this command is mainly used to see where the current user's home directory is, since the current working directory is always shown in the terminal.
+
+<pre class="bash-terminal">
+<span class="git-insert">~</span>
+$ pwd
+/c/absolute/path/to/home/directory
+</pre>
+
+### rm
+
+**Syntax:** `rm [OPTIONS] [FILE]``<br>
+
+Remove files.
+
+To remove a file you must have write permission on the file and the folder where it is stored.
+
+By default, `rm` does not remove directories. Use the "-r" option to remove each listed directory too, along with all of its content.
+
+You should, obviously, be VERY careful when deleting files using terminal commands. Especially if you delete directories and their contents recursively.
+
+**OPTIONS:**<br>
+**-f**<br>
+Ignore non-existent files, never prompt.<br>
+**-r**<br>
+Remove directories and their contents recursively.
+
+**Link to documentation:**<br>
+<https://ss64.com/bash/rm.html>{target="_blank"}
+
+#### Example - Remove file
+
+<pre class="bash-terminal">
+<span class="git-insert">/c/some/dir</span>
+$ ls
+file_a.txt file_b.txt
+<span class="git-insert">/c/some/dir</span>
+$ rm file_a.txt
+<span class="git-insert">/c/some/dir</span>
+$ ls
+file_b.txt
+</pre>
+
+### start
+
+**Syntax:** `start [FILE/DIR/PROGRAM]`<br>
+
+Start a program, or open a file/directory in Windows Explorer.
+
+<span style="color:blue">TODO: Try to find some documentation on this command. This does not seem to be the CMD `START` command? Why does something like`start firefox` actually work??? </span>
+
+**Link to documentation:**<br>
+
+
+#### Example - Open current working directory in Windows explorer
+
+We can open the current working directory in Windows explorer by simply using `start .`
+
+<pre class="bash-terminal">
+<span class="git-insert">/c/some/dir</span>
+$ start .
+</pre>
+
+

@@ -1,0 +1,72 @@
+.bash-terminal{
+  color: #afafaf;
+  background-color: black;
+  font-family: monospace;
+  padding:0.5em;
+}
+
+.bash-gold {
+  color: #c0a000;
+  background-color: black;
+  font-family: monospace;
+}
+
+.bash-pink {
+  color: #b148c6;
+  background-color: black;
+  font-family: monospace;
+}
+
+.bash-grey {
+  color: #afafaf;
+  background-color: black;
+  font-family: monospace;
+}
+
+.bash-green {
+  color: #1ca800;
+  background-color: black;
+  font-family: monospace;
+}
+
+.bash-violet{
+ color: #7197ff;
+ background-color:black;
+ font-family: monospace;
+}
+
+.git-branch {
+  color: #04a18d;
+  background-color:black;
+  font-family: monospace;
+}
+
+.notepad-file {
+  border: 1px solid black;
+  border-radius:5px;
+}
+.notepad-header {
+  background-color:lightblue;
+  color:black;
+  padding:0.4em;
+  border-radius:5px 5px 0px 0px;
+  font-size:0.9em;
+}
+
+.notepad-body {
+  background-color:white;
+  padding:0.4em;
+  border-radius:0px 0px 5px 5px ;
+  font-family:sans-serif;
+  font-size:0.9em
+}
+
+.git-command {
+  font-family:monospace;
+  border-radius:5px;
+  padding:0.4em;
+  margin:0.2em;
+  background-color:lightgrey;
+  color:black;
+  font-size:0.9em;
+}

@@ -1,0 +1,17 @@
+# GitHub
+
+GitHub is a host for Git repositories. There are many other sites that also hosts Git repositories, but Git is by far the most popular one. Hosting Git repositories online makes it easy to share code and collaborate with others. 
+
+- Describe how to setup an account? Maybe put in an appendix?
+
+- Describe how to authenticate yourself to your GitHub account so that you can push to your repositories. Describe SSH and/or HTTPS approach?
+
+- Describe how GitHub can be used as a remote branch in projects
+
+- Also get into "GitHub flow" and describe how GitHub can be used to contribute to projects but forking a repo and making pull requests?
+
+- Talk about issues. Both as a way to make notes on bug and future things to implement in your own projects, but also as a way to collaborate iwth others.
+
+- GitHub pages: Probably mention that GitHub can be used to host html files, i.e. we can host static websites on GitHub. 
+
+- Namedrop other GitHub features?

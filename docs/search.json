@@ -2,41 +2,239 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Introduction to Git",
+    "title": "Git tutorial",
     "section": "",
-    "text": "Preface\nThis is a Quarto book.\nTo learn more about Quarto books visit https://quarto.org/docs/books.\n\n1 + 1\n\n[1] 2",
+    "text": "Preface",
     "crumbs": [
       "Preface"
     ]
   },
   {
-    "objectID": "intro.html",
-    "href": "intro.html",
-    "title": "1  Introduction",
-    "section": "",
-    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n1 + 1\n\n[1] 2\n\n\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "objectID": "index.html#structure-of-tutorial",
+    "href": "index.html#structure-of-tutorial",
+    "title": "Git tutorial",
+    "section": "Structure of tutorial",
+    "text": "Structure of tutorial\nThis tutorial is structured in two parts. Part I covers how to use all the basic Git commands and how Git works. Part II includes stand-alone chapters on more advanced topics. These chapters are not essential to learning how to use Git, and can be read to the extent they are relevant and of interest. Finally, the tutorial includes appendices on miscellaneous topics.",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+      "Preface"
     ]
   },
   {
-    "objectID": "summary.html",
-    "href": "summary.html",
-    "title": "2  Summary",
-    "section": "",
-    "text": "In summary, this book has no content whatsoever.\n\n1 + 1\n\n[1] 2",
+    "objectID": "index.html#prerequisites",
+    "href": "index.html#prerequisites",
+    "title": "Git tutorial",
+    "section": "Prerequisites",
+    "text": "Prerequisites\nThe only prerequisite for this tutorial is that you are on a Windows machine and have Git BASH installed. See Appendix A — Git for Windows for more details. Although this tutorial assumes you are using Git BASH on a Windows machine, it should be easy to follow the tutorial if you are using another command line program on another operation system.",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Summary</span>"
+      "Preface"
     ]
   },
   {
-    "objectID": "references.html",
-    "href": "references.html",
-    "title": "References",
-    "section": "",
-    "text": "Knuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "objectID": "index.html#examples-and-exercises",
+    "href": "index.html#examples-and-exercises",
+    "title": "Git tutorial",
+    "section": "Examples and exercises",
+    "text": "Examples and exercises\nThe tutorial includes (running) examples illustrating all the commands that are introduced. Each chapter also concludes with a set of exercises. The tutorial uses terminal commands to create/modify/delete files in examples and exercises. You are encouraged to also you Git BASH commands to create/modify/delete files in exercises, but if you are more comfortable with point-and-click approaches to this, that is of course also fine.\nThe code illustrated in examples and exercises is not set-up so that it can be copy+pasted and run into a terminal to easily execute them. This is on purpose. The reason for this is that the best way to become comfortable with using terminal commands and remember how to use Git commands is to use them ad nauseam.",
     "crumbs": [
-      "References"
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "introduction-to-git.html",
+    "href": "introduction-to-git.html",
+    "title": "1  Introduction to Git",
+    "section": "",
+    "text": "1.1 What is version control?\nThis chapter starts with a short introduction to version control and version control systems (VCS’s) in general, before moving on to introducing Git. The goal of this chapter is to get a basic idea about what Git is and how it works, before we move on to actually using it. This will (hopefully) make it easier to learn Git and use it effectively.\nVersion control is the practice of organizing and tracking different versions of computer files over time. Generally, you can do this for any type of file, but it is primarily done for source code, i.e. plain text files. Using version control enables viewing old versions of files, reverting a file to a previous version etc.\nA version control system (VCS) is a software tool that automates version control. You might already use a “VCS” without realizing it. The common practice of making copies of files and saving them elsewhere is the most simple form of version control. It is a very simple and straight-forward approach, but it is also very error prone and of limited use.",
+    "crumbs": [
+      "Part I",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction to Git</span>"
+    ]
+  },
+  {
+    "objectID": "introduction-to-git.html#what-is-version-control",
+    "href": "introduction-to-git.html#what-is-version-control",
+    "title": "1  Introduction to Git",
+    "section": "",
+    "text": "1.1.1 Local VCS\n\n\nThe first development toward better version control solutions was so-called local VCS’s. A local VCS is a local database on a single computer that keeps track of changes to files. Using a local VCS is can improvement over manual version control and can be useful for small and/or personal projects, but these types of VCS’s still have important limitations:\n\nAll file versions are stored locally, making it vulnerable to data loss.\nIt is difficult to collaborate with others using a local VCS, since changes can’t easily be shared or consolidated.\n\n\n\n\n\n\nLocal VCS\n\n\n\n\n\n\n1.1.2 Centralized VCS\n\n\nTo overcome the collaboration issues with local VCS’s, the next type of VCS that was developed was centralized VCS’s. These systems work by having a single central server that contains all the files that are version controlled. Developers can “checkout” files from that server and “commit” changes back to the server. This setup has many advantages over local VCS’s.\n\nA single central repository makes it easy for developers to see the history of changes and current state of files.\nMakes it easy to collaborate with other people.\nAdministrators can control what files each developer can access and modify.\n\nHowever, centralized VCS’s still have limitations:\n\nSingle point of failure: If the server dies and no proper backup has been kept, the entire history of the project is lost except whatever snapshots of files people happen to have on their local machines.\nIt is typically not possible to work offline. If the central server is temporarily offline or if the developer does not have an internet connection it is not possible to “commit” changes to files.\nOperations requires communication with the central server which can be slow, especially for large projects.\n\n\n\n\n\n\nCentalized VCS\n\n\n\n\n\n\n1.1.3 Distributed VCS\n\n\nThe final type of VCS’s is distributed VCS’s. With a distributed VCS, developers don’t just “checkout” the latest version of files, they make a copy of the entire history of all files. Distributed VCS’s have several advantages over centralized VCS’s.\n\nNo single point of failure. Each developer has the entire history of files.\nInstead of relying on a central server, developers can share and synchronize changes directly with each others.\nDevelopers can work offline.\nAllows for more flexible workflows that are not possible with a single centralized server.\nSome types of operations are faster since you don’t need to communicate with a server.\n\nOn the other hand distributed VCS’s also comes with some downsides:\n\nStoring the complete history of files can take up a lot more disc space, especially if files includes binary files or the project has a long and complicated history.\nAdministrators can not control which individual files each developer can see/modify.\n\n\n\n\n\n\nDistributed VCS",
+    "crumbs": [
+      "Part I",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction to Git</span>"
+    ]
+  },
+  {
+    "objectID": "introduction-to-git.html#what-is-git",
+    "href": "introduction-to-git.html#what-is-git",
+    "title": "1  Introduction to Git",
+    "section": "1.2 What is Git?",
+    "text": "1.2 What is Git?\nSo what is Git and how did it come to be? Git is a distributed VCS, and it is born from controversy. In 2005 the relationship soured between the Linux kernel project and the company owning the proprietary distributed VCS, BitKeeper, that the Linux community was using as a VCS. This resulted in the free licence of BitKeeper that the Linux community was using being revoked. Prompted by this, the Linux developer community (in particular Linus Thorvald, the creator of Linux) developed their own tool to replace BitKeeper. Git was designed with several key goals in mind that was needed for the Linux kernel project: speed, simple design, strong support for non-linear development, a fully distributed nature, and the ability to handle large projects efficiently.\n\n1.2.1 File storing in Git\nA major difference between Git and many other VCS’s is how Git stores data. In other systems, files are typically stored as a set of base versions of files and the changes made to each file over time. This is commonly called delta-based version control.\n\n\n\nDelta-based version control - data is stored as changes to a base version of each file\n\n\nThis is not how Git stores data. In Git, data is stored as a series of snapshots of your files. Every time you save the state of your files, Git basically takes a picture of how all the files looks like, and stores a reference to that snapshot. To be efficient, if a file has not changed, Git does not store the file again, but saves a link to the previous identical file instead.\n\n\n\nSnapshot version control - data is stored as snapshots at different time points\n\n\n\n\n1.2.2 Local operations\nWith Git, you are working on a local copy of the entire history of the project. Most Git operations only need local files and resources to run because of this, which in turn makes Git blazingly fast compared to other popular centralized VCS’s, for which most operations requires communication with a central server. This also means that you do not need an internet connection to work on a project that is version controlled with Git. You can work on your local copy and just synchronize/upload/share your work at a later point in time.\n\n\n1.2.3 Everything is checksummed\nIn Git everything is checksummed before it is stored and stored files/directories are referred to by that checksum. A checksum in Git is a 40-characters string composed of hexadecimal characters and looks something like shown below.\n840552db75d3d52894732b753892427b3f2cafa8\n\nYou can think of a checksum as a fingerprint. It can be used to summarize any data into a single unique value. Git uses checksums to verify the integrity of data. It is impossible to change the content of a file in Git without Git knowing about it. This also includes corruption of data. Even a single bit flip would easily be detected.\n\n\n1.2.4 Screwing up\nYou will inevitable mess something up when using Git. Fortunately, almost all operations add data to the Git database. This means that it is hard (ok maybe not that hard) to do an operation that can not be undone or to erase data that has been committed to the Git database. This is especially true if you regularly “push” your database to another repository. This is a subject we will get back to later on.\n\n\n1.2.5 The main sections of a Git project\nTODO: this section feels to much like what is also presented later on in more detail. If this section is kept (in some modified version) add a diagram. Current text is also mostly verbatim taken from pro git p. 15. Needs to be restructured and reworded.\nThe most important aspect of Git to understand is the three main stages files can be in: modified, staged, and committed.\n\nModified: Files that have been modified, but has not been committed to the database yet.\nStaged: Modified files that have been marked, in their current version, to go into the next commit snapshot.\nCommitted: Files that are safely stored in your local database are called commited files.\n\nThis leads us to the three main sections of a Git project: the working tree, the staging area, and the Git directory.\nThe working tree is a single checkout of one version of the project. These files are pulled out of the compressed database of the Git directory and placed on disk for you to use or modify.\nThe staging area is a file, generally contained in your Git directory, that stores information about what willl go into your next commit. Its technical name in Git parlance is the “index”, but the phrase “staging area” works just as well.\nThe Git directory is where Git stores the metadata and object database for your project. This is the most important part of Git, and it is what is copied when you clone a repository from another computer.\nThe basic Git workflow goes something like this:\n\nModify files in working tree.\nSelectively stage the changes to be included in the next commit.\nCommit the changes",
+    "crumbs": [
+      "Part I",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction to Git</span>"
+    ]
+  },
+  {
+    "objectID": "basic-git.html",
+    "href": "basic-git.html",
+    "title": "2  Basic Git",
+    "section": "",
+    "text": "2.1 Initializing and cloning Git repositories\nIn this chapter we will introduce the set of Git commands that makes it possible to do the majority of what you will be doing when using Git.\nTo get started with using Git we need to either initialize a new Git repository in an existing project where we want to version control the file, or clone an existing Git repository.",
+    "crumbs": [
+      "Part I",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Basic Git</span>"
+    ]
+  },
+  {
+    "objectID": "basic-git.html#initializing-and-cloning-git-repositories",
+    "href": "basic-git.html#initializing-and-cloning-git-repositories",
+    "title": "2  Basic Git",
+    "section": "",
+    "text": "2.1.1 Initialize a new Git repository\nTo initialize a Git repository in an existing directory, we change the work directory to the directory using cd then use the git init command. This creates a new subfolder named “.git” that contains all of the necessary repository files - a Git repository skeleton. We will not discuss the contents of the “.git” folder here. The content of the “.git” folder is not important right now. We will get back to that later.\nWe have now initialized a Git repository, but we are not yet tracking any files. We can start tracking files by using the git add command. Finally, we can commit the initial state of the file with git commit. We will go over how to use git add and git commitin detail later, but for now lets just show an example of how you could initialize a Git repository in an existing folder.\n~\n$ cd /c/path/to/dir # Change working directory\n/c/path/to/dir\n$ git init # Initialize git repo\n/c/path/to/dir\n$ git add . # Track all files\n/c/path/to/dir\n$ git commit -m\"Initial commit\" # Commit files\n\n\n\n2.1.2 Clone an existing Git repository\nThe other way to get started is to make a clone of an existing Git repository using git clone. This commands make a local clone of an existing Git repository in a folder in the current work directory. Note that the clone of the Git repository is not just a copy of the current version of files in the Git repository, but a clone of the entire Git repository, i.e. the entire history of version of files. It is possible to clone repositories both from the internet, e.g. from a hosting service like GitHub, or repositories located somewhere else on your computer, e.g. on a network drive. Below we show an example of how to clone a repository from GitHub and from a local folder.\n~\n$ git clone https://github.com/some-user/git-repo-name\n~\n$ git clone /f/dir/on/other/drive",
+    "crumbs": [
+      "Part I",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Basic Git</span>"
+    ]
+  },
+  {
+    "objectID": "basic-git.html#lifecycle-of-files",
+    "href": "basic-git.html#lifecycle-of-files",
+    "title": "2  Basic Git",
+    "section": "2.2 Lifecycle of files",
+    "text": "2.2 Lifecycle of files\nWhether you have initialized a new Git repository or cloned an existing one, you now have a Git repository on your local computer. At this point we are going to take a moment to talk about the different states that files in Git repository can be in.\nEach file in a Git repository can be in one of two states: tracked or untracked. Tracked files are files that Git know about, i.e. files that were included in the last snapshot and files that are staged. These files can be unmodified, modified, or staged, but they are all tracked. Untracked files is everything else.\nWhen you edit a tracked file, Git sees it as modified since it is different from the last snapshot. You can then stage files for the next commit, and finally commit them. When you commit the file to a snapshot, the file goes back to being viewed as unmodified. You then then continue editing, staging and commiting files, and thus the cycle repeats.\n\n\n\nLife cycle of files",
+    "crumbs": [
+      "Part I",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Basic Git</span>"
+    ]
+  },
+  {
+    "objectID": "basic-git.html#checking-the-state-of-files",
+    "href": "basic-git.html#checking-the-state-of-files",
+    "title": "2  Basic Git",
+    "section": "2.3 Checking the state of files",
+    "text": "2.3 Checking the state of files\nSo how do we check the state of our files? The main command to do this is git status. If you run this command right after cloning a repository or commiting a snapshot of your files, you will see something like this.\n~/git_test (main)\n$ git status\nOn branch main\nnothing to commit, working tree clean\n\nAs the message states, the working tree is clean, i.e. the files in the repository are all unmodified with respect to the last commit. Furthermore, there are no untracked files in the repository, or they would be listed. The message also informs us that we are on the main branch. The name of the branch we are currently on is also always displayed at the end of the first line. We will not talk about branches/branching yet, for now we are always going to be on the main branch (or master branch is you are running an older version of Git).",
+    "crumbs": [
+      "Part I",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Basic Git</span>"
+    ]
+  },
+  {
+    "objectID": "basic-git.html#where-to-get-help",
+    "href": "basic-git.html#where-to-get-help",
+    "title": "2  Basic Git",
+    "section": "2.4 Where to get help",
+    "text": "2.4 Where to get help\nTODO: this section should be somewhere in this chapter\nIf you need help with how to use a Git, all of the commands have a comprehensive manual page that can be accessed in multiple ways. One such way is to use the git help command:\n$ git help &lt;verb&gt;\n\nFor example, if you want to access the manual page for the add command you can run the following command.\n$ git help add\n\nA concise version of the manual page for a command showing the available options can also be output by using the -h option with a command, like so\n$ git add -h",
+    "crumbs": [
+      "Part I",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Basic Git</span>"
+    ]
+  },
+  {
+    "objectID": "basic-git.html#exercises",
+    "href": "basic-git.html#exercises",
+    "title": "2  Basic Git",
+    "section": "2.5 Exercises",
+    "text": "2.5 Exercises\n\n2.5.1 Exercise - Initiate a Git repository\n\nIntialize a Git repository in a folder.\nStart tracking the files in the folder.\nCommit the initial state of the files to the repository.\n\nFor this exercise you can use any folder of files that you want, for example an existing project that you want to version control using Git. You can also use the below code to create a simple folder with a single file in your home directory.\n/c/some/folder\n$ cd\n~\n$ rm -rf git_example\n~\n$ mkdir git_example\n~\n$ cd git_example\n~/git_example\n$ echo \"file_a content\" &gt; file_a.txt\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\nThe solution assumes the folder we are working in is located at “~/git_example”. If you are using another folder, start by using cd to change the working directory.\n~/git_example\n$ git init\n~/git_example\n$ git add .\n~/git_example\n$ git commit -m\"Initial commit\"\n\n\n\n\n\n\n2.5.2 Exercise - Clone a Git repository",
+    "crumbs": [
+      "Part I",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Basic Git</span>"
+    ]
+  },
+  {
+    "objectID": "github.html",
+    "href": "github.html",
+    "title": "3  GitHub",
+    "section": "",
+    "text": "GitHub is a host for Git repositories. There are many other sites that also hosts Git repositories, but Git is by far the most popular one. Hosting Git repositories online makes it easy to share code and collaborate with others.\n\nDescribe how to setup an account? Maybe put in an appendix?\nDescribe how to authenticate yourself to your GitHub account so that you can push to your repositories. Describe SSH and/or HTTPS approach?\nDescribe how GitHub can be used as a remote branch in projects\nAlso get into “GitHub flow” and describe how GitHub can be used to contribute to projects but forking a repo and making pull requests?\nTalk about issues. Both as a way to make notes on bug and future things to implement in your own projects, but also as a way to collaborate iwth others.\nGitHub pages: Probably mention that GitHub can be used to host html files, i.e. we can host static websites on GitHub.\nNamedrop other GitHub features?",
+    "crumbs": [
+      "Part II",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>GitHub</span>"
+    ]
+  },
+  {
+    "objectID": "the-dot-git-folder.html",
+    "href": "the-dot-git-folder.html",
+    "title": "4  The .git folder",
+    "section": "",
+    "text": "Make a chapter focused on explaining what some of all the stuff in the .git folder is? Some of it might be explained in other parts of the book? This chapter might correspond 1-to-1 with the Git internals chapter in Pro git?",
+    "crumbs": [
+      "Part II",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>The .git folder</span>"
+    ]
+  },
+  {
+    "objectID": "git-for-windows.html",
+    "href": "git-for-windows.html",
+    "title": "Appendix A — Git for Windows",
+    "section": "",
+    "text": "A.1 Shortcut keys\nGit for Windows is a set of tools for Windows users. Of main interest, Git for Windows provides a Bash emulation used to run Git from the command line. Using Git Bash, Windows users can use “git” commands exactly like one would do in Linux and Unix environments. Besides the full set of Git core commands, Git Bash is also packaged with additional shell commands that can be useful.\nWhen you open Git Bash, you will see something like this:\nThe user_id@computer_id is an ID based on name of the user that is logged in, and the name of the device running Git Bash. The MINGW64 part is the name of the compiler used to build Git Bash. The ~ at the end of the first line indicates the current directory. A tilde means that the current directory is the home directory of the user.\nAn extensive list of available commands in Bash can be found here. Not all of them are available in Git Bash. Below is a short list of useful shortcut keys.\nWindows users are used to using Ctrl+cCtrl+c and Ctrl+vCtrl+v to “Copy” and “Paste”, but these shortcuts are not available in Git Bash, since they are reserved for other commands. it is possible to enable “Copy” using Ctrl+Shift+cCtrl+Shift+c and “Paste” using Ctrl+Shift+vCtrl+Shift+v, by right-clicking in the terminal, navigating to Options&gt;Keys, and checking the “Ctrl+Shift+letter shortcuts” box.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>A</span>  <span class='chapter-title'>Git for Windows</span>"
+    ]
+  },
+  {
+    "objectID": "git-for-windows.html#shortcut-keys",
+    "href": "git-for-windows.html#shortcut-keys",
+    "title": "Appendix A — Git for Windows",
+    "section": "",
+    "text": "Description\nShortcut\n\n\n\n\nMoving the cursor\n\n\n\nGo to beginning of line (Home)\nCtrl+a\n\n\nGo to end of line (End)\nCtrl+e\n\n\nPrevious command (Up arrow)\nCtrl+p\n\n\nNext command (Down arrow)\nCtrl+n\n\n\nGo left/back one word\nAlt+b\n\n\nGo right/forward one word\nAlt+f\n\n\nGo forward one character\nCtrl+f\n\n\nGo backward one character\nCtrl+b\n\n\nEditing\n\n\n\nCopy\nCtrl+ins\n\n\nPaste\nShift+ins\n\n\nClear the screen\nCtrl+l\n\n\nDelete the character before the cursor (Backspace)\nCtrl+h\n\n\nDelete the character after the cursor\nCtrl+d\n\n\nProcess control\n\n\n\nInterrupt/kill current process (SIGINT)\nCtrl+c",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>A</span>  <span class='chapter-title'>Git for Windows</span>"
+    ]
+  },
+  {
+    "objectID": "git-for-windows.html#git-bash-commands",
+    "href": "git-for-windows.html#git-bash-commands",
+    "title": "Appendix A — Git for Windows",
+    "section": "A.2 Git BASH commands",
+    "text": "A.2 Git BASH commands\nIt is not easy to understand what commands are (or are not) available in Git Bash, why they are (or are not) available, nor is it straight forward to find documentation on them. Some commands have documentation that can be accessed by typing help [command-name] in the terminal. More generally speaking, CMD, PowerShell, and BASH command documentation can be found many different places, for example here.\nHere we will introduce a few basic commands most of which are used extensively in this tutorial. We will also provide some focused documentation that covers how the commands are used in this tutorial, alongside links to more extensive documentation.\n\n\n\n\n\nCommand\nDescription\n\n\n\n\ncd\nChange working directory\n\n\nclear\nClear terminal window\n\n\necho &gt; / echo &gt;&gt;\nCreate file / append content to file\n\n\nls\nList directory content\n\n\nmkdir\nCreate folder\n\n\npwd\nPrint working directory\n\n\nrm\nRemove files\n\n\nstart\nStart a program/open a file/open a directory",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>A</span>  <span class='chapter-title'>Git for Windows</span>"
+    ]
+  },
+  {
+    "objectID": "git-for-windows.html#note-on-command-options",
+    "href": "git-for-windows.html#note-on-command-options",
+    "title": "Appendix A — Git for Windows",
+    "section": "A.3 Note on command options",
+    "text": "A.3 Note on command options\nMost of the commands listed here can take different options, e.g. ls has an -a and a -1 option. It is possible to use multiple options at once on the form ls -a1 instead of the more verbose form ls -a -1.\n\nA.3.1 cd\nSyntax: cd [DIR]\nDescription: Change the current directory to DIR.\nIf DIR is not provided, changes the current directory to the value of the $HOME shell variable, i.e. the home directory of the user. cd - changes the working directory to the previous working directory ( “-” is converted to $OLDPWD).\nNote that forward slashes (/) are used to specify file paths, and that paths can be both on the form C:/path/to/directory and /c/path/to/directory\nIf the file path contains spaces, enclose the file path in (double) quotes.\nGit for Windows also comes with shell integration, so an alternative to using cd we can change the working directory by navigating to the folder in Windows explorer, right click on the folder (shift+right click on Windows 11) and select “Open Git Bash here”.\nLink to documentation: https://ss64.com/bash/cd.html\n\nExample - Change directory\nWe can use cd to change the working directory by providing a file path to the directory.\n~\n$ cd C:/path/to/directory\n/c/path/to/directory\n$\n\nNote that the working directory was set as C:/path/to/directory, but is displayed on the form /c/path/to/directory\n\n\nExample - file path with spaces\nIf a file path contains spaces, enclose the file path in (double) quotes.\n~\n$ cd \"/c/path/to/some directory\"\n/c/path/to/some directory\n$\n\n\n\nExample - Change to subdirectory\nTo change the current working directory to a subdirectory of the current working directory, we can simple set DIR to the subdirectory name.\n/c/path/to/dir\n$ cd subfolder\n/c/path/to/dir/subfolder\n$\n\n\n\nExample - Change to parent directory\nWe can change the working directory to the parent directory by setting DIR to “..”.\n/c/path/to/dir\n$ cd ..\n/c/path/to\n$\n\nYou can also use “..” more generally when specifying a file path, to denote the parent directory\n/c/path/to/dir_a\n$ cd ../dir_b\n/c/path/to/dir_b\n$\n\n\n\nExample - Change to previous directory\nWe can change the working directory to the previous working directory by setting DIR to “-”.\n/c/current/cd/dir\n$ cd -\n/c/previous/cd/dir\n$\n\n\n\nExample - Changing working directory to user’s home directory\nWe can set the current working directory to the user’s home directory by not specifying DIR, or by setting DIR to “~”.\n/c/current/dir\n$ cd ~\n~\n$ cd -\n/c/current/dir\n$ cd\n~\n$\n\n\n\n\nA.3.2 clear\nSyntax: clear\nDescription: Clear the terminal screen.\nLink to documentation: No documentation available.\n\nExample\nImagine we had the history shown in the terminal below, ending with a clear command.\n~\n$ cd C:/path/to/directory\n/c/path/to/directory\n$ clear\n\nThis would result in the terminal shown below.\n/c/path/to/directory\n$\n\nClearing the terminal screen can also be done using the shortcut key Ctrl+lCtrl+l\n\n\n\nA.3.3 echo &gt; / echo &gt;&gt;\nSyntax: echo [STRING] &gt;&gt; [FILE]\nDescription: Append STRING content to FILE using the “&gt;&gt;” redirection operator. If the file does not exist it will be created. If “&gt;&gt;” is replaced with “&gt;” then the given STRING overwrites the content of FILE.\nLink to documentation: https://ss64.com/bash/echo.html\n\nExample - Create empty text file\nYou can create an empty file by not providing any STRING and using the “&gt;” redirection operator (this will overwrite the any existing file with the same name).\n~\n$ echo &gt; empty_file.txt\n\n\nempty_file.txt\n\n⠀\n\n\n\n\nExample - Create text file with content\nWe can create a new text file with some content in it (or overwrite an existing file) by using the “&gt;” redirection operator and by providing a STRING with the content.\n~\n$ echo \"Some content\" &gt; new_file.txt\n\n\nnew_file.txt\n\nSome content\n\n\n\n\nExample - Append content to existing text file\nTo append content to an existing text file use the “&gt;&gt;” redirection operator.\n~\n$ echo \"Some content\" &gt; append_file.txt\n~\n$ echo \"Some more content\" &gt;&gt; append_file.txt\n\n\nappend_file.txt\n\nSome content\nSome more content\n\n\n\n\n\nA.3.4 ls\nSyntax: ls [OPTIONS] [DIR]\nList directory content.\nList directories and files in DIR. If DIR is not provided, lists the content of the current working directory. Content is listed alphabetically.\nOPTIONS: -a Do not ignore entries starting with dot (.), i.e. hidden files. -1 List one file per line.\nLink to documentation: https://ss64.com/bash/ls.html\n\nExample - List content of work directory\nIf we want to see a list of content in the current work directory, we can use ls.\n/c/some/dir\n$ ls\ndir_a/ file_a.txt file_c.txt file_e.txt\ndir_b/ file_b.txt file_d.txt file_f.txt\n\nBy default multiple entries are listed in each line and directories are colour-coded and has a “/” suffix.\n\n\nExample - List all content of a directory\nBy default, entries starting with a dot (.), i.e. hidden files, are ignored. Use the “-a” option to list all files.\n/c/some/git_repo\n$ ls -a\n.git/ file_a.txt file_c.txt file_e.txt\n.gitignore file_b.txt file_d.txt file_f.txt\n\n\n\nExample - List one entry per line\nWe can use the “-1” option to list only one entry per line.\n/c/some/dir\n$ ls -1\ndir_a/\ndir_b/\nfile_a.txt\nfile_b.txt\nfile_c.txt\nfile_d.txt\nfile_e.txt\nfile_f.txt\n\n\n\n\nA.3.5 mkdir\nSyntax: mk [FOLDER]\nCreate folder.\nCreate a new folder with name FOLDER in the current working directory, if it does not already exists. If the folder name contains spaces enclose the name in quotes.\nLink to documentation: https://ss64.com/bash/mkdir.html\n\nExample\nCreate new folders. Note that we don’t have to enclose the folder name in quotes if it contains no spaces.\n/c/some/dir\n$ ls -1\nfile_a.txt\nfile_b.txt\n/c/some/dir\n$ mkdir new-folder\n/c/some/dir\n$ mkdir \"new-folder\"\n/c/some/dir\n$ ls -1\nnew-folder/\n'new folder'/\nfile_a.txt\nfile_b.txt\n\n\n\n\nA.3.6 pwd\nSyntax: pwd\nPrint working directory.\nLink to documentation: https://ss64.com/bash/pwd.html\n\nExample\nWhen working with Git this command is mainly used to see where the current user’s home directory is, since the current working directory is always shown in the terminal.\n~\n$ pwd\n/c/absolute/path/to/home/directory\n\n\n\n\nA.3.7 rm\nSyntax: `rm [OPTIONS] [FILE]``\nRemove files.\nTo remove a file you must have write permission on the file and the folder where it is stored.\nBy default, rm does not remove directories. Use the “-r” option to remove each listed directory too, along with all of its content.\nYou should, obviously, be VERY careful when deleting files using terminal commands. Especially if you delete directories and their contents recursively.\nOPTIONS: -f Ignore non-existent files, never prompt. -r Remove directories and their contents recursively.\nLink to documentation: https://ss64.com/bash/rm.html\n\nExample - Remove file\n/c/some/dir\n$ ls\nfile_a.txt file_b.txt\n/c/some/dir\n$ rm file_a.txt\n/c/some/dir\n$ ls\nfile_b.txt\n\n\n\n\nA.3.8 start\nSyntax: start [FILE/DIR/PROGRAM]\nStart a program, or open a file/directory in Windows Explorer.\nTODO: Try to find some documentation on this command. This does not seem to be the CMD START command? Why does something likestart firefox actually work??? \nLink to documentation:\n\nExample - Open current working directory in Windows explorer\nWe can open the current working directory in Windows explorer by simply using start .\n/c/some/dir\n$ start .",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>A</span>  <span class='chapter-title'>Git for Windows</span>"
+    ]
+  },
+  {
+    "objectID": "graphical-user-interfaces.html",
+    "href": "graphical-user-interfaces.html",
+    "title": "Appendix B — Graphical User Interfaces (GUI’s)",
+    "section": "",
+    "text": "Pro’s\nThere exists a plethora of GUI’s that can make using Git a more smooth experience. With a GUI you can point-and-click your way through everything you need to do, GUI’s can help trivialize complicated tasks, they can make beautiful graphical visualizations of complicated commit histories, and so on.\nThe general advice of this tutorial is to not use a GUI if you don’t need to, especially if you are new to Git. Learning Git using a GUI is shortsighted. It might make it easier to get started, but it can have a negative impact on your ability to understand how Git works, which might be problematic in the long run.\nBelow we will briefly list some of pro’s and con’s of using GUI’s and leave it at that.\nPoint-and-click interface In GUI’s you can point-and-click your way through everything, which makes using Git a more smooth and less technical experience, which is preferable to some people.\nFacilitation of complicated tasks A lot of GUI’s comes with a ton of features that can make it a lot easier to manage a Git repository, perform complicated tasks, facilitate collaboration etc.\nGraphical visualizations of commit histories Any decent GUI provides a graphical visualization of your commit history, which is especially valuable if you are working on a project with an extensive and complicated commit history.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>Graphical User Interfaces (GUI's)</span>"
+    ]
+  },
+  {
+    "objectID": "graphical-user-interfaces.html#cons",
+    "href": "graphical-user-interfaces.html#cons",
+    "title": "Appendix B — Graphical User Interfaces (GUI’s)",
+    "section": "Con’s",
+    "text": "Con’s\nPoint-and-click interface Being able to point-and-click your way through everything means that you will most likely be doing exactly that. Which means that you will not learn any Git, and it will make it harder to remember things that you do actually know how to do at the terminal.\nFacilitation of complicated tasks Having a GUI facilitate complicated tasks can be very helpful, but again comes with the caveat that you yourself will might not in fact learn anything.\nAccess to your preferred GUI If you are dependent on using a specific GUI to use Git, this might become problematic if you are all of a sudden forced to work in an environment where you do not have access to that specific GUI, or any other GUI for that matter.\nMight only have access to a limited set of Git commands GUI’s do not come with a complete implementation of all Git commands. Some (advanced) Git commands are only available through terminal commands.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>Graphical User Interfaces (GUI's)</span>"
+    ]
+  },
+  {
+    "objectID": "further-reading.html",
+    "href": "further-reading.html",
+    "title": "Appendix C — Further reading",
+    "section": "",
+    "text": "The official documentation is always a good place to start if you want to learn more about what commands are available and how they work. In particular, the freely available book Pro Git is well worth a read. Beside that, here is a short list of curated resources that could be of interest:\nChapter on Git in “Intro Reproductible Research in R” https://r-cubed-intro.rostools.org/sessions/version-control\nGit exercises https://gitexercises.fracz.com/\nHappy Git and GitHub for the useR https://happygitwithr.com/",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>C</span>  <span class='chapter-title'>Further reading</span>"
     ]
   }
 ]
