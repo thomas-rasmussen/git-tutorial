@@ -1,0 +1,333 @@
+# Git BASH
+
+[Git for Windows](https://gitforwindows.org/){target="_blank"} is a set of tools for Windows users. Of main interest, Git for Windows provides a Bash emulation used to run Git from the command line. Using Git Bash, Windows users can use "git" commands exactly like one would do in Linux and Unix environments. Besides the full set of Git core commands, Git Bash is also packaged with additional shell commands that can be useful.
+
+When you open Git Bash, you will see something like this:
+
+```{=html}
+<pre style="background-color:black;padding:0.5em">
+<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">~</span>
+<span class="bash-grey">$</span>
+</pre>
+```
+
+The [user_id@computer_id]{class="bash-green"} is an ID based on name of the user that is logged in, and the name of the device running Git Bash. The [MINGW64]{class="bash-pink"} part is the name of the compiler used to build Git Bash. The [~]{class="bash-gold"} at the end of the first line indicates the current directory. A tilde means that the current directory is the home directory of the user.
+
+## Shortcut keys
+
+An extensive list of available commands in Bash can be found [here](https://ss64.com/bash/syntax-keyboard.html){target="_blank"}. Not all of them are available in Git Bash. Below is a short list of useful shortcut keys.
+
+```{=html}
+<div style="margin-top:2em; margin-bottom:2em">
+<table class="table-striped">
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Shortcut</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="font-weight:bold">Moving the cursor</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Go to beginning of line (Home)</td>
+      <td style="font-family:monospace">Ctrl+a</td>
+    </tr>
+    <tr>
+      <td>Go to end of line (End)</td>
+      <td style="font-family:monospace">Ctrl+e</td>
+    </tr>
+    <tr>
+      <td>Previous command (Up arrow)</td>
+      <td style="font-family:monospace">Ctrl+p</td>
+    </tr>
+    <tr>
+      <td>Next command (Down arrow)</td>
+      <td style="font-family:monospace">Ctrl+n</td>
+    </tr>
+    <tr>
+      <td>Go left/back one word</td>
+      <td style="font-family:monospace">Alt+b</td>
+    </tr>
+    <tr>
+      <td>Go right/forward one word</td>
+      <td style="font-family:monospace">Alt+f</td>
+    </tr>
+    <tr>
+      <td>Go forward one character</td>
+      <td style="font-family:monospace">Ctrl+f</td>
+    </tr>
+    <tr>
+      <td>Go backward one character</td>
+      <td style="font-family:monospace">Ctrl+b</td>
+    </tr>
+    <tr>
+      <td style="font-weight:bold">Editing</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Copy</td>
+      <td style="font-family:monospace">Ctrl+ins</td>
+    </tr>
+    <tr>
+      <td>Paste</td>
+      <td style="font-family:monospace">Shift+ins</td>
+    </tr>
+    <tr>
+      <td>Clear the screen</td>
+      <td style="font-family:monospace">Ctrl+l</td>
+    </tr>
+    <tr>
+      <td>Delete the character before the cursor (Backspace)</td>
+      <td style="font-family:monospace">Ctrl+h</td>
+    </tr>
+    <tr>
+      <td>Delete the character after the cursor</td>
+      <td style="font-family:monospace">Ctrl+d</td>
+    </tr>
+    <tr>
+      <td style="font-weight:bold">Process control</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Interrupt/kill current process (SIGINT)</td>
+      <td style="font-family:monospace">Ctrl+c</td>
+    </tr>  </tbody>
+</table>
+</div>
+```
+
+Windows users are used to using {{< kbd Ctrl+c>}} and {{< kbd Ctrl+v>}} to "Copy" and "Paste", but these shortcuts are not available in Git Bash, since they are reserved for other commands. it is possible to enable "Copy" using {{< kbd Ctrl+Shift+c>}} and "Paste" using {{< kbd Ctrl+Shift+v>}}, by right-clicking in the terminal, navigating to [Options>Keys]{style="font-family:monospace"}, and checking the "Ctrl+Shift+letter shortcuts" box.
+
+## Git BASH commands
+
+It is unfortunately not straightforward to get an overview of all available commands in Git Bash. The full list of available commands can be assessed from files in the [/usr/bin]{style="font-family:monospace"} directory of the Git Bash installation. Documentation of Linux shell commands in general, and how to use them, can be found with some google-fu. For example, [here](https://ss64.com/bash/){target="_blank"}.
+
+Here we give a (not necessarily detailed) description of some of the available shell commands in Git Bash.
+
+```{=html}
+<div style="margin-top:2em;margin-bottom:2em;">
+<table class="table-striped">
+  <thead>
+    <tr>
+      <th style="width:25%">Command</th>
+      <th style="width:75%">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="font-family:monospace">cd</td>
+      <td>Change working directory</td>
+    </tr>
+    <tr>
+      <td style="font-family:monospace">clear</td>
+      <td>Clear terminal window</td>
+    </tr>
+    <tr>
+      <td style="font-family:monospace">echo</td>
+      <td>Display a line of text</td>
+    </tr>
+    <tr>
+      <td style="font-family:monospace">ls</td>
+      <td>List directory content</td>
+    </tr>
+    <tr>
+      <td style="font-family:monospace">mkdir</td>
+      <td>Make directories</td>
+    </tr>
+    <tr>
+      <td style="font-family:monospace">pwd</td>
+      <td>Print working dierectory</td>
+    </tr>
+    <tr>
+      <td style="font-family:monospace">rm</td>
+      <td>Remove files</td>
+    </tr>
+    <tr>
+      <td style="font-family:monospace">rmdir</td>
+      <td>Remove empty directories</td>
+    </tr>
+    <tr>
+      <td style="font-family:monospace">start .</td>
+      <td>Open current directory in explorer</td>
+    </tr>
+    <tr>
+      <td style="font-family:monospace">touch</td>
+      <td>Change file timestamps</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+```
+
+### cd
+
+**Syntax:** `cd [dir]`<br>
+Changes the current directory to `dir`.
+
+The default `dir` value (~) is the value of the \$HOME shell variable, the home directory of the user.
+
+Note that forward slashes (/) are used to specify file paths, and that paths can be both on the form [C:/path/to/directory]{style="font-family:monospace"} and [/c/path/to/directory]{style="font-family:monospace"}
+
+If the file path contains spaces, enclose the file path in (double) quotes.
+
+Git for Windows also comes with shell integration, so an alternative to using `cd` we can change the working directory by navigating to the folder in Windows explorer, right click on the folder (shift+right click on Windows 11) and select "Open Git Bash here".
+
+#### Example - Change directory
+
+We can use `cd` to change the working directory to a specific folder by providing a path to the folder
+
+```{=html}
+<pre style="background-color:black;padding:0.5em">
+<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">~</span>
+<span class="bash-grey">$ cd C:/path/to/directory</span>
+<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/path/to/directory</span>
+<span class="bash-grey">$</span>
+</pre>
+```
+
+Note that the working directory was set as [C:/path/to/directory]{style="font-family:monospace"}, but is displayed on the form [/c/path/to/directory]{style="font-family:monospace"}
+
+#### Example - file path with spaces
+
+If a file path contains spaces, enclose the file path in (double) quotes
+
+```{=html}
+<pre style="background-color:black;padding:0.5em">
+<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">~</span>
+<span class="bash-grey">$ cd "/c/path/to/some directory"</span>
+<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/path/to/some directory</span>
+<span class="bash-grey">$</span>
+</pre>
+```
+
+#### Example - move to sub directory
+
+To change the current working directory to a subfolder of the current working
+directory, we can simple set dir to the subfolder name
+
+```{=html}
+<pre style="background-color:black;padding:0.5em">
+<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/path/to/dir</span>
+<span class="bash-grey">$ cd subfolder"</span>
+<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/path/to/dir/subfolder</span>
+<span class="bash-grey">$</span>
+</pre>
+```
+
+#### Example - move to parent directory
+
+We can move the working directory to the parent directory by setting `dir` to ".."
+
+```{=html}
+<pre style="background-color:black;padding:0.5em">
+<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/path/to/dir</span>
+<span class="bash-grey">$ cd ..</span>
+<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/path/to</span>
+<span class="bash-grey">$</span>
+</pre>
+```
+
+You can also use ".." more generally when specifying a file path, to denote the parent directory
+
+```{=html}
+<pre style="background-color:black;padding:0.5em">
+<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/path/to/dir_a</span>
+<span class="bash-grey">$ cd ../dir_b</span>
+<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/path/to/dir_b</span>
+<span class="bash-grey">$</span>
+</pre>
+```
+
+#### Example - Move to previous directory
+
+We can change the working directory to the previous working directory by setting `dir` to "-" ( "-" is converted to \$OLDPWD).
+
+```{=html}
+<pre style="background-color:black;padding:0.5em">
+<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/current/cd/dir</span>
+<span class="bash-grey">$ cd -</span>
+<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/previous/cd/dir</span>
+<span class="bash-grey">$</span>
+</pre>
+```
+
+#### Example - Move working directory to user's home directory
+
+As mentioned earlier, "~" denotes the user's home directory. We can set current working directory by setting `dir` to "~", or simply by not specifying it at all.
+
+```{=html}
+<pre style="background-color:black;padding:0.5em">
+<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/current/dir</span>
+<span class="bash-grey">$ cd ~</span>
+<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">~</span>
+<span class="bash-grey">$ cd -</span>
+<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/current/dir</span>
+<span class="bash-grey">$ cd</span>
+<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">~</span>
+</pre>
+```
+
+### clear
+
+**Syntax:** `clear`<br>
+Clear the terminal screen.
+
+#### Example
+
+Imagine we had the history shown in the terminal below, ending with a `clear` command.
+
+```{=html}
+<pre style="background-color:black;padding:0.5em">
+<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">~</span>
+<span class="bash-grey">$ cd C:/path/to/directory</span>
+<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/path/to/directory</span>
+<span class="bash-grey">$ clear</span>
+</pre>
+```
+
+This would result in the terminal shown below.
+
+```{=html}
+<pre style="background-color:black;padding:0.5em">
+<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/path/to/directory</span>
+<span class="bash-grey">$</span>
+</pre>
+```
+
+### echo
+
+TODO: need to add documentaion from here. Consider how best to list (curated) options for each command, and how to make meaningful examples.
+
+### ls
+
+**Syntax:** `ls [OPTIONS]... [FILE]...`<br>
+
+List information about the FILE's (in the current directory by default). Sorts entries alphabetically by default.
+
+**Curated options**<br>
+**-a, --all**<br>
+  Do not ignore entries starting with dot (.), i.e. hidden files.<br>
+**-1**<br>
+  List one file per line<br>
+**-R, --recursive**<br>
+  List subdirectories recursively.
+
+
+### mkdir
+
+### pwd
+
+### rm
+
+### rmdir
+
+### start .
+
+TODO: probably change to just "start" also in table, then explain how we
+can ALSO use it to open current directory in explorer
+
+### touch
+.

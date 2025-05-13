@@ -1,8 +1,9 @@
 project:
   type: book
   output-dir: docs
-
-toc-depth: 1
+  
+toc-expand: true
+toc-depth: 3
 page-navigation: true
 
 book:
@@ -15,8 +16,11 @@ book:
   repo-url: https://github.com/thomas-rasmussen/git-tutorial
   chapters:
     - index.qmd
-    - intro.qmd
-    - summary.qmd
+    - part: "Part I - Basic Git"
+    - part: "Part II - Branching and remotes"
+    - part: "Part III - Advanced topics"
+  appendices:
+    - git-for-windows.qmd
     - references.qmd
   page-footer:
     background: dark
@@ -26,9 +30,13 @@ book:
         href: https://github.com/thomas-rasmussen/git-tutorial
 
 bibliography: references.bib
-
+nocite: |
+  @*
+  
 format:
   html:
+    css: styles.css
     theme: minty
+
 
 

@@ -5,10 +5,8 @@ Git tutorial
 
 TODO
 
-- Incorporate content from old repo 
 - Make a first draft of chapters and subchapters for the tutorial, including appendices, to get an idea
   of the scope. Make an outline here before making any chapter .qmd files
-- Setup references/bibliography
 - Start adding content
 - Consider how examples and exercises are to be presented in tutorial. Make some tests / template code.
 - Read up on Quarto book documentation, pick a theme, set options for the book etc.

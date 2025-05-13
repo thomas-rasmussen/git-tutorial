@@ -1,9 +1,14 @@
+
+![](diagrams/title-slide-background.svg)
+
+
 # Preface {.unnumbered}
 
-This is a Quarto book.
+## Conventions Used in this tutorial
 
-To learn more about Quarto books visit <https://quarto.org/docs/books>.
+## Structure of tutorial
 
-```{r}
-1 + 1
-```
+Mention that all examples assumes the user is using Git for Windows?
+
+## Acknowledgements
+

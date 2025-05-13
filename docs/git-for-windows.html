@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Thomas Bøjer Rasmussen">
 
-<title>Introduction to Git</title>
+<title>Appendix A — Git BASH – Introduction to Git</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -51,7 +50,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./git-for-windows.html" rel="next">
+<link href="./references.html" rel="next">
+<link href="./index.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -62,6 +62,8 @@ div.csl-indent {
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-88f3930d581a8b80ca6185ab4b1ab242.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/kbd/kbd.js"></script>
+<link href="site_libs/quarto-contrib/kbd/kbd.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -103,7 +105,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Preface</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./git-for-windows.html">Appendices</a></li><li class="breadcrumb-item"><a href="./git-for-windows.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Git BASH</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -133,7 +135,7 @@ div.csl-indent {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
@@ -160,7 +162,7 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./git-for-windows.html" class="sidebar-item-text sidebar-link">
+  <a href="./git-for-windows.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Git BASH</span></span></a>
   </div>
 </li>
@@ -182,11 +184,19 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a>
+  <li><a href="#shortcut-keys" id="toc-shortcut-keys" class="nav-link active" data-scroll-target="#shortcut-keys"><span class="header-section-number">A.1</span> Shortcut keys</a></li>
+  <li><a href="#git-bash-commands" id="toc-git-bash-commands" class="nav-link" data-scroll-target="#git-bash-commands"><span class="header-section-number">A.2</span> Git BASH commands</a>
   <ul class="collapse">
-  <li><a href="#conventions-used-in-this-tutorial" id="toc-conventions-used-in-this-tutorial" class="nav-link" data-scroll-target="#conventions-used-in-this-tutorial">Conventions Used in this tutorial</a></li>
-  <li><a href="#structure-of-tutorial" id="toc-structure-of-tutorial" class="nav-link" data-scroll-target="#structure-of-tutorial">Structure of tutorial</a></li>
-  <li><a href="#acknowledgements" id="toc-acknowledgements" class="nav-link" data-scroll-target="#acknowledgements">Acknowledgements</a></li>
+  <li><a href="#cd" id="toc-cd" class="nav-link" data-scroll-target="#cd"><span class="header-section-number">A.2.1</span> cd</a></li>
+  <li><a href="#clear" id="toc-clear" class="nav-link" data-scroll-target="#clear"><span class="header-section-number">A.2.2</span> clear</a></li>
+  <li><a href="#echo" id="toc-echo" class="nav-link" data-scroll-target="#echo"><span class="header-section-number">A.2.3</span> echo</a></li>
+  <li><a href="#ls" id="toc-ls" class="nav-link" data-scroll-target="#ls"><span class="header-section-number">A.2.4</span> ls</a></li>
+  <li><a href="#mkdir" id="toc-mkdir" class="nav-link" data-scroll-target="#mkdir"><span class="header-section-number">A.2.5</span> mkdir</a></li>
+  <li><a href="#pwd" id="toc-pwd" class="nav-link" data-scroll-target="#pwd"><span class="header-section-number">A.2.6</span> pwd</a></li>
+  <li><a href="#rm" id="toc-rm" class="nav-link" data-scroll-target="#rm"><span class="header-section-number">A.2.7</span> rm</a></li>
+  <li><a href="#rmdir" id="toc-rmdir" class="nav-link" data-scroll-target="#rmdir"><span class="header-section-number">A.2.8</span> rmdir</a></li>
+  <li><a href="#start-." id="toc-start-." class="nav-link" data-scroll-target="#start-."><span class="header-section-number">A.2.9</span> start .</a></li>
+  <li><a href="#touch" id="toc-touch" class="nav-link" data-scroll-target="#touch"><span class="header-section-number">A.2.10</span> touch</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -194,21 +204,15 @@ div.csl-indent {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./git-for-windows.html">Appendices</a></li><li class="breadcrumb-item"><a href="./git-for-windows.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Git BASH</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Introduction to Git</h1>
+<h1 class="title">Appendix A — Git BASH</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Thomas Bøjer Rasmussen </p>
-          </div>
-  </div>
     
   
     
@@ -219,18 +223,274 @@ div.csl-indent {
 </header>
 
 
-<p><img src="diagrams/title-slide-background.svg" class="img-fluid"></p>
-<section id="preface" class="level1 unnumbered">
-<h1 class="unnumbered">Preface</h1>
-<section id="conventions-used-in-this-tutorial" class="level2">
-<h2 class="anchored" data-anchor-id="conventions-used-in-this-tutorial">Conventions Used in this tutorial</h2>
+<p><a href="https://gitforwindows.org/" target="_blank">Git for Windows</a> is a set of tools for Windows users. Of main interest, Git for Windows provides a Bash emulation used to run Git from the command line. Using Git Bash, Windows users can use “git” commands exactly like one would do in Linux and Unix environments. Besides the full set of Git core commands, Git Bash is also packaged with additional shell commands that can be useful.</p>
+<p>When you open Git Bash, you will see something like this:</p>
+<pre style="background-color:black;padding:0.5em"><span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">~</span>
+<span class="bash-grey">$</span>
+</pre>
+<p>The <span class="bash-green">user_id@computer_id</span> is an ID based on name of the user that is logged in, and the name of the device running Git Bash. The <span class="bash-pink">MINGW64</span> part is the name of the compiler used to build Git Bash. The <span class="bash-gold">~</span> at the end of the first line indicates the current directory. A tilde means that the current directory is the home directory of the user.</p>
+<section id="shortcut-keys" class="level2" data-number="A.1">
+<h2 data-number="A.1" class="anchored" data-anchor-id="shortcut-keys"><span class="header-section-number">A.1</span> Shortcut keys</h2>
+<p>An extensive list of available commands in Bash can be found <a href="https://ss64.com/bash/syntax-keyboard.html" target="_blank">here</a>. Not all of them are available in Git Bash. Below is a short list of useful shortcut keys.</p>
+<div style="margin-top:2em; margin-bottom:2em">
+
+<table class="table-striped caption-top table" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Description</th>
+<th data-quarto-table-cell-role="th">Shortcut</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="font-weight: bold">Moving the cursor</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Go to beginning of line (Home)</td>
+<td style="font-family: monospace">Ctrl+a</td>
+</tr>
+<tr class="odd">
+<td>Go to end of line (End)</td>
+<td style="font-family: monospace">Ctrl+e</td>
+</tr>
+<tr class="even">
+<td>Previous command (Up arrow)</td>
+<td style="font-family: monospace">Ctrl+p</td>
+</tr>
+<tr class="odd">
+<td>Next command (Down arrow)</td>
+<td style="font-family: monospace">Ctrl+n</td>
+</tr>
+<tr class="even">
+<td>Go left/back one word</td>
+<td style="font-family: monospace">Alt+b</td>
+</tr>
+<tr class="odd">
+<td>Go right/forward one word</td>
+<td style="font-family: monospace">Alt+f</td>
+</tr>
+<tr class="even">
+<td>Go forward one character</td>
+<td style="font-family: monospace">Ctrl+f</td>
+</tr>
+<tr class="odd">
+<td>Go backward one character</td>
+<td style="font-family: monospace">Ctrl+b</td>
+</tr>
+<tr class="even">
+<td style="font-weight: bold">Editing</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Copy</td>
+<td style="font-family: monospace">Ctrl+ins</td>
+</tr>
+<tr class="even">
+<td>Paste</td>
+<td style="font-family: monospace">Shift+ins</td>
+</tr>
+<tr class="odd">
+<td>Clear the screen</td>
+<td style="font-family: monospace">Ctrl+l</td>
+</tr>
+<tr class="even">
+<td>Delete the character before the cursor (Backspace)</td>
+<td style="font-family: monospace">Ctrl+h</td>
+</tr>
+<tr class="odd">
+<td>Delete the character after the cursor</td>
+<td style="font-family: monospace">Ctrl+d</td>
+</tr>
+<tr class="even">
+<td style="font-weight: bold">Process control</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Interrupt/kill current process (SIGINT)</td>
+<td style="font-family: monospace">Ctrl+c</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+<p>Windows users are used to using <kbd aria-hidden="true">Ctrl+c</kbd><span class="visually-hidden">Ctrl+c</span> and <kbd aria-hidden="true">Ctrl+v</kbd><span class="visually-hidden">Ctrl+v</span> to “Copy” and “Paste”, but these shortcuts are not available in Git Bash, since they are reserved for other commands. it is possible to enable “Copy” using <kbd aria-hidden="true">Ctrl+Shift+c</kbd><span class="visually-hidden">Ctrl+Shift+c</span> and “Paste” using <kbd aria-hidden="true">Ctrl+Shift+v</kbd><span class="visually-hidden">Ctrl+Shift+v</span>, by right-clicking in the terminal, navigating to <span style="font-family:monospace">Options&gt;Keys</span>, and checking the “Ctrl+Shift+letter shortcuts” box.</p>
 </section>
-<section id="structure-of-tutorial" class="level2">
-<h2 class="anchored" data-anchor-id="structure-of-tutorial">Structure of tutorial</h2>
-<p>Mention that all examples assumes the user is using Git for Windows?</p>
+<section id="git-bash-commands" class="level2" data-number="A.2">
+<h2 data-number="A.2" class="anchored" data-anchor-id="git-bash-commands"><span class="header-section-number">A.2</span> Git BASH commands</h2>
+<p>It is unfortunately not straightforward to get an overview of all available commands in Git Bash. The full list of available commands can be assessed from files in the <span style="font-family:monospace">/usr/bin</span> directory of the Git Bash installation. Documentation of Linux shell commands in general, and how to use them, can be found with some google-fu. For example, <a href="https://ss64.com/bash/" target="_blank">here</a>.</p>
+<p>Here we give a (not necessarily detailed) description of some of the available shell commands in Git Bash.</p>
+<div style="margin-top:2em;margin-bottom:2em;">
+
+<table class="table-striped caption-top table" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="width: 25%">Command</th>
+<th data-quarto-table-cell-role="th" style="width: 75%">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="font-family: monospace">cd</td>
+<td>Change working directory</td>
+</tr>
+<tr class="even">
+<td style="font-family: monospace">clear</td>
+<td>Clear terminal window</td>
+</tr>
+<tr class="odd">
+<td style="font-family: monospace">echo</td>
+<td>Display a line of text</td>
+</tr>
+<tr class="even">
+<td style="font-family: monospace">ls</td>
+<td>List directory content</td>
+</tr>
+<tr class="odd">
+<td style="font-family: monospace">mkdir</td>
+<td>Make directories</td>
+</tr>
+<tr class="even">
+<td style="font-family: monospace">pwd</td>
+<td>Print working dierectory</td>
+</tr>
+<tr class="odd">
+<td style="font-family: monospace">rm</td>
+<td>Remove files</td>
+</tr>
+<tr class="even">
+<td style="font-family: monospace">rmdir</td>
+<td>Remove empty directories</td>
+</tr>
+<tr class="odd">
+<td style="font-family: monospace">start .</td>
+<td>Open current directory in explorer</td>
+</tr>
+<tr class="even">
+<td style="font-family: monospace">touch</td>
+<td>Change file timestamps</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+<section id="cd" class="level3" data-number="A.2.1">
+<h3 data-number="A.2.1" class="anchored" data-anchor-id="cd"><span class="header-section-number">A.2.1</span> cd</h3>
+<p><strong>Syntax:</strong> <code>cd [dir]</code><br> Changes the current directory to <code>dir</code>.</p>
+<p>The default <code>dir</code> value (~) is the value of the $HOME shell variable, the home directory of the user.</p>
+<p>Note that forward slashes (/) are used to specify file paths, and that paths can be both on the form <span style="font-family:monospace">C:/path/to/directory</span> and <span style="font-family:monospace">/c/path/to/directory</span></p>
+<p>If the file path contains spaces, enclose the file path in (double) quotes.</p>
+<p>Git for Windows also comes with shell integration, so an alternative to using <code>cd</code> we can change the working directory by navigating to the folder in Windows explorer, right click on the folder (shift+right click on Windows 11) and select “Open Git Bash here”.</p>
+<section id="example---change-directory" class="level4" data-number="A.2.1.1">
+<h4 data-number="A.2.1.1" class="anchored" data-anchor-id="example---change-directory"><span class="header-section-number">A.2.1.1</span> Example - Change directory</h4>
+<p>We can use <code>cd</code> to change the working directory to a specific folder by providing a path to the folder</p>
+<pre style="background-color:black;padding:0.5em"><span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">~</span>
+<span class="bash-grey">$ cd C:/path/to/directory</span>
+<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/path/to/directory</span>
+<span class="bash-grey">$</span>
+</pre>
+<p>Note that the working directory was set as <span style="font-family:monospace">C:/path/to/directory</span>, but is displayed on the form <span style="font-family:monospace">/c/path/to/directory</span></p>
 </section>
-<section id="acknowledgements" class="level2">
-<h2 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h2>
+<section id="example---file-path-with-spaces" class="level4" data-number="A.2.1.2">
+<h4 data-number="A.2.1.2" class="anchored" data-anchor-id="example---file-path-with-spaces"><span class="header-section-number">A.2.1.2</span> Example - file path with spaces</h4>
+<p>If a file path contains spaces, enclose the file path in (double) quotes</p>
+<pre style="background-color:black;padding:0.5em"><span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">~</span>
+<span class="bash-grey">$ cd "/c/path/to/some directory"</span>
+<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/path/to/some directory</span>
+<span class="bash-grey">$</span>
+</pre>
+</section>
+<section id="example---move-to-sub-directory" class="level4" data-number="A.2.1.3">
+<h4 data-number="A.2.1.3" class="anchored" data-anchor-id="example---move-to-sub-directory"><span class="header-section-number">A.2.1.3</span> Example - move to sub directory</h4>
+<p>To change the current working directory to a subfolder of the current working directory, we can simple set dir to the subfolder name</p>
+<pre style="background-color:black;padding:0.5em"><span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/path/to/dir</span>
+<span class="bash-grey">$ cd subfolder"</span>
+<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/path/to/dir/subfolder</span>
+<span class="bash-grey">$</span>
+</pre>
+</section>
+<section id="example---move-to-parent-directory" class="level4" data-number="A.2.1.4">
+<h4 data-number="A.2.1.4" class="anchored" data-anchor-id="example---move-to-parent-directory"><span class="header-section-number">A.2.1.4</span> Example - move to parent directory</h4>
+<p>We can move the working directory to the parent directory by setting <code>dir</code> to “..”</p>
+<pre style="background-color:black;padding:0.5em"><span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/path/to/dir</span>
+<span class="bash-grey">$ cd ..</span>
+<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/path/to</span>
+<span class="bash-grey">$</span>
+</pre>
+<p>You can also use “..” more generally when specifying a file path, to denote the parent directory</p>
+<pre style="background-color:black;padding:0.5em"><span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/path/to/dir_a</span>
+<span class="bash-grey">$ cd ../dir_b</span>
+<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/path/to/dir_b</span>
+<span class="bash-grey">$</span>
+</pre>
+</section>
+<section id="example---move-to-previous-directory" class="level4" data-number="A.2.1.5">
+<h4 data-number="A.2.1.5" class="anchored" data-anchor-id="example---move-to-previous-directory"><span class="header-section-number">A.2.1.5</span> Example - Move to previous directory</h4>
+<p>We can change the working directory to the previous working directory by setting <code>dir</code> to “-” ( “-” is converted to $OLDPWD).</p>
+<pre style="background-color:black;padding:0.5em"><span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/current/cd/dir</span>
+<span class="bash-grey">$ cd -</span>
+<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/previous/cd/dir</span>
+<span class="bash-grey">$</span>
+</pre>
+</section>
+<section id="example---move-working-directory-to-users-home-directory" class="level4" data-number="A.2.1.6">
+<h4 data-number="A.2.1.6" class="anchored" data-anchor-id="example---move-working-directory-to-users-home-directory"><span class="header-section-number">A.2.1.6</span> Example - Move working directory to user’s home directory</h4>
+<p>As mentioned earlier, “~” denotes the user’s home directory. We can set current working directory by setting <code>dir</code> to “~”, or simply by not specifying it at all.</p>
+<pre style="background-color:black;padding:0.5em"><span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/current/dir</span>
+<span class="bash-grey">$ cd ~</span>
+<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">~</span>
+<span class="bash-grey">$ cd -</span>
+<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/current/dir</span>
+<span class="bash-grey">$ cd</span>
+<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">~</span>
+</pre>
+</section>
+</section>
+<section id="clear" class="level3" data-number="A.2.2">
+<h3 data-number="A.2.2" class="anchored" data-anchor-id="clear"><span class="header-section-number">A.2.2</span> clear</h3>
+<p><strong>Syntax:</strong> <code>clear</code><br> Clear the terminal screen.</p>
+<section id="example" class="level4" data-number="A.2.2.1">
+<h4 data-number="A.2.2.1" class="anchored" data-anchor-id="example"><span class="header-section-number">A.2.2.1</span> Example</h4>
+<p>Imagine we had the history shown in the terminal below, ending with a <code>clear</code> command.</p>
+<pre style="background-color:black;padding:0.5em"><span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">~</span>
+<span class="bash-grey">$ cd C:/path/to/directory</span>
+<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/path/to/directory</span>
+<span class="bash-grey">$ clear</span>
+</pre>
+<p>This would result in the terminal shown below.</p>
+<pre style="background-color:black;padding:0.5em"><span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/path/to/directory</span>
+<span class="bash-grey">$</span>
+</pre>
+</section>
+</section>
+<section id="echo" class="level3" data-number="A.2.3">
+<h3 data-number="A.2.3" class="anchored" data-anchor-id="echo"><span class="header-section-number">A.2.3</span> echo</h3>
+</section>
+<section id="ls" class="level3" data-number="A.2.4">
+<h3 data-number="A.2.4" class="anchored" data-anchor-id="ls"><span class="header-section-number">A.2.4</span> ls</h3>
+<p><strong>Syntax:</strong> <code>ls [OPTIONS]... [FILE]...</code><br></p>
+<p>List information about the FILE’s (in the current directory by default). Sorts entries alphabetically by default.</p>
+<p><strong>Curated options</strong><br> <strong>-a, –all</strong><br> Do not ignore entries starting with dot (.), i.e.&nbsp;hidden files.<br> <strong>-1</strong><br> List one file per line <strong>-R, –recursive</strong><br> List subdirectories recursively.</p>
+</section>
+<section id="mkdir" class="level3" data-number="A.2.5">
+<h3 data-number="A.2.5" class="anchored" data-anchor-id="mkdir"><span class="header-section-number">A.2.5</span> mkdir</h3>
+</section>
+<section id="pwd" class="level3" data-number="A.2.6">
+<h3 data-number="A.2.6" class="anchored" data-anchor-id="pwd"><span class="header-section-number">A.2.6</span> pwd</h3>
+</section>
+<section id="rm" class="level3" data-number="A.2.7">
+<h3 data-number="A.2.7" class="anchored" data-anchor-id="rm"><span class="header-section-number">A.2.7</span> rm</h3>
+</section>
+<section id="rmdir" class="level3" data-number="A.2.8">
+<h3 data-number="A.2.8" class="anchored" data-anchor-id="rmdir"><span class="header-section-number">A.2.8</span> rmdir</h3>
+</section>
+<section id="start-." class="level3" data-number="A.2.9">
+<h3 data-number="A.2.9" class="anchored" data-anchor-id="start-."><span class="header-section-number">A.2.9</span> start .</h3>
+<p>TODO: probably change to just “start” also in table, then explain how we can ALSO use it to open current directory in explorer</p>
+</section>
+<section id="touch" class="level3" data-number="A.2.10">
+<h3 data-number="A.2.10" class="anchored" data-anchor-id="touch"><span class="header-section-number">A.2.10</span> touch</h3>
+<p>.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
@@ -643,10 +903,13 @@ Chacon, Scott, and Ben Straub. 2021. <span>“Pro Git.”</span> <a href="https:
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./index.html" class="pagination-link" aria-label="Preface">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Preface</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./git-for-windows.html" class="pagination-link" aria-label="Git BASH">
-        <span class="nav-page-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Git BASH</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./references.html" class="pagination-link" aria-label="References">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
