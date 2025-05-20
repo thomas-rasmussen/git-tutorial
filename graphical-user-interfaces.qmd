@@ -1,0 +1,37 @@
+# Graphical User Interfaces (GUI's)
+
+There exists a plethora of GUI's for Git that can make using Git a much smoother experience. In many GUI's you can point and click your way through anything, they can help trivialize complicated tasks like authentication to Github, make beautiful graphical visualizations of complicated commit histories and so on.
+
+The general advice of this tutorial is to not use a GUI if you don't need to, especially if you are new to Git. Learning Git using a GUI is like peeing in your pants to keep warm. It might make it easier to get started, but it can have a negative impact on your understanding of how Git works, which might be very problematic later on. What will you do if you all of sudden have to work on a remote server that does not have your favourite GUI (or any GUI for that matter) installed, if you never really learned how to use Git with terminal commands?
+
+Below will will briefly talk about some of the pro's and con's of using GUI's. 
+
+## Pro's {.unnumbered .unlisted}
+
+**You can point and click your way through most things**<br>
+Being able to point and click your way through most things makes using Git a more smooth and less technical experience.
+
+
+**The GUI can facilitate complicated tasks**<br>
+Some GUI's can help with complicated tasks. For example, in some third-party GUI's where you login using an account, you can setup your GUI account using your GitHub account, and the GUI will automatically authenticate you to your GitHub repositories. This process is a lot more technical and complicated to do yourself.
+
+**Graphical visualizations of commit histories**<br>
+Having a (good) graphical visualization of your commit history is one of the big limitations of using Git through the terminal. Most GUI's will provide you with a beautiful graphical visualization of your commit history. This is a very nice feature if you are working on a project with complicated commit histories and many collaborators.
+
+## Con's {.unnumbered .unlisted}
+
+**You can point and click your way through most things**<br>
+Being able to point and click your way through everything means, that you will most likely be doing exactly that. Which means that you will not learn any Git, and it will make it harder to remember things that you do actually know how to do in the terminal. 
+
+**The GUI can facilitate complicated tasks**<br>
+Some GUI's can faciliate complicated tasks. Which means, naturally, that you will let the GUI do those tasks. This again comes with the caveat that you did not in fact learn anything.
+
+**You might not have access to your preferred GUI**<br>
+If you are dependent on using a specific GUI to use Git, this might become problematic if you are all of a sudden forced to work in an environment where you do not have access to that GUI (or any other GUI for that matter). The way to makes sure this is (probably) not a problem, is to actually learn how to use Git through terminal commands, so that you can always fall back to doing that if necessary.
+
+**Might only have access to a limited set of Git commands**<br>
+Some GUI's do not come with a complete implementation of all Git commands. Some (advanced) Git commands are only available through terminal commands.
+
+
+
+
