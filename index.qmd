@@ -10,5 +10,5 @@
 
 Mention that all examples assumes the user is using Git for Windows?
 
-## Acknowledgements
+
 

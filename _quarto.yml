@@ -3,7 +3,7 @@ project:
   output-dir: docs
   
 toc-expand: 2
-toc-depth: 5
+toc-depth: 4
 page-navigation: true
 book:
   title: "Introduction to Git"
@@ -17,7 +17,8 @@ book:
     - part: "Part I - Basic Git"
     - part: "Part II - Branching and remotes"
     - part: "Part III - Advanced topics"
-      chapters: 
+      chapters:
+        - github.qmd
         - the-dot-git-folder.qmd
     
   appendices:
