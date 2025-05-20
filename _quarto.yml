@@ -2,10 +2,9 @@ project:
   type: book
   output-dir: docs
   
-toc-expand: true
-toc-depth: 3
+toc-expand: 2
+toc-depth: 4
 page-navigation: true
-
 book:
   title: "Introduction to Git"
   author: "Thomas Bøjer Rasmussen"
