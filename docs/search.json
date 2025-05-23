@@ -2,7 +2,7 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Introduction to Git",
+    "title": "Git tutorial",
     "section": "",
     "text": "Preface",
     "crumbs": [
@@ -12,7 +12,7 @@
   {
     "objectID": "index.html#conventions-used-in-this-tutorial",
     "href": "index.html#conventions-used-in-this-tutorial",
-    "title": "Introduction to Git",
+    "title": "Git tutorial",
     "section": "Conventions Used in this tutorial",
     "text": "Conventions Used in this tutorial",
     "crumbs": [
@@ -22,9 +22,9 @@
   {
     "objectID": "index.html#structure-of-tutorial",
     "href": "index.html#structure-of-tutorial",
-    "title": "Introduction to Git",
+    "title": "Git tutorial",
     "section": "Structure of tutorial",
-    "text": "Structure of tutorial\nMention that all examples assumes the user is using Git for Windows?",
+    "text": "Structure of tutorial\nMention that all examples assumes the user is using Git for Windows?\n\n\n\n\nChacon, Scott, and Ben Straub. 2021. “Pro Git.” https://git-scm.com/book/en/v2.",
     "crumbs": [
       "Preface"
     ]
@@ -42,12 +42,12 @@
   {
     "objectID": "the-dot-git-folder.html",
     "href": "the-dot-git-folder.html",
-    "title": "1  The .git folder",
+    "title": "4  The .git folder",
     "section": "",
     "text": "Make a chapter focused on explaining what some of all the stuff in the .git folder is? Some of it might be explained in other parts of the book? This chapter might correspond 1-to-1 with the Git internals chapter in Pro git?\n\n\n\n\nChacon, Scott, and Ben Straub. 2021. “Pro Git.” https://git-scm.com/book/en/v2.",
     "crumbs": [
-      "Part III - Advanced topics",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>The .git folder</span>"
+      "Part III - Stand-alone topics",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>The .git folder</span>"
     ]
   },
   {
@@ -99,7 +99,7 @@
     "href": "graphical-user-interfaces.html",
     "title": "Appendix B — Graphical User Interfaces (GUI’s)",
     "section": "",
-    "text": "Pro’s\nThere exists a plethora of GUI’s that can make using Git a more smooth experience. In many GUI’s you can point-and-click your way through everything you need to do, they can help trivialize complicated tasks, they can make beautiful graphical visualizations of complicated commit histories, and so on.\nThe general advice of this tutorial is to not use a GUI if you don’t need to, especially if you are new to Git. Learning Git using a GUI is shortsighted. It might make it easier to get started, but it can have a negative impact on your ability to understand how Git works, which might be problematic in the long run. In continuation of this, some programs that have nothing to do with Git also comes with functionalities to use Git from within the program. It is unclear why it would EVER be desirable to use Git like that. If you want to use a GUI, use a third-party program whose sole purpose is to be a Git GUI.\nBelow will will briefly list some of pro’s and con’s of using GUI’s and leave it at that.\nPoint-and-click interface In GUI’s you can point-and-click your way through everything, which makes using Git a more smooth and less technical experience, which is preferable to some people.\nFacilitation of complicated tasks Some GUI’s can help with complicated tasks. For example, in some third-party GUI’s where you login using an account, you can setup your GUI account using your GitHub account, and the GUI will automatically authenticate you to your GitHub repositories. This process is a lot more technical and complicated to do yourself at the terminal.\nGraphical visualizations of commit histories Not being able to make a (good) graphical visualization of your commit history might be the biggest limitations of using Git at the terminal. On the other hand most GUI’s will provide you with a beautiful graphical visualization of your commit history, which is especially valuable if you are working on a project with an extensive and complicated commit history.",
+    "text": "Pro’s\nThere exists a plethora of GUI’s that can make using Git a more smooth experience. In many GUI’s you can point-and-click your way through everything you need to do, they can help trivialize complicated tasks, they can make beautiful graphical visualizations of complicated commit histories, and so on.\nThe general advice of this tutorial is to not use a GUI if you don’t need to, especially if you are new to Git. Learning Git using a GUI is shortsighted. It might make it easier to get started, but it can have a negative impact on your ability to understand how Git works, which might be problematic in the long run. In continuation of this, some programs that have nothing to do with Git also comes with functionalities to use Git from within the program. It is unclear why it would EVER be desirable to use Git like that. If you want to use a GUI, use a third-party program whose sole purpose is to be a Git GUI.\nBelow will will briefly list some of pro’s and con’s of using GUI’s and leave it at that.\nPoint-and-click interface In GUI’s you can point-and-click your way through everything, which makes using Git a more smooth and less technical experience, which is preferable to some people.\nFacilitation of complicated tasks Some GUI’s can help with complicated tasks. For example, in some third-party GUI’s where you login using an account, you can setup your GUI account using your GitHub account, and the GUI will automatically authenticate you to your GitHub repositories. This process is a lot more technical and complicated to do yourself at the terminal.\nGraphical visualizations of commit histories Not being able to make a (good) graphical visualization of your commit history might be the biggest limitation of using Git at the terminal. Any decent GUI will provide you with a beautiful graphical visualization of your commit history, which is especially valuable if you are working on a project with an extensive and complicated commit history.",
     "crumbs": [
       "Appendices",
       "<span class='chapter-number'>B</span>  <span class='chapter-title'>Graphical User Interfaces (GUI's)</span>"
@@ -121,10 +121,197 @@
     "href": "references.html",
     "title": "References",
     "section": "",
-    "text": "Chacon, Scott, and Ben Straub. 2021. “Pro Git.” https://git-scm.com/book/en/v2.",
+    "text": "TODO: Should this section be removed? The “Further reading appendix seems more appropriate. When, if ever, wouuld we acually references something? ::: {#refs} :::\n\n\n\n\nChacon, Scott, and Ben Straub. 2021. “Pro Git.” https://git-scm.com/book/en/v2.",
     "crumbs": [
       "Appendices",
       "References"
+    ]
+  },
+  {
+    "objectID": "further-reading.html",
+    "href": "further-reading.html",
+    "title": "Appendix C — Further reading",
+    "section": "",
+    "text": "There is no shortage of resources for learning Git. Here is short list of materials that could be of interest for further reading.\nPro Git book https://git-scm.com/book/en/v2\nhttps://r-cubed-intro.rostools.org/appendix/extra-github\nhttps://learngitbranching.js.org/\nhttps://gitexercises.fracz.com/\nhttps://r-cubed-intro.rostools.org/\nTODO: Vet current links and add/remove resources. Should probably be divided into section by type, i.e. book/tutorial/exercises/interactive/etc\n\n\n\n\nChacon, Scott, and Ben Straub. 2021. “Pro Git.” https://git-scm.com/book/en/v2.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>C</span>  <span class='chapter-title'>Further reading</span>"
+    ]
+  },
+  {
+    "objectID": "workflows.html",
+    "href": "workflows.html",
+    "title": "2  Workflows",
+    "section": "",
+    "text": "A chapter on workflows. Maybe this chapter should be earlier in the tutorial. The focus should probably be on describing useful local workflows, and not put too much emphasis on distributed workflows (see “Distributed Git” in Pro Git), since this will probably rarely be relevant for the intended audience?\n\n\n\n\nChacon, Scott, and Ben Straub. 2021. “Pro Git.” https://git-scm.com/book/en/v2.",
+    "crumbs": [
+      "Part III - Stand-alone topics",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Workflows</span>"
+    ]
+  },
+  {
+    "objectID": "github.html",
+    "href": "github.html",
+    "title": "3  GitHub",
+    "section": "",
+    "text": "3.1 What is GitHub?\nIn this chapter we will give a short introduction to GitHub.\nGithub is a host for Git repositories. There are many other sites that also hosts Git repositories, but Git is by far the most popular one. Hosting Git repositories online makes it easy to share code and collaborate with others.",
+    "crumbs": [
+      "Part III - Stand-alone topics",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>GitHub</span>"
+    ]
+  },
+  {
+    "objectID": "github.html#authentication",
+    "href": "github.html#authentication",
+    "title": "3  GitHub",
+    "section": "3.2 Authentication",
+    "text": "3.2 Authentication\nDescribe how to authenticate yourself to your GitHub account so that you can push to your repositories. Describe SSH and/or HTTPS approach?",
+    "crumbs": [
+      "Part III - Stand-alone topics",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>GitHub</span>"
+    ]
+  },
+  {
+    "objectID": "github.html#workflows",
+    "href": "github.html#workflows",
+    "title": "3  GitHub",
+    "section": "3.3 Workflows",
+    "text": "3.3 Workflows\nDescribe how GitHub can be used as a remote branch in projects\nAlso get into “GitHub flow” and describe how GitHub can be used to contribute to projects but forking a repo and making pull requests?\nTalk about issues. Both as a way to make notes on bug and future things to implement in your own projects, but also as a way to collaborate iwth others.",
+    "crumbs": [
+      "Part III - Stand-alone topics",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>GitHub</span>"
+    ]
+  },
+  {
+    "objectID": "github.html#github-pages",
+    "href": "github.html#github-pages",
+    "title": "3  GitHub",
+    "section": "3.4 GitHub pages",
+    "text": "3.4 GitHub pages\nProbably mention that GitHub can be used to host html files, i.e. we can host static websites on GitHub.",
+    "crumbs": [
+      "Part III - Stand-alone topics",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>GitHub</span>"
+    ]
+  },
+  {
+    "objectID": "github.html#other-features",
+    "href": "github.html#other-features",
+    "title": "3  GitHub",
+    "section": "3.5 Other features",
+    "text": "3.5 Other features\nNamedrop other GitHub features?\n\n\n\n\nChacon, Scott, and Ben Straub. 2021. “Pro Git.” https://git-scm.com/book/en/v2.",
+    "crumbs": [
+      "Part III - Stand-alone topics",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>GitHub</span>"
+    ]
+  },
+  {
+    "objectID": "introduction-to-git.html",
+    "href": "introduction-to-git.html",
+    "title": "1  Introduction to Git",
+    "section": "",
+    "text": "1.1 What is version control?\nWe will start this tutorial with a broader introduction to version control in general, and talk about why using version control is worthwhile, and why Git is the preferred tool to do this.\nVersion control is the practice of organizing and tracking different versions of computer files over time. Generally, you can do this for any type of file, but it is primarily done for source code, i.e. plain text files. Using version control enables viewing old versions of files, reverting a file to a previous version etc.\nA version control system (VCS) is a software tool that automates version control. You might already use a “VCS” without realizing it. The common practice of copying files into another directory is the most simple form of version control. It is a very simple and straight-forward approach to version control, but it is also very error prone and of limited use.",
+    "crumbs": [
+      "Part I - Basic Git",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction to Git</span>"
+    ]
+  },
+  {
+    "objectID": "introduction-to-git.html#what-is-git",
+    "href": "introduction-to-git.html#what-is-git",
+    "title": "1  Introduction to Git",
+    "section": "1.2 What is Git?",
+    "text": "1.2 What is Git?\nGit is a distributed version control system (DVCS)\nSoftware that tracks versions of files\nEach version is a snapshot of the files at that point\n\nGit is a distributed version control system (DVCS). A version control system (VCS) is software that tracks versions of files. In contrast to centralized VCS’s, A DVCS does not have a central code repository where files are stoed. Instead every user has the entire history of versions of files.\nGit stores versions of files as “snapshots” in contrasts to many other VCS’s where differences between versions of files are stored.",
+    "crumbs": [
+      "Part I - Basic Git",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction to Git</span>"
+    ]
+  },
+  {
+    "objectID": "introduction-to-git.html#why-should-you-use-git",
+    "href": "introduction-to-git.html#why-should-you-use-git",
+    "title": "1  Introduction to Git",
+    "section": "1.3 Why should you use Git?",
+    "text": "1.3 Why should you use Git?\nManually storing old versions of code manually is haphazard and of limited use. Using Git can help with:\n\nSwitching back and forth between different versions of files\nSeeing exact differences between versions of code\nFacilitate working multiple people on the same code.",
+    "crumbs": [
+      "Part I - Basic Git",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction to Git</span>"
+    ]
+  },
+  {
+    "objectID": "introduction-to-git.html#installation",
+    "href": "introduction-to-git.html#installation",
+    "title": "1  Introduction to Git",
+    "section": "1.4 Installation",
+    "text": "1.4 Installation",
+    "crumbs": [
+      "Part I - Basic Git",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction to Git</span>"
+    ]
+  },
+  {
+    "objectID": "introduction-to-git.html#where-to-get-help",
+    "href": "introduction-to-git.html#where-to-get-help",
+    "title": "1  Introduction to Git",
+    "section": "1.5 Where to get help",
+    "text": "1.5 Where to get help\nTODO: It does not feel right to have this section here? Maybe move to a later point after the first “real” git command, like add, has been introduced?\nIf you need help with how to use a Git, all of the commands have a comprehensive manual page that can be accessed in multiple ways. One such way is to use the git help command:\n$ git help &lt;verb&gt;\n\nFor example, if you want to access the manual page for the add command you can run the following command.\n$ git help add\n\nA concise version of the manual page for a command showing the available options can also be output by using the -h option with a command, like so\n$ git add -h\n\n\n\n\n\n\n\n\nChacon, Scott, and Ben Straub. 2021. “Pro Git.” https://git-scm.com/book/en/v2.",
+    "crumbs": [
+      "Part I - Basic Git",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction to Git</span>"
+    ]
+  },
+  {
+    "objectID": "introduction-to-git.html#todo",
+    "href": "introduction-to-git.html#todo",
+    "title": "1  Introduction to Git",
+    "section": "1.6 TODO",
+    "text": "1.6 TODO\nTopics to cover in chapter:\n\nWhat is Version Control\nDistributed versus centralized version control systems\nWhat is Git\nInstallation? Should be very short ie just a link to the website.\nHow to get help wiht Git commands\nSave configuration of Git to later when we go through git config. It confuses more than it helps to start doing git config at this point?",
+    "crumbs": [
+      "Part I - Basic Git",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction to Git</span>"
+    ]
+  },
+  {
+    "objectID": "introduction-to-git.html#why-should-you-use-git-to-version-control-your-code",
+    "href": "introduction-to-git.html#why-should-you-use-git-to-version-control-your-code",
+    "title": "1  Introduction to Git",
+    "section": "1.7 Why should you use Git to version control your code?",
+    "text": "1.7 Why should you use Git to version control your code?\nManually storing old versions of code manually is haphazard and of limited use. Using Git can help with:\n\nSwitching back and forth between different versions of files\nSeeing exact differences between versions of code\nFacilitate working multiple people on the same code.\n\n\n\n\n\n\n\n\n\n\n\nChacon, Scott, and Ben Straub. 2021. “Pro Git.” https://git-scm.com/book/en/v2.",
+    "crumbs": [
+      "Part I - Basic Git",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction to Git</span>"
+    ]
+  },
+  {
+    "objectID": "introduction-to-git.html#installating-on-windows",
+    "href": "introduction-to-git.html#installating-on-windows",
+    "title": "1  Introduction to Git",
+    "section": "1.4 Installating on Windows",
+    "text": "1.4 Installating on Windows\nTo use Git on a Windows OS, we recommend installing Git for Windows, which can be downloaded here. Git for Windows provides a BASH emulation used to run Git form the command line which behaves just like the “git” command in LINUX and UNIX environments.",
+    "crumbs": [
+      "Part I - Basic Git",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction to Git</span>"
+    ]
+  },
+  {
+    "objectID": "introduction-to-git.html#what-is-version-control",
+    "href": "introduction-to-git.html#what-is-version-control",
+    "title": "1  Introduction to Git",
+    "section": "",
+    "text": "1.1.1 Local VCS’s\nThe first development toward better version control solutions was so-called local VCS’s. A local VCS is a local database on a single computer that keeps track of changes to files that are under revision control. Local VCS’s were a clear improvement over manual version control, and can be useful for small and/or personal projects. But these types of VCS’s still have important limitations.\n\nAll file version are stored locally, making it vulnerable to data loss.\nIt is difficult to collaborate with others using a local VCS, since changes can’t easily be shared or merged.\n\n\n\n\n1.1.2 Centralized VCS’s\nTo overcome the limitations with collaborations using local VCS’s, the next type of VCS’s that were developed were so-called Centralized VCS’s. These systems work by have a single central server that contains all the code that is version controlled, and then developers can checkout code from that server and commit changes back to the server. This setup has many advantages over local VCS’s.\n\nDevelopers knows to some degree of certainty what other people are doing.\nAdministrators can control what files each developer can access and modify.\n\nHowever, centralized CVS’s also have downsides:\n\nSingle point of failure. If the server is temporarily offline, nobody can collaborate at all or save new versions of the code.\nIf the server dies and no proper backup has been kept, the entire history of the project is lost except whatever snapshorts people happen to have on their local machines.\n\n\n\n\n1.1.3 Distributed VCS\nThe final type of VCS is distributed VCS’s. In a distributed VCS, developers don’t check out just check out the latest snapshot of the files, they make a copy of the entire history of the files. This is a way more flexible type of system that have several advantages over centralized VCS’s.\n\nNo single point of failure. Each developer has the entire history of version of files.\nInstead of relying on a central server, developers can share and synchonize changes directly with each others.\nDevelopers can work offline.\nAllows for more flexible workflows that are not possible with a single centralized server.\nOperations like branching and merging are faster since you don’t need to communicate with a server.",
+    "crumbs": [
+      "Part I - Basic Git",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction to Git</span>"
+    ]
+  },
+  {
+    "objectID": "introduction-to-git.html#installing-git-on-windows",
+    "href": "introduction-to-git.html#installing-git-on-windows",
+    "title": "1  Introduction to Git",
+    "section": "1.4 Installing Git on Windows",
+    "text": "1.4 Installing Git on Windows\nTo use Git on Windows we recommend installing Git for Windows, which can be downloaded here. Git for Windows provides a BASH emulation used to run Git form the command line which behaves just like the “git” command in LINUX and UNIX environments.",
+    "crumbs": [
+      "Part I - Basic Git",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction to Git</span>"
     ]
   }
 ]

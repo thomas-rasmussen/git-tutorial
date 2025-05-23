@@ -6,7 +6,7 @@ toc-expand: 2
 toc-depth: 4
 page-navigation: true
 book:
-  title: "Introduction to Git"
+  title: "Git tutorial"
   sidebar:
     style: docked
     background: light
@@ -15,15 +15,19 @@ book:
   chapters:
     - index.qmd
     - part: "Part I - Basic Git"
+      chapters: 
+        - introduction-to-git.qmd
     - part: "Part II - Branching and remotes"
-    - part: "Part III - Advanced topics"
+    - part: "Part III - Stand-alone topics"
       chapters:
+        - workflows.qmd
         - github.qmd
         - the-dot-git-folder.qmd
     
   appendices:
     - git-for-windows.qmd
     - graphical-user-interfaces.qmd
+    - further-reading.qmd
     - references.qmd
   page-footer:
     background: dark

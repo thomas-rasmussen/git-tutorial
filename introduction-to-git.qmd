@@ -1,0 +1,104 @@
+# Introduction to Git
+
+We will start this tutorial with a broader introduction to *version control* in general, and talk about why using version control is worthwhile, and why Git is the preferred tool to do this.
+
+## What is version control?
+
+*Version control* is the practice of organizing and tracking different versions of computer files over time. Generally, you can do this for any type of file, but it is primarily done for
+source code, i.e. plain text files. Using version control enables viewing old versions of files, reverting a file to a previous version etc.
+
+A *version control system* (VCS) is a software tool that automates version control.  You might already use a "VCS" without realizing it. The common practice of copying files into another directory is the most simple form of version control. It is a very simple and straight-forward approach to version control, but it is also very error prone and of limited use.
+
+### Local VCS's
+
+The first development toward better version control solutions was so-called local VCS's. A local VCS is a local database on a single computer that keeps track of changes to files that are under revision control. Local VCS's were a clear improvement over manual version control, and can be useful for small and/or personal projects. But these types of VCS's still have important limitations.
+
+- All file version are stored locally, making it vulnerable to data loss.
+
+- It is difficult to collaborate with others using a local VCS, since changes can't easily be shared or merged.
+
+![](./diagrams/local-vcs.svg){.img-center-align}
+
+### Centralized VCS's
+
+
+To overcome the limitations with collaborations using local VCS's, the next type of VCS's that were developed were so-called Centralized VCS's. These systems work by have a single central server that contains all the code that is version controlled, and then developers can checkout code from that server and commit changes back to the server. This setup has many advantages over local VCS's.
+
+- Developers knows to some degree of certainty what other people are doing.
+
+- Administrators can control what files each developer can access and modify.
+
+However, centralized CVS's also have downsides:
+
+- Single point of failure. If the server is temporarily offline, nobody can collaborate at all or save new versions of the code.
+
+- If the server dies and no proper backup has been kept, the entire history of the project is lost except whatever snapshorts people happen to have on their local machines.
+
+![](./diagrams/centralized-vcs.svg){.img-center-align}
+
+### Distributed VCS
+
+The final type of VCS is *distributed* VCS's. In a distributed VCS, developers don't check out just check out the latest snapshot of the files, they make a copy of the entire history of the files. This is a way more flexible type of system that have several advantages over centralized VCS's.
+
+- No single point of failure. Each developer has the entire history of version of files.
+
+- Instead of relying on a central server, developers can share and synchonize changes directly with each others.
+
+- Developers can work offline.
+
+- Allows for more flexible workflows that are not possible with a single centralized server.
+
+- Operations like branching and merging are faster since you don't need to communicate with a server.
+
+![](./diagrams/distributed-vcs.svg){.img-center-align}
+
+
+## Git background story
+
+So how did Git came to be? 
+
+
+
+Git is a distributed VCS, and is by far the more popular VCS these days. Git was developed by the Linux kernel project comminity (in particular Linus Thorvald, the creator of Linux) ,made to replace another distributed VCS named BitKeeper. The goal of Git was
+
+- Speed
+
+- Simple design
+
+- Strong support for non-linear development (thousands of 
+
+Software that tracks versions of files
+
+Each version is a snapshot of the files at that point
+
+
+
+## Where to get help
+
+TODO: It does not feel right to have this section here? Maybe move to a later point after the first "real" git command, like add, has been introduced?
+
+If you need help with how to use a Git, all of the commands have a comprehensive manual page that can be accessed in multiple ways. One such way is to use the `git help` command:
+
+<pre class="git-command">
+$ git help &lt;verb&gt;
+</pre>
+
+For example, if you want to access the manual page for the `add` command you can run the following command.
+
+<pre class="git-command">
+$ git help add
+</pre>
+
+A concise version of the manual page for a command showing the available options can also be output by using the `-h` option with a command, like so
+
+<pre class="git-command">
+$ git add -h
+</pre>
+
+
+
+
+
+
+
+- 

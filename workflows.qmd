@@ -1,0 +1,3 @@
+# Workflows
+
+A chapter on workflows. Maybe this chapter should be earlier in the tutorial. The focus should probably be on describing useful local workflows, and not put too much emphasis on distributed workflows (see "Distributed Git" in Pro Git), since this will probably rarely be relevant for the intended audience?

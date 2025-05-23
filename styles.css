@@ -54,3 +54,17 @@
   font-size:0.9em
 }
 
+.git-command {
+  font-family:monospace;
+  border-radius:5px;
+  padding:0.4em;
+  margin:0.2em;
+  background-color:lightgrey;
+  color:black;
+  font-size:0.9em;
+}
+
+.img-center-align{
+  display: block;
+  margin: auto;
+}

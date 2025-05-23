@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Appendix B — Graphical User Interfaces (GUI’s) – Git tutorial</title>
+<title>1&nbsp; Introduction to Git – Git tutorial</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -50,8 +50,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./further-reading.html" rel="next">
-<link href="./git-for-windows.html" rel="prev">
+<link href="./workflows.html" rel="next">
+<link href="./index.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -103,7 +103,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./git-for-windows.html">Appendices</a></li><li class="breadcrumb-item"><a href="./graphical-user-interfaces.html"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Graphical User Interfaces (GUI’s)</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./introduction-to-git.html">Part I - Basic Git</a></li><li class="breadcrumb-item"><a href="./introduction-to-git.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to Git</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -148,7 +148,7 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./introduction-to-git.html" class="sidebar-item-text sidebar-link">
+  <a href="./introduction-to-git.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to Git</span></span></a>
   </div>
 </li>
@@ -204,7 +204,7 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./graphical-user-interfaces.html" class="sidebar-item-text sidebar-link active">
+  <a href="./graphical-user-interfaces.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Graphical User Interfaces (GUI’s)</span></span></a>
   </div>
 </li>
@@ -227,15 +227,30 @@ div.csl-indent {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="2">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#what-is-version-control" id="toc-what-is-version-control" class="nav-link active" data-scroll-target="#what-is-version-control"><span class="header-section-number">1.1</span> What is version control?</a>
+  <ul>
+  <li><a href="#local-vcss" id="toc-local-vcss" class="nav-link" data-scroll-target="#local-vcss"><span class="header-section-number">1.1.1</span> Local VCS’s</a></li>
+  <li><a href="#centralized-vcss" id="toc-centralized-vcss" class="nav-link" data-scroll-target="#centralized-vcss"><span class="header-section-number">1.1.2</span> Centralized VCS’s</a></li>
+  <li><a href="#distributed-vcs" id="toc-distributed-vcs" class="nav-link" data-scroll-target="#distributed-vcs"><span class="header-section-number">1.1.3</span> Distributed VCS</a></li>
+  </ul></li>
+  <li><a href="#what-is-git" id="toc-what-is-git" class="nav-link" data-scroll-target="#what-is-git"><span class="header-section-number">1.2</span> What is Git?</a></li>
+  <li><a href="#why-should-you-use-git" id="toc-why-should-you-use-git" class="nav-link" data-scroll-target="#why-should-you-use-git"><span class="header-section-number">1.3</span> Why should you use Git?</a></li>
+  <li><a href="#installing-git-on-windows" id="toc-installing-git-on-windows" class="nav-link" data-scroll-target="#installing-git-on-windows"><span class="header-section-number">1.4</span> Installing Git on Windows</a></li>
+  <li><a href="#where-to-get-help" id="toc-where-to-get-help" class="nav-link" data-scroll-target="#where-to-get-help"><span class="header-section-number">1.5</span> Where to get help</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./git-for-windows.html">Appendices</a></li><li class="breadcrumb-item"><a href="./graphical-user-interfaces.html"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Graphical User Interfaces (GUI’s)</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./introduction-to-git.html">Part I - Basic Git</a></li><li class="breadcrumb-item"><a href="./introduction-to-git.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to Git</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Appendix B — Graphical User Interfaces (GUI’s)</h1>
+<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to Git</span></h1>
 </div>
 
 
@@ -252,21 +267,85 @@ div.csl-indent {
 </header>
 
 
-<p>There exists a plethora of GUI’s that can make using Git a more smooth experience. In many GUI’s you can point-and-click your way through everything you need to do, they can help trivialize complicated tasks, they can make beautiful graphical visualizations of complicated commit histories, and so on.</p>
-<p>The general advice of this tutorial is to not use a GUI if you don’t need to, especially if you are new to Git. Learning Git using a GUI is shortsighted. It might make it easier to get started, but it can have a negative impact on your ability to understand how Git works, which might be problematic in the long run. In continuation of this, some programs that have nothing to do with Git also comes with functionalities to use Git from within the program. It is unclear why it would EVER be desirable to use Git like that. If you want to use a GUI, use a third-party program whose sole purpose is to be a Git GUI.</p>
-<p>Below will will briefly list some of pro’s and con’s of using GUI’s and leave it at that.</p>
-<section id="pros" class="level2 unnumbered unlisted">
-<h2 class="unnumbered unlisted anchored" data-anchor-id="pros">Pro’s</h2>
-<p><strong>Point-and-click interface</strong><br> In GUI’s you can point-and-click your way through everything, which makes using Git a more smooth and less technical experience, which is preferable to some people.</p>
-<p><strong>Facilitation of complicated tasks</strong><br> Some GUI’s can help with complicated tasks. For example, in some third-party GUI’s where you login using an account, you can setup your GUI account using your GitHub account, and the GUI will automatically authenticate you to your GitHub repositories. This process is a lot more technical and complicated to do yourself at the terminal.</p>
-<p><strong>Graphical visualizations of commit histories</strong><br> Not being able to make a (good) graphical visualization of your commit history might be the biggest limitation of using Git at the terminal. Any decent GUI will provide you with a beautiful graphical visualization of your commit history, which is especially valuable if you are working on a project with an extensive and complicated commit history.</p>
+<p>We will start this tutorial with a broader introduction to <em>version control</em> in general, and talk about why using version control is worthwhile, and why Git is the preferred tool to do this.</p>
+<section id="what-is-version-control" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="what-is-version-control"><span class="header-section-number">1.1</span> What is version control?</h2>
+<p><em>Version control</em> is the practice of organizing and tracking different versions of computer files over time. Generally, you can do this for any type of file, but it is primarily done for source code, i.e.&nbsp;plain text files. Using version control enables viewing old versions of files, reverting a file to a previous version etc.</p>
+<p>A <em>version control system</em> (VCS) is a software tool that automates version control. You might already use a “VCS” without realizing it. The common practice of copying files into another directory is the most simple form of version control. It is a very simple and straight-forward approach to version control, but it is also very error prone and of limited use.</p>
+<section id="local-vcss" class="level3" data-number="1.1.1">
+<h3 data-number="1.1.1" class="anchored" data-anchor-id="local-vcss"><span class="header-section-number">1.1.1</span> Local VCS’s</h3>
+<p>The first development toward better version control solutions was so-called local VCS’s. A local VCS is a local database on a single computer that keeps track of changes to files that are under revision control. Local VCS’s were a clear improvement over manual version control, and can be useful for small and/or personal projects. But these types of VCS’s still have important limitations.</p>
+<ul>
+<li><p>All file version are stored locally, making it vulnerable to data loss.</p></li>
+<li><p>It is difficult to collaborate with others using a local VCS, since changes can’t easily be shared or merged.</p></li>
+</ul>
+<p><img src="./diagrams/local-vcs.svg" class="img-center-align img-fluid"></p>
 </section>
-<section id="cons" class="level2 unnumbered unlisted">
-<h2 class="unnumbered unlisted anchored" data-anchor-id="cons">Con’s</h2>
-<p><strong>Point-and-click interface</strong><br> Being able to point-and-click your way through everything means that you will most likely be doing exactly that. Which means that you will not learn any Git, and it will make it harder to remember things that you do actually know how to do at the terminal.</p>
-<p><strong>Facilitation complicated tasks</strong><br> Having the GUI do complicated tasks is nice, but again comes with the caveat that you yourself will not in fact learn anything.</p>
-<p><strong>Access to your preferred GUI</strong><br> If you are dependent on using a specific GUI to use Git, this might become problematic if you are all of a sudden forced to work in an environment where you do not have access to that GUI (or any other GUI for that matter). The way to makes sure this is (probably) not a problem, is to actually learn how to use Git through terminal commands, so that you can always fall back to doing that if necessary.</p>
-<p><strong>Might only have access to a limited set of Git commands</strong><br> GUI’s do not come with a complete implementation of all Git commands. Some (advanced) Git commands are only available through terminal commands.</p>
+<section id="centralized-vcss" class="level3" data-number="1.1.2">
+<h3 data-number="1.1.2" class="anchored" data-anchor-id="centralized-vcss"><span class="header-section-number">1.1.2</span> Centralized VCS’s</h3>
+<p>To overcome the limitations with collaborations using local VCS’s, the next type of VCS’s that were developed were so-called Centralized VCS’s. These systems work by have a single central server that contains all the code that is version controlled, and then developers can checkout code from that server and commit changes back to the server. This setup has many advantages over local VCS’s.</p>
+<ul>
+<li><p>Developers knows to some degree of certainty what other people are doing.</p></li>
+<li><p>Administrators can control what files each developer can access and modify.</p></li>
+</ul>
+<p>However, centralized CVS’s also have downsides:</p>
+<ul>
+<li><p>Single point of failure. If the server is temporarily offline, nobody can collaborate at all or save new versions of the code.</p></li>
+<li><p>If the server dies and no proper backup has been kept, the entire history of the project is lost except whatever snapshorts people happen to have on their local machines.</p></li>
+</ul>
+<p><img src="./diagrams/centralized-vcs.svg" class="img-center-align img-fluid"></p>
+</section>
+<section id="distributed-vcs" class="level3" data-number="1.1.3">
+<h3 data-number="1.1.3" class="anchored" data-anchor-id="distributed-vcs"><span class="header-section-number">1.1.3</span> Distributed VCS</h3>
+<p>The final type of VCS is <em>distributed</em> VCS’s. In a distributed VCS, developers don’t check out just check out the latest snapshot of the files, they make a copy of the entire history of the files. This is a way more flexible type of system that have several advantages over centralized VCS’s.</p>
+<ul>
+<li><p>No single point of failure. Each developer has the entire history of version of files.</p></li>
+<li><p>Instead of relying on a central server, developers can share and synchonize changes directly with each others.</p></li>
+<li><p>Developers can work offline.</p></li>
+<li><p>Allows for more flexible workflows that are not possible with a single centralized server.</p></li>
+<li><p>Operations like branching and merging are faster since you don’t need to communicate with a server.</p></li>
+</ul>
+<p><img src="./diagrams/distributed-vcs.svg" class="img-center-align img-fluid"></p>
+</section>
+</section>
+<section id="what-is-git" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="what-is-git"><span class="header-section-number">1.2</span> What is Git?</h2>
+<p>Git is a distributed version control system (DVCS)</p>
+<p>Software that tracks versions of files</p>
+<p>Each version is a snapshot of the files at that point</p>
+<div class="notes">
+<p>Git is a <strong>distributed</strong> version control system (DVCS). A version control system (VCS) is software that tracks versions of files. In contrast to <strong>centralized</strong> VCS’s, A DVCS does not have a central code repository where files are stoed. Instead every user has the entire history of versions of files.</p>
+<p>Git stores versions of files as “snapshots” in contrasts to many other VCS’s where differences between versions of files are stored.</p>
+</div>
+</section>
+<section id="why-should-you-use-git" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="why-should-you-use-git"><span class="header-section-number">1.3</span> Why should you use Git?</h2>
+<p>Manually storing old versions of code manually is haphazard and of limited use. Using Git can help with:</p>
+<ul>
+<li><p>Switching back and forth between different versions of files</p></li>
+<li><p>Seeing exact differences between versions of code</p></li>
+<li><p>Facilitate working multiple people on the same code.</p></li>
+</ul>
+</section>
+<section id="installing-git-on-windows" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="installing-git-on-windows"><span class="header-section-number">1.4</span> Installing Git on Windows</h2>
+<p>To use Git on Windows we recommend installing <em>Git for Windows</em>, which can be downloaded <a href="https://gitforwindows.org/">here</a>. <em>Git for Windows</em> provides a BASH emulation used to run Git form the command line which behaves just like the “git” command in LINUX and UNIX environments.</p>
+</section>
+<section id="where-to-get-help" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="where-to-get-help"><span class="header-section-number">1.5</span> Where to get help</h2>
+<p>TODO: It does not feel right to have this section here? Maybe move to a later point after the first “real” git command, like add, has been introduced?</p>
+<p>If you need help with how to use a Git, all of the commands have a comprehensive manual page that can be accessed in multiple ways. One such way is to use the <code>git help</code> command:</p>
+<pre class="git-command">$ git help &lt;verb&gt;
+</pre>
+<p>For example, if you want to access the manual page for the <code>add</code> command you can run the following command.</p>
+<pre class="git-command">$ git help add
+</pre>
+<p>A concise version of the manual page for a command showing the available options can also be output by using the <code>-h</code> option with a command, like so</p>
+<pre class="git-command">$ git add -h
+</pre>
+<ul>
+<li></li>
+</ul>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
@@ -678,13 +757,13 @@ Chacon, Scott, and Ben Straub. 2021. <span>“Pro Git.”</span> <a href="https:
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./git-for-windows.html" class="pagination-link" aria-label="Git BASH">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Git BASH</span></span>
+      <a href="./index.html" class="pagination-link" aria-label="Preface">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Preface</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./further-reading.html" class="pagination-link" aria-label="Further reading">
-        <span class="nav-page-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Further reading</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./workflows.html" class="pagination-link" aria-label="Workflows">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Workflows</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

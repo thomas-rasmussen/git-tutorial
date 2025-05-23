@@ -1,0 +1,16 @@
+# Further reading
+
+There is no shortage of resources for learning Git. Here is short list of materials that could be of interest for further reading.
+
+Pro Git book <https://git-scm.com/book/en/v2>{target="_blank"}
+
+<https://r-cubed-intro.rostools.org/appendix/extra-github>{target="_blank"}
+
+<https://learngitbranching.js.org/>{target="_blank"}
+
+<https://gitexercises.fracz.com/>{target="_blank"}
+
+<https://r-cubed-intro.rostools.org/>{target="_blank"}
+
+TODO: Vet current links and add/remove resources. Should probably be divided into section by type, i.e. book/tutorial/exercises/interactive/etc
+
