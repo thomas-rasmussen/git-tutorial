@@ -3,7 +3,7 @@ project:
   output-dir: docs
   
 toc-expand: 2
-toc-depth: 4
+toc-depth: 5
 page-navigation: true
 book:
   title: "Git tutorial"
@@ -14,9 +14,11 @@ book:
   repo-url: https://github.com/thomas-rasmussen/git-tutorial
   chapters:
     - index.qmd
-    - part: "Part I - Basic Git"
+    - part: "Part I - The basics"
       chapters: 
+        - introduction-to-version-control.qmd
         - introduction-to-git.qmd
+        - basic-git.qmd
     - part: "Part II - Branching and remotes"
     - part: "Part III - Stand-alone topics"
       chapters:

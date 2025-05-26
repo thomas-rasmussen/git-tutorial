@@ -1,81 +1,75 @@
 # Introduction to Git
 
-We will start this tutorial with a broader introduction to *version control* in general, and talk about why using version control is worthwhile, and why Git is the preferred tool to do this.
+In this chapter we will introduce Git. Before actually introducing any basic Git commands, we will use some time to try to explain some technical aspects of how Git works and 
+how how it separates itself from other (distributed) VCS's.
 
-## What is version control?
+## What is Git?
 
-*Version control* is the practice of organizing and tracking different versions of computer files over time. Generally, you can do this for any type of file, but it is primarily done for
-source code, i.e. plain text files. Using version control enables viewing old versions of files, reverting a file to a previous version etc.
+So what is Git and how did it come to be? Git is a distributed VCS, and it is born from controversy. In 2005 the relationship soured between the Linux kernel project and the company owning the proprietary distributed VCS, BitKeeper, that the Linux community was using as a VCS. This resulted in the free licence of BitKeeper that the Linux community was using being revoked. Prompted by this, the Linux developer community (in particular Linus Thorvald, the creator of Linux) developed their own tool to replace BitKeeper.
 
-A *version control system* (VCS) is a software tool that automates version control.  You might already use a "VCS" without realizing it. The common practice of copying files into another directory is the most simple form of version control. It is a very simple and straight-forward approach to version control, but it is also very error prone and of limited use.
+TODO: maybe add some details on what the goal of Git was, ie to better accomodate the needs of the Linux kernel project community.
 
-### Local VCS's
+## How Git stores files
 
-The first development toward better version control solutions was so-called local VCS's. A local VCS is a local database on a single computer that keeps track of changes to files that are under revision control. Local VCS's were a clear improvement over manual version control, and can be useful for small and/or personal projects. But these types of VCS's still have important limitations.
+The major difference between Git and most other VCS's is how Git stores data. In other systems, files are stored as a set of base version of files and the changes made to each file over time. This is commenly called *delta-based* version control.
 
-- All file version are stored locally, making it vulnerable to data loss.
+![Delta-based version control - data is stored as changes to a base version of each file](./diagrams/delta-based-version-control.svg)
 
-- It is difficult to collaborate with others using a local VCS, since changes can't easily be shared or merged.
+Git does not think about data this way. Instead, Git thinks of data likes a series of snapshots of a miniature filesystem. With Git, every time you save the state of your project, Git basically takes a picture of how all of your files look like, and stores a reference to that snapshot. to be efficient, if files have not changed, Git doesn't store that file again, just a link to a previous identical file that it has already stored. 
 
-![](./diagrams/local-vcs.svg){.img-center-align}
+![Snapshot version control - data is stored as snapshots at different time points](./diagrams/snapshot-version-control.svg)
 
-### Centralized VCS's
+This is an important distinction between Git and nearly all other VCS's. 
+
+## File checksumming in Git
+
+Checksumming is a process used to verify the integrity of data. It involves calculating a unique value (the checksum) based on a piece of data, which can then be compared to a checksum calculated from the original data to ensure it hasn't been altered. 
+
+Everything in Git is checksummed before it is stored, and is then referred to by that checksum. That means it is impossible to modify contents of files without Git knowing about it.
+
+The mechanism that Git uses for checksumming is called a SHA-1 hash. This is a 40-characters string composed of hexadecimal characters and calcualted based on the contents of a file or directory sturucture in Git. A SHA-1 hash looks something like this
+
+<pre class="git-command">
+840552db75d3d52894732b753892427b3f2cafa8
+</pre>
+
+When using Git you will see these hash-values all over the place.
+
+## The main sections of a Git project
+
+TODO: this informatino feels like a re-hash of what is also presented later on in more detail. If this section is kept (in some modified version) add a diagram. Current text is also mostly verbatim taken from pro git p. 15. Needs to be restructured and reworded.
+
+The most important aspect of Git to understand is the three main stages files can be in: *modified*, *staged*, and *committed*.
+
+- **Modified:** Files that have been modified, but has not been committed to the database yet.
+
+- **Staged:** Modified files that have been marked, in their current version, to go into the next commit snapshot.
+
+- **Committed**: Files that are safely stored in your local database are called commited files.
+
+This leads us to the three main sections of a Git project: the working tree, the staging area, and the Git directory.
+
+The working tree is a single checkout of one version of the project. These files are pulled out of the compressed database of the Git directory and placed on disk for you to use or modify.
+
+The staging area is a file, generally contained in your Git directory, that stores information about what willl go into your next commit. Its technical name in Git parlance is the "index", but the phrase "staging area" works just as well.
+
+The Git directory is where Git stores the metadata and object database for your project. This is the most important part of Git, and it is what is copied when you clone a repository from another computer.
+
+The basic Git workflow goes something like this:
+
+1. Modify files in working tree.
+
+2. Selectively stage the changes to be included in the next commit.
+
+3. Commit the changes
 
 
-To overcome the limitations with collaborations using local VCS's, the next type of VCS's that were developed were so-called Centralized VCS's. These systems work by have a single central server that contains all the code that is version controlled, and then developers can checkout code from that server and commit changes back to the server. This setup has many advantages over local VCS's.
-
-- Developers knows to some degree of certainty what other people are doing.
-
-- Administrators can control what files each developer can access and modify.
-
-However, centralized CVS's also have downsides:
-
-- Single point of failure. If the server is temporarily offline, nobody can collaborate at all or save new versions of the code.
-
-- If the server dies and no proper backup has been kept, the entire history of the project is lost except whatever snapshorts people happen to have on their local machines.
-
-![](./diagrams/centralized-vcs.svg){.img-center-align}
-
-### Distributed VCS
-
-The final type of VCS is *distributed* VCS's. In a distributed VCS, developers don't check out just check out the latest snapshot of the files, they make a copy of the entire history of the files. This is a way more flexible type of system that have several advantages over centralized VCS's.
-
-- No single point of failure. Each developer has the entire history of version of files.
-
-- Instead of relying on a central server, developers can share and synchonize changes directly with each others.
-
-- Developers can work offline.
-
-- Allows for more flexible workflows that are not possible with a single centralized server.
-
-- Operations like branching and merging are faster since you don't need to communicate with a server.
-
-![](./diagrams/distributed-vcs.svg){.img-center-align}
-
-
-## Git background story
-
-So how did Git came to be? 
-
-
-
-Git is a distributed VCS, and is by far the more popular VCS these days. Git was developed by the Linux kernel project comminity (in particular Linus Thorvald, the creator of Linux) ,made to replace another distributed VCS named BitKeeper. The goal of Git was
-
-- Speed
-
-- Simple design
-
-- Strong support for non-linear development (thousands of 
-
-Software that tracks versions of files
-
-Each version is a snapshot of the files at that point
-
+ 
 
 
 ## Where to get help
 
-TODO: It does not feel right to have this section here? Maybe move to a later point after the first "real" git command, like add, has been introduced?
+TODO: this section should probably come at a point where the first "git" command has been introduced.
 
 If you need help with how to use a Git, all of the commands have a comprehensive manual page that can be accessed in multiple ways. One such way is to use the `git help` command:
 
@@ -94,11 +88,3 @@ A concise version of the manual page for a command showing the available options
 <pre class="git-command">
 $ git add -h
 </pre>
-
-
-
-
-
-
-
-- 

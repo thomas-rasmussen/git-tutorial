@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>1&nbsp; Introduction to Git – Git tutorial</title>
+<title>2&nbsp; Introduction to Git – Git tutorial</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -51,7 +51,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./workflows.html" rel="next">
-<link href="./index.html" rel="prev">
+<link href="./introduction-to-version-control.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -103,7 +103,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./introduction-to-git.html">Part I - Basic Git</a></li><li class="breadcrumb-item"><a href="./introduction-to-git.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to Git</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./introduction-to-version-control.html">Part I - Basic Git</a></li><li class="breadcrumb-item"><a href="./introduction-to-git.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction to Git</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -148,8 +148,14 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./introduction-to-version-control.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to version control</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./introduction-to-git.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to Git</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction to Git</span></span></a>
   </div>
 </li>
       </ul>
@@ -170,19 +176,19 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./workflows.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Workflows</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Workflows</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./github.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">GitHub</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">GitHub</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./the-dot-git-folder.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The .git folder</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">The .git folder</span></span></a>
   </div>
 </li>
       </ul>
@@ -232,25 +238,20 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#what-is-version-control" id="toc-what-is-version-control" class="nav-link active" data-scroll-target="#what-is-version-control"><span class="header-section-number">1.1</span> What is version control?</a>
-  <ul>
-  <li><a href="#local-vcss" id="toc-local-vcss" class="nav-link" data-scroll-target="#local-vcss"><span class="header-section-number">1.1.1</span> Local VCS’s</a></li>
-  <li><a href="#centralized-vcss" id="toc-centralized-vcss" class="nav-link" data-scroll-target="#centralized-vcss"><span class="header-section-number">1.1.2</span> Centralized VCS’s</a></li>
-  <li><a href="#distributed-vcs" id="toc-distributed-vcs" class="nav-link" data-scroll-target="#distributed-vcs"><span class="header-section-number">1.1.3</span> Distributed VCS</a></li>
-  </ul></li>
-  <li><a href="#what-is-git" id="toc-what-is-git" class="nav-link" data-scroll-target="#what-is-git"><span class="header-section-number">1.2</span> What is Git?</a></li>
-  <li><a href="#why-should-you-use-git" id="toc-why-should-you-use-git" class="nav-link" data-scroll-target="#why-should-you-use-git"><span class="header-section-number">1.3</span> Why should you use Git?</a></li>
-  <li><a href="#installing-git-on-windows" id="toc-installing-git-on-windows" class="nav-link" data-scroll-target="#installing-git-on-windows"><span class="header-section-number">1.4</span> Installing Git on Windows</a></li>
-  <li><a href="#where-to-get-help" id="toc-where-to-get-help" class="nav-link" data-scroll-target="#where-to-get-help"><span class="header-section-number">1.5</span> Where to get help</a></li>
+  <li><a href="#what-is-git" id="toc-what-is-git" class="nav-link active" data-scroll-target="#what-is-git"><span class="header-section-number">2.1</span> What is Git?</a></li>
+  <li><a href="#how-git-stores-files" id="toc-how-git-stores-files" class="nav-link" data-scroll-target="#how-git-stores-files"><span class="header-section-number">2.2</span> How Git stores files</a></li>
+  <li><a href="#file-checksumming-in-git" id="toc-file-checksumming-in-git" class="nav-link" data-scroll-target="#file-checksumming-in-git"><span class="header-section-number">2.3</span> File checksumming in Git</a></li>
+  <li><a href="#the-main-sections-of-a-git-project" id="toc-the-main-sections-of-a-git-project" class="nav-link" data-scroll-target="#the-main-sections-of-a-git-project"><span class="header-section-number">2.4</span> The main sections of a Git project</a></li>
+  <li><a href="#where-to-get-help" id="toc-where-to-get-help" class="nav-link" data-scroll-target="#where-to-get-help"><span class="header-section-number">2.5</span> Where to get help</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./introduction-to-git.html">Part I - Basic Git</a></li><li class="breadcrumb-item"><a href="./introduction-to-git.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to Git</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./introduction-to-version-control.html">Part I - Basic Git</a></li><li class="breadcrumb-item"><a href="./introduction-to-git.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction to Git</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to Git</span></h1>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction to Git</span></h1>
 </div>
 
 
@@ -267,73 +268,62 @@ div.csl-indent {
 </header>
 
 
-<p>We will start this tutorial with a broader introduction to <em>version control</em> in general, and talk about why using version control is worthwhile, and why Git is the preferred tool to do this.</p>
-<section id="what-is-version-control" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="what-is-version-control"><span class="header-section-number">1.1</span> What is version control?</h2>
-<p><em>Version control</em> is the practice of organizing and tracking different versions of computer files over time. Generally, you can do this for any type of file, but it is primarily done for source code, i.e.&nbsp;plain text files. Using version control enables viewing old versions of files, reverting a file to a previous version etc.</p>
-<p>A <em>version control system</em> (VCS) is a software tool that automates version control. You might already use a “VCS” without realizing it. The common practice of copying files into another directory is the most simple form of version control. It is a very simple and straight-forward approach to version control, but it is also very error prone and of limited use.</p>
-<section id="local-vcss" class="level3" data-number="1.1.1">
-<h3 data-number="1.1.1" class="anchored" data-anchor-id="local-vcss"><span class="header-section-number">1.1.1</span> Local VCS’s</h3>
-<p>The first development toward better version control solutions was so-called local VCS’s. A local VCS is a local database on a single computer that keeps track of changes to files that are under revision control. Local VCS’s were a clear improvement over manual version control, and can be useful for small and/or personal projects. But these types of VCS’s still have important limitations.</p>
-<ul>
-<li><p>All file version are stored locally, making it vulnerable to data loss.</p></li>
-<li><p>It is difficult to collaborate with others using a local VCS, since changes can’t easily be shared or merged.</p></li>
-</ul>
-<p><img src="./diagrams/local-vcs.svg" class="img-center-align img-fluid"></p>
+<p>In this chapter we will introduce Git. Before actually introducing any basic Git commands, we will use some time to try to explain some technical aspects of how Git works and how how it separates itself from other (distributed) VCS’s.</p>
+<section id="what-is-git" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="what-is-git"><span class="header-section-number">2.1</span> What is Git?</h2>
+<p>So what is Git and how did it come to be? Git is a distributed VCS, and it is born from controversy. In 2005 the relationship soured between the Linux kernel project and the company owning the proprietary distributed VCS, BitKeeper, that the Linux community was using as a VCS. This resulted in the free licence of BitKeeper that the Linux community was using being revoked. Prompted by this, the Linux developer community (in particular Linus Thorvald, the creator of Linux) developed their own tool to replace BitKeeper.</p>
+<p>TODO: maybe add some details on what the goal of Git was, ie to better accomodate the needs of the Linux kernel project community.</p>
 </section>
-<section id="centralized-vcss" class="level3" data-number="1.1.2">
-<h3 data-number="1.1.2" class="anchored" data-anchor-id="centralized-vcss"><span class="header-section-number">1.1.2</span> Centralized VCS’s</h3>
-<p>To overcome the limitations with collaborations using local VCS’s, the next type of VCS’s that were developed were so-called Centralized VCS’s. These systems work by have a single central server that contains all the code that is version controlled, and then developers can checkout code from that server and commit changes back to the server. This setup has many advantages over local VCS’s.</p>
-<ul>
-<li><p>Developers knows to some degree of certainty what other people are doing.</p></li>
-<li><p>Administrators can control what files each developer can access and modify.</p></li>
-</ul>
-<p>However, centralized CVS’s also have downsides:</p>
-<ul>
-<li><p>Single point of failure. If the server is temporarily offline, nobody can collaborate at all or save new versions of the code.</p></li>
-<li><p>If the server dies and no proper backup has been kept, the entire history of the project is lost except whatever snapshorts people happen to have on their local machines.</p></li>
-</ul>
-<p><img src="./diagrams/centralized-vcs.svg" class="img-center-align img-fluid"></p>
-</section>
-<section id="distributed-vcs" class="level3" data-number="1.1.3">
-<h3 data-number="1.1.3" class="anchored" data-anchor-id="distributed-vcs"><span class="header-section-number">1.1.3</span> Distributed VCS</h3>
-<p>The final type of VCS is <em>distributed</em> VCS’s. In a distributed VCS, developers don’t check out just check out the latest snapshot of the files, they make a copy of the entire history of the files. This is a way more flexible type of system that have several advantages over centralized VCS’s.</p>
-<ul>
-<li><p>No single point of failure. Each developer has the entire history of version of files.</p></li>
-<li><p>Instead of relying on a central server, developers can share and synchonize changes directly with each others.</p></li>
-<li><p>Developers can work offline.</p></li>
-<li><p>Allows for more flexible workflows that are not possible with a single centralized server.</p></li>
-<li><p>Operations like branching and merging are faster since you don’t need to communicate with a server.</p></li>
-</ul>
-<p><img src="./diagrams/distributed-vcs.svg" class="img-center-align img-fluid"></p>
-</section>
-</section>
-<section id="what-is-git" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="what-is-git"><span class="header-section-number">1.2</span> What is Git?</h2>
-<p>Git is a distributed version control system (DVCS)</p>
-<p>Software that tracks versions of files</p>
-<p>Each version is a snapshot of the files at that point</p>
-<div class="notes">
-<p>Git is a <strong>distributed</strong> version control system (DVCS). A version control system (VCS) is software that tracks versions of files. In contrast to <strong>centralized</strong> VCS’s, A DVCS does not have a central code repository where files are stoed. Instead every user has the entire history of versions of files.</p>
-<p>Git stores versions of files as “snapshots” in contrasts to many other VCS’s where differences between versions of files are stored.</p>
+<section id="how-git-stores-files" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="how-git-stores-files"><span class="header-section-number">2.2</span> How Git stores files</h2>
+<p>The major difference between Git and most other VCS’s is how Git stores data. In other systems, files are stored as a set of base version of files and the changes made to each file over time. This is commenly called <em>delta-based</em> version control.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./diagrams/delta-based-version-control.svg" class="img-fluid figure-img"></p>
+<figcaption>Delta-based version control - data is stored as changes to a base version of each file</figcaption>
+</figure>
 </div>
+<p>Git does not think about data this way. Instead, Git thinks of data likes a series of snapshots of a miniature filesystem. With Git, every time you save the state of your project, Git basically takes a picture of how all of your files look like, and stores a reference to that snapshot. to be efficient, if files have not changed, Git doesn’t store that file again, just a link to a previous identical file that it has already stored.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./diagrams/snapshot-version-control.svg" class="img-fluid figure-img"></p>
+<figcaption>Snapshot version control - data is stored as snapshots at different time points</figcaption>
+</figure>
+</div>
+<p>This is an important distinction between Git and nearly all other VCS’s.</p>
 </section>
-<section id="why-should-you-use-git" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="why-should-you-use-git"><span class="header-section-number">1.3</span> Why should you use Git?</h2>
-<p>Manually storing old versions of code manually is haphazard and of limited use. Using Git can help with:</p>
+<section id="file-checksumming-in-git" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="file-checksumming-in-git"><span class="header-section-number">2.3</span> File checksumming in Git</h2>
+<p>Checksumming is a process used to verify the integrity of data. It involves calculating a unique value (the checksum) based on a piece of data, which can then be compared to a checksum calculated from the original data to ensure it hasn’t been altered.</p>
+<p>Everything in Git is checksummed before it is stored, and is then referred to by that checksum. That means it is impossible to modify contents of files without Git knowing about it.</p>
+<p>The mechanism that Git uses for checksumming is called a SHA-1 hash. This is a 40-characters string composed of hexadecimal characters and calcualted based on the contents of a file or directory sturucture in Git. A SHA-1 hash looks something like this</p>
+<pre class="git-command">840552db75d3d52894732b753892427b3f2cafa8
+</pre>
+<p>When using Git you will see these hash-values all over the place.</p>
+</section>
+<section id="the-main-sections-of-a-git-project" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="the-main-sections-of-a-git-project"><span class="header-section-number">2.4</span> The main sections of a Git project</h2>
+<p>TODO: this informatino feels like a re-hash of what is also presented later on in more detail. If this section is kept (in some modified version) add a diagram. Current text is also mostly verbatim taken from pro git p.&nbsp;15. Needs to be restructured and reworded.</p>
+<p>The most important aspect of Git to understand is the three main stages files can be in: <em>modified</em>, <em>staged</em>, and <em>committed</em>.</p>
 <ul>
-<li><p>Switching back and forth between different versions of files</p></li>
-<li><p>Seeing exact differences between versions of code</p></li>
-<li><p>Facilitate working multiple people on the same code.</p></li>
+<li><p><strong>Modified:</strong> Files that have been modified, but has not been committed to the database yet.</p></li>
+<li><p><strong>Staged:</strong> Modified files that have been marked, in their current version, to go into the next commit snapshot.</p></li>
+<li><p><strong>Committed</strong>: Files that are safely stored in your local database are called commited files.</p></li>
 </ul>
+<p>This leads us to the three main sections of a Git project: the working tree, the staging area, and the Git directory.</p>
+<p>The working tree is a single checkout of one version of the project. These files are pulled out of the compressed database of the Git directory and placed on disk for you to use or modify.</p>
+<p>The staging area is a file, generally contained in your Git directory, that stores information about what willl go into your next commit. Its technical name in Git parlance is the “index”, but the phrase “staging area” works just as well.</p>
+<p>The Git directory is where Git stores the metadata and object database for your project. This is the most important part of Git, and it is what is copied when you clone a repository from another computer.</p>
+<p>The basic Git workflow goes something like this:</p>
+<ol type="1">
+<li><p>Modify files in working tree.</p></li>
+<li><p>Selectively stage the changes to be included in the next commit.</p></li>
+<li><p>Commit the changes</p></li>
+</ol>
 </section>
-<section id="installing-git-on-windows" class="level2" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="installing-git-on-windows"><span class="header-section-number">1.4</span> Installing Git on Windows</h2>
-<p>To use Git on Windows we recommend installing <em>Git for Windows</em>, which can be downloaded <a href="https://gitforwindows.org/">here</a>. <em>Git for Windows</em> provides a BASH emulation used to run Git form the command line which behaves just like the “git” command in LINUX and UNIX environments.</p>
-</section>
-<section id="where-to-get-help" class="level2" data-number="1.5">
-<h2 data-number="1.5" class="anchored" data-anchor-id="where-to-get-help"><span class="header-section-number">1.5</span> Where to get help</h2>
-<p>TODO: It does not feel right to have this section here? Maybe move to a later point after the first “real” git command, like add, has been introduced?</p>
+<section id="where-to-get-help" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="where-to-get-help"><span class="header-section-number">2.5</span> Where to get help</h2>
+<p>TODO: this section should probably come at a point where the first “git” command has been introduced.</p>
 <p>If you need help with how to use a Git, all of the commands have a comprehensive manual page that can be accessed in multiple ways. One such way is to use the <code>git help</code> command:</p>
 <pre class="git-command">$ git help &lt;verb&gt;
 </pre>
@@ -343,9 +333,6 @@ div.csl-indent {
 <p>A concise version of the manual page for a command showing the available options can also be output by using the <code>-h</code> option with a command, like so</p>
 <pre class="git-command">$ git add -h
 </pre>
-<ul>
-<li></li>
-</ul>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
@@ -757,13 +744,13 @@ Chacon, Scott, and Ben Straub. 2021. <span>“Pro Git.”</span> <a href="https:
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link" aria-label="Preface">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Preface</span>
+      <a href="./introduction-to-version-control.html" class="pagination-link" aria-label="Introduction to version control">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to version control</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./workflows.html" class="pagination-link" aria-label="Workflows">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Workflows</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Workflows</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
