@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>3&nbsp; GitHub – Git tutorial</title>
+<title>5&nbsp; GitHub – Git tutorial</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -103,7 +103,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./workflows.html">Part III - Stand-alone topics</a></li><li class="breadcrumb-item"><a href="./github.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">GitHub</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./workflows.html">Part III - Stand-alone topics</a></li><li class="breadcrumb-item"><a href="./github.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">GitHub</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -140,7 +140,7 @@ div.csl-indent {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Part I - Basic Git</span></a>
+ <span class="menu-text">Part I - The basics</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -148,8 +148,20 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./introduction-to-version-control.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to version control</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./introduction-to-git.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to Git</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction to Git</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./basic-git.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Basic Git</span></span></a>
   </div>
 </li>
       </ul>
@@ -170,19 +182,19 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./workflows.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Workflows</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Workflows</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./github.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">GitHub</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">GitHub</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./the-dot-git-folder.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The .git folder</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The .git folder</span></span></a>
   </div>
 </li>
       </ul>
@@ -232,20 +244,20 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#what-is-github" id="toc-what-is-github" class="nav-link active" data-scroll-target="#what-is-github"><span class="header-section-number">3.1</span> What is GitHub?</a></li>
-  <li><a href="#authentication" id="toc-authentication" class="nav-link" data-scroll-target="#authentication"><span class="header-section-number">3.2</span> Authentication</a></li>
-  <li><a href="#workflows" id="toc-workflows" class="nav-link" data-scroll-target="#workflows"><span class="header-section-number">3.3</span> Workflows</a></li>
-  <li><a href="#github-pages" id="toc-github-pages" class="nav-link" data-scroll-target="#github-pages"><span class="header-section-number">3.4</span> GitHub pages</a></li>
-  <li><a href="#other-features" id="toc-other-features" class="nav-link" data-scroll-target="#other-features"><span class="header-section-number">3.5</span> Other features</a></li>
+  <li><a href="#what-is-github" id="toc-what-is-github" class="nav-link active" data-scroll-target="#what-is-github"><span class="header-section-number">5.1</span> What is GitHub?</a></li>
+  <li><a href="#authentication" id="toc-authentication" class="nav-link" data-scroll-target="#authentication"><span class="header-section-number">5.2</span> Authentication</a></li>
+  <li><a href="#workflows" id="toc-workflows" class="nav-link" data-scroll-target="#workflows"><span class="header-section-number">5.3</span> Workflows</a></li>
+  <li><a href="#github-pages" id="toc-github-pages" class="nav-link" data-scroll-target="#github-pages"><span class="header-section-number">5.4</span> GitHub pages</a></li>
+  <li><a href="#other-features" id="toc-other-features" class="nav-link" data-scroll-target="#other-features"><span class="header-section-number">5.5</span> Other features</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./workflows.html">Part III - Stand-alone topics</a></li><li class="breadcrumb-item"><a href="./github.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">GitHub</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./workflows.html">Part III - Stand-alone topics</a></li><li class="breadcrumb-item"><a href="./github.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">GitHub</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">GitHub</span></h1>
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">GitHub</span></h1>
 </div>
 
 
@@ -263,26 +275,26 @@ div.csl-indent {
 
 
 <p>In this chapter we will give a short introduction to GitHub.</p>
-<section id="what-is-github" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="what-is-github"><span class="header-section-number">3.1</span> What is GitHub?</h2>
+<section id="what-is-github" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="what-is-github"><span class="header-section-number">5.1</span> What is GitHub?</h2>
 <p>Github is a host for Git repositories. There are many other sites that also hosts Git repositories, but Git is by far the most popular one. Hosting Git repositories online makes it easy to share code and collaborate with others.</p>
 </section>
-<section id="authentication" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="authentication"><span class="header-section-number">3.2</span> Authentication</h2>
+<section id="authentication" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="authentication"><span class="header-section-number">5.2</span> Authentication</h2>
 <p>Describe how to authenticate yourself to your GitHub account so that you can push to your repositories. Describe SSH and/or HTTPS approach?</p>
 </section>
-<section id="workflows" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="workflows"><span class="header-section-number">3.3</span> Workflows</h2>
+<section id="workflows" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="workflows"><span class="header-section-number">5.3</span> Workflows</h2>
 <p>Describe how GitHub can be used as a remote branch in projects</p>
 <p>Also get into “GitHub flow” and describe how GitHub can be used to contribute to projects but forking a repo and making pull requests?</p>
 <p>Talk about issues. Both as a way to make notes on bug and future things to implement in your own projects, but also as a way to collaborate iwth others.</p>
 </section>
-<section id="github-pages" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="github-pages"><span class="header-section-number">3.4</span> GitHub pages</h2>
+<section id="github-pages" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="github-pages"><span class="header-section-number">5.4</span> GitHub pages</h2>
 <p>Probably mention that GitHub can be used to host html files, i.e.&nbsp;we can host static websites on GitHub.</p>
 </section>
-<section id="other-features" class="level2" data-number="3.5">
-<h2 data-number="3.5" class="anchored" data-anchor-id="other-features"><span class="header-section-number">3.5</span> Other features</h2>
+<section id="other-features" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="other-features"><span class="header-section-number">5.5</span> Other features</h2>
 <p>Namedrop other GitHub features?</p>
 
 
@@ -696,12 +708,12 @@ Chacon, Scott, and Ben Straub. 2021. <span>“Pro Git.”</span> <a href="https:
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./workflows.html" class="pagination-link" aria-label="Workflows">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Workflows</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Workflows</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./the-dot-git-folder.html" class="pagination-link" aria-label="The .git folder">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The .git folder</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The .git folder</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

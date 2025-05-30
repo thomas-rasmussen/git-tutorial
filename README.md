@@ -4,7 +4,7 @@ Git tutorial
 [Link to tutorial](https://thomas-rasmussen.github.io/git-tutorial/)
 
 TODO
-
+- Add information in git-for-windows.qmd on how to make comments with lines starting with "#".
 - Consider how examples and exercises are to be presented in tutorial. Make some tests / template code.
 - Read up on Quarto book documentation, pick a theme, set options for the book etc.
 - Making a book for all the materials is definitely a good idea, but it is also necessary

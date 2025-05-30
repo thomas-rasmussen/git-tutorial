@@ -14,7 +14,7 @@
     "href": "index.html#conventions-used-in-this-tutorial",
     "title": "Git tutorial",
     "section": "Conventions Used in this tutorial",
-    "text": "Conventions Used in this tutorial",
+    "text": "Conventions Used in this tutorial\nAdd something about how all examples and exercises are, by purpose, made so that you can’t simply copy+paste code. The idea is that Git and Bash commands are learned by actually typing them over and over again?",
     "crumbs": [
       "Preface"
     ]
@@ -24,7 +24,7 @@
     "href": "index.html#structure-of-tutorial",
     "title": "Git tutorial",
     "section": "Structure of tutorial",
-    "text": "Structure of tutorial\nMention that all examples assumes the user is using Git for Windows?\n\n\n\n\nChacon, Scott, and Ben Straub. 2021. “Pro Git.” https://git-scm.com/book/en/v2.",
+    "text": "Structure of tutorial\n\n\n\n\nChacon, Scott, and Ben Straub. 2021. “Pro Git.” https://git-scm.com/book/en/v2.",
     "crumbs": [
       "Preface"
     ]
@@ -42,12 +42,12 @@
   {
     "objectID": "the-dot-git-folder.html",
     "href": "the-dot-git-folder.html",
-    "title": "4  The .git folder",
+    "title": "6  The .git folder",
     "section": "",
     "text": "Make a chapter focused on explaining what some of all the stuff in the .git folder is? Some of it might be explained in other parts of the book? This chapter might correspond 1-to-1 with the Git internals chapter in Pro git?\n\n\n\n\nChacon, Scott, and Ben Straub. 2021. “Pro Git.” https://git-scm.com/book/en/v2.",
     "crumbs": [
       "Part III - Stand-alone topics",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>The .git folder</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>The .git folder</span>"
     ]
   },
   {
@@ -121,7 +121,7 @@
     "href": "references.html",
     "title": "References",
     "section": "",
-    "text": "TODO: Should this section be removed? The “Further reading appendix seems more appropriate. When, if ever, wouuld we acually references something? ::: {#refs} :::\n\n\n\n\nChacon, Scott, and Ben Straub. 2021. “Pro Git.” https://git-scm.com/book/en/v2.",
+    "text": "TODO: Should this section be removed? The “Further reading appendix seems more appropriate. When, if ever, wouuld we acually references something?\n\n\nChacon, Scott, and Ben Straub. 2021. “Pro Git.” https://git-scm.com/book/en/v2.",
     "crumbs": [
       "Appendices",
       "References"
@@ -141,67 +141,67 @@
   {
     "objectID": "workflows.html",
     "href": "workflows.html",
-    "title": "2  Workflows",
+    "title": "4  Workflows",
     "section": "",
     "text": "A chapter on workflows. Maybe this chapter should be earlier in the tutorial. The focus should probably be on describing useful local workflows, and not put too much emphasis on distributed workflows (see “Distributed Git” in Pro Git), since this will probably rarely be relevant for the intended audience?\n\n\n\n\nChacon, Scott, and Ben Straub. 2021. “Pro Git.” https://git-scm.com/book/en/v2.",
     "crumbs": [
       "Part III - Stand-alone topics",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Workflows</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Workflows</span>"
     ]
   },
   {
     "objectID": "github.html",
     "href": "github.html",
-    "title": "3  GitHub",
+    "title": "5  GitHub",
     "section": "",
-    "text": "3.1 What is GitHub?\nIn this chapter we will give a short introduction to GitHub.\nGithub is a host for Git repositories. There are many other sites that also hosts Git repositories, but Git is by far the most popular one. Hosting Git repositories online makes it easy to share code and collaborate with others.",
+    "text": "5.1 What is GitHub?\nIn this chapter we will give a short introduction to GitHub.\nGithub is a host for Git repositories. There are many other sites that also hosts Git repositories, but Git is by far the most popular one. Hosting Git repositories online makes it easy to share code and collaborate with others.",
     "crumbs": [
       "Part III - Stand-alone topics",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>GitHub</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>GitHub</span>"
     ]
   },
   {
     "objectID": "github.html#authentication",
     "href": "github.html#authentication",
-    "title": "3  GitHub",
-    "section": "3.2 Authentication",
-    "text": "3.2 Authentication\nDescribe how to authenticate yourself to your GitHub account so that you can push to your repositories. Describe SSH and/or HTTPS approach?",
+    "title": "5  GitHub",
+    "section": "5.2 Authentication",
+    "text": "5.2 Authentication\nDescribe how to authenticate yourself to your GitHub account so that you can push to your repositories. Describe SSH and/or HTTPS approach?",
     "crumbs": [
       "Part III - Stand-alone topics",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>GitHub</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>GitHub</span>"
     ]
   },
   {
     "objectID": "github.html#workflows",
     "href": "github.html#workflows",
-    "title": "3  GitHub",
-    "section": "3.3 Workflows",
-    "text": "3.3 Workflows\nDescribe how GitHub can be used as a remote branch in projects\nAlso get into “GitHub flow” and describe how GitHub can be used to contribute to projects but forking a repo and making pull requests?\nTalk about issues. Both as a way to make notes on bug and future things to implement in your own projects, but also as a way to collaborate iwth others.",
+    "title": "5  GitHub",
+    "section": "5.3 Workflows",
+    "text": "5.3 Workflows\nDescribe how GitHub can be used as a remote branch in projects\nAlso get into “GitHub flow” and describe how GitHub can be used to contribute to projects but forking a repo and making pull requests?\nTalk about issues. Both as a way to make notes on bug and future things to implement in your own projects, but also as a way to collaborate iwth others.",
     "crumbs": [
       "Part III - Stand-alone topics",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>GitHub</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>GitHub</span>"
     ]
   },
   {
     "objectID": "github.html#github-pages",
     "href": "github.html#github-pages",
-    "title": "3  GitHub",
-    "section": "3.4 GitHub pages",
-    "text": "3.4 GitHub pages\nProbably mention that GitHub can be used to host html files, i.e. we can host static websites on GitHub.",
+    "title": "5  GitHub",
+    "section": "5.4 GitHub pages",
+    "text": "5.4 GitHub pages\nProbably mention that GitHub can be used to host html files, i.e. we can host static websites on GitHub.",
     "crumbs": [
       "Part III - Stand-alone topics",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>GitHub</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>GitHub</span>"
     ]
   },
   {
     "objectID": "github.html#other-features",
     "href": "github.html#other-features",
-    "title": "3  GitHub",
-    "section": "3.5 Other features",
-    "text": "3.5 Other features\nNamedrop other GitHub features?\n\n\n\n\nChacon, Scott, and Ben Straub. 2021. “Pro Git.” https://git-scm.com/book/en/v2.",
+    "title": "5  GitHub",
+    "section": "5.5 Other features",
+    "text": "5.5 Other features\nNamedrop other GitHub features?\n\n\n\n\nChacon, Scott, and Ben Straub. 2021. “Pro Git.” https://git-scm.com/book/en/v2.",
     "crumbs": [
       "Part III - Stand-alone topics",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>GitHub</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>GitHub</span>"
     ]
   },
   {
@@ -211,7 +211,7 @@
     "section": "",
     "text": "2.1 What is Git?\nIn this chapter we will introduce Git. Before actually introducing any basic Git commands, we will use some time to try to explain some technical aspects of how Git works and how how it separates itself from other (distributed) VCS’s.\nSo what is Git and how did it come to be? Git is a distributed VCS, and it is born from controversy. In 2005 the relationship soured between the Linux kernel project and the company owning the proprietary distributed VCS, BitKeeper, that the Linux community was using as a VCS. This resulted in the free licence of BitKeeper that the Linux community was using being revoked. Prompted by this, the Linux developer community (in particular Linus Thorvald, the creator of Linux) developed their own tool to replace BitKeeper.\nTODO: maybe add some details on what the goal of Git was, ie to better accomodate the needs of the Linux kernel project community.",
     "crumbs": [
-      "Part I - Basic Git",
+      "Part I - The basics",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introduction to Git</span>"
     ]
   },
@@ -255,7 +255,7 @@
     "section": "2.5 Where to get help",
     "text": "2.5 Where to get help\nTODO: this section should probably come at a point where the first “git” command has been introduced.\nIf you need help with how to use a Git, all of the commands have a comprehensive manual page that can be accessed in multiple ways. One such way is to use the git help command:\n$ git help &lt;verb&gt;\n\nFor example, if you want to access the manual page for the add command you can run the following command.\n$ git help add\n\nA concise version of the manual page for a command showing the available options can also be output by using the -h option with a command, like so\n$ git add -h\n\n\n\n\n\nChacon, Scott, and Ben Straub. 2021. “Pro Git.” https://git-scm.com/book/en/v2.",
     "crumbs": [
-      "Part I - Basic Git",
+      "Part I - The basics",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introduction to Git</span>"
     ]
   },
@@ -332,7 +332,7 @@
     "section": "",
     "text": "1.1 What is version control?\nWe will start this tutorial with a short introduction to version control in general, and introduce different types of version control systems that one can use.\nVersion control is the practice of organizing and tracking different versions of computer files over time. Generally, you can do this for any type of file, but it is primarily done for source code, i.e. plain text files. Using version control enables viewing old versions of files, reverting a file to a previous version etc.\nA version control system (VCS) is a software tool that automates version control. You might already use a “VCS” without realizing it. The common practice of copying files into another directory is the most simple form of version control. It is a very simple and straight-forward approach to version control, but it is also very error prone and of limited use.",
     "crumbs": [
-      "Part I - Basic Git",
+      "Part I - The basics",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction to version control</span>"
     ]
   },
@@ -343,7 +343,7 @@
     "section": "",
     "text": "1.1.1 Local VCS\nThe first development toward better version control solutions was so-called local VCS’s. A local VCS is a local database on a single computer that keeps track of changes to files. Local VCS’s are a clear improvement over manual version control, and can be useful for small and/or personal projects, but these types of VCS’s still have important limitations:\n\nAll file versions are stored locally, making it vulnerable to data loss.\nIt is difficult to collaborate with others using a local VCS, since changes can’t easily be shared or consolidated.\n\n\n\n\n1.1.2 Centralized VCS\nTo overcome the limitations with collaborations using local VCS’s, the next type of VCS that was developed was so-called centralized VCS’s. These systems work by have a single central server that contains all the code that is version controlled, and then developers can checkout code from that server and commit changes back to the server. This setup has many advantages over local VCS’s.\n\nDevelopers knows to some degree what other people are working on.\nAdministrators can control what files each developer can access and modify.\n\nHowever, centralized VCS’s still have limitations:\n\nIf the server is temporarily offline, nobody can collaborate at all or save new versions of the code.\nIf the server dies and no proper backup has been kept, the entire history of the project is lost except whatever snapshots of files people happen to have on their local machines.\n\n\n\n\n1.1.3 Distributed VCS\nThe final type of VCS’s is distributed VCS’s. In a distributed VCS, developers don’t just check out the latest version of files, they make a copy of the entire history of all files. This is a way more flexible type of system that have several advantages over centralized VCS’s.\n\nNo single point of failure. Each developer has the entire history of version of files.\nInstead of relying on a central server, developers can share and synchronize changes directly with each others.\nDevelopers can work offline.\nAllows for more flexible workflows that are not possible with a single centralized server.\nSome types of operations are faster since you don’t need to communicate with a server.\n\n\n\n\n\n\nChacon, Scott, and Ben Straub. 2021. “Pro Git.” https://git-scm.com/book/en/v2.",
     "crumbs": [
-      "Part I - Basic Git",
+      "Part I - The basics",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction to version control</span>"
     ]
   },
@@ -354,7 +354,7 @@
     "section": "2.2 How Git stores files",
     "text": "2.2 How Git stores files\nThe major difference between Git and most other VCS’s is how Git stores data. In other systems, files are stored as a set of base version of files and the changes made to each file over time. This is commenly called delta-based version control.\n\n\n\nDelta-based version control - data is stored as changes to a base version of each file\n\n\nGit does not think about data this way. Instead, Git thinks of data likes a series of snapshots of a miniature filesystem. With Git, every time you save the state of your project, Git basically takes a picture of how all of your files look like, and stores a reference to that snapshot. to be efficient, if files have not changed, Git doesn’t store that file again, just a link to a previous identical file that it has already stored.\n\n\n\nSnapshot version control - data is stored as snapshots at different time points\n\n\nThis is an important distinction between Git and nearly all other VCS’s.",
     "crumbs": [
-      "Part I - Basic Git",
+      "Part I - The basics",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introduction to Git</span>"
     ]
   },
@@ -365,7 +365,7 @@
     "section": "2.3 File checksumming in Git",
     "text": "2.3 File checksumming in Git\nChecksumming is a process used to verify the integrity of data. It involves calculating a unique value (the checksum) based on a piece of data, which can then be compared to a checksum calculated from the original data to ensure it hasn’t been altered.\nEverything in Git is checksummed before it is stored, and is then referred to by that checksum. That means it is impossible to modify contents of files without Git knowing about it.\nThe mechanism that Git uses for checksumming is called a SHA-1 hash. This is a 40-characters string composed of hexadecimal characters and calcualted based on the contents of a file or directory sturucture in Git. A SHA-1 hash looks something like this\n840552db75d3d52894732b753892427b3f2cafa8\n\nWhen using Git you will see these hash-values all over the place.",
     "crumbs": [
-      "Part I - Basic Git",
+      "Part I - The basics",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introduction to Git</span>"
     ]
   },
@@ -376,8 +376,41 @@
     "section": "2.4 The main sections of a Git project",
     "text": "2.4 The main sections of a Git project\nTODO: this informatino feels like a re-hash of what is also presented later on in more detail. If this section is kept (in some modified version) add a diagram. Current text is also mostly verbatim taken from pro git p. 15. Needs to be restructured and reworded.\nThe most important aspect of Git to understand is the three main stages files can be in: modified, staged, and committed.\n\nModified: Files that have been modified, but has not been committed to the database yet.\nStaged: Modified files that have been marked, in their current version, to go into the next commit snapshot.\nCommitted: Files that are safely stored in your local database are called commited files.\n\nThis leads us to the three main sections of a Git project: the working tree, the staging area, and the Git directory.\nThe working tree is a single checkout of one version of the project. These files are pulled out of the compressed database of the Git directory and placed on disk for you to use or modify.\nThe staging area is a file, generally contained in your Git directory, that stores information about what willl go into your next commit. Its technical name in Git parlance is the “index”, but the phrase “staging area” works just as well.\nThe Git directory is where Git stores the metadata and object database for your project. This is the most important part of Git, and it is what is copied when you clone a repository from another computer.\nThe basic Git workflow goes something like this:\n\nModify files in working tree.\nSelectively stage the changes to be included in the next commit.\nCommit the changes",
     "crumbs": [
-      "Part I - Basic Git",
+      "Part I - The basics",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introduction to Git</span>"
+    ]
+  },
+  {
+    "objectID": "basic-git.html",
+    "href": "basic-git.html",
+    "title": "3  Basic Git",
+    "section": "",
+    "text": "3.1 Initializing a Git repository\nIn this chapter we will cover the basic Git commmands.\nSo how do we get started using Git? For the moment, we will work from the starting point of having a local directory with files that we want to start version controlling. To do this we cd to the directory and use the git init command. This creates a new subfolder named “.git” that contains all of the necessary repository files - a Git repository skeleton. We will not discuss the contents of the “.git” folder here, but we will get back to that later.\nWe have now initialized a Git repository, but we are not yet tracking any files. We can start tracking files by using the git add command. Finally, we probably want to commit these files to the Git repository, which can be done with git commit.\nAt this point we have initiated a Git repository, starting tracking files, and have done an initial commit. We will go over what git add and git commitin detail later, but this is essentially all it takes to use Git in a simple but effective way. Simply keep using git add`` andgit commit` at each point your files are in state that you want to save a version of.",
+    "crumbs": [
+      "Part I - The basics",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Basic Git</span>"
+    ]
+  },
+  {
+    "objectID": "basic-git.html#initializing-a-git-repository",
+    "href": "basic-git.html#initializing-a-git-repository",
+    "title": "3  Basic Git",
+    "section": "",
+    "text": "3.1.1 Example\nIn this example we will show how to initialize a Git repository, start tracking files, and commiting them to the repository. First we create a folder with some files that we want to track.\nuser_id@computer_id MINGW64 ~\n$ rm -rf git_example # Remove folder if it already exists\nuser_id@computer_id MINGW64 ~\n$ mkdir git_example # Make folder\nuser_id@computer_id MINGW64 ~\n$ cd git_example # Change working directory\nuser_id@computer_id MINGW64 ~/git_example\n$ echo \"file_a content\" &gt; file_a.txt # Create file_a.txt\nuser_id@computer_id MINGW64 ~/git_example\n$ echo \"file_v content\" &gt; file_b.txt # Create file_b.txt\n\nWe can now initialize a Git repository, start tracking all the files in the folder, and commit the current state of the files to the repository.\nuser_id@computer_id MINGW64 ~/git_example\n$ git init # Initialize git repo\nuser_id@computer_id MINGW64 ~/git_example\n$ git add . # Track all files\nuser_id@computer_id MINGW64 ~/git_example\n$ git commit -m\"Initial commit\" # Commit files",
+    "crumbs": [
+      "Part I - The basics",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Basic Git</span>"
+    ]
+  },
+  {
+    "objectID": "basic-git.html#exercises",
+    "href": "basic-git.html#exercises",
+    "title": "3  Basic Git",
+    "section": "3.2 Exercises",
+    "text": "3.2 Exercises\n\n\n\n\nChacon, Scott, and Ben Straub. 2021. “Pro Git.” https://git-scm.com/book/en/v2.",
+    "crumbs": [
+      "Part I - The basics",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Basic Git</span>"
     ]
   }
 ]

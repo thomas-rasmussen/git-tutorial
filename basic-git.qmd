@@ -1,0 +1,54 @@
+# Basic Git
+
+In this chapter we will cover the basic Git commmands. 
+
+## Initializing a Git repository
+
+So how do we get started using Git? For the moment, we will work from the starting point of having a local directory with files that we want to start version controlling. To do this we `cd` to the directory and use the `git init` command. This creates a new subfolder named ".git" that contains all of the necessary repository files - a Git repository skeleton. We will not discuss the contents of the ".git" folder here, but we will get back to that later.
+
+We have now initialized a Git repository, but we are not yet tracking any files. We can start tracking files by using the `git add` command. Finally, we probably want to commit these files to the Git repository, which can be done with `git commit`.
+
+At this point we have initiated a Git repository, starting tracking files, and have done an initial commit. We will go over what `git add` and `git commit`in detail later, but this is essentially all it takes to use Git in a simple but effective way. Simply keep using `git add`` and `git commit` at each point your files are in state that you want to save a version of.
+
+### Example
+
+In this example we will show how to initialize a Git repository, start tracking files, and commiting them to the repository. First we create a folder with some files that we want to track.
+
+<pre class="bash-terminal">
+<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">~</span>
+<span class="bash-grey">$ rm -rf git_example # Remove folder if it already exists</span>
+<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">~</span>
+<span class="bash-grey">$ mkdir git_example # Make folder</span>
+<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">~</span>
+<span class="bash-grey">$ cd git_example # Change working directory</span>
+<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">~/git_example</span>
+<span class="bash-grey">$ echo "file_a content" > file_a.txt # Create file_a.txt</span>
+<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">~/git_example</span>
+<span class="bash-grey">$ echo "file_v content" > file_b.txt # Create file_b.txt</span>
+</pre>
+
+We can now initialize a Git repository, start tracking all the files in the folder, and commit the current state of the files to the repository.
+
+<pre class="bash-terminal">
+<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">~/git_example</span>
+<span class="bash-grey">$ git init # Initialize git repo</span>
+<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">~/git_example</span>
+<span class="bash-grey">$ git add . # Track all files</span>
+<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">~/git_example</span>
+<span class="bash-grey">$ git commit -m"Initial commit" # Commit files</span>
+</pre>
+
+
+
+
+
+## Exercises
+
+TODO: make a first draft of an exercisse to test how we want to implement that. Use callout blocks to hide solutions? 
+
+### Initiate a Git repository
+
+In this exercise we will practice how to intialize a Git repository in an existing project, track the files in the project, and commit the current state of the files.
+
+For this exercise you can use any folder of files that you want, for example an
+existing project that you want to version control using Git. You can also use the below code to create a simple dummy project.

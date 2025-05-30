@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Appendix C — Further reading – Git tutorial</title>
+<title>3&nbsp; Basic Git – Git tutorial</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -50,8 +50,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./references.html" rel="next">
-<link href="./graphical-user-interfaces.html" rel="prev">
+<link href="./workflows.html" rel="next">
+<link href="./introduction-to-git.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -103,7 +103,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./git-for-windows.html">Appendices</a></li><li class="breadcrumb-item"><a href="./further-reading.html"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Further reading</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./introduction-to-version-control.html">Part I - The basics</a></li><li class="breadcrumb-item"><a href="./basic-git.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Basic Git</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -160,7 +160,7 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./basic-git.html" class="sidebar-item-text sidebar-link">
+  <a href="./basic-git.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Basic Git</span></span></a>
   </div>
 </li>
@@ -222,7 +222,7 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./further-reading.html" class="sidebar-item-text sidebar-link active">
+  <a href="./further-reading.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Further reading</span></span></a>
   </div>
 </li>
@@ -239,15 +239,25 @@ div.csl-indent {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="2">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#initializing-a-git-repository" id="toc-initializing-a-git-repository" class="nav-link active" data-scroll-target="#initializing-a-git-repository"><span class="header-section-number">3.1</span> Initializing a Git repository</a>
+  <ul>
+  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example"><span class="header-section-number">3.1.1</span> Example</a></li>
+  </ul></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">3.2</span> Exercises</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./git-for-windows.html">Appendices</a></li><li class="breadcrumb-item"><a href="./further-reading.html"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Further reading</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./introduction-to-version-control.html">Part I - The basics</a></li><li class="breadcrumb-item"><a href="./basic-git.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Basic Git</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Appendix C — Further reading</h1>
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Basic Git</span></h1>
 </div>
 
 
@@ -264,13 +274,38 @@ div.csl-indent {
 </header>
 
 
-<p>There is no shortage of resources for learning Git. Here is short list of materials that could be of interest for further reading.</p>
-<p>Pro Git book <a href="https://git-scm.com/book/en/v2" target="_blank">https://git-scm.com/book/en/v2</a></p>
-<p><a href="https://r-cubed-intro.rostools.org/appendix/extra-github" target="_blank">https://r-cubed-intro.rostools.org/appendix/extra-github</a></p>
-<p><a href="https://learngitbranching.js.org/" target="_blank">https://learngitbranching.js.org/</a></p>
-<p><a href="https://gitexercises.fracz.com/" target="_blank">https://gitexercises.fracz.com/</a></p>
-<p><a href="https://r-cubed-intro.rostools.org/" target="_blank">https://r-cubed-intro.rostools.org/</a></p>
-<p>TODO: Vet current links and add/remove resources. Should probably be divided into section by type, i.e.&nbsp;book/tutorial/exercises/interactive/etc</p>
+<p>In this chapter we will cover the basic Git commmands.</p>
+<section id="initializing-a-git-repository" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="initializing-a-git-repository"><span class="header-section-number">3.1</span> Initializing a Git repository</h2>
+<p>So how do we get started using Git? For the moment, we will work from the starting point of having a local directory with files that we want to start version controlling. To do this we <code>cd</code> to the directory and use the <code>git init</code> command. This creates a new subfolder named “.git” that contains all of the necessary repository files - a Git repository skeleton. We will not discuss the contents of the “.git” folder here, but we will get back to that later.</p>
+<p>We have now initialized a Git repository, but we are not yet tracking any files. We can start tracking files by using the <code>git add</code> command. Finally, we probably want to commit these files to the Git repository, which can be done with <code>git commit</code>.</p>
+<p>At this point we have initiated a Git repository, starting tracking files, and have done an initial commit. We will go over what <code>git add</code> and <code>git commit</code>in detail later, but this is essentially all it takes to use Git in a simple but effective way. Simply keep using <code>git add`` and</code>git commit` at each point your files are in state that you want to save a version of.</p>
+<section id="example" class="level3" data-number="3.1.1">
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="example"><span class="header-section-number">3.1.1</span> Example</h3>
+<p>In this example we will show how to initialize a Git repository, start tracking files, and commiting them to the repository. First we create a folder with some files that we want to track.</p>
+<pre class="bash-terminal"><span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">~</span>
+<span class="bash-grey">$ rm -rf git_example # Remove folder if it already exists</span>
+<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">~</span>
+<span class="bash-grey">$ mkdir git_example # Make folder</span>
+<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">~</span>
+<span class="bash-grey">$ cd git_example # Change working directory</span>
+<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">~/git_example</span>
+<span class="bash-grey">$ echo "file_a content" &gt; file_a.txt # Create file_a.txt</span>
+<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">~/git_example</span>
+<span class="bash-grey">$ echo "file_v content" &gt; file_b.txt # Create file_b.txt</span>
+</pre>
+<p>We can now initialize a Git repository, start tracking all the files in the folder, and commit the current state of the files to the repository.</p>
+<pre class="bash-terminal"><span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">~/git_example</span>
+<span class="bash-grey">$ git init # Initialize git repo</span>
+<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">~/git_example</span>
+<span class="bash-grey">$ git add . # Track all files</span>
+<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">~/git_example</span>
+<span class="bash-grey">$ git commit -m"Initial commit" # Commit files</span>
+</pre>
+</section>
+</section>
+<section id="exercises" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="exercises"><span class="header-section-number">3.2</span> Exercises</h2>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
@@ -278,6 +313,7 @@ div.csl-indent {
 Chacon, Scott, and Ben Straub. 2021. <span>“Pro Git.”</span> <a href="https://git-scm.com/book/en/v2">https://git-scm.com/book/en/v2</a>.
 </div>
 </div>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -681,13 +717,13 @@ Chacon, Scott, and Ben Straub. 2021. <span>“Pro Git.”</span> <a href="https:
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./graphical-user-interfaces.html" class="pagination-link" aria-label="Graphical User Interfaces (GUI's)">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Graphical User Interfaces (GUI’s)</span></span>
+      <a href="./introduction-to-git.html" class="pagination-link" aria-label="Introduction to Git">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction to Git</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./references.html" class="pagination-link" aria-label="References">
-        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./workflows.html" class="pagination-link" aria-label="Workflows">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Workflows</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

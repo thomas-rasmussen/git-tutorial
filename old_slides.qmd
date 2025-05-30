@@ -1,40 +1,5 @@
 
 
-
-## Initialize a Git repository
-
-Make a local directory into a Git repository:
-
-1) Change directory to local directory using cd command
-
-:::{.callout-note appearance="minimal" style="font-family: monospace"}
-cd "S:/some path/probably/with spaces"
-:::
-
-2) Use git init command to initialize Git repository in folder
-
-:::{.callout-note appearance="minimal" style="font-family: monospace"}
-git init
-:::
-
-
-::: {.notes}
-
-Note that it is only necessary to quote the filepath with the cd
-command if the filepath contains spaces.
-
-The file directory is shown as  "/s/some path/probably/with spaces"in Git Bash.
-This form can also be used, ie "cd /s/some path/probably/with space".
-
-It is often easier to right click (or shift+right click on Windows 11) on the folder
-of interest and select "Open with Git Bash here".
-
-Running git init in a directory creates a new subdirectory named ".git" that contains
-all of your necessary repository files. We will not talk about what the content of ".git"
-is at this point, but might come back to some of it later.
-
-:::
-
 ## Running example I
 
 Start a running example of live coding at this point?
@@ -79,7 +44,6 @@ Adaptation of diagram from Pro Git p. 26
 :::
 
 
-# Part III - Advanced topics
 
 ## Part III - Advanced topics
 
@@ -89,16 +53,10 @@ Adaptation of diagram from Pro Git p. 26
 - Aliases
 - Collaboration on a codebase
 - Distributed workflows.
-- Git GUI/IDE's. What are popular choices. Pro's and con's over using only Git Bash. 
 - Version controlling output. Can it be justified in practice? Probably, but when and to
   what extent. What should you be extra cautious about when doing this? Large files and many commits?
 - Recovering lost code. What do you do if you mess up and delete important files / commits.
-- Git versus Subversion / distributed versus centralized VCS's.
 
-::: {.notes}
-Advanced/non-essential stand-alone topics that could be slides and/or included in the notes. 
-Some of there topics will likely be incorporated into one of the earlier sections
-:::
 
 
 
