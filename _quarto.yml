@@ -31,12 +31,6 @@ book:
     - graphical-user-interfaces.qmd
     - further-reading.qmd
     - references.qmd
-  page-footer:
-    background: dark
-    border: true
-    right:
-      - icon: github
-        href: https://github.com/thomas-rasmussen/git-tutorial
 
 bibliography: references.bib
 nocite: |
@@ -46,6 +40,9 @@ format:
   html:
     css: styles.css
     theme: minty
+    include-in-header:
+      text: |
+       <script src="custom-js.js"></script>
 
 
 

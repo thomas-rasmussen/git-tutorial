@@ -4,12 +4,10 @@
 
 When you open Git Bash, you will see something like this:
 
-```{=html}
 <pre class="bash-terminal">
-<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">~</span>
-<span class="bash-grey">$</span>
+<span class="bash-color">user_id@computer_id MINGW64 ~</span>
+$
 </pre>
-```
 
 The [user_id@computer_id]{class="bash-green"} is an ID based on name of the user that is logged in, and the name of the device running Git Bash. The [MINGW64]{class="bash-pink"} part is the name of the compiler used to build Git Bash. The [~]{class="bash-gold"} at the end of the first line indicates the current directory. A tilde means that the current directory is the home directory of the user.
 
@@ -181,14 +179,12 @@ Git for Windows also comes with shell integration, so an alternative to using `c
 
 We can use `cd` to change the working directory by providing a file path to the directory.
 
-```{=html}
 <pre class="bash-terminal">
-<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">~</span>
-<span class="bash-grey">$ cd C:/path/to/directory</span>
-<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/path/to/directory</span>
-<span class="bash-grey">$</span>
+<span class="bash-color">user_id@computer_id MINGW64 ~</span>
+$ cd C:/path/to/directory
+<span class="bash-color">user_id@computer_id MINGW64 /c/path/to/directory</span>
+$
 </pre>
-```
 
 Note that the working directory was set as [C:/path/to/directory]{style="font-family:monospace"}, but is displayed on the form [/c/path/to/directory]{style="font-family:monospace"}
 
@@ -196,82 +192,70 @@ Note that the working directory was set as [C:/path/to/directory]{style="font-fa
 
 If a file path contains spaces, enclose the file path in (double) quotes.
 
-```{=html}
 <pre class="bash-terminal">
-<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">~</span>
-<span class="bash-grey">$ cd "/c/path/to/some directory"</span>
-<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/path/to/some directory</span>
-<span class="bash-grey">$</span>
+<span class="bash-color">user_id@computer_id MINGW64 ~</span>
+$ cd "/c/path/to/some directory"
+<span class="bash-color">user_id@computer_id MINGW64 /c/path/to/some directory</span>
+$
 </pre>
-```
 
 #### Example - Change to subdirectory
 
 To change the current working directory to a subdirectory of the current working
 directory, we can simple set `DIR` to the subdirectory name.
 
-```{=html}
 <pre class="bash-terminal">
-<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/path/to/dir</span>
-<span class="bash-grey">$ cd subfolder"</span>
-<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/path/to/dir/subfolder</span>
-<span class="bash-grey">$</span>
+<span class="bash-color">user_id@computer_id MINGW64 /c/path/to/dir</span>
+$ cd subfolder
+<span class="bash-color">user_id@computer_id MINGW64 /c/path/to/dir/subfolder</span>
+$
 </pre>
-```
 
 #### Example - Change to parent directory
 
-We can change the working directory to the parent directory by setting `DIR` to ".."
+We can change the working directory to the parent directory by setting `DIR` to ".."0
 
-```{=html}
 <pre class="bash-terminal">
-<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/path/to/dir</span>
-<span class="bash-grey">$ cd ..</span>
-<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/path/to</span>
-<span class="bash-grey">$</span>
+<span class="bash-color">user_id@computer_id MINGW64 /c/path/to/dir</span>
+$ cd ..
+<span class="bash-color">user_id@computer_id MINGW64 /c/path/to</span>
+$
 </pre>
-```
 
 You can also use ".." more generally when specifying a file path, to denote the parent directory
 
-```{=html}
 <pre class="bash-terminal"">
-<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/path/to/dir_a</span>
-<span class="bash-grey">$ cd ../dir_b</span>
-<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/path/to/dir_b</span>
-<span class="bash-grey">$</span>
+<span class="bash-color">user_id@computer_id MINGW64 /c/path/to/dir_a</span>
+$ cd ../dir_b
+<span class="bash-color">user_id@computer_id MINGW64 /c/path/to/dir_b</span>
+$
 </pre>
-```
 
 #### Example - Change to previous directory
 
 We can change the working directory to the previous working directory by setting `DIR` to "-".
 
-```{=html}
 <pre class="bash-terminal">
-<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/current/cd/dir</span>
-<span class="bash-grey">$ cd -</span>
-<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/previous/cd/dir</span>
-<span class="bash-grey">$</span>
+<span class="bash-color">user_id@computer_id MINGW64 /c/current/cd/dir</span>
+$ cd -
+<span class="bash-color">user_id@computer_id MINGW64 /c/previous/cd/dir</span>
+$
 </pre>
-```
 
 #### Example - Changing working directory to user's home directory
 
 We can set the current working directory to the user's home directory by not specifying `DIR`, or by setting `DIR` to "~".
 
-```{=html}
 <pre class="bash-terminal">
-<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/current/dir</span>
-<span class="bash-grey">$ cd ~</span>
-<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">~</span>
-<span class="bash-grey">$ cd -</span>
-<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/current/dir</span>
-<span class="bash-grey">$ cd</span>
-<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">~</span>
-<span class="bash-grey">$</span>
+<span class="bash-color">user_id@computer_id MINGW64 /c/current/dir</span>
+$ cd ~
+<span class="bash-color">user_id@computer_id MINGW64 ~</span>
+$ cd -
+<span class="bash-color">user_id@computer_id MINGW64 /c/current/dir</span>
+$ cd
+<span class="bash-color">user_id@computer_id MINGW64 ~</span>
+$
 </pre>
-```
 
 ### clear
 
@@ -287,23 +271,19 @@ No documentation available.
 
 Imagine we had the history shown in the terminal below, ending with a `clear` command.
 
-```{=html}
 <pre class="bash-terminal">
-<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">~</span>
-<span class="bash-grey">$ cd C:/path/to/directory</span>
-<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/path/to/directory</span>
-<span class="bash-grey">$ clear</span>
+<span class="bash-color">user_id@computer_id MINGW64 ~</span>
+$ cd C:/path/to/directory
+<span class="bash-color">user_id@computer_id MINGW64 /c/path/to/directory</span>
+$ clear
 </pre>
-```
 
 This would result in the terminal shown below.
 
-```{=html}
 <pre class="bash-terminal">
-<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/path/to/directory</span>
-<span class="bash-grey">$</span>
+<span class="bash-color">user_id@computer_id MINGW64 /c/path/to/directory</span>
+$
 </pre>
-```
 
 Clearing the terminal screen can also be done using the shortcut key {{< kbd Ctrl+l>}}
 
@@ -322,12 +302,11 @@ given `STRING` overwrites the content of `FILE`.
 
 You can create an empty file by not providing any `STRING` and using the ">" redirection operator (this will overwrite the any existing file with the same name).
 
-```{=html}
 <pre class="bash-terminal">
-<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">~</span>
-<span class="bash-grey">$ echo > empty_file.txt</span>
+<span class="bash-color">user_id@computer_id MINGW64 ~</span>
+$ echo > empty_file.txt
 </pre>
-```
+
 
 ```{=html}
 <div class="notepad-file">
@@ -342,12 +321,10 @@ You can create an empty file by not providing any `STRING` and using the ">" red
 
 We can create a new text file with some content in it (or overwrite an existing file) by using the ">" redirection operator and by providing a `STRING` with the content.
 
-```{=html}
 <pre class="bash-terminal">
-<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">~</span>
-<span class="bash-grey">$ echo "Some content" > new_file.txt</span>
+<span class="bash-color">user_id@computer_id MINGW64 ~</span>
+$ echo "Some content" > new_file.txt
 </pre>
-```
 
 ```{=html}
 <div class="notepad-file">
@@ -362,14 +339,12 @@ Some content
 
 To append content to an existing text file use the ">>" redirection operator.
 
-```{=html}
 <pre class="bash-terminal">
-<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">~</span>
-<span class="bash-grey">$ echo "Some content" > append_file.txt</span>
-<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">~</span>
-<span class="bash-grey">$ echo "Some more content" >> append_file.txt</span>
+<span class="bash-color">user_id@computer_id MINGW64 ~</span>
+$ echo "Some content" > append_file.txt
+<span class="bash-color">user_id@computer_id MINGW64 ~</span>
+$ echo "Some more content" >> append_file.txt
 </pre>
-```
 
 ```{=html}
 <div class="notepad-file">
@@ -402,48 +377,42 @@ List one file per line.<br>
 
 If we want to see a list of content in the current work directory, we can use `ls`.
 
-```{=html}
 <pre class="bash-terminal">
-<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/some/dir</span>
-<span class="bash-grey">$ ls</span>
-<span class="bash-grey"><span class="bash-violet">dir_a</span>/ file_a.txt file_c.txt file_e.txt</span>
-<span class="bash-grey"><span class="bash-violet">dir_b</span>/ file_b.txt file_d.txt file_f.txt</span>
+<span class="bash-color">user_id@computer_id MINGW64 /c/some/dir</span>
+$ ls
+<span class="bash-violet">dir_a</span>/ file_a.txt file_c.txt file_e.txt
+<span class="bash-violet">dir_b</span>/ file_b.txt file_d.txt file_f.txt
 </pre>
-```
 
-By default multiple entries are listed in each line and directories are colorcodes and has a "/" suffix.
+By default multiple entries are listed in each line and directories are colour-coded and has a "/" suffix.
 
 #### Example - List all content of a directory
 
 By default, entries starting with a dot (.), i.e. hidden files, are ignored. Use the "-a" option to list all files.
-```{=html}
 <pre class="bash-terminal">
-<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/some/git_repo</span>
-<span class="bash-grey">$ ls -a</span>
-<span class="bash-grey"><span class="bash-violet">.git</span>/ file_a.txt file_c.txt file_e.txt</span>
-<span class="bash-grey">.gitignore file_b.txt file_d.txt file_f.txt</span>
+<span class="bash-color">user_id@computer_id MINGW64 /c/some/git_repo</span>
+$ ls -a
+<span class="bash-violet">.git</span>/ file_a.txt file_c.txt file_e.txt
+.gitignore file_b.txt file_d.txt file_f.txt
 </pre>
-```
 
 
 #### Example - List one entry per line
 
 We can use the "-1" option to list only one entry per line.
 
-```{=html}
 <pre class="bash-terminal">
-<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/some/dir</span>
-<span class="bash-grey">$ ls -1</span>
-<span class="bash-violet">dir_a</span><span class="bash-grey">/</span>
-<span class="bash-violet">dir_b</span><span class="bash-grey">/</span>
-<span class="bash-grey">file_a.txt</span>
-<span class="bash-grey">file_b.txt</span>
-<span class="bash-grey">file_c.txt</span>
-<span class="bash-grey">file_d.txt</span>
-<span class="bash-grey">file_e.txt</span>
-<span class="bash-grey">file_f.txt</span>
+<span class="bash-color">user_id@computer_id MINGW64 /c/some/dir</span>
+$ ls -1
+<span class="bash-violet">dir_a</span>/
+<span class="bash-violet">dir_b</span>/
+file_a.txt
+file_b.txt
+file_c.txt
+file_d.txt
+file_e.txt
+file_f.txt
 </pre>
-```
 
 ### mkdir
 
@@ -460,21 +429,19 @@ Create a new folder with name `FOLDER` in the current working directory, if it d
 
 Create new folders. Note that we don't have to enclose the folder name in quotes if it contains no spaces.
 
-```{=html}
 <pre class="bash-terminal">
-<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/some/dir</span>
-<span class="bash-grey">$ ls -1</span>
-<span class="bash-grey">file_a.txt</span>
-<span class="bash-grey">file_b.txt</span>
-<span class="bash-grey">$ mkdir new-folder</span>
-<span class="bash-grey">$ mkdir "new-folder"</span>
-<span class="bash-grey">$ ls -1</span>
-<span class="bash-violet">new-folder</span><span class="bash-grey">/</span>
-<span class="bash-violet">'new folder'</span><span class="bash-grey">/</span>
-<span class="bash-grey">file_a.txt</span>
-<span class="bash-grey">file_b.txt</span>
+<span class="bash-color">user_id@computer_id MINGW64 /c/some/dir</span>
+$ ls -1
+file_a.txt
+file_b.txt
+$ mkdir new-folder
+$ mkdir "new-folder"
+$ ls -1
+<span class="bash-violet">new-folder</span>/
+<span class="bash-violet">'new folder'</span>/
+file_a.txt
+file_b.txt
 </pre>
-```
 
 ### pwd
 
@@ -489,13 +456,11 @@ Print working directory.
 
 When working with Git this command is mainly used to see where the current user's home directory is, since the current working directory is always shown in the terminal.
 
-```{=html}
 <pre class="bash-terminal">
-<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">~</span>
-<span class="bash-grey">$ pwd</span>
-<span class="bash-grey">/c/absolute/path/to/home/directory</span>
+<span class="bash-color">user_id@computer_id MINGW64 ~</span>
+$ pwd
+/c/absolute/path/to/home/directory
 </pre>
-```
 
 ### rm
 
@@ -520,19 +485,16 @@ Remove directories and their contents recursively.
 
 #### Example - Remove file
 
-```{=html}
 <pre class="bash-terminal">
-<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/some/dir</span>
-<span class="bash-grey">$ ls</span>
-<span class="bash-grey">file_a.txt file_b.txt</span>
-<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/some/dir</span>
-<span class="bash-grey">$ rm file_a.txt</span>
-<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/some/dir</span>
-<span class="bash-grey">$ ls</span>
-<span class="bash-grey">file_b.txt</span>
+<span class="bash-color">user_id@computer_id MINGW64 /c/some/dir</span>
+$ ls
+file_a.txt file_b.txt
+<span class="bash-color">user_id@computer_id MINGW64 /c/some/dir</span>
+$ rm file_a.txt
+<span class="bash-color">user_id@computer_id MINGW64 /c/some/dir</span>
+$ ls
+file_b.txt
 </pre>
-
-```
 
 ### start
 
@@ -548,11 +510,10 @@ Start a program, or open a file/directory in Windows Explorer.
 #### Example - Open current working directory in Windows explorer
 
 We can open the current working directory in Windows explorer by simply using `start .`
-```{=html}
+
 <pre class="bash-terminal">
-<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/some/dir</span>
-<span class="bash-grey">$ start .</span>
+<span class="bash-color">user_id@computer_id MINGW64 /c/some/dir</span>
+$ start .
 </pre>
-```
 
 

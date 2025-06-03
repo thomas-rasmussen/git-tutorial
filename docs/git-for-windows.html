@@ -61,7 +61,7 @@ div.csl-indent {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-de070a7b0ab54f8780927367ac907214.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-88f3930d581a8b80ca6185ab4b1ab242.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-9c3c9749beb716605badaba237ef973c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="site_libs/quarto-contrib/kbd/kbd.js"></script>
 <link href="site_libs/quarto-contrib/kbd/kbd.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -91,6 +91,7 @@ div.csl-indent {
     "search-label": "Search"
   }
 }</script>
+<script src="custom-js.js"></script>
 
 
 <link rel="stylesheet" href="styles.css">
@@ -319,8 +320,8 @@ div.csl-indent {
 
 <p><a href="https://gitforwindows.org/" target="_blank">Git for Windows</a> is a set of tools for Windows users. Of main interest, Git for Windows provides a Bash emulation used to run Git from the command line. Using Git Bash, Windows users can use “git” commands exactly like one would do in Linux and Unix environments. Besides the full set of Git core commands, Git Bash is also packaged with additional shell commands that can be useful.</p>
 <p>When you open Git Bash, you will see something like this:</p>
-<pre class="bash-terminal"><span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">~</span>
-<span class="bash-grey">$</span>
+<pre class="bash-terminal"><span class="bash-color">user_id@computer_id MINGW64 ~</span>
+$
 </pre>
 <p>The <span class="bash-green">user_id@computer_id</span> is an ID based on name of the user that is logged in, and the name of the device running Git Bash. The <span class="bash-pink">MINGW64</span> part is the name of the compiler used to build Git Bash. The <span class="bash-gold">~</span> at the end of the first line indicates the current directory. A tilde means that the current directory is the home directory of the user.</p>
 <section id="shortcut-keys" class="level2" data-number="A.1">
@@ -476,66 +477,66 @@ div.csl-indent {
 <section id="example---change-directory" class="level4" data-number="A.3.1.1">
 <h4 data-number="A.3.1.1" class="anchored" data-anchor-id="example---change-directory"><span class="header-section-number">A.3.1.1</span> Example - Change directory</h4>
 <p>We can use <code>cd</code> to change the working directory by providing a file path to the directory.</p>
-<pre class="bash-terminal"><span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">~</span>
-<span class="bash-grey">$ cd C:/path/to/directory</span>
-<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/path/to/directory</span>
-<span class="bash-grey">$</span>
+<pre class="bash-terminal"><span class="bash-color">user_id@computer_id MINGW64 ~</span>
+$ cd C:/path/to/directory
+<span class="bash-color">user_id@computer_id MINGW64 /c/path/to/directory</span>
+$
 </pre>
 <p>Note that the working directory was set as <span style="font-family:monospace">C:/path/to/directory</span>, but is displayed on the form <span style="font-family:monospace">/c/path/to/directory</span></p>
 </section>
 <section id="example---file-path-with-spaces" class="level4" data-number="A.3.1.2">
 <h4 data-number="A.3.1.2" class="anchored" data-anchor-id="example---file-path-with-spaces"><span class="header-section-number">A.3.1.2</span> Example - file path with spaces</h4>
 <p>If a file path contains spaces, enclose the file path in (double) quotes.</p>
-<pre class="bash-terminal"><span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">~</span>
-<span class="bash-grey">$ cd "/c/path/to/some directory"</span>
-<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/path/to/some directory</span>
-<span class="bash-grey">$</span>
+<pre class="bash-terminal"><span class="bash-color">user_id@computer_id MINGW64 ~</span>
+$ cd "/c/path/to/some directory"
+<span class="bash-color">user_id@computer_id MINGW64 /c/path/to/some directory</span>
+$
 </pre>
 </section>
 <section id="example---change-to-subdirectory" class="level4" data-number="A.3.1.3">
 <h4 data-number="A.3.1.3" class="anchored" data-anchor-id="example---change-to-subdirectory"><span class="header-section-number">A.3.1.3</span> Example - Change to subdirectory</h4>
 <p>To change the current working directory to a subdirectory of the current working directory, we can simple set <code>DIR</code> to the subdirectory name.</p>
-<pre class="bash-terminal"><span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/path/to/dir</span>
-<span class="bash-grey">$ cd subfolder"</span>
-<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/path/to/dir/subfolder</span>
-<span class="bash-grey">$</span>
+<pre class="bash-terminal"><span class="bash-color">user_id@computer_id MINGW64 /c/path/to/dir</span>
+$ cd subfolder
+<span class="bash-color">user_id@computer_id MINGW64 /c/path/to/dir/subfolder</span>
+$
 </pre>
 </section>
 <section id="example---change-to-parent-directory" class="level4" data-number="A.3.1.4">
 <h4 data-number="A.3.1.4" class="anchored" data-anchor-id="example---change-to-parent-directory"><span class="header-section-number">A.3.1.4</span> Example - Change to parent directory</h4>
-<p>We can change the working directory to the parent directory by setting <code>DIR</code> to “..”</p>
-<pre class="bash-terminal"><span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/path/to/dir</span>
-<span class="bash-grey">$ cd ..</span>
-<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/path/to</span>
-<span class="bash-grey">$</span>
+<p>We can change the working directory to the parent directory by setting <code>DIR</code> to “..”0</p>
+<pre class="bash-terminal"><span class="bash-color">user_id@computer_id MINGW64 /c/path/to/dir</span>
+$ cd ..
+<span class="bash-color">user_id@computer_id MINGW64 /c/path/to</span>
+$
 </pre>
 <p>You can also use “..” more generally when specifying a file path, to denote the parent directory</p>
-<pre class="bash-terminal" "=""><span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/path/to/dir_a</span>
-<span class="bash-grey">$ cd ../dir_b</span>
-<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/path/to/dir_b</span>
-<span class="bash-grey">$</span>
+<pre class="bash-terminal" "=""><span class="bash-color">user_id@computer_id MINGW64 /c/path/to/dir_a</span>
+$ cd ../dir_b
+<span class="bash-color">user_id@computer_id MINGW64 /c/path/to/dir_b</span>
+$
 </pre>
 </section>
 <section id="example---change-to-previous-directory" class="level4" data-number="A.3.1.5">
 <h4 data-number="A.3.1.5" class="anchored" data-anchor-id="example---change-to-previous-directory"><span class="header-section-number">A.3.1.5</span> Example - Change to previous directory</h4>
 <p>We can change the working directory to the previous working directory by setting <code>DIR</code> to “-”.</p>
-<pre class="bash-terminal"><span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/current/cd/dir</span>
-<span class="bash-grey">$ cd -</span>
-<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/previous/cd/dir</span>
-<span class="bash-grey">$</span>
+<pre class="bash-terminal"><span class="bash-color">user_id@computer_id MINGW64 /c/current/cd/dir</span>
+$ cd -
+<span class="bash-color">user_id@computer_id MINGW64 /c/previous/cd/dir</span>
+$
 </pre>
 </section>
 <section id="example---changing-working-directory-to-users-home-directory" class="level4" data-number="A.3.1.6">
 <h4 data-number="A.3.1.6" class="anchored" data-anchor-id="example---changing-working-directory-to-users-home-directory"><span class="header-section-number">A.3.1.6</span> Example - Changing working directory to user’s home directory</h4>
 <p>We can set the current working directory to the user’s home directory by not specifying <code>DIR</code>, or by setting <code>DIR</code> to “~”.</p>
-<pre class="bash-terminal"><span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/current/dir</span>
-<span class="bash-grey">$ cd ~</span>
-<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">~</span>
-<span class="bash-grey">$ cd -</span>
-<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/current/dir</span>
-<span class="bash-grey">$ cd</span>
-<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">~</span>
-<span class="bash-grey">$</span>
+<pre class="bash-terminal"><span class="bash-color">user_id@computer_id MINGW64 /c/current/dir</span>
+$ cd ~
+<span class="bash-color">user_id@computer_id MINGW64 ~</span>
+$ cd -
+<span class="bash-color">user_id@computer_id MINGW64 /c/current/dir</span>
+$ cd
+<span class="bash-color">user_id@computer_id MINGW64 ~</span>
+$
 </pre>
 </section>
 </section>
@@ -547,14 +548,14 @@ div.csl-indent {
 <section id="example" class="level4" data-number="A.3.2.1">
 <h4 data-number="A.3.2.1" class="anchored" data-anchor-id="example"><span class="header-section-number">A.3.2.1</span> Example</h4>
 <p>Imagine we had the history shown in the terminal below, ending with a <code>clear</code> command.</p>
-<pre class="bash-terminal"><span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">~</span>
-<span class="bash-grey">$ cd C:/path/to/directory</span>
-<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/path/to/directory</span>
-<span class="bash-grey">$ clear</span>
+<pre class="bash-terminal"><span class="bash-color">user_id@computer_id MINGW64 ~</span>
+$ cd C:/path/to/directory
+<span class="bash-color">user_id@computer_id MINGW64 /c/path/to/directory</span>
+$ clear
 </pre>
 <p>This would result in the terminal shown below.</p>
-<pre class="bash-terminal"><span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/path/to/directory</span>
-<span class="bash-grey">$</span>
+<pre class="bash-terminal"><span class="bash-color">user_id@computer_id MINGW64 /c/path/to/directory</span>
+$
 </pre>
 <p>Clearing the terminal screen can also be done using the shortcut key <kbd aria-hidden="true">Ctrl+l</kbd><span class="visually-hidden">Ctrl+l</span></p>
 </section>
@@ -567,8 +568,8 @@ div.csl-indent {
 <section id="example---create-empty-text-file" class="level4" data-number="A.3.3.1">
 <h4 data-number="A.3.3.1" class="anchored" data-anchor-id="example---create-empty-text-file"><span class="header-section-number">A.3.3.1</span> Example - Create empty text file</h4>
 <p>You can create an empty file by not providing any <code>STRING</code> and using the “&gt;” redirection operator (this will overwrite the any existing file with the same name).</p>
-<pre class="bash-terminal"><span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">~</span>
-<span class="bash-grey">$ echo &gt; empty_file.txt</span>
+<pre class="bash-terminal"><span class="bash-color">user_id@computer_id MINGW64 ~</span>
+$ echo &gt; empty_file.txt
 </pre>
 <div class="notepad-file">
 <div class="notepad-header">empty_file.txt</div>
@@ -580,8 +581,8 @@ div.csl-indent {
 <section id="example---create-text-file-with-content" class="level4" data-number="A.3.3.2">
 <h4 data-number="A.3.3.2" class="anchored" data-anchor-id="example---create-text-file-with-content"><span class="header-section-number">A.3.3.2</span> Example - Create text file with content</h4>
 <p>We can create a new text file with some content in it (or overwrite an existing file) by using the “&gt;” redirection operator and by providing a <code>STRING</code> with the content.</p>
-<pre class="bash-terminal"><span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">~</span>
-<span class="bash-grey">$ echo "Some content" &gt; new_file.txt</span>
+<pre class="bash-terminal"><span class="bash-color">user_id@computer_id MINGW64 ~</span>
+$ echo "Some content" &gt; new_file.txt
 </pre>
 <div class="notepad-file">
 <div class="notepad-header">new_file.txt</div>
@@ -593,10 +594,10 @@ Some content
 <section id="example---append-content-to-existing-text-file" class="level4" data-number="A.3.3.3">
 <h4 data-number="A.3.3.3" class="anchored" data-anchor-id="example---append-content-to-existing-text-file"><span class="header-section-number">A.3.3.3</span> Example - Append content to existing text file</h4>
 <p>To append content to an existing text file use the “&gt;&gt;” redirection operator.</p>
-<pre class="bash-terminal"><span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">~</span>
-<span class="bash-grey">$ echo "Some content" &gt; append_file.txt</span>
-<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">~</span>
-<span class="bash-grey">$ echo "Some more content" &gt;&gt; append_file.txt</span>
+<pre class="bash-terminal"><span class="bash-color">user_id@computer_id MINGW64 ~</span>
+$ echo "Some content" &gt; append_file.txt
+<span class="bash-color">user_id@computer_id MINGW64 ~</span>
+$ echo "Some more content" &gt;&gt; append_file.txt
 </pre>
 <div class="notepad-file">
 <div class="notepad-header">append_file.txt</div>
@@ -617,35 +618,35 @@ Some more content
 <section id="example---list-content-of-work-directory" class="level4" data-number="A.3.4.1">
 <h4 data-number="A.3.4.1" class="anchored" data-anchor-id="example---list-content-of-work-directory"><span class="header-section-number">A.3.4.1</span> Example - List content of work directory</h4>
 <p>If we want to see a list of content in the current work directory, we can use <code>ls</code>.</p>
-<pre class="bash-terminal"><span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/some/dir</span>
-<span class="bash-grey">$ ls</span>
-<span class="bash-grey"><span class="bash-violet">dir_a</span>/ file_a.txt file_c.txt file_e.txt</span>
-<span class="bash-grey"><span class="bash-violet">dir_b</span>/ file_b.txt file_d.txt file_f.txt</span>
+<pre class="bash-terminal"><span class="bash-color">user_id@computer_id MINGW64 /c/some/dir</span>
+$ ls
+<span class="bash-violet">dir_a</span>/ file_a.txt file_c.txt file_e.txt
+<span class="bash-violet">dir_b</span>/ file_b.txt file_d.txt file_f.txt
 </pre>
-<p>By default multiple entries are listed in each line and directories are colorcodes and has a “/” suffix.</p>
+<p>By default multiple entries are listed in each line and directories are colour-coded and has a “/” suffix.</p>
 </section>
 <section id="example---list-all-content-of-a-directory" class="level4" data-number="A.3.4.2">
 <h4 data-number="A.3.4.2" class="anchored" data-anchor-id="example---list-all-content-of-a-directory"><span class="header-section-number">A.3.4.2</span> Example - List all content of a directory</h4>
-<p>By default, entries starting with a dot (.), i.e.&nbsp;hidden files, are ignored. Use the “-a” option to list all files.</p>
-<pre class="bash-terminal"><span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/some/git_repo</span>
-<span class="bash-grey">$ ls -a</span>
-<span class="bash-grey"><span class="bash-violet">.git</span>/ file_a.txt file_c.txt file_e.txt</span>
-<span class="bash-grey">.gitignore file_b.txt file_d.txt file_f.txt</span>
+By default, entries starting with a dot (.), i.e.&nbsp;hidden files, are ignored. Use the “-a” option to list all files.
+<pre class="bash-terminal"><span class="bash-color">user_id@computer_id MINGW64 /c/some/git_repo</span>
+$ ls -a
+<span class="bash-violet">.git</span>/ file_a.txt file_c.txt file_e.txt
+.gitignore file_b.txt file_d.txt file_f.txt
 </pre>
 </section>
 <section id="example---list-one-entry-per-line" class="level4" data-number="A.3.4.3">
 <h4 data-number="A.3.4.3" class="anchored" data-anchor-id="example---list-one-entry-per-line"><span class="header-section-number">A.3.4.3</span> Example - List one entry per line</h4>
 <p>We can use the “-1” option to list only one entry per line.</p>
-<pre class="bash-terminal"><span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/some/dir</span>
-<span class="bash-grey">$ ls -1</span>
-<span class="bash-violet">dir_a</span><span class="bash-grey">/</span>
-<span class="bash-violet">dir_b</span><span class="bash-grey">/</span>
-<span class="bash-grey">file_a.txt</span>
-<span class="bash-grey">file_b.txt</span>
-<span class="bash-grey">file_c.txt</span>
-<span class="bash-grey">file_d.txt</span>
-<span class="bash-grey">file_e.txt</span>
-<span class="bash-grey">file_f.txt</span>
+<pre class="bash-terminal"><span class="bash-color">user_id@computer_id MINGW64 /c/some/dir</span>
+$ ls -1
+<span class="bash-violet">dir_a</span>/
+<span class="bash-violet">dir_b</span>/
+file_a.txt
+file_b.txt
+file_c.txt
+file_d.txt
+file_e.txt
+file_f.txt
 </pre>
 </section>
 </section>
@@ -658,17 +659,17 @@ Some more content
 <section id="example-1" class="level4" data-number="A.3.5.1">
 <h4 data-number="A.3.5.1" class="anchored" data-anchor-id="example-1"><span class="header-section-number">A.3.5.1</span> Example</h4>
 <p>Create new folders. Note that we don’t have to enclose the folder name in quotes if it contains no spaces.</p>
-<pre class="bash-terminal"><span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/some/dir</span>
-<span class="bash-grey">$ ls -1</span>
-<span class="bash-grey">file_a.txt</span>
-<span class="bash-grey">file_b.txt</span>
-<span class="bash-grey">$ mkdir new-folder</span>
-<span class="bash-grey">$ mkdir "new-folder"</span>
-<span class="bash-grey">$ ls -1</span>
-<span class="bash-violet">new-folder</span><span class="bash-grey">/</span>
-<span class="bash-violet">'new folder'</span><span class="bash-grey">/</span>
-<span class="bash-grey">file_a.txt</span>
-<span class="bash-grey">file_b.txt</span>
+<pre class="bash-terminal"><span class="bash-color">user_id@computer_id MINGW64 /c/some/dir</span>
+$ ls -1
+file_a.txt
+file_b.txt
+$ mkdir new-folder
+$ mkdir "new-folder"
+$ ls -1
+<span class="bash-violet">new-folder</span>/
+<span class="bash-violet">'new folder'</span>/
+file_a.txt
+file_b.txt
 </pre>
 </section>
 </section>
@@ -680,9 +681,9 @@ Some more content
 <section id="example-2" class="level4" data-number="A.3.6.1">
 <h4 data-number="A.3.6.1" class="anchored" data-anchor-id="example-2"><span class="header-section-number">A.3.6.1</span> Example</h4>
 <p>When working with Git this command is mainly used to see where the current user’s home directory is, since the current working directory is always shown in the terminal.</p>
-<pre class="bash-terminal"><span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">~</span>
-<span class="bash-grey">$ pwd</span>
-<span class="bash-grey">/c/absolute/path/to/home/directory</span>
+<pre class="bash-terminal"><span class="bash-color">user_id@computer_id MINGW64 ~</span>
+$ pwd
+/c/absolute/path/to/home/directory
 </pre>
 </section>
 </section>
@@ -697,16 +698,15 @@ Some more content
 <p><strong>Link to documentation:</strong><br> <a href="https://ss64.com/bash/rm.html" target="_blank">https://ss64.com/bash/rm.html</a></p>
 <section id="example---remove-file" class="level4" data-number="A.3.7.1">
 <h4 data-number="A.3.7.1" class="anchored" data-anchor-id="example---remove-file"><span class="header-section-number">A.3.7.1</span> Example - Remove file</h4>
-<pre class="bash-terminal"><span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/some/dir</span>
-<span class="bash-grey">$ ls</span>
-<span class="bash-grey">file_a.txt file_b.txt</span>
-<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/some/dir</span>
-<span class="bash-grey">$ rm file_a.txt</span>
-<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/some/dir</span>
-<span class="bash-grey">$ ls</span>
-<span class="bash-grey">file_b.txt</span>
+<pre class="bash-terminal"><span class="bash-color">user_id@computer_id MINGW64 /c/some/dir</span>
+$ ls
+file_a.txt file_b.txt
+<span class="bash-color">user_id@computer_id MINGW64 /c/some/dir</span>
+$ rm file_a.txt
+<span class="bash-color">user_id@computer_id MINGW64 /c/some/dir</span>
+$ ls
+file_b.txt
 </pre>
-
 </section>
 </section>
 <section id="start" class="level3" data-number="A.3.8">
@@ -718,8 +718,8 @@ Some more content
 <section id="example---open-current-working-directory-in-windows-explorer" class="level4" data-number="A.3.8.1">
 <h4 data-number="A.3.8.1" class="anchored" data-anchor-id="example---open-current-working-directory-in-windows-explorer"><span class="header-section-number">A.3.8.1</span> Example - Open current working directory in Windows explorer</h4>
 <p>We can open the current working directory in Windows explorer by simply using <code>start .</code></p>
-<pre class="bash-terminal"><span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">/c/some/dir</span>
-<span class="bash-grey">$ start .</span>
+<pre class="bash-terminal"><span class="bash-color">user_id@computer_id MINGW64 /c/some/dir</span>
+$ start .
 </pre>
 
 
@@ -1145,26 +1145,6 @@ Chacon, Scott, and Ben Straub. 2021. <span>“Pro Git.”</span> <a href="https:
   </div>
 </nav>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
-    <div class="nav-footer-left">
-      &nbsp;
-    </div>   
-    <div class="nav-footer-center">
-      &nbsp;
-    </div>
-    <div class="nav-footer-right">
-      <ul class="footer-items list-unstyled">
-    <li class="nav-item compact">
-    <a class="nav-link active" href="https://github.com/thomas-rasmussen/git-tutorial" aria-current="page">
-      <i class="bi bi-github" role="img">
-</i> 
-    </a>
-  </li>  
-</ul>
-    </div>
-  </div>
-</footer>
 
 
 

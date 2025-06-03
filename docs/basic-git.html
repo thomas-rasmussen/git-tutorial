@@ -61,7 +61,7 @@ div.csl-indent {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-de070a7b0ab54f8780927367ac907214.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-88f3930d581a8b80ca6185ab4b1ab242.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-9c3c9749beb716605badaba237ef973c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -89,6 +89,7 @@ div.csl-indent {
     "search-label": "Search"
   }
 }</script>
+<script src="custom-js.js"></script>
 
 
 <link rel="stylesheet" href="styles.css">
@@ -248,7 +249,10 @@ div.csl-indent {
   <ul>
   <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example"><span class="header-section-number">3.1.1</span> Example</a></li>
   </ul></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">3.2</span> Exercises</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">3.2</span> Exercises</a>
+  <ul>
+  <li><a href="#exercise---initiate-a-git-repository" id="toc-exercise---initiate-a-git-repository" class="nav-link" data-scroll-target="#exercise---initiate-a-git-repository"><span class="header-section-number">3.2.1</span> Exercise - Initiate a Git repository</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -283,29 +287,71 @@ div.csl-indent {
 <section id="example" class="level3" data-number="3.1.1">
 <h3 data-number="3.1.1" class="anchored" data-anchor-id="example"><span class="header-section-number">3.1.1</span> Example</h3>
 <p>In this example we will show how to initialize a Git repository, start tracking files, and commiting them to the repository. First we create a folder with some files that we want to track.</p>
-<pre class="bash-terminal"><span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">~</span>
-<span class="bash-grey">$ rm -rf git_example # Remove folder if it already exists</span>
-<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">~</span>
-<span class="bash-grey">$ mkdir git_example # Make folder</span>
-<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">~</span>
-<span class="bash-grey">$ cd git_example # Change working directory</span>
-<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">~/git_example</span>
-<span class="bash-grey">$ echo "file_a content" &gt; file_a.txt # Create file_a.txt</span>
-<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">~/git_example</span>
-<span class="bash-grey">$ echo "file_v content" &gt; file_b.txt # Create file_b.txt</span>
+<pre class="bash-terminal"><span class="bash-color">user_id@computer_id MINGW64 ~</span>
+$ rm -rf git_example # Remove folder if it already exists
+<span class="bash-color">user_id@computer_id MINGW64 ~</span>
+$ mkdir git_example # Make folder
+<span class="bash-color">user_id@computer_id MINGW64 ~</span>
+$ cd git_example # Change working directory
+<span class="bash-color">user_id@computer_id MINGW64 ~/git_example</span>
+$ echo "file_a content" &gt; file_a.txt # Create file_a.txt
+<span class="bash-color">user_id@computer_id MINGW64 ~/git_example</span>
+$ echo "file_v content" &gt; file_b.txt # Create file_b.txt
 </pre>
 <p>We can now initialize a Git repository, start tracking all the files in the folder, and commit the current state of the files to the repository.</p>
-<pre class="bash-terminal"><span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">~/git_example</span>
-<span class="bash-grey">$ git init # Initialize git repo</span>
-<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">~/git_example</span>
-<span class="bash-grey">$ git add . # Track all files</span>
-<span class="bash-green">user_id@computer_id</span> <span class="bash-pink">MINGW64</span> <span class="bash-gold">~/git_example</span>
-<span class="bash-grey">$ git commit -m"Initial commit" # Commit files</span>
+<pre class="bash-terminal"><span class="bash-color">user_id@computer_id MINGW64 ~/git_example</span>
+$ git init # Initialize git repo
+<span class="bash-color">user_id@computer_id MINGW64 ~/git_example</span>
+$ git add . # Track all files
+<span class="bash-color">user_id@computer_id MINGW64 ~/git_example</span>
+$ git commit -m"Initial commit" # Commit files
 </pre>
 </section>
 </section>
 <section id="exercises" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="exercises"><span class="header-section-number">3.2</span> Exercises</h2>
+<section id="exercise---initiate-a-git-repository" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="exercise---initiate-a-git-repository"><span class="header-section-number">3.2.1</span> Exercise - Initiate a Git repository</h3>
+<ol type="1">
+<li><p>Intialize a Git repository in a folder.</p></li>
+<li><p>Start trackin the files in the folder.</p></li>
+<li><p>Commit the initial state of the files to the repository.</p></li>
+</ol>
+<p>For this exercise you can use any folder of files that you want, for example an existing project that you want to version control using Git. You can also use the below code to create a simple folder with a single file in your home directory.</p>
+<pre class="bash-terminal"><span class="bash-color">user_id@computer_id MINGW64 /c/some/folder</span>
+$ cd
+<span class="bash-color">user_id@computer_id MINGW64 ~</span>
+$ rm -rf git_example
+<span class="bash-color">user_id@computer_id MINGW64 ~</span>
+$ mkdir git_example
+<span class="bash-color">user_id@computer_id MINGW64 ~</span>
+$ cd git_example
+<span class="bash-color">user_id@computer_id MINGW64 ~/git_example</span>
+$ echo "file_a content" &gt; file_a.txt
+</pre>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The solution assumes the folder we are working in is located at “~/git_example”. If you are using another folder, start by using <code>cd</code> to change the working directory.</p>
+<pre class="bash-terminal"><span class="bash-color">user_id@computer_id MINGW64 ~/git_example</span>
+$ git init
+<span class="bash-color">user_id@computer_id MINGW64 ~/git_example</span>
+$ git add .
+<span class="bash-color">user_id@computer_id MINGW64 ~/git_example</span>
+$ git commit -m"Initial commit"
+</pre>
+</div>
+</div>
+</div>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
@@ -313,6 +359,7 @@ div.csl-indent {
 Chacon, Scott, and Ben Straub. 2021. <span>“Pro Git.”</span> <a href="https://git-scm.com/book/en/v2">https://git-scm.com/book/en/v2</a>.
 </div>
 </div>
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -728,26 +775,6 @@ Chacon, Scott, and Ben Straub. 2021. <span>“Pro Git.”</span> <a href="https:
   </div>
 </nav>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
-    <div class="nav-footer-left">
-      &nbsp;
-    </div>   
-    <div class="nav-footer-center">
-      &nbsp;
-    </div>
-    <div class="nav-footer-right">
-      <ul class="footer-items list-unstyled">
-    <li class="nav-item compact">
-    <a class="nav-link active" href="https://github.com/thomas-rasmussen/git-tutorial" aria-current="page">
-      <i class="bi bi-github" role="img">
-</i> 
-    </a>
-  </li>  
-</ul>
-    </div>
-  </div>
-</footer>
 
 
 

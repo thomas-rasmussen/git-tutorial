@@ -22,3 +22,6 @@ TODO
   be nice if captions could be made in Quarto. Problem is that short captions are
   left aligned, possible to the left of the left edge of the image, which looks
   silly for short captions.
+- Work more on js code that colors words: We can make it even better by only writing the
+  cd directory, and have the js code simply prefix the user_id$computer_id MINGW64 part?
+  Could also add a default path of "~" so that we don't even need to write that?
