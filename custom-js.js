@@ -1,15 +1,17 @@
 document.addEventListener("DOMContentLoaded", function () {
-
-  ////// Color words in Git Bash commands //////
   
-  // Find all tags with class "git-bash-color"
-  const elements = document.querySelectorAll(".bash-color");
+  ////// Modify tags with class "git-insert" //////
+  // Insert prefix words and colour codes words.
+  
+  // Find all tags with class "git-insert"
+  const elements2 = document.querySelectorAll(".git-insert");
  
   // Colors: green / pink / gold
   colors = ["#1ca800", "#b148c6", "#c0a000"];
 
-  elements.forEach(function(el) {
+  elements2.forEach(function(el) {
     // Split text in tag into an array of words
+    el.innerText = "user_id$computer_id MINGW64 " + el.innerText;
     const words = el.innerText.split(" ");
     // Array to stores colored word spans
     coloredWords = [];
@@ -26,5 +28,5 @@ document.addEventListener("DOMContentLoaded", function () {
     };
     // Join the colored words wiht spaces and update the tag's HTML
     el.innerHTML = coloredWords.join(' ');
-  });
+  });  
 });

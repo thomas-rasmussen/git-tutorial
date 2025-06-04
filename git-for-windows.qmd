@@ -5,7 +5,7 @@
 When you open Git Bash, you will see something like this:
 
 <pre class="bash-terminal">
-<span class="bash-color">user_id@computer_id MINGW64 ~</span>
+<span class="git-insert">~</span>
 $
 </pre>
 
@@ -180,9 +180,9 @@ Git for Windows also comes with shell integration, so an alternative to using `c
 We can use `cd` to change the working directory by providing a file path to the directory.
 
 <pre class="bash-terminal">
-<span class="bash-color">user_id@computer_id MINGW64 ~</span>
+<span class="git-insert">~</span>
 $ cd C:/path/to/directory
-<span class="bash-color">user_id@computer_id MINGW64 /c/path/to/directory</span>
+<span class="git-insert">/c/path/to/directory</span>
 $
 </pre>
 
@@ -193,9 +193,9 @@ Note that the working directory was set as [C:/path/to/directory]{style="font-fa
 If a file path contains spaces, enclose the file path in (double) quotes.
 
 <pre class="bash-terminal">
-<span class="bash-color">user_id@computer_id MINGW64 ~</span>
+<span class="git-insert">~</span>
 $ cd "/c/path/to/some directory"
-<span class="bash-color">user_id@computer_id MINGW64 /c/path/to/some directory</span>
+<span class="git-insert">/c/path/to/some directory</span>
 $
 </pre>
 
@@ -205,29 +205,29 @@ To change the current working directory to a subdirectory of the current working
 directory, we can simple set `DIR` to the subdirectory name.
 
 <pre class="bash-terminal">
-<span class="bash-color">user_id@computer_id MINGW64 /c/path/to/dir</span>
+<span class="git-insert">/c/path/to/dir</span>
 $ cd subfolder
-<span class="bash-color">user_id@computer_id MINGW64 /c/path/to/dir/subfolder</span>
+<span class="git-insert">/c/path/to/dir/subfolder</span>
 $
 </pre>
 
 #### Example - Change to parent directory
 
-We can change the working directory to the parent directory by setting `DIR` to ".."0
+We can change the working directory to the parent directory by setting `DIR` to "..".
 
 <pre class="bash-terminal">
-<span class="bash-color">user_id@computer_id MINGW64 /c/path/to/dir</span>
+<span class="git-insert">/c/path/to/dir</span>
 $ cd ..
-<span class="bash-color">user_id@computer_id MINGW64 /c/path/to</span>
+<span class="git-insert">/c/path/to</span>
 $
 </pre>
 
 You can also use ".." more generally when specifying a file path, to denote the parent directory
 
 <pre class="bash-terminal"">
-<span class="bash-color">user_id@computer_id MINGW64 /c/path/to/dir_a</span>
+<span class="git-insert">/c/path/to/dir_a</span>
 $ cd ../dir_b
-<span class="bash-color">user_id@computer_id MINGW64 /c/path/to/dir_b</span>
+<span class="git-insert">/c/path/to/dir_b</span>
 $
 </pre>
 
@@ -236,9 +236,9 @@ $
 We can change the working directory to the previous working directory by setting `DIR` to "-".
 
 <pre class="bash-terminal">
-<span class="bash-color">user_id@computer_id MINGW64 /c/current/cd/dir</span>
+<span class="git-insert">/c/current/cd/dir</span>
 $ cd -
-<span class="bash-color">user_id@computer_id MINGW64 /c/previous/cd/dir</span>
+<span class="git-insert">/c/previous/cd/dir</span>
 $
 </pre>
 
@@ -247,13 +247,13 @@ $
 We can set the current working directory to the user's home directory by not specifying `DIR`, or by setting `DIR` to "~".
 
 <pre class="bash-terminal">
-<span class="bash-color">user_id@computer_id MINGW64 /c/current/dir</span>
+<span class="git-insert">/c/current/dir</span>
 $ cd ~
-<span class="bash-color">user_id@computer_id MINGW64 ~</span>
+<span class="git-insert">~</span>
 $ cd -
-<span class="bash-color">user_id@computer_id MINGW64 /c/current/dir</span>
+<span class="git-insert">/c/current/dir</span>
 $ cd
-<span class="bash-color">user_id@computer_id MINGW64 ~</span>
+<span class="git-insert">~</span>
 $
 </pre>
 
@@ -272,16 +272,16 @@ No documentation available.
 Imagine we had the history shown in the terminal below, ending with a `clear` command.
 
 <pre class="bash-terminal">
-<span class="bash-color">user_id@computer_id MINGW64 ~</span>
+<span class="git-insert">~</span>
 $ cd C:/path/to/directory
-<span class="bash-color">user_id@computer_id MINGW64 /c/path/to/directory</span>
+<span class="git-insert">/c/path/to/directory</span>
 $ clear
 </pre>
 
 This would result in the terminal shown below.
 
 <pre class="bash-terminal">
-<span class="bash-color">user_id@computer_id MINGW64 /c/path/to/directory</span>
+<span class="git-insert">/c/path/to/directory</span>
 $
 </pre>
 
@@ -303,7 +303,7 @@ given `STRING` overwrites the content of `FILE`.
 You can create an empty file by not providing any `STRING` and using the ">" redirection operator (this will overwrite the any existing file with the same name).
 
 <pre class="bash-terminal">
-<span class="bash-color">user_id@computer_id MINGW64 ~</span>
+<span class="git-insert">~</span>
 $ echo > empty_file.txt
 </pre>
 
@@ -322,7 +322,7 @@ $ echo > empty_file.txt
 We can create a new text file with some content in it (or overwrite an existing file) by using the ">" redirection operator and by providing a `STRING` with the content.
 
 <pre class="bash-terminal">
-<span class="bash-color">user_id@computer_id MINGW64 ~</span>
+<span class="git-insert">~</span>
 $ echo "Some content" > new_file.txt
 </pre>
 
@@ -340,9 +340,9 @@ Some content
 To append content to an existing text file use the ">>" redirection operator.
 
 <pre class="bash-terminal">
-<span class="bash-color">user_id@computer_id MINGW64 ~</span>
+<span class="git-insert">~</span>
 $ echo "Some content" > append_file.txt
-<span class="bash-color">user_id@computer_id MINGW64 ~</span>
+<span class="git-insert">~</span>
 $ echo "Some more content" >> append_file.txt
 </pre>
 
@@ -378,7 +378,7 @@ List one file per line.<br>
 If we want to see a list of content in the current work directory, we can use `ls`.
 
 <pre class="bash-terminal">
-<span class="bash-color">user_id@computer_id MINGW64 /c/some/dir</span>
+<span class="git-insert">/c/some/dir</span>
 $ ls
 <span class="bash-violet">dir_a</span>/ file_a.txt file_c.txt file_e.txt
 <span class="bash-violet">dir_b</span>/ file_b.txt file_d.txt file_f.txt
@@ -390,7 +390,7 @@ By default multiple entries are listed in each line and directories are colour-c
 
 By default, entries starting with a dot (.), i.e. hidden files, are ignored. Use the "-a" option to list all files.
 <pre class="bash-terminal">
-<span class="bash-color">user_id@computer_id MINGW64 /c/some/git_repo</span>
+<span class="git-insert">/c/some/git_repo</span>
 $ ls -a
 <span class="bash-violet">.git</span>/ file_a.txt file_c.txt file_e.txt
 .gitignore file_b.txt file_d.txt file_f.txt
@@ -402,7 +402,7 @@ $ ls -a
 We can use the "-1" option to list only one entry per line.
 
 <pre class="bash-terminal">
-<span class="bash-color">user_id@computer_id MINGW64 /c/some/dir</span>
+<span class="git-insert">/c/some/dir</span>
 $ ls -1
 <span class="bash-violet">dir_a</span>/
 <span class="bash-violet">dir_b</span>/
@@ -430,12 +430,15 @@ Create a new folder with name `FOLDER` in the current working directory, if it d
 Create new folders. Note that we don't have to enclose the folder name in quotes if it contains no spaces.
 
 <pre class="bash-terminal">
-<span class="bash-color">user_id@computer_id MINGW64 /c/some/dir</span>
+<span class="git-insert">/c/some/dir</span>
 $ ls -1
 file_a.txt
 file_b.txt
+<span class="git-insert">/c/some/dir</span>
 $ mkdir new-folder
+<span class="git-insert">/c/some/dir</span>
 $ mkdir "new-folder"
+<span class="git-insert">/c/some/dir</span>
 $ ls -1
 <span class="bash-violet">new-folder</span>/
 <span class="bash-violet">'new folder'</span>/
@@ -457,7 +460,7 @@ Print working directory.
 When working with Git this command is mainly used to see where the current user's home directory is, since the current working directory is always shown in the terminal.
 
 <pre class="bash-terminal">
-<span class="bash-color">user_id@computer_id MINGW64 ~</span>
+<span class="git-insert">~</span>
 $ pwd
 /c/absolute/path/to/home/directory
 </pre>
@@ -486,12 +489,12 @@ Remove directories and their contents recursively.
 #### Example - Remove file
 
 <pre class="bash-terminal">
-<span class="bash-color">user_id@computer_id MINGW64 /c/some/dir</span>
+<span class="git-insert">/c/some/dir</span>
 $ ls
 file_a.txt file_b.txt
-<span class="bash-color">user_id@computer_id MINGW64 /c/some/dir</span>
+<span class="git-insert">/c/some/dir</span>
 $ rm file_a.txt
-<span class="bash-color">user_id@computer_id MINGW64 /c/some/dir</span>
+<span class="git-insert">/c/some/dir</span>
 $ ls
 file_b.txt
 </pre>
@@ -512,7 +515,7 @@ Start a program, or open a file/directory in Windows Explorer.
 We can open the current working directory in Windows explorer by simply using `start .`
 
 <pre class="bash-terminal">
-<span class="bash-color">user_id@computer_id MINGW64 /c/some/dir</span>
+<span class="git-insert">/c/some/dir</span>
 $ start .
 </pre>
 

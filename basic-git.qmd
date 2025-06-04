@@ -15,26 +15,26 @@ At this point we have initiated a Git repository, starting tracking files, and h
 In this example we will show how to initialize a Git repository, start tracking files, and commiting them to the repository. First we create a folder with some files that we want to track.
 
 <pre class="bash-terminal">
-<span class="bash-color">user_id@computer_id MINGW64 ~</span>
+<span class="git-insert">~</span>
 $ rm -rf git_example # Remove folder if it already exists
-<span class="bash-color">user_id@computer_id MINGW64 ~</span>
+<span class="git-insert">~</span>
 $ mkdir git_example # Make folder
-<span class="bash-color">user_id@computer_id MINGW64 ~</span>
+<span class="git-insert">~</span>
 $ cd git_example # Change working directory
-<span class="bash-color">user_id@computer_id MINGW64 ~/git_example</span>
+<span class="git-insert">~/git_example</span>
 $ echo "file_a content" > file_a.txt # Create file_a.txt
-<span class="bash-color">user_id@computer_id MINGW64 ~/git_example</span>
+<span class="git-insert">~/git_example</span>
 $ echo "file_v content" > file_b.txt # Create file_b.txt
 </pre>
 
 We can now initialize a Git repository, start tracking all the files in the folder, and commit the current state of the files to the repository.
 
 <pre class="bash-terminal">
-<span class="bash-color">user_id@computer_id MINGW64 ~/git_example</span>
+<span class="git-insert">~/git_example</span>
 $ git init # Initialize git repo
-<span class="bash-color">user_id@computer_id MINGW64 ~/git_example</span>
+<span class="git-insert">~/git_example</span>
 $ git add . # Track all files
-<span class="bash-color">user_id@computer_id MINGW64 ~/git_example</span>
+<span class="git-insert">~/git_example</span>
 $ git commit -m"Initial commit" # Commit files
 </pre>
 
@@ -55,15 +55,15 @@ $ git commit -m"Initial commit" # Commit files
 For this exercise you can use any folder of files that you want, for example an existing project that you want to version control using Git. You can also use the below code to create a simple folder with a single file in your home directory.
 
 <pre class="bash-terminal">
-<span class="bash-color">user_id@computer_id MINGW64 /c/some/folder</span>
+<span class="bash-insert">/c/some/folder</span>
 $ cd
-<span class="bash-color">user_id@computer_id MINGW64 ~</span>
+<span class="git-insert">~</span>
 $ rm -rf git_example
-<span class="bash-color">user_id@computer_id MINGW64 ~</span>
+<span class="git-insert">~</span>
 $ mkdir git_example
-<span class="bash-color">user_id@computer_id MINGW64 ~</span>
+<span class="git-insert">~</span>
 $ cd git_example
-<span class="bash-color">user_id@computer_id MINGW64 ~/git_example</span>
+<span class="git-insert">~/git_example</span>
 $ echo "file_a content" > file_a.txt
 </pre>
 
@@ -71,13 +71,11 @@ $ echo "file_a content" > file_a.txt
 The solution assumes the folder we are working in is located at "~/git_example". If you are using another folder, start by using `cd` to change the working directory.
 
 <pre class="bash-terminal">
-<span class="bash-color">user_id@computer_id MINGW64 ~/git_example</span>
+<span class="git-insert">~/git_example</span>
 $ git init
-<span class="bash-color">user_id@computer_id MINGW64 ~/git_example</span>
+<span class="git-insert">~/git_example</span>
 $ git add .
-<span class="bash-color">user_id@computer_id MINGW64 ~/git_example</span>
+<span class="git-insert">~/git_example</span>
 $ git commit -m"Initial commit"
 </pre>
 :::
-
-

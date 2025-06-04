@@ -287,23 +287,23 @@ div.csl-indent {
 <section id="example" class="level3" data-number="3.1.1">
 <h3 data-number="3.1.1" class="anchored" data-anchor-id="example"><span class="header-section-number">3.1.1</span> Example</h3>
 <p>In this example we will show how to initialize a Git repository, start tracking files, and commiting them to the repository. First we create a folder with some files that we want to track.</p>
-<pre class="bash-terminal"><span class="bash-color">user_id@computer_id MINGW64 ~</span>
+<pre class="bash-terminal"><span class="git-insert">~</span>
 $ rm -rf git_example # Remove folder if it already exists
-<span class="bash-color">user_id@computer_id MINGW64 ~</span>
+<span class="git-insert">~</span>
 $ mkdir git_example # Make folder
-<span class="bash-color">user_id@computer_id MINGW64 ~</span>
+<span class="git-insert">~</span>
 $ cd git_example # Change working directory
-<span class="bash-color">user_id@computer_id MINGW64 ~/git_example</span>
+<span class="git-insert">~/git_example</span>
 $ echo "file_a content" &gt; file_a.txt # Create file_a.txt
-<span class="bash-color">user_id@computer_id MINGW64 ~/git_example</span>
+<span class="git-insert">~/git_example</span>
 $ echo "file_v content" &gt; file_b.txt # Create file_b.txt
 </pre>
 <p>We can now initialize a Git repository, start tracking all the files in the folder, and commit the current state of the files to the repository.</p>
-<pre class="bash-terminal"><span class="bash-color">user_id@computer_id MINGW64 ~/git_example</span>
+<pre class="bash-terminal"><span class="git-insert">~/git_example</span>
 $ git init # Initialize git repo
-<span class="bash-color">user_id@computer_id MINGW64 ~/git_example</span>
+<span class="git-insert">~/git_example</span>
 $ git add . # Track all files
-<span class="bash-color">user_id@computer_id MINGW64 ~/git_example</span>
+<span class="git-insert">~/git_example</span>
 $ git commit -m"Initial commit" # Commit files
 </pre>
 </section>
@@ -318,15 +318,15 @@ $ git commit -m"Initial commit" # Commit files
 <li><p>Commit the initial state of the files to the repository.</p></li>
 </ol>
 <p>For this exercise you can use any folder of files that you want, for example an existing project that you want to version control using Git. You can also use the below code to create a simple folder with a single file in your home directory.</p>
-<pre class="bash-terminal"><span class="bash-color">user_id@computer_id MINGW64 /c/some/folder</span>
+<pre class="bash-terminal"><span class="bash-insert">/c/some/folder</span>
 $ cd
-<span class="bash-color">user_id@computer_id MINGW64 ~</span>
+<span class="git-insert">~</span>
 $ rm -rf git_example
-<span class="bash-color">user_id@computer_id MINGW64 ~</span>
+<span class="git-insert">~</span>
 $ mkdir git_example
-<span class="bash-color">user_id@computer_id MINGW64 ~</span>
+<span class="git-insert">~</span>
 $ cd git_example
-<span class="bash-color">user_id@computer_id MINGW64 ~/git_example</span>
+<span class="git-insert">~/git_example</span>
 $ echo "file_a content" &gt; file_a.txt
 </pre>
 <div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
@@ -342,11 +342,11 @@ Solution
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>The solution assumes the folder we are working in is located at “~/git_example”. If you are using another folder, start by using <code>cd</code> to change the working directory.</p>
-<pre class="bash-terminal"><span class="bash-color">user_id@computer_id MINGW64 ~/git_example</span>
+<pre class="bash-terminal"><span class="git-insert">~/git_example</span>
 $ git init
-<span class="bash-color">user_id@computer_id MINGW64 ~/git_example</span>
+<span class="git-insert">~/git_example</span>
 $ git add .
-<span class="bash-color">user_id@computer_id MINGW64 ~/git_example</span>
+<span class="git-insert">~/git_example</span>
 $ git commit -m"Initial commit"
 </pre>
 </div>
