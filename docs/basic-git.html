@@ -245,13 +245,16 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#initializing-a-git-repository" id="toc-initializing-a-git-repository" class="nav-link active" data-scroll-target="#initializing-a-git-repository"><span class="header-section-number">3.1</span> Initializing a Git repository</a>
+  <li><a href="#initializing-and-cloning-git-repositories" id="toc-initializing-and-cloning-git-repositories" class="nav-link active" data-scroll-target="#initializing-and-cloning-git-repositories"><span class="header-section-number">3.1</span> Initializing and cloning Git repositories</a>
   <ul>
-  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example"><span class="header-section-number">3.1.1</span> Example</a></li>
+  <li><a href="#initialize-a-new-git-repository" id="toc-initialize-a-new-git-repository" class="nav-link" data-scroll-target="#initialize-a-new-git-repository"><span class="header-section-number">3.1.1</span> Initialize a new Git repository</a></li>
+  <li><a href="#clone-an-existing-git-repository" id="toc-clone-an-existing-git-repository" class="nav-link" data-scroll-target="#clone-an-existing-git-repository"><span class="header-section-number">3.1.2</span> Clone an existing Git repository</a></li>
   </ul></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">3.2</span> Exercises</a>
+  <li><a href="#life-cycle-of-files" id="toc-life-cycle-of-files" class="nav-link" data-scroll-target="#life-cycle-of-files"><span class="header-section-number">3.2</span> Life cycle of files</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">3.3</span> Exercises</a>
   <ul>
-  <li><a href="#exercise---initiate-a-git-repository" id="toc-exercise---initiate-a-git-repository" class="nav-link" data-scroll-target="#exercise---initiate-a-git-repository"><span class="header-section-number">3.2.1</span> Exercise - Initiate a Git repository</a></li>
+  <li><a href="#exercise---initiate-a-git-repository" id="toc-exercise---initiate-a-git-repository" class="nav-link" data-scroll-target="#exercise---initiate-a-git-repository"><span class="header-section-number">3.3.1</span> Exercise - Initiate a Git repository</a></li>
+  <li><a href="#exercise---clone-a-git-repository" id="toc-exercise---clone-a-git-repository" class="nav-link" data-scroll-target="#exercise---clone-a-git-repository"><span class="header-section-number">3.3.2</span> Exercise - Clone a Git repository</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -278,43 +281,51 @@ div.csl-indent {
 </header>
 
 
-<p>In this chapter we will cover the basic Git commmands.</p>
-<section id="initializing-a-git-repository" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="initializing-a-git-repository"><span class="header-section-number">3.1</span> Initializing a Git repository</h2>
-<p>So how do we get started using Git? For the moment, we will work from the starting point of having a local directory with files that we want to start version controlling. To do this we <code>cd</code> to the directory and use the <code>git init</code> command. This creates a new subfolder named “.git” that contains all of the necessary repository files - a Git repository skeleton. We will not discuss the contents of the “.git” folder here, but we will get back to that later.</p>
-<p>We have now initialized a Git repository, but we are not yet tracking any files. We can start tracking files by using the <code>git add</code> command. Finally, we probably want to commit these files to the Git repository, which can be done with <code>git commit</code>.</p>
-<p>At this point we have initiated a Git repository, starting tracking files, and have done an initial commit. We will go over what <code>git add</code> and <code>git commit</code>in detail later, but this is essentially all it takes to use Git in a simple but effective way. Simply keep using <code>git add`` and</code>git commit` at each point your files are in state that you want to save a version of.</p>
-<section id="example" class="level3" data-number="3.1.1">
-<h3 data-number="3.1.1" class="anchored" data-anchor-id="example"><span class="header-section-number">3.1.1</span> Example</h3>
-<p>In this example we will show how to initialize a Git repository, start tracking files, and commiting them to the repository. First we create a folder with some files that we want to track.</p>
+<p>In this chapter we will introduce the set of Git commands that makes it possible to do the majority of what you will be doing when using Git.</p>
+<section id="initializing-and-cloning-git-repositories" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="initializing-and-cloning-git-repositories"><span class="header-section-number">3.1</span> Initializing and cloning Git repositories</h2>
+<p>To get started with using Git we need to either initialize a new Git repository in an existing project where we want to version control the file, or clone an existing Git repository.</p>
+<section id="initialize-a-new-git-repository" class="level3" data-number="3.1.1">
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="initialize-a-new-git-repository"><span class="header-section-number">3.1.1</span> Initialize a new Git repository</h3>
+<p>To initialize a Git repository in an existing directory, we change the work directory to the directory using <code>cd</code> then use the <code>git init</code> command. This creates a new subfolder named “.git” that contains all of the necessary repository files - a Git repository skeleton. We will not discuss the contents of the “.git” folder here. The content of the “.git” folder is not important right now. We will get back to that later.</p>
+<p>We have now initialized a Git repository, but we are not yet tracking any files. We can start tracking files by using the <code>git add</code> command. Finally, we can commit the initial state of the file with <code>git commit</code>. We will go over how to use <code>git add</code> and <code>git commit</code>in detail later, but for now lets just show an example of how you could initialize a Git repository in an existing folder.</p>
 <pre class="bash-terminal"><span class="git-insert">~</span>
-$ rm -rf git_example # Remove folder if it already exists
-<span class="git-insert">~</span>
-$ mkdir git_example # Make folder
-<span class="git-insert">~</span>
-$ cd git_example # Change working directory
-<span class="git-insert">~/git_example</span>
-$ echo "file_a content" &gt; file_a.txt # Create file_a.txt
-<span class="git-insert">~/git_example</span>
-$ echo "file_v content" &gt; file_b.txt # Create file_b.txt
-</pre>
-<p>We can now initialize a Git repository, start tracking all the files in the folder, and commit the current state of the files to the repository.</p>
-<pre class="bash-terminal"><span class="git-insert">~/git_example</span>
+$ cd /c/path/to/dir # Change working directory
+<span class="git-insert">/c/path/to/dir</span>
 $ git init # Initialize git repo
-<span class="git-insert">~/git_example</span>
+<span class="git-insert">/c/path/to/dir</span>
 $ git add . # Track all files
-<span class="git-insert">~/git_example</span>
+<span class="git-insert">/c/path/to/dir</span>
 $ git commit -m"Initial commit" # Commit files
 </pre>
 </section>
+<section id="clone-an-existing-git-repository" class="level3" data-number="3.1.2">
+<h3 data-number="3.1.2" class="anchored" data-anchor-id="clone-an-existing-git-repository"><span class="header-section-number">3.1.2</span> Clone an existing Git repository</h3>
+<p>The other way to get started is to make a clone of an existing Git repository using <code>git clone</code>. This commands make a local clone of an existing Git repository in a folder in the current work directory. Note that the clone of the Git repository is not just a copy of the current version of files in the Git repository, but a clone of the <em>entire</em> Git repository, i.e.&nbsp;the entire history of version of files. It is possible to clone repositories both from the internet, e.g.&nbsp;from a hosting service like GitHub, or repositories located somewhere else on your computer, e.g.&nbsp;on a network drive. Below we show an example of how to clone a repository from GitHub and from a local folder.</p>
+<pre class="bash-terminal"><span class="git-insert">~</span>
+$ git clone https://github.com/some-user/git-repo-name
+<span class="git-insert">~</span>
+$ git clone /f/dir/on/other/drive
+</pre>
 </section>
-<section id="exercises" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="exercises"><span class="header-section-number">3.2</span> Exercises</h2>
-<section id="exercise---initiate-a-git-repository" class="level3" data-number="3.2.1">
-<h3 data-number="3.2.1" class="anchored" data-anchor-id="exercise---initiate-a-git-repository"><span class="header-section-number">3.2.1</span> Exercise - Initiate a Git repository</h3>
+</section>
+<section id="life-cycle-of-files" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="life-cycle-of-files"><span class="header-section-number">3.2</span> Life cycle of files</h2>
+<p>Whether you have initialized a new Git repository or cloned an existing one, you now have a Git repository on your local computer. At this point we are going to take a moment to talk about the different states that files in Git repository can be in.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="diagrams/lifecycle-status-files.svg" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption>Life cycle of files</figcaption>
+</figure>
+</div>
+</section>
+<section id="exercises" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="exercises"><span class="header-section-number">3.3</span> Exercises</h2>
+<section id="exercise---initiate-a-git-repository" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="exercise---initiate-a-git-repository"><span class="header-section-number">3.3.1</span> Exercise - Initiate a Git repository</h3>
 <ol type="1">
 <li><p>Intialize a Git repository in a folder.</p></li>
-<li><p>Start trackin the files in the folder.</p></li>
+<li><p>Start tracking the files in the folder.</p></li>
 <li><p>Commit the initial state of the files to the repository.</p></li>
 </ol>
 <p>For this exercise you can use any folder of files that you want, for example an existing project that you want to version control using Git. You can also use the below code to create a simple folder with a single file in your home directory.</p>
@@ -352,6 +363,9 @@ $ git commit -m"Initial commit"
 </div>
 </div>
 </div>
+</section>
+<section id="exercise---clone-a-git-repository" class="level3" data-number="3.3.2">
+<h3 data-number="3.3.2" class="anchored" data-anchor-id="exercise---clone-a-git-repository"><span class="header-section-number">3.3.2</span> Exercise - Clone a Git repository</h3>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">

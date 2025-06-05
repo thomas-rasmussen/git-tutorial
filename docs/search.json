@@ -385,7 +385,7 @@
     "href": "basic-git.html",
     "title": "3  Basic Git",
     "section": "",
-    "text": "3.1 Initializing a Git repository\nIn this chapter we will cover the basic Git commmands.\nSo how do we get started using Git? For the moment, we will work from the starting point of having a local directory with files that we want to start version controlling. To do this we cd to the directory and use the git init command. This creates a new subfolder named “.git” that contains all of the necessary repository files - a Git repository skeleton. We will not discuss the contents of the “.git” folder here, but we will get back to that later.\nWe have now initialized a Git repository, but we are not yet tracking any files. We can start tracking files by using the git add command. Finally, we probably want to commit these files to the Git repository, which can be done with git commit.\nAt this point we have initiated a Git repository, starting tracking files, and have done an initial commit. We will go over what git add and git commitin detail later, but this is essentially all it takes to use Git in a simple but effective way. Simply keep using git add`` andgit commit` at each point your files are in state that you want to save a version of.",
+    "text": "3.1 Initializing and cloning Git repositories\nIn this chapter we will introduce the set of Git commands that makes it possible to do the majority of what you will be doing when using Git.\nTo get started with using Git we need to either initialize a new Git repository in an existing project where we want to version control the file, or clone an existing Git repository.",
     "crumbs": [
       "Part I - The basics",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Basic Git</span>"
@@ -406,8 +406,8 @@
     "objectID": "basic-git.html#exercises",
     "href": "basic-git.html#exercises",
     "title": "3  Basic Git",
-    "section": "3.2 Exercises",
-    "text": "3.2 Exercises\n\n3.2.1 Exercise - Initiate a Git repository\n\nIntialize a Git repository in a folder.\nStart trackin the files in the folder.\nCommit the initial state of the files to the repository.\n\nFor this exercise you can use any folder of files that you want, for example an existing project that you want to version control using Git. You can also use the below code to create a simple folder with a single file in your home directory.\n/c/some/folder\n$ cd\n~\n$ rm -rf git_example\n~\n$ mkdir git_example\n~\n$ cd git_example\n~/git_example\n$ echo \"file_a content\" &gt; file_a.txt\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\nThe solution assumes the folder we are working in is located at “~/git_example”. If you are using another folder, start by using cd to change the working directory.\n~/git_example\n$ git init\n~/git_example\n$ git add .\n~/git_example\n$ git commit -m\"Initial commit\"\n\n\n\n\n\n\n\n\nChacon, Scott, and Ben Straub. 2021. “Pro Git.” https://git-scm.com/book/en/v2.",
+    "section": "3.3 Exercises",
+    "text": "3.3 Exercises\n\n3.3.1 Exercise - Initiate a Git repository\n\nIntialize a Git repository in a folder.\nStart tracking the files in the folder.\nCommit the initial state of the files to the repository.\n\nFor this exercise you can use any folder of files that you want, for example an existing project that you want to version control using Git. You can also use the below code to create a simple folder with a single file in your home directory.\n/c/some/folder\n$ cd\n~\n$ rm -rf git_example\n~\n$ mkdir git_example\n~\n$ cd git_example\n~/git_example\n$ echo \"file_a content\" &gt; file_a.txt\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\nThe solution assumes the folder we are working in is located at “~/git_example”. If you are using another folder, start by using cd to change the working directory.\n~/git_example\n$ git init\n~/git_example\n$ git add .\n~/git_example\n$ git commit -m\"Initial commit\"\n\n\n\n\n\n\n3.3.2 Exercise - Clone a Git repository\n\n\n\n\nChacon, Scott, and Ben Straub. 2021. “Pro Git.” https://git-scm.com/book/en/v2.",
     "crumbs": [
       "Part I - The basics",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Basic Git</span>"
@@ -419,6 +419,28 @@
     "title": "3  Basic Git",
     "section": "3.3 javascript test",
     "text": "3.3 javascript test\n\ndebug code2\n\nuser_id@computer_id MINGW64 ~/git_example\nuser_id@computer_id MINGW64 ~/git_example with space\n\n\n\n\n\nChacon, Scott, and Ben Straub. 2021. “Pro Git.” https://git-scm.com/book/en/v2.",
+    "crumbs": [
+      "Part I - The basics",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Basic Git</span>"
+    ]
+  },
+  {
+    "objectID": "basic-git.html#initializing-and-cloning-git-repositories",
+    "href": "basic-git.html#initializing-and-cloning-git-repositories",
+    "title": "3  Basic Git",
+    "section": "",
+    "text": "3.1.1 Initialize a new Git repository\nTo initialize a Git repository in an existing directory, we change the work directory to the directory using cd then use the git init command. This creates a new subfolder named “.git” that contains all of the necessary repository files - a Git repository skeleton. We will not discuss the contents of the “.git” folder here. The content of the “.git” folder is not important right now. We will get back to that later.\nWe have now initialized a Git repository, but we are not yet tracking any files. We can start tracking files by using the git add command. Finally, we can commit the initial state of the file with git commit. We will go over how to use git add and git commitin detail later, but for now lets just show an example of how you could initialize a Git repository in an existing folder.\n~\n$ cd /c/path/to/dir # Change working directory\n/c/path/to/dir\n$ git init # Initialize git repo\n/c/path/to/dir\n$ git add . # Track all files\n/c/path/to/dir\n$ git commit -m\"Initial commit\" # Commit files\n\n\n\n3.1.2 Clone an existing Git repository\nThe other way to get started is to make a clone of an existing Git repository using git clone. This commands make a local clone of an existing Git repository in a folder in the current work directory. Note that the clone of the Git repository is not just a copy of the current version of files in the Git repository, but a clone of the entire Git repository, i.e. the entire history of version of files. It is possible to clone repositories both from the internet, e.g. from a hosting service like GitHub, or repositories located somewhere else on your computer, e.g. on a network drive. Below we show an example of how to clone a repository from GitHub and from a local folder.\n~\n$ git clone https://github.com/some-user/git-repo-name\n~\n$ git clone /f/dir/on/other/drive",
+    "crumbs": [
+      "Part I - The basics",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Basic Git</span>"
+    ]
+  },
+  {
+    "objectID": "basic-git.html#life-cycle-of-files",
+    "href": "basic-git.html#life-cycle-of-files",
+    "title": "3  Basic Git",
+    "section": "3.2 Life cycle of files",
+    "text": "3.2 Life cycle of files\nWhether you have initialized a new Git repository or cloned an existing one, you now have a Git repository on your local computer. At this point we are going to take a moment to talk about the different states that files in Git repository can be in.\n\n\n\nLife cycle of files",
     "crumbs": [
       "Part I - The basics",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Basic Git</span>"
