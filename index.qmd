@@ -1,7 +1,4 @@
 
-![](diagrams/title-slide-background.svg)
-
-
 # Preface {.unnumbered}
 
 
@@ -10,7 +7,10 @@
 
 Add something about how all examples and exercises are, by purpose, made so that you can't simply copy+paste code. The idea is that Git and Bash commands are learned by actually typing them over and over again?
 
-## Structure of tutorial
+## Scope of tutorial
+
+
+## 
 
 
 

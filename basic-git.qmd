@@ -51,7 +51,13 @@ When you edit a tracked file, Git sees it as modified since it is different from
 So how do we check the state of our files? The main command to do this is `git status`. If you run this command right after cloning a repository or commiting a snapshot of your files, you will see something like this.
 
 <pre class="bash-terminal">
+<span class="git-insert">~/git_test</span> <span class="git-branch">(main)</span>
+$ git status
+On branch main
+nothing to commit, working tree clean
 </pre>
+
+As the message states, the working tree is clean, i.e. the files in the repository are all unmodified with respect to the last commit. Furthermore, there are no untracked files in the repository, or they would be listed. The message also informs us that we are on the main branch. The name of the branch we are currently on is also always displayed at the end of the first line. We will not talk about branches/branching yet, for now we are always going to be on the main branch (or master branch is you are running an older version of Git).
 
 ## Exercises
 

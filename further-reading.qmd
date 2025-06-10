@@ -1,16 +1,9 @@
 # Further reading
 
-There is no shortage of resources for learning Git. Here is short list of materials that could be of interest for further reading.
+The [official documentation](https://git-scm.com/docs){target="_blank"} is always a good place to start if you want to learn more about what commands are available and how they work. In particular, the freely available book [Pro Git]( https://git-scm.com/book/en/v2){target="_blank"} is well worth a read. Beside that, here is a short list of curated resources that could be of interest:
 
-Pro Git book <https://git-scm.com/book/en/v2>{target="_blank"}
+**Chapter on Git in "Intro Reproductible Research in R"**<br>
+<https://r-cubed-intro.rostools.org/sessions/version-control>{target="_blank"}
 
-<https://r-cubed-intro.rostools.org/appendix/extra-github>{target="_blank"}
-
-<https://learngitbranching.js.org/>{target="_blank"}
-
+**Git exercises**<br>
 <https://gitexercises.fracz.com/>{target="_blank"}
-
-<https://r-cubed-intro.rostools.org/>{target="_blank"}
-
-TODO: Vet current links and add/remove resources. Should probably be divided into section by type, i.e. book/tutorial/exercises/interactive/etc
-

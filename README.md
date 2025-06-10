@@ -4,24 +4,22 @@ Git tutorial
 [Link to tutorial](https://thomas-rasmussen.github.io/git-tutorial/)
 
 TODO
+- Work on making a rough outline on all the topics that are to be covered.
+- Find more resources that are worth including int further-reading.qmd
 - Add information in git-for-windows.qmd on how to make comments with lines starting with "#".
 - Consider how examples and exercises are to be presented in tutorial. Make some tests / template code.
-- Read up on Quarto book documentation, pick a theme, set options for the book etc.
-- Making a book for all the materials is definitely a good idea, but it is also necessary
-  to make some slides for the presentation? Probably yes. It would be better to introduce concepts
-  based on diagrams and keypoints on slides, than showing massive amounts of text from book?
-  Should be easy to throw something together based on code from book?
-  
-- Try to figure out whyfont in the .svg diagrams are changed. The diagrams are
+- Read up on Quarto book documentation, pick a theme, set options for the book etc.  
+- Try to figure out whyfont in the .svg diagrams are (sometimes?) changed. The diagrams are
   exported to .svg and should have the helvetica font embedded, but when shown in
   quarto it is clearly some serif fonttype. This might be because the application/browser
   does not actually know how to handle embedded fonts? Even if they are actually available?
   Maybe it works in other browsers. Check chrome for example. If it is because of firefox, then
-  meh, just leave it as is? Alternatively convert to .png files instead.
+  meh, just leave it as is? Alternatively convert diagrams to .png files instead.
 - For now, diagram title/captions are hardcoded into the diagram, but it would
   be nice if captions could be made in Quarto. Problem is that short captions are
   left aligned, possible to the left of the left edge of the image, which looks
   silly for short captions.
-- Work more on js code that colors words: We can make it even better by only writing the
-  cd directory, and have the js code simply prefix the user_id$computer_id MINGW64 part?
-  Could also add a default path of "~" so that we don't even need to write that?
+- Work more on js code that colors words? It would be great if it could be made even more flexible.
+  Is it possible to make it into a function with parameters, and then apply that function in an HTML
+  tag attribute? This way the function to take arguments specifying what words to insert/color so
+  that it can cover a greater range of command line texts that needs to be augmented / color coded.

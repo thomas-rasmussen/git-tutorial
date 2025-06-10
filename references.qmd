@@ -1,6 +1,0 @@
-# References {.unnumbered}
-
-TODO: Should this section be removed? The "Further reading appendix seems more appropriate. When, if ever, wouuld we acually references something?
-
-::: {#refs}
-:::

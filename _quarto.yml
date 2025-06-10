@@ -14,28 +14,17 @@ book:
   repo-url: https://github.com/thomas-rasmussen/git-tutorial
   chapters:
     - index.qmd
-    - part: "Part I - The basics"
-      chapters: 
-        - introduction-to-version-control.qmd
-        - introduction-to-git.qmd
-        - basic-git.qmd
-    - part: "Part II - Branching and remotes"
-    - part: "Part III - Stand-alone topics"
-      chapters:
-        - workflows.qmd
-        - github.qmd
-        - the-dot-git-folder.qmd
-    
+    - introduction-to-version-control.qmd
+    - introduction-to-git.qmd
+    - basic-git.qmd
+    - workflows.qmd
+    - github.qmd
+    - the-dot-git-folder.qmd
   appendices:
     - git-for-windows.qmd
     - graphical-user-interfaces.qmd
     - further-reading.qmd
-    - references.qmd
 
-bibliography: references.bib
-nocite: |
-  @*
-  
 format:
   html:
     css: styles.css
