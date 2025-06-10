@@ -3,7 +3,7 @@ project:
   output-dir: docs
   
 toc-expand: 2
-toc-depth: 5
+toc-depth: 4
 page-navigation: true
 book:
   title: "Git tutorial"
@@ -14,12 +14,17 @@ book:
   repo-url: https://github.com/thomas-rasmussen/git-tutorial
   chapters:
     - index.qmd
-    - introduction-to-version-control.qmd
-    - introduction-to-git.qmd
-    - basic-git.qmd
-    - workflows.qmd
-    - github.qmd
-    - the-dot-git-folder.qmd
+    - part: "Part I"
+      chapters:
+      - introduction-to-version-control.qmd
+      - introduction-to-git.qmd
+      - basic-git.qmd
+      - workflows.qmd
+    - part: "Part II"
+      chapters:
+      - github.qmd
+      - the-dot-git-folder.qmd
+      
   appendices:
     - git-for-windows.qmd
     - graphical-user-interfaces.qmd

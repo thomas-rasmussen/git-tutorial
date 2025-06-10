@@ -1,4 +1,4 @@
-# Git BASH
+# Git for Windows {#sec-git-for-windows}
 
 [Git for Windows](https://gitforwindows.org/){target="_blank"} is a set of tools for Windows users. Of main interest, Git for Windows provides a Bash emulation used to run Git from the command line. Using Git Bash, Windows users can use "git" commands exactly like one would do in Linux and Unix environments. Besides the full set of Git core commands, Git Bash is also packaged with additional shell commands that can be useful.
 

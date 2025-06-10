@@ -4,6 +4,8 @@ Git tutorial
 [Link to tutorial](https://thomas-rasmussen.github.io/git-tutorial/)
 
 TODO
+- Prerequisites listed in index.qmd. If the scope of the tutorial ends up covering how to use GitHub,
+  update to include that you need to have setup a GitHub account.
 - Work on making a rough outline on all the topics that are to be covered.
 - Find more resources that are worth including int further-reading.qmd
 - Add information in git-for-windows.qmd on how to make comments with lines starting with "#".
