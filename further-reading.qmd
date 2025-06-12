@@ -7,3 +7,6 @@ The [official documentation](https://git-scm.com/docs){target="_blank"} is alway
 
 **Git exercises**<br>
 <https://gitexercises.fracz.com/>{target="_blank"}
+
+**Happy Git and GitHub for the useR**<br>
+<https://happygitwithr.com/>{target="_blank"}

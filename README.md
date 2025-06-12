@@ -4,6 +4,10 @@ Git tutorial
 [Link to tutorial](https://thomas-rasmussen.github.io/git-tutorial/)
 
 TODO
+- introduction-to-git.qmd notes:
+  - "Everything is checksummed" section: maybe add some more details and/or write an appendix?
+  - "Screwing up" section: There will be a section somewhere at some point on how to undo stuff in Git.
+    add a crossreference?
 - Prerequisites listed in index.qmd. If the scope of the tutorial ends up covering how to use GitHub,
   update to include that you need to have setup a GitHub account.
 - Work on making a rough outline on all the topics that are to be covered.

@@ -32,7 +32,7 @@ This tutorial is structured in two parts. Part I covers how to use all the basic
 
 The only prerequisite for this tutorial is that you are on a Windows machine and have Git BASH installed. See @sec-git-for-windows for more details. Although this tutorial assumes you are using Git BASH on a Windows machine, it should be easy to follow the tutorial if you are using another command line program on another operation system.
 
-## On examples and exercises
+## Examples and exercises
 
 The tutorial includes (running) examples illustrating all the commands that are introduced. Each chapter also concludes with a set of exercises. The tutorial uses terminal commands to create/modify/delete files in examples and exercises. You are encouraged to also you Git BASH commands to create/modify/delete files in exercises, but if you are more comfortable with point-and-click approaches to this, that is of course also fine.
 

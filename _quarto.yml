@@ -1,9 +1,11 @@
 project:
   type: book
   output-dir: docs
+  preview: 
+    browser: true
+    watch-inputs: true
+    
   
-toc-expand: 2
-toc-depth: 4
 page-navigation: true
 book:
   title: "Git tutorial"
@@ -16,10 +18,8 @@ book:
     - index.qmd
     - part: "Part I"
       chapters:
-      - introduction-to-version-control.qmd
       - introduction-to-git.qmd
       - basic-git.qmd
-      - workflows.qmd
     - part: "Part II"
       chapters:
       - github.qmd
@@ -32,6 +32,11 @@ book:
 
 format:
   html:
+    number-sections: true
+    number-depth: 3
+    toc: true
+    toc-expand: true
+    toc-depth: 3
     css: styles.css
     theme: minty
     include-in-header:

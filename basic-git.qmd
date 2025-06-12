@@ -59,6 +59,33 @@ nothing to commit, working tree clean
 
 As the message states, the working tree is clean, i.e. the files in the repository are all unmodified with respect to the last commit. Furthermore, there are no untracked files in the repository, or they would be listed. The message also informs us that we are on the main branch. The name of the branch we are currently on is also always displayed at the end of the first line. We will not talk about branches/branching yet, for now we are always going to be on the main branch (or master branch is you are running an older version of Git).
 
+
+
+
+## Where to get help
+
+TODO: this section should be somewhere in this chapter
+
+If you need help with how to use a Git, all of the commands have a comprehensive manual page that can be accessed in multiple ways. One such way is to use the `git help` command:
+
+<pre class="git-command">
+$ git help &lt;verb&gt;
+</pre>
+
+For example, if you want to access the manual page for the `add` command you can run the following command.
+
+<pre class="git-command">
+$ git help add
+</pre>
+
+A concise version of the manual page for a command showing the available options can also be output by using the `-h` option with a command, like so
+
+<pre class="git-command">
+$ git add -h
+</pre>
+
+
+
 ## Exercises
 
 ### Exercise - Initiate a Git repository

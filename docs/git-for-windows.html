@@ -131,26 +131,14 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./introduction-to-version-control.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to version control</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./introduction-to-git.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction to Git</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to Git</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./basic-git.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Basic Git</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./workflows.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Workflows</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Basic Git</span></span></a>
   </div>
 </li>
       </ul>
@@ -167,13 +155,13 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./github.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">GitHub</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">GitHub</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./the-dot-git-folder.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The .git folder</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The .git folder</span></span></a>
   </div>
 </li>
       </ul>
@@ -213,55 +201,22 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="2">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
   <li><a href="#shortcut-keys" id="toc-shortcut-keys" class="nav-link active" data-scroll-target="#shortcut-keys"><span class="header-section-number">A.1</span> Shortcut keys</a></li>
   <li><a href="#git-bash-commands" id="toc-git-bash-commands" class="nav-link" data-scroll-target="#git-bash-commands"><span class="header-section-number">A.2</span> Git BASH commands</a></li>
   <li><a href="#note-on-command-options" id="toc-note-on-command-options" class="nav-link" data-scroll-target="#note-on-command-options"><span class="header-section-number">A.3</span> Note on command options</a>
-  <ul>
-  <li><a href="#cd" id="toc-cd" class="nav-link" data-scroll-target="#cd"><span class="header-section-number">A.3.1</span> cd</a>
-  <ul>
-  <li><a href="#example---change-directory" id="toc-example---change-directory" class="nav-link" data-scroll-target="#example---change-directory"><span class="header-section-number">A.3.1.1</span> Example - Change directory</a></li>
-  <li><a href="#example---file-path-with-spaces" id="toc-example---file-path-with-spaces" class="nav-link" data-scroll-target="#example---file-path-with-spaces"><span class="header-section-number">A.3.1.2</span> Example - file path with spaces</a></li>
-  <li><a href="#example---change-to-subdirectory" id="toc-example---change-to-subdirectory" class="nav-link" data-scroll-target="#example---change-to-subdirectory"><span class="header-section-number">A.3.1.3</span> Example - Change to subdirectory</a></li>
-  <li><a href="#example---change-to-parent-directory" id="toc-example---change-to-parent-directory" class="nav-link" data-scroll-target="#example---change-to-parent-directory"><span class="header-section-number">A.3.1.4</span> Example - Change to parent directory</a></li>
-  <li><a href="#example---change-to-previous-directory" id="toc-example---change-to-previous-directory" class="nav-link" data-scroll-target="#example---change-to-previous-directory"><span class="header-section-number">A.3.1.5</span> Example - Change to previous directory</a></li>
-  <li><a href="#example---changing-working-directory-to-users-home-directory" id="toc-example---changing-working-directory-to-users-home-directory" class="nav-link" data-scroll-target="#example---changing-working-directory-to-users-home-directory"><span class="header-section-number">A.3.1.6</span> Example - Changing working directory to user’s home directory</a></li>
-  </ul></li>
-  <li><a href="#clear" id="toc-clear" class="nav-link" data-scroll-target="#clear"><span class="header-section-number">A.3.2</span> clear</a>
-  <ul>
-  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example"><span class="header-section-number">A.3.2.1</span> Example</a></li>
-  </ul></li>
-  <li><a href="#echo-echo" id="toc-echo-echo" class="nav-link" data-scroll-target="#echo-echo"><span class="header-section-number">A.3.3</span> echo &gt; / echo &gt;&gt;</a>
-  <ul>
-  <li><a href="#example---create-empty-text-file" id="toc-example---create-empty-text-file" class="nav-link" data-scroll-target="#example---create-empty-text-file"><span class="header-section-number">A.3.3.1</span> Example - Create empty text file</a></li>
-  <li><a href="#example---create-text-file-with-content" id="toc-example---create-text-file-with-content" class="nav-link" data-scroll-target="#example---create-text-file-with-content"><span class="header-section-number">A.3.3.2</span> Example - Create text file with content</a></li>
-  <li><a href="#example---append-content-to-existing-text-file" id="toc-example---append-content-to-existing-text-file" class="nav-link" data-scroll-target="#example---append-content-to-existing-text-file"><span class="header-section-number">A.3.3.3</span> Example - Append content to existing text file</a></li>
-  </ul></li>
-  <li><a href="#ls" id="toc-ls" class="nav-link" data-scroll-target="#ls"><span class="header-section-number">A.3.4</span> ls</a>
-  <ul>
-  <li><a href="#example---list-content-of-work-directory" id="toc-example---list-content-of-work-directory" class="nav-link" data-scroll-target="#example---list-content-of-work-directory"><span class="header-section-number">A.3.4.1</span> Example - List content of work directory</a></li>
-  <li><a href="#example---list-all-content-of-a-directory" id="toc-example---list-all-content-of-a-directory" class="nav-link" data-scroll-target="#example---list-all-content-of-a-directory"><span class="header-section-number">A.3.4.2</span> Example - List all content of a directory</a></li>
-  <li><a href="#example---list-one-entry-per-line" id="toc-example---list-one-entry-per-line" class="nav-link" data-scroll-target="#example---list-one-entry-per-line"><span class="header-section-number">A.3.4.3</span> Example - List one entry per line</a></li>
-  </ul></li>
-  <li><a href="#mkdir" id="toc-mkdir" class="nav-link" data-scroll-target="#mkdir"><span class="header-section-number">A.3.5</span> mkdir</a>
-  <ul>
-  <li><a href="#example-1" id="toc-example-1" class="nav-link" data-scroll-target="#example-1"><span class="header-section-number">A.3.5.1</span> Example</a></li>
-  </ul></li>
-  <li><a href="#pwd" id="toc-pwd" class="nav-link" data-scroll-target="#pwd"><span class="header-section-number">A.3.6</span> pwd</a>
-  <ul>
-  <li><a href="#example-2" id="toc-example-2" class="nav-link" data-scroll-target="#example-2"><span class="header-section-number">A.3.6.1</span> Example</a></li>
-  </ul></li>
-  <li><a href="#rm" id="toc-rm" class="nav-link" data-scroll-target="#rm"><span class="header-section-number">A.3.7</span> rm</a>
-  <ul>
-  <li><a href="#example---remove-file" id="toc-example---remove-file" class="nav-link" data-scroll-target="#example---remove-file"><span class="header-section-number">A.3.7.1</span> Example - Remove file</a></li>
-  </ul></li>
-  <li><a href="#start" id="toc-start" class="nav-link" data-scroll-target="#start"><span class="header-section-number">A.3.8</span> start</a>
-  <ul>
-  <li><a href="#example---open-current-working-directory-in-windows-explorer" id="toc-example---open-current-working-directory-in-windows-explorer" class="nav-link" data-scroll-target="#example---open-current-working-directory-in-windows-explorer"><span class="header-section-number">A.3.8.1</span> Example - Open current working directory in Windows explorer</a></li>
-  </ul></li>
+  <ul class="collapse">
+  <li><a href="#cd" id="toc-cd" class="nav-link" data-scroll-target="#cd"><span class="header-section-number">A.3.1</span> cd</a></li>
+  <li><a href="#clear" id="toc-clear" class="nav-link" data-scroll-target="#clear"><span class="header-section-number">A.3.2</span> clear</a></li>
+  <li><a href="#echo-echo" id="toc-echo-echo" class="nav-link" data-scroll-target="#echo-echo"><span class="header-section-number">A.3.3</span> echo &gt; / echo &gt;&gt;</a></li>
+  <li><a href="#ls" id="toc-ls" class="nav-link" data-scroll-target="#ls"><span class="header-section-number">A.3.4</span> ls</a></li>
+  <li><a href="#mkdir" id="toc-mkdir" class="nav-link" data-scroll-target="#mkdir"><span class="header-section-number">A.3.5</span> mkdir</a></li>
+  <li><a href="#pwd" id="toc-pwd" class="nav-link" data-scroll-target="#pwd"><span class="header-section-number">A.3.6</span> pwd</a></li>
+  <li><a href="#rm" id="toc-rm" class="nav-link" data-scroll-target="#rm"><span class="header-section-number">A.3.7</span> rm</a></li>
+  <li><a href="#start" id="toc-start" class="nav-link" data-scroll-target="#start"><span class="header-section-number">A.3.8</span> start</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -444,8 +399,8 @@ $
 <p>If the file path contains spaces, enclose the file path in (double) quotes.</p>
 <p>Git for Windows also comes with shell integration, so an alternative to using <code>cd</code> we can change the working directory by navigating to the folder in Windows explorer, right click on the folder (shift+right click on Windows 11) and select “Open Git Bash here”.</p>
 <p><strong>Link to documentation:</strong><br> <a href="https://ss64.com/bash/cd.html" target="_blank">https://ss64.com/bash/cd.html</a></p>
-<section id="example---change-directory" class="level4" data-number="A.3.1.1">
-<h4 data-number="A.3.1.1" class="anchored" data-anchor-id="example---change-directory"><span class="header-section-number">A.3.1.1</span> Example - Change directory</h4>
+<section id="example---change-directory" class="level4">
+<h4 class="anchored" data-anchor-id="example---change-directory">Example - Change directory</h4>
 <p>We can use <code>cd</code> to change the working directory by providing a file path to the directory.</p>
 <pre class="bash-terminal"><span class="git-insert">~</span>
 $ cd C:/path/to/directory
@@ -454,8 +409,8 @@ $
 </pre>
 <p>Note that the working directory was set as <span style="font-family:monospace">C:/path/to/directory</span>, but is displayed on the form <span style="font-family:monospace">/c/path/to/directory</span></p>
 </section>
-<section id="example---file-path-with-spaces" class="level4" data-number="A.3.1.2">
-<h4 data-number="A.3.1.2" class="anchored" data-anchor-id="example---file-path-with-spaces"><span class="header-section-number">A.3.1.2</span> Example - file path with spaces</h4>
+<section id="example---file-path-with-spaces" class="level4">
+<h4 class="anchored" data-anchor-id="example---file-path-with-spaces">Example - file path with spaces</h4>
 <p>If a file path contains spaces, enclose the file path in (double) quotes.</p>
 <pre class="bash-terminal"><span class="git-insert">~</span>
 $ cd "/c/path/to/some directory"
@@ -463,8 +418,8 @@ $ cd "/c/path/to/some directory"
 $
 </pre>
 </section>
-<section id="example---change-to-subdirectory" class="level4" data-number="A.3.1.3">
-<h4 data-number="A.3.1.3" class="anchored" data-anchor-id="example---change-to-subdirectory"><span class="header-section-number">A.3.1.3</span> Example - Change to subdirectory</h4>
+<section id="example---change-to-subdirectory" class="level4">
+<h4 class="anchored" data-anchor-id="example---change-to-subdirectory">Example - Change to subdirectory</h4>
 <p>To change the current working directory to a subdirectory of the current working directory, we can simple set <code>DIR</code> to the subdirectory name.</p>
 <pre class="bash-terminal"><span class="git-insert">/c/path/to/dir</span>
 $ cd subfolder
@@ -472,8 +427,8 @@ $ cd subfolder
 $
 </pre>
 </section>
-<section id="example---change-to-parent-directory" class="level4" data-number="A.3.1.4">
-<h4 data-number="A.3.1.4" class="anchored" data-anchor-id="example---change-to-parent-directory"><span class="header-section-number">A.3.1.4</span> Example - Change to parent directory</h4>
+<section id="example---change-to-parent-directory" class="level4">
+<h4 class="anchored" data-anchor-id="example---change-to-parent-directory">Example - Change to parent directory</h4>
 <p>We can change the working directory to the parent directory by setting <code>DIR</code> to “..”.</p>
 <pre class="bash-terminal"><span class="git-insert">/c/path/to/dir</span>
 $ cd ..
@@ -487,8 +442,8 @@ $ cd ../dir_b
 $
 </pre>
 </section>
-<section id="example---change-to-previous-directory" class="level4" data-number="A.3.1.5">
-<h4 data-number="A.3.1.5" class="anchored" data-anchor-id="example---change-to-previous-directory"><span class="header-section-number">A.3.1.5</span> Example - Change to previous directory</h4>
+<section id="example---change-to-previous-directory" class="level4">
+<h4 class="anchored" data-anchor-id="example---change-to-previous-directory">Example - Change to previous directory</h4>
 <p>We can change the working directory to the previous working directory by setting <code>DIR</code> to “-”.</p>
 <pre class="bash-terminal"><span class="git-insert">/c/current/cd/dir</span>
 $ cd -
@@ -496,8 +451,8 @@ $ cd -
 $
 </pre>
 </section>
-<section id="example---changing-working-directory-to-users-home-directory" class="level4" data-number="A.3.1.6">
-<h4 data-number="A.3.1.6" class="anchored" data-anchor-id="example---changing-working-directory-to-users-home-directory"><span class="header-section-number">A.3.1.6</span> Example - Changing working directory to user’s home directory</h4>
+<section id="example---changing-working-directory-to-users-home-directory" class="level4">
+<h4 class="anchored" data-anchor-id="example---changing-working-directory-to-users-home-directory">Example - Changing working directory to user’s home directory</h4>
 <p>We can set the current working directory to the user’s home directory by not specifying <code>DIR</code>, or by setting <code>DIR</code> to “~”.</p>
 <pre class="bash-terminal"><span class="git-insert">/c/current/dir</span>
 $ cd ~
@@ -515,8 +470,8 @@ $
 <p><strong>Syntax:</strong> <code>clear</code></p>
 <p><strong>Description:</strong><br> Clear the terminal screen.</p>
 <p><strong>Link to documentation:</strong><br> No documentation available.</p>
-<section id="example" class="level4" data-number="A.3.2.1">
-<h4 data-number="A.3.2.1" class="anchored" data-anchor-id="example"><span class="header-section-number">A.3.2.1</span> Example</h4>
+<section id="example" class="level4">
+<h4 class="anchored" data-anchor-id="example">Example</h4>
 <p>Imagine we had the history shown in the terminal below, ending with a <code>clear</code> command.</p>
 <pre class="bash-terminal"><span class="git-insert">~</span>
 $ cd C:/path/to/directory
@@ -535,8 +490,8 @@ $
 <p><strong>Syntax:</strong> <code>echo [STRING] &gt;&gt; [FILE]</code></p>
 <p><strong>Description:</strong><br> Append <code>STRING</code> content to <code>FILE</code> using the “&gt;&gt;” redirection operator. If the file does not exist it will be created. If “&gt;&gt;” is replaced with “&gt;” then the given <code>STRING</code> overwrites the content of <code>FILE</code>.</p>
 <p><strong>Link to documentation:</strong><br> <a href="https://ss64.com/bash/echo.html" target="_blank">https://ss64.com/bash/echo.html</a></p>
-<section id="example---create-empty-text-file" class="level4" data-number="A.3.3.1">
-<h4 data-number="A.3.3.1" class="anchored" data-anchor-id="example---create-empty-text-file"><span class="header-section-number">A.3.3.1</span> Example - Create empty text file</h4>
+<section id="example---create-empty-text-file" class="level4">
+<h4 class="anchored" data-anchor-id="example---create-empty-text-file">Example - Create empty text file</h4>
 <p>You can create an empty file by not providing any <code>STRING</code> and using the “&gt;” redirection operator (this will overwrite the any existing file with the same name).</p>
 <pre class="bash-terminal"><span class="git-insert">~</span>
 $ echo &gt; empty_file.txt
@@ -548,8 +503,8 @@ $ echo &gt; empty_file.txt
 </div>
 </div>
 </section>
-<section id="example---create-text-file-with-content" class="level4" data-number="A.3.3.2">
-<h4 data-number="A.3.3.2" class="anchored" data-anchor-id="example---create-text-file-with-content"><span class="header-section-number">A.3.3.2</span> Example - Create text file with content</h4>
+<section id="example---create-text-file-with-content" class="level4">
+<h4 class="anchored" data-anchor-id="example---create-text-file-with-content">Example - Create text file with content</h4>
 <p>We can create a new text file with some content in it (or overwrite an existing file) by using the “&gt;” redirection operator and by providing a <code>STRING</code> with the content.</p>
 <pre class="bash-terminal"><span class="git-insert">~</span>
 $ echo "Some content" &gt; new_file.txt
@@ -561,8 +516,8 @@ Some content
 </div>
 </div>
 </section>
-<section id="example---append-content-to-existing-text-file" class="level4" data-number="A.3.3.3">
-<h4 data-number="A.3.3.3" class="anchored" data-anchor-id="example---append-content-to-existing-text-file"><span class="header-section-number">A.3.3.3</span> Example - Append content to existing text file</h4>
+<section id="example---append-content-to-existing-text-file" class="level4">
+<h4 class="anchored" data-anchor-id="example---append-content-to-existing-text-file">Example - Append content to existing text file</h4>
 <p>To append content to an existing text file use the “&gt;&gt;” redirection operator.</p>
 <pre class="bash-terminal"><span class="git-insert">~</span>
 $ echo "Some content" &gt; append_file.txt
@@ -585,8 +540,8 @@ Some more content
 <p>List directories and files in <code>DIR</code>. If <code>DIR</code> is not provided, lists the content of the current working directory. Content is listed alphabetically.</p>
 <p><strong>OPTIONS:</strong><br> <strong>-a</strong><br> Do not ignore entries starting with dot (.), i.e.&nbsp;hidden files.<br> <strong>-1</strong><br> List one file per line.<br></p>
 <p><strong>Link to documentation:</strong><br> <a href="https://ss64.com/bash/ls.html" target="_blank">https://ss64.com/bash/ls.html</a></p>
-<section id="example---list-content-of-work-directory" class="level4" data-number="A.3.4.1">
-<h4 data-number="A.3.4.1" class="anchored" data-anchor-id="example---list-content-of-work-directory"><span class="header-section-number">A.3.4.1</span> Example - List content of work directory</h4>
+<section id="example---list-content-of-work-directory" class="level4">
+<h4 class="anchored" data-anchor-id="example---list-content-of-work-directory">Example - List content of work directory</h4>
 <p>If we want to see a list of content in the current work directory, we can use <code>ls</code>.</p>
 <pre class="bash-terminal"><span class="git-insert">/c/some/dir</span>
 $ ls
@@ -595,8 +550,8 @@ $ ls
 </pre>
 <p>By default multiple entries are listed in each line and directories are colour-coded and has a “/” suffix.</p>
 </section>
-<section id="example---list-all-content-of-a-directory" class="level4" data-number="A.3.4.2">
-<h4 data-number="A.3.4.2" class="anchored" data-anchor-id="example---list-all-content-of-a-directory"><span class="header-section-number">A.3.4.2</span> Example - List all content of a directory</h4>
+<section id="example---list-all-content-of-a-directory" class="level4">
+<h4 class="anchored" data-anchor-id="example---list-all-content-of-a-directory">Example - List all content of a directory</h4>
 By default, entries starting with a dot (.), i.e.&nbsp;hidden files, are ignored. Use the “-a” option to list all files.
 <pre class="bash-terminal"><span class="git-insert">/c/some/git_repo</span>
 $ ls -a
@@ -604,8 +559,8 @@ $ ls -a
 .gitignore file_b.txt file_d.txt file_f.txt
 </pre>
 </section>
-<section id="example---list-one-entry-per-line" class="level4" data-number="A.3.4.3">
-<h4 data-number="A.3.4.3" class="anchored" data-anchor-id="example---list-one-entry-per-line"><span class="header-section-number">A.3.4.3</span> Example - List one entry per line</h4>
+<section id="example---list-one-entry-per-line" class="level4">
+<h4 class="anchored" data-anchor-id="example---list-one-entry-per-line">Example - List one entry per line</h4>
 <p>We can use the “-1” option to list only one entry per line.</p>
 <pre class="bash-terminal"><span class="git-insert">/c/some/dir</span>
 $ ls -1
@@ -626,8 +581,8 @@ file_f.txt
 <p>Create folder.</p>
 <p>Create a new folder with name <code>FOLDER</code> in the current working directory, if it does not already exists. If the folder name contains spaces enclose the name in quotes.</p>
 <p><strong>Link to documentation:</strong><br> <a href="https://ss64.com/bash/mkdir.html" target="_blank">https://ss64.com/bash/mkdir.html</a></p>
-<section id="example-1" class="level4" data-number="A.3.5.1">
-<h4 data-number="A.3.5.1" class="anchored" data-anchor-id="example-1"><span class="header-section-number">A.3.5.1</span> Example</h4>
+<section id="example-1" class="level4">
+<h4 class="anchored" data-anchor-id="example-1">Example</h4>
 <p>Create new folders. Note that we don’t have to enclose the folder name in quotes if it contains no spaces.</p>
 <pre class="bash-terminal"><span class="git-insert">/c/some/dir</span>
 $ ls -1
@@ -651,8 +606,8 @@ file_b.txt
 <p><strong>Syntax:</strong> <code>pwd</code><br></p>
 <p>Print working directory.</p>
 <p><strong>Link to documentation:</strong><br> <a href="https://ss64.com/bash/pwd.html" target="_blank">https://ss64.com/bash/pwd.html</a></p>
-<section id="example-2" class="level4" data-number="A.3.6.1">
-<h4 data-number="A.3.6.1" class="anchored" data-anchor-id="example-2"><span class="header-section-number">A.3.6.1</span> Example</h4>
+<section id="example-2" class="level4">
+<h4 class="anchored" data-anchor-id="example-2">Example</h4>
 <p>When working with Git this command is mainly used to see where the current user’s home directory is, since the current working directory is always shown in the terminal.</p>
 <pre class="bash-terminal"><span class="git-insert">~</span>
 $ pwd
@@ -669,8 +624,8 @@ $ pwd
 <p>You should, obviously, be VERY careful when deleting files using terminal commands. Especially if you delete directories and their contents recursively.</p>
 <p><strong>OPTIONS:</strong><br> <strong>-f</strong><br> Ignore non-existent files, never prompt.<br> <strong>-r</strong><br> Remove directories and their contents recursively.</p>
 <p><strong>Link to documentation:</strong><br> <a href="https://ss64.com/bash/rm.html" target="_blank">https://ss64.com/bash/rm.html</a></p>
-<section id="example---remove-file" class="level4" data-number="A.3.7.1">
-<h4 data-number="A.3.7.1" class="anchored" data-anchor-id="example---remove-file"><span class="header-section-number">A.3.7.1</span> Example - Remove file</h4>
+<section id="example---remove-file" class="level4">
+<h4 class="anchored" data-anchor-id="example---remove-file">Example - Remove file</h4>
 <pre class="bash-terminal"><span class="git-insert">/c/some/dir</span>
 $ ls
 file_a.txt file_b.txt
@@ -688,8 +643,8 @@ file_b.txt
 <p>Start a program, or open a file/directory in Windows Explorer.</p>
 <p><span style="color:blue">TODO: Try to find some documentation on this command. This does not seem to be the CMD <code>START</code> command? Why does something like<code>start firefox</code> actually work??? </span></p>
 <p><strong>Link to documentation:</strong><br></p>
-<section id="example---open-current-working-directory-in-windows-explorer" class="level4" data-number="A.3.8.1">
-<h4 data-number="A.3.8.1" class="anchored" data-anchor-id="example---open-current-working-directory-in-windows-explorer"><span class="header-section-number">A.3.8.1</span> Example - Open current working directory in Windows explorer</h4>
+<section id="example---open-current-working-directory-in-windows-explorer" class="level4">
+<h4 class="anchored" data-anchor-id="example---open-current-working-directory-in-windows-explorer">Example - Open current working directory in Windows explorer</h4>
 <p>We can open the current working directory in Windows explorer by simply using <code>start .</code></p>
 <pre class="bash-terminal"><span class="git-insert">/c/some/dir</span>
 $ start .
@@ -1103,7 +1058,7 @@ $ start .
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./the-dot-git-folder.html" class="pagination-link" aria-label="The .git folder">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The .git folder</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The .git folder</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
