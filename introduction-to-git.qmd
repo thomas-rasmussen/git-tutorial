@@ -1,24 +1,22 @@
 # Introduction to Git
 
-This chapter starts with a short introduction to *version control* and version control systems (VCS's) in general, before moving on to introducing Git. The goal of this chapter is to get a basic idea about what Git is and how it works, before we move on to actually using it. This will (hopefully) make it easier to learn Git and use it effectively.
+This chapter is a short introduction to *version control* and version control systems (VCS's) in general, followed by an introduction to Git. The goal of this chapter is to get a basic idea about what Git is and how it works, before we move on to actually using it. This will (hopefully) make it easier to learn Git and use it effectively.
 
 ## What is version control?
 
-*Version control* is the practice of organizing and tracking different versions of computer files over time. Generally, you can do this for any type of file, but it is primarily done for source code, i.e. plain text files. Using version control enables viewing old versions of files, reverting a file to a previous version etc.
-
-A *version control system* (VCS) is a software tool that automates version control. You might already use a "VCS" without realizing it. The common practice of making copies of files and saving them elsewhere is the most simple form of version control. It is a very simple and straight-forward approach, but it is also very error prone and of limited use.
+*Version control* is the practice of organizing and tracking different versions of computer files over time. Generally, you can do this for any types of files, but it is primarily done for source code, i.e. plain text files. A *version control system* (VCS) is a software tool that automates version control. You might already use a "VCS" without realizing it. The common practice of making copies of files and saving them elsewhere is the most simple form of version control. It is a very straight-forward approach, but it is also very error prone. For small projects with a single developer and a linear history of versions of files, this approach can be acceptable in practice if you are careful. But as soon as a project grows in complexity, or if you need to collaborate on the files with others, or if the history of versions of files is non-linear, this simple approach quickly becomes hard to manage in practice. A manual approach to version control is also of limited use, since you can't do much with it other than manually moving around different versions of files. You lack tools to compare versions of files, see the history of versions of files, see who made what changes to what files etc. Finally, if the computer files are only stored on a single computer or server, the files are also vulnerable to data loss if the computer or server dies and proper backups are not kept.
 
 ### Local VCS
 
 <div style="display:flex">
-<div style="flex:50%">
-The first development toward better version control solutions was so-called local VCS's. A local VCS is a local database on a single computer that keeps track of changes to files. Using a local VCS is can improvement over manual version control and can be useful for small and/or personal projects, but these types of VCS's still have important limitations:
+<div style="flex:50%;">
+The first development away from manual version control solutions was so-called local VCS's. A local VCS is a local database on a single computer that keeps track of changes to files. Using a local VCS is can improvement over manual version control and can be useful for small and/or personal projects, but these types of VCS's still have important limitations:
 
 - All file versions are stored locally, making it vulnerable to data loss.
 
 - It is difficult to collaborate with others using a local VCS, since changes can't easily be shared or consolidated.
 </div>
-<div style="flex:50%;margin:1em;">
+<div style="flex:50%;">
 ![Local VCS](./diagrams/local-vcs.svg)
 </div>
 </div>
@@ -39,12 +37,12 @@ However, centralized VCS's still have limitations:
 
 - Single point of failure: If the server dies and no proper backup has been kept, the entire history of the project is lost except whatever snapshots of files people happen to have on their local machines.
 
-- It is typically not possible to work offline. If the central server is temporarily offline or if the developer does not have an internet connection it is not possible to "commit" changes to files.
+- It is typically not possible to work offline. If the central server is temporarily offline or if the developer does not have an internet connection, it is not possible to "commit" changes to files.
 
 - Operations requires communication with the central server which can be slow, especially for large projects.
 
 </div>
-<div style="flex:50%;margin:1em;">
+<div style="flex:50%;">
 ![Centalized VCS](./diagrams/centralized-vcs.svg)
 </div>
 </div>
@@ -81,7 +79,44 @@ On the other hand distributed VCS's also comes with some downsides:
 
 So what is Git and how did it come to be? Git is a distributed VCS, and it is born from controversy. In 2005 the relationship soured between the Linux kernel project and the company owning the proprietary distributed VCS, BitKeeper, that the Linux community was using as a VCS. This resulted in the free licence of BitKeeper that the Linux community was using being revoked. Prompted by this, the Linux developer community (in particular Linus Thorvald, the creator of Linux) developed their own tool to replace BitKeeper. Git was designed with several key goals in mind that was needed for the Linux kernel project: speed, simple design, strong support for non-linear development, a fully distributed nature, and the ability to handle large projects efficiently.
 
+### The main sections of a Git project
+
+The most important aspect of Git to understand is the three main states that files can be in: modified, staged, and commited:
+
+- **Modified:** Files that have been changed, but has not been committed to the repository yet.
+
+- **Staged:** Files that have been marked, in their current version, to go into the next commit snapshot.
+
+- **Committed**: Files that have been stored in the Git repository.
+
+This leads us to the three main sections of a Git project: the working tree, the staging area, and the Git directory.
+
+<div style="display:flex; justify-content:center">
+![The three states of files](./diagrams/the-three-states-of-files.svg)
+</div>
+
+The **working tree** is a version of the project that has been checked out. These files are pulled out of the compressed database of the Git directory and placed on disk for you to use or modify.
+
+The **staging area** is a file in your Git directory that stores information about what will go into your next commit. Its technical name in is the "index", but the phrase "staging area" is also commonly used.
+
+The **Git directory** is where Git stores the metadata and object database for your project. It is located in the ".git" folder. This is the most important part of Git, and it is what is copied when you *clone* (make a copy of) a repository from another computer.
+
+The basic workflow when using Git is something like:
+
+1. You checkout a version of your project you want to work on into the working tree (usually the newest version that is already there).
+
+2. You modify the files in the working tree.
+
+2. You stage (some) changes to be included in the next commit.
+
+3. Commit the changes to the Git repository.
+
+4. Repeat.
+
+If a particular version of a file is in the Git directory, it is considered **committed**. If it has been modified and added to the staging area it is **staged**, and if it was changed since it was checked out but has not been staged, it is *modified*.
+
 ### File storing in Git
+
 A major difference between Git and many other VCS's is how Git stores data. In other systems, files are typically stored as a set of base versions of files and the changes made to each file over time. This is commonly called *delta-based* version control.
 
 ![Delta-based version control - data is stored as changes to a base version of each file](./diagrams/delta-based-version-control.svg)
@@ -89,53 +124,31 @@ A major difference between Git and many other VCS's is how Git stores data. In o
 This is not how Git stores data. In Git, data is stored as a
 series of snapshots of your files. Every time you save the state of your files, Git basically takes a picture of how all the files looks like, and stores a reference to that snapshot. To be efficient, if a file has not changed, Git does not store the file again, but saves a link to the previous identical file instead.
 
-![Snapshot version control - data is stored as snapshots at different time points](./diagrams/snapshot-version-control.svg)
+![Snapshot version control - data is stored as snapshots](./diagrams/snapshot-version-control.svg)
 
-### Local operations
+You might worry that this could cause a Git repository to quickly become *very* large, since you are storing a copy of every version of each file, not just the differences as in a delta-based approach. But this is actually not the case. Git is very efficient at compressing and storing data, so Git repositories sizes are larger, but of similar magnitude of size than repositories from other VCS's.
 
-With Git, you are working on a local copy of the entire history of the project. Most Git operations only need local files and resources to run because of this, which in turn makes Git blazingly fast compared to other popular centralized VCS's, for which most operations requires communication with a central server. This also means that you do not need an internet connection to work on a project that is version controlled with Git. You can work on your local copy and just synchronize/upload/share your work at a later point in time.
+### Speed
 
-### Everything is checksummed
+Git is a distributed VCS, and one of the core design goals was speed. This has resulted in Git being fast compared to other VCS's. Compared to Subversion, a popular centralized VCS, Git is one or two orders of magnitude faster with regard to many common operations ^[https://git-scm.com/about/small-and-fast]. The exception is when it comes to making an initial clone of a large existing project. Since you are cloning the entire history rather than only the latest version of files, this particular operation is slower in Git. But since this is usually something you do only once, this is irrelevant, even if it does takes a bit longer. All this might be hard to appreciate if you have no prior experience with using VCS's, but if you do, there is a good chance that Git is going to feel amazingly fast!
 
-In Git everything is checksummed before it is stored and stored files/directories are referred to by that checksum. A checksum in Git is a 40-characters string composed of hexadecimal characters and looks something like shown below.
+### Integrity
+
+Any stream of data, for example a file or a directory of files, can be summarized into a single unique value, a so-called checksum. You can think of a checksum as a fingerprint. Even a single bit flip in a data stream would result in an entirely new checksum. Git checksums *everything*. This means that if something changes, Git will know about it. Git uses this to ensure the integrity of a project. In Git everything is checksummed before it is stored, and stored files/directories are referred to by that checksum. This means that any data corruption will be detected instantly. It also means that if the checksum of your state of a project (a commit ID) matches the checksum of another clone of the project, you can be assured that the entire project up until that point is identical. 
+
+The method that Git uses for making checksums is called a SHA-1 hash. This is a 40-characters string composed of hexadecimal characters and looks something like shown below.
 
 <pre class="git-command">
 840552db75d3d52894732b753892427b3f2cafa8
 </pre>
 
-You can think of a checksum as a fingerprint. It can be used to summarize any data into a single unique value. Git uses checksums to verify the integrity of data. It is impossible to change the content of a file in Git without Git knowing about it. This also includes corruption of data. Even a single bit flip would easily be detected.
+Since Git uses checksums so much, you will see these checksums everywhere. In particular, every time you commit a snapshot of your files to your Git repository, the snapshot is associated with a checksum value. Checksum values are usually shown using only the first 7 characters, since it is extremly unlikely to have checksum values where the first 7 characters are the same.
 
-### Screwing up
+<span style="color:red">TODO: Expand on this. Is the last statement from somewhere in Pro Git? Some more details about Git integrity, security and the SHA-1 hash algorithm could be interesting/informative, but those kind of details are probably too technical here. Maybe expand in an appendix? </span>
 
-You will inevitable mess something up when using Git. Fortunately, almost all operations *add* data to the Git database. This means that it is hard (ok maybe not *that* hard) to do an operation that can not be undone or to erase data that has been committed to the Git database. This is especially true if you regularly "push" your database to another repository. This is a subject we will get back to later on.
+### Making mistakes when using Git
 
-### The main sections of a Git project
-
-TODO: this section feels to much like what is also presented later on in more detail. If this section is kept (in some modified version) add a diagram. Current text is also mostly verbatim taken from pro git p. 15. Needs to be restructured and reworded.
-
-The most important aspect of Git to understand is the three main stages files can be in: *modified*, *staged*, and *committed*.
-
-- **Modified:** Files that have been modified, but has not been committed to the database yet.
-
-- **Staged:** Modified files that have been marked, in their current version, to go into the next commit snapshot.
-
-- **Committed**: Files that are safely stored in your local database are called commited files.
-
-This leads us to the three main sections of a Git project: the working tree, the staging area, and the Git directory.
-
-The working tree is a single checkout of one version of the project. These files are pulled out of the compressed database of the Git directory and placed on disk for you to use or modify.
-
-The staging area is a file, generally contained in your Git directory, that stores information about what willl go into your next commit. Its technical name in Git parlance is the "index", but the phrase "staging area" works just as well.
-
-The Git directory is where Git stores the metadata and object database for your project. This is the most important part of Git, and it is what is copied when you clone a repository from another computer.
-
-The basic Git workflow goes something like this:
-
-1. Modify files in working tree.
-
-2. Selectively stage the changes to be included in the next commit.
-
-3. Commit the changes
+You will inevitable royally mess something up when using Git. Fortunately, almost all operations *add* data to the Git repository. This means that it is hard (ok maybe not *that* hard) to do an operation that can not be undone, or to erase data that has been committed to the Git database. This is especially true if you regularly "push" your repository to a "remote". Because of this, as long as you commit changes to your repository, you can freely experiment with your files when using Git without fearing that you will do any permanent damage that can't easily be undone.
 
 
  
