@@ -142,6 +142,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Getting started</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./inspecting-the-commit-history.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Inspecting the commit history</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -156,13 +162,13 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./github.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">GitHub</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">GitHub</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./the-dot-git-folder.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The .git folder</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">The .git folder</span></span></a>
   </div>
 </li>
       </ul>
@@ -222,7 +228,6 @@ ul.task-list li input[type="checkbox"] {
   <ul class="collapse">
   <li><a href="#the-main-sections-of-a-git-project" id="toc-the-main-sections-of-a-git-project" class="nav-link" data-scroll-target="#the-main-sections-of-a-git-project">The main sections of a Git project</a></li>
   <li><a href="#file-storing-in-git" id="toc-file-storing-in-git" class="nav-link" data-scroll-target="#file-storing-in-git">File storing in Git</a></li>
-  <li><a href="#data-integrity" id="toc-data-integrity" class="nav-link" data-scroll-target="#data-integrity">Data integrity</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -387,15 +392,6 @@ Versions of a code file
 <figcaption>Snapshot version control - data is stored as snapshots</figcaption>
 </figure>
 </div>
-</section>
-<section id="data-integrity" class="level3">
-<h3 class="anchored" data-anchor-id="data-integrity">Data integrity</h3>
-<p>The last subject we will touch upon for now is data integrity in Git. How does Git know that a file has changed, and how does Git ensure that data is not corrupted or tampered with? Git does this by checksumming files.</p>
-<p>Any stream of data, for example a file or a directory of files, can be summarized into a single value, a so-called checksum. You can think of a checksum as a fingerprint. Even a single bit flip in a data stream would result in an entirely new checksum. Git checksums <em>everything</em>. This means that if something changes, Git will know about it. Git uses this to ensure the integrity of a project. In Git everything is checksummed before it is stored, and stored files/directories are referred to by that checksum. This means that any data corruption will be detected instantly. It also means that if the checksum of your state of a project (a commit ID) matches the checksum of another clone of the project, you can be assured that the entire project up until that point is identical.</p>
-<p>The method that Git uses for making checksums is called a SHA-1 hash. This is a 40-characters string composed of hexadecimal characters and looks something like shown below.</p>
-<pre class="git-command">840552db75d3d52894732b753892427b3f2cafa8
-</pre>
-<p>Since Git uses checksums so much, you will see these checksums everywhere. In particular, every time you commit a snapshot of your files to your Git repository, the snapshot is associated with a checksum value.</p>
 
 
 </section>

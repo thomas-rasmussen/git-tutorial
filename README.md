@@ -4,6 +4,8 @@ Git tutorial
 [Link to tutorial](https://thomas-rasmussen.github.io/git-tutorial/)
 
 TODO
+- Look into Git tutorial on atlassian.com.
+- "Getting started" chapter: Add exercise where reader is rewquested to do the basic configuration explained in the chapter.
 - At an appropriate point, introduce .gitignore files. It is probably best to give a quick introduction on what they are and how to use them, and then put some more detailed information that is very relevant, but not basic use, into an appendix.
 - introduction-to-git.qmd notes:
   - "Everything is checksummed" section: maybe add some more details and/or write an appendix?

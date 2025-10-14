@@ -70,3 +70,8 @@
   color: #afafaf;
   font-size: 0.9em;
 }
+
+/* Remove the title from the index page. */
+.quarto-title {
+  display: none;
+}

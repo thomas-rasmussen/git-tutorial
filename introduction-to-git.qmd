@@ -141,16 +141,3 @@ series of snapshots of your files. Every time you save the state of your files, 
 ![Snapshot version control - data is stored as snapshots](./diagrams/snapshot-version-control.svg)
 
 
-### Data integrity
-
-The last subject we will touch upon for now is data integrity in Git. How does Git know that a file has changed, and how does Git ensure that data is not corrupted or tampered with? Git does this by checksumming files.
-
-Any stream of data, for example a file or a directory of files, can be summarized into a single value, a so-called checksum. You can think of a checksum as a fingerprint. Even a single bit flip in a data stream would result in an entirely new checksum. Git checksums *everything*. This means that if something changes, Git will know about it. Git uses this to ensure the integrity of a project. In Git everything is checksummed before it is stored, and stored files/directories are referred to by that checksum. This means that any data corruption will be detected instantly. It also means that if the checksum of your state of a project (a commit ID) matches the checksum of another clone of the project, you can be assured that the entire project up until that point is identical. 
-
-The method that Git uses for making checksums is called a SHA-1 hash. This is a 40-characters string composed of hexadecimal characters and looks something like shown below.
-
-<pre class="git-command">
-840552db75d3d52894732b753892427b3f2cafa8
-</pre>
-
-Since Git uses checksums so much, you will see these checksums everywhere. In particular, every time you commit a snapshot of your files to your Git repository, the snapshot is associated with a checksum value.

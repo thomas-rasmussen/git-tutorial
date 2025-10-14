@@ -5,7 +5,7 @@ project:
     browser: true
     watch-inputs: true
     
-  
+
 page-navigation: true
 book:
   title: "Git tutorial"
@@ -20,6 +20,7 @@ book:
       chapters:
       - introduction-to-git.qmd
       - getting-started.qmd
+      - inspecting-the-commit-history.qmd
     - part: "Part II"
       chapters:
       - github.qmd

@@ -14,7 +14,7 @@
     "href": "index.html#prerequisites",
     "title": "Git tutorial",
     "section": "Prerequisites",
-    "text": "Prerequisites\nThe only prerequisites for this tutorial is that you are on a Windows machine and have “Git for Windows” installed. See Appendix A — Git for Windows for more details. It is of course also possible to follow the tutorial if you are on a macOS or Linux system, or if you prefer to use PowerShell or Command Prompt on Windows. Since we will be running Git from the command line using Git BASH, a BASH emulator, macOS and Linux users should only run into a few minor issues where modifications are necessary. PowerShell and Command Prompt users will have to find alternatives to all non-Git commands, although these are not essential for the tutorial and can be done manually instead if necessary.\nThe tutorial assumes you are using Git version 2.51.0 or newer. If you are using an older version of Git, some of the git config commands in Appendix C — Configuration of Git might not work, and there might be other minor unknown issues as well.",
+    "text": "Prerequisites\nThis tutorial assumes you are using Git version 2.51.0 or newer. If you are using an older version of Git, some of the git config commands in Appendix C — Configuration of Git might not work, and there might be other minor unknown issues as well.\nThis tutorial also assumes you are on a Windows machine and have “Git for Windows” installed. See Appendix A — Git for Windows for more details. Since we will be running Git exclusively from the command line using Git BASH, a BASH emulator, macOS and Linux users should also be able to follow along with only few modifications.",
     "crumbs": [
       "Preface"
     ]
@@ -46,7 +46,7 @@
     "href": "introduction-to-git.html#what-is-git",
     "title": "1  Introduction to Git",
     "section": "1.2 What is Git?",
-    "text": "1.2 What is Git?\nSo what is Git and how did it come to be? Git is a distributed VCS, and it is born from controversy. In 2005 the relationship soured between the Linux kernel project and the company owning the proprietary distributed VCS, BitKeeper, that the Linux community was using as a VCS. This resulted in the free licence of BitKeeper that the Linux community was using being revoked. Prompted by this, the Linux developer community (in particular Linus Thorvald, the creator of Linux) developed their own tool, Git, to replace BitKeeper. Git was designed with several key goals in mind that was needed for the Linux kernel project: speed, simple design, strong support for non-linear development, a fully distributed nature, and the ability to handle large projects efficiently.\nGit basically works by storing snapshots of the state of your files over time. Git makes it easy to switch between different versions of your code, compare different versions of the same file, see the history of a file over time and much more.\n\nThe main sections of a Git project\nThere are three main sections of a Git project: the working tree, the staging area, and the Git directory.\n\n\n\n\nThe three states of files\n\n\n\nThe working tree is a version of the project that has been checked out. These files are pulled out of the compressed database of the Git directory and placed on disk for you to use or modify.\nThe staging area is a file in your Git directory that stores information about what will go into your next commit. Its technical name in is the “index”, but the phrase “staging area” is also commonly used.\nThe Git directory is where Git stores the metadata and object database for your project. It is located in the “.git” folder. This is the most important part of Git, and it is what is copied when you clone (make a copy of) a repository from another computer.\nThe basic workflow when using Git is something like:\n\nYou checkout a version of your project you want to work on into the working tree (usually the newest version that is already there).\nYou modify the files in the working tree.\nYou stage (some) changes to be included in the next commit.\nCommit the changes to the Git repository.\nRepeat.\n\nIf a particular version of a file is in the Git directory, it is considered committed. If it has been modified and added to the staging area it is staged, and if it was changed since it was checked out but has not been staged, it is said to be modified.\n\n\nFile storing in Git\nA major difference between Git and many other VCS’s is how Git stores data. In other systems, files are typically stored as a set of base versions of files and the changes made to each file over time. This is commonly called delta-based version control.\n\n\n\nDelta-based version control - data is stored as changes to a base version of each file\n\n\nThis is not how Git stores data. In Git, data is stored as a series of snapshots of your files. Every time you save the state of your files, Git basically takes a picture of how all the files looks like, and stores a reference to that snapshot. To be efficient, if a file has not changed, Git does not store the file again, but saves a link to the previous identical file instead.\n\n\n\nSnapshot version control - data is stored as snapshots\n\n\n\n\nData integrity\nThe last subject we will touch upon for now is data integrity in Git. How does Git know that a file has changed, and how does Git ensure that data is not corrupted or tampered with? Git does this by checksumming files.\nAny stream of data, for example a file or a directory of files, can be summarized into a single value, a so-called checksum. You can think of a checksum as a fingerprint. Even a single bit flip in a data stream would result in an entirely new checksum. Git checksums everything. This means that if something changes, Git will know about it. Git uses this to ensure the integrity of a project. In Git everything is checksummed before it is stored, and stored files/directories are referred to by that checksum. This means that any data corruption will be detected instantly. It also means that if the checksum of your state of a project (a commit ID) matches the checksum of another clone of the project, you can be assured that the entire project up until that point is identical.\nThe method that Git uses for making checksums is called a SHA-1 hash. This is a 40-characters string composed of hexadecimal characters and looks something like shown below.\n840552db75d3d52894732b753892427b3f2cafa8\n\nSince Git uses checksums so much, you will see these checksums everywhere. In particular, every time you commit a snapshot of your files to your Git repository, the snapshot is associated with a checksum value.",
+    "text": "1.2 What is Git?\nSo what is Git and how did it come to be? Git is a distributed VCS, and it is born from controversy. In 2005 the relationship soured between the Linux kernel project and the company owning the proprietary distributed VCS, BitKeeper, that the Linux community was using as a VCS. This resulted in the free licence of BitKeeper that the Linux community was using being revoked. Prompted by this, the Linux developer community (in particular Linus Thorvald, the creator of Linux) developed their own tool, Git, to replace BitKeeper. Git was designed with several key goals in mind that was needed for the Linux kernel project: speed, simple design, strong support for non-linear development, a fully distributed nature, and the ability to handle large projects efficiently.\nGit basically works by storing snapshots of the state of your files over time. Git makes it easy to switch between different versions of your code, compare different versions of the same file, see the history of a file over time and much more.\n\nThe main sections of a Git project\nThere are three main sections of a Git project: the working tree, the staging area, and the Git directory.\n\n\n\n\nThe three states of files\n\n\n\nThe working tree is a version of the project that has been checked out. These files are pulled out of the compressed database of the Git directory and placed on disk for you to use or modify.\nThe staging area is a file in your Git directory that stores information about what will go into your next commit. Its technical name in is the “index”, but the phrase “staging area” is also commonly used.\nThe Git directory is where Git stores the metadata and object database for your project. It is located in the “.git” folder. This is the most important part of Git, and it is what is copied when you clone (make a copy of) a repository from another computer.\nThe basic workflow when using Git is something like:\n\nYou checkout a version of your project you want to work on into the working tree (usually the newest version that is already there).\nYou modify the files in the working tree.\nYou stage (some) changes to be included in the next commit.\nCommit the changes to the Git repository.\nRepeat.\n\nIf a particular version of a file is in the Git directory, it is considered committed. If it has been modified and added to the staging area it is staged, and if it was changed since it was checked out but has not been staged, it is said to be modified.\n\n\nFile storing in Git\nA major difference between Git and many other VCS’s is how Git stores data. In other systems, files are typically stored as a set of base versions of files and the changes made to each file over time. This is commonly called delta-based version control.\n\n\n\nDelta-based version control - data is stored as changes to a base version of each file\n\n\nThis is not how Git stores data. In Git, data is stored as a series of snapshots of your files. Every time you save the state of your files, Git basically takes a picture of how all the files looks like, and stores a reference to that snapshot. To be efficient, if a file has not changed, Git does not store the file again, but saves a link to the previous identical file instead.\n\n\n\nSnapshot version control - data is stored as snapshots",
     "crumbs": [
       "Part I",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction to Git</span>"
@@ -174,25 +174,91 @@
     ]
   },
   {
+    "objectID": "inspecting-the-commit-history.html",
+    "href": "inspecting-the-commit-history.html",
+    "title": "3  Inspecting the commit history",
+    "section": "",
+    "text": "3.1 Data integrity in Git\nAt this point you know how to initialize or clone a Git repository, and record changes to the repository with commits. The obvious question at this point is: how do you see a list of what commits have been made to a Git repository and what changes was made? This is what the git log command is for, and what we will talk about in this chapter.\nBefore we start talking about the commit histories and changes to files, we need to talk about data integrity and checksums in Git. Any stream of data, for example a file or a directory of files, can be summarized into a single value, a so-called checksum. Even a single bit flip in a data stream would result in an entirely new checksum. Git checksums everything. This means that if something changes (including data corruption), Git will know about it. Git uses this to ensure the integrity of a project. In Git everything is checksummed before it is stored, and stored files/directories are referred to by that checksum. It also means that if the checksum of your state of a project (a commit ID) matches the checksum of another clone of the project, you can be assured that the entire project up until that point is identical.\nThe method that Git uses for making checksums is called a SHA-1 hash. This is a 40-characters string composed of hexadecimal characters and looks something like shown below.\nSince Git uses checksums so much, you will see these checksums everywhere. In particular, every time you commit a snapshot of files to a Git repository, the snapshot is associated with a checksum value.",
+    "crumbs": [
+      "Part I",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Inspecting the commit history</span>"
+    ]
+  },
+  {
+    "objectID": "inspecting-the-commit-history.html#data-integrity-in-git",
+    "href": "inspecting-the-commit-history.html#data-integrity-in-git",
+    "title": "3  Inspecting the commit history",
+    "section": "",
+    "text": "840552db75d3d52894732b753892427b3f2cafa8",
+    "crumbs": [
+      "Part I",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Inspecting the commit history</span>"
+    ]
+  },
+  {
+    "objectID": "inspecting-the-commit-history.html#basic-use-of-git-log",
+    "href": "inspecting-the-commit-history.html#basic-use-of-git-log",
+    "title": "3  Inspecting the commit history",
+    "section": "3.2 Basic use of git log",
+    "text": "3.2 Basic use of git log\nTo illustrate how how to inspect the commit history, we create a simple Git repository to work with.\n$ cd ~\n$ mkdir example-git-log\n$ cd example-git-log\n$ git init\n$ echo \"First commit\" &gt; file.txt\n$ git add file.txt\n$ git commit -m\"First commit\"\n\nIf you use git log on this repository, you will get output similar to the below:\n$ git log\ncommit 3d00987b9c770a8881e1ea1024c119e2c19b091a (HEAD -&gt; main)\nAuthor: Thomas Rasmussen &lt;thomasboejer@gmail.com&gt;\nDate:   Mon Oct 13 08:28:10 2025 +0200\n\n    First commit\n\nIn the output we can see that there have been one commit to the repository, and we are presented with information on the author of the commit, the date of the commit, the commit checksum, and the commit messsage.\nLets add another commit to the repository look at the commit history again:\n$ echo \"Second commit\" &gt;&gt; file.txt\n$ git add file.txt\n$ git commit -m\"Second commit\"\n$ git log\ncommit 6ea3956e99f1d0227c01e05622e952bffec0eafc (HEAD -&gt; main)\nAuthor: Thomas Rasmussen &lt;thomasboejer@gmail.com&gt;\nDate:   Mon Oct 13 08:33:54 2025 +0200\n\n    Second commit\n\ncommit 3d00987b9c770a8881e1ea1024c119e2c19b091a\nAuthor: Thomas Rasmussen &lt;thomasboejer@gmail.com&gt;\nDate:   Mon Oct 13 08:28:10 2025 +0200\n\n    First commit\n\nWe can see that commits are listed in reverse chronological orders, with the newest commit showing up first. We can also see that the information we are shown is quite verbose, and with many commits to a repository will make it hard to get an overview of the commit history. Typically, we are primarily interested in the commit checksum and the commit message of commits to a repository. We can get Git to show us exactly this using the --oneline option:\n$ git log --oneline\n6ea3956 (HEAD -&gt; main) Second commit\n3d00987 First commit\n\nNote that when using this option, only the first 7 characters of checksums are shown. Git will automatically show more characters if necessary to make the ID’s’ unique. At this point you might be concerned about the possibility of different commits having the same checksum, a so-called SHA-1 collision. Don’t worry, this is extremely unlikely1:\n\nHere’s an example to give you an idea of what it would take to get a SHA-1 collision. If all 6.5 billion humans on Earth were programming, and every second, each one was producing code that was the equivalent of the entire Linux kernel history (6.5 million Git objects) and pushing it into one enormous Git repository, it would take roughly 2 years until that repository contained enough objects to have a 50% probability of a single SHA-1 object collision. Thus, an organic SHA-1 collision is less likely than every member of your programming team being attacked and killed by wolves in unrelated incidents on the same night.\n\nAnother thing we are often interested in, is the exact changes that was introduced in a commit. We can tell Git to show us the differences (the patch output) introduced in each commit by applying the -p option to git log. Let’s apply this option together with--oneline:\n$ git log --oneline -p\n6ea3956 (HEAD -&gt; main) Second commit\ndiff --git a/file.text b/file.text\nnew file mode 100644\nindex 0000000..c133ee6\n--- /dev/null\n+++ b/file.text\n@@ -0,0 +1 @@\n+Second commit\n3d00987 First commit\ndiff --git a/file.txt b/file.txt\nnew file mode 100644\nindex 0000000..6eaf244\n--- /dev/null\n+++ b/file.txt\n@@ -0,0 +1 @@\n+First commit\n\nThere is a lot of technical information in this output, which we will not discuss, but we can see that the the line of text that was added in each commit is clearly marked in green.",
+    "crumbs": [
+      "Part I",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Inspecting the commit history</span>"
+    ]
+  },
+  {
+    "objectID": "inspecting-the-commit-history.html#todo",
+    "href": "inspecting-the-commit-history.html#todo",
+    "title": "3  Inspecting the commit history",
+    "section": "3.3 TODO",
+    "text": "3.3 TODO\nNotes: - Would probably be good to add another file in running example where we remove a line in each commit, so that we can show how removed text is shown with git log -p.",
+    "crumbs": [
+      "Part I",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Inspecting the commit history</span>"
+    ]
+  },
+  {
+    "objectID": "inspecting-the-commit-history.html#exercises",
+    "href": "inspecting-the-commit-history.html#exercises",
+    "title": "3  Inspecting the commit history",
+    "section": "3.4 Exercises",
+    "text": "3.4 Exercises\n\nExercise 1\nExercise ideas: - Construct a simple repository and use git log. Creating the repository ourself makes everything very simple and easy to understand as compared to cloning a real repository. - Exercise focusing on exploring use of options - Add exercise where reader has to look at documentation to figure out how to limit the number of log entries that are displayed “-” option.",
+    "crumbs": [
+      "Part I",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Inspecting the commit history</span>"
+    ]
+  },
+  {
+    "objectID": "inspecting-the-commit-history.html#footnotes",
+    "href": "inspecting-the-commit-history.html#footnotes",
+    "title": "3  Inspecting the commit history",
+    "section": "",
+    "text": "https://git-scm.com/book/en/v2/Git-Tools-Revision-Selection↩︎",
+    "crumbs": [
+      "Part I",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Inspecting the commit history</span>"
+    ]
+  },
+  {
     "objectID": "github.html",
     "href": "github.html",
-    "title": "3  GitHub",
+    "title": "4  GitHub",
     "section": "",
     "text": "GitHub is a host for Git repositories. There are many other sites that also hosts Git repositories, but Git is by far the most popular one. Hosting Git repositories online makes it easy to share code and collaborate with others.\n\nDescribe how to setup an account? Maybe put in an appendix?\nDescribe how to authenticate yourself to your GitHub account so that you can push to your repositories. Describe SSH and/or HTTPS approach?\nDescribe how GitHub can be used as a remote branch in projects\nAlso get into “GitHub flow” and describe how GitHub can be used to contribute to projects but forking a repo and making pull requests?\nTalk about issues. Both as a way to make notes on bug and future things to implement in your own projects, but also as a way to collaborate iwth others.\nGitHub pages: Probably mention that GitHub can be used to host html files, i.e. we can host static websites on GitHub.\nNamedrop other GitHub features?",
     "crumbs": [
       "Part II",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>GitHub</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>GitHub</span>"
     ]
   },
   {
     "objectID": "the-dot-git-folder.html",
     "href": "the-dot-git-folder.html",
-    "title": "4  The .git folder",
+    "title": "5  The .git folder",
     "section": "",
     "text": "Make a chapter focused on explaining what some of all the stuff in the .git folder is? Some of it might be explained in other parts of the book? This chapter might correspond 1-to-1 with the Git internals chapter in Pro git?",
     "crumbs": [
       "Part II",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>The .git folder</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The .git folder</span>"
     ]
   },
   {

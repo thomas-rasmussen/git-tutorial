@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Git tutorial</title>
+<title>3&nbsp; Inspecting the commit history – Git tutorial</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,7 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./introduction-to-git.html" rel="next">
+<link href="./github.html" rel="next">
+<link href="./getting-started.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -75,7 +76,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-sidebar docked slimcontent quarto-light">
+<body class="nav-sidebar docked quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -84,7 +85,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Preface</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./introduction-to-git.html">Part I</a></li><li class="breadcrumb-item"><a href="./inspecting-the-commit-history.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Inspecting the commit history</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -116,7 +117,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
@@ -143,7 +144,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./inspecting-the-commit-history.html" class="sidebar-item-text sidebar-link">
+  <a href="./inspecting-the-commit-history.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Inspecting the commit history</span></span></a>
   </div>
 </li>
@@ -217,19 +218,22 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a>
+  <li><a href="#data-integrity-in-git" id="toc-data-integrity-in-git" class="nav-link active" data-scroll-target="#data-integrity-in-git"><span class="header-section-number">3.1</span> Data integrity in Git</a></li>
+  <li><a href="#basic-use-of-git-log" id="toc-basic-use-of-git-log" class="nav-link" data-scroll-target="#basic-use-of-git-log"><span class="header-section-number">3.2</span> Basic use of <code>git log</code></a></li>
+  <li><a href="#todo" id="toc-todo" class="nav-link" data-scroll-target="#todo"><span class="header-section-number">3.3</span> TODO</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">3.4</span> Exercises</a>
   <ul class="collapse">
-  <li><a href="#prerequisites" id="toc-prerequisites" class="nav-link" data-scroll-target="#prerequisites">Prerequisites</a></li>
+  <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
   </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content page-columns page-full" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./introduction-to-git.html">Part I</a></li><li class="breadcrumb-item"><a href="./inspecting-the-commit-history.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Inspecting the commit history</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Git tutorial</h1>
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Inspecting the commit history</span></h1>
 </div>
 
 
@@ -246,33 +250,100 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p><img src="diagrams/title-slide-background.svg" class="img-fluid"></p>
-<section id="preface" class="level1 unnumbered page-columns page-full">
-<h1 class="unnumbered">Preface</h1>
-<div style="display:flex">
-<div style="flex:70%;margin-right:1em;">
-<p>This tutorial focuses on learning Git exclusively using terminal commands. The target audience is people with no prior experience with Git, version controls systems, or use of command-line interfaces. The aim of the tutorial is to learn how to use Git, but also to understand how Git works, at least on some superficial level, so that you don’t end up in the situtation depicted in the webcomic.</p>
-<p>The tutorial is structured in two parts. Part I is an introduction to Git, and goes through all the basic commands while giving some insights into what Git is and how it works along the way. Part II includes stand-alone chapters on more advanced topics. These chapters are not essential to learning how to use Git, and can be read to the extent they are relevant and of interest. Finally, the tutorial includes appendices on miscellaneous topics.</p>
-</div>
-<div style="margin:1em;">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://imgs.xkcd.com/comics/git.png" class="img-fluid figure-img"></p>
-<figcaption>https://xkcd.com/1597/</figcaption>
-</figure>
-</div>
-</div>
-</div>
+<p>At this point you know how to initialize or clone a Git repository, and record changes to the repository with commits. The obvious question at this point is: how do you see a list of what commits have been made to a Git repository and what changes was made? This is what the <code>git log</code> command is for, and what we will talk about in this chapter.</p>
+<section id="data-integrity-in-git" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="data-integrity-in-git"><span class="header-section-number">3.1</span> Data integrity in Git</h2>
+<p>Before we start talking about the commit histories and changes to files, we need to talk about data integrity and checksums in Git. Any stream of data, for example a file or a directory of files, can be summarized into a single value, a so-called checksum. Even a single bit flip in a data stream would result in an entirely new checksum. Git checksums <em>everything</em>. This means that if something changes (including data corruption), Git will know about it. Git uses this to ensure the integrity of a project. In Git everything is checksummed before it is stored, and stored files/directories are referred to by that checksum. It also means that if the checksum of your state of a project (a commit ID) matches the checksum of another clone of the project, you can be assured that the entire project up until that point is identical.</p>
+<p>The method that Git uses for making checksums is called a SHA-1 hash. This is a 40-characters string composed of hexadecimal characters and looks something like shown below.</p>
+<pre class="git-command">840552db75d3d52894732b753892427b3f2cafa8
+</pre>
+<p>Since Git uses checksums so much, you will see these checksums everywhere. In particular, every time you commit a snapshot of files to a Git repository, the snapshot is associated with a checksum value.</p>
+</section>
+<section id="basic-use-of-git-log" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="basic-use-of-git-log"><span class="header-section-number">3.2</span> Basic use of <code>git log</code></h2>
+<p>To illustrate how how to inspect the commit history, we create a simple Git repository to work with.</p>
+<pre class="git-command">$ cd ~
+$ mkdir example-git-log
+$ cd example-git-log
+$ git init
+$ echo "First commit" &gt; file.txt
+$ git add file.txt
+$ git commit -m"First commit"
+</pre>
+<p>If you use <code>git log</code> on this repository, you will get output similar to the below:</p>
+<pre class="git-command">$ git log
+<span class="bash-gold">commit 3d00987b9c770a8881e1ea1024c119e2c19b091a</span> (HEAD -&gt; main)
+Author: Thomas Rasmussen &lt;thomasboejer@gmail.com&gt;
+Date:   Mon Oct 13 08:28:10 2025 +0200
 
-<div class="no-row-height column-margin column-container"><div class="">
-<p>Webcomic title text:<br> “If that doesn’t fix it, git.txt contains the phone number of a friend of mine who understands git. Just wait through a few minutes of ‘It’s really pretty simple, just think of branches as…’ and eventually you’ll learn the commands that will fix everything.”</p>
-</div></div><section id="prerequisites" class="level2">
-<h2 class="anchored" data-anchor-id="prerequisites">Prerequisites</h2>
-<p>This tutorial assumes you are using Git version 2.51.0 or newer. If you are using an older version of Git, some of the <code>git config</code> commands in <a href="configuration_of_git.html" class="quarto-xref"><span>Appendix C — Configuration of Git</span></a> might not work, and there might be other minor unknown issues as well.</p>
-<p>This tutorial also assumes you are on a Windows machine and have “Git for Windows” installed. See <a href="git-for-windows.html" class="quarto-xref"><span>Appendix A — Git for Windows</span></a> for more details. Since we will be running Git exclusively from the command line using Git BASH, a BASH emulator, macOS and Linux users should also be able to follow along with only few modifications.</p>
+    First commit
+</pre>
+<p>In the output we can see that there have been one commit to the repository, and we are presented with information on the author of the commit, the date of the commit, the commit checksum, and the commit messsage.</p>
+<p>Lets add another commit to the repository look at the commit history again:</p>
+<pre class="git-command">$ echo "Second commit" &gt;&gt; file.txt
+$ git add file.txt
+$ git commit -m"Second commit"
+$ git log
+commit <span class="bash-gold">6ea3956e99f1d0227c01e05622e952bffec0eafc</span> (HEAD -&gt; main)
+Author: Thomas Rasmussen &lt;thomasboejer@gmail.com&gt;
+Date:   Mon Oct 13 08:33:54 2025 +0200
+
+    Second commit
+
+<span class="bash-gold">commit 3d00987b9c770a8881e1ea1024c119e2c19b091a</span>
+Author: Thomas Rasmussen &lt;thomasboejer@gmail.com&gt;
+Date:   Mon Oct 13 08:28:10 2025 +0200
+
+    First commit
+</pre>
+<p>We can see that commits are listed in reverse chronological orders, with the newest commit showing up first. We can also see that the information we are shown is quite verbose, and with many commits to a repository will make it hard to get an overview of the commit history. Typically, we are primarily interested in the commit checksum and the commit message of commits to a repository. We can get Git to show us exactly this using the <code>--oneline</code> option:</p>
+<pre class="git-command">$ git log --oneline
+<span class="bash-gold">6ea3956</span> (HEAD -&gt; main) Second commit
+<span class="bash-gold">3d00987</span> First commit
+</pre>
+<p>Note that when using this option, only the first 7 characters of checksums are shown. Git will automatically show more characters if necessary to make the ID’s’ unique. At this point you might be concerned about the possibility of different commits having the same checksum, a so-called SHA-1 collision. Don’t worry, this is extremely unlikely<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>:</p>
+<blockquote class="blockquote">
+<p>Here’s an example to give you an idea of what it would take to get a SHA-1 collision. If all 6.5 billion humans on Earth were programming, and every second, each one was producing code that was the equivalent of the entire Linux kernel history (6.5 million Git objects) and pushing it into one enormous Git repository, it would take roughly 2 years until that repository contained enough objects to have a 50% probability of a single SHA-1 object collision. Thus, an organic SHA-1 collision is less likely than every member of your programming team being attacked and killed by wolves in unrelated incidents on the same night.</p>
+</blockquote>
+<p>Another thing we are often interested in, is the exact changes that was introduced in a commit. We can tell Git to show us the differences (the patch output) introduced in each commit by applying the <code>-p</code> option to <code>git log</code>. Let’s apply this option together with<code>--oneline</code>:</p>
+<pre class="git-command">$ git log --oneline -p
+<span class="bash-gold">6ea3956</span> (HEAD -&gt; main) Second commit
+<span style="color:white">diff --git a/file.text</span> b/file.text
+<span style="color:white">new file mode 100644</span>
+<span style="color:white">index 0000000..c133ee6</span>
+<span style="color:white">--- /dev/null</span>
+<span style="color:white">+++ b/file.text</span>
+@@ -0,0 +1 @@
+<span class="bash-green">+Second commit</span>
+<span class="bash-gold">3d00987 First commit</span>
+<span style="color:white">diff --git a/file.txt b/file.txt</span>
+<span style="color:white">new file mode 100644</span>
+<span style="color:white">index 0000000..6eaf244</span>
+<span style="color:white">--- /dev/null</span>
+<span style="color:white">+++ b/file.txt</span>
+@@ -0,0 +1 @@
+<span class="bash-green">+First commit</span>
+</pre>
+<p>There is a lot of technical information in this output, which we will not discuss, but we can see that the the line of text that was added in each commit is clearly marked in green.</p>
+</section>
+<section id="todo" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="todo"><span class="header-section-number">3.3</span> TODO</h2>
+<p>Notes: - Would probably be good to add another file in running example where we remove a line in each commit, so that we can show how removed text is shown with git log -p.&nbsp;</p>
+</section>
+<section id="exercises" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="exercises"><span class="header-section-number">3.4</span> Exercises</h2>
+<section id="exercise-1" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-1">Exercise 1</h3>
+<p>Exercise ideas: - Construct a simple repository and use git log. Creating the repository ourself makes everything very simple and easy to understand as compared to cloning a real repository. - Exercise focusing on exploring use of options - Add exercise where reader has to look at documentation to figure out how to limit the number of log entries that are displayed “-<number>” option.</number></p>
 
 
 </section>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>https://git-scm.com/book/en/v2/Git-Tools-Revision-Selection<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
 </section>
 
 </main> <!-- /main -->
@@ -678,10 +749,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./getting-started.html" class="pagination-link" aria-label="Getting started">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Getting started</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./introduction-to-git.html" class="pagination-link" aria-label="Introduction to Git">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to Git</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./github.html" class="pagination-link" aria-label="GitHub">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">GitHub</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
