@@ -1,0 +1,5 @@
+# Undoing changes
+
+Topics:
+- Need to know about reflogs before this topic?
+- introduce git revert / git reset git. Others? git clean git rm?

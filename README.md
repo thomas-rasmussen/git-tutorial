@@ -38,8 +38,8 @@ TODO
 - Configuration of Git appendix: needs to be proof-read, there are multiple grammar issues, and technical mistakes with paths in examples, eg in local level subsection the path to the config file should not start with a "/" which indicates that the path is an absolute path from the root directory.
 - configuration of Git appendix: Consider if it would make sense to add some concrete examples and exercises. It would be easy and straight forward and might make the appendix a lot more useful?
 - configuration of Git appendix: need to be more consistent with using "option" or "setting".
-
-Draft of outline of tutorial:
+- git for windows chapter: Introduce some tips and tricks for the command line, like ctrl+l to clear the log, autocompletion using tab etc.
+- GUI chapter: Have made a short draft with a "not a good idea" conclusion, but perhaps it is better to scrap this since it does not add anything of value to the tutorial. Maybe add a sentence or two in the preface explaining why we have chosen to focuse on learning Git on the command line instead.
 
 Topics that should be included, but it is unclear where:
 - .gitignore. Would probably make sense to include very early. Maybe in chapter with
@@ -49,86 +49,6 @@ Topics that should be included, but it is unclear where:
 - git show. Usefull command that should probably be included somewhere.
 - A part II chapter with some techincal information that is of interest, but did not fit into any other chapter naturally maybe. Or maybe if it was not important enough to introduce elsewhere, then maybe it is too technical for this tutorial?
 
-PART I:
-1) Preface
-2) Introduction to version control and Git
-   - Explain version control in general and what Git is, broadly speaking
-3) "Getting started with Git chapter". Covers basic use of 
-   - git init
-   - git add
-   - git commit
-   - git help
-   - git status
-4) git log chapter
-   - talk about the commit history of a project
-   - introduce checksums
 
-4.5) Chapter on "undoing" changes?
-  - Is this the appropriate? Need to talk about reflogs first?
-  - Need to introduce as early as possible so that people have the tools to undo stuff in exercises and real life.
-  - introduce git revert / git reset git. Others? git clean git rm?
 
-5) Branching chapter
-   - At this point it probably makes sense to introduce branching
-   - Introduce git branch, git switch and/or git checkout
-   - Would probably make a lot of sense to talk about refs at the start of this chapter?
 
-6) Merging chapter
-   - Introduce merging.
-   - Probably makes sense to introduce merging in general first, then talk about fast-forwards. This leads directly into rebasing. Might make sense to talk about rebasing here, instead of in part II.
-
-7) Remotes chapter
-  - Might not be esssential to daily use of Git, but very important to understand, and facilitates
-    introducing GitHub later.
-  - introduce git fetch/push/pull
-  - Talk about making local backups using remotes.
-  - Further notes on how refs works here?
-
-8) Workflows
-   - Could also be in Part II
-   - Talking about workflows / how to use Git in projects, branching stratigies etc.
-     This is not a tutorial for software developers, so talking about Gitflow,
-     trunk-based development and whatever is probably not helpful at all. Probably better     to talk about it in the context of a much simpler setup, eg a single developer
-     working on a simple project with a mostly linear history, and small team projects.
-     Talk about maybe using a setup with a main/dev branch and feature branches. That
-     workflow is very simple and covers pretty much every relevant scenario?
-
-Part II:
-- Github chapter
-  - Currently at a stage where it feels like there might be ample amount of time to talk about Github.
-    In any case it would not hurt to include the chapter, we can always prioritize other chapters at the
-    seminar.
-  - Short section on how to setup an account
-  - We need to set up authentication. Installing gh CLI is proably the most straight forward and easy to
-    use approach. We can skip all the technical details about how authentication works?
-  - Talk about how GitHub can be though of / used as a remote branch, and how it might be a good tool
-    for sharing code / documentation, making static websites etc. Maybe not too many actual details since
-    it is out of scope?
-  - Introduce issues and forking and other basic GitHub things. But probably don't go to much into
-    details about this, this is a Git tutorial, not a GitHub tutorial.
-- Git internals chapter
-  - Probably way to dry to make a chatper like this as is done in Pro Git. Current plan is to instead
-    spread relevant technical details and introduce them where relevant in other chapters.
-- Chapter on git stash.
-  - Not important enough to make it to Part I, but maybe useful enough to warrent adding a chapter on it
-    in part II?
-- git rebase chapter.
-  - important enough to be part of part I, but is an isolated thing that fits into part II, so maybe put
-    it here?
-
-Appendixes:
-- git for windows chapter
-  - Info on installing git BASH
-  - Introduce all the common commands that are used in the tutorial. Link to some documentation but keep
-    information in chapter very light at focuses on how the commands are used here.
-  - Introduce some tips and tricks for the command line, like ctrl+l to clear the log, autocompletion
-    using tab etc.
-- GUI chapter
-  - Have made a short draft with a "not a good idea" conclusion, but perhaps it is better to scrap this
-    since it does not add anything of value to the tutorial. Maybe add a sentence or two in the preface
-    explaining why we have chosen to focuse on learning Git on the command line instead.
-- Configuration of Git chapter
-  - Only mention very basic configuration in one of the first chapters, then put everything else here?
-    Information is important/relevant, but probably out of scope to make it to the main text.
-  - Maybe move to part II instead and add some exercises to chapter?
-- Resources

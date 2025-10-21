@@ -1,0 +1,20 @@
+# GitHub
+
+GitHub is a host for Git repositories. There are many other sites that also hosts Git repositories, but Git is by far the most popular one. Hosting Git repositories online makes it easy to share code and collaborate with others. 
+
+- Github chapter
+  - Currently at a stage where it feels like there might be ample amount of time to talk about Github.
+    In any case it would not hurt to include the chapter, we can always prioritize other chapters at the
+    seminar.
+  - Short section on how to setup an account
+  - We need to set up authentication. Installing gh CLI is proably the most straight forward and easy to
+    use approach. We can skip all the technical details about how authentication works?
+  - Talk about how GitHub can be though of / used as a remote branch, and how it might be a good tool
+    for sharing code / documentation, making static websites etc. Maybe not too many actual details since
+    it is out of scope?
+  - Introduce issues and forking and other basic GitHub things. But probably don't go to much into
+    details about this, this is a Git tutorial, not a GitHub tutorial.
+
+
+
+

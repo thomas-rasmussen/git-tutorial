@@ -1,0 +1,6 @@
+
+# git rebase 
+
+  - important enough to be part of part I, but is an isolated thing that fits into part II, so maybe put
+    it here?
+

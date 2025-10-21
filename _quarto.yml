@@ -18,19 +18,26 @@ book:
     - index.qmd
     - part: "Part I"
       chapters:
-      - introduction-to-git.qmd
-      - getting-started.qmd
-      - inspecting-the-commit-history.qmd
+      - part1-ch01-introduction-to-git.qmd
+      - part1-ch02-getting-started.qmd
+      - part1-ch03-inspecting-the-commit-history.qmd
+      - part1-ch04-undoing-changes.qmd
+      - part1-ch05-branching.qmd
+      - part1-ch06-merging.qmd
+      - part1-ch07-remotes.qmd
+      - part1-ch08-workflows.qmd
     - part: "Part II"
       chapters:
-      - github.qmd
-      - the-dot-git-folder.qmd
+      - part2-github.qmd
+      - part2-git-internals.qmd
+      - part2-git-stash.qmd
+      - part2-git-rebase.qmd
       
   appendices:
-    - git-for-windows.qmd
-    - graphical-user-interfaces.qmd
-    - configuration_of_git.qmd
-    - resources.qmd
+    - app01-git-for-windows.qmd
+    - app02-graphical-user-interfaces.qmd
+    - app03-configuration-of-git.qmd
+    - app04-resources.qmd
 
 format:
   html:

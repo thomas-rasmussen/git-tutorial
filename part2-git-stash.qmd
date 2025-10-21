@@ -1,0 +1,5 @@
+
+# git stash.
+
+  - Not important enough to make it to Part I, but maybe useful enough to warrent adding a chapter on it
+    in part II?
