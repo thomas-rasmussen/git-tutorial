@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>3&nbsp; Inspecting the commit history – Git tutorial</title>
+<title>Appendix D — Configuration of Git – Git tutorial</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./part1-ch04-undoing-changes.html" rel="next">
-<link href="./part1-ch02-getting-started.html" rel="prev">
+<link href="./app05-resources.html" rel="next">
+<link href="./app03-graphical-user-interfaces.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -85,7 +85,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part1-ch01-introduction-to-git.html">Part I</a></li><li class="breadcrumb-item"><a href="./part1-ch03-inspecting-the-commit-history.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Inspecting the commit history</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./app01-git-for-windows.html">Appendices</a></li><li class="breadcrumb-item"><a href="./app04-configuration-of-git.html"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Configuration of Git</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -144,7 +144,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part1-ch03-inspecting-the-commit-history.html" class="sidebar-item-text sidebar-link active">
+  <a href="./part1-ch03-inspecting-the-commit-history.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Inspecting the commit history</span></span></a>
   </div>
 </li>
@@ -233,7 +233,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./app02-github-setup.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">GitHub setup</span></span></a>
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Github setup</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -244,7 +244,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./app04-configuration-of-git.html" class="sidebar-item-text sidebar-link">
+  <a href="./app04-configuration-of-git.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Configuration of Git</span></span></a>
   </div>
 </li>
@@ -266,22 +266,29 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#data-integrity-in-git" id="toc-data-integrity-in-git" class="nav-link active" data-scroll-target="#data-integrity-in-git"><span class="header-section-number">3.1</span> Data integrity in Git</a></li>
-  <li><a href="#basic-use-of-git-log" id="toc-basic-use-of-git-log" class="nav-link" data-scroll-target="#basic-use-of-git-log"><span class="header-section-number">3.2</span> Basic use of <code>git log</code></a></li>
-  <li><a href="#todo" id="toc-todo" class="nav-link" data-scroll-target="#todo"><span class="header-section-number">3.3</span> TODO</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">3.4</span> Exercises</a>
+  <li><a href="#git-configuration-file-hierarchy" id="toc-git-configuration-file-hierarchy" class="nav-link active" data-scroll-target="#git-configuration-file-hierarchy"><span class="header-section-number">D.1</span> Git configuration file hierarchy</a>
   <ul class="collapse">
-  <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
+  <li><a href="#system-level" id="toc-system-level" class="nav-link" data-scroll-target="#system-level">System level</a></li>
+  <li><a href="#global-level" id="toc-global-level" class="nav-link" data-scroll-target="#global-level">Global level</a></li>
+  <li><a href="#local-level" id="toc-local-level" class="nav-link" data-scroll-target="#local-level">Local level</a></li>
   </ul></li>
+  <li><a href="#working-with-configuration-files" id="toc-working-with-configuration-files" class="nav-link" data-scroll-target="#working-with-configuration-files"><span class="header-section-number">D.2</span> Working with configuration files</a></li>
+  <li><a href="#configuration-options-of-interest." id="toc-configuration-options-of-interest." class="nav-link" data-scroll-target="#configuration-options-of-interest."><span class="header-section-number">D.3</span> Configuration options of interest.</a>
+  <ul class="collapse">
+  <li><a href="#core.editor" id="toc-core.editor" class="nav-link" data-scroll-target="#core.editor">core.editor</a></li>
+  <li><a href="#commit.template" id="toc-commit.template" class="nav-link" data-scroll-target="#commit.template">commit.template</a></li>
+  <li><a href="#user.email-and-user.name" id="toc-user.email-and-user.name" class="nav-link" data-scroll-target="#user.email-and-user.name">user.email and user.name</a></li>
+  </ul></li>
+  <li><a href="#aliases" id="toc-aliases" class="nav-link" data-scroll-target="#aliases"><span class="header-section-number">D.4</span> Aliases</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part1-ch01-introduction-to-git.html">Part I</a></li><li class="breadcrumb-item"><a href="./part1-ch03-inspecting-the-commit-history.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Inspecting the commit history</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./app01-git-for-windows.html">Appendices</a></li><li class="breadcrumb-item"><a href="./app04-configuration-of-git.html"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Configuration of Git</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Inspecting the commit history</span></h1>
+<h1 class="title"><span id="sec-configuration-of-git" class="quarto-section-identifier">Appendix D — Configuration of Git</span></h1>
 </div>
 
 
@@ -298,99 +305,126 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>At this point you know how to initialize or clone a Git repository, and record changes to the repository with commits. The obvious question at this point is: how do you see a list of what commits have been made to a Git repository and what changes was made? This is what the <code>git log</code> command is for, and what we will talk about in this chapter.</p>
-<section id="data-integrity-in-git" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="data-integrity-in-git"><span class="header-section-number">3.1</span> Data integrity in Git</h2>
-<p>Before we start talking about the commit histories and changes to files, we need to talk about data integrity and checksums in Git. Any stream of data, for example a file or a directory of files, can be summarized into a single value, a so-called checksum. Even a single bit flip in a data stream would result in an entirely new checksum. Git checksums <em>everything</em>. This means that if something changes (including data corruption), Git will know about it. Git uses this to ensure the integrity of a project. In Git everything is checksummed before it is stored, and stored files/directories are referred to by that checksum. It also means that if the checksum of your state of a project (a commit ID) matches the checksum of another clone of the project, you can be assured that the entire project up until that point is identical.</p>
-<p>The method that Git uses for making checksums is called a SHA-1 hash. This is a 40-characters string composed of hexadecimal characters and looks something like shown below.</p>
-<pre class="git-command">840552db75d3d52894732b753892427b3f2cafa8
-</pre>
-<p>Since Git uses checksums so much, you will see these checksums everywhere. In particular, every time you commit a snapshot of files to a Git repository, the snapshot is associated with a checksum value.</p>
+<p>Section <a href="part1-ch02-getting-started.html#sec-basic-git-configuration-of-git" class="quarto-xref"><span>Section 2.1</span></a> briefly explained about how to do some basic configuration of Git using <code>git config</code>. This appendix will go more in-depth with how Git can be configurated using configuration files.</p>
+<p>Git configuration files are simple text files with key-value pairs defining specific options, separated into sections enclosed in square brackets. A simple Git configuration file could look something like shown below:</p>
+<div class="notepad-file">
+<div class="notepad-header">.gitconfig</div>
+<div class="notepad-body">
+[user]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;name = Your Name<br>
+&nbsp;&nbsp;&nbsp;&nbsp;email = your.email@example.com<br>
+[core]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;editor = notepad<br>
+</div>
+</div>
+<p>The name of an option is the section and key separated by a dot, for example <code>user.name</code>.</p>
+<section id="git-configuration-file-hierarchy" class="level2" data-number="D.1">
+<h2 data-number="D.1" class="anchored" data-anchor-id="git-configuration-file-hierarchy"><span class="header-section-number">D.1</span> Git configuration file hierarchy</h2>
+<div style="display:flex">
+<div style="flex:50%;margin-right:1em;">
+<p>Git has several levels of configuration files that can be used to customize how Git looks and works. Simplifying things a bit, there are three levels of configurations files: system, global, and local. Configuration settings at each narrower level overwrites settings from the more broader configuration files, i.e.&nbsp;local settings overwrites global settings, and global settings overwrite system settings.</p>
+</div>
+<div style="margin:1em;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="diagrams/git-configuration-hierarchy.svg" class="img-fluid figure-img"></p>
+<figcaption>Git Configuration Hierarchy</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<section id="system-level" class="level3">
+<h3 class="anchored" data-anchor-id="system-level">System level</h3>
+<p>System level configurations applies to your entire system, ie your entire computer. The system level configuration file is located in a subfolder of your Git installation, for example at <code>C:\Program Files\Git\etc\gitconfig</code>. You need admin privileges on your computer to edit this file.</p>
+<p>Nowadays most people work on their own computer that they do not share with others, and in this case it is probably most appropriate to not change anything in the system level configuration file, but instead configure Git at the global level. An example of where you might want to make changes to the system level configuration file, is if you have Git installed on a server with multiple users. In that case, maybe you want to tweak the default behaviour of Git for all the users, eg by setting the default text editor Git uses.</p>
 </section>
-<section id="basic-use-of-git-log" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="basic-use-of-git-log"><span class="header-section-number">3.2</span> Basic use of <code>git log</code></h2>
-<p>To illustrate how how to inspect the commit history, we create a simple Git repository to work with.</p>
-<pre class="git-command">$ cd ~
-$ mkdir example-git-log
-$ cd example-git-log
-$ git init
-$ echo "First commit" &gt; file.txt
-$ git add file.txt
-$ git commit -m"First commit"
-</pre>
-<p>If you use <code>git log</code> on this repository, you will get output similar to the below:</p>
-<pre class="git-command">$ git log
-<span class="bash-gold">commit 3d00987b9c770a8881e1ea1024c119e2c19b091a</span> (HEAD -&gt; main)
-Author: Thomas Rasmussen &lt;thomasboejer@gmail.com&gt;
-Date:   Mon Oct 13 08:28:10 2025 +0200
-
-    First commit
-</pre>
-<p>In the output we can see that there have been one commit to the repository, and we are presented with information on the author of the commit, the date of the commit, the commit checksum, and the commit messsage.</p>
-<p>Lets add another commit to the repository look at the commit history again:</p>
-<pre class="git-command">$ echo "Second commit" &gt;&gt; file.txt
-$ git add file.txt
-$ git commit -m"Second commit"
-$ git log
-commit <span class="bash-gold">6ea3956e99f1d0227c01e05622e952bffec0eafc</span> (HEAD -&gt; main)
-Author: Thomas Rasmussen &lt;thomasboejer@gmail.com&gt;
-Date:   Mon Oct 13 08:33:54 2025 +0200
-
-    Second commit
-
-<span class="bash-gold">commit 3d00987b9c770a8881e1ea1024c119e2c19b091a</span>
-Author: Thomas Rasmussen &lt;thomasboejer@gmail.com&gt;
-Date:   Mon Oct 13 08:28:10 2025 +0200
-
-    First commit
-</pre>
-<p>We can see that commits are listed in reverse chronological orders, with the newest commit showing up first. We can also see that the information we are shown is quite verbose, and with many commits to a repository will make it hard to get an overview of the commit history. Typically, we are primarily interested in the commit checksum and the commit message of commits to a repository. We can get Git to show us exactly this using the <code>--oneline</code> option:</p>
-<pre class="git-command">$ git log --oneline
-<span class="bash-gold">6ea3956</span> (HEAD -&gt; main) Second commit
-<span class="bash-gold">3d00987</span> First commit
-</pre>
-<p>Note that when using this option, only the first 7 characters of checksums are shown. Git will automatically show more characters if necessary to make the ID’s’ unique. At this point you might be concerned about the possibility of different commits having the same checksum, a so-called SHA-1 collision. Don’t worry, this is extremely unlikely<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>:</p>
-<blockquote class="blockquote">
-<p>Here’s an example to give you an idea of what it would take to get a SHA-1 collision. If all 6.5 billion humans on Earth were programming, and every second, each one was producing code that was the equivalent of the entire Linux kernel history (6.5 million Git objects) and pushing it into one enormous Git repository, it would take roughly 2 years until that repository contained enough objects to have a 50% probability of a single SHA-1 object collision. Thus, an organic SHA-1 collision is less likely than every member of your programming team being attacked and killed by wolves in unrelated incidents on the same night.</p>
-</blockquote>
-<p>Another thing we are often interested in, is the exact changes that was introduced in a commit. We can tell Git to show us the differences (the patch output) introduced in each commit by applying the <code>-p</code> option to <code>git log</code>. Let’s apply this option together with<code>--oneline</code>:</p>
-<pre class="git-command">$ git log --oneline -p
-<span class="bash-gold">6ea3956</span> (HEAD -&gt; main) Second commit
-<span style="color:white">diff --git a/file.text</span> b/file.text
-<span style="color:white">new file mode 100644</span>
-<span style="color:white">index 0000000..c133ee6</span>
-<span style="color:white">--- /dev/null</span>
-<span style="color:white">+++ b/file.text</span>
-@@ -0,0 +1 @@
-<span class="bash-green">+Second commit</span>
-<span class="bash-gold">3d00987 First commit</span>
-<span style="color:white">diff --git a/file.txt b/file.txt</span>
-<span style="color:white">new file mode 100644</span>
-<span style="color:white">index 0000000..6eaf244</span>
-<span style="color:white">--- /dev/null</span>
-<span style="color:white">+++ b/file.txt</span>
-@@ -0,0 +1 @@
-<span class="bash-green">+First commit</span>
-</pre>
-<p>There is a lot of technical information in this output, which we will not discuss, but we can see that the the line of text that was added in each commit is clearly marked in green.</p>
+<section id="global-level" class="level3">
+<h3 class="anchored" data-anchor-id="global-level">Global level</h3>
+<p>Global level configurations applies to you as a user. Configuration at this level applies to all your Git repositories, and overwrites configurations set at the system level. The global level configuration file is located in your home directory at <code>C:\Users\[User name]\.gitconfig</code>.</p>
+<p>This is the level at which you should configure your username, email address, aliases etc, that you want to use across all your Git repositories.</p>
+<p>You can see what configurations are contained in your global level configuration file by running the following command in the terminal:</p>
 </section>
-<section id="todo" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="todo"><span class="header-section-number">3.3</span> TODO</h2>
-<p>Notes: - Would probably be good to add another file in running example where we remove a line in each commit, so that we can show how removed text is shown with git log -p.&nbsp;</p>
+<section id="local-level" class="level3">
+<h3 class="anchored" data-anchor-id="local-level">Local level</h3>
+<p>Local level configurations applies only to to the Git repository the configuration file is in, and overwrites configurations set at the global level. The local level configuration file can be found in <code>\.git\config</code> of a Git repository.</p>
+<p>As with the system level configuration file, you usually don’t manually change the local level configuration file. An example of where local level configuration can be useful, is if you want to have different email addresses associated with your identity depending on the project you are working on. You might have configured your global configuration file to use your work email, which you use the majority of the time, but you might also work on a personal project, where you want to use your private email. In this case you could simply configure the local configuration file in the personal project to use your private email.</p>
 </section>
-<section id="exercises" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="exercises"><span class="header-section-number">3.4</span> Exercises</h2>
-<section id="exercise-1" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-1">Exercise 1</h3>
-<p>Exercise ideas: - Construct a simple repository and use git log. Creating the repository ourself makes everything very simple and easy to understand as compared to cloning a real repository. - Exercise focusing on exploring use of options - Add exercise where reader has to look at documentation to figure out how to limit the number of log entries that are displayed “-<number>” option.</number></p>
+</section>
+<section id="working-with-configuration-files" class="level2" data-number="D.2">
+<h2 data-number="D.2" class="anchored" data-anchor-id="working-with-configuration-files"><span class="header-section-number">D.2</span> Working with configuration files</h2>
+<p>Git comes with a number of <code>git config</code> commands that can be used to read and set options in the configuration files. Here we will talk about basic use of the <code>git config list</code>, <code>git config get</code>, <code>git config set</code>, and <code>git config edit</code> commands together with the <code>--system</code>, <code>--global</code>, and <code>--local</code> options to list/get/set/edit option in specific configuration files.</p>
+<p>To list all options and their values in a config file you can use the the <code>git config list</code> command. If, for example, we wanted to list all global options we could use <code>git config list --global</code> which would give us something like</p>
+<pre class="git-command">user.name=Your name
+use.email=your@email.com
+</pre>
+<p>If we want to get the value of a specific option, we can use the <code>git config get</code> command. For example if we want the value of the user.name option in the global configuration file we could write <code>git config get --global user.name</code>.</p>
+<p>To set a specific option, we can use the <code>git config set</code> command. For example, if we wanted to set the core.editor option to “notepad” in the system level configuration file we could use the <code>git config set --system core.editor notepad</code> command.</p>
+<p>Finally, if we want to make changes to a configuration file, we might want to simply open the configuration file, and edit it by hand. This can be done with the <code>git config edit</code> command. For example if we wanted to manually edit the local level configuration file, we could do <code>git config edit</code> command, which will open the configuration file in a text editor. We did not add the <code>--local</code> option here to illustrate, that by default, many of the <code>git config</code> commands defaults to using the <code>--local</code> flag.</p>
+</section>
+<section id="configuration-options-of-interest." class="level2" data-number="D.3">
+<h2 data-number="D.3" class="anchored" data-anchor-id="configuration-options-of-interest."><span class="header-section-number">D.3</span> Configuration options of interest.</h2>
+<p>There are A LOT of things that can be configured in Git. Here we briefly highlight a short list of options that are often of interest</p>
+<section id="core.editor" class="level3">
+<h3 class="anchored" data-anchor-id="core.editor">core.editor</h3>
+<p>Specify what text editor Git should launch to edit text, eg when writing commmit messages. Git for Windows comes with an internal version of Vim that is used by default. If you do not know what Vim is, this is most certainly not the text editor you want Git to use. Notepad is pre-installed on all modern Windows operating systems, and you should be able to change the default text editor to Notepad across all your Git repositories by using the following command:</p>
+<pre class="git-command">git config set --global core.editor notepad
+</pre>
+<p>This command assumes that the notepad executable can be found in directories given in $PATH. If for some reason the above does not work, locate the Notepad executable manually, and specify the full path to executable instead. This could look something like the below:</p>
+<pre class="git-command">git config set --global core.editor "C:\Windows\System32\notepad.exe"
+</pre>
+</section>
+<section id="commit.template" class="level3">
+<h3 class="anchored" data-anchor-id="commit.template">commit.template</h3>
+<p>The commit.template option can be used to specify a pathname to a file that is used as the template for new commit messages. A simple commit template with useful advice on how to write a good commit message could be the following text<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, saved in a file we name something like .git-commit-template:</p>
+<div class="notepad-file">
+<div class="notepad-header">.git-commit-template</div>
+<div class="notepad-body">
+<pre># Title: Summary, imperative, start upper case, don't end with a period
+# No more than 50 chars. #### 50 chars is here:  #
+
+# Remember blank line between title and body.
+
+# Body: Explain *what* and *why* (not *how*).
+# Wrap at 72 chars. ################################## which is here:  #
+
+# How to Write a Git Commit Message:
+# https://chris.beams.io/posts/git-commit/
+# 1. Separate subject from body with a blank line
+# 2. Limit the subject line to 50 characters
+# 3. Capitalize the subject line
+# 4. Do not end the subject line with a period
+# 5. Use the imperative mood in the subject line
+# 6. Wrap the body at 72 characters
+# 7. Use the body to explain what and why vs. how
+</pre>
+</div>
+</div>
+<p>To use this file as a template for commit messages, we could save file in the home directory, and tell git to use the template for all our Git reposities with the commmand <code>git config set --global commit.template ~/.git-commit-template</code>.</p>
+</section>
+<section id="user.email-and-user.name" class="level3">
+<h3 class="anchored" data-anchor-id="user.email-and-user.name">user.email and user.name</h3>
+<p>The user.name and user.email variables determines what ends up in the author field of commit objects. You should set these options with your name and email so it is clear from the commit object who made the commit.</p>
+</section>
+</section>
+<section id="aliases" class="level2" data-number="D.4">
+<h2 data-number="D.4" class="anchored" data-anchor-id="aliases"><span class="header-section-number">D.4</span> Aliases</h2>
+<p>Git aliases can be used to create shorter commands that map to longer commands. Aliases can be a great help to make it easier to use commands that you find yourself using often, but that are hard to remember and/or are tedious to type out. As a contrived example, consider the <code>git status</code> command. You will type that command a lot. Git doesn’t automatically infer your command if you type it in partially, but you could setup an alias so that you would only have to type <code>git st</code> if you don’t want to type the whole command each time:</p>
+<pre class="git-command">git config set --global alias.st status
+</pre>
+<p>As a more meaningful example consider the <code>git log</code> command. One of the biggest shortcomings of using Git from the terminal is the lack of a nice visualization of your commit history that comes with GUI’s. Git users often find themselves using some variation of the following command to get a visualization of the commit history of a project in the terminal:</p>
+<pre class="git-command">git log --graph --oneline --all
+</pre>
+<p>This is tedious to type out, and it can be difficult to remember all the options you need to add. Instead one could make an elegant alias:</p>
+<pre class="git-command">git config set --global alias.history "log --graph --oneline --all"
+</pre>
+<p>Now you can just use <code>git history</code> instead (or choose any other name that is meaningful to you that is not already used by Git).</p>
 
 
-</section>
 </section>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn1"><p>https://git-scm.com/book/en/v2/Git-Tools-Revision-Selection<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>Taken from <a href="https://gist.github.com/lisawolderiksen/a7b99d94c92c6671181611be1641c733">https://gist.github.com/lisawolderiksen/a7b99d94c92c6671181611be1641c733</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 
@@ -797,13 +831,13 @@ Date:   Mon Oct 13 08:28:10 2025 +0200
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./part1-ch02-getting-started.html" class="pagination-link" aria-label="Getting started">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Getting started</span></span>
+      <a href="./app03-graphical-user-interfaces.html" class="pagination-link" aria-label="Graphical User Interfaces (GUI's)">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Graphical User Interfaces (GUI’s)</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./part1-ch04-undoing-changes.html" class="pagination-link" aria-label="Undoing changes">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Undoing changes</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./app05-resources.html" class="pagination-link" aria-label="Resources">
+        <span class="nav-page-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Resources</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

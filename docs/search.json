@@ -14,7 +14,7 @@
     "href": "index.html#prerequisites",
     "title": "Git tutorial",
     "section": "Prerequisites",
-    "text": "Prerequisites\nThis tutorial assumes you are using Git version 2.51.0 or newer. If you are using an older version of Git, some of the git config commands in Appendix C — Configuration of Git might not work, and there might be other minor unknown issues as well.\nThis tutorial also assumes you are on a Windows machine and have “Git for Windows” installed. See Appendix A — Git for Windows for more details. Since we will be running Git exclusively from the command line using Git BASH, a BASH emulator, macOS and Linux users should also be able to follow along with only few modifications.",
+    "text": "Prerequisites\nThis tutorial assumes you are using Git version 2.51.0 or newer. If you are using an older version of Git, some of the git config commands in Appendix D — Configuration of Git might not work, and there might be other minor unknown issues as well.\nThis tutorial also assumes you are on a Windows machine and have “Git for Windows” installed. See Appendix A — Git for Windows for more details. Since we will be running Git exclusively from the command line using Git BASH, a BASH emulator, macOS and Linux users should also be able to follow along with only few modifications.\nFinally, if you want to follow along in 9  GitHub, you will need to create a GitHub account and authenticate with it, using the GitHub CLI, which you also need to install. See Appendix B — Github setup for more details.",
     "crumbs": [
       "Preface"
     ]
@@ -57,7 +57,7 @@
     "href": "part1-ch02-getting-started.html",
     "title": "2  Getting started",
     "section": "",
-    "text": "2.1 Basic configuration of Git\nIn this chapter we will look at some basic configurations of Git, introduce the most basic Git commands, talk about the different states of files, and finally how you can find help on how to use Git commands.\nFirst of all, we need to do some basic configurations of Git, which we will do using the git config command. Here we will only briefly explain what commands to type in the terminal without any explanation on how commands actually work, and what exactly they do. If you want to learn more about how to configure Git, see Appendix C.",
+    "text": "2.1 Basic configuration of Git\nIn this chapter we will look at some basic configurations of Git, introduce the most basic Git commands, talk about the different states of files, and finally how you can find help on how to use Git commands.\nFirst of all, we need to do some basic configurations of Git, which we will do using the git config command. Here we will only briefly explain what commands to type in the terminal without any explanation on how commands actually work, and what exactly they do. If you want to learn more about how to configure Git, see Appendix D.",
     "crumbs": [
       "Part I",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Getting started</span>"
@@ -288,7 +288,7 @@
     "href": "part1-ch08-workflows.html",
     "title": "8  Workflows",
     "section": "",
-    "text": "Could also be in Part II\nTalking about workflows / how to use Git in projects, branching stratigies etc. This is not a tutorial for software developers, so talking about Gitflow, trunk-based development and whatever is probably not helpful at all. Probably better to talk about it in the context of a much simpler setup, eg a single developer working on a simple project with a mostly linear history, and small team projects. Talk about maybe using a setup with a main/dev branch and feature branches. That workflow is very simple and covers pretty much every relevant scenario?",
+    "text": "Could also be in Part II\nTalking about workflows / branching models, how to use Git in projects, branching stratigies etc. This is not a tutorial for software developers, so talking about Gitflow, trunk-based development and whatever is probably not helpful at all. Probably better to talk about it in the context of a much simpler setup, eg a single developer working on a simple project with a mostly linear history, and small team projects. Talk about maybe using a setup with a main/dev branch and feature branches. That workflow is very simple and covers pretty much every relevant scenario?\nMaybe this chapter should be called “Branching models” and the focus should be around that concepet?\n\nMaybe the entire chapter should just be centered around the branching model of using a main branch for “production/releases”, dev branch for (working) development version, and feature branches from dev, wehre everything is rebased wehn done so just have a nice simple linear commit history of main branch commits, which are assumed to be the only versions of relevance.\n\nMaybe talk about scenarios where this workflow needs to be extended and how to do that. Here it might make sense to mention something like git-flow? How does this setup handle collaboration? People develop in feature branches, that are then merged into dev by a leutanant? This is just feature branch workflow? Maybe look at https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow for inpiration.",
     "crumbs": [
       "Part I",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Workflows</span>"
@@ -299,7 +299,7 @@
     "href": "part2-github.html",
     "title": "9  GitHub",
     "section": "",
-    "text": "GitHub is a host for Git repositories. There are many other sites that also hosts Git repositories, but Git is by far the most popular one. Hosting Git repositories online makes it easy to share code and collaborate with others.\n\nGithub chapter\n\nCurrently at a stage where it feels like there might be ample amount of time to talk about Github. In any case it would not hurt to include the chapter, we can always prioritize other chapters at the seminar.\nShort section on how to setup an account\nWe need to set up authentication. Installing gh CLI is proably the most straight forward and easy to use approach. We can skip all the technical details about how authentication works?\nTalk about how GitHub can be though of / used as a remote branch, and how it might be a good tool for sharing code / documentation, making static websites etc. Maybe not too many actual details since it is out of scope?\nIntroduce issues and forking and other basic GitHub things. But probably don’t go to much into details about this, this is a Git tutorial, not a GitHub tutorial.",
+    "text": "GitHub is a host for Git repositories. There are many other sites that also hosts Git repositories, but Git is by far the most popular one. Hosting Git repositories online makes it easy to share code and collaborate with others.\n\nGithub chapter\n\nCurrently at a stage where it feels like there might be ample amount of time to talk about Github. In any case it would not hurt to include the chapter, we can always prioritize other chapters at the seminar.\nShort section on how to setup an account\nWe need to set up authentication. Installing gh CLI is proably the most straight forward and easy to use approach. We can skip all the technical details about how authentication works?\nTalk about how GitHub can be though of / used as a remote branch, and how it might be a good tool for sharing code / documentation, making static websites etc. Maybe not too many actual details since it is out of scope?\nIntroduce issues and forking and other basic GitHub things. But probably don’t go to much into details about this, this is a Git tutorial, not a GitHub tutorial.\n\nConsider if it is best to explain/practice navigating/using GitHub using the GitHub CLI. This would make it much easier to precisely explain things. Mix in interactive use of GitHub.com in some places / presentatino?",
     "crumbs": [
       "Part II",
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>GitHub</span>"
@@ -490,6 +490,160 @@
     "crumbs": [
       "Appendices",
       "<span class='chapter-number'>D</span>  <span class='chapter-title'>Resources</span>"
+    ]
+  },
+  {
+    "objectID": "app03-graphical-user-interfaces.html",
+    "href": "app03-graphical-user-interfaces.html",
+    "title": "Appendix C — Graphical User Interfaces (GUI’s)",
+    "section": "",
+    "text": "Pro’s\nThere exists a plethora of GUI’s that can make using Git a more smooth experience. With a GUI you can point-and-click your way through everything you need to do, GUI’s can help trivialize complicated tasks, they can make beautiful graphical visualizations of complicated commit histories, and so on.\nThe general advice of this tutorial is to not use a GUI if you don’t need to, especially if you are new to Git. Learning Git using a GUI is shortsighted. It might make it easier to get started, but it can have a negative impact on your ability to understand how Git works, which might be problematic in the long run.\nBelow we will briefly list some of pro’s and con’s of using GUI’s and leave it at that.\nPoint-and-click interface In GUI’s you can point-and-click your way through everything, which makes using Git a more smooth and less technical experience, which is preferable to some people.\nFacilitation of complicated tasks A lot of GUI’s comes with a ton of features that can make it a lot easier to manage a Git repository, perform complicated tasks, facilitate collaboration etc.\nGraphical visualizations of commit histories Any decent GUI provides a graphical visualization of your commit history, which is especially valuable if you are working on a project with an extensive and complicated commit history.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>C</span>  <span class='chapter-title'>Graphical User Interfaces (GUI's)</span>"
+    ]
+  },
+  {
+    "objectID": "app03-graphical-user-interfaces.html#cons",
+    "href": "app03-graphical-user-interfaces.html#cons",
+    "title": "Appendix C — Graphical User Interfaces (GUI’s)",
+    "section": "Con’s",
+    "text": "Con’s\nPoint-and-click interface Being able to point-and-click your way through everything means that you will most likely be doing exactly that. Which means that you will not learn any Git, and it will make it harder to remember things that you do actually know how to do at the terminal.\nFacilitation of complicated tasks Having a GUI facilitate complicated tasks can be very helpful, but again comes with the caveat that you yourself will might not in fact learn anything.\nAccess to your preferred GUI If you are dependent on using a specific GUI to use Git, this might become problematic if you are all of a sudden forced to work in an environment where you do not have access to that specific GUI, or any other GUI for that matter.\nMight only have access to a limited set of Git commands GUI’s do not come with a complete implementation of all Git commands. Some (advanced) Git commands are only available through terminal commands.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>C</span>  <span class='chapter-title'>Graphical User Interfaces (GUI's)</span>"
+    ]
+  },
+  {
+    "objectID": "app04-configuration-of-git.html",
+    "href": "app04-configuration-of-git.html",
+    "title": "Appendix D — Configuration of Git",
+    "section": "",
+    "text": "D.1 Git configuration file hierarchy\nSection Section 2.1 briefly explained about how to do some basic configuration of Git using git config. This appendix will go more in-depth with how Git can be configurated using configuration files.\nGit configuration files are simple text files with key-value pairs defining specific options, separated into sections enclosed in square brackets. A simple Git configuration file could look something like shown below:\nThe name of an option is the section and key separated by a dot, for example user.name.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>D</span>  <span class='chapter-title'>Configuration of Git</span>"
+    ]
+  },
+  {
+    "objectID": "app04-configuration-of-git.html#git-configuration-file-hierarchy",
+    "href": "app04-configuration-of-git.html#git-configuration-file-hierarchy",
+    "title": "Appendix D — Configuration of Git",
+    "section": "",
+    "text": "Git has several levels of configuration files that can be used to customize how Git looks and works. Simplifying things a bit, there are three levels of configurations files: system, global, and local. Configuration settings at each narrower level overwrites settings from the more broader configuration files, i.e. local settings overwrites global settings, and global settings overwrite system settings.\n\n\n\n\n\nGit Configuration Hierarchy\n\n\n\n\n\nSystem level\nSystem level configurations applies to your entire system, ie your entire computer. The system level configuration file is located in a subfolder of your Git installation, for example at C:\\Program Files\\Git\\etc\\gitconfig. You need admin privileges on your computer to edit this file.\nNowadays most people work on their own computer that they do not share with others, and in this case it is probably most appropriate to not change anything in the system level configuration file, but instead configure Git at the global level. An example of where you might want to make changes to the system level configuration file, is if you have Git installed on a server with multiple users. In that case, maybe you want to tweak the default behaviour of Git for all the users, eg by setting the default text editor Git uses.\n\n\nGlobal level\nGlobal level configurations applies to you as a user. Configuration at this level applies to all your Git repositories, and overwrites configurations set at the system level. The global level configuration file is located in your home directory at C:\\Users\\[User name]\\.gitconfig.\nThis is the level at which you should configure your username, email address, aliases etc, that you want to use across all your Git repositories.\nYou can see what configurations are contained in your global level configuration file by running the following command in the terminal:\n\n\nLocal level\nLocal level configurations applies only to to the Git repository the configuration file is in, and overwrites configurations set at the global level. The local level configuration file can be found in \\.git\\config of a Git repository.\nAs with the system level configuration file, you usually don’t manually change the local level configuration file. An example of where local level configuration can be useful, is if you want to have different email addresses associated with your identity depending on the project you are working on. You might have configured your global configuration file to use your work email, which you use the majority of the time, but you might also work on a personal project, where you want to use your private email. In this case you could simply configure the local configuration file in the personal project to use your private email.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>D</span>  <span class='chapter-title'>Configuration of Git</span>"
+    ]
+  },
+  {
+    "objectID": "app04-configuration-of-git.html#working-with-configuration-files",
+    "href": "app04-configuration-of-git.html#working-with-configuration-files",
+    "title": "Appendix D — Configuration of Git",
+    "section": "D.2 Working with configuration files",
+    "text": "D.2 Working with configuration files\nGit comes with a number of git config commands that can be used to read and set options in the configuration files. Here we will talk about basic use of the git config list, git config get, git config set, and git config edit commands together with the --system, --global, and --local options to list/get/set/edit option in specific configuration files.\nTo list all options and their values in a config file you can use the the git config list command. If, for example, we wanted to list all global options we could use git config list --global which would give us something like\nuser.name=Your name\nuse.email=your@email.com\n\nIf we want to get the value of a specific option, we can use the git config get command. For example if we want the value of the user.name option in the global configuration file we could write git config get --global user.name.\nTo set a specific option, we can use the git config set command. For example, if we wanted to set the core.editor option to “notepad” in the system level configuration file we could use the git config set --system core.editor notepad command.\nFinally, if we want to make changes to a configuration file, we might want to simply open the configuration file, and edit it by hand. This can be done with the git config edit command. For example if we wanted to manually edit the local level configuration file, we could do git config edit command, which will open the configuration file in a text editor. We did not add the --local option here to illustrate, that by default, many of the git config commands defaults to using the --local flag.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>D</span>  <span class='chapter-title'>Configuration of Git</span>"
+    ]
+  },
+  {
+    "objectID": "app04-configuration-of-git.html#configuration-options-of-interest.",
+    "href": "app04-configuration-of-git.html#configuration-options-of-interest.",
+    "title": "Appendix D — Configuration of Git",
+    "section": "D.3 Configuration options of interest.",
+    "text": "D.3 Configuration options of interest.\nThere are A LOT of things that can be configured in Git. Here we briefly highlight a short list of options that are often of interest\n\ncore.editor\nSpecify what text editor Git should launch to edit text, eg when writing commmit messages. Git for Windows comes with an internal version of Vim that is used by default. If you do not know what Vim is, this is most certainly not the text editor you want Git to use. Notepad is pre-installed on all modern Windows operating systems, and you should be able to change the default text editor to Notepad across all your Git repositories by using the following command:\ngit config set --global core.editor notepad\n\nThis command assumes that the notepad executable can be found in directories given in $PATH. If for some reason the above does not work, locate the Notepad executable manually, and specify the full path to executable instead. This could look something like the below:\ngit config set --global core.editor \"C:\\Windows\\System32\\notepad.exe\"\n\n\n\ncommit.template\nThe commit.template option can be used to specify a pathname to a file that is used as the template for new commit messages. A simple commit template with useful advice on how to write a good commit message could be the following text1, saved in a file we name something like .git-commit-template:\n\n.git-commit-template\n\n# Title: Summary, imperative, start upper case, don't end with a period\n# No more than 50 chars. #### 50 chars is here:  #\n\n# Remember blank line between title and body.\n\n# Body: Explain *what* and *why* (not *how*).\n# Wrap at 72 chars. ################################## which is here:  #\n\n# How to Write a Git Commit Message:\n# https://chris.beams.io/posts/git-commit/\n# 1. Separate subject from body with a blank line\n# 2. Limit the subject line to 50 characters\n# 3. Capitalize the subject line\n# 4. Do not end the subject line with a period\n# 5. Use the imperative mood in the subject line\n# 6. Wrap the body at 72 characters\n# 7. Use the body to explain what and why vs. how\n\n\n\nTo use this file as a template for commit messages, we could save file in the home directory, and tell git to use the template for all our Git reposities with the commmand git config set --global commit.template ~/.git-commit-template.\n\n\nuser.email and user.name\nThe user.name and user.email variables determines what ends up in the author field of commit objects. You should set these options with your name and email so it is clear from the commit object who made the commit.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>D</span>  <span class='chapter-title'>Configuration of Git</span>"
+    ]
+  },
+  {
+    "objectID": "app04-configuration-of-git.html#aliases",
+    "href": "app04-configuration-of-git.html#aliases",
+    "title": "Appendix D — Configuration of Git",
+    "section": "D.4 Aliases",
+    "text": "D.4 Aliases\nGit aliases can be used to create shorter commands that map to longer commands. Aliases can be a great help to make it easier to use commands that you find yourself using often, but that are hard to remember and/or are tedious to type out. As a contrived example, consider the git status command. You will type that command a lot. Git doesn’t automatically infer your command if you type it in partially, but you could setup an alias so that you would only have to type git st if you don’t want to type the whole command each time:\ngit config set --global alias.st status\n\nAs a more meaningful example consider the git log command. One of the biggest shortcomings of using Git from the terminal is the lack of a nice visualization of your commit history that comes with GUI’s. Git users often find themselves using some variation of the following command to get a visualization of the commit history of a project in the terminal:\ngit log --graph --oneline --all\n\nThis is tedious to type out, and it can be difficult to remember all the options you need to add. Instead one could make an elegant alias:\ngit config set --global alias.history \"log --graph --oneline --all\"\n\nNow you can just use git history instead (or choose any other name that is meaningful to you that is not already used by Git).",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>D</span>  <span class='chapter-title'>Configuration of Git</span>"
+    ]
+  },
+  {
+    "objectID": "app04-configuration-of-git.html#footnotes",
+    "href": "app04-configuration-of-git.html#footnotes",
+    "title": "Appendix D — Configuration of Git",
+    "section": "",
+    "text": "Taken from https://gist.github.com/lisawolderiksen/a7b99d94c92c6671181611be1641c733↩︎",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>D</span>  <span class='chapter-title'>Configuration of Git</span>"
+    ]
+  },
+  {
+    "objectID": "app05-resources.html",
+    "href": "app05-resources.html",
+    "title": "Appendix E — Resources",
+    "section": "",
+    "text": "General resources\nOfficial documentation The official documentation on Git has extensive documentation on how to use each specific command. It also includes the freely available book Pro Git, which is an excellent resource for getting a better understanding of what Git is and how it works.\nTutorials www.atlassian.com/git boot.dev has two great courses on Git.\nGit exercises https://gitexercises.fracz.com/",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>E</span>  <span class='chapter-title'>Resources</span>"
+    ]
+  },
+  {
+    "objectID": "app05-resources.html#resources-specifically-aimed-at-r-users",
+    "href": "app05-resources.html#resources-specifically-aimed-at-r-users",
+    "title": "Appendix E — Resources",
+    "section": "Resources specifically aimed at R users",
+    "text": "Resources specifically aimed at R users\nHappy Git and GitHub for the useR https://happygitwithr.com/\nChapter on Git in “Intro Reproductible Research in R” https://r-cubed-intro.rostools.org/sessions/version-control",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>E</span>  <span class='chapter-title'>Resources</span>"
+    ]
+  },
+  {
+    "objectID": "app02-github-setup.html",
+    "href": "app02-github-setup.html",
+    "title": "Appendix B — Github setup",
+    "section": "",
+    "text": "B.1 Create a GitHub account\nIn this appendix we will briefly explain how to create a GitHub account and how to authenticate with your GitHub account using the GitHub CLI so that we can use GitHub from the command line.\nYou can create a free GitHub account by simply going to https://github.com and sign up.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>Github setup</span>"
+    ]
+  },
+  {
+    "objectID": "app02-github-setup.html#authentication",
+    "href": "app02-github-setup.html#authentication",
+    "title": "Appendix B — Github setup",
+    "section": "B.2 Authentication",
+    "text": "B.2 Authentication\nTo simply clone a repository from GitHub, you don’t need a GitHub account. But, if you want to push code to a repository, you need to authenticate yourself to GitHub, so that GitHub can verify that you have permission to do so. You can do this in different ways. Here, we will show how to do so using the GitHub CLI which you can download from https://cli.github.com/.\nTo authenticate yourself, simply run gh auth login in your terminal and answer the following questions:\n\n“Where do you use GitHub?”. Answer “GitHub.com”\n“What is your preferred protocol for Git operations on this host?”. Answer “HTTPS”.\n“How would you like to authenticate GitHub CLI?” Answer “Login with a web browser”.\n\nNow follow the link given in the terminal. If you are not logged in already, you will be prompted to do so first. Then you will be asked to enter the one-time code that was also provided in the terminal output. You should now be authenticated to GitHub until you end your terminal session.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>Github setup</span>"
+    ]
+  },
+  {
+    "objectID": "app02-github-setup.html#authenticate-with-your-github-account",
+    "href": "app02-github-setup.html#authenticate-with-your-github-account",
+    "title": "Appendix B — Github setup",
+    "section": "B.3 Authenticate with your GitHub account",
+    "text": "B.3 Authenticate with your GitHub account\nAfter installing the GitHub CLI, you need to restart your terminal before you can use the gh commands. To authenticate with your GitHub account, run the following command:\n$ gh auth login --web --clipboard\n\nYou are then prompted to answer the question “What is your preferred protocol for Git operations on this host?”. Answer with “HTTPS” (by simply pressing ). Follow the link given in the terminal. If you are not logged in already, you will be prompted to do so first. Then you will be asked to enter the one-time code that was also provided in the terminal output (which should already be copied to the clipboard).",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>Github setup</span>"
+    ]
+  },
+  {
+    "objectID": "app02-github-setup.html#install-the-github-cli",
+    "href": "app02-github-setup.html#install-the-github-cli",
+    "title": "Appendix B — Github setup",
+    "section": "B.2 Install the GitHub CLI",
+    "text": "B.2 Install the GitHub CLI\nYou can install the GitHub from git BASH by running the following command:\n$ winget install --id GitHub.cli\n\nThis should work from git BASH. If not, try running the command in PowerShell. Alternatively, download and install it from [https://cli.github.com/](https://cli.github.com/].",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>Github setup</span>"
     ]
   }
 ]

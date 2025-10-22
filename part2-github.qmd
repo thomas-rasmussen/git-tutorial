@@ -1,19 +1,40 @@
-# GitHub
+# Introduction to GitHub {#sec-introduction-to-github}
 
-GitHub is a host for Git repositories. There are many other sites that also hosts Git repositories, but Git is by far the most popular one. Hosting Git repositories online makes it easy to share code and collaborate with others. 
+In this chapter we will give a short introduction to GitHub and how it can be used to share code, and collaborate with others. We will mostly interact with GitHub from the command line using the GitHub CLI. See @sec-github-setup for information on how to install the CLI.
 
-- Github chapter
-  - Currently at a stage where it feels like there might be ample amount of time to talk about Github.
-    In any case it would not hurt to include the chapter, we can always prioritize other chapters at the
-    seminar.
-  - Short section on how to setup an account
-  - We need to set up authentication. Installing gh CLI is proably the most straight forward and easy to
-    use approach. We can skip all the technical details about how authentication works?
-  - Talk about how GitHub can be though of / used as a remote branch, and how it might be a good tool
-    for sharing code / documentation, making static websites etc. Maybe not too many actual details since
-    it is out of scope?
-  - Introduce issues and forking and other basic GitHub things. But probably don't go to much into
-    details about this, this is a Git tutorial, not a GitHub tutorial.
+## What is GitHub?
+
+GitHub is a web-based service that hosts Git repositories. Besides the obvious benifit of hosting your Git repositories online where you can access them from any computer with an internet connection, GitHub also has many features that facilitate collaboration, such as issue-tracking, code review, and pull requests.
+
+## Create a Git repository
+
+Maybe also explain how to add collaborators to project?
+
+## Upload an existing Git repository
+
+## Issues
+
+## Forking a repository
+
+## Pull requests
+
+
+## The GitHub flow
+
+Maybe explain how the "GitHub flow" can be used to contribute to projects by forking a
+repo, making changes, and making a pull request?
+
+## GitHub pages
+
+Maybe worth quickly mentioning that you can easily make a static website from HTML documents in a Git repository that GitHub will host for you. For example this tutorial.
+
+## Exercises
+
+- 
+
+
+    
+    
 
 
 

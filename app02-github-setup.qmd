@@ -1,0 +1,27 @@
+# GitHub setup {#sec-github-setup}
+
+In this appendix we will briefly explain how to create a GitHub account and how to authenticate with your GitHub account using the GitHub CLI so that we can use GitHub from the command line.
+
+## Create a GitHub account
+
+You can create a free GitHub account by simply going to [https://github.com](https://github.com) and sign up.
+
+## Install the GitHub CLI
+
+You can install the GitHub from git BASH by running the following command:
+
+<pre class="git-command">
+$ winget install --id GitHub.cli
+</pre>
+
+This should work from git BASH. If not, try running the command in PowerShell. Alternatively, download and install it from [https://cli.github.com/](https://cli.github.com/].
+
+## Authenticate with your GitHub account
+
+After installing the GitHub CLI, you need to restart your terminal before you can use the `gh` commands. To authenticate with your GitHub account, run the following command:
+
+<pre class="git-command">
+$ gh auth login -p"https" -cw
+</pre>
+
+Follow the link given in the terminal. If you are not logged in already, you will be prompted to do so first. Then you will be asked to enter the one-time code that was also provided in the terminal output (which should already be copied to the clipboard).

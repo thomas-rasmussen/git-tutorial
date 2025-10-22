@@ -35,9 +35,10 @@ book:
       
   appendices:
     - app01-git-for-windows.qmd
-    - app02-graphical-user-interfaces.qmd
-    - app03-configuration-of-git.qmd
-    - app04-resources.qmd
+    - app02-github-setup.qmd
+    - app03-graphical-user-interfaces.qmd
+    - app04-configuration-of-git.qmd
+    - app05-resources.qmd
 
 format:
   html:

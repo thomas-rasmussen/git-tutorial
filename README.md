@@ -48,7 +48,7 @@ Topics that should be included, but it is unclear where:
 - git tag. Small subject, but useful. Maybe in chapter where refs and branches are introduced?
 - git show. Usefull command that should probably be included somewhere.
 - A part II chapter with some techincal information that is of interest, but did not fit into any other chapter naturally maybe. Or maybe if it was not important enough to introduce elsewhere, then maybe it is too technical for this tutorial?
-
-
+- Might be worth it mention git gc somewhere? Already run automatically when using git commit / git rebase etc, so maybe this is not something that is relevant for this tutorial.
+- GitHub CLI: there seems to be an issue where the GitHub CLI stores login credentials in plain text if the CLI is used by a user without admin privilies. This does not immidiately seem like a problem if the CLI was used through git BASH on Windows on a DCE work pc, since we (apparently) have admin privilies on these. But remember to test this on a fresh laptop later to make sure we do not use an approach that saves credentials in plain text. 
 
 
