@@ -23,7 +23,7 @@ The tutorial is structured in two parts. Part I is an introduction to Git, and g
 
 ## Prerequisites
 
-This tutorial assumes you are using Git version 2.51.0 or newer. If you are using an older version of Git, some of the `git config` commands in @sec-configuration-of-git might not work, and there might be other minor unknown issues as well.
+This tutorial assumes you are using Git version 2.51.0 or newer. If you are using an older version of Git, some of the `git config` commands in @sec-configuration-of-git might not work, the `git switch` and `git restore` command might not be available, and there might be other unknown issues as well.
 
 This tutorial also assumes you are on a Windows machine and have "Git for Windows" installed. See @sec-git-for-windows for more details. Since we will be running Git exclusively from the command line using Git BASH, a BASH emulator, macOS and Linux users should also be able to follow along with only few modifications.
 

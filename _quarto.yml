@@ -5,7 +5,6 @@ project:
     browser: true
     watch-inputs: true
     
-
 page-navigation: true
 book:
   title: "Git tutorial"
