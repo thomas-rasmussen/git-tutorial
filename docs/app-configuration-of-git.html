@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Appendix A — Git for Windows – Git tutorial</title>
+<title>Appendix C — Configuration of Git – Git tutorial</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./app02-graphical-user-interfaces.html" rel="next">
-<link href="./part2-git-rebase.html" rel="prev">
+<link href="./app-resources.html" rel="next">
+<link href="./app-github-setup.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -43,8 +43,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-704d8d96d8bd6a3a18507fa617f49d29.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<script src="site_libs/quarto-contrib/kbd/kbd.js"></script>
-<link href="site_libs/quarto-contrib/kbd/kbd.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -87,7 +85,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./app01-git-for-windows.html">Appendices</a></li><li class="breadcrumb-item"><a href="./app01-git-for-windows.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Git for Windows</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./app-git-for-windows.html">Appendices</a></li><li class="breadcrumb-item"><a href="./app-configuration-of-git.html"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Configuration of Git</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -194,7 +192,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./part2-github.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">GitHub</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Introduction to GitHub</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -228,25 +226,25 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./app01-git-for-windows.html" class="sidebar-item-text sidebar-link active">
+  <a href="./app-git-for-windows.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Git for Windows</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./app02-graphical-user-interfaces.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Graphical User Interfaces (GUI’s)</span></span></a>
+  <a href="./app-github-setup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">GitHub setup</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./app03-configuration-of-git.html" class="sidebar-item-text sidebar-link">
+  <a href="./app-configuration-of-git.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Configuration of Git</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./app04-resources.html" class="sidebar-item-text sidebar-link">
+  <a href="./app-resources.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Resources</span></span></a>
   </div>
 </li>
@@ -262,28 +260,29 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#shortcut-keys" id="toc-shortcut-keys" class="nav-link active" data-scroll-target="#shortcut-keys"><span class="header-section-number">A.1</span> Shortcut keys</a></li>
-  <li><a href="#git-bash-commands" id="toc-git-bash-commands" class="nav-link" data-scroll-target="#git-bash-commands"><span class="header-section-number">A.2</span> Git BASH commands</a></li>
-  <li><a href="#note-on-command-options" id="toc-note-on-command-options" class="nav-link" data-scroll-target="#note-on-command-options"><span class="header-section-number">A.3</span> Note on command options</a>
+  <li><a href="#git-configuration-file-hierarchy" id="toc-git-configuration-file-hierarchy" class="nav-link active" data-scroll-target="#git-configuration-file-hierarchy"><span class="header-section-number">C.1</span> Git configuration file hierarchy</a>
   <ul class="collapse">
-  <li><a href="#cd" id="toc-cd" class="nav-link" data-scroll-target="#cd">cd</a></li>
-  <li><a href="#clear" id="toc-clear" class="nav-link" data-scroll-target="#clear">clear</a></li>
-  <li><a href="#echo-echo" id="toc-echo-echo" class="nav-link" data-scroll-target="#echo-echo">echo &gt; / echo &gt;&gt;</a></li>
-  <li><a href="#ls" id="toc-ls" class="nav-link" data-scroll-target="#ls">ls</a></li>
-  <li><a href="#mkdir" id="toc-mkdir" class="nav-link" data-scroll-target="#mkdir">mkdir</a></li>
-  <li><a href="#pwd" id="toc-pwd" class="nav-link" data-scroll-target="#pwd">pwd</a></li>
-  <li><a href="#rm" id="toc-rm" class="nav-link" data-scroll-target="#rm">rm</a></li>
-  <li><a href="#start" id="toc-start" class="nav-link" data-scroll-target="#start">start</a></li>
+  <li><a href="#system-level" id="toc-system-level" class="nav-link" data-scroll-target="#system-level">System level</a></li>
+  <li><a href="#global-level" id="toc-global-level" class="nav-link" data-scroll-target="#global-level">Global level</a></li>
+  <li><a href="#local-level" id="toc-local-level" class="nav-link" data-scroll-target="#local-level">Local level</a></li>
   </ul></li>
+  <li><a href="#working-with-configuration-files" id="toc-working-with-configuration-files" class="nav-link" data-scroll-target="#working-with-configuration-files"><span class="header-section-number">C.2</span> Working with configuration files</a></li>
+  <li><a href="#configuration-options-of-interest." id="toc-configuration-options-of-interest." class="nav-link" data-scroll-target="#configuration-options-of-interest."><span class="header-section-number">C.3</span> Configuration options of interest.</a>
+  <ul class="collapse">
+  <li><a href="#core.editor" id="toc-core.editor" class="nav-link" data-scroll-target="#core.editor">core.editor</a></li>
+  <li><a href="#commit.template" id="toc-commit.template" class="nav-link" data-scroll-target="#commit.template">commit.template</a></li>
+  <li><a href="#user.email-and-user.name" id="toc-user.email-and-user.name" class="nav-link" data-scroll-target="#user.email-and-user.name">user.email and user.name</a></li>
+  </ul></li>
+  <li><a href="#aliases" id="toc-aliases" class="nav-link" data-scroll-target="#aliases"><span class="header-section-number">C.4</span> Aliases</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./app01-git-for-windows.html">Appendices</a></li><li class="breadcrumb-item"><a href="./app01-git-for-windows.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Git for Windows</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./app-git-for-windows.html">Appendices</a></li><li class="breadcrumb-item"><a href="./app-configuration-of-git.html"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Configuration of Git</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-git-for-windows" class="quarto-section-identifier">Appendix A — Git for Windows</span></h1>
+<h1 class="title"><span id="sec-configuration-of-git" class="quarto-section-identifier">Appendix C — Configuration of Git</span></h1>
 </div>
 
 
@@ -300,416 +299,127 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p><a href="https://gitforwindows.org/" target="_blank">Git for Windows</a> is a set of tools for Windows users. Of main interest, Git for Windows provides a Bash emulation used to run Git from the command line. Using Git Bash, Windows users can use “git” commands exactly like one would do in Linux and Unix environments. Besides the full set of Git core commands, Git Bash is also packaged with additional shell commands that can be useful.</p>
-<p>When you open Git Bash, you will see something like this:</p>
-<pre class="bash-terminal"><span class="git-insert">~</span>
-$
-</pre>
-<p>The <span class="bash-green">user_id@computer_id</span> is an ID based on name of the user that is logged in, and the name of the device running Git Bash. The <span class="bash-pink">MINGW64</span> part is the name of the compiler used to build Git Bash. The <span class="bash-gold">~</span> at the end of the first line indicates the current directory. A tilde means that the current directory is the home directory of the user.</p>
-<section id="shortcut-keys" class="level2" data-number="A.1">
-<h2 data-number="A.1" class="anchored" data-anchor-id="shortcut-keys"><span class="header-section-number">A.1</span> Shortcut keys</h2>
-<p>An extensive list of available commands in Bash can be found <a href="https://ss64.com/bash/syntax-keyboard.html" target="_blank">here</a>. Not all of them are available in Git Bash. Below is a short list of useful shortcut keys.</p>
-<div style="margin-top:2em; margin-bottom:2em">
-
-<table class="table-striped caption-top table">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th">Description</th>
-<th data-quarto-table-cell-role="th">Shortcut</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="font-weight: bold">Moving the cursor</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>Go to beginning of line (Home)</td>
-<td style="font-family: monospace">Ctrl+a</td>
-</tr>
-<tr class="odd">
-<td>Go to end of line (End)</td>
-<td style="font-family: monospace">Ctrl+e</td>
-</tr>
-<tr class="even">
-<td>Previous command (Up arrow)</td>
-<td style="font-family: monospace">Ctrl+p</td>
-</tr>
-<tr class="odd">
-<td>Next command (Down arrow)</td>
-<td style="font-family: monospace">Ctrl+n</td>
-</tr>
-<tr class="even">
-<td>Go left/back one word</td>
-<td style="font-family: monospace">Alt+b</td>
-</tr>
-<tr class="odd">
-<td>Go right/forward one word</td>
-<td style="font-family: monospace">Alt+f</td>
-</tr>
-<tr class="even">
-<td>Go forward one character</td>
-<td style="font-family: monospace">Ctrl+f</td>
-</tr>
-<tr class="odd">
-<td>Go backward one character</td>
-<td style="font-family: monospace">Ctrl+b</td>
-</tr>
-<tr class="even">
-<td style="font-weight: bold">Editing</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>Copy</td>
-<td style="font-family: monospace">Ctrl+ins</td>
-</tr>
-<tr class="even">
-<td>Paste</td>
-<td style="font-family: monospace">Shift+ins</td>
-</tr>
-<tr class="odd">
-<td>Clear the screen</td>
-<td style="font-family: monospace">Ctrl+l</td>
-</tr>
-<tr class="even">
-<td>Delete the character before the cursor (Backspace)</td>
-<td style="font-family: monospace">Ctrl+h</td>
-</tr>
-<tr class="odd">
-<td>Delete the character after the cursor</td>
-<td style="font-family: monospace">Ctrl+d</td>
-</tr>
-<tr class="even">
-<td style="font-weight: bold">Process control</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>Interrupt/kill current process (SIGINT)</td>
-<td style="font-family: monospace">Ctrl+c</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-<p>Windows users are used to using <kbd title="Ctrl+c" aria-hidden="true">Ctrl+c</kbd><span class="visually-hidden">Ctrl+c</span> and <kbd title="Ctrl+v" aria-hidden="true">Ctrl+v</kbd><span class="visually-hidden">Ctrl+v</span> to “Copy” and “Paste”, but these shortcuts are not available in Git Bash, since they are reserved for other commands. it is possible to enable “Copy” using <kbd title="Ctrl+Shift+c" aria-hidden="true">Ctrl+Shift+c</kbd><span class="visually-hidden">Ctrl+Shift+c</span> and “Paste” using <kbd title="Ctrl+Shift+v" aria-hidden="true">Ctrl+Shift+v</kbd><span class="visually-hidden">Ctrl+Shift+v</span>, by right-clicking in the terminal, navigating to <span style="font-family:monospace">Options&gt;Keys</span>, and checking the “Ctrl+Shift+letter shortcuts” box.</p>
-</section>
-<section id="git-bash-commands" class="level2" data-number="A.2">
-<h2 data-number="A.2" class="anchored" data-anchor-id="git-bash-commands"><span class="header-section-number">A.2</span> Git BASH commands</h2>
-<p>It is not easy to understand what commands are (or are not) available in Git Bash, why they are (or are not) available, nor is it straight forward to find documentation on them. Some commands have documentation that can be accessed by typing <code>help [command-name]</code> in the terminal. More generally speaking, CMD, PowerShell, and BASH command documentation can be found many different places, for example <a href="https://ss64.com/" target="_blank">here</a>.</p>
-<p>Here we will introduce a few basic commands most of which are used extensively in this tutorial. We will also provide some focused documentation that covers how the commands are used in this tutorial, alongside links to more extensive documentation.</p>
-<div style="margin-top:2em;margin-bottom:2em;">
-
-<table class="table-striped caption-top table">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th" style="width: 25%">Command</th>
-<th data-quarto-table-cell-role="th" style="width: 75%">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="font-family: monospace">cd</td>
-<td>Change working directory</td>
-</tr>
-<tr class="even">
-<td style="font-family: monospace">clear</td>
-<td>Clear terminal window</td>
-</tr>
-<tr class="odd">
-<td style="font-family: monospace">echo &gt; / echo &gt;&gt;</td>
-<td>Create file / append content to file</td>
-</tr>
-<tr class="even">
-<td style="font-family: monospace">ls</td>
-<td>List directory content</td>
-</tr>
-<tr class="odd">
-<td style="font-family: monospace">mkdir</td>
-<td>Create folder</td>
-</tr>
-<tr class="even">
-<td style="font-family: monospace">pwd</td>
-<td>Print working directory</td>
-</tr>
-<tr class="odd">
-<td style="font-family: monospace">rm</td>
-<td>Remove files</td>
-</tr>
-<tr class="even">
-<td style="font-family: monospace">start</td>
-<td>Start a program/open a file/open a directory</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</section>
-<section id="note-on-command-options" class="level2" data-number="A.3">
-<h2 data-number="A.3" class="anchored" data-anchor-id="note-on-command-options"><span class="header-section-number">A.3</span> Note on command options</h2>
-<p>Most of the commands listed here can take different options, e.g.&nbsp;<code>ls</code> has an <code>-a</code> and a <code>-1</code> option. It is possible to use multiple options at once on the form <code>ls -a1</code> instead of the more verbose form <code>ls -a -1</code>.</p>
-<section id="cd" class="level3">
-<h3 class="anchored" data-anchor-id="cd">cd</h3>
-<p><strong>Syntax:</strong> <code>cd [DIR]</code><br></p>
-<p><strong>Description:</strong><br> Change the current directory to <code>DIR</code>.</p>
-<p>If <code>DIR</code> is not provided, changes the current directory to the value of the $HOME shell variable, i.e.&nbsp;the home directory of the user. <code>cd -</code> changes the working directory to the previous working directory ( “-” is converted to $OLDPWD).</p>
-<p>Note that forward slashes (/) are used to specify file paths, and that paths can be both on the form <span style="font-family:monospace">C:/path/to/directory</span> and <span style="font-family:monospace">/c/path/to/directory</span></p>
-<p>If the file path contains spaces, enclose the file path in (double) quotes.</p>
-<p>Git for Windows also comes with shell integration, so an alternative to using <code>cd</code> we can change the working directory by navigating to the folder in Windows explorer, right click on the folder (shift+right click on Windows 11) and select “Open Git Bash here”.</p>
-<p><strong>Link to documentation:</strong><br> <a href="https://ss64.com/bash/cd.html" target="_blank">https://ss64.com/bash/cd.html</a></p>
-<section id="example---change-directory" class="level4">
-<h4 class="anchored" data-anchor-id="example---change-directory">Example - Change directory</h4>
-<p>We can use <code>cd</code> to change the working directory by providing a file path to the directory.</p>
-<pre class="bash-terminal"><span class="git-insert">~</span>
-$ cd C:/path/to/directory
-<span class="git-insert">/c/path/to/directory</span>
-$
-</pre>
-<p>Note that the working directory was set as <span style="font-family:monospace">C:/path/to/directory</span>, but is displayed on the form <span style="font-family:monospace">/c/path/to/directory</span></p>
-</section>
-<section id="example---file-path-with-spaces" class="level4">
-<h4 class="anchored" data-anchor-id="example---file-path-with-spaces">Example - file path with spaces</h4>
-<p>If a file path contains spaces, enclose the file path in (double) quotes.</p>
-<pre class="bash-terminal"><span class="git-insert">~</span>
-$ cd "/c/path/to/some directory"
-<span class="git-insert">/c/path/to/some directory</span>
-$
-</pre>
-</section>
-<section id="example---change-to-subdirectory" class="level4">
-<h4 class="anchored" data-anchor-id="example---change-to-subdirectory">Example - Change to subdirectory</h4>
-<p>To change the current working directory to a subdirectory of the current working directory, we can simple set <code>DIR</code> to the subdirectory name.</p>
-<pre class="bash-terminal"><span class="git-insert">/c/path/to/dir</span>
-$ cd subfolder
-<span class="git-insert">/c/path/to/dir/subfolder</span>
-$
-</pre>
-</section>
-<section id="example---change-to-parent-directory" class="level4">
-<h4 class="anchored" data-anchor-id="example---change-to-parent-directory">Example - Change to parent directory</h4>
-<p>We can change the working directory to the parent directory by setting <code>DIR</code> to “..”.</p>
-<pre class="bash-terminal"><span class="git-insert">/c/path/to/dir</span>
-$ cd ..
-<span class="git-insert">/c/path/to</span>
-$
-</pre>
-<p>You can also use “..” more generally when specifying a file path, to denote the parent directory</p>
-<pre class="bash-terminal" "=""><span class="git-insert">/c/path/to/dir_a</span>
-$ cd ../dir_b
-<span class="git-insert">/c/path/to/dir_b</span>
-$
-</pre>
-</section>
-<section id="example---change-to-previous-directory" class="level4">
-<h4 class="anchored" data-anchor-id="example---change-to-previous-directory">Example - Change to previous directory</h4>
-<p>We can change the working directory to the previous working directory by setting <code>DIR</code> to “-”.</p>
-<pre class="bash-terminal"><span class="git-insert">/c/current/cd/dir</span>
-$ cd -
-<span class="git-insert">/c/previous/cd/dir</span>
-$
-</pre>
-</section>
-<section id="example---changing-working-directory-to-users-home-directory" class="level4">
-<h4 class="anchored" data-anchor-id="example---changing-working-directory-to-users-home-directory">Example - Changing working directory to user’s home directory</h4>
-<p>We can set the current working directory to the user’s home directory by not specifying <code>DIR</code>, or by setting <code>DIR</code> to “~”.</p>
-<pre class="bash-terminal"><span class="git-insert">/c/current/dir</span>
-$ cd ~
-<span class="git-insert">~</span>
-$ cd -
-<span class="git-insert">/c/current/dir</span>
-$ cd
-<span class="git-insert">~</span>
-$
-</pre>
-</section>
-</section>
-<section id="clear" class="level3">
-<h3 class="anchored" data-anchor-id="clear">clear</h3>
-<p><strong>Syntax:</strong> <code>clear</code></p>
-<p><strong>Description:</strong><br> Clear the terminal screen.</p>
-<p><strong>Link to documentation:</strong><br> No documentation available.</p>
-<section id="example" class="level4">
-<h4 class="anchored" data-anchor-id="example">Example</h4>
-<p>Imagine we had the history shown in the terminal below, ending with a <code>clear</code> command.</p>
-<pre class="bash-terminal"><span class="git-insert">~</span>
-$ cd C:/path/to/directory
-<span class="git-insert">/c/path/to/directory</span>
-$ clear
-</pre>
-<p>This would result in the terminal shown below.</p>
-<pre class="bash-terminal"><span class="git-insert">/c/path/to/directory</span>
-$
-</pre>
-<p>Clearing the terminal screen can also be done using the shortcut key <kbd title="Ctrl+l" aria-hidden="true">Ctrl+l</kbd><span class="visually-hidden">Ctrl+l</span></p>
-</section>
-</section>
-<section id="echo-echo" class="level3">
-<h3 class="anchored" data-anchor-id="echo-echo">echo &gt; / echo &gt;&gt;</h3>
-<p><strong>Syntax:</strong> <code>echo [STRING] &gt;&gt; [FILE]</code></p>
-<p><strong>Description:</strong><br> Append <code>STRING</code> content to <code>FILE</code> using the “&gt;&gt;” redirection operator. If the file does not exist it will be created. If “&gt;&gt;” is replaced with “&gt;” then the given <code>STRING</code> overwrites the content of <code>FILE</code>.</p>
-<p><strong>Link to documentation:</strong><br> <a href="https://ss64.com/bash/echo.html" target="_blank">https://ss64.com/bash/echo.html</a></p>
-<section id="example---create-empty-text-file" class="level4">
-<h4 class="anchored" data-anchor-id="example---create-empty-text-file">Example - Create empty text file</h4>
-<p>You can create an empty file by not providing any <code>STRING</code> and using the “&gt;” redirection operator (this will overwrite the any existing file with the same name).</p>
-<pre class="bash-terminal"><span class="git-insert">~</span>
-$ echo &gt; empty_file.txt
-</pre>
+<p>Section <a href="part1-ch02-getting-started.html#sec-basic-git-configuration-of-git" class="quarto-xref"><span>Section 2.1</span></a> briefly explained about how to do some basic configuration of Git using <code>git config</code>. This appendix will go more in-depth with how Git can be configurated using configuration files.</p>
+<p>Git configuration files are simple text files with key-value pairs defining specific options, separated into sections enclosed in square brackets. A simple Git configuration file could look something like shown below:</p>
 <div class="notepad-file">
-<div class="notepad-header">empty_file.txt</div>
+<div class="notepad-header">.gitconfig</div>
 <div class="notepad-body">
-⠀
+[user]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;name = Your Name<br>
+&nbsp;&nbsp;&nbsp;&nbsp;email = your.email@example.com<br>
+[core]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;editor = notepad<br>
 </div>
 </div>
+<p>The name of an option is the section and key separated by a dot, for example <code>user.name</code>.</p>
+<section id="git-configuration-file-hierarchy" class="level2" data-number="C.1">
+<h2 data-number="C.1" class="anchored" data-anchor-id="git-configuration-file-hierarchy"><span class="header-section-number">C.1</span> Git configuration file hierarchy</h2>
+<div style="display:flex">
+<div style="flex:50%;margin-right:1em;">
+<p>Git has several levels of configuration files that can be used to customize how Git looks and works. Simplifying things a bit, there are three levels of configurations files: system, global, and local. Configuration settings at each narrower level overwrites settings from the more broader configuration files, i.e.&nbsp;local settings overwrites global settings, and global settings overwrite system settings.</p>
+</div>
+<div style="margin:1em;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="diagrams/git-configuration-hierarchy.svg" class="img-fluid figure-img"></p>
+<figcaption>Git Configuration Hierarchy</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<section id="system-level" class="level3">
+<h3 class="anchored" data-anchor-id="system-level">System level</h3>
+<p>System level configurations applies to your entire system, ie your entire computer. The system level configuration file is located in a subfolder of your Git installation, for example at <code>C:\Program Files\Git\etc\gitconfig</code>. You need admin privileges on your computer to edit this file.</p>
+<p>Nowadays most people work on their own computer that they do not share with others, and in this case it is probably most appropriate to not change anything in the system level configuration file, but instead configure Git at the global level. An example of where you might want to make changes to the system level configuration file, is if you have Git installed on a server with multiple users. In that case, maybe you want to tweak the default behaviour of Git for all the users, eg by setting the default text editor Git uses.</p>
 </section>
-<section id="example---create-text-file-with-content" class="level4">
-<h4 class="anchored" data-anchor-id="example---create-text-file-with-content">Example - Create text file with content</h4>
-<p>We can create a new text file with some content in it (or overwrite an existing file) by using the “&gt;” redirection operator and by providing a <code>STRING</code> with the content.</p>
-<pre class="bash-terminal"><span class="git-insert">~</span>
-$ echo "Some content" &gt; new_file.txt
+<section id="global-level" class="level3">
+<h3 class="anchored" data-anchor-id="global-level">Global level</h3>
+<p>Global level configurations applies to you as a user. Configuration at this level applies to all your Git repositories, and overwrites configurations set at the system level. The global level configuration file is located in your home directory at <code>C:\Users\[User name]\.gitconfig</code>.</p>
+<p>This is the level at which you should configure your username, email address, aliases etc, that you want to use across all your Git repositories.</p>
+<p>You can see what configurations are contained in your global level configuration file by running the following command in the terminal:</p>
+</section>
+<section id="local-level" class="level3">
+<h3 class="anchored" data-anchor-id="local-level">Local level</h3>
+<p>Local level configurations applies only to to the Git repository the configuration file is in, and overwrites configurations set at the global level. The local level configuration file can be found in <code>\.git\config</code> of a Git repository.</p>
+<p>As with the system level configuration file, you usually don’t manually change the local level configuration file. An example of where local level configuration can be useful, is if you want to have different email addresses associated with your identity depending on the project you are working on. You might have configured your global configuration file to use your work email, which you use the majority of the time, but you might also work on a personal project, where you want to use your private email. In this case you could simply configure the local configuration file in the personal project to use your private email.</p>
+</section>
+</section>
+<section id="working-with-configuration-files" class="level2" data-number="C.2">
+<h2 data-number="C.2" class="anchored" data-anchor-id="working-with-configuration-files"><span class="header-section-number">C.2</span> Working with configuration files</h2>
+<p>Git comes with a number of <code>git config</code> commands that can be used to read and set options in the configuration files. Here we will talk about basic use of the <code>git config list</code>, <code>git config get</code>, <code>git config set</code>, and <code>git config edit</code> commands together with the <code>--system</code>, <code>--global</code>, and <code>--local</code> options to list/get/set/edit option in specific configuration files.</p>
+<p>To list all options and their values in a config file you can use the the <code>git config list</code> command. If, for example, we wanted to list all global options we could use <code>git config list --global</code> which would give us something like</p>
+<pre class="git-command">user.name=Your name
+use.email=your@email.com
 </pre>
+<p>If we want to get the value of a specific option, we can use the <code>git config get</code> command. For example if we want the value of the user.name option in the global configuration file we could write <code>git config get --global user.name</code>.</p>
+<p>To set a specific option, we can use the <code>git config set</code> command. For example, if we wanted to set the core.editor option to “notepad” in the system level configuration file we could use the <code>git config set --system core.editor notepad</code> command.</p>
+<p>Finally, if we want to make changes to a configuration file, we might want to simply open the configuration file, and edit it by hand. This can be done with the <code>git config edit</code> command. For example if we wanted to manually edit the local level configuration file, we could do <code>git config edit</code> command, which will open the configuration file in a text editor. We did not add the <code>--local</code> option here to illustrate, that by default, many of the <code>git config</code> commands defaults to using the <code>--local</code> flag.</p>
+</section>
+<section id="configuration-options-of-interest." class="level2" data-number="C.3">
+<h2 data-number="C.3" class="anchored" data-anchor-id="configuration-options-of-interest."><span class="header-section-number">C.3</span> Configuration options of interest.</h2>
+<p>There are A LOT of things that can be configured in Git. Here we briefly highlight a short list of options that are often of interest</p>
+<section id="core.editor" class="level3">
+<h3 class="anchored" data-anchor-id="core.editor">core.editor</h3>
+<p>Specify what text editor Git should launch to edit text, eg when writing commmit messages. Git for Windows comes with an internal version of Vim that is used by default. If you do not know what Vim is, this is most certainly not the text editor you want Git to use. Notepad is pre-installed on all modern Windows operating systems, and you should be able to change the default text editor to Notepad across all your Git repositories by using the following command:</p>
+<pre class="git-command">git config set --global core.editor notepad
+</pre>
+<p>This command assumes that the notepad executable can be found in directories given in $PATH. If for some reason the above does not work, locate the Notepad executable manually, and specify the full path to executable instead. This could look something like the below:</p>
+<pre class="git-command">git config set --global core.editor "C:\Windows\System32\notepad.exe"
+</pre>
+</section>
+<section id="commit.template" class="level3">
+<h3 class="anchored" data-anchor-id="commit.template">commit.template</h3>
+<p>The commit.template option can be used to specify a pathname to a file that is used as the template for new commit messages. A simple commit template with useful advice on how to write a good commit message could be the following text<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, saved in a file we name something like .git-commit-template:</p>
 <div class="notepad-file">
-<div class="notepad-header">new_file.txt</div>
+<div class="notepad-header">.git-commit-template</div>
 <div class="notepad-body">
-Some content
+<pre># Title: Summary, imperative, start upper case, don't end with a period
+# No more than 50 chars. #### 50 chars is here:  #
+
+# Remember blank line between title and body.
+
+# Body: Explain *what* and *why* (not *how*).
+# Wrap at 72 chars. ################################## which is here:  #
+
+# How to Write a Git Commit Message:
+# https://chris.beams.io/posts/git-commit/
+# 1. Separate subject from body with a blank line
+# 2. Limit the subject line to 50 characters
+# 3. Capitalize the subject line
+# 4. Do not end the subject line with a period
+# 5. Use the imperative mood in the subject line
+# 6. Wrap the body at 72 characters
+# 7. Use the body to explain what and why vs. how
+</pre>
 </div>
 </div>
+<p>To use this file as a template for commit messages, we could save file in the home directory, and tell git to use the template for all our Git reposities with the commmand <code>git config set --global commit.template ~/.git-commit-template</code>.</p>
 </section>
-<section id="example---append-content-to-existing-text-file" class="level4">
-<h4 class="anchored" data-anchor-id="example---append-content-to-existing-text-file">Example - Append content to existing text file</h4>
-<p>To append content to an existing text file use the “&gt;&gt;” redirection operator.</p>
-<pre class="bash-terminal"><span class="git-insert">~</span>
-$ echo "Some content" &gt; append_file.txt
-<span class="git-insert">~</span>
-$ echo "Some more content" &gt;&gt; append_file.txt
+<section id="user.email-and-user.name" class="level3">
+<h3 class="anchored" data-anchor-id="user.email-and-user.name">user.email and user.name</h3>
+<p>The user.name and user.email variables determines what ends up in the author field of commit objects. You should set these options with your name and email so it is clear from the commit object who made the commit.</p>
+</section>
+</section>
+<section id="aliases" class="level2" data-number="C.4">
+<h2 data-number="C.4" class="anchored" data-anchor-id="aliases"><span class="header-section-number">C.4</span> Aliases</h2>
+<p>Git aliases can be used to create shorter commands that map to longer commands. Aliases can be a great help to make it easier to use commands that you find yourself using often, but that are hard to remember and/or are tedious to type out. As a contrived example, consider the <code>git status</code> command. You will type that command a lot. Git doesn’t automatically infer your command if you type it in partially, but you could setup an alias so that you would only have to type <code>git st</code> if you don’t want to type the whole command each time:</p>
+<pre class="git-command">git config set --global alias.st status
 </pre>
-<div class="notepad-file">
-<div class="notepad-header">append_file.txt</div>
-<div class="notepad-body">
-Some content<br>
-Some more content
-</div>
-</div>
-</section>
-</section>
-<section id="ls" class="level3">
-<h3 class="anchored" data-anchor-id="ls">ls</h3>
-<p><strong>Syntax:</strong> <code>ls [OPTIONS] [DIR]</code><br></p>
-<p>List directory content.</p>
-<p>List directories and files in <code>DIR</code>. If <code>DIR</code> is not provided, lists the content of the current working directory. Content is listed alphabetically.</p>
-<p><strong>OPTIONS:</strong><br> <strong>-a</strong><br> Do not ignore entries starting with dot (.), i.e.&nbsp;hidden files.<br> <strong>-1</strong><br> List one file per line.<br></p>
-<p><strong>Link to documentation:</strong><br> <a href="https://ss64.com/bash/ls.html" target="_blank">https://ss64.com/bash/ls.html</a></p>
-<section id="example---list-content-of-work-directory" class="level4">
-<h4 class="anchored" data-anchor-id="example---list-content-of-work-directory">Example - List content of work directory</h4>
-<p>If we want to see a list of content in the current work directory, we can use <code>ls</code>.</p>
-<pre class="bash-terminal"><span class="git-insert">/c/some/dir</span>
-$ ls
-<span class="bash-violet">dir_a</span>/ file_a.txt file_c.txt file_e.txt
-<span class="bash-violet">dir_b</span>/ file_b.txt file_d.txt file_f.txt
+<p>As a more meaningful example consider the <code>git log</code> command. One of the biggest shortcomings of using Git from the terminal is the lack of a nice visualization of your commit history that comes with GUI’s. Git users often find themselves using some variation of the following command to get a visualization of the commit history of a project in the terminal:</p>
+<pre class="git-command">git log --graph --oneline --all
 </pre>
-<p>By default multiple entries are listed in each line and directories are colour-coded and has a “/” suffix.</p>
-</section>
-<section id="example---list-all-content-of-a-directory" class="level4">
-<h4 class="anchored" data-anchor-id="example---list-all-content-of-a-directory">Example - List all content of a directory</h4>
-By default, entries starting with a dot (.), i.e.&nbsp;hidden files, are ignored. Use the “-a” option to list all files.
-<pre class="bash-terminal"><span class="git-insert">/c/some/git_repo</span>
-$ ls -a
-<span class="bash-violet">.git</span>/ file_a.txt file_c.txt file_e.txt
-.gitignore file_b.txt file_d.txt file_f.txt
+<p>This is tedious to type out, and it can be difficult to remember all the options you need to add. Instead one could make an elegant alias:</p>
+<pre class="git-command">git config set --global alias.history "log --graph --oneline --all"
 </pre>
-</section>
-<section id="example---list-one-entry-per-line" class="level4">
-<h4 class="anchored" data-anchor-id="example---list-one-entry-per-line">Example - List one entry per line</h4>
-<p>We can use the “-1” option to list only one entry per line.</p>
-<pre class="bash-terminal"><span class="git-insert">/c/some/dir</span>
-$ ls -1
-<span class="bash-violet">dir_a</span>/
-<span class="bash-violet">dir_b</span>/
-file_a.txt
-file_b.txt
-file_c.txt
-file_d.txt
-file_e.txt
-file_f.txt
-</pre>
-</section>
-</section>
-<section id="mkdir" class="level3">
-<h3 class="anchored" data-anchor-id="mkdir">mkdir</h3>
-<p><strong>Syntax:</strong> <code>mk [FOLDER]</code><br></p>
-<p>Create folder.</p>
-<p>Create a new folder with name <code>FOLDER</code> in the current working directory, if it does not already exists. If the folder name contains spaces enclose the name in quotes.</p>
-<p><strong>Link to documentation:</strong><br> <a href="https://ss64.com/bash/mkdir.html" target="_blank">https://ss64.com/bash/mkdir.html</a></p>
-<section id="example-1" class="level4">
-<h4 class="anchored" data-anchor-id="example-1">Example</h4>
-<p>Create new folders. Note that we don’t have to enclose the folder name in quotes if it contains no spaces.</p>
-<pre class="bash-terminal"><span class="git-insert">/c/some/dir</span>
-$ ls -1
-file_a.txt
-file_b.txt
-<span class="git-insert">/c/some/dir</span>
-$ mkdir new-folder
-<span class="git-insert">/c/some/dir</span>
-$ mkdir "new-folder"
-<span class="git-insert">/c/some/dir</span>
-$ ls -1
-<span class="bash-violet">new-folder</span>/
-<span class="bash-violet">'new folder'</span>/
-file_a.txt
-file_b.txt
-</pre>
-</section>
-</section>
-<section id="pwd" class="level3">
-<h3 class="anchored" data-anchor-id="pwd">pwd</h3>
-<p><strong>Syntax:</strong> <code>pwd</code><br></p>
-<p>Print working directory.</p>
-<p><strong>Link to documentation:</strong><br> <a href="https://ss64.com/bash/pwd.html" target="_blank">https://ss64.com/bash/pwd.html</a></p>
-<section id="example-2" class="level4">
-<h4 class="anchored" data-anchor-id="example-2">Example</h4>
-<p>When working with Git this command is mainly used to see where the current user’s home directory is, since the current working directory is always shown in the terminal.</p>
-<pre class="bash-terminal"><span class="git-insert">~</span>
-$ pwd
-/c/absolute/path/to/home/directory
-</pre>
-</section>
-</section>
-<section id="rm" class="level3">
-<h3 class="anchored" data-anchor-id="rm">rm</h3>
-<p><strong>Syntax:</strong> `rm [OPTIONS] [FILE]``<br></p>
-<p>Remove files.</p>
-<p>To remove a file you must have write permission on the file and the folder where it is stored.</p>
-<p>By default, <code>rm</code> does not remove directories. Use the “-r” option to remove each listed directory too, along with all of its content.</p>
-<p>You should, obviously, be VERY careful when deleting files using terminal commands. Especially if you delete directories and their contents recursively.</p>
-<p><strong>OPTIONS:</strong><br> <strong>-f</strong><br> Ignore non-existent files, never prompt.<br> <strong>-r</strong><br> Remove directories and their contents recursively.</p>
-<p><strong>Link to documentation:</strong><br> <a href="https://ss64.com/bash/rm.html" target="_blank">https://ss64.com/bash/rm.html</a></p>
-<section id="example---remove-file" class="level4">
-<h4 class="anchored" data-anchor-id="example---remove-file">Example - Remove file</h4>
-<pre class="bash-terminal"><span class="git-insert">/c/some/dir</span>
-$ ls
-file_a.txt file_b.txt
-<span class="git-insert">/c/some/dir</span>
-$ rm file_a.txt
-<span class="git-insert">/c/some/dir</span>
-$ ls
-file_b.txt
-</pre>
-</section>
-</section>
-<section id="start" class="level3">
-<h3 class="anchored" data-anchor-id="start">start</h3>
-<p><strong>Syntax:</strong> <code>start [FILE/DIR/PROGRAM]</code><br></p>
-<p>Start a program, or open a file/directory in Windows Explorer.</p>
-<p><span style="color:blue">TODO: Try to find some documentation on this command. This does not seem to be the CMD <code>START</code> command? Why does something like<code>start firefox</code> actually work??? </span></p>
-<p><strong>Link to documentation:</strong><br></p>
-<section id="example---open-current-working-directory-in-windows-explorer" class="level4">
-<h4 class="anchored" data-anchor-id="example---open-current-working-directory-in-windows-explorer">Example - Open current working directory in Windows explorer</h4>
-<p>We can open the current working directory in Windows explorer by simply using <code>start .</code></p>
-<pre class="bash-terminal"><span class="git-insert">/c/some/dir</span>
-$ start .
-</pre>
+<p>Now you can just use <code>git history</code> instead (or choose any other name that is meaningful to you that is not already used by Git).</p>
 
 
 </section>
-</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Taken from <a href="https://gist.github.com/lisawolderiksen/a7b99d94c92c6671181611be1641c733">https://gist.github.com/lisawolderiksen/a7b99d94c92c6671181611be1641c733</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
 </section>
 
 </main> <!-- /main -->
@@ -1115,13 +825,13 @@ $ start .
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./part2-git-rebase.html" class="pagination-link" aria-label="git rebase">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">git rebase</span></span>
+      <a href="./app-github-setup.html" class="pagination-link" aria-label="GitHub setup">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">GitHub setup</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./app02-graphical-user-interfaces.html" class="pagination-link" aria-label="Graphical User Interfaces (GUI's)">
-        <span class="nav-page-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Graphical User Interfaces (GUI’s)</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./app-resources.html" class="pagination-link" aria-label="Resources">
+        <span class="nav-page-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Resources</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

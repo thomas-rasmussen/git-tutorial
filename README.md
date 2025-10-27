@@ -39,7 +39,6 @@ TODO
 - configuration of Git appendix: Consider if it would make sense to add some concrete examples and exercises. It would be easy and straight forward and might make the appendix a lot more useful?
 - configuration of Git appendix: need to be more consistent with using "option" or "setting".
 - git for windows chapter: Introduce some tips and tricks for the command line, like ctrl+l to clear the log, autocompletion using tab etc.
-- GUI chapter: Have made a short draft with a "not a good idea" conclusion, but perhaps it is better to scrap this since it does not add anything of value to the tutorial. Maybe add a sentence or two in the preface explaining why we have chosen to focuse on learning Git on the command line instead.
 
 Topics that should be included, but it is unclear where:
 - .gitignore. Would probably make sense to include very early. Maybe in chapter with

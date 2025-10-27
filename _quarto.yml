@@ -34,11 +34,10 @@ book:
       - part2-git-rebase.qmd
       
   appendices:
-    - app01-git-for-windows.qmd
-    - app02-github-setup.qmd
-    - app03-graphical-user-interfaces.qmd
-    - app04-configuration-of-git.qmd
-    - app05-resources.qmd
+    - app-git-for-windows.qmd
+    - app-github-setup.qmd
+    - app-configuration-of-git.qmd
+    - app-resources.qmd
 
 format:
   html:
