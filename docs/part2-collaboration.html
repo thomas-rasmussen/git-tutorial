@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>13&nbsp; git rebase – Git tutorial</title>
+<title>9&nbsp; Collaboration – Git tutorial</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./app-git-for-windows.html" rel="next">
-<link href="./part2-git-stash.html" rel="prev">
+<link href="./part2-github.html" rel="next">
+<link href="./part1-ch08-workflows.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -85,7 +85,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part2-collaboration.html">Part II</a></li><li class="breadcrumb-item"><a href="./part2-git-rebase.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">git rebase</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part2-collaboration.html">Part II</a></li><li class="breadcrumb-item"><a href="./part2-collaboration.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Collaboration</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -191,7 +191,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part2-collaboration.html" class="sidebar-item-text sidebar-link">
+  <a href="./part2-collaboration.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Collaboration</span></span></a>
   </div>
 </li>
@@ -215,7 +215,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part2-git-rebase.html" class="sidebar-item-text sidebar-link active">
+  <a href="./part2-git-rebase.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">git rebase</span></span></a>
   </div>
 </li>
@@ -267,9 +267,9 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part2-collaboration.html">Part II</a></li><li class="breadcrumb-item"><a href="./part2-git-rebase.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">git rebase</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part2-collaboration.html">Part II</a></li><li class="breadcrumb-item"><a href="./part2-collaboration.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Collaboration</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">git rebase</span></h1>
+<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Collaboration</span></h1>
 </div>
 
 
@@ -286,8 +286,11 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>Should probably be the first chapter in part II. Chapter should focus on how all the basic Git knowledge in part I can be put together to facilitate collaboration.</p>
+<p>Chapter could touch on the following subjects:</p>
 <ul>
-<li>important enough to be part of part I, but is an isolated thing that fits into part II, so maybe put it here?</li>
+<li><p>Using a remote (could be on GitHub, could simply be in another folder somewhere on the same server/drive) as a central repository, from which all collaborators clone the project, push/pull changes.</p></li>
+<li><p>Git flow / branching model to use. Probably focus on explaining a basic main + dev branch model with feature branches, and a “lieutenant”/super-git-user that merges features to the main/dev branch.</p></li>
 </ul>
 
 
@@ -695,13 +698,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./part2-git-stash.html" class="pagination-link" aria-label="git stash.">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">git stash.</span></span>
+      <a href="./part1-ch08-workflows.html" class="pagination-link" aria-label="Workflows">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Workflows</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./app-git-for-windows.html" class="pagination-link" aria-label="Git for Windows">
-        <span class="nav-page-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Git for Windows</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./part2-github.html" class="pagination-link" aria-label="Introduction to GitHub">
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Introduction to GitHub</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

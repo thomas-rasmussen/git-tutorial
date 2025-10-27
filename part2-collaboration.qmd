@@ -1,0 +1,10 @@
+# Collaboration
+
+Should probably be the first chapter in part II. Chapter should focus on how all the basic Git knowledge in part I can be put together to facilitate collaboration.
+
+Chapter could touch on the following subjects:
+
+- Using a remote (could be on GitHub, could simply be in another folder somewhere on the same server/drive) as a central repository, from which all collaborators clone the project, push/pull changes.
+
+- Git flow / branching model to use. Probably focus on explaining a basic main + dev branch model with feature branches, and a "lieutenant"/super-git-user that merges features to the main/dev branch.
+

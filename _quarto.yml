@@ -28,6 +28,7 @@ book:
       - part1-ch08-workflows.qmd
     - part: "Part II"
       chapters:
+      - part2-collaboration.qmd
       - part2-github.qmd
       - part2-git-internals.qmd
       - part2-git-stash.qmd

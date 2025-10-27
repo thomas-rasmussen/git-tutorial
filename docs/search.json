@@ -14,7 +14,7 @@
     "href": "index.html#prerequisites",
     "title": "Git tutorial",
     "section": "Prerequisites",
-    "text": "Prerequisites\nThis tutorial assumes you are using Git version 2.51.0 or newer. If you are using an older version of Git, some of the git config commands in Appendix C — Configuration of Git might not work, and there might be other minor unknown issues as well.\nThis tutorial also assumes you are on a Windows machine and have “Git for Windows” installed. See Appendix A — Git for Windows for more details. Since we will be running Git exclusively from the command line using Git BASH, a BASH emulator, macOS and Linux users should also be able to follow along with only few modifications.\nFinally, if you want to follow along in 9  Introduction to GitHub, you will need to create a GitHub account and authenticate with it, using the GitHub CLI, which you also need to install. See Appendix B — GitHub setup for more details.",
+    "text": "Prerequisites\nThis tutorial assumes you are using Git version 2.51.0 or newer. If you are using an older version of Git, some of the git config commands in Appendix C — Configuration of Git might not work, and there might be other minor unknown issues as well.\nThis tutorial also assumes you are on a Windows machine and have “Git for Windows” installed. See Appendix A — Git for Windows for more details. Since we will be running Git exclusively from the command line using Git BASH, a BASH emulator, macOS and Linux users should also be able to follow along with only few modifications.\nFinally, if you want to follow along in 10  Introduction to GitHub, you will need to create a GitHub account and authenticate with it, using the GitHub CLI, which you also need to install. See Appendix B — GitHub setup for more details.",
     "crumbs": [
       "Preface"
     ]
@@ -295,135 +295,146 @@
     ]
   },
   {
-    "objectID": "part2-github.html",
-    "href": "part2-github.html",
-    "title": "9  Introduction to GitHub",
+    "objectID": "part2-collaboration.html",
+    "href": "part2-collaboration.html",
+    "title": "9  Collaboration",
     "section": "",
-    "text": "9.1 What is GitHub?\nIn this chapter we will give a short introduction to GitHub and how it can be used to share code, and collaborate with others. We will mostly interact with GitHub from the command line using the GitHub CLI. See Appendix B for information on how to install the CLI.\nGitHub is a web-based service that hosts Git repositories. Besides the obvious benifit of hosting your Git repositories online where you can access them from any computer with an internet connection, GitHub also has many features that facilitate collaboration, such as issue-tracking, code review, and pull requests.",
+    "text": "Should probably be the first chapter in part II. Chapter should focus on how all the basic Git knowledge in part I can be put together to facilitate collaboration.\nChapter could touch on the following subjects:\n\nUsing a remote (could be on GitHub, could simply be in another folder somewhere on the same server/drive) as a central repository, from which all collaborators clone the project, push/pull changes.\nGit flow / branching model to use. Probably focus on explaining a basic main + dev branch model with feature branches, and a “lieutenant”/super-git-user that merges features to the main/dev branch.",
     "crumbs": [
       "Part II",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Introduction to GitHub</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Collaboration</span>"
+    ]
+  },
+  {
+    "objectID": "part2-github.html",
+    "href": "part2-github.html",
+    "title": "10  Introduction to GitHub",
+    "section": "",
+    "text": "10.1 What is GitHub?\nIn this chapter we will give a short introduction to GitHub and how it can be used to share code, and collaborate with others. We will mostly interact with GitHub from the command line using the GitHub CLI. See Appendix B for information on how to install the CLI.\nGitHub is a web-based service that hosts Git repositories. Besides the obvious benifit of hosting your Git repositories online where you can access them from any computer with an internet connection, GitHub also has many features that facilitate collaboration, such as issue-tracking, code review, and pull requests.",
+    "crumbs": [
+      "Part II",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Introduction to GitHub</span>"
     ]
   },
   {
     "objectID": "part2-github.html#create-a-git-repository",
     "href": "part2-github.html#create-a-git-repository",
-    "title": "9  Introduction to GitHub",
-    "section": "9.2 Create a Git repository",
-    "text": "9.2 Create a Git repository\nMaybe also explain how to add collaborators to project?",
+    "title": "10  Introduction to GitHub",
+    "section": "10.2 Create a Git repository",
+    "text": "10.2 Create a Git repository\nMaybe also explain how to add collaborators to project?",
     "crumbs": [
       "Part II",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Introduction to GitHub</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Introduction to GitHub</span>"
     ]
   },
   {
     "objectID": "part2-github.html#upload-an-existing-git-repository",
     "href": "part2-github.html#upload-an-existing-git-repository",
-    "title": "9  Introduction to GitHub",
-    "section": "9.3 Upload an existing Git repository",
-    "text": "9.3 Upload an existing Git repository",
+    "title": "10  Introduction to GitHub",
+    "section": "10.3 Upload an existing Git repository",
+    "text": "10.3 Upload an existing Git repository",
     "crumbs": [
       "Part II",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Introduction to GitHub</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Introduction to GitHub</span>"
     ]
   },
   {
     "objectID": "part2-github.html#issues",
     "href": "part2-github.html#issues",
-    "title": "9  Introduction to GitHub",
-    "section": "9.4 Issues",
-    "text": "9.4 Issues",
+    "title": "10  Introduction to GitHub",
+    "section": "10.4 Issues",
+    "text": "10.4 Issues",
     "crumbs": [
       "Part II",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Introduction to GitHub</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Introduction to GitHub</span>"
     ]
   },
   {
     "objectID": "part2-github.html#forking-a-repository",
     "href": "part2-github.html#forking-a-repository",
-    "title": "9  Introduction to GitHub",
-    "section": "9.5 Forking a repository",
-    "text": "9.5 Forking a repository",
+    "title": "10  Introduction to GitHub",
+    "section": "10.5 Forking a repository",
+    "text": "10.5 Forking a repository",
     "crumbs": [
       "Part II",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Introduction to GitHub</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Introduction to GitHub</span>"
     ]
   },
   {
     "objectID": "part2-github.html#pull-requests",
     "href": "part2-github.html#pull-requests",
-    "title": "9  Introduction to GitHub",
-    "section": "9.6 Pull requests",
-    "text": "9.6 Pull requests",
+    "title": "10  Introduction to GitHub",
+    "section": "10.6 Pull requests",
+    "text": "10.6 Pull requests",
     "crumbs": [
       "Part II",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Introduction to GitHub</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Introduction to GitHub</span>"
     ]
   },
   {
     "objectID": "part2-github.html#the-github-flow",
     "href": "part2-github.html#the-github-flow",
-    "title": "9  Introduction to GitHub",
-    "section": "9.7 The GitHub flow",
-    "text": "9.7 The GitHub flow\nMaybe explain how the “GitHub flow” can be used to contribute to projects by forking a repo, making changes, and making a pull request?",
+    "title": "10  Introduction to GitHub",
+    "section": "10.7 The GitHub flow",
+    "text": "10.7 The GitHub flow\nMaybe explain how the “GitHub flow” can be used to contribute to projects by forking a repo, making changes, and making a pull request?",
     "crumbs": [
       "Part II",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Introduction to GitHub</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Introduction to GitHub</span>"
     ]
   },
   {
     "objectID": "part2-github.html#github-pages",
     "href": "part2-github.html#github-pages",
-    "title": "9  Introduction to GitHub",
-    "section": "9.8 GitHub pages",
-    "text": "9.8 GitHub pages\nMaybe worth quickly mentioning that you can easily make a static website from HTML documents in a Git repository that GitHub will host for you. For example this tutorial.",
+    "title": "10  Introduction to GitHub",
+    "section": "10.8 GitHub pages",
+    "text": "10.8 GitHub pages\nMaybe worth quickly mentioning that you can easily make a static website from HTML documents in a Git repository that GitHub will host for you. For example this tutorial.",
     "crumbs": [
       "Part II",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Introduction to GitHub</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Introduction to GitHub</span>"
     ]
   },
   {
     "objectID": "part2-github.html#exercises",
     "href": "part2-github.html#exercises",
-    "title": "9  Introduction to GitHub",
-    "section": "9.9 Exercises",
-    "text": "9.9 Exercises",
+    "title": "10  Introduction to GitHub",
+    "section": "10.9 Exercises",
+    "text": "10.9 Exercises",
     "crumbs": [
       "Part II",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Introduction to GitHub</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Introduction to GitHub</span>"
     ]
   },
   {
     "objectID": "part2-git-internals.html",
     "href": "part2-git-internals.html",
-    "title": "10  Git internals",
+    "title": "11  Git internals",
     "section": "",
     "text": "Make a chapter focused on explaining what some of all the stuff in the .git folder is? Some of it might be explained in other parts of the book? This chapter might correspond 1-to-1 with the Git internals chapter in Pro git?",
     "crumbs": [
       "Part II",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Git internals</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Git internals</span>"
     ]
   },
   {
     "objectID": "part2-git-stash.html",
     "href": "part2-git-stash.html",
-    "title": "11  git stash.",
+    "title": "12  git stash.",
     "section": "",
     "text": "Not important enough to make it to Part I, but maybe useful enough to warrent adding a chapter on it in part II?",
     "crumbs": [
       "Part II",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>git stash.</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>git stash.</span>"
     ]
   },
   {
     "objectID": "part2-git-rebase.html",
     "href": "part2-git-rebase.html",
-    "title": "12  git rebase",
+    "title": "13  git rebase",
     "section": "",
     "text": "important enough to be part of part I, but is an isolated thing that fits into part II, so maybe put it here?",
     "crumbs": [
       "Part II",
-      "<span class='chapter-number'>12</span>  <span class='chapter-title'>git rebase</span>"
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>git rebase</span>"
     ]
   },
   {
