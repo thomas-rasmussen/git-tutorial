@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>5&nbsp; Branching chapter – Git tutorial</title>
+<title>7&nbsp; Workflows – Git tutorial</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./part1-ch06-merging.html" rel="next">
-<link href="./part1-ch04-undoing-changes.html" rel="prev">
+<link href="./part2-collaboration.html" rel="next">
+<link href="./part1-ch06-remotes.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -85,7 +85,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part1-ch01-introduction-to-git.html">Part I</a></li><li class="breadcrumb-item"><a href="./part1-ch05-branching.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Branching chapter</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part1-ch01-introduction-to-git.html">Part I</a></li><li class="breadcrumb-item"><a href="./part1-ch07-workflows.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Workflows</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -156,26 +156,20 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part1-ch05-branching.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Branching chapter</span></span></a>
+  <a href="./part1-ch05-branching-and-merging.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Branching and merging</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part1-ch06-merging.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Merging chapter</span></span></a>
+  <a href="./part1-ch06-remotes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Remotes chapter</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part1-ch07-remotes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Remotes chapter</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./part1-ch08-workflows.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Workflows</span></span></a>
+  <a href="./part1-ch07-workflows.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Workflows</span></span></a>
   </div>
 </li>
       </ul>
@@ -192,31 +186,31 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./part2-collaboration.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Collaboration</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Collaboration</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./part2-github.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Introduction to GitHub</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Introduction to GitHub</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./part2-git-internals.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Git internals</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Git internals</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./part2-git-stash.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">git stash.</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">git stash.</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./part2-git-rebase.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">git rebase</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">git rebase</span></span></a>
   </div>
 </li>
       </ul>
@@ -267,9 +261,9 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part1-ch01-introduction-to-git.html">Part I</a></li><li class="breadcrumb-item"><a href="./part1-ch05-branching.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Branching chapter</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part1-ch01-introduction-to-git.html">Part I</a></li><li class="breadcrumb-item"><a href="./part1-ch07-workflows.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Workflows</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Branching chapter</span></h1>
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Workflows</span></h1>
 </div>
 
 
@@ -286,7 +280,18 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Topics: - At this point it probably makes sense to introduce branching - Introduce git branch, git switch and/or git checkout - Would probably make a lot of sense to talk about refs at the start of this chapter?</p>
+<ul>
+<li>Might be incorporated into branching and merging chapter?</li>
+<li>Could also be in Part II</li>
+<li>Talking about workflows / branching models, how to use Git in projects, branching stratigies etc. This is not a tutorial for software developers, so talking about Gitflow, trunk-based development and whatever is probably not helpful at all. Probably better to talk about it in the context of a much simpler setup, eg a single developer working on a simple project with a mostly linear history, and small team projects. Talk about maybe using a setup with a main/dev branch and feature branches. That workflow is very simple and covers pretty much every relevant scenario?</li>
+<li>Maybe this chapter should be called “Branching models” and the focus should be around that concepet?
+<ul>
+<li>Maybe the entire chapter should just be centered around the branching model of using a main branch for “production/releases”, dev branch for (working) development version, and feature branches from dev, wehre everything is rebased wehn done so just have a nice simple linear commit history of main branch commits, which are assumed to be the only versions of relevance.
+<ul>
+<li>Maybe talk about scenarios where this workflow needs to be extended and how to do that. Here it might make sense to mention something like git-flow? How does this setup handle collaboration? People develop in feature branches, that are then merged into dev by a leutanant? This is just feature branch workflow? Maybe look at https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow for inpiration.</li>
+</ul></li>
+</ul></li>
+</ul>
 
 
 
@@ -693,13 +698,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./part1-ch04-undoing-changes.html" class="pagination-link" aria-label="Undoing changes">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Undoing changes</span></span>
+      <a href="./part1-ch06-remotes.html" class="pagination-link" aria-label="Remotes chapter">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Remotes chapter</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./part1-ch06-merging.html" class="pagination-link" aria-label="Merging chapter">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Merging chapter</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./part2-collaboration.html" class="pagination-link" aria-label="Collaboration">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Collaboration</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

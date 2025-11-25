@@ -4,6 +4,14 @@ Git tutorial
 [Link to tutorial](https://thomas-rasmussen.github.io/git-tutorial/)
 
 TODO
+- The current scope of the tutorial does not include an in-depth look at what the index is and how it works. But it is very relevant to include some information about this, since it helps shape the correct mental model of how Git works. This information could be put in a separate part II chapter, or maybe there is an appropriate place in on of the chapters.
+- Preface diagram: arrows are pointing the wrong way. They should point backwards toward their parent commits.
+- Branching and mgergin chapter todo:
+
+3) Start writing first drafts of texts in each section. 
+
+4) Begin making more serious first drafts of the text in the chapter.
+
 - "Undoing changes" chapter: git revert not introduced on purpose since it will rarely be used by the intented audience. But it is a useful command, and it might be relevant to introduce at some point. Maybe at an appropriate place in Part II or as a stand-lone chapter.
 - "Undoing changes" chapter: The chapter currently does not show how to "undo" a commit. This would require introducing git reset --hard <checksum>. Can this also be done with git restore?
 - Consideration: It might make the tutorial a lot better, if it is stated upfront in the preface that the target audience is researchers/coders/statisticians whatever, and then reformulating all examples and exercises in that context. It might make it a lot easier for the audience to relate to the material, when they are presented with examples of problems/situations that occur for them too.
@@ -34,6 +42,7 @@ TODO
 - configuration of Git appendix: Consider if it would make sense to add some concrete examples and exercises. It would be easy and straight forward and might make the appendix a lot more useful?
 - configuration of Git appendix: need to be more consistent with using "option" or "setting".
 - git for windows chapter: Introduce some tips and tricks for the command line, like ctrl+l to clear the log, autocompletion using tab etc.
+- It currently feels like remotes should be introduced before branching, so that remotes can be used in examples regarding merging and rebasing.
 
 Topics that should be included, but it is unclear where:
 - .gitignore. Would probably make sense to include very early. Maybe in chapter with
@@ -46,3 +55,16 @@ Topics that should be included, but it is unclear where:
 - GitHub CLI: there seems to be an issue where the GitHub CLI stores login credentials in plain text if the CLI is used by a user without admin privilies. This does not immidiately seem like a problem if the CLI was used through git BASH on Windows on a DCE work pc, since we (apparently) have admin privilies on these. But remember to test this on a fresh laptop later to make sure we do not use an approach that saves credentials in plain text. 
 
 
+Found this very old resource:
+https://github.com/schacon/gitbook
+Is this some form of early iteration of the Pro Git book? In any case, it seems like it might contain a lot
+technical information about how Git works, that might not be explained in newer sources. But maybe this information
+is outdated?
+
+Look at this resource as well:
+https://think-like-a-git.net
+https://www.youtube.com/watch?v=xbLVvrb2-fY
+might be of interest: https://gitfu.fyi/
+
+Good resource for why to aviod merge commits?
+https://gitfu.fyi/tips/avoid-merge-commits/

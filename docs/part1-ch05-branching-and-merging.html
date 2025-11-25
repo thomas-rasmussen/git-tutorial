@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>1&nbsp; Introduction to Git – Git tutorial</title>
+<title>5&nbsp; Branching and merging – Git tutorial</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./part1-ch02-getting-started.html" rel="next">
-<link href="./index.html" rel="prev">
+<link href="./part1-ch06-remotes.html" rel="next">
+<link href="./part1-ch04-undoing-changes.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -85,7 +85,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part1-ch01-introduction-to-git.html">Part I</a></li><li class="breadcrumb-item"><a href="./part1-ch01-introduction-to-git.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to Git</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part1-ch01-introduction-to-git.html">Part I</a></li><li class="breadcrumb-item"><a href="./part1-ch05-branching-and-merging.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Branching and merging</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -132,7 +132,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part1-ch01-introduction-to-git.html" class="sidebar-item-text sidebar-link active">
+  <a href="./part1-ch01-introduction-to-git.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to Git</span></span></a>
   </div>
 </li>
@@ -156,7 +156,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part1-ch05-branching-and-merging.html" class="sidebar-item-text sidebar-link">
+  <a href="./part1-ch05-branching-and-merging.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Branching and merging</span></span></a>
   </div>
 </li>
@@ -260,26 +260,23 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#what-is-version-control" id="toc-what-is-version-control" class="nav-link active" data-scroll-target="#what-is-version-control"><span class="header-section-number">1.1</span> What is version control?</a>
-  <ul class="collapse">
-  <li><a href="#local-vcs" id="toc-local-vcs" class="nav-link" data-scroll-target="#local-vcs">Local VCS</a></li>
-  <li><a href="#centralized-vcs" id="toc-centralized-vcs" class="nav-link" data-scroll-target="#centralized-vcs">Centralized VCS</a></li>
-  <li><a href="#distributed-vcs" id="toc-distributed-vcs" class="nav-link" data-scroll-target="#distributed-vcs">Distributed VCS</a></li>
-  </ul></li>
-  <li><a href="#what-is-git" id="toc-what-is-git" class="nav-link" data-scroll-target="#what-is-git"><span class="header-section-number">1.2</span> What is Git?</a>
-  <ul class="collapse">
-  <li><a href="#the-main-sections-of-a-git-project" id="toc-the-main-sections-of-a-git-project" class="nav-link" data-scroll-target="#the-main-sections-of-a-git-project">The main sections of a Git project</a></li>
-  <li><a href="#sec-file-storage-in-git" id="toc-sec-file-storage-in-git" class="nav-link" data-scroll-target="#sec-file-storage-in-git">File storing in Git</a></li>
-  </ul></li>
+  <li><a href="#data-storage-in-git" id="toc-data-storage-in-git" class="nav-link active" data-scroll-target="#data-storage-in-git"><span class="header-section-number">5.1</span> Data storage in Git</a></li>
+  <li><a href="#create-and-switch-to-a-branch" id="toc-create-and-switch-to-a-branch" class="nav-link" data-scroll-target="#create-and-switch-to-a-branch"><span class="header-section-number">5.2</span> Create and switch to a branch</a></li>
+  <li><a href="#fast-forward-merge" id="toc-fast-forward-merge" class="nav-link" data-scroll-target="#fast-forward-merge"><span class="header-section-number">5.3</span> Fast-forward merge</a></li>
+  <li><a href="#merge-commit" id="toc-merge-commit" class="nav-link" data-scroll-target="#merge-commit"><span class="header-section-number">5.4</span> Merge commit</a></li>
+  <li><a href="#merge-conflicts" id="toc-merge-conflicts" class="nav-link" data-scroll-target="#merge-conflicts"><span class="header-section-number">5.5</span> Merge conflicts</a></li>
+  <li><a href="#rebasing" id="toc-rebasing" class="nav-link" data-scroll-target="#rebasing"><span class="header-section-number">5.6</span> Rebasing</a></li>
+  <li><a href="#rebasing-versus-merging" id="toc-rebasing-versus-merging" class="nav-link" data-scroll-target="#rebasing-versus-merging"><span class="header-section-number">5.7</span> Rebasing versus merging</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">5.8</span> Exercises</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part1-ch01-introduction-to-git.html">Part I</a></li><li class="breadcrumb-item"><a href="./part1-ch01-introduction-to-git.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to Git</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part1-ch01-introduction-to-git.html">Part I</a></li><li class="breadcrumb-item"><a href="./part1-ch05-branching-and-merging.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Branching and merging</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-introduction-to-git" class="quarto-section-identifier"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to Git</span></span></h1>
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Branching and merging</span></h1>
 </div>
 
 
@@ -296,147 +293,358 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>So, what is Git? We will start this tutorial with a short introduction to version control in general, and talk about what Git is and how it works.</p>
-<section id="what-is-version-control" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="what-is-version-control"><span class="header-section-number">1.1</span> What is version control?</h2>
-<p><em>Version control</em> is the practice of organizing and tracking different versions of computer files over time. Generally, you can do this for any type of file, but it is primarily done for source code, i.e.&nbsp;plain text files. A <em>version control system</em> (VCS) is a software tool that automates version control.</p>
-<div style="display: grid">
-<div style="grid-column: 1">
-<p>You might not realise it, but you are probably already using some form of primitive version control. Does the image on the right look familiar? It is common for people to do manual version control of files by making copies of it and renaming the file. You might even make a folder where you store the old versions separately. The unstructured choice of filenames shown here might seem a bit exaggerated to you, but this pattern of haphazardly naming different versions of files is very common in practice. This approach to version control is obviously less than ideal. Even with a single file, it quickly becomes impossible to discern what version of the file is the newest, and whether or not the history of the file is linear, or if some versions diverge in different direction from some common base version. Furthermore, it is impossible to assess what exactly has changed between versions. Even for small projects with a single developer, this approach clearly has some serious limitations.</p>
-</div>
-<div style="grid-column: 2;">
+<p>TODO - When -all flag to git log is first used, make sure to explain why it is needed. Same with –graph - Go into how the index works? Not done expclitly in Pro Git chapter, but would be natural to do here as well? - Would it make sense to use a little more time to explain what refs are here, so that we can talk about how HEAD is a ref? (is that even correct?) - Exercise idea: It would probably be a good idea to make an (optinal/technical) exercise alike to the example as one of the last exercises in the chapter. - Add a ton of diagrams</p>
+<p>In this chapter we will introduce the concept of branches and merging. Branching means diverging from the main version of the code, making changes that does not interfere with the main version. Merging is the process of reconciling two (or more) versions of the code after branching.</p>
+<p>Branching is incredibly lightweight in Git, making switching back and forth between branches almost instantaneous. Git encourages a workflow where you branch and merge often. Understanding and mastering branching and merging is an essential part of using Git in a productive way, and will (hopefully) change how you think about and develop your code.</p>
+<section id="data-storage-in-git" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="data-storage-in-git"><span class="header-section-number">5.1</span> Data storage in Git</h2>
+<p>To understand how branching works in Git, we need to take a step back and discuss how Git stores data in more details. As mentioned in <a href="part1-ch01-introduction-to-git.html#sec-file-storage-in-git" class="quarto-xref"><span>Section 1.2.2</span></a>, Git stores data as a series of snapshots. When you commit a version of files to a Git repository, Git makes a commit object using the index, that contains a pointer to the snapshot of content you staged for that commit. Beside the state of files included in the commit, the commit object also contains meta data on the author’s name and email (and this is why you should configure your Git installation), the commit message, and finally pointers to the commit, or commits, that came directory before it, ie its parent commit(s). The initial commit in a Git repository has no parent commit, a normal commit has one parent, and a merge commit has multiple parents (more on this later).</p>
+<p>To illustrate how all this works, lets make an example repository and go through the details step-by-step. First, lets initialize an empty repository:</p>
+<pre class="git-command">$ mkdir ~/example-data-storage
+$ cd ~/example-data-storage
+$ git init
+$ ls .git/
+HEAD  config  description  <span class="bash-violet">hooks  info  objects  refs</span>
+$ ls .git/objects/ -R
+.git/objects/:
+info  pack
+
+.git/objects/info:
+
+.git/objects/pack:
+</pre>
+<p>Since we have an empty repository at this point, we do not have an index file yet in <code>.git/</code>, and <code>objects/</code> is empty (besides the empty <code>pack/</code> and <code>info/</code> directory).</p>
+<p>The index is stored as a binary file in the .git folder, and objects that have been added to the index and/or have been committed to the repository, is stored in .git/objects. When you stage files, Git computes a checksum for each file (the SHA-1 hash), and stores the content of that version of the file in the Git repository under that checksum name(referred to in Git as <em>blobs</em>), and adds the checksum to the staging area.</p>
+<p>Intuitively, you would think that the index holds a copy of all the files that goes into the commit. This is not the case. The index is just a sorted list of path names and the SHA-1 checksum of a blob object. We can use the <code>git ls-files --stage</code> command to show us the content of the index.</p>
+<p>TODO: expand above explaination</p>
+<p>Lets add a couple of files to the repository and stage them:</p>
+<pre class="git-command">$ echo "content a" &gt; file_a.txt
+$ echo "content_b" &gt; file_b.txt
+$ git add .
+$ ls .git/
+HEAD    description  index  <span class="bash-violet">objects</span>
+config  <span class="bash-violet">hooks        info   refs</span>
+$ ls .git/objects/ -R
+.git/objects/:
+<span class="bash-violet">a6  e4  info  pack</span>
+
+.git/objects/a6:
+f054ce35dbe029a40a758df1e00103e6473e75
+
+.git/objects/e4:
+542d77807392d80eb449356baa55c0cb657546
+
+.git/objects/info:
+
+.git/objects/pack:
+</pre>
+<p>We can see that after we have created and staged <code>file_a.txt</code> and <code>file_b.txt</code>, an <code>index</code> file has been added in <code>.git/</code>, and that two objects have been added to the git repository, referred to by checksum values. We can also see that Git groups the objects in folders based on the first two characters of the checksum.</p>
+<p>We can also inspect the index:</p>
+<pre class="git-commmand">100644 e4542d77807392d80eb449356baa55c0cb657546 0       file_a.txt
+100644 a6f054ce35dbe029a40a758df1e00103e6473e75 0       file_b.txt
+</pre>
+<p>TODO: need some more explaination on index content here: use https://shafiul.github.io//gitbook/7_the_git_index.html</p>
+<p>To inspect the content of our newly created blobs/objects, we need to use a low-level git command, <code>git cat-file</code> since objects are not stored as plain text-file, but is instead stores in other formats for efficiency reasons:</p>
+<pre class="git-command">$ git cat-file -y a6f054ce # Use -t option to the see the type of the object
+blob
+$ git cat-file -t e4542d77 
+blob
+$ git cat-file -p a6f054ce # Use -p option to print the content based on its type
+content b
+$ git cat-file -p e4542d77 
+content a
+</pre>
+<p>First of all, notice how we can refer to checksums without using the full checksum value. Generally speaking, we only need to use the 7 first characters. We can see that the content of the object a6f054ce corresponds to the content of <code>file_b.txt</code> and that the content of object e4542d77 corresponds to the content of <code>file_a.txt</code>. Next, lets inspect the index using the low-level command <code>git ls-files</code>:</p>
+<pre class="git-command">$ git ls-files --stage
+100644 e4542d77807392d80eb449356baa55c0cb657546 0       file_a.txt
+100644 a6f054ce35dbe029a40a758df1e00103e6473e75 0       file_b.txt
+</pre>
+<p>Here we have used the <code>--stage</code> option to get some information on staged files, most importantly the checksum and the name of the file, which is used to pull the relevant objects from the object database to include in the commit and name them.</p>
+<p>When we run <code>git commit</code>, Git checksums each subdirectory (which is just the project root directory containing <code>file_a.txt</code> and <code>file_b.txt</code> in this example), and stores them as a tree object in the Git repository. Git then creates a commit object that has the metadata and a pointer the the root project tree so it can re-create that snapshot when needed. Let continue our example to see this for ourselves:</p>
+<pre class="git-command">$ git commit -m"Initial commit"
+[main (root-commit) 3d37117] Initial commit
+ 2 files changed, 2 insertions(+)
+ create mode 100644 file_a.txt
+ create mode 100644 file_b.txt
+</pre>
+<p>There is a lot of cryptic information outputted to the terminal, but of importance Git tells us that two files have been changed and lists the files. Additionally, we can see that a commit object has been made with the (abbreviated) checksum 3d37117. Before we take a closer look at this commit, lets first look at the index and the objects in the Git repository again:</p>
+<pre class="git-command">$ git ls-files --stage # No output now, nothing is staged for the next commit
+$ ls .git/objects/
+<span class="bash-violet">3d  6c  a6  e4  info  pack</span>
+
+.git/objects/3d:
+37117e6c4403d116729f4da34602e98b9706ec
+
+.git/objects/6c:
+bce5031690670decc52d19e348c4a157beec9c
+
+.git/objects/a6:
+f054ce35dbe029a40a758df1e00103e6473e75
+
+.git/objects/e4:
+542d77807392d80eb449356baa55c0cb657546
+
+.git/objects/info:
+
+.git/objects/pack:
+</pre>
+<p>We can see that two new objects have been added to the database. One of the objects, 3d37117, is the commit object, and the other, 6cbce50, is the tree object included in the commit object, as we shall see in a moment. Lets take a closer look at the commit object:</p>
+<pre class="git-command">$ git cat-file -t 3d37117
+commit
+$ git cat-file -p 3d37177
+tree 6cbce5031690670decc52d19e348c4a157beec9c
+author Thomas Rasmusssen <myemail@gmail.com> 1764186694 +0100
+committer Thomas Rasmussen <myemail@gmail.com> 1764186694 +0100
+
+Initial commit
+</myemail@gmail.com></myemail@gmail.com></pre>
+<p>We see, as expected, that the commit object consists of a pointer to a tree object, 6cbce50 (the other object that was added to the database together with the commit object), information on the person who made the commit, a pointer to the parent commit, and the commit message. In this case the line with information on the parent commit is empty since this is the initial commit in the repository.</p>
+<p>Lets take a closer look at the tree object while we are at it:</p>
+<pre class="git-command">$ git cat-file -t 6cbc350
+tree
+$ git cat-file -p 6cbc350
+100644 blob e4542d77807392d80eb449356baa55c0cb657546    file_a.txt
+100644 blob a6f054ce35dbe029a40a758df1e00103e6473e75    file_b.txt
+</pre>
+<p>As expected, the tree object contains a list of the files/blobs included in the commit.</p>
+<p>To summarize, our Git repository now contains four objects, two blobs (each representing the contents of one of the two files), one tree that lists the content of the directory and specifies which file names are stores in which blobs, and one commit object with a pointer to that root tree and all the commit metadata. A visual representation of the structure of the commit object can be seen below.</p>
+<div style="width:100%;margin:auto">
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<img src="images/code_file_history.png" class="figure-img">
+<p><img src="./diagrams/structure-of-commit-object.svg" class="img-fluid figure-img"></p>
+<figcaption>Structure of commit object</figcaption>
+</figure>
+</div>
+</div>
+<p>If we now make additional changes and commit again, the next commit also stores a pointer to the previous commit (the parent commit).</p>
+<div style="width:100%;margin:auto">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./diagrams/parent-commits.svg" class="img-fluid figure-img"></p>
+<figcaption>Parent commits</figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section id="create-and-switch-to-a-branch" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="create-and-switch-to-a-branch"><span class="header-section-number">5.2</span> Create and switch to a branch</h2>
+<div style="display: grid; grid-template-columns: 70% 30%">
+<div style="grid-column: 1">
+<p>So what is a branch? A branch is simply a lightweight<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> movable pointer to a commit object. The default branch is called main (master if you are running an older version of Git). Every time you make a commit, the main branch pointer is automatically moved forward to the new commit. It is worth noting that there is nothing special about this branch, but most repositories have a branch called main (or again, master), since this is the default name that is used when you initialize a repository with <code>git init</code>.</p>
+</div>
+<div style="grid-column: 2">
+<figure class="figure">
+<img src="diagrams/branch-illustration.svg" class="figure-img">
 <figcaption>
-Versions of a code file
+Illustration of branch pointer
 </figcaption>
 </figure>
 </div>
 </div>
-<p>If the above example of file naming seems ludicrous to you, good. That means you have probably already, either implicitly or explicitly, thought about how to organize different versions of your files. You are already on your way to overcoming the biggest hurdle with working with VCS’s: working in a structured manner. It is usually not that hard to figure out how to use VCS’s, but some people can struggle with the amount of structure that is forced upon them, and have difficulties using VCS’s in an effective way, because they are less inclined to accept the premise of working in a structured way that is very unfamiliar to them. If that sounds like like you, try to keep an open mind going forward. To get the full benefit of using a VCS, it might be necessary to make some changes to how you work.</p>
-<section id="local-vcs" class="level3">
-<h3 class="anchored" data-anchor-id="local-vcs">Local VCS</h3>
-<div style="display:flex">
-<div style="flex:50%;">
-<p>The first development away from manual version control solutions was so-called local VCS’s. A local VCS is a local database on a single computer that keeps track of changes to files. Using a local VCS is can improvement over manual version control and can be useful for small and/or personal projects, but these types of VCS’s still have important limitations:</p>
-<ul>
-<li><p>All file versions are stored locally, making it vulnerable to data loss.</p></li>
-<li><p>It is difficult to collaborate with others using a local VCS, since changes can’t easily be shared or consolidated.</p></li>
-</ul>
+<div style="display: grid; grid-template-columns: 70% 30%">
+<div style="grid-column: 1">
+<p>You can have multiple branches in a Git repository, but how does this work? The answer is more movable pointers. You can create a new branch with the <code>git branch</code> command. For example, if you want to create a new branch with the name “new-branch” you can use the command <code>git branch new-branch</code>, which will create a new pointer to the commit you are currently on.</p>
 </div>
-<div style="flex:50%;">
-<div class="quarto-figure quarto-figure-center">
+<div style="grid-column: 2">
 <figure class="figure">
-<p><img src="./diagrams/local-vcs.svg" class="img-fluid figure-img"></p>
-<figcaption>Local VCS</figcaption>
+<img src="diagrams/new-branch-illustration.svg" class="figure-img">
+<figcaption>
+Creating a new branch
+</figcaption>
 </figure>
 </div>
 </div>
+<div style="display: grid; grid-template-columns: 70% 30%">
+<div style="grid-column: 1">
+<p>How does Git know which branch you are currently on? More pointers. Git has a special pointer called HEAD. This pointer points to the branch you are currently on. If we want to switch what branch we are on, we can use the <code>git switch</code> command, eg if after creating the branch “new-branch”, if we want to switch to that branch, we can use <code>git switch new-branch</code>. This moves the HEAD pointer to the “new-branch” branch, and updates the files in the working tree to reflect the state the files are in in the commit that <code>new-branch</code> is pointing to. In this simple example, nothing is updated, since both <code>main</code> and <code>new-branch</code>is pointing to the same commit.</p>
 </div>
-</section>
-<section id="centralized-vcs" class="level3">
-<h3 class="anchored" data-anchor-id="centralized-vcs">Centralized VCS</h3>
-<div style="display:flex">
-<div style="flex:50%">
-<p>To overcome the collaboration issues with local VCS’s, the next type of VCS that was developed was centralized VCS’s. These systems work by having a single central server that contains all the files that are version controlled. Developers can “checkout” files from that server and “commit” changes back to the server. This setup has many advantages over local VCS’s.</p>
-<ul>
-<li><p>A single central repository makes it easy for developers to see the history of changes and current state of files.</p></li>
-<li><p>Makes it easy to collaborate with other people.</p></li>
-<li><p>Administrators can control what files each developer can access and modify.</p></li>
-</ul>
-<p>However, centralized VCS’s still have limitations:</p>
-<ul>
-<li><p>Single point of failure: If the server dies and no proper backup has been kept, the entire history of the project is lost except whatever snapshots of files people happen to have on their local machines.</p></li>
-<li><p>It is typically not possible to work offline. If the central server is temporarily offline or if the developer does not have an internet connection, it is not possible to “commit” changes to files.</p></li>
-<li><p>Operations requires communication with the central server which can be slow, especially for large projects.</p></li>
-</ul>
-</div>
-<div style="flex:50%;">
-<div class="quarto-figure quarto-figure-center">
+<div style="grid-column: 2">
 <figure class="figure">
-<p><img src="./diagrams/centralized-vcs.svg" class="img-fluid figure-img"></p>
-<figcaption>Centalized VCS</figcaption>
+<img src="diagrams/moving-HEAD-illustration.svg" class="figure-img">
+<figcaption>
+Moving HEAD from one branch to another
+</figcaption>
 </figure>
 </div>
 </div>
-</div>
 </section>
-<section id="distributed-vcs" class="level3">
-<h3 class="anchored" data-anchor-id="distributed-vcs">Distributed VCS</h3>
-<div style="display:flex">
-<div style="flex:50%">
-<p>The final type of VCS’s is <em>distributed</em> VCS’s. With a distributed VCS, developers don’t just checkout the latest version of files, they make a copy of the entire history of all files. Distributed VCS’s have several advantages over centralized VCS’s.</p>
-<ul>
-<li><p>No single point of failure. Each developer has the entire history of files.</p></li>
-<li><p>Instead of relying on a central server, developers can share and synchronize changes directly with each others.</p></li>
-<li><p>Developers can work offline.</p></li>
-<li><p>Allows for more flexible workflows that are not possible with a single centralized server.</p></li>
-<li><p>Some types of operations are faster since you don’t need to communicate with a server.</p></li>
-</ul>
-<p>On the other hand distributed VCS’s also comes with some downsides:</p>
-<ul>
-<li><p>Storing the complete history of files can take up a lot more disc space, especially if files includes binary files or the project has a long and complicated history.</p></li>
-<li><p>Administrators can not control which individual files each developer can see/modify.</p></li>
-</ul>
-</div>
-<div style="flex:50%;margin:1em;">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./diagrams/distributed-vcs.svg" class="img-fluid figure-img"></p>
-<figcaption>Distributed VCS</figcaption>
-</figure>
-</div>
-</div>
-</div>
+<section id="fast-forward-merge" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="fast-forward-merge"><span class="header-section-number">5.3</span> Fast-forward merge</h2>
+<p>The simplest type of merge is a fast-forward merge, which we will illustrate with an example. Imagine we have the following basic repository with a single commit of a single file:</p>
+<pre class="git-command">$ mkdir ./fast-forward-merge
+$ cd ./fast-forward-merge
+$ git init
+$ echo "content" &gt; file.txt
+$ git add .
+$ git commit -m"Add file.txt"
+</pre>
+<p>Lets say that everything is working as intended in our repository right now, but that we want to update file.txt with some changes. Instead of making these changes directly on the main branch, we create a new branch, test, where we develop the changes:</p>
+<pre class="git-command">$ git switch -c test
+$ echo "add changes" &gt;&gt; file.txt
+$ git add .
+$ git commit -m"Add changes to file.txt
+$ echo "add more changes" &gt;&gt; file.txt
+$ git add .
+$ git commit -m"Add more changes to file.txt"
+$ git log --oneline --all --graph
+* 82b0b49 (HEAD -&gt; test) Add more changes to file.txt
+* 0242a6a Add changes to file.txt
+* ee99f60 (main) Add file.txt
+</pre>
+<p>At this point we are happy with our changes to file.txt, and we now want to merge these changes into the main branch of the repository. We can do this by switching back to the main branch and use the <code>git merge</code> command to merge another branch into our active branch:</p>
+<pre class="git-command">$ git switch main
+$ git merge test
+Updating ee99f60..82b0b49
+Fast-forward
+ file.txt | 2 ++
+ 1 file changed, 2 insertions(+)
+git log --graph --oneline --all
+* 82b0b49 (HEAD -&gt; main, test) Add more changes to file.txt
+* 0242a6a Add changes to file.txt
+* ee99f60 Add file.txt
+</pre>
+<p>When doing the merge, we can see the phrase “Fast-forward” in the output. Because the commit 82b0b49 that the test branch is pointing to is directly ahead of the ee99f60 commit that the main branch is pointing to, we can merge the test branch to the main branch by simply moving the main branch pointer to the commit that the test branch is pointing at. In other words: in this simple scenario, the branches does not diverge, so we can simply “fast-forward” the main branch pointer.</p>
 </section>
+<section id="merge-commit" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="merge-commit"><span class="header-section-number">5.4</span> Merge commit</h2>
+<p>Suppose we have a repository with two files,, where we experiment with updating one of the files in a separate branch:</p>
+<pre classs="git-command">$ mkdir ./merge-commit
+$ cd ./merge-commit
+$ git init
+$ echo "content" &gt; file1.txt
+$ echo "content" &gt; file2.txt
+$ git add .
+$ git commit -m"Add file1.txt and file2.txt"
+$ git switch -c update-file2
+$ echo "more content" &gt;&gt; file2.txt
+$ git add .
+$ git commit -m"Update file2.txt"
+</pre>
+<p>While working on this update to file2.txt, we discover that we have a bug in file1.txt that we want to fix immediately on the main branch, independent of the work we are currently doing on file2.txt. So we switch back to the main branch and fix the bug there:</p>
+<pre class="git-command">$ git switch main
+$ echo "fix bug" &gt;&gt; file1.txt
+$ git add .
+$ git commit -m"Fix bug in file1.txt"
+$ git log --oneline --all --graph
+* 9b14dc1 (HEAD -&gt; main) Fix bug in file1.txt
+| * f9bcc9e (update-file2) Update file2.txt
+|/
+* c2c50b0 Add file1.txt and file2.txt
+</pre>
+<p>After doing this, we revisit our work on file2.txt and come to the conclusion that we are satified with the changes to file2.txt, and that we want to merge then into the main branch. Again, we switch to the main branch and use <code>git merge</code> to do this:</p>
+<pre class="git-command"><p>$ git switch main $ git merge update-file2 Merge made by the ‘ort’ strategy. file2.txt | 1 + 1 file changed, 1 insertion(+) $ git log –oneline –graph –all * e553fcb (HEAD -&gt; main) Merge branch ‘update-file2’ |<br>
+| * f9bcc9e (update-file2) Update file2.txt * | 9b14dc1 Fix bug in file1.txt |/ * c2c50b0 Add file1.txt and file2.txt</p>
+<p>After using <code>git merge</code> Git open a text editor where it prompt us to enter a commit message. Here we have just accepted the pre-specified message “Merge branch ‘update-file’”. In this case we can see that a simple fast-forward merge was not used. This is because our two branches diverge, and we can’t simply move the main branch pointer forward. Instead, Git informs us that is has made a merge using the “ort” strategy. This is the default way Git tries to resolve merges, and can be used when we are trying to resolve a merge of two branches, which is what you will be doing most, if not all, the time. The “ort” strategy is a 3-way merge, where Git identifies the common ancestor commit from where the branches diverged (in this case c72c50b0), and uses this commit together with the commits pointed to by our two branches to create a new so-called “merge commit” (e53fcb) that incorporates the changes from both branches. Merge commits are special in the sense that they have more than one parent (in this case f9bcc9e and 9b14dc1).</p>
+</pre></section>
+<section id="merge-conflicts" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="merge-conflicts"><span class="header-section-number">5.5</span> Merge conflicts</h2>
+<p>So far, everything has been going smoothly: we simply use <code>git merge</code> to merge branches, and Git will figure out how to do it automatically, using either a fast-forward merge or a 3-way merge. But this will not always be the case. Sometimes there will be merge conflicts that has to be resolved manually. Take the following scenario:</p>
+<pre class="git-command">$ mkdir ./merge-conflict
+$ cd ./merge-conflict
+$ git init
+$ echo "content" &gt; file.txt
+$ git add .
+$ git commit -m"Add file.txt"
+$ git switch -c new-branch
+$ echo "new content from new-branch branch" &gt;&gt; file.txt
+$ git add .
+$ git commit -m"Add new content to file.txt on branch new-branch"
+$ git switch main
+$ echo "new content from main branch" &gt;&gt; file.txt
+$ git add .
+$ git commit -m"Add new content to file.txt on branch main"
+$ git log --oneline --all --graph
+* 10c4145 (HEAD -&gt; main) Add new content to file.txt on branch main
+| * 9e600a9 (new-branch) Add new content to file.txt on branch new-branch
+|/
+* 1593545 Add file.txt
+</pre>
+<p>Again, we will try to merge the new-branch branch to main by using <code>git merge</code>:</p>
+<pre class="git-command">$ git merge new-branch
+Auto-merging file.txt
+CONFLICT (content): Merge conflict in file.txt
+Automatic merge failed; fix conflicts and then commit the result.
+</pre>
+<p>This time we are informed by Git that we have a merge conflict in file.txt. This is because we have made diverging changes to file.txt in our two branches, so it is not clear how to merge these two versions of the file; we will have to tell Git manually how to do this. Git informs us that we need to fix the conflicts and then commit the results. Lets start by running <code>git status</code>:</p>
+<pre class="git-command">$ git status
+On branch main
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+
+Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+        both modified:   file.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+</file></pre>
+<p>Git tells us that we can about the merge by using <code>git merge --abort</code>, which is nice to know. Git also lists all files that has merge conflicts that has not been resolved, in this case the file file.txt. Lets see the state of file.txt:</p>
+<pre class="git-command">$ cat file.txt
+content
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+new content from main branch
+=======
+new content from new-branch branch
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; new-branch
+</pre>
+<p>We can see that Git has added markings to our file. The line “content” is the same in both versions of the file, so the first line is simply “content”, but the second line of the file is different for each branch, as indicated by the markings added to the file. Here the top part separated by “=======” referred to as HEAD is the version of the line from the branch we are currently one, namely main, and the bottom part referred to as new-branch is the version of the line from the new-branch branch. We can now edit the file manually to tell Git how we want to resolve this. In this example, lets say we decide that we want to to include the changes from both versions. We can do this by simply removing the markings that Git has added to file manually in our favorite text editor, eg we could use <code>notepad file.txt</code> to open the file in Notepad. To illustrate how the file is supposed to look like we will do this with the echo command instead here, using the <code>-e</code> flag to enable interpretation of backslash escapes, so we can use <code>\n</code> to create a new line:</p>
+<pre class="git-command">$ echo -e "content\nnew content from main branch\nnew content from new-branch branch"
+content
+new content from main branch
+new content from new-branch branch
+$ echo -e "content\nnew content from main branch\nnew content from new-branch branch" &gt; file.txt
+$ cat file.txt
+content
+new content from main branch
+new content from new-branch branch
+</pre>
+<p>Git told us that after we have resolved the conflict, we are to use <code>git add</code> to mark the changes, so lets do that:</p>
+<pre class="git-command">$ git add .
+$ git status
+On branch main
+All conflicts fixed but you are still merging.
+  (use "git commit" to conclude merge)
+
+Changes to be committed:
+        modified:   file.txt
+</pre>
+<p>After running <code>git status</code> again, we can now see that the conflicts have been resolved, and that we can use <code>git commit</code> to conclude the merge:</p>
+<pre class="git-command">$ git commit
+[main 01554d1] Merge branch 'new-branch'
+</pre>
+<p>This will again prompt Git to open a text editor, where we can enter a commit message. Here, we just keep the pre-specified message “Merge branch ‘new-branch’”. Finally, we can use <code>git log</code> to see the commit history, and check that the content of file.txt in the merge commit is as expected:</p>
+<pre class="git-command">$ git log --all --oneline --graph
+*   01554d1 (HEAD -&gt; main) Merge branch 'new-branch'
+|\
+| * 9e600a9 (new-branch) Add new content to file.txt on branch new-branch
+* | 10c4145 Add new content to file.txt on branch main
+|/
+* 1593545 Add file.txt
+$ cat file.txt
+content
+new content from main branch
+new content from new-branch branch
+</pre>
 </section>
-<section id="what-is-git" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="what-is-git"><span class="header-section-number">1.2</span> What is Git?</h2>
-<p>So what is Git and how did it come to be? Git is a distributed VCS, and it is born from controversy. In 2005 the relationship soured between the Linux kernel project and the company owning the proprietary distributed VCS, BitKeeper, that the Linux community was using as a VCS. This resulted in the free licence of BitKeeper that the Linux community was using being revoked. Prompted by this, the Linux developer community (in particular Linus Thorvald, the creator of Linux) developed their own tool, Git, to replace BitKeeper. Git was designed with several key goals in mind that was needed for the Linux kernel project: speed, simple design, strong support for non-linear development, a fully distributed nature, and the ability to handle large projects efficiently.</p>
-<p>Git basically works by storing snapshots of the state of your files over time. Git makes it easy to switch between different versions of your code, compare different versions of the same file, see the history of a file over time and much more.</p>
-<section id="the-main-sections-of-a-git-project" class="level3">
-<h3 class="anchored" data-anchor-id="the-main-sections-of-a-git-project">The main sections of a Git project</h3>
-<p>There are three main sections of a Git project: the working tree, the staging area, and the Git directory.</p>
-<div style="display:flex; justify-content:center">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./diagrams/the-three-states-of-files.svg" class="img-fluid figure-img"></p>
-<figcaption>The three states of files</figcaption>
-</figure>
-</div>
-</div>
-<p>The <strong>working tree</strong> is a version of the project that has been checked out. These files are pulled out of the compressed database of the Git directory and placed on disk for you to use or modify.</p>
-<p>The <strong>staging area</strong> is a file in your Git directory that stores information about what will go into your next commit. Its technical name in is the “index”, but the phrase “staging area” is also commonly used.</p>
-<p>The <strong>Git directory</strong> is where Git stores the metadata and object database for your project. It is located in the “.git” folder. This is the most important part of Git, and it is what is copied when you <em>clone</em> (make a copy of) a repository from another computer.</p>
-<p>The basic workflow when using Git is something like:</p>
-<ol type="1">
-<li><p>You checkout a version of your project you want to work on into the working tree (usually the newest version that is already there).</p></li>
-<li><p>You modify the files in the working tree.</p></li>
-<li><p>You stage (some) changes to be included in the next commit.</p></li>
-<li><p>Commit the changes to the Git repository.</p></li>
-<li><p>Repeat.</p></li>
+<section id="rebasing" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="rebasing"><span class="header-section-number">5.6</span> Rebasing</h2>
+</section>
+<section id="rebasing-versus-merging" class="level2" data-number="5.7">
+<h2 data-number="5.7" class="anchored" data-anchor-id="rebasing-versus-merging"><span class="header-section-number">5.7</span> Rebasing versus merging</h2>
+<p>So what is the best way to integrate changes from one branch into another, a merge-commit or a rebase resulting in a fast-forward commit?</p>
+<p>https://graphite.com/guides/git-merge-rebase-differences-benefits</p>
+<p>Pro Git rebase vs merging section</p>
+</section>
+<section id="exercises" class="level2" data-number="5.8">
+<h2 data-number="5.8" class="anchored" data-anchor-id="exercises"><span class="header-section-number">5.8</span> Exercises</h2>
+
+
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>it is literally just a file storing the SHA-1 checksum of a commit<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
-<p>If a particular version of a file is in the Git directory, it is considered <strong>committed</strong>. If it has been modified and added to the staging area it is <strong>staged</strong>, and if it was changed since it was checked out but has not been staged, it is said to be <em>modified</em>.</p>
-</section>
-<section id="sec-file-storage-in-git" class="level3">
-<h3 class="anchored" data-anchor-id="sec-file-storage-in-git">File storing in Git</h3>
-<p>A major difference between Git and many other VCS’s is how Git stores data. In other systems, files are typically stored as a set of base versions of files and the changes made to each file over time. This is commonly called <em>delta-based</em> version control.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./diagrams/delta-based-version-control.svg" class="img-fluid figure-img"></p>
-<figcaption>Delta-based version control - data is stored as changes to a base version of each file</figcaption>
-</figure>
-</div>
-<p>This is not how Git stores data. In Git, data is stored as a series of snapshots of your files. Every time you save the state of your files, Git basically takes a picture of how all the files looks like, and stores a reference to that snapshot. To be efficient, if a file has not changed, Git does not store the file again, but saves a link to the previous identical file instead.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./diagrams/snapshot-version-control.svg" class="img-fluid figure-img"></p>
-<figcaption>Snapshot version control - data is stored as snapshots</figcaption>
-</figure>
-</div>
-
-
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -842,13 +1050,13 @@ Versions of a code file
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link" aria-label="Preface">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Preface</span>
+      <a href="./part1-ch04-undoing-changes.html" class="pagination-link" aria-label="Undoing changes">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Undoing changes</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./part1-ch02-getting-started.html" class="pagination-link" aria-label="Getting started">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Getting started</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./part1-ch06-remotes.html" class="pagination-link" aria-label="Remotes chapter">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Remotes chapter</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

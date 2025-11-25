@@ -14,7 +14,7 @@
     "href": "index.html#prerequisites",
     "title": "Git tutorial",
     "section": "Prerequisites",
-    "text": "Prerequisites\nThis tutorial assumes you are using Git version 2.51.0 or newer. If you are using an older version of Git, some of the git config commands in Appendix C — Configuration of Git might not work, the git switch and git restore command might not be available, and there might be other unknown issues as well.\nThis tutorial also assumes you are on a Windows machine and have “Git for Windows” installed. See Appendix A — Git for Windows for more details. Since we will be running Git exclusively from the command line using Git BASH, a BASH emulator, macOS and Linux users should also be able to follow along with only few modifications.\nFinally, if you want to follow along in 10  Introduction to GitHub, you will need to create a GitHub account and authenticate with it, using the GitHub CLI, which you also need to install. See Appendix B — GitHub setup for more details.",
+    "text": "Prerequisites\nThis tutorial assumes you are using Git version 2.51.0 or newer. If you are using an older version of Git, some of the git config commands in Appendix C — Configuration of Git might not work, the git switch and git restore command might not be available, and there might be other unknown issues as well.\nThis tutorial also assumes you are on a Windows machine and have “Git for Windows” installed. See Appendix A — Git for Windows for more details. Since we will be running Git exclusively from the command line using Git BASH, a BASH emulator, macOS and Linux users should also be able to follow along with only few modifications.\nFinally, if you want to follow along in 9  Introduction to GitHub, you will need to create a GitHub account and authenticate with it, using the GitHub CLI, which you also need to install. See Appendix B — GitHub setup for more details.",
     "crumbs": [
       "Preface"
     ]
@@ -328,190 +328,278 @@
     ]
   },
   {
-    "objectID": "part1-ch05-branching.html",
-    "href": "part1-ch05-branching.html",
-    "title": "5  Branching chapter",
+    "objectID": "part1-ch05-branching-and-merging.html",
+    "href": "part1-ch05-branching-and-merging.html",
+    "title": "5  Branching and merging",
     "section": "",
-    "text": "Topics: - At this point it probably makes sense to introduce branching - Introduce git branch, git switch and/or git checkout - Would probably make a lot of sense to talk about refs at the start of this chapter?",
+    "text": "5.1 Data storage in Git\nTODO - When -all flag to git log is first used, make sure to explain why it is needed. Same with –graph - Go into how the index works? Not done expclitly in Pro Git chapter, but would be natural to do here as well? - Would it make sense to use a little more time to explain what refs are here, so that we can talk about how HEAD is a ref? (is that even correct?) - Exercise idea: It would probably be a good idea to make an (optinal/technical) exercise alike to the example as one of the last exercises in the chapter. - Add a ton of diagrams\nIn this chapter we will introduce the concept of branches and merging. Branching means diverging from the main version of the code, making changes that does not interfere with the main version. Merging is the process of reconciling two (or more) versions of the code after branching.\nBranching is incredibly lightweight in Git, making switching back and forth between branches almost instantaneous. Git encourages a workflow where you branch and merge often. Understanding and mastering branching and merging is an essential part of using Git in a productive way, and will (hopefully) change how you think about and develop your code.\nTo understand how branching works in Git, we need to take a step back and discuss how Git stores data in more details. As mentioned in Section 1.2.2, Git stores data as a series of snapshots. When you commit a version of files to a Git repository, Git makes a commit object using the index, that contains a pointer to the snapshot of content you staged for that commit. Beside the state of files included in the commit, the commit object also contains meta data on the author’s name and email (and this is why you should configure your Git installation), the commit message, and finally pointers to the commit, or commits, that came directory before it, ie its parent commit(s). The initial commit in a Git repository has no parent commit, a normal commit has one parent, and a merge commit has multiple parents (more on this later).\nTo illustrate how all this works, lets make an example repository and go through the details step-by-step. First, lets initialize an empty repository:\nSince we have an empty repository at this point, we do not have an index file yet in .git/, and objects/ is empty (besides the empty pack/ and info/ directory).\nThe index is stored as a binary file in the .git folder, and objects that have been added to the index and/or have been committed to the repository, is stored in .git/objects. When you stage files, Git computes a checksum for each file (the SHA-1 hash), and stores the content of that version of the file in the Git repository under that checksum name(referred to in Git as blobs), and adds the checksum to the staging area.\nIntuitively, you would think that the index holds a copy of all the files that goes into the commit. This is not the case. The index is just a sorted list of path names and the SHA-1 checksum of a blob object. We can use the git ls-files --stage command to show us the content of the index.\nTODO: expand above explaination\nLets add a couple of files to the repository and stage them:\nWe can see that after we have created and staged file_a.txt and file_b.txt, an index file has been added in .git/, and that two objects have been added to the git repository, referred to by checksum values. We can also see that Git groups the objects in folders based on the first two characters of the checksum.\nWe can also inspect the index:\nTODO: need some more explaination on index content here: use https://shafiul.github.io//gitbook/7_the_git_index.html\nTo inspect the content of our newly created blobs/objects, we need to use a low-level git command, git cat-file since objects are not stored as plain text-file, but is instead stores in other formats for efficiency reasons:\nFirst of all, notice how we can refer to checksums without using the full checksum value. Generally speaking, we only need to use the 7 first characters. We can see that the content of the object a6f054ce corresponds to the content of file_b.txt and that the content of object e4542d77 corresponds to the content of file_a.txt. Next, lets inspect the index using the low-level command git ls-files:\nHere we have used the --stage option to get some information on staged files, most importantly the checksum and the name of the file, which is used to pull the relevant objects from the object database to include in the commit and name them.\nWhen we run git commit, Git checksums each subdirectory (which is just the project root directory containing file_a.txt and file_b.txt in this example), and stores them as a tree object in the Git repository. Git then creates a commit object that has the metadata and a pointer the the root project tree so it can re-create that snapshot when needed. Let continue our example to see this for ourselves:\nThere is a lot of cryptic information outputted to the terminal, but of importance Git tells us that two files have been changed and lists the files. Additionally, we can see that a commit object has been made with the (abbreviated) checksum 3d37117. Before we take a closer look at this commit, lets first look at the index and the objects in the Git repository again:\nWe can see that two new objects have been added to the database. One of the objects, 3d37117, is the commit object, and the other, 6cbce50, is the tree object included in the commit object, as we shall see in a moment. Lets take a closer look at the commit object:\nWe see, as expected, that the commit object consists of a pointer to a tree object, 6cbce50 (the other object that was added to the database together with the commit object), information on the person who made the commit, a pointer to the parent commit, and the commit message. In this case the line with information on the parent commit is empty since this is the initial commit in the repository.\nLets take a closer look at the tree object while we are at it:\nAs expected, the tree object contains a list of the files/blobs included in the commit.\nTo summarize, our Git repository now contains four objects, two blobs (each representing the contents of one of the two files), one tree that lists the content of the directory and specifies which file names are stores in which blobs, and one commit object with a pointer to that root tree and all the commit metadata. A visual representation of the structure of the commit object can be seen below.\nIf we now make additional changes and commit again, the next commit also stores a pointer to the previous commit (the parent commit).",
     "crumbs": [
       "Part I",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Branching chapter</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Branching and merging</span>"
     ]
   },
   {
-    "objectID": "part1-ch06-merging.html",
-    "href": "part1-ch06-merging.html",
-    "title": "6  Merging chapter",
+    "objectID": "part1-ch05-branching-and-merging.html#data-storage-in-git",
+    "href": "part1-ch05-branching-and-merging.html#data-storage-in-git",
+    "title": "5  Branching and merging",
     "section": "",
-    "text": "Introduce merging.\nProbably makes sense to introduce merging in general first, then talk about fast-forwards. This leads directly into rebasing. Might make sense to talk about rebasing here, instead of in part II.",
+    "text": "$ mkdir ~/example-data-storage\n$ cd ~/example-data-storage\n$ git init\n$ ls .git/\nHEAD  config  description  hooks  info  objects  refs\n$ ls .git/objects/ -R\n.git/objects/:\ninfo  pack\n\n.git/objects/info:\n\n.git/objects/pack:\n\n\n\n\n\n\n$ echo \"content a\" &gt; file_a.txt\n$ echo \"content_b\" &gt; file_b.txt\n$ git add .\n$ ls .git/\nHEAD    description  index  objects\nconfig  hooks        info   refs\n$ ls .git/objects/ -R\n.git/objects/:\na6  e4  info  pack\n\n.git/objects/a6:\nf054ce35dbe029a40a758df1e00103e6473e75\n\n.git/objects/e4:\n542d77807392d80eb449356baa55c0cb657546\n\n.git/objects/info:\n\n.git/objects/pack:\n\n\n\n100644 e4542d77807392d80eb449356baa55c0cb657546 0       file_a.txt\n100644 a6f054ce35dbe029a40a758df1e00103e6473e75 0       file_b.txt\n\n\n\n$ git cat-file -y a6f054ce # Use -t option to the see the type of the object\nblob\n$ git cat-file -t e4542d77 \nblob\n$ git cat-file -p a6f054ce # Use -p option to print the content based on its type\ncontent b\n$ git cat-file -p e4542d77 \ncontent a\n\n\n$ git ls-files --stage\n100644 e4542d77807392d80eb449356baa55c0cb657546 0       file_a.txt\n100644 a6f054ce35dbe029a40a758df1e00103e6473e75 0       file_b.txt\n\n\n\n$ git commit -m\"Initial commit\"\n[main (root-commit) 3d37117] Initial commit\n 2 files changed, 2 insertions(+)\n create mode 100644 file_a.txt\n create mode 100644 file_b.txt\n\n\n$ git ls-files --stage # No output now, nothing is staged for the next commit\n$ ls .git/objects/\n3d  6c  a6  e4  info  pack\n\n.git/objects/3d:\n37117e6c4403d116729f4da34602e98b9706ec\n\n.git/objects/6c:\nbce5031690670decc52d19e348c4a157beec9c\n\n.git/objects/a6:\nf054ce35dbe029a40a758df1e00103e6473e75\n\n.git/objects/e4:\n542d77807392d80eb449356baa55c0cb657546\n\n.git/objects/info:\n\n.git/objects/pack:\n\n\n$ git cat-file -t 3d37117\ncommit\n$ git cat-file -p 3d37177\ntree 6cbce5031690670decc52d19e348c4a157beec9c\nauthor Thomas Rasmusssen  1764186694 +0100\ncommitter Thomas Rasmussen  1764186694 +0100\n\nInitial commit\n\n\n\n$ git cat-file -t 6cbc350\ntree\n$ git cat-file -p 6cbc350\n100644 blob e4542d77807392d80eb449356baa55c0cb657546    file_a.txt\n100644 blob a6f054ce35dbe029a40a758df1e00103e6473e75    file_b.txt\n\n\n\n\n\n\n\nStructure of commit object\n\n\n\n\n\n\n\n\nParent commits",
     "crumbs": [
       "Part I",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Merging chapter</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Branching and merging</span>"
     ]
   },
   {
-    "objectID": "part1-ch07-remotes.html",
-    "href": "part1-ch07-remotes.html",
-    "title": "7  Remotes chapter",
-    "section": "",
-    "text": "Might not be esssential to daily use of Git, but very important to understand, and facilitates introducing GitHub later.\nintroduce git fetch/push/pull\nTalk about making local backups using remotes.\nFurther notes on how refs works here?",
+    "objectID": "part1-ch05-branching-and-merging.html#create-and-switch-to-a-branch",
+    "href": "part1-ch05-branching-and-merging.html#create-and-switch-to-a-branch",
+    "title": "5  Branching and merging",
+    "section": "5.2 Create and switch to a branch",
+    "text": "5.2 Create and switch to a branch\n\n\nSo what is a branch? A branch is simply a lightweight1 movable pointer to a commit object. The default branch is called main (master if you are running an older version of Git). Every time you make a commit, the main branch pointer is automatically moved forward to the new commit. It is worth noting that there is nothing special about this branch, but most repositories have a branch called main (or again, master), since this is the default name that is used when you initialize a repository with git init.\n\n\n\n\n\nIllustration of branch pointer\n\n\n\n\n\n\nYou can have multiple branches in a Git repository, but how does this work? The answer is more movable pointers. You can create a new branch with the git branch command. For example, if you want to create a new branch with the name “new-branch” you can use the command git branch new-branch, which will create a new pointer to the commit you are currently on.\n\n\n\n\n\nCreating a new branch\n\n\n\n\n\n\nHow does Git know which branch you are currently on? More pointers. Git has a special pointer called HEAD. This pointer points to the branch you are currently on. If we want to switch what branch we are on, we can use the git switch command, eg if after creating the branch “new-branch”, if we want to switch to that branch, we can use git switch new-branch. This moves the HEAD pointer to the “new-branch” branch, and updates the files in the working tree to reflect the state the files are in in the commit that new-branch is pointing to. In this simple example, nothing is updated, since both main and new-branchis pointing to the same commit.\n\n\n\n\n\nMoving HEAD from one branch to another",
     "crumbs": [
       "Part I",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Remotes chapter</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Branching and merging</span>"
     ]
   },
   {
-    "objectID": "part1-ch08-workflows.html",
-    "href": "part1-ch08-workflows.html",
-    "title": "8  Workflows",
-    "section": "",
-    "text": "Could also be in Part II\nTalking about workflows / branching models, how to use Git in projects, branching stratigies etc. This is not a tutorial for software developers, so talking about Gitflow, trunk-based development and whatever is probably not helpful at all. Probably better to talk about it in the context of a much simpler setup, eg a single developer working on a simple project with a mostly linear history, and small team projects. Talk about maybe using a setup with a main/dev branch and feature branches. That workflow is very simple and covers pretty much every relevant scenario?\nMaybe this chapter should be called “Branching models” and the focus should be around that concepet?\n\nMaybe the entire chapter should just be centered around the branching model of using a main branch for “production/releases”, dev branch for (working) development version, and feature branches from dev, wehre everything is rebased wehn done so just have a nice simple linear commit history of main branch commits, which are assumed to be the only versions of relevance.\n\nMaybe talk about scenarios where this workflow needs to be extended and how to do that. Here it might make sense to mention something like git-flow? How does this setup handle collaboration? People develop in feature branches, that are then merged into dev by a leutanant? This is just feature branch workflow? Maybe look at https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow for inpiration.",
+    "objectID": "part1-ch05-branching-and-merging.html#fast-forward-merge",
+    "href": "part1-ch05-branching-and-merging.html#fast-forward-merge",
+    "title": "5  Branching and merging",
+    "section": "5.3 Fast-forward merge",
+    "text": "5.3 Fast-forward merge\nThe simplest type of merge is a fast-forward merge, which we will illustrate with an example. Imagine we have the following basic repository with a single commit of a single file:\n$ mkdir ./fast-forward-merge\n$ cd ./fast-forward-merge\n$ git init\n$ echo \"content\" &gt; file.txt\n$ git add .\n$ git commit -m\"Add file.txt\"\n\nLets say that everything is working as intended in our repository right now, but that we want to update file.txt with some changes. Instead of making these changes directly on the main branch, we create a new branch, test, where we develop the changes:\n$ git switch -c test\n$ echo \"add changes\" &gt;&gt; file.txt\n$ git add .\n$ git commit -m\"Add changes to file.txt\n$ echo \"add more changes\" &gt;&gt; file.txt\n$ git add .\n$ git commit -m\"Add more changes to file.txt\"\n$ git log --oneline --all --graph\n* 82b0b49 (HEAD -&gt; test) Add more changes to file.txt\n* 0242a6a Add changes to file.txt\n* ee99f60 (main) Add file.txt\n\nAt this point we are happy with our changes to file.txt, and we now want to merge these changes into the main branch of the repository. We can do this by switching back to the main branch and use the git merge command to merge another branch into our active branch:\n$ git switch main\n$ git merge test\nUpdating ee99f60..82b0b49\nFast-forward\n file.txt | 2 ++\n 1 file changed, 2 insertions(+)\ngit log --graph --oneline --all\n* 82b0b49 (HEAD -&gt; main, test) Add more changes to file.txt\n* 0242a6a Add changes to file.txt\n* ee99f60 Add file.txt\n\nWhen doing the merge, we can see the phrase “Fast-forward” in the output. Because the commit 82b0b49 that the test branch is pointing to is directly ahead of the ee99f60 commit that the main branch is pointing to, we can merge the test branch to the main branch by simply moving the main branch pointer to the commit that the test branch is pointing at. In other words: in this simple scenario, the branches does not diverge, so we can simply “fast-forward” the main branch pointer.",
     "crumbs": [
       "Part I",
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Workflows</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Branching and merging</span>"
+    ]
+  },
+  {
+    "objectID": "part1-ch05-branching-and-merging.html#merge-commit",
+    "href": "part1-ch05-branching-and-merging.html#merge-commit",
+    "title": "5  Branching and merging",
+    "section": "5.4 Merge commit",
+    "text": "5.4 Merge commit\nSuppose we have a repository with two files,, where we experiment with updating one of the files in a separate branch:\n$ mkdir ./merge-commit\n$ cd ./merge-commit\n$ git init\n$ echo \"content\" &gt; file1.txt\n$ echo \"content\" &gt; file2.txt\n$ git add .\n$ git commit -m\"Add file1.txt and file2.txt\"\n$ git switch -c update-file2\n$ echo \"more content\" &gt;&gt; file2.txt\n$ git add .\n$ git commit -m\"Update file2.txt\"\n\nWhile working on this update to file2.txt, we discover that we have a bug in file1.txt that we want to fix immediately on the main branch, independent of the work we are currently doing on file2.txt. So we switch back to the main branch and fix the bug there:\n$ git switch main\n$ echo \"fix bug\" &gt;&gt; file1.txt\n$ git add .\n$ git commit -m\"Fix bug in file1.txt\"\n$ git log --oneline --all --graph\n* 9b14dc1 (HEAD -&gt; main) Fix bug in file1.txt\n| * f9bcc9e (update-file2) Update file2.txt\n|/\n* c2c50b0 Add file1.txt and file2.txt\n\nAfter doing this, we revisit our work on file2.txt and come to the conclusion that we are satified with the changes to file2.txt, and that we want to merge then into the main branch. Again, we switch to the main branch and use git merge to do this:\n$ git switch main $ git merge update-file2 Merge made by the ‘ort’ strategy. file2.txt | 1 + 1 file changed, 1 insertion(+) $ git log –oneline –graph –all * e553fcb (HEAD -&gt; main) Merge branch ‘update-file2’ |\n| * f9bcc9e (update-file2) Update file2.txt * | 9b14dc1 Fix bug in file1.txt |/ * c2c50b0 Add file1.txt and file2.txt\nAfter using git merge Git open a text editor where it prompt us to enter a commit message. Here we have just accepted the pre-specified message “Merge branch ‘update-file’”. In this case we can see that a simple fast-forward merge was not used. This is because our two branches diverge, and we can’t simply move the main branch pointer forward. Instead, Git informs us that is has made a merge using the “ort” strategy. This is the default way Git tries to resolve merges, and can be used when we are trying to resolve a merge of two branches, which is what you will be doing most, if not all, the time. The “ort” strategy is a 3-way merge, where Git identifies the common ancestor commit from where the branches diverged (in this case c72c50b0), and uses this commit together with the commits pointed to by our two branches to create a new so-called “merge commit” (e53fcb) that incorporates the changes from both branches. Merge commits are special in the sense that they have more than one parent (in this case f9bcc9e and 9b14dc1).",
+    "crumbs": [
+      "Part I",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Branching and merging</span>"
+    ]
+  },
+  {
+    "objectID": "part1-ch05-branching-and-merging.html#merge-conflicts",
+    "href": "part1-ch05-branching-and-merging.html#merge-conflicts",
+    "title": "5  Branching and merging",
+    "section": "5.5 Merge conflicts",
+    "text": "5.5 Merge conflicts\nSo far, everything has been going smoothly: we simply use git merge to merge branches, and Git will figure out how to do it automatically, using either a fast-forward merge or a 3-way merge. But this will not always be the case. Sometimes there will be merge conflicts that has to be resolved manually. Take the following scenario:\n$ mkdir ./merge-conflict\n$ cd ./merge-conflict\n$ git init\n$ echo \"content\" &gt; file.txt\n$ git add .\n$ git commit -m\"Add file.txt\"\n$ git switch -c new-branch\n$ echo \"new content from new-branch branch\" &gt;&gt; file.txt\n$ git add .\n$ git commit -m\"Add new content to file.txt on branch new-branch\"\n$ git switch main\n$ echo \"new content from main branch\" &gt;&gt; file.txt\n$ git add .\n$ git commit -m\"Add new content to file.txt on branch main\"\n$ git log --oneline --all --graph\n* 10c4145 (HEAD -&gt; main) Add new content to file.txt on branch main\n| * 9e600a9 (new-branch) Add new content to file.txt on branch new-branch\n|/\n* 1593545 Add file.txt\n\nAgain, we will try to merge the new-branch branch to main by using git merge:\n$ git merge new-branch\nAuto-merging file.txt\nCONFLICT (content): Merge conflict in file.txt\nAutomatic merge failed; fix conflicts and then commit the result.\n\nThis time we are informed by Git that we have a merge conflict in file.txt. This is because we have made diverging changes to file.txt in our two branches, so it is not clear how to merge these two versions of the file; we will have to tell Git manually how to do this. Git informs us that we need to fix the conflicts and then commit the results. Lets start by running git status:\n$ git status\nOn branch main\nYou have unmerged paths.\n  (fix conflicts and run \"git commit\")\n  (use \"git merge --abort\" to abort the merge)\n\nUnmerged paths:\n  (use \"git add ...\" to mark resolution)\n        both modified:   file.txt\n\nno changes added to commit (use \"git add\" and/or \"git commit -a\")\n\nGit tells us that we can about the merge by using git merge --abort, which is nice to know. Git also lists all files that has merge conflicts that has not been resolved, in this case the file file.txt. Lets see the state of file.txt:\n$ cat file.txt\ncontent\n&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD\nnew content from main branch\n=======\nnew content from new-branch branch\n&gt;&gt;&gt;&gt;&gt;&gt;&gt; new-branch\n\nWe can see that Git has added markings to our file. The line “content” is the same in both versions of the file, so the first line is simply “content”, but the second line of the file is different for each branch, as indicated by the markings added to the file. Here the top part separated by “=======” referred to as HEAD is the version of the line from the branch we are currently one, namely main, and the bottom part referred to as new-branch is the version of the line from the new-branch branch. We can now edit the file manually to tell Git how we want to resolve this. In this example, lets say we decide that we want to to include the changes from both versions. We can do this by simply removing the markings that Git has added to file manually in our favorite text editor, eg we could use notepad file.txt to open the file in Notepad. To illustrate how the file is supposed to look like we will do this with the echo command instead here, using the -e flag to enable interpretation of backslash escapes, so we can use \\n to create a new line:\n$ echo -e \"content\\nnew content from main branch\\nnew content from new-branch branch\"\ncontent\nnew content from main branch\nnew content from new-branch branch\n$ echo -e \"content\\nnew content from main branch\\nnew content from new-branch branch\" &gt; file.txt\n$ cat file.txt\ncontent\nnew content from main branch\nnew content from new-branch branch\n\nGit told us that after we have resolved the conflict, we are to use git add to mark the changes, so lets do that:\n$ git add .\n$ git status\nOn branch main\nAll conflicts fixed but you are still merging.\n  (use \"git commit\" to conclude merge)\n\nChanges to be committed:\n        modified:   file.txt\n\nAfter running git status again, we can now see that the conflicts have been resolved, and that we can use git commit to conclude the merge:\n$ git commit\n[main 01554d1] Merge branch 'new-branch'\n\nThis will again prompt Git to open a text editor, where we can enter a commit message. Here, we just keep the pre-specified message “Merge branch ‘new-branch’”. Finally, we can use git log to see the commit history, and check that the content of file.txt in the merge commit is as expected:\n$ git log --all --oneline --graph\n*   01554d1 (HEAD -&gt; main) Merge branch 'new-branch'\n|\\\n| * 9e600a9 (new-branch) Add new content to file.txt on branch new-branch\n* | 10c4145 Add new content to file.txt on branch main\n|/\n* 1593545 Add file.txt\n$ cat file.txt\ncontent\nnew content from main branch\nnew content from new-branch branch",
+    "crumbs": [
+      "Part I",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Branching and merging</span>"
+    ]
+  },
+  {
+    "objectID": "part1-ch05-branching-and-merging.html#rebasing",
+    "href": "part1-ch05-branching-and-merging.html#rebasing",
+    "title": "5  Branching and merging",
+    "section": "5.6 Rebasing",
+    "text": "5.6 Rebasing",
+    "crumbs": [
+      "Part I",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Branching and merging</span>"
+    ]
+  },
+  {
+    "objectID": "part1-ch05-branching-and-merging.html#rebasing-versus-merging",
+    "href": "part1-ch05-branching-and-merging.html#rebasing-versus-merging",
+    "title": "5  Branching and merging",
+    "section": "5.7 Rebasing versus merging",
+    "text": "5.7 Rebasing versus merging\nSo what is the best way to integrate changes from one branch into another, a merge-commit or a rebase resulting in a fast-forward commit?\nhttps://graphite.com/guides/git-merge-rebase-differences-benefits\nPro Git rebase vs merging section",
+    "crumbs": [
+      "Part I",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Branching and merging</span>"
+    ]
+  },
+  {
+    "objectID": "part1-ch05-branching-and-merging.html#exercises",
+    "href": "part1-ch05-branching-and-merging.html#exercises",
+    "title": "5  Branching and merging",
+    "section": "5.8 Exercises",
+    "text": "5.8 Exercises",
+    "crumbs": [
+      "Part I",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Branching and merging</span>"
+    ]
+  },
+  {
+    "objectID": "part1-ch05-branching-and-merging.html#footnotes",
+    "href": "part1-ch05-branching-and-merging.html#footnotes",
+    "title": "5  Branching and merging",
+    "section": "",
+    "text": "it is literally just a file storing the SHA-1 checksum of a commit↩︎",
+    "crumbs": [
+      "Part I",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Branching and merging</span>"
+    ]
+  },
+  {
+    "objectID": "part1-ch06-remotes.html",
+    "href": "part1-ch06-remotes.html",
+    "title": "6  Remotes chapter",
+    "section": "",
+    "text": "Might not be esssential to daily use of Git, but very important to understand, and facilitates introducing GitHub later.\nintroduce git fetch/push/pull\nTalk about making local backups using remotes.\nWould make sense / be necessary to talk about refs at this point?\nLook at “Working wiht Remotes” in Git Basics chaptero of Pro Git for inspiration.",
+    "crumbs": [
+      "Part I",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Remotes chapter</span>"
+    ]
+  },
+  {
+    "objectID": "part1-ch07-workflows.html",
+    "href": "part1-ch07-workflows.html",
+    "title": "7  Workflows",
+    "section": "",
+    "text": "Might be incorporated into branching and merging chapter?\nCould also be in Part II\nTalking about workflows / branching models, how to use Git in projects, branching stratigies etc. This is not a tutorial for software developers, so talking about Gitflow, trunk-based development and whatever is probably not helpful at all. Probably better to talk about it in the context of a much simpler setup, eg a single developer working on a simple project with a mostly linear history, and small team projects. Talk about maybe using a setup with a main/dev branch and feature branches. That workflow is very simple and covers pretty much every relevant scenario?\nMaybe this chapter should be called “Branching models” and the focus should be around that concepet?\n\nMaybe the entire chapter should just be centered around the branching model of using a main branch for “production/releases”, dev branch for (working) development version, and feature branches from dev, wehre everything is rebased wehn done so just have a nice simple linear commit history of main branch commits, which are assumed to be the only versions of relevance.\n\nMaybe talk about scenarios where this workflow needs to be extended and how to do that. Here it might make sense to mention something like git-flow? How does this setup handle collaboration? People develop in feature branches, that are then merged into dev by a leutanant? This is just feature branch workflow? Maybe look at https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow for inpiration.",
+    "crumbs": [
+      "Part I",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Workflows</span>"
     ]
   },
   {
     "objectID": "part2-collaboration.html",
     "href": "part2-collaboration.html",
-    "title": "9  Collaboration",
+    "title": "8  Collaboration",
     "section": "",
     "text": "Should probably be the first chapter in part II. Chapter should focus on how all the basic Git knowledge in part I can be put together to facilitate collaboration.\nChapter could touch on the following subjects:\n\nUsing a remote (could be on GitHub, could simply be in another folder somewhere on the same server/drive) as a central repository, from which all collaborators clone the project, push/pull changes.\nGit flow / branching model to use. Probably focus on explaining a basic main + dev branch model with feature branches, and a “lieutenant”/super-git-user that merges features to the main/dev branch.",
     "crumbs": [
       "Part II",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Collaboration</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Collaboration</span>"
     ]
   },
   {
     "objectID": "part2-github.html",
     "href": "part2-github.html",
-    "title": "10  Introduction to GitHub",
+    "title": "9  Introduction to GitHub",
     "section": "",
-    "text": "10.1 What is GitHub?\nIn this chapter we will give a short introduction to GitHub and how it can be used to share code, and collaborate with others. We will mostly interact with GitHub from the command line using the GitHub CLI. See Appendix B for information on how to install the CLI.\nGitHub is a web-based service that hosts Git repositories. Besides the obvious benifit of hosting your Git repositories online where you can access them from any computer with an internet connection, GitHub also has many features that facilitate collaboration, such as issue-tracking, code review, and pull requests.",
+    "text": "9.1 What is GitHub?\nIn this chapter we will give a short introduction to GitHub and how it can be used to share code, and collaborate with others. We will mostly interact with GitHub from the command line using the GitHub CLI. See Appendix B for information on how to install the CLI.\nGitHub is a web-based service that hosts Git repositories. Besides the obvious benifit of hosting your Git repositories online where you can access them from any computer with an internet connection, GitHub also has many features that facilitate collaboration, such as issue-tracking, code review, and pull requests.",
     "crumbs": [
       "Part II",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Introduction to GitHub</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Introduction to GitHub</span>"
     ]
   },
   {
     "objectID": "part2-github.html#create-a-git-repository",
     "href": "part2-github.html#create-a-git-repository",
-    "title": "10  Introduction to GitHub",
-    "section": "10.2 Create a Git repository",
-    "text": "10.2 Create a Git repository\nMaybe also explain how to add collaborators to project?",
+    "title": "9  Introduction to GitHub",
+    "section": "9.2 Create a Git repository",
+    "text": "9.2 Create a Git repository\nMaybe also explain how to add collaborators to project?",
     "crumbs": [
       "Part II",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Introduction to GitHub</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Introduction to GitHub</span>"
     ]
   },
   {
     "objectID": "part2-github.html#upload-an-existing-git-repository",
     "href": "part2-github.html#upload-an-existing-git-repository",
-    "title": "10  Introduction to GitHub",
-    "section": "10.3 Upload an existing Git repository",
-    "text": "10.3 Upload an existing Git repository",
+    "title": "9  Introduction to GitHub",
+    "section": "9.3 Upload an existing Git repository",
+    "text": "9.3 Upload an existing Git repository",
     "crumbs": [
       "Part II",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Introduction to GitHub</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Introduction to GitHub</span>"
     ]
   },
   {
     "objectID": "part2-github.html#issues",
     "href": "part2-github.html#issues",
-    "title": "10  Introduction to GitHub",
-    "section": "10.4 Issues",
-    "text": "10.4 Issues",
+    "title": "9  Introduction to GitHub",
+    "section": "9.4 Issues",
+    "text": "9.4 Issues",
     "crumbs": [
       "Part II",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Introduction to GitHub</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Introduction to GitHub</span>"
     ]
   },
   {
     "objectID": "part2-github.html#forking-a-repository",
     "href": "part2-github.html#forking-a-repository",
-    "title": "10  Introduction to GitHub",
-    "section": "10.5 Forking a repository",
-    "text": "10.5 Forking a repository",
+    "title": "9  Introduction to GitHub",
+    "section": "9.5 Forking a repository",
+    "text": "9.5 Forking a repository",
     "crumbs": [
       "Part II",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Introduction to GitHub</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Introduction to GitHub</span>"
     ]
   },
   {
     "objectID": "part2-github.html#pull-requests",
     "href": "part2-github.html#pull-requests",
-    "title": "10  Introduction to GitHub",
-    "section": "10.6 Pull requests",
-    "text": "10.6 Pull requests",
+    "title": "9  Introduction to GitHub",
+    "section": "9.6 Pull requests",
+    "text": "9.6 Pull requests",
     "crumbs": [
       "Part II",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Introduction to GitHub</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Introduction to GitHub</span>"
     ]
   },
   {
     "objectID": "part2-github.html#the-github-flow",
     "href": "part2-github.html#the-github-flow",
-    "title": "10  Introduction to GitHub",
-    "section": "10.7 The GitHub flow",
-    "text": "10.7 The GitHub flow\nMaybe explain how the “GitHub flow” can be used to contribute to projects by forking a repo, making changes, and making a pull request?",
+    "title": "9  Introduction to GitHub",
+    "section": "9.7 The GitHub flow",
+    "text": "9.7 The GitHub flow\nMaybe explain how the “GitHub flow” can be used to contribute to projects by forking a repo, making changes, and making a pull request?",
     "crumbs": [
       "Part II",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Introduction to GitHub</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Introduction to GitHub</span>"
     ]
   },
   {
     "objectID": "part2-github.html#github-pages",
     "href": "part2-github.html#github-pages",
-    "title": "10  Introduction to GitHub",
-    "section": "10.8 GitHub pages",
-    "text": "10.8 GitHub pages\nMaybe worth quickly mentioning that you can easily make a static website from HTML documents in a Git repository that GitHub will host for you. For example this tutorial.",
+    "title": "9  Introduction to GitHub",
+    "section": "9.8 GitHub pages",
+    "text": "9.8 GitHub pages\nMaybe worth quickly mentioning that you can easily make a static website from HTML documents in a Git repository that GitHub will host for you. For example this tutorial.",
     "crumbs": [
       "Part II",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Introduction to GitHub</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Introduction to GitHub</span>"
     ]
   },
   {
     "objectID": "part2-github.html#exercises",
     "href": "part2-github.html#exercises",
-    "title": "10  Introduction to GitHub",
-    "section": "10.9 Exercises",
-    "text": "10.9 Exercises",
+    "title": "9  Introduction to GitHub",
+    "section": "9.9 Exercises",
+    "text": "9.9 Exercises",
     "crumbs": [
       "Part II",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Introduction to GitHub</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Introduction to GitHub</span>"
     ]
   },
   {
     "objectID": "part2-git-internals.html",
     "href": "part2-git-internals.html",
-    "title": "11  Git internals",
+    "title": "10  Git internals",
     "section": "",
     "text": "Make a chapter focused on explaining what some of all the stuff in the .git folder is? Some of it might be explained in other parts of the book? This chapter might correspond 1-to-1 with the Git internals chapter in Pro git?",
     "crumbs": [
       "Part II",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Git internals</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Git internals</span>"
     ]
   },
   {
     "objectID": "part2-git-stash.html",
     "href": "part2-git-stash.html",
-    "title": "12  git stash.",
+    "title": "11  git stash.",
     "section": "",
     "text": "Not important enough to make it to Part I, but maybe useful enough to warrent adding a chapter on it in part II?",
     "crumbs": [
       "Part II",
-      "<span class='chapter-number'>12</span>  <span class='chapter-title'>git stash.</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>git stash.</span>"
     ]
   },
   {
     "objectID": "part2-git-rebase.html",
     "href": "part2-git-rebase.html",
-    "title": "13  git rebase",
+    "title": "12  git rebase",
     "section": "",
     "text": "important enough to be part of part I, but is an isolated thing that fits into part II, so maybe put it here?",
     "crumbs": [
       "Part II",
-      "<span class='chapter-number'>13</span>  <span class='chapter-title'>git rebase</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>git rebase</span>"
     ]
   },
   {
@@ -662,18 +750,7 @@
     "href": "app-resources.html",
     "title": "Appendix D — Resources",
     "section": "",
-    "text": "General resources\nOfficial documentation The official documentation on Git has extensive documentation on how to use each specific command. It also includes the freely available book Pro Git, which is an excellent resource for getting a better understanding of what Git is and how it works.\nTutorials www.atlassian.com/git boot.dev has two great courses on Git.\nGit exercises https://gitexercises.fracz.com/",
-    "crumbs": [
-      "Appendices",
-      "<span class='chapter-number'>D</span>  <span class='chapter-title'>Resources</span>"
-    ]
-  },
-  {
-    "objectID": "app-resources.html#resources-specifically-aimed-at-r-users",
-    "href": "app-resources.html#resources-specifically-aimed-at-r-users",
-    "title": "Appendix D — Resources",
-    "section": "Resources specifically aimed at R users",
-    "text": "Resources specifically aimed at R users\nHappy Git and GitHub for the useR https://happygitwithr.com/\nChapter on Git in “Intro Reproductible Research in R” https://r-cubed-intro.rostools.org/sessions/version-control",
+    "text": "An (incomplete) list of resources that was used as inspiration for this tutorial. Listed in no particular order.\nThe official documentation\nPro Git\natlassian.com/git\nboot.dev/courses/learn-git\nboot.dev/courses/learn-git-2\ngitexercises.fracz.com\nhappygitwithr.com\nr-cubed-intro.rostools.org/sessions/version-control",
     "crumbs": [
       "Appendices",
       "<span class='chapter-number'>D</span>  <span class='chapter-title'>Resources</span>"

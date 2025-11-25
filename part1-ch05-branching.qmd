@@ -1,7 +1,0 @@
-
-# Branching chapter
-
-Topics:
- - At this point it probably makes sense to introduce branching
- - Introduce git branch, git switch and/or git checkout
- - Would probably make a lot of sense to talk about refs at the start of this chapter?

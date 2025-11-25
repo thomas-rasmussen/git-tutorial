@@ -1,4 +1,4 @@
-# Introduction to Git
+# Introduction to Git {#sec-introduction-to-git}
 
 So, what is Git? We will start this tutorial with a short introduction to version control in general, and talk about what Git is and how it works.
 
@@ -129,7 +129,7 @@ The basic workflow when using Git is something like:
 If a particular version of a file is in the Git directory, it is considered **committed**. If it has been modified and added to the staging area it is **staged**, and if it was changed since it was checked out but has not been staged, it is said to be *modified*.
 
 
-### File storing in Git
+### File storing in Git {#sec-file-storage-in-git}
 
 A major difference between Git and many other VCS's is how Git stores data. In other systems, files are typically stored as a set of base versions of files and the changes made to each file over time. This is commonly called *delta-based* version control.
 

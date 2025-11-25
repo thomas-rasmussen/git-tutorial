@@ -1,6 +1,0 @@
-
-# Merging chapter
-
-   - Introduce merging.
-   - Probably makes sense to introduce merging in general first, then talk about fast-forwards. This leads directly into rebasing. Might make sense to talk about rebasing here, instead of in part II.
-

@@ -1,0 +1,12 @@
+
+
+# Remotes chapter
+
+  - Might not be esssential to daily use of Git, but very important to understand, and facilitates
+    introducing GitHub later.
+  - introduce git fetch/push/pull
+  - Talk about making local backups using remotes.
+  - Would make sense / be necessary to talk about refs at this point?
+  - Look at "Working wiht Remotes" in Git Basics chaptero of Pro Git for inspiration.
+
+

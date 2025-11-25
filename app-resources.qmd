@@ -1,23 +1,19 @@
 # Resources
 
-## General resources{.unnumbered}
+An (incomplete) list of resources that was used as inspiration for this tutorial. Listed in no particular order.
 
-**Official documentation**<br>
-The [official documentation](https://git-scm.com/docs){target="_blank"} on Git has extensive documentation on how to use each specific command. It also includes the freely available book [Pro Git]( https://git-scm.com/book/en/v2){target="_blank"}, which is an excellent resource for getting a better understanding of what Git is and how it works.
+[The official documentation](https://git-scm.com/docs){target="_blank"}
 
-**Tutorials**
-[www.atlassian.com/git](https://www.atlassian.com/git)
-[boot.dev](https://www.boot.dev/) has two great courses on Git.
+[Pro Git](https://git-scm.com/book/en/v2){target="_blank"}
 
-**Git exercises**<br>
-<https://gitexercises.fracz.com/>{target="_blank"}
+[atlassian.com/git](https://www.atlassian.com/git){target="_blank"}
 
+[boot.dev/courses/learn-git](https://www.boot.dev/courses/learn-git){target="_blank"}
 
+[boot.dev/courses/learn-git-2](https://www.boot.dev/courses/learn-git-2){target="_blank"}
 
-## Resources specifically aimed at R users{.unnumbered}
+[gitexercises.fracz.com](https://gitexercises.fracz.com){target="_blank"}
 
-**Happy Git and GitHub for the useR**<br>
-<https://happygitwithr.com/>{target="_blank"}
+[happygitwithr.com](https://happygitwithr.com){target="_blank"}
 
-**Chapter on Git in "Intro Reproductible Research in R"**<br>
-<https://r-cubed-intro.rostools.org/sessions/version-control>{target="_blank"}
+[r-cubed-intro.rostools.org/sessions/version-control](https://r-cubed-intro.rostools.org/sessions/version-control){target="_blank"}

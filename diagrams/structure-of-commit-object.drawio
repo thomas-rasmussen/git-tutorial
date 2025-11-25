@@ -1,0 +1,33 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/26.0.16 Chrome/132.0.6834.196 Electron/34.2.0 Safari/537.36" version="26.0.16">
+  <diagram name="Page-1" id="s9NYMdMzUchd0WI8cGeJ">
+    <mxGraphModel dx="1420" dy="942" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="1920" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="qm5P3dTGj1njZauGZi_Y-4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="TJazdhZiwh2-OBC2gROd-1" target="qm5P3dTGj1njZauGZi_Y-1" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="TJazdhZiwh2-OBC2gROd-1" value="&lt;b&gt;&lt;font face=&quot;Lucida Console&quot; style=&quot;font-size: 14px;&quot;&gt;3d37117&lt;/font&gt;&lt;/b&gt;&lt;div&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;&lt;i&gt;commit object&lt;/i&gt;&lt;/font&gt;&lt;br&gt;&lt;div&gt;&lt;br&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;b&gt;tree&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;&lt;/b&gt;&lt;font face=&quot;Lucida Console&quot;&gt;6cbc350&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;b&gt;author&lt;/b&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;Thomas&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;b&gt;committer &lt;/b&gt;Thomas&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&quot;Inital commit&quot;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="40" y="160" width="240" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="qm5P3dTGj1njZauGZi_Y-7" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1.001;exitY=0.338;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="qm5P3dTGj1njZauGZi_Y-1" target="qm5P3dTGj1njZauGZi_Y-2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="qm5P3dTGj1njZauGZi_Y-8" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.665;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="qm5P3dTGj1njZauGZi_Y-1" target="qm5P3dTGj1njZauGZi_Y-3" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="650" y="280" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qm5P3dTGj1njZauGZi_Y-1" value="&lt;b&gt;&lt;font face=&quot;Lucida Console&quot; style=&quot;font-size: 14px;&quot;&gt;6cbc350&lt;/font&gt;&lt;/b&gt;&lt;div&gt;&lt;font face=&quot;Helvetica&quot; style=&quot;font-size: 12px;&quot;&gt;&lt;i&gt;tree object&lt;/i&gt;&lt;/font&gt;&lt;br&gt;&lt;div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;blob &lt;font face=&quot;Lucida Console&quot;&gt;e4542d7&amp;nbsp;&lt;/font&gt;file_a.txt&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;blob &lt;font face=&quot;Lucida Console&quot;&gt;a6f054c&amp;nbsp;&lt;/font&gt;file_b.txt&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="360" y="160" width="240" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="qm5P3dTGj1njZauGZi_Y-2" value="&lt;b&gt;&lt;font face=&quot;Lucida Console&quot; style=&quot;font-size: 14px;&quot;&gt;e4542d7&lt;/font&gt;&lt;/b&gt;&lt;div&gt;&lt;i&gt;blob object&lt;/i&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&quot;content a&quot;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="680" y="80" width="240" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="qm5P3dTGj1njZauGZi_Y-3" value="&lt;b&gt;&lt;font face=&quot;Lucida Console&quot; style=&quot;font-size: 14px;&quot;&gt;a6f054c&lt;/font&gt;&lt;/b&gt;&lt;div&gt;&lt;i&gt;blob object&lt;/i&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&quot;content b&quot;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="680" y="240" width="240" height="120" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
