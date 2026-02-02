@@ -17,12 +17,22 @@
   font-family: monospace;
 }
 
+.bash-cyan {
+  color: #00FFFF;
+  background-color: black;
+  font-family: monospace;
+}
 .bash-grey {
   color: #afafaf;
   background-color: black;
   font-family: monospace;
 }
 
+.bash-bright-green {
+  color: #00f200;
+  background-color: black;
+  font-family: monospace;
+}
 .bash-green {
   color: #1ca800;
   background-color: black;
@@ -74,4 +84,23 @@
 /* Remove the title from the index page. */
 .quarto-title {
   display: none;
+}
+
+/* New classes for terminal colours intended to replace bash-<colour> classes */
+
+/* sha1-col is also used for paratheses and arrows in git terminal output */
+.sha1-col {
+  color: #c0a000;
+}
+
+.head-col {
+  color: #00FFFF;
+}
+
+.active-branch-col {
+  color: #00f200;
+}
+
+.remote-col {
+  color: #ff7676;
 }

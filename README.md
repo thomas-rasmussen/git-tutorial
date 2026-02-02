@@ -43,6 +43,12 @@ TODO
 - configuration of Git appendix: need to be more consistent with using "option" or "setting".
 - git for windows chapter: Introduce some tips and tricks for the command line, like ctrl+l to clear the log, autocompletion using tab etc.
 - It currently feels like remotes should be introduced before branching, so that remotes can be used in examples regarding merging and rebasing.
+- using remotes as backups initiatedby git cloen: by default the remote is probably not saving a hard copy of repo (to save space). Look at --no-hardlinks options for git clone
+  to see how to circumvent this.
+- terminal output in general: right now using (generic) output from BASH shell on Linux. The output from Git BASH is more geared toward Git use, with colours etc. Consider if it is worth it to
+  match terminal output in tutorial exactly as it is in Git BASH. At least consider splitting terminal output up into segments when running multiple commands with a lot of output, so it is easier
+  to see the commands and correpsonding output.
+
 
 Topics that should be included, but it is unclear where:
 - .gitignore. Would probably make sense to include very early. Maybe in chapter with
@@ -52,8 +58,16 @@ Topics that should be included, but it is unclear where:
 - git show. Usefull command that should probably be included somewhere.
 - A part II chapter with some techincal information that is of interest, but did not fit into any other chapter naturally maybe. Or maybe if it was not important enough to introduce elsewhere, then maybe it is too technical for this tutorial?
 - Might be worth it mention git gc somewhere? Already run automatically when using git commit / git rebase etc, so maybe this is not something that is relevant for this tutorial.
-- GitHub CLI: there seems to be an issue where the GitHub CLI stores login credentials in plain text if the CLI is used by a user without admin privilies. This does not immidiately seem like a problem if the CLI was used through git BASH on Windows on a DCE work pc, since we (apparently) have admin privilies on these. But remember to test this on a fresh laptop later to make sure we do not use an approach that saves credentials in plain text. 
-
+- GitHub CLI: there seems to be an issue where the GitHub CLI stores login credentials in plain text if the CLI is used by a user without admin privilies. This does not immidiately seem like a problem if the CLI was used through git BASH on Windows on a DCE work pc, since we (apparently) have admin privilies on these. But remember to test this on a fresh laptop later to make sure we do not use an approach that saves credentials in plain text.
+- tags: something that is worth mentioning at some point. But where is it most appropriate? Short separate chapter in part II, where you could also immidiately show how tags can be useful in practice?
+- Confusing Git terminology and unclear definitions:
+Som people are less than happy:
+https://commonjoe.gitlab.io/git-clarification/
+Read more about this. His point about index/cache/staging area/etc is certainly true.
+https://stevelosh.com/blog/2013/04/git-koans/ pure comedy gold!
+- Consider adding a Git glossary as an appendix, or maybe just a link to one. Maybe links to cheatsheets?
+- Along the way, or maybe as an appendix/part II chapter, the downsides of Git should be mentioned? Like, some terminology is confusing at best, inconsistencies, lack of clear definitions of terms etc.
+- Consider if the tree command should be used to more clearly illustrate folder structures. Unfortunately, this command needs to be downloaded and installed, so it is not something that can/should be used in example code since users won't be able to use it themselves, especially not if they are using the Git for Widnows terminal. But maybe use to make diagrams to include alongside code to make it more clear how directories look like? But how do we do this in a good way then? Using screenshots of the terminal output from the tree command sounds awful. Maybe it would not be so bad manually constructing similar output in draw.io? Can the output from the terminal maybe simply be pasted into a text box in draw.io and formatted?
 
 Found this very old resource:
 https://github.com/schacon/gitbook
