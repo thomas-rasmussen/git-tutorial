@@ -1,0 +1,589 @@
+# Using `git diff` to show code changes
+
+A *diff* is a program that compares the content of files or directories, line by line, and shows the differences between them. Git comes with its own diff command, `git diff`, which can be used to compare different states of a repository. Using diffs allows developers to inspect changes before adding them to the index or making a commit, compare changes made in a feature branch with your main branch before merging and so on, which is an essential skill to learn when using Git.
+
+This chapter will focus under understanding the output that `git diff` produces and introducing some of the most common ways diffs are used in Git. As always, we will only scratch the surface of what is possible to do.
+
+
+## Show changes in the working tree - Understanding the `git diff` output
+
+Using `git diff` with no arguments will show changes made in the working tree that has not yet been staged for the next commit. More precisely, Git compares the working tree and the index. This invocation of `git diff` can be used to see exactly what changes would be added to the index if `git add` was used.
+
+Let's explore this with an example where we also go through how to interpret the output that `git diff` provides. First, let's initiate a Git repository where we create a file, add it to the index, and use `git diff`:
+
+<pre class="git-command">
+$ mkdir ~/example-git-diff
+$ cd ~/example-git-diff
+$ git init
+$ echo "Content in index" > file1.txt
+$ git add .
+$ git status
+On branch main
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        <span class="bash-green">new file:   file1.txt</span>
+
+$ git diff
+
+</pre>
+
+Since we have not added any changes to the working tree after adding file1.txt to the index, the state of file1.txt is the same in the working tree and the index, so `git diff` produces no output. Now, let's add some changes to file1.txt and run `git diff` again:
+
+<pre class="git-command">
+$ echo "New content in working tree" >> file1.txt
+$ git diff
+<span style="color:white">diff --git a/file1.txt b/file1.txt</span>
+<span style="color:white">index fc997de..ed98e30 100644</span>
+<span style="color:white">--- a/file1.txt</span>
+<span style="color:white">+++ b/file1.txt</span>
+<span style="color:teal">@@ -1 +1,2 @@</span>
+ Content in index
+<span class="bash-green">+New content in working tree</span>
+</pre>
+
+The output that `git diff` produces is quite technical, so lets go through it line by line.
+
+
+### Structure of `git diff` output
+
+For each file being compared, Git groups changes into "hunks", sections of the file that contains changes, which are presented separately. In this simple example we only have one file with a few lines, so there is only one hunk in the output.
+
+### The header
+
+The first line
+
+<pre class="git-command">
+<span style="color:white">diff --git a/file1.txt b/file1.txt</span>
+</pre>
+
+in each hunk is called the header. It is informing us what inputs has been given to the diff. We can see that two versions of file1.txt has been passed to the diff, a/file1.txt and b/file1.txt. It looks like Git is comparing two files with the file paths a/file1.txt and b/file1.txt, which is not the case. Git is just informing us, in a somewhat confusing way, that the first input has been assigned the symbol "a" and the second input has been assigned the symbol "b". In this example where we have called `git diff` with no arguments, the first input "a" is the version of file1.txt in the index, and "b" is the version of file1.txt in the working tree. You can think of version "a" as the "old" or "original" version of the file, and "b" as the "new" or "modified" version of the file. Again, this makes sense in our current example where we want to see the changes in the working tree not yet added to the index: the old version is the version in the index, and the new version is the version in the working tree.
+
+The start of the line `diff --git` might look like that Git has run the BASH command  `diff` with a `--git` flag, but this is not actually the case. This is just Git's way of telling us that the diff has been produced by Git's own internal diff function.
+
+
+### Git meta data
+
+The second line
+
+<pre class="git-command">
+<span style="color:white">index fc997de..ed98e30 100644</span>
+</pre>
+
+displays some Git metadata. The first word "index" in this context does not refer to the index/staging area in Git, but is instead indicating that what follows is an indexed identifier of the data being compared. The next two words are (abbreviated) SHA-1 hash identifiers that Git uses to refer to the specific versions of the content being compared. So "fc997de" is the SHA-1 hash of file1.txt version in the index, and "ed98e30" is the SHA-1 hash of version of file1.txt in the working tree. We can check this by manually computing the checksum of the two different versions of the file:
+
+<pre class="git-command">
+<span># SHA-1 hash of file1.txt in index</span>
+$ git ls-files -s file1.txt
+100644 fc997ded06b626fcc07db7da1e3a7bbf4e7349d4 0       file1.txt
+<span># SHA-1 hash of file1.txt in working tree</span>
+$ git hash-object file1.txt
+ed98e302716a8f7df192d2e7474f8ee96b13c35b
+</pre>
+
+The two dots ".." between the given SHA-1 identifiers represents a range from one state to another. You can think of "fc997de..ed98e30" as "the difference between fc997de and ed98e30". Finally, the last word "100644" is some technical jargon that means that the file is a normal, non-executable file.
+
+
+### Markers for changes
+
+The next lines
+
+<pre class="git-command">
+<span style="color:white">--- a/file1.txt</span>
+<span style="color:white">+++ b/file1.txt</span>
+</pre>
+
+are a legend that assigns symbols to diff input sources. In this case, changes from version "a" of the file is marked with a "---", and changes from version "b" is marked with a "+++" symbol.
+
+
+### The hunk header
+
+The next line
+
+<pre class="git-command">
+<span style="color:teal">@@ -1 +1,2 @@</span>
+</pre>
+
+is the "hunk header". It is a summary of shown lines from the files being compared. The "@" symbols marks the beginning and end of the hunk header. It serves as a delimiter that Git uses to identify the hunk header.
+
+- `-1` - This indicates the lines shown from the original file (the version in the index), denoted by the `-`. The `1` signifies that the shown lines are from line 1 to the end of the file.
+
+- `+1,2` - This part indicates lines shown from the updated file (the version in the working tree), denoted by the "+" symbol. Here the `1` indicates that the lines shown begin from the first line in the file, and `2` means that from that starting point, there are two lines shown from the updated file, including the first line, that is, the lines 1 and 2 are the two lines.
+
+This is arguably the most confusing part of the diff output, and takes some effort to understand correctly. We will talk more about the hunk header in later, more complicated examples, but it not essential to have a perfect understanding of the hunk header, and we will not delve too much on the precise interpretation of this information ^[If you are interested, there is an excellent in-depth explanation on how to read the hunk header at <a href="https://blog.gumshoe.dev/understanding-git-diff-output">https://blog.gumshoe.dev/understanding-git-diff-output</a>]. 
+
+
+### The diff content
+
+The remaining output
+
+<pre class="git-command">
+ Content in index
+<span class="bash-green">+New content in working tree</span>
+</pre>
+
+is the diff content, and consists of three different types of diff lines.
+
+- Context lines: Lines that have not changed between the two versions. These lines help you understand where in the file changes are happening. By default, these lines are shown in grey. In our example, the "Content in index" line is a context line, since it is present in both versions of the file. These lines are not preceded by any symbol.
+
+- Deletion lines: Lines that were present in version "a", the old version, but are not present in the new version, "b". These lines are preceded by a "-". By default, these lines are shown in red. Our current example does not contain any deletion lines.
+
+- Addition lines: Lines that are present in version "b", the new version, but were not present in version "a", the old version. These lines are preceded by a "+". By default, these lines are shown in green. In our example, "New content in working tree" is an addition line.
+
+The diff content essentially provides a before-and-after snapshot of your file. You can see the context (what part of the file remained unchanged), the deletions (what parts were removed from the old version), and the additions (what parts were added in the new version). As indicated by the colors and symbols, you can think of the diff content as a chunk of changes in the file, with some context lines around changes to provide context, red deletion lines indicating what lines have been removed from the original file, and green addition lines showing what has been added in the modified version.
+
+
+### Continuation of example
+
+Let's expand our example now that we understand the output from `git diff`. First, let's add the "New content in working tree" line to the index, and commit file1.txt to the repository:
+
+<pre class="git-command">
+<span># Current state of file1.txt in the working directory</span>
+$ cat file1.txt
+Content in index
+New content in working tree
+$ git add .
+$ git commit -m"Add file1.txt"
+</pre>
+
+Yet again, let's add some changes to file1.txt in the working tree and use `git diff`:
+
+<pre class="git-command">
+$ echo "Changes after commit" >> file1.txt
+$ git diff
+<span style="color:white">diff --git a/file1.txt b/file1.txt</span>
+<span style="color:white">index ed98e30..e283c5a 100644</span>
+<span style="color:white">--- a/file1.txt</span>
+<span style="color:white">+++ b/file1.txt</span>
+<span style="color:teal">@@ -1,2 +1,3 @@</span>
+ Content in index
+ New content in working tree
+<span class="bash-green">+Changes after commit</span>
+</pre>
+
+First of all, it might be surprising why this is showing any output at all. As stated before, `git diff` compares the working tree and the index, but we have not added anything to the index, so why is Git telling us that the line "Changes after commit" is in the file1.txt version in the working space, but not in the version of the file in the index? Why is it not producing no output as when we initially made changes in the working tree and used `git diff` before adding anything to the index? This is because we have made a commit in the meantime. The index keeps track of all files it knows about, and since we have made a commit where we added file1.txt to the repository, the index is currently containing information on the version of file1.txt that was last commited. So, if we have not staged anything since our last commit, we can actually use `git diff` to compare the state of the working tree with the latest commit on the active branch, if the files are already tracked by Git! We can show this more clearly by adding a new file in the working tree and running `git diff` again:
+
+<pre class="git-command">
+$ echo "Content of file2.txt" > file2.txt
+$ git diff
+<span style="color:white">diff --git a/file1.txt b/file1.txt</span>
+<span style="color:white">index ed98e30..e283c5a 100644</span>
+<span style="color:white">--- a/file1.txt</span>
+<span style="color:white">+++ b/file1.txt</span>
+<span style="color:teal">@@ -1,2 +1,3 @@</span>
+ Content in index
+ New content in working tree
+<span class="bash-green">+Changes after commit</span>
+</pre>
+
+We can see that `git diff` still only show the changes in file1.txt in the working tree, since Git is not currently tracking file2.txt, so the index does not contain any information on that file.
+
+Looking at the `git diff` output, we can see that the output is easier to understand now: The "-1,2" part of the hunk header is telling us that the diff lines are showing the two first lines of the version of file1.txt from the index, namely the lines "Content in index" and "New content in the working tree", both of which are context lines since they are also present in the version in the working tree. The "+1,3" is additionally telling us that the 3 first lines are shown from the version of file1.txt in the working tree with the two same context lines and the addition line "Changes after commit".
+
+Let's wrap up this example by deleting the repository:
+
+<pre class="git-command">
+$ cd
+$ rm -rf ~/example-git-diff
+</pre>
+
+
+## Compare index with latest commit
+
+Another common way to use `git diff` is to compare the index to the latest commit on the active branch, by using the `--staged` flag. This invocation of `git diff` can be used to see exactly what changes are committed before using `git commit`.
+
+Let's illustrate this with a new example. First we initialize a repository with a single commit of two files:
+
+<pre class="git-command">
+$ mkdir ~/example-git-diff2
+$ cd ~/example-git-diff2
+$ git init
+$ echo "Content in file1.txt" > file1.txt
+$ echo "Content in file2.txt" > file2.txt
+$ git add .
+$ git commit -m"Add file1.txt and file2.txt"
+</pre>
+
+Now, we make changes to both files, but we only add the changes to file1.txt to the index, and then we use `git diff --staged`:
+
+<pre class="git-command">
+$ echo "More content in file1.txt" >> file1.txt
+$ echo "More content in file2.txt" >> file2.txt
+$ git add file1.txt
+$ git status
+On branch main
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        <span class="bash-green">modified:   file1.txt</span>
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        <span style="color:red">modified:   file2.txt</span>
+
+$ git diff --staged
+<span style="color:white">diff --git a/file1.txt b/file1.txt</span>
+<span style="color:white">index a1b2117..b00037e 100644</span>
+<span style="color:white">--- a/file1.txt</span>
+<span style="color:white">+++ b/file1.txt</span>
+<span style="color:teal">@@ -1 +1,2 @@</span>
+ Content in file1.txt
+<span class="bash-green">+More content in file1.txt</span>
+</pre>
+
+We can see that we are indeed only shown the changes to file1.txt that would be added to the repository if we were to use `git commit` at this point, and that we are not shown the changes to file1.txt in the working tree which has not been added to the index.
+
+Let's wrap up by deleting the example folder:
+
+<pre class="git-command">
+$ cd
+$ rm -rf ~/example-git-diff2
+</pre>
+
+
+## Compare two commits
+
+It is also possible to diff two commits, to see the differences between them using `git diff <commit> <commit>`, where `<commit>` is the (abbreviated) SHA-1 checksum of a commit object. One of the most common uses of this form of `git diff` is `git diff HEAD^ HEAD` which shows changes introduced in the most recent commit on the active branch. As you might recall, `HEAD`, is just a pointer to the most recent commit on the active branch, and `HEAD^` is the parent commit of `HEAD`. This is a neat way to make the comparison of interest without having to type out tedious and hard to remember checksums in the terminal. This also illustrates that we can use refs to refer to commits, instead of actual commit checksums in the call to `git diff`. This means that we compare branches with the same type of call eg `git diff main feature_a` to see what changes has been introduced in a feature branch before we merge it to our main branch.
+
+Again, let's illustrate this with an example. First we create a repository with a series of commits, making changes to a single file:
+
+<pre class="git-command">
+$ mkdir ~/example-git-diff3
+$ cd ~/example-git-diff3
+$ git init
+$ echo "Content added in commit A" > file1.txt
+$ git add .
+$ git commit -m"Commit A"
+$ echo "Content added in commit B" >> file1.txt
+$ git commit -am"Commit B"
+$ echo "Content added in commit C" >> file1.txt
+$ git commit -am"Commit C"
+$ git log --oneline
+<span class="sha1-col">d32fc58 (</span><span class="head-col">HEAD</span> <span class="sha1-col">-></span> <span class="active-branch-col">main</span><span class="sha1-col">)</span> Commit C
+<span class="sha1-col">9b4a089</span> Commit B
+<span class="sha1-col">cd80503</span> Commit A
+</pre>
+
+As previously explained, if we want to see the changes introduced in the newest commit, Commit C, we can do it in two ways. We can either specify the commit checksums directly, or we can use the `git diff HEAD^ HEAD` form:
+
+<pre class="git-command">
+$ git diff HEAD^ HEAD
+<span style="color:white">diff --git a/file1.txt b/file1.txt</span>
+<span style="color:white">index e8e75be..419b45c 100644</span>
+<span style="color:white">--- a/file1.txt</span>
+<span style="color:white">+++ b/file1.txt</span>
+<span style="color:teal">@@ -1,2 +1,3 @@</span>
+ Content added in commit A
+ Content added in commit B
+<span class="bash-green">+Content added in commit C</span>
+
+$<span style="color:white">diff --git a/file1.txt b/file1.txt</span>
+<span style="color:white">index e8e75be..419b45c 100644</span>
+<span style="color:white">--- a/file1.txt</span>
+<span style="color:white">+++ b/file1.txt</span>
+<span style="color:teal">@@ -1,2 +1,3 @@</span>
+ Content added in commit A
+ Content added in commit B
+<span class="bash-green">+Content added in commit C</span> git diff 9b4a098 d32fc58 
+</pre>
+
+We can see that we get the exact same results, but that the `git diff HEAD^ HEAD` form of using `git diff` is much easier to use.
+
+Let's continue the example by making a branch, and making a commit on that branch:
+
+<pre class="git-command">
+$ git switch -c feature_a
+$ echo "Content added on feature_a branch" >> file1.txt
+$ git add .
+$ git commit -m"Update file1.txt"
+$ git log --oneline
+8b8e809 (HEAD -> feature_a) Update file1.txt
+d32fc58 (main) Commit C
+9b4a089 Commit B
+cd80503 Commit A
+</pre>
+
+Let's say we want to merge the feature branch into the main branch, but that we want to see exactly what changes we would be adding before we do so. Again we could explictly compare commit ID's, or we could simply specify the branch names in the `git diff` command:
+
+<pre class="git-command">
+$ git diff d32fc58 8b8e809
+<span style="color:white">diff --git a/file1.txt b/file1.txt</span>
+<span style="color:white">index 419b45c..89b6cb2 100644</span>
+<span style="color:white">--- a/file1.txt</span>
+<span style="color:white">+++ b/file1.txt</span>
+<span style="color:teal">@@ -1,3 +1,4 @@</span>
+ Content added in commit A
+ Content added in commit B
+ Content added in commit C
+<span class="bash-green">+Content added on feature_a branch</span>
+
+$ git diff main feature_a
+<span style="color:white">diff --git a/file1.txt b/file1.txt</span>
+<span style="color:white">index 419b45c..89b6cb2 100644</span>
+<span style="color:white">--- a/file1.txt</span>
+<span style="color:white">+++ b/file1.txt</span>
+<span style="color:teal">@@ -1,3 +1,4 @@</span>
+ Content added in commit A
+ Content added in commit B
+ Content added in commit C
+<span class="bash-green">+Content added on feature_a branch</span>
+</pre>
+
+Again we see that we get identical results, but it is much easier to refer to the commits with branch references.
+
+To wrap up the example we delete the repository:
+
+<pre class="git-command">
+$ cd
+$ rm -rf ~/example-git-diff3
+</pre>
+
+
+## Exercises
+
+TODO: The main purpose of the exercises should be to expand on the introduced types of diffs with more complicated example with multiple files, chunks of changes etc.
+
+
+### Exercise 1 - Compare files outside a Git repository
+
+In this chapter we have focused on comparing differences in objects in a Git repository. But you can actually also diff two random files on your computer outside of a Git repository using `git diff <path> <path>`, where `<path>` is a path to a file on your filesystem.
+
+Imagine you are part of a research group that is writing an article. The previous version of the article draft, article_draft_v2.txt is updated by the first author, and you want to get an overview of the exact changes that have been introduced in the new version, article_draft_v3.txt^[The primary purpose of this exercise is to practice diffing files that are not part of a Git repository. In the real world, article drafts would most likely be written in Microsoft Word, and .docx files are unfortunately not straightforward to diff. It is out of scope of this tutorial, but it is possible to use Git attributes and external programs to instruct Git how to diff .docx files in a meaningful way. For more information see, <a href="https://git-scm.com/book/be/v2/Customizing-Git-Git-Attributes">https://git-scm.com/book/be/v2/Customizing-Git-Git-Attributes</a>.].
+
+Use the following commands to generate the files for the exercise (Consider copy+pasting the echo commands into the terminal to avoid spelling errors):
+
+<pre class="git-command">
+$ mkdir ~/git-diff-ex1
+$ echo -e "Introduction\nMethods\nResults\nDiscussion\nConclusion" > ~/git-diff-ex1/article_draft_v2.txt
+$ echo -e "Abstract\nIntroduction\nMethods\nResults\nDiscussion\nConclusion\nSupplementary analyses" > ~/git-diff-ex1/article_draft_v3.txt
+$ cat ~/git-diff-ex1/article_draft_v2.txt
+Introduction
+Methods
+Results
+Discussion
+Conclusion
+$ cat ~/git-diff-ex1/article_draft_v3.txt
+Abstract
+Introduction
+Methods
+Results
+Discussion
+Conclusion
+Supplementary analyses
+</pre>
+
+
+**1. Make a diff of the two files**
+
+Use `git diff <path> <path>` to make a diff of article_draft_v2.txt and article_draft_v3.txt. Remember to use the full paths to each files, and use article_draft_v2.txt as the first input.
+
+::: {.callout-note title="Solution" collapse="true" icon="false"}
+
+<pre class="git-command">
+$ git diff ~/git-diff-ex1/article_draft_v2.txt ~/git-diff-ex1/article_draft_v3.txt
+<span style="color:white">diff --git a/~/git-diff-ex1/article_draft_v2.txt b/~/git-diff-ex1/article_draft_v3.txt</span>
+<span style="color:white">index b266301..e554467 100644</span>
+<span style="color:white">--- a/~/git-diff-ex1/article_draft_v2.txt</span>
+<span style="color:white">+++ b/~/git-diff-ex1/article_draft_v3.txt</span>
+<span style="color:teal">@@ -1,5 +1,7 @@</span>
+<span class="bash-green">+Abstract</span>
+ Introduction
+ Methods
+ Results
+ Discussion
+ Conclusion
+<span class="bash-green">+Supplementary analyses</span>
+</pre>
+
+:::
+
+
+**2. Understanding the output**
+
+Go through the `git diff` output and consider what each part of the output means.
+
+::: {.callout-note title="Solution" collapse="true" icon="false"}
+
+**The header**
+
+The first line of the output
+
+<pre class="git-command">
+<span style="color:white">diff --git a/~/git-diff-ex1/article_draft_v2.txt b/~/git-diff-ex1/article_draft_v3.txt</span>
+</pre>
+
+is the header.
+
+- "diff `&#45&#45`{=html}git": Git is telling us that the diff is made with Git
+
+- "a/~/git-diff-ex1/article_draft_v2.txt": First input which is assigned the symbol "a" and treated as the "old" version.
+
+- "a/~/git-diff-ex1/article_draft_v3.txt": Second input which is assigned the symbol "b" and treated as the "new" version.
+
+
+**Git meta data**
+
+The second line of the output
+
+<pre class="git-command">
+<span style="color:white">index b266301..e554467 100644</span>
+</pre>
+
+is the Git meta data.
+
+- "index": This does not refer to the staging area in this context, but instead is used to to tell us that what follows is indexed identifiers of the data being compared.
+
+- "b266301": (abbreviated) SHA-1 checksum of the first input. We can check this by hashing the file ourselves:
+
+<pre class="git-command">
+$ git hash-object ~/git-diff-ex1/folder1/file1.txt
+b2663016d267a1ab40f4555dd731715c1fe5bba6
+</pre>
+
+- "e554467": (abbreviated) SHA-1 checksum of the second input. We can check this by hashing the file ourselves:
+
+<pre class="git-command">
+$ git hash-object ~/git-diff-ex1/folder2/file2.txt
+e554467d786e0a61ce9943be4e666d3618c6dd42
+</pre>
+
+- "..": The two dots between the SHA-1 checksums represents a range from one state to another. We can think of this as Git telling us that it is finding the differences between objects b266301 and e554467.
+
+- "100644": Just some technical jargon telling us that the files being compared are normal non-executable files.
+
+
+**Markers for changes**
+
+The third and fourth line of the output
+
+<pre class="git-command">
+<span style="color:white">--- a/~/git-diff-ex1/article_draft_v2.txt</span>
+<span style="color:white">+++ b/~/git-diff-ex1/article_draft_v3.txt</span>
+</pre>
+
+is a legend that assigns symbols to the different input sources. Here, changes from article_draft_v2.txt is given the symbol `"&#45&#45&#45"`{=html}, and changes from article_draft_v3.txt is given the symbol "+++".
+
+
+**Hunk header**
+
+The sixth line of the output
+
+<pre class="git-command">
+<span style="color:teal">@@ -1,5 +1,7 @@</span>
+</pre>
+
+is the hunk header. The hunk header is a summary of lines shown from the two inputs being compared. 
+
+- "@" symbols: marks the beginning and end of the hunk header.
+
+- "-1,5": Indicates what lines are shown from the first input / "old" version in the diff content. Here, we are informed that starting from the first line of the file, 5 lines are shown, including the first line.
+
+- "+1.7": Indicates what lines are shown from the second input / "new" version in the diff content. Here, we are informed that that starting from the first line of the file, 7 lines are shown, including the first line.
+
+
+**Diff lines**
+
+The remaining lines of of the output
+
+<pre class="git-command">
+<span class="bash-green">+Abstract</span>
+ Introduction
+ Methods
+ Results
+ Discussion
+ Conclusion
+<span class="bash-green">+Supplementary analyses</span>
+</pre>
+
+is the diff content. There are no red deletion lines, meaning that nothing has from article_draft_v2.txt has been removed in article_draft_v3.txt. There are two green addition lines, meaning that two lines have been added in article_draft_v3.txt that were not present in article_draft_v2.txt. Finally, several grey context lines are included in the output, giving context to where in article_draft_v3.txt lines have been added.
+
+:::
+
+
+Wrap up by deleting the files created for the exercise:
+
+<pre class="git-command">
+$ cd
+$ rm -rf ~/git-diff-ex1
+</pre>
+
+### Exercise 2 - Multiple diff hunks
+
+So far we have only looked at examples where there is a single diff hunk in the output from `git diff`, showing all lines from the diffed file. If the file being diffed is very long and has changes that are very far apart, Git is not going to show the entire file but will instead separate the changes into multiple diff hunks, showing only a few context lines around changes in each hunk. If multiple files are being diffed, there would also be at least one diff hunk for each file.
+
+Run the following commands to set-up a Git repository with a commit of two files, with additional changes in the worktree to the files after the commit:
+
+<pre class="git-command">
+$ mkdir ~/git-diff-ex2
+$ cd ~/git-diff-ex2
+$ git init
+$ echo "Content of file1" > file1.txt
+$ echo "Content of file2" > file2.txt
+$ git add .
+$ git commit -m"Initial commit of file1.txt and file2.txt"
+$ echo "Additional content" >> file1.txt
+$ echo "Additional content" >> file2.txt
+</pre>
+
+**1. Make a diff of worktree and index**
+
+Make a diff of the worktree and the index.
+
+:::{.callout-note title="Solution" collapse="true" icon="false"}
+
+To make a diff of the worktree and the index, we can simply use `git diff` with no arguments:
+
+<pre class="git-command">
+$ git diff
+<span style="color:white">diff --git a/file1.txt b/file1.txt</span>
+<span style="color:white">index 65e756a..e24b6bc 100644</span>
+<span style="color:white">--- a/file1.txt</span>
+<span style="color:white">+++ b/file1.txt</span>
+<span style="color:teal">@@ -1 +1,2 @@</span>
+ Content of file1
+<span class="bash-green">+Additional content</span>
+<span style="color:white">diff --git a/file2.txt b/file2.txt</span>
+<span style="color:white">index aad9de2..6541eda 100644</span>
+<span style="color:white">--- a/file2.txt</span>
+<span style="color:white">+++ b/file2.txt</span>
+<span style="color:teal">@@ -1 +1,2 @@</span>
+ Content of file2
+<span class="bash-green">+Additional content</span>
+</pre>
+:::
+
+
+**2. Identify each diff hunk**
+
+Go through the output of the diff and identify each diff hunk.
+
+:::{.callout-note title="Solution" collapse="true" icon="false"}
+
+Each hunk starts with a header starting with "diff `&#45&#45`{=html}git".
+
+:::
+
+Wrap up by deleting the files created for the exercise:
+
+<pre class="git-command">
+$ cd
+$ rm -rf ~/git-diff-ex2
+</pre>
+
+
+### Compare brances
+
+TODO: Make an example where two branches are compared.
+
+purpose: Illustrates how to see what changes have been introduced in a feature branch, for example.
+
+
+
+
+## TODO
+
+- Add text somewhere (probably in first section) that emphasizes that the goal of git diff is not just to show new lines but also to illustrate what lines were removed or replaced. Ie to show a comprehensive view of alterations, both additions, deltions and context, which enables us to fully comprehend the evolution from one version to another of a file.
+
+- It is not intuitive at all how to call `git diff` to compare the different states of interest. Add a table with basic calls that can be used as a reference. Something like what is done in https://www.datacamp.com/tutorial/git-diff-guide?dc_referrer=https%3A%2F%2Fwww.google.com%2F 
