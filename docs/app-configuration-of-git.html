@@ -2,17 +2,23 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.24">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Appendix C — Configuration of Git – Git tutorial</title>
+<title>Appendix B — Configuration of Git – Git tutorial</title>
 <style>
-code{white-space: pre-wrap;}
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -31,18 +37,17 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./app-resources.html" rel="next">
-<link href="./app-github-setup.html" rel="prev">
+<link href="./app-git-for-windows.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-704d8d96d8bd6a3a18507fa617f49d29.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-18447e9d16e0bfc3229421fc5cc130e2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -85,7 +90,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./app-git-for-windows.html">Appendices</a></li><li class="breadcrumb-item"><a href="./app-configuration-of-git.html"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Configuration of Git</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./app-git-for-windows.html">Appendices</a></li><li class="breadcrumb-item"><a href="./app-configuration-of-git.html"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Configuration of Git</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -98,9 +103,7 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="./index.html" class="sidebar-logo-link">
-      </a>
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Git tutorial</a> 
         <div class="sidebar-tools-main">
@@ -238,20 +241,14 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./app-github-setup.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">GitHub setup</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./app-configuration-of-git.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Configuration of Git</span></span></a>
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Configuration of Git</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./app-resources.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Resources</span></span></a>
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Resources</span></span></a>
   </div>
 </li>
       </ul>
@@ -266,29 +263,29 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#git-configuration-file-hierarchy" id="toc-git-configuration-file-hierarchy" class="nav-link active" data-scroll-target="#git-configuration-file-hierarchy"><span class="header-section-number">C.1</span> Git configuration file hierarchy</a>
+  <li><a href="#git-configuration-file-hierarchy" id="toc-git-configuration-file-hierarchy" class="nav-link active" data-scroll-target="#git-configuration-file-hierarchy"><span class="header-section-number">B.1</span> Git configuration file hierarchy</a>
   <ul class="collapse">
   <li><a href="#system-level" id="toc-system-level" class="nav-link" data-scroll-target="#system-level">System level</a></li>
   <li><a href="#global-level" id="toc-global-level" class="nav-link" data-scroll-target="#global-level">Global level</a></li>
   <li><a href="#local-level" id="toc-local-level" class="nav-link" data-scroll-target="#local-level">Local level</a></li>
   </ul></li>
-  <li><a href="#working-with-configuration-files" id="toc-working-with-configuration-files" class="nav-link" data-scroll-target="#working-with-configuration-files"><span class="header-section-number">C.2</span> Working with configuration files</a></li>
-  <li><a href="#configuration-options-of-interest." id="toc-configuration-options-of-interest." class="nav-link" data-scroll-target="#configuration-options-of-interest."><span class="header-section-number">C.3</span> Configuration options of interest.</a>
+  <li><a href="#working-with-configuration-files" id="toc-working-with-configuration-files" class="nav-link" data-scroll-target="#working-with-configuration-files"><span class="header-section-number">B.2</span> Working with configuration files</a></li>
+  <li><a href="#configuration-options-of-interest." id="toc-configuration-options-of-interest." class="nav-link" data-scroll-target="#configuration-options-of-interest."><span class="header-section-number">B.3</span> Configuration options of interest.</a>
   <ul class="collapse">
   <li><a href="#core.editor" id="toc-core.editor" class="nav-link" data-scroll-target="#core.editor">core.editor</a></li>
   <li><a href="#commit.template" id="toc-commit.template" class="nav-link" data-scroll-target="#commit.template">commit.template</a></li>
   <li><a href="#user.email-and-user.name" id="toc-user.email-and-user.name" class="nav-link" data-scroll-target="#user.email-and-user.name">user.email and user.name</a></li>
   </ul></li>
-  <li><a href="#aliases" id="toc-aliases" class="nav-link" data-scroll-target="#aliases"><span class="header-section-number">C.4</span> Aliases</a></li>
+  <li><a href="#aliases" id="toc-aliases" class="nav-link" data-scroll-target="#aliases"><span class="header-section-number">B.4</span> Aliases</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./app-git-for-windows.html">Appendices</a></li><li class="breadcrumb-item"><a href="./app-configuration-of-git.html"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Configuration of Git</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./app-git-for-windows.html">Appendices</a></li><li class="breadcrumb-item"><a href="./app-configuration-of-git.html"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Configuration of Git</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-configuration-of-git" class="quarto-section-identifier">Appendix C — Configuration of Git</span></h1>
+<h1 class="title"><span id="sec-configuration-of-git" class="quarto-section-identifier">Appendix B — Configuration of Git</span></h1>
 </div>
 
 
@@ -318,8 +315,8 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <p>The name of an option is the section and key separated by a dot, for example <code>user.name</code>.</p>
-<section id="git-configuration-file-hierarchy" class="level2" data-number="C.1">
-<h2 data-number="C.1" class="anchored" data-anchor-id="git-configuration-file-hierarchy"><span class="header-section-number">C.1</span> Git configuration file hierarchy</h2>
+<section id="git-configuration-file-hierarchy" class="level2" data-number="B.1">
+<h2 data-number="B.1" class="anchored" data-anchor-id="git-configuration-file-hierarchy"><span class="header-section-number">B.1</span> Git configuration file hierarchy</h2>
 <div style="display:flex">
 <div style="flex:50%;margin-right:1em;">
 <p>Git has several levels of configuration files that can be used to customize how Git looks and works. Simplifying things a bit, there are three levels of configurations files: system, global, and local. Configuration settings at each narrower level overwrites settings from the more broader configuration files, i.e.&nbsp;local settings overwrites global settings, and global settings overwrite system settings.</p>
@@ -350,8 +347,8 @@ ul.task-list li input[type="checkbox"] {
 <p>As with the system level configuration file, you usually don’t manually change the local level configuration file. An example of where local level configuration can be useful, is if you want to have different email addresses associated with your identity depending on the project you are working on. You might have configured your global configuration file to use your work email, which you use the majority of the time, but you might also work on a personal project, where you want to use your private email. In this case you could simply configure the local configuration file in the personal project to use your private email.</p>
 </section>
 </section>
-<section id="working-with-configuration-files" class="level2" data-number="C.2">
-<h2 data-number="C.2" class="anchored" data-anchor-id="working-with-configuration-files"><span class="header-section-number">C.2</span> Working with configuration files</h2>
+<section id="working-with-configuration-files" class="level2" data-number="B.2">
+<h2 data-number="B.2" class="anchored" data-anchor-id="working-with-configuration-files"><span class="header-section-number">B.2</span> Working with configuration files</h2>
 <p>Git comes with a number of <code>git config</code> commands that can be used to read and set options in the configuration files. Here we will talk about basic use of the <code>git config list</code>, <code>git config get</code>, <code>git config set</code>, and <code>git config edit</code> commands together with the <code>--system</code>, <code>--global</code>, and <code>--local</code> options to list/get/set/edit option in specific configuration files.</p>
 <p>To list all options and their values in a config file you can use the the <code>git config list</code> command. If, for example, we wanted to list all global options we could use <code>git config list --global</code> which would give us something like</p>
 <pre class="git-command">user.name=Your name
@@ -361,8 +358,8 @@ use.email=your@email.com
 <p>To set a specific option, we can use the <code>git config set</code> command. For example, if we wanted to set the core.editor option to “notepad” in the system level configuration file we could use the <code>git config set --system core.editor notepad</code> command.</p>
 <p>Finally, if we want to make changes to a configuration file, we might want to simply open the configuration file, and edit it by hand. This can be done with the <code>git config edit</code> command. For example if we wanted to manually edit the local level configuration file, we could do <code>git config edit</code> command, which will open the configuration file in a text editor. We did not add the <code>--local</code> option here to illustrate, that by default, many of the <code>git config</code> commands defaults to using the <code>--local</code> flag.</p>
 </section>
-<section id="configuration-options-of-interest." class="level2" data-number="C.3">
-<h2 data-number="C.3" class="anchored" data-anchor-id="configuration-options-of-interest."><span class="header-section-number">C.3</span> Configuration options of interest.</h2>
+<section id="configuration-options-of-interest." class="level2" data-number="B.3">
+<h2 data-number="B.3" class="anchored" data-anchor-id="configuration-options-of-interest."><span class="header-section-number">B.3</span> Configuration options of interest.</h2>
 <p>There are A LOT of things that can be configured in Git. Here we briefly highlight a short list of options that are often of interest</p>
 <section id="core.editor" class="level3">
 <h3 class="anchored" data-anchor-id="core.editor">core.editor</h3>
@@ -406,8 +403,8 @@ use.email=your@email.com
 <p>The user.name and user.email variables determines what ends up in the author field of commit objects. You should set these options with your name and email so it is clear from the commit object who made the commit.</p>
 </section>
 </section>
-<section id="aliases" class="level2" data-number="C.4">
-<h2 data-number="C.4" class="anchored" data-anchor-id="aliases"><span class="header-section-number">C.4</span> Aliases</h2>
+<section id="aliases" class="level2" data-number="B.4">
+<h2 data-number="B.4" class="anchored" data-anchor-id="aliases"><span class="header-section-number">B.4</span> Aliases</h2>
 <p>Git aliases can be used to create shorter commands that map to longer commands. Aliases can be a great help to make it easier to use commands that you find yourself using often, but that are hard to remember and/or are tedious to type out. As a contrived example, consider the <code>git status</code> command. You will type that command a lot. Git doesn’t automatically infer your command if you type it in partially, but you could setup an alias so that you would only have to type <code>git st</code> if you don’t want to type the whole command each time:</p>
 <pre class="git-command">git config set --global alias.st status
 </pre>
@@ -516,6 +513,11 @@ use.email=your@email.com
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
         }
       }
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
@@ -831,13 +833,13 @@ use.email=your@email.com
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./app-github-setup.html" class="pagination-link" aria-label="GitHub setup">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">GitHub setup</span></span>
+      <a href="./app-git-for-windows.html" class="pagination-link" aria-label="Git for Windows">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Git for Windows</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./app-resources.html" class="pagination-link" aria-label="Resources">
-        <span class="nav-page-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Resources</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Resources</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

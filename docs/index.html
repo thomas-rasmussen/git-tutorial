@@ -2,17 +2,23 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.24">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>Git tutorial</title>
 <style>
-code{white-space: pre-wrap;}
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -33,15 +39,14 @@ ul.task-list li input[type="checkbox"] {
 <link href="./part1-ch01-introduction-to-git.html" rel="next">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-704d8d96d8bd6a3a18507fa617f49d29.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-18447e9d16e0bfc3229421fc5cc130e2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -97,9 +102,7 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="./index.html" class="sidebar-logo-link">
-      </a>
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Git tutorial</a> 
         <div class="sidebar-tools-main">
@@ -237,20 +240,14 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./app-github-setup.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">GitHub setup</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./app-configuration-of-git.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Configuration of Git</span></span></a>
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Configuration of Git</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./app-resources.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Resources</span></span></a>
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Resources</span></span></a>
   </div>
 </li>
       </ul>
@@ -299,7 +296,7 @@ ul.task-list li input[type="checkbox"] {
 <h1 class="unnumbered">Preface</h1>
 <div style="display:flex">
 <div style="flex:70%;margin-right:1em;">
-<p>The target audience for this tutorial is people with no prior experience with Git, version controls systems, or use of command-line interfaces. The aim of the tutorial is to learn how to use Git, but also to understand how Git works, at least on some superficial level, so that you don’t end up in the situation depicted in the webcomic. In a further effort to avoid this scenario, we will also focus on using Git exclusively from the command line, instead of using a GUI. GUI’s can make learning Git a less daunting endeavour, but it also comes with the very real risk of not actually learning much Git. Furthermore, you can use Git from the command-line on any computer, whereas you might not have access to your favorite GUI.</p>
+<p>The target audience for this tutorial is people with no prior experience with Git, version controls systems, or use of command-line interfaces. The aim of the tutorial is to learn how to use Git, but also to understand how Git works, at least on some superficial level, so that you don’t end up in the situation depicted in the webcomic. In a further effort to avoid this scenario, we will also focus on using Git exclusively from the command line, instead of using a GUI or a Git integration in a code editor. GUIs and Git integrations can make learning Git a less daunting endeavour, but it also comes with the very real risk of not actually learning much Git. Furthermore, you can use Git from the command-line on any computer, whereas you might not have access to your favorite GUI or code editor.</p>
 </div>
 <div style="margin:1em;">
 <div class="quarto-figure quarto-figure-center">
@@ -316,9 +313,9 @@ ul.task-list li input[type="checkbox"] {
 </div></div><p>The tutorial is structured in two parts. Part I is an introduction to Git, and goes through all the basic commands while giving some insights into what Git is and how it works along the way. Part II includes stand-alone chapters on more advanced topics. These chapters are not essential to learning how to use Git, and can be read to the extent they are relevant and of interest. Finally, the tutorial includes appendices on miscellaneous topics.</p>
 <section id="prerequisites" class="level2">
 <h2 class="anchored" data-anchor-id="prerequisites">Prerequisites</h2>
-<p>This tutorial assumes you are using Git version 2.51.0 or newer. If you are using an older version of Git, some of the <code>git config</code> commands in <a href="app-configuration-of-git.html" class="quarto-xref"><span>Appendix C — Configuration of Git</span></a> might not work, the <code>git switch</code> and <code>git restore</code> command might not be available, and there might be other unknown issues as well.</p>
+<p>This tutorial assumes you are using Git version 2.51.0 or newer. If you are using an older version of Git, some of the <code>git config</code> commands in <a href="app-configuration-of-git.html" class="quarto-xref"><span>Appendix B — Configuration of Git</span></a> might not work, the <code>git switch</code> and <code>git restore</code> command might not be available, and there might be other unknown issues as well.</p>
 <p>This tutorial also assumes you are on a Windows machine and have “Git for Windows” installed. See <a href="app-git-for-windows.html" class="quarto-xref"><span>Appendix A — Git for Windows</span></a> for more details. Since we will be running Git exclusively from the command line using Git BASH, a BASH emulator, macOS and Linux users should also be able to follow along with only few modifications.</p>
-<p>Finally, if you want to follow along in <a href="part2-github.html" class="quarto-xref"><span>10&nbsp; Introduction to GitHub</span></a>, you will need to create a GitHub account and authenticate with it, using the GitHub CLI, which you also need to install. See <a href="app-github-setup.html" class="quarto-xref"><span>Appendix B — GitHub setup</span></a> for more details.</p>
+<p>Finally, if you want to follow along in <span class="quarto-unresolved-ref">?sec-introduction-to-github</span>, you will need to create a GitHub account and authenticate with it, using the GitHub CLI, which you also need to install. See <span class="quarto-unresolved-ref">?sec-github-setup</span> for more details.</p>
 
 
 </section>
@@ -412,6 +409,11 @@ ul.task-list li input[type="checkbox"] {
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
         }
       }
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {

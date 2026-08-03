@@ -2,17 +2,23 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.24">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>10&nbsp; Introduction to GitHub – Git tutorial</title>
 <style>
-code{white-space: pre-wrap;}
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -34,15 +40,14 @@ ul.task-list li input[type="checkbox"] {
 <link href="./part2-git-diff.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-704d8d96d8bd6a3a18507fa617f49d29.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-18447e9d16e0bfc3229421fc5cc130e2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -98,9 +103,7 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="./index.html" class="sidebar-logo-link">
-      </a>
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Git tutorial</a> 
         <div class="sidebar-tools-main">
@@ -238,20 +241,14 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./app-github-setup.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">GitHub setup</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./app-configuration-of-git.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Configuration of Git</span></span></a>
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Configuration of Git</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./app-resources.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Resources</span></span></a>
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Resources</span></span></a>
   </div>
 </li>
       </ul>
@@ -266,15 +263,25 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#what-is-github" id="toc-what-is-github" class="nav-link active" data-scroll-target="#what-is-github"><span class="header-section-number">10.1</span> What is GitHub?</a></li>
-  <li><a href="#create-a-git-repository" id="toc-create-a-git-repository" class="nav-link" data-scroll-target="#create-a-git-repository"><span class="header-section-number">10.2</span> Create a Git repository</a></li>
-  <li><a href="#upload-an-existing-git-repository" id="toc-upload-an-existing-git-repository" class="nav-link" data-scroll-target="#upload-an-existing-git-repository"><span class="header-section-number">10.3</span> Upload an existing Git repository</a></li>
-  <li><a href="#issues" id="toc-issues" class="nav-link" data-scroll-target="#issues"><span class="header-section-number">10.4</span> Issues</a></li>
-  <li><a href="#forking-a-repository" id="toc-forking-a-repository" class="nav-link" data-scroll-target="#forking-a-repository"><span class="header-section-number">10.5</span> Forking a repository</a></li>
-  <li><a href="#pull-requests" id="toc-pull-requests" class="nav-link" data-scroll-target="#pull-requests"><span class="header-section-number">10.6</span> Pull requests</a></li>
-  <li><a href="#the-github-flow" id="toc-the-github-flow" class="nav-link" data-scroll-target="#the-github-flow"><span class="header-section-number">10.7</span> The GitHub flow</a></li>
-  <li><a href="#github-pages" id="toc-github-pages" class="nav-link" data-scroll-target="#github-pages"><span class="header-section-number">10.8</span> GitHub pages</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">10.9</span> Exercises</a></li>
+  <li><a href="#create-a-github-account-and-install-the-github-cli" id="toc-create-a-github-account-and-install-the-github-cli" class="nav-link active" data-scroll-target="#create-a-github-account-and-install-the-github-cli"><span class="header-section-number">10.1</span> Create a GitHub account and install the GitHub CLI</a></li>
+  <li><a href="#authenticate-with-your-github-account" id="toc-authenticate-with-your-github-account" class="nav-link" data-scroll-target="#authenticate-with-your-github-account"><span class="header-section-number">10.2</span> Authenticate with your GitHub account</a></li>
+  <li><a href="#licenses" id="toc-licenses" class="nav-link" data-scroll-target="#licenses"><span class="header-section-number">10.3</span> Licenses</a></li>
+  <li><a href="#creating-a-repository-on-github" id="toc-creating-a-repository-on-github" class="nav-link" data-scroll-target="#creating-a-repository-on-github"><span class="header-section-number">10.4</span> Creating a repository on GitHub</a>
+  <ul class="collapse">
+  <li><a href="#initialize-a-new-git-repository-on-github" id="toc-initialize-a-new-git-repository-on-github" class="nav-link" data-scroll-target="#initialize-a-new-git-repository-on-github">Initialize a new Git repository on GitHub</a></li>
+  <li><a href="#upload-repository-from-existing-local-repository" id="toc-upload-repository-from-existing-local-repository" class="nav-link" data-scroll-target="#upload-repository-from-existing-local-repository">Upload repository from existing local repository</a></li>
+  </ul></li>
+  <li><a href="#tools-to-facilitate-collaboration" id="toc-tools-to-facilitate-collaboration" class="nav-link" data-scroll-target="#tools-to-facilitate-collaboration"><span class="header-section-number">10.5</span> Tools to facilitate collaboration</a>
+  <ul class="collapse">
+  <li><a href="#issues" id="toc-issues" class="nav-link" data-scroll-target="#issues">Issues</a></li>
+  <li><a href="#forks-and-pull-requests" id="toc-forks-and-pull-requests" class="nav-link" data-scroll-target="#forks-and-pull-requests">Forks and pull requests</a></li>
+  </ul></li>
+  <li><a href="#github-pages" id="toc-github-pages" class="nav-link" data-scroll-target="#github-pages"><span class="header-section-number">10.6</span> GitHub pages</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">10.7</span> Exercises</a>
+  <ul class="collapse">
+  <li><a href="#exercise-1---managing-github-repositories-using-the-github-cli" id="toc-exercise-1---managing-github-repositories-using-the-github-cli" class="nav-link" data-scroll-target="#exercise-1---managing-github-repositories-using-the-github-cli">Exercise 1 - Managing GitHub repositories using the GitHub CLI</a></li>
+  <li><a href="#exercise-2---contributing-to-an-open-source-project" id="toc-exercise-2---contributing-to-an-open-source-project" class="nav-link" data-scroll-target="#exercise-2---contributing-to-an-open-source-project">Exercise 2 - Contributing to an open-source project</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -283,7 +290,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part2-collaboration.html">Part II</a></li><li class="breadcrumb-item"><a href="./part2-github.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Introduction to GitHub</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-introduction-to-github" class="quarto-section-identifier"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Introduction to GitHub</span></span></h1>
+<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Introduction to GitHub</span></h1>
 </div>
 
 
@@ -300,42 +307,679 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>In this chapter we will give a short introduction to GitHub and how it can be used to share code, and collaborate with others. We will mostly interact with GitHub from the command line using the GitHub CLI. See <a href="app-github-setup.html" class="quarto-xref"><span>Appendix B</span></a> for information on how to install the CLI.</p>
-<section id="what-is-github" class="level2" data-number="10.1">
-<h2 data-number="10.1" class="anchored" data-anchor-id="what-is-github"><span class="header-section-number">10.1</span> What is GitHub?</h2>
-<p>GitHub is a web-based service that hosts Git repositories. Besides the obvious benifit of hosting your Git repositories online where you can access them from any computer with an internet connection, GitHub also has many features that facilitate collaboration, such as issue-tracking, code review, and pull requests.</p>
+<p>GitHub is a web-based service that hosts Git repositories. Simply put, you can host a remote of your Git repository on GitHub instead of having a remote locally on your network. This makes it possible for you to access your Git repository from any computer with an internet connection, which is obviously beneficial. But GitHub is also much more than that. GitHub offers many features that facilitate collaboration, and can be used for much more than simply storing your repository on the internet. It is outside the scope of this tutorial to go into much detail about what GitHub can be used for and how, since it would quickly become an entire tutorial in itself, but we will introduce and illustrate some basic features that should make it clear how valuable a tool GitHub can be.</p>
+<p>GitHub has a web user-interface that is easy to navigate and use, and is most likely the easiest way to to interact with your GitHub account and your repositories for most people, especially if you are not comfortable using a CLI. But illustrating how to use the web user-interface in a tutorial with an enormous amount of screenshots, is most certainly not the best way to learn how to use GitHub. Because of this, and in line with the philosophy of this tutorial, we will instead opt to use the GitHub CLI to interact with GitHub from the command line. This will work just as well for the simple features we will introduce in this tutorial, but there might be some advanced features that are not possible to use through the GitHub CLI, or it simply easier to do through the web user-interface. Keep this in mind if you want to use GitHub in the future. There is plenty of documentation on the <a href="https://docs.github.com/en">GitHub website</a> on how to use the web-interface.</p>
+<section id="create-a-github-account-and-install-the-github-cli" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="create-a-github-account-and-install-the-github-cli"><span class="header-section-number">10.1</span> Create a GitHub account and install the GitHub CLI</h2>
+<p>To do basically anything other than browsing and cloning repositories on GitHub, you need to create an account. You can create a free GitHub account by going to <a href="https://github.com">https://github.com</a> and sign up.</p>
+<p>As stated, we will interact with GitHub from the command line using the GitHub CLI. You can install it from Git BASH by running the following command:</p>
+<pre class="git-command">$ winget install --id GitHub.cli
+</pre>
+<p>This should work from git BASH. If not, try running the command in PowerShell. Alternatively, download and install it from <a href="https://cli.github.com/">https://cli.github.com/</a>.</p>
+<p>You need to restart your terminal before you can use the GitHub CLI <code>gh</code> commands.</p>
 </section>
-<section id="create-a-git-repository" class="level2" data-number="10.2">
-<h2 data-number="10.2" class="anchored" data-anchor-id="create-a-git-repository"><span class="header-section-number">10.2</span> Create a Git repository</h2>
-<p>Maybe also explain how to add collaborators to project?</p>
+<section id="authenticate-with-your-github-account" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="authenticate-with-your-github-account"><span class="header-section-number">10.2</span> Authenticate with your GitHub account</h2>
+<p>The most technical aspect of using GitHub is to authenticate with your GitHub account. You need to do this to verify to GitHub that you are who you claim to be, so that you are allowed to access your GitHub account and push changes to your repositories etc. You can authenticate with your GitHub account from the command line using either HTTPS or SSH. It is outside the scope of this tutorial to go into any details about what this means, and to explain the pros and cons of each protocol. Here we will simply show how you can authenticate using HTTPS using the GitHub CLI. To authenticate with your GitHub account, run the following command:</p>
+<pre class="git-command">$ gh auth login -p"https" -cw
+</pre>
+<p>Follow the link given in the terminal. If you are not logged into your GitHub account already, you will be prompted to do so first. Then you will be asked to enter the one-time code that was provided in the terminal output (which should already be copied to the clipboard). You should only need to do this once for each machine you work on.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>The rest of this chapter assumes that you have created a GitHub account, and have authenticated with it to allow you to access and modify your repositories.</p>
 </section>
-<section id="upload-an-existing-git-repository" class="level2" data-number="10.3">
-<h2 data-number="10.3" class="anchored" data-anchor-id="upload-an-existing-git-repository"><span class="header-section-number">10.3</span> Upload an existing Git repository</h2>
+<section id="licenses" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="licenses"><span class="header-section-number">10.3</span> Licenses</h2>
+<p>Before talking about how to host repositories on GitHub, we need to talk briefly about licences. If you put a repository on GitHub to share it with others, you should include a license that specifies what other people can do with your code. You are not obligated to include a license, but if you don’t, default copyright laws apply, meaning that you retain all rights to your source code and no one may reproduce, distribute, or create derivative works from your work. This might not be what you want. GitHub strongly encourages you to include an open source licence, the MIT licence being a common choice. The MIT licence is a short permissive software license, that basically allows people to do whatever they want with your code, as long as they include the original copyright and licence in any copy of the code. Also, the licence states that you hold zero liability for use of the code. In many cases, this is a very reasonable license, and a good default choice. If you want to to learn more about licences, here are few resources that might be of interest:</p>
+<p><a href="https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository">https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository</a></p>
+<p><a href="https://opensource.guide/legal/#which-open-source-license-is-appropriate-for-my-project">https://opensource.guide/legal/#which-open-source-license-is-appropriate-for-my-project</a></p>
+<p><a href="https://choosealicense.com">https://choosealicense.com</a></p>
+<p><a href="https://www.tldrlegal.com">https://www.tldrlegal.com</a></p>
 </section>
-<section id="issues" class="level2" data-number="10.4">
-<h2 data-number="10.4" class="anchored" data-anchor-id="issues"><span class="header-section-number">10.4</span> Issues</h2>
+<section id="creating-a-repository-on-github" class="level2" data-number="10.4">
+<h2 data-number="10.4" class="anchored" data-anchor-id="creating-a-repository-on-github"><span class="header-section-number">10.4</span> Creating a repository on GitHub</h2>
+<p>There are two ways to get a repository on GitHub. You can either initialize a new project directly on GitHub, or you can upload a repository to GitHub from an existing local repository. If you are starting a new Git repository and you want to have a remote on GitHub, you have two choices: Initialize the repository on GitHub and clone it, or initialize the repository locally, and then upload it to GitHub. There is no right or wrong way to do this, it comes down to personal preferences.</p>
+<p>You can initialize or upload a Git repository on GitHub using the <code>gh repo create [&lt;name&gt;] [flags]</code> command. You can find documentation on this command at <a href="https://cli.github.com/manual/gh_repo_create">https://cli.github.com/manual/gh_repo_create</a>, or you can use <code>gh repo create --help</code> in the terminal. It is possible to create a repository interactively in the terminal by running <code>gh repo create</code> with no arguments, but that is not something we will explore here. Instead we will create repositories non-interactively, and in this case we need, as a minimum, to specify a name for the repository and use flags to specify if the repository is to be (<code>--public</code>) or private (<code>--private</code>). Public repositories can be seen by everyone, whereas private repositories can only been seen by yourself.</p>
+<section id="initialize-a-new-git-repository-on-github" class="level3">
+<h3 class="anchored" data-anchor-id="initialize-a-new-git-repository-on-github">Initialize a new Git repository on GitHub</h3>
+<p>Let’s illustrate how to initialize a new Git repository directly on GitHub. As mentioned before, besides giving the repository a name, we also need to to use a flag to specify whether the repository should be public or private. Furthermore, it is common practice to initialize a repository with an initial commit adding a README to the repository:</p>
+<pre class="git-command">$ gh repo create init-on-github --public --add-readme
+</pre>
+<p>This creates a new public repository called <code>init-on-github</code> in your GitHub account with an empty README file.</p>
+<p>You can now clone the repository, automatically setting up the repository on GitHub as a remote, and start working on the project:</p>
+<pre class="git-command">$ cd ~
+$ git clone "https://github.com/your-user-name/init-on-github"
+$ cd init-on-github
+$ git log --oneline
+<span class="sha1-col">9caef1d (</span><span class="head-col">HEAD </span><span class="sha1-col">-&gt;</span> <span class="active-branch-col">main</span><span class="sha1-col">,</span> <span class="remote-col">origin/main</span><span class="sha1-col">,</span> <span class="remote-col">origin/HEAD</span><span class="sha1-col">)</span> Initial commit
+$ ls
+README.md
+$ git remote -v
+origin  https://github.com/your-user-name/init-on-github (fetch)
+origin  https://github.com/your-user-name/init-on-github (push)
+</pre>
 </section>
-<section id="forking-a-repository" class="level2" data-number="10.5">
-<h2 data-number="10.5" class="anchored" data-anchor-id="forking-a-repository"><span class="header-section-number">10.5</span> Forking a repository</h2>
+<section id="upload-repository-from-existing-local-repository" class="level3">
+<h3 class="anchored" data-anchor-id="upload-repository-from-existing-local-repository">Upload repository from existing local repository</h3>
+<p>Imagine you have the following Git repository set up locally:</p>
+<pre class="git-command">$ mkdir ~/init-local-repo
+$ cd ~/init-local-repo
+$ git init
+$ touch README.txt
+$ git add .
+$ git commit -m"Initial commit"
+</pre>
+<p>To upload the repository to GitHub, we can use <code>gh repo create</code> with the <code>--source</code> flag to specify a local repository to use as a source for the repository. Furthermore, we can use the <code>--push</code> flag to push the local commits to the GitHub repository, and use the <code>--remote</code> flag to specify the name for the remote:</p>
+<pre class="git-command">$ gh repo create init-local-repo --public --source=. --remote=origin --push
+$ git log --oneline
+<span class="sha1-col">f662630 (</span><span class="head-col">HEAD</span> <span class="sha1-col">-&gt;</span> <span class="active-branch-col">main</span><span class="sha1-col">,</span> <span class="remote-col">origin/main</span><span class="sha1-col">)</span> Initial commit
+$ git remote -v
+origin  https://github.com/your-user-name/init-local-repo (fetch)
+origin  https://github.com/your-user-name/init-local-repo (push)
+</pre>
 </section>
-<section id="pull-requests" class="level2" data-number="10.6">
-<h2 data-number="10.6" class="anchored" data-anchor-id="pull-requests"><span class="header-section-number">10.6</span> Pull requests</h2>
 </section>
-<section id="the-github-flow" class="level2" data-number="10.7">
-<h2 data-number="10.7" class="anchored" data-anchor-id="the-github-flow"><span class="header-section-number">10.7</span> The GitHub flow</h2>
-<p>Maybe explain how the “GitHub flow” can be used to contribute to projects by forking a repo, making changes, and making a pull request?</p>
+<section id="tools-to-facilitate-collaboration" class="level2" data-number="10.5">
+<h2 data-number="10.5" class="anchored" data-anchor-id="tools-to-facilitate-collaboration"><span class="header-section-number">10.5</span> Tools to facilitate collaboration</h2>
+<p>GitHub has a ton of features that are useful when collaborating on a project. Here we will briefly touch on some basic uses of some of these features.</p>
+<section id="issues" class="level3">
+<h3 class="anchored" data-anchor-id="issues">Issues</h3>
+<p>GitHub has a built-in tracking tool called “issues” that can be used to manage tasks, make bug report, request features to be implemented etc. You can think of GitHub issues as a collaborative to-do list or a message board directly attached to a repository, allowing developers and users to discuss and organize work.</p>
+<p>The GitHub CLI has a bunch of commands related to issues. Here, we will illustrate how to do basic tasks like create, list, view, and close issues using the following commands:</p>
+<div style="margin-top:2em; margin-bottom:2em">
+
+<table class="table-striped caption-top table">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Description</th>
+<th data-quarto-table-cell-role="th">Command</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Create an issue</td>
+<td style="font-family: monospace">gh issue create &lt;issue-name&gt;</td>
+</tr>
+<tr class="even">
+<td>List issues</td>
+<td style="font-family: monospace">gh issue list</td>
+</tr>
+<tr class="odd">
+<td>View issue</td>
+<td style="font-family: monospace">gh issue view &lt;issue-number&gt;</td>
+</tr>
+<tr class="even">
+<td>Add comment to issue</td>
+<td style="font-family: monospace">gh issue comment &lt;issue-number&gt;</td>
+</tr>
+<tr class="odd">
+<td>Close issue</td>
+<td style="font-family: monospace">gh issue close &lt;issue-number&gt;</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+<p>A full list of GitHub CLI commands related to issues, optional flags, and how to use them can be found at <a href="https://cli.github.com/manual/gh_issue">https://cli.github.com/manual/gh_issue</a></p>
+<section id="example" class="level4">
+<h4 class="anchored" data-anchor-id="example">Example</h4>
+<p>To illustrate how issues can be used, imagine a project with two collaborators that initiate and upload a repository they are going to work on to GitHub:</p>
+<pre class="git-command">$ mkdir ~/issues-example
+$ cd ~/issues-example
+$ git init
+$ echo "Project README" &gt; README.txt
+$ git add .
+$ git commit -m"Initial commit"
+$ gh repo create issues-example --public --source=. --remote=origin --push
+</pre>
+<p>Let’s say that collaborator A wants a feature implemented in the project. He communicate this to collaborator B by making an issue describing what he wants to implement:</p>
+<pre class="git-command">$ gh issue create --title "Implement feature A" --body "Text describing what to add and how."
+</pre>
+<p>Collaborator B is notified (either directly by collaborator A or by a notification from GitHub) that collaborator A has created an issue in the repository, so he uses <code>gh issue list</code> to get an overview of the issues in the repository:</p>
+<pre class="git-command">$ gh issue list
+
+<span style="color:grey"><u>ID</u>  <u>TITLE              </u>  <u>LABELS</u>  <u>UPDATED           </u></span>
+<span class="bash-green">#1</span>  Implement feature A          <span style="color:grey">about 1 minute ago</span>
+
+</pre>
+<p>He then uses <code>gh issue view</code> to get some more detailed information on the issue that collaborator A has made:</p>
+<pre class="git-command"><span># Note that we are referring to the issue by its ID value</span>
+$ gh issue view 1
+<span style="color:white">Implement feature A</span> thomas-rasmussen/issues-example#1
+<span class="bash-green">Open</span> • thomas-rasmussen opened about 1 hour ago • 0 comments
+
+
+  Text describing what to add and how.
+
+
+<span style="color:grey">View this issue on GitHub: https://github.com/thomas-rasmussen/issues-example/issues/1</span>
+
+</pre>
+<p>Collaborator B then adds a comment to the issue telling collaborator A to go ahead and implement the feature:</p>
+<pre class="git-command">$ gh issue comment 1 --body "LGTM"
+</pre>
+<p>Collaborator A sees this, implements the feature in a feature branch, merge the changes into the main branch, and pushes the changes to the remote on GitHub:</p>
+<pre class="git-command">$ git switch -c implement-feature-A
+$ echo "Implementation of feature A" &gt; feature_a.txt
+$ git add .
+$ git commit
+$ git switch main
+$ git merge implement-feature-A
+$ git push
+$ git branch -d implement-feature-A
+</pre>
+<p>Finally, collaborator A adds a comment to the issue saying that the feature has been added and pushed to the main branch, and then closes the issue:</p>
+<pre class="git-command">$ gh issue comment 1 --body "Implemented and merged to main branch"
+$ gh issue close 1
+</pre>
+<p>Let’s wrap up this example by deleting the GitHub repository:</p>
+<pre class="git-command">$ gh repo delete issues-example --yes
+</pre>
+<p>You might not have permission to use this command. If this is the case run the following command and try again:</p>
+<pre class="git-command">$ gh auth refresh -s delete_repo
+</pre>
+<p>We have only scraped the surface of what you can do with GitHub issues in this example, but it is hopefully clear how this tool can be valuable to organize work on a project.</p>
 </section>
-<section id="github-pages" class="level2" data-number="10.8">
-<h2 data-number="10.8" class="anchored" data-anchor-id="github-pages"><span class="header-section-number">10.8</span> GitHub pages</h2>
-<p>Maybe worth quickly mentioning that you can easily make a static website from HTML documents in a Git repository that GitHub will host for you. For example this tutorial.</p>
 </section>
-<section id="exercises" class="level2" data-number="10.9">
-<h2 data-number="10.9" class="anchored" data-anchor-id="exercises"><span class="header-section-number">10.9</span> Exercises</h2>
+<section id="forks-and-pull-requests" class="level3">
+<h3 class="anchored" data-anchor-id="forks-and-pull-requests">Forks and pull requests</h3>
+<p>It is common to control which collaborators has write-access in a GitHub project. If everyone could push changes to the repository, the commit history could very quickly descend into chaos. Put if collaborators don’t have write-access, how are they supposed to contribute to the project? And in extension of that, how can you contribute to open-source projects on GitHub that you are not a part of? This is where forks and pull requests comes into play.</p>
+<p>A fork is a copy of a repository that you own, connected to the original repository, called the upstream repository. A fork enables you to make changes in your own copy of the GitHub repository without affecting the upstream project, and when you are ready you can propose changes back to the upstream repository with a pull request. This is different than cloning a repository. If you clone a repository where you don’t have write-access, you won’t be able to push changes.</p>
+<p>Pull requests are proposals to merge code changes into a project. The changes can be reviewed and commented upon in the pull request before they are merged into the repository by someone with write-access.</p>
+<section id="example-1" class="level4">
+<h4 class="anchored" data-anchor-id="example-1">Example</h4>
+<p>Let’s imagine that we want to contribute to the GitHub repository <a href="github.com/thomas-rasmussen-alt/git-tutorial-fork-example">github.com/thomas-rasmussen-alt/git-tutorial-fork-example</a>. First we make a fork of the repository and make a clone of the repository at the same time:</p>
+<pre class="git-command">$ cd
+$ gh repo fork thomas-rasmussen-alt/git-tutorial-fork-example --clone
+</pre>
+<p>First of all, if we make a list of forked repositories on our account, we can see that a fork of git-tutorial-fork-example has been added:</p>
+<pre class="git-command">gh repo list --fork
+
+Showing 1 of 1 repositories in @user-name that match your search
+
+<u>NAME                               </u>  <u>DESCRIPTION                                          </u>  <u>INFO        </u>  <u>UPDATED         </u>
+<span style="color:white">user-name/git-tutorial-fork-example</span>  Repository used to illustrate forking in Git tutorial  public, fork  about 3 days ago
+
+</pre>
+<p>Next we <code>cd</code> in to the local clone of the repository we also made, and inspect the remotes that have been automatically made:</p>
+<pre class="git-command">$ cd git-tutorial-fork-example
+$ git log --oneline
+<span class="sha1-col">dd7b9d9 (</span><span class="head-col">HEAD</span> <span class="sha1-col">-&gt;</span> <span class="active-branch-col">main</span><span class="sha1-col">,</span> <span class="remote-col">upstream/main</span><span class="sha1-col">,</span> <span class="remote-col">upstream/HEAD</span><span class="sha1-col">,</span> <span class="remote-col">origin/main</span><span class="sha1-col">,</span> <span class="remote-col">origin/HEAD</span><span class="sha1-col">)</span> Initial commit
+$ git remote -v
+origin  https://github.com/thomas-rasmussen/git-tutorial-fork-example.git (fetch)
+origin  https://github.com/thomas-rasmussen/git-tutorial-fork-example.git (push)
+upstream        https://github.com/thomas-rasmussen-alt/git-tutorial-fork-example.git (fetch)
+upstream        https://github.com/thomas-rasmussen-alt/git-tutorial-fork-example.git (push)
+</pre>
+<p>We can see that two remote have been set up: one to the fork (origin) and one to the original/upstream (upstream) repository. Next, we make the changes we want to contribute to the original project in our local clone and push the changes to the fork:</p>
+<pre class="git-command">$ git switch -c implement-feature
+$ echo "Implementation of feature" &gt; feature.txt
+$ git add .
+$ git commit -m"Implement feature"
+$ git push
+$ git log --oneline
+<span class="sha1-col">d134f37 (</span><span class="head-col">HEAD</span> <span class="sha1-col">-&gt; </span><span class="active-branch-col">main</span><span class="sha1-col">,</span> <span class="remote-col">origin/main</span><span class="sha1-col">,</span> <span class="remote-col">origin/HEAD</span><span class="sha1-col">)</span> Implement feature
+<span class="sha1-col">dd7b9d9 (</span><span class="remote-col">upstream/main</span><span class="sha1-col">,</span> <span class="remote-col">upstream/HEAD</span><span class="sha1-col">)</span> Initial commit
+</pre>
+<p>Finally, we send a pull request to the original repository, asking them to merge our suggested changes:</p>
+<pre class="git-command">$ gh pr create --title "Implement feature" --body "Implementation of important feature"
+</pre>
+<p>TODO: This needs to be explained in more details. Also, could not get –base and –head flags to work. Got error “pull request create failed: GraphQL: No commits between main and main (createPullRequest), when specifying both as main. Finally, should have been implemented in a feature branch!</p>
+<p>The proposed changes can then be reviewed/discussed in the pull request before the owner of the original repository can merge the changes when and if they want to. We will omit illustrating this final step in this tutorial.</p>
+</section>
+</section>
+</section>
+<section id="github-pages" class="level2" data-number="10.6">
+<h2 data-number="10.6" class="anchored" data-anchor-id="github-pages"><span class="header-section-number">10.6</span> GitHub pages</h2>
+<p>GitHub pages is a static site hosting service, that can take HTML, CSS, and Javascript files from a GitHub repository and turn them into a website. It is very simple to set up from a GitHub repository, and useful in a wide array of scenarios. Common use cases include:</p>
 <ul>
-<li></li>
+<li><p>Documentation</p></li>
+<li><p>Personal websites</p></li>
+<li><p>Blogs</p></li>
+<li><p>Resumes</p></li>
 </ul>
+<p>As an example, the tutorial you are currently reading is hosted as a static website on GitHub pages, based on the main branch of the repository that creates the tutorial. Every time the main branch is updated, the website is automatically updated!</p>
+<p>It is outside the scope of this tutorial to go into details on how to use GitHub pages, but for more information see the official documentation at <a href="https://docs.github.com/en/pages">https://docs.github.com/en/pages</a></p>
+</section>
+<section id="exercises" class="level2" data-number="10.7">
+<h2 data-number="10.7" class="anchored" data-anchor-id="exercises"><span class="header-section-number">10.7</span> Exercises</h2>
+<section id="exercise-1---managing-github-repositories-using-the-github-cli" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-1---managing-github-repositories-using-the-github-cli">Exercise 1 - Managing GitHub repositories using the GitHub CLI</h3>
+<p>In this exercise we will practice using some of the GitHub CLI commands that have been introduced in this chapter to illustrate how a simplified workflow using GitHub might look like.</p>
+<p><b>Step 1 - Initialize a repository</b></p>
+<p>Initialize a public repository directly on GitHub with an initial commit adding a README and a MIT license to the repository.</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Hint 1">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Hint 1
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>You can find the <code>gh repo create</code> documentation at <a href="https://cli.github.com/manual/gh_repo_create">https://cli.github.com/manual/gh_repo_create</a></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Hint 2">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Hint 2
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Use the <code>--license</code> flag to add a license. You can find a list of available licences by running <code>gh repo license list</code>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre class="git-command">$ gh repo create my-repo --public --add-readme --license=mit
+</pre>
+</div>
+</div>
+</div>
+<p><b>Step 2 - Inspect repository</b></p>
+<p>Before we clone the repository, we want to inspect how it looks like. Unfortunately, there is no easy way to list files, or contents of files, in a GitHub repository in the terminal. Instead, we want to open the repository in the browser, so we can take a closer look at it. Do this by navigation to the repository using the web UI, or use the <code>gh repo view</code> command.</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Hint">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Use the <code>--help</code> flag to see the documentation for the <code>gh repo view</code> command.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre class="git-command">$ gh repo view my-repo --web
+</pre>
+</div>
+</div>
+</div>
+<p><b>Step 3 - Clone the repository</b></p>
+<p>Make a local clone and <code>cd</code> into the repository. Afterwards look at the commit history and list the files in it.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre class="git-command">$ cd
+$ git clone https://github.com/user-name/my-repo.git
+$ cd my-repo
+$ git log --oneline
+5f0b7da (HEAD -&gt; main, origin/main, origin/HEAD) Initial commit
+$ ls
+LICENSE  README.md
+</pre>
+</div>
+</div>
+</div>
+<p><b>Step 4- Push change to repository</b></p>
+<p>Commit a change in the main branch, and push it to the GitHub repository.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre class="git-command">$ echo "Add change" &gt; file1.txt
+$ git add .
+$ git commit -m"Add change"
+$ git push
+</pre>
+</div>
+</div>
+</div>
+<p><b>Step 4 - Make an issue</b></p>
+<p>Make an issue to implement a feature. Besides adding a title and description of the issue, assign the issue to yourself and add a label.</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Hint">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Look at the <code>gh issue create</code> documentation at <a href="https://cli.github.com/manual/gh_issue_create">https://cli.github.com/manual/gh_issue_create</a>, or use the <code>--help</code> flag in the terminal.</p>
+<p>You can find a list of valid label values at <a href="https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels">https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels</a>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre class="git-command">$ gh issue create --title "Implement feature A" --body "Description of feature to be added" --assignee "@me" --label "enhancement"
+</pre>
+</div>
+</div>
+</div>
+<p><b>Step 5 - Add comment in issue</b></p>
+<p>Use <code>gh issue comment</code> to open the issue in the browser, and add a comment using the web UI. Start by using <code>gh issue list</code> to find the ID of the issue.</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Hint">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Look at the documentation for the <code>gh issue comment</code>, using either the <code>--help</code> flag in the terminal, or by looking at the documentation at <a href="https://cli.github.com/manual/gh_issue_comment">https://cli.github.com/manual/gh_issue_comment</a></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre class="git-command">$ gh issue list
+
+Showing 1 of 1 open issue in user-name/my-repo
+
+<span style="color:grey"><u>ID</u>  <u>TITLE              </u>  <u>LABELS     </u>  <u>UPDATED             </u></span>
+<span class="bash-green">#1</span>  Implement feature A  enhancement  <span style="color:grey">about 51 minutes ago</span>
+
+$ gh issue comment --web"
+</pre>
+</div>
+</div>
+</div>
+<p><b>Step 6 - Close issue</b></p>
+<p>Close the issue with the <code>gh issue close</code> command using a flag to specify the issue was closed because it was completed.</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Hint">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>You can find the documentation for the <code>gh issue close</code> command at <a href="https://cli.github.com/manual/gh_issue_close">https://cli.github.com/manual/gh_issue_close</a>, or you can use the <code>--help</code> flag to show the documentation in the terminal.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre class="git-command">$ gh issue close 1 --reason "completed"
+</pre>
+</div>
+</div>
+</div>
+<p><b>Step 7 - Clean up</b></p>
+<p>Delete the local clone and GitHub repository.</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Hint 1 - Deleting the repository">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Hint 1 - Deleting the repository
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Look at the documentation for the <code>gh issue</code> commands at <a href="https://cli.github.com/manual/gh_issue">https://cli.github.com/manual/gh_issue</a> or use <code>gh issue --help</code> to find a command that delete a GitHub repository.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Hint 2 - Deleting the clone">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Hint 2 - Deleting the clone
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>To delete the local clone use the <code>rm</code> command. Make sure to use appropriate flags to recursively delete all folders and files in the repository folder.</p>
+<p>If you are uneasy about using the <code>rm</code>command (which is not unreasonable), just delete the folder manually.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre class="git-command">$ gh repo delete my-repo --yes
+$ cd
+$ rm my-repo -rf
+</pre>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-2---contributing-to-an-open-source-project" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-2---contributing-to-an-open-source-project">Exercise 2 - Contributing to an open-source project</h3>
+<p>In this exercise we will practice forking a repository and making a pull request by contributing to an open-source project, namely the GitHub repository with the source code for this tutorial. The GitHub repository can be found at <a href="https://github.com/thomas-rasmussen/git-tutorial">https://github.com/thomas-rasmussen/git-tutorial</a>.</p>
+<p>Find a spelling or grammar error in the source code<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>, fix it, and make a pull request. Alternatively, if you are not familiar with websites built using Quarto, you can just make a random change.</p>
+<p><b>Step 1 - Fork and clone the repository</b></p>
+<p>Fork and clone the repository using either the web UI or the GitHub CLI.</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Hint">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>You can fork a repository using the <code>gh repo fork</code> command. See <a href="https://cli.github.com/manual/gh_repo_fork">https://cli.github.com/manual/gh_repo_fork</a> for documentation on how to use the command.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-18" class="callout-18-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>To fork and clone the repository at the same time using the GitHub CLI, use the following command:</p>
+<pre class="git-command"><span># cd to an appropriate directory before forking and cloning the repository. Here we choose the home directory. </span>
+$ cd
+$ gh repo fork thomas-rasmussesn/git-tutorial  --clone
+</pre>
+</div>
+</div>
+</div>
+<p><b>Step 2 - Implement change</b></p>
+<p>Fix an error / implement a random change. Do this in a feature branch.</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Hint">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-19" class="callout-19-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre class="git-command">$ cd git-tutorial
+$ git switch -c pr-test
+$ echo "Pull request test" &gt; pr-test.txt
+$ git add .
+$ git commit -m"Pull request test"
+</pre>
+</div>
+</div>
+</div>
+<p><b>Step 4 - Push changes to fork</b></p>
+<p>Push the changes to your fork of the original repository.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-20" class="callout-20-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre class="git-command">$ git push origin pr-test
+</pre>
+</div>
+</div>
+</div>
+<p><b>Step 5 - Create pull request</b></p>
+<p>Create a pull request to merge the changes into the main branch of the original repository.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-21" class="callout-21-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre class="git-command">$ gh pr create --title "PR test" --body "PR test"
+</pre>
+<p>If someone else has already made a pull request with the title “PR test” this will nok work and Git will tell you so. In this case pick another title.</p>
+</div>
+</div>
+</div>
+<p><b>Step 6 - Cleanup (optional)</b></p>
+<p>Delete the fork and local clone now that you are done.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-22" class="callout-22-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre class="git-command">$ gh repo delete git-tutorial --yes
+$ cd
+$ rm git-tutorial -rf
+</pre>
+</div>
+</div>
+</div>
 
 
+</section>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>This might not be entirely true.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>All errors in the tutorial are on purpose for the sake of this exercise!<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
 </section>
 
 </main> <!-- /main -->
@@ -426,6 +1070,11 @@ ul.task-list li input[type="checkbox"] {
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
         }
       }
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {

@@ -35,7 +35,6 @@ book:
       
   appendices:
     - app-git-for-windows.qmd
-    - app-github-setup.qmd
     - app-configuration-of-git.qmd
     - app-resources.qmd
 
@@ -48,6 +47,7 @@ format:
     toc-depth: 3
     css: styles.css
     theme: minty
+    link-external-newwindow: true
     include-in-header:
       text: |
        <script src="custom-js.js"></script>

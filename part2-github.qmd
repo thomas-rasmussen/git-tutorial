@@ -1,41 +1,595 @@
-# Introduction to GitHub {#sec-introduction-to-github}
+# Introduction to GitHub
 
-In this chapter we will give a short introduction to GitHub and how it can be used to share code, and collaborate with others. We will mostly interact with GitHub from the command line using the GitHub CLI. See @sec-github-setup for information on how to install the CLI.
+GitHub is a web-based service that hosts Git repositories. Simply put, you can host a remote of your Git repository on GitHub instead of having a remote locally on your network. This makes it possible for you to access your Git repository from any computer with an internet connection, which is obviously beneficial. But GitHub is also much more than that. GitHub offers many features that facilitate collaboration, and can be used for much more than simply storing your repository on the internet. It is outside the scope of this tutorial to go into much detail about what GitHub can be used for and how, since it would quickly become an entire tutorial in itself, but we will introduce and illustrate some basic features that should make it clear how valuable a tool GitHub can be.
 
-## What is GitHub?
-
-GitHub is a web-based service that hosts Git repositories. Besides the obvious benifit of hosting your Git repositories online where you can access them from any computer with an internet connection, GitHub also has many features that facilitate collaboration, such as issue-tracking, code review, and pull requests.
-
-## Create a Git repository
-
-Maybe also explain how to add collaborators to project?
-
-## Upload an existing Git repository
-
-## Issues
-
-## Forking a repository
-
-## Pull requests
+GitHub has a web user-interface that is easy to navigate and use, and is most likely the easiest way to to interact with your GitHub account and your repositories for most people, especially if you are not comfortable using a CLI. But illustrating how to use the web user-interface in a tutorial with an enormous amount of screenshots, is most certainly not the best way to learn how to use GitHub. Because of this, and in line with the philosophy of this tutorial, we will instead opt to use the GitHub CLI to interact with GitHub from the command line. This will work just as well for the simple features we will introduce in this tutorial, but there might be some advanced features that are not possible to use through the GitHub CLI, or it simply easier to do through the web user-interface. Keep this in mind if you want to use GitHub in the future. There is plenty of documentation on the [GitHub website](https://docs.github.com/en) on how to use the web-interface.
 
 
-## The GitHub flow
+## Create a GitHub account and install the GitHub CLI
 
-Maybe explain how the "GitHub flow" can be used to contribute to projects by forking a
-repo, making changes, and making a pull request?
+To do basically anything other than browsing and cloning repositories on GitHub, you need to create an account. You can create a free GitHub account by going to [https://github.com](https://github.com) and sign up.
+
+As stated, we will interact with GitHub from the command line using the GitHub CLI. You can install it from Git BASH by running the following command:
+
+<pre class="git-command">
+$ winget install --id GitHub.cli
+</pre>
+
+This should work from git BASH. If not, try running the command in PowerShell. Alternatively, download and install it from [https://cli.github.com/](https://cli.github.com/).
+
+You need to restart your terminal before you can use the GitHub CLI `gh` commands.
+
+
+## Authenticate with your GitHub account
+
+The most technical aspect of using GitHub is to authenticate with your GitHub account. You need to do this to verify to GitHub that you are who you claim to be, so that you are allowed to access your GitHub account and push changes to your repositories etc. You can authenticate with your GitHub account from the command line using either HTTPS or SSH. It is outside the scope of this tutorial to go into any details about what this means, and to explain the pros and cons of each protocol. Here we will simply show how you can authenticate using HTTPS using the GitHub CLI. To authenticate with your GitHub account, run the following command:
+
+<pre class="git-command">
+$ gh auth login -p"https" -cw
+</pre>
+
+Follow the link given in the terminal. If you are not logged into your GitHub account already, you will be prompted to do so first. Then you will be asked to enter the one-time code that was provided in the terminal output (which should already be copied to the clipboard). You should only need to do this once for each machine you work on.^[This might not be entirely true.]
+
+The rest of this chapter assumes that you have created a GitHub account, and have authenticated with it to allow you to access and modify your repositories.
+
+
+## Licenses 
+
+Before talking about how to host repositories on GitHub, we need to talk briefly about licences. If you put a repository on GitHub to share it with others, you should include a license that specifies what other people can do with your code. You are not obligated to include a license, but if you don't, default copyright laws apply, meaning that you retain all rights to your source code and no one may reproduce, distribute, or create derivative works from your work. This might not be what you want. GitHub strongly encourages you to include an open source licence, the MIT licence being a common choice. The MIT licence is a short permissive software license, that basically allows people to do whatever they want with your code, as long as they include the original copyright and licence in any copy of the code. Also, the licence states that you hold zero liability for use of the code. In many cases, this is a very reasonable license, and a good default choice. If you want to to learn more about licences, here are few resources that might be of interest:
+
+[https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository)
+
+[https://opensource.guide/legal/#which-open-source-license-is-appropriate-for-my-project](https://opensource.guide/legal/#which-open-source-license-is-appropriate-for-my-project)
+
+[https://choosealicense.com](https://choosealicense.com)
+
+[https://www.tldrlegal.com](https://www.tldrlegal.com)
+
+
+## Creating a repository on GitHub
+
+There are two ways to get a repository on GitHub. You can either initialize a new project directly on GitHub, or you can upload a repository to GitHub from an existing local repository. If you are starting a new Git repository and you want to have a remote on GitHub, you have two choices: Initialize the repository on GitHub and clone it, or initialize the repository locally, and then upload it to GitHub. There is no right or wrong way to do this, it comes down to personal preferences.
+
+You can initialize or upload a Git repository on GitHub using the `gh repo create [<name>] [flags]` command. You can find documentation on this command at [https://cli.github.com/manual/gh_repo_create](https://cli.github.com/manual/gh_repo_create), or you can use `gh repo create --help` in the terminal. It is possible to create a repository interactively in the terminal by running `gh repo create` with no arguments, but that is not something we will explore here. Instead we will create repositories non-interactively, and in this case we need, as a minimum, to specify a name for the repository and use flags to specify if the repository is to be (`--public`) or private (`--private`). Public repositories can be seen by everyone, whereas private repositories can only been seen by yourself. 
+
+
+### Initialize a new Git repository on GitHub
+
+Let's illustrate how to initialize a new Git repository directly on GitHub. As mentioned before, besides giving the repository a name, we also need to to use a flag to specify whether the repository should be public or private. Furthermore, it is common practice to initialize a repository with an initial commit adding a README to the repository:
+
+<pre class="git-command">
+$ gh repo create init-on-github --public --add-readme
+</pre>
+
+This creates a new public repository called `init-on-github` in your GitHub account with an empty README file.
+
+You can now clone the repository, automatically setting up the repository on GitHub as a remote, and start working on the project:
+
+<pre class="git-command">
+$ cd ~
+$ git clone "https://github.com/your-user-name/init-on-github"
+$ cd init-on-github
+$ git log --oneline
+<span class="sha1-col">9caef1d (</span><span class="head-col">HEAD </span><span class="sha1-col">-></span> <span class="active-branch-col">main</span><span class="sha1-col">,</span> <span class="remote-col">origin/main</span><span class="sha1-col">,</span> <span class="remote-col">origin/HEAD</span><span class="sha1-col">)</span> Initial commit
+$ ls
+README.md
+$ git remote -v
+origin  https://github.com/your-user-name/init-on-github (fetch)
+origin  https://github.com/your-user-name/init-on-github (push)
+</pre>
+
+
+### Upload repository from existing local repository
+
+Imagine you have the following Git repository set up locally:
+
+<pre class="git-command">
+$ mkdir ~/init-local-repo
+$ cd ~/init-local-repo
+$ git init
+$ touch README.txt
+$ git add .
+$ git commit -m"Initial commit"
+</pre>
+
+To upload the repository to GitHub, we can use `gh repo create` with the `--source` flag to specify a local repository to use as a source for the repository. Furthermore, we can use the `--push` flag to push the local commits to the GitHub repository, and use the `--remote` flag to specify the name for the remote:
+
+<pre class="git-command">
+$ gh repo create init-local-repo --public --source=. --remote=origin --push
+$ git log --oneline
+<span class="sha1-col">f662630 (</span><span class="head-col">HEAD</span> <span class="sha1-col">-></span> <span class="active-branch-col">main</span><span class="sha1-col">,</span> <span class="remote-col">origin/main</span><span class="sha1-col">)</span> Initial commit
+$ git remote -v
+origin  https://github.com/your-user-name/init-local-repo (fetch)
+origin  https://github.com/your-user-name/init-local-repo (push)
+</pre>
+
+
+## Tools to facilitate collaboration
+
+GitHub has a ton of features that are useful when collaborating on a project. Here we will briefly touch on some basic uses of some of these features.
+
+
+### Issues
+
+GitHub has a built-in tracking tool called "issues" that can be used to manage tasks, make bug report, request features to be implemented etc. You can think of GitHub issues as a collaborative to-do list or a message board directly attached to a repository, allowing developers and users to discuss and organize work.
+
+The GitHub CLI has a bunch of commands related to issues. Here, we will illustrate how to do basic tasks like create, list, view, and close issues using the following commands:
+
+```{=html}
+<div style="margin-top:2em; margin-bottom:2em">
+<table class="table-striped">
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Command</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Create an issue</td>
+      <td style="font-family:monospace">gh issue create &lt;issue-name&gt;</td>
+    </tr>
+    <tr>
+      <td>List issues</td>
+      <td style="font-family:monospace">gh issue list</td>
+    </tr>
+    <tr>
+      <td>View issue</td>
+      <td style="font-family:monospace">gh issue view &lt;issue-number&gt;</td>
+    </tr>
+    <tr>
+      <td>Add comment to issue</td>
+      <td style="font-family:monospace">gh issue comment &lt;issue-number&gt;</td>
+    </tr>
+    <tr>
+      <td>Close issue</td>
+      <td style="font-family:monospace">gh issue close &lt;issue-number&gt;</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+```
+
+A full list of GitHub CLI commands related to issues, optional flags, and how to use them can be found at [https://cli.github.com/manual/gh_issue](https://cli.github.com/manual/gh_issue)
+
+
+#### Example 
+
+To illustrate how issues can be used, imagine a project with two collaborators that initiate and upload a repository they are going to work on to GitHub:
+
+<pre class="git-command">
+$ mkdir ~/issues-example
+$ cd ~/issues-example
+$ git init
+$ echo "Project README" > README.txt
+$ git add .
+$ git commit -m"Initial commit"
+$ gh repo create issues-example --public --source=. --remote=origin --push
+</pre>
+
+Let's say that collaborator A wants a feature implemented in the project. He communicate this to collaborator B by making an issue describing what he wants to implement:
+
+<pre class="git-command">
+$ gh issue create --title "Implement feature A" --body "Text describing what to add and how."
+</pre>
+
+Collaborator B is notified (either directly by collaborator A or by a notification from GitHub) that collaborator A has created an issue in the repository, so he uses `gh issue list` to get an overview of the issues in the repository:
+
+<pre class="git-command">
+$ gh issue list
+
+<span style="color:grey"><u>ID</u>  <u>TITLE              </u>  <u>LABELS</u>  <u>UPDATED           </u></span>
+<span class="bash-green">#1</span>  Implement feature A          <span style="color:grey">about 1 minute ago</span>
+
+</pre>
+
+He then uses `gh issue view` to get some more detailed information on the issue that collaborator A has made:
+
+<pre class="git-command">
+<span># Note that we are referring to the issue by its ID value</span>
+$ gh issue view 1
+<span style="color:white">Implement feature A</span> thomas-rasmussen/issues-example#1
+<span class="bash-green">Open</span> • thomas-rasmussen opened about 1 hour ago • 0 comments
+
+
+  Text describing what to add and how.
+
+
+<span style="color:grey">View this issue on GitHub: https://github.com/thomas-rasmussen/issues-example/issues/1</span>
+
+</pre>
+
+Collaborator B then adds a comment to the issue telling collaborator A to go ahead and implement the feature:
+
+<pre class="git-command">
+$ gh issue comment 1 --body "LGTM"
+</pre>
+
+Collaborator A sees this, implements the feature in a feature branch, merge the changes into the main branch, and pushes the changes to the remote on GitHub:
+
+<pre class="git-command">
+$ git switch -c implement-feature-A
+$ echo "Implementation of feature A" > feature_a.txt
+$ git add .
+$ git commit
+$ git switch main
+$ git merge implement-feature-A
+$ git push
+$ git branch -d implement-feature-A
+</pre>
+
+Finally, collaborator A adds a comment to the issue saying that the feature has been added and pushed to the main branch, and then closes the issue:
+
+<pre class="git-command">
+$ gh issue comment 1 --body "Implemented and merged to main branch"
+$ gh issue close 1
+</pre>
+
+Let's wrap up this example by deleting the GitHub repository:
+
+<pre class="git-command">
+$ gh repo delete issues-example --yes
+</pre>
+
+You might not have permission to use this command. If this is the case run the following command and try again:
+
+<pre class="git-command">
+$ gh auth refresh -s delete_repo
+</pre>
+
+We have only scraped the surface of what you can do with GitHub issues in this example, but it is hopefully clear how this tool can be valuable to organize work on a project.
+
+
+### Forks and pull requests
+
+It is common to control which collaborators has write-access in a GitHub project. If everyone could push changes to the repository, the commit history could very quickly descend into chaos. Put if collaborators don't have write-access, how are they supposed to contribute to the project? And in extension of that, how can you contribute to open-source projects on GitHub that you are not a part of? This is where forks and pull requests comes into play.
+
+A fork is a copy of a repository that you own, connected to the original repository, called the upstream repository. A fork enables you to make changes in your own copy of the GitHub repository without affecting the upstream project, and when you are ready you can propose changes back to the upstream repository with a pull request. This is different than cloning a repository. If you clone a repository where you don't have write-access, you won't be able to push changes.
+
+Pull requests are proposals to merge code changes into a project. The changes can be reviewed and commented upon in the pull request before they are merged into the repository by someone with write-access.
+
+
+#### Example
+
+Let's imagine that we want to contribute to the GitHub repository [github.com/thomas-rasmussen-alt/git-tutorial-fork-example](github.com/thomas-rasmussen-alt/git-tutorial-fork-example). First we make a fork of the repository and make a clone of the repository at the same time:
+
+<pre class="git-command">
+$ cd
+$ gh repo fork thomas-rasmussen-alt/git-tutorial-fork-example --clone
+</pre>
+
+First of all, if we make a list of forked repositories on our account, we can see that a fork of git-tutorial-fork-example has been added:
+
+<pre class="git-command">
+gh repo list --fork
+
+Showing 1 of 1 repositories in @user-name that match your search
+
+<u>NAME                               </u>  <u>DESCRIPTION                                          </u>  <u>INFO        </u>  <u>UPDATED         </u>
+<span style="color:white">user-name/git-tutorial-fork-example</span>  Repository used to illustrate forking in Git tutorial  public, fork  about 3 days ago
+
+</pre>
+
+Next we `cd` in to the local clone of the repository we also made, and inspect the remotes that have been automatically made:
+
+<pre class="git-command">
+$ cd git-tutorial-fork-example
+$ git log --oneline
+<span class="sha1-col">dd7b9d9 (</span><span class="head-col">HEAD</span> <span class="sha1-col">-></span> <span class="active-branch-col">main</span><span class="sha1-col">,</span> <span class="remote-col">upstream/main</span><span class="sha1-col">,</span> <span class="remote-col">upstream/HEAD</span><span class="sha1-col">,</span> <span class="remote-col">origin/main</span><span class="sha1-col">,</span> <span class="remote-col">origin/HEAD</span><span class="sha1-col">)</span> Initial commit
+$ git remote -v
+origin  https://github.com/thomas-rasmussen/git-tutorial-fork-example.git (fetch)
+origin  https://github.com/thomas-rasmussen/git-tutorial-fork-example.git (push)
+upstream        https://github.com/thomas-rasmussen-alt/git-tutorial-fork-example.git (fetch)
+upstream        https://github.com/thomas-rasmussen-alt/git-tutorial-fork-example.git (push)
+</pre>
+
+We can see that two remote have been set up: one to the fork (origin) and one to the original/upstream (upstream) repository. Next, we make the changes we want to contribute to the original project in our local clone and push the changes to the fork:
+
+<pre class="git-command">
+$ git switch -c implement-feature
+$ echo "Implementation of feature" > feature.txt
+$ git add .
+$ git commit -m"Implement feature"
+$ git push
+$ git log --oneline
+<span class="sha1-col">d134f37 (</span><span class="head-col">HEAD</span> <span class="sha1-col">-> </span><span class="active-branch-col">main</span><span class="sha1-col">,</span> <span class="remote-col">origin/main</span><span class="sha1-col">,</span> <span class="remote-col">origin/HEAD</span><span class="sha1-col">)</span> Implement feature
+<span class="sha1-col">dd7b9d9 (</span><span class="remote-col">upstream/main</span><span class="sha1-col">,</span> <span class="remote-col">upstream/HEAD</span><span class="sha1-col">)</span> Initial commit
+</pre>
+
+Finally, we send a pull request to the original repository, asking them to merge our suggested changes:
+
+<pre class="git-command">
+$ gh pr create --title "Implement feature" --body "Implementation of important feature"
+</pre>
+
+TODO: This needs to be explained in more details. Also, could not get --base and --head flags to work. Got error "pull request create failed: GraphQL: No commits between main and main (createPullRequest), when specifying both as main. Finally, should have been implemented in a feature branch!
+
+The proposed changes can then be reviewed/discussed in the pull request before the owner of the original repository can merge the changes when and if they want to. We will omit illustrating this final step in this tutorial.
+
 
 ## GitHub pages
 
-Maybe worth quickly mentioning that you can easily make a static website from HTML documents in a Git repository that GitHub will host for you. For example this tutorial.
+GitHub pages is a static site hosting service, that can take HTML, CSS, and Javascript files from a GitHub repository and turn them into a website. It is very simple to set up from a GitHub repository, and useful in a wide array of scenarios. Common use cases include:
+
+- Documentation
+
+- Personal websites
+
+- Blogs
+
+- Resumes
+
+
+As an example, the tutorial you are currently reading is hosted as a static website on GitHub pages, based on the main branch of the repository that creates the tutorial. Every time the main branch is updated, the website is automatically updated!
+
+It is outside the scope of this tutorial to go into details on how to use GitHub pages, but for more information see the official documentation at <a href="https://docs.github.com/en/pages">https://docs.github.com/en/pages</a>
+
 
 ## Exercises
 
-- 
+### Exercise 1 - Managing GitHub repositories using the GitHub CLI
+
+In this exercise we will practice using some of the GitHub CLI commands that have been introduced in this chapter to illustrate how a simplified workflow using GitHub might look like.
+
+<b>Step 1 - Initialize a repository</b>
+
+Initialize a public repository directly on GitHub with an initial commit adding a README and a MIT license to the repository. 
+
+::: {.callout-tip title="Hint 1" collapse="true" icon="false"}
+
+You can find the `gh repo create` documentation at [https://cli.github.com/manual/gh_repo_create](https://cli.github.com/manual/gh_repo_create)
+
+:::
+
+::: {.callout-tip title="Hint 2" collapse="true" icon="false"}
+
+Use the `--license` flag to add a license. You can find a list of available licences by running `gh repo license list`.
+
+:::
+
+::: {.callout-note title="Solution" collapse="true" icon="false"}
+
+<pre class="git-command">
+$ gh repo create my-repo --public --add-readme --license=mit
+</pre>
+
+:::
 
 
-    
-    
+<b>Step 2 - Inspect repository</b>
 
+Before we clone the repository, we want to inspect how it looks like. Unfortunately, there is no easy way to list files, or contents of files, in a GitHub repository in the terminal. Instead, we want to open the repository in the browser, so we can take a closer look at it. Do this by navigation to the repository using the web UI, or use the `gh repo view` command.
+
+::: {.callout-tip title="Hint" collapse="true" icon="false"}
+
+Use the `--help` flag to see the documentation for the `gh repo view` command.
+
+:::
+
+
+::: {.callout-note title="Solution" collapse="true" icon="false"}
+
+<pre class="git-command">
+$ gh repo view my-repo --web
+</pre>
+
+:::
+
+
+<b>Step 3 - Clone the repository</b>
+
+Make a local clone and `cd` into the repository. Afterwards look at the commit history and list the files in it.
+
+::: {.callout-note title="Solution" collapse="true" icon="false"}
+
+<pre class="git-command">
+$ cd
+$ git clone https://github.com/user-name/my-repo.git
+$ cd my-repo
+$ git log --oneline
+5f0b7da (HEAD -> main, origin/main, origin/HEAD) Initial commit
+$ ls
+LICENSE  README.md
+</pre>
+
+:::
+
+
+<b>Step 4- Push change to repository</b>
+
+Commit a change in the main branch, and push it to the GitHub repository.
+
+::: {.callout-note title="Solution" collapse="true" icon="false"}
+
+<pre class="git-command">
+$ echo "Add change" > file1.txt
+$ git add .
+$ git commit -m"Add change"
+$ git push
+</pre>
+
+:::
+
+
+<b>Step 4 - Make an issue</b>
+
+Make an issue to implement a feature. Besides adding a title and description of the issue, assign the issue to yourself and add a label.
+
+::: {.callout-tip title="Hint" collapse="true" icon="false"}
+
+Look at the `gh issue create` documentation at [https://cli.github.com/manual/gh_issue_create](https://cli.github.com/manual/gh_issue_create), or use the `--help` flag in the terminal.
+
+You can find a list of valid label values at [https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels).
+
+:::
+
+::: {.callout-note title="Solution" collapse="true" icon="false"}
+
+<pre class="git-command">
+$ gh issue create --title "Implement feature A" --body "Description of feature to be added" --assignee "@me" --label "enhancement"
+</pre>
+
+:::
+
+
+<b>Step 5 - Add comment in issue</b>
+
+Use `gh issue comment` to open the issue in the browser, and add a comment using the web UI. Start by using `gh issue list` to find the ID of the issue. 
+
+::: {.callout-tip title="Hint" collapse="true" icon="false"}
+
+Look at the documentation for the `gh issue comment`, using either the `--help` flag in the terminal, or by looking at the documentation at [https://cli.github.com/manual/gh_issue_comment](https://cli.github.com/manual/gh_issue_comment)
+
+:::
+
+::: {.callout-note title="Solution" collapse="true" icon="false"}
+
+<pre class="git-command">
+$ gh issue list
+
+Showing 1 of 1 open issue in user-name/my-repo
+
+<span style="color:grey"><u>ID</u>  <u>TITLE              </u>  <u>LABELS     </u>  <u>UPDATED             </u></span>
+<span class="bash-green">#1</span>  Implement feature A  enhancement  <span style="color:grey">about 51 minutes ago</span>
+
+$ gh issue comment --web"
+</pre>
+
+:::
+
+
+<b>Step 6 - Close issue</b>
+
+Close the issue with the `gh issue close` command using a flag to specify the issue was closed because it was completed.
+
+::: {.callout-tip title="Hint" collapse="true" icon="false"}
+
+You can find the documentation for the `gh issue close` command at [https://cli.github.com/manual/gh_issue_close](https://cli.github.com/manual/gh_issue_close), or you can use the `--help` flag to show the documentation in the terminal.
+
+:::
+
+::: {.callout-note title="Solution" collapse="true" icon="false"}
+
+<pre class="git-command">
+$ gh issue close 1 --reason "completed"
+</pre>
+:::
+
+
+<b>Step 7 - Clean up</b>
+
+Delete the local clone and GitHub repository.
+
+::: {.callout-tip title="Hint 1 - Deleting the repository" collapse="true" icon="false"}
+
+Look at the documentation for the `gh issue` commands at [https://cli.github.com/manual/gh_issue](https://cli.github.com/manual/gh_issue) or use `gh issue --help` to find a command that delete a GitHub repository.
+
+:::
+
+::: {.callout-tip title="Hint 2 - Deleting the clone" collapse="true" icon="false"}
+
+To delete the local clone use the `rm` command. Make sure to use appropriate flags to recursively delete all folders and files in the repository folder.
+
+If you are uneasy about using the `rm`command (which is not unreasonable), just delete the folder manually.
+
+:::
+
+::: {.callout-note title="Solution" collapse="true" icon="false"}
+
+<pre class="git-command">
+$ gh repo delete my-repo --yes
+$ cd
+$ rm my-repo -rf
+</pre>
+
+:::
+
+
+### Exercise 2 - Contributing to an open-source project ###
+
+In this exercise we will practice forking a repository and making a pull request by contributing to an open-source project, namely the GitHub repository with the source code for this tutorial. The GitHub repository can be found at [https://github.com/thomas-rasmussen/git-tutorial](https://github.com/thomas-rasmussen/git-tutorial).
+
+Find a spelling or grammar error in the source code^[All errors in the tutorial are on purpose for the sake of this exercise!], fix it, and make a pull request. Alternatively, if you are not familiar with websites built using Quarto, you can just make a random change.
+
+<b>Step 1 - Fork and clone the repository</b>
+
+Fork and clone the repository using either the web UI or the GitHub CLI.
+
+::: {.callout-tip title="Hint" collapse="true" icon="false"}
+
+You can fork a repository using the `gh repo fork` command. See [https://cli.github.com/manual/gh_repo_fork](https://cli.github.com/manual/gh_repo_fork) for documentation on how to use the command. 
+
+:::
+
+::: {.callout-note title="Solution" collapse="true" icon="false"}
+
+To fork and clone the repository at the same time using the GitHub CLI, use the following command:
+
+<pre class="git-command">
+<span># cd to an appropriate directory before forking and cloning the repository. Here we choose the home directory. </span>
+$ cd
+$ gh repo fork thomas-rasmussesn/git-tutorial  --clone
+</pre>
+
+:::
+
+
+<b>Step 2 - Implement change</b>
+
+Fix an error / implement a random change. Do this in a feature branch.
+
+::: {.callout-tip title="Hint" collapse="true" icon="false"}
+
+<pre class="git-command">
+$ cd git-tutorial
+$ git switch -c pr-test
+$ echo "Pull request test" > pr-test.txt
+$ git add .
+$ git commit -m"Pull request test"
+</pre>
+
+:::
+
+<b>Step 4 - Push changes to fork</b>
+
+Push the changes to your fork of the original repository.
+
+::: {.callout-note title="Solution" collapse="true" icon="false"}
+
+<pre class="git-command">
+$ git push origin pr-test
+</pre>
+
+:::
+
+<b>Step 5 - Create pull request</b>
+
+Create a pull request to merge the changes into the main branch of the original repository.
+
+::: {.callout-note title="Solution" collapse="true" icon="false"}
+
+<pre class="git-command">
+$ gh pr create --title "PR test" --body "PR test"
+</pre>
+
+If someone else has already made a pull request with the title "PR test" this will nok work and Git will tell you so. In this case pick another title.
+
+:::
+
+
+<b>Step 6 - Cleanup (optional)</b>
+
+Delete the fork and local clone now that you are done.
+
+::: {.callout-note title="Solution" collapse="true" icon="false"}
+
+<pre class="git-command">
+$ gh repo delete git-tutorial --yes
+$ cd
+$ rm git-tutorial -rf
+</pre>
+
+:::
 
 
 

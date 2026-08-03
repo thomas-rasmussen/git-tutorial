@@ -6,7 +6,7 @@
 <div style="display:flex">
 <div style="flex:70%;margin-right:1em;">
 
-The target audience for this tutorial is people with no prior experience with Git, version controls systems, or use of command-line interfaces. The aim of the tutorial is to learn how to use Git, but also to understand how Git works, at least on some superficial level, so that you don't end up in the situation depicted in the webcomic. In a further effort to avoid this scenario, we will also focus on using Git exclusively from the command line, instead of using a GUI. GUI's can make learning Git a less daunting endeavour, but it also comes with the very real risk of not actually learning much Git. Furthermore, you can use Git from the command-line on any computer, whereas you might not have access to your favorite GUI.
+The target audience for this tutorial is people with no prior experience with Git, version controls systems, or use of command-line interfaces. The aim of the tutorial is to learn how to use Git, but also to understand how Git works, at least on some superficial level, so that you don't end up in the situation depicted in the webcomic. In a further effort to avoid this scenario, we will also focus on using Git exclusively from the command line, instead of using a GUI or a Git integration in a code editor. GUIs and Git integrations can make learning Git a less daunting endeavour, but it also comes with the very real risk of not actually learning much Git. Furthermore, you can use Git from the command-line on any computer, whereas you might not have access to your favorite GUI or code editor.
 
 </div>
 <div style="margin:1em;">
