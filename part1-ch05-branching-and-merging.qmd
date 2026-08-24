@@ -10,7 +10,7 @@ TODO
 - Add a ton of diagrams
   
 
-# Branching and merging
+# Branching and merging {#sec-branching-and-merging}
 
 In this chapter we will introduce the concept of branches and merging. Branching means diverging from the main version of the code, making changes that does not interfere with the main version. Merging is the process of reconciling two (or more) versions of the code after branching.
 
@@ -436,17 +436,6 @@ content
 new content from main branch
 new content from new-branch branch
 </pre>
-
-
-## Rebasing
-
-## Rebasing versus merging
-
-So what is the best way to integrate changes from one branch into another, a merge-commit or a rebase resulting in a fast-forward commit? 
-
-https://graphite.com/guides/git-merge-rebase-differences-benefits
-
-Pro Git rebase vs merging section
 
 
 
