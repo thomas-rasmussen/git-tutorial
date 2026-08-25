@@ -26,7 +26,7 @@ If you delete a branch with commits that have not been integrated into the main 
 
 To recover a lost commit, the first step is to recover the SHA-1 checksum of that commit. Since this commit is now unreachable, we can not use `git log <branch>` to find the SHA-1 checksum, since `git log <branch>` only includes reachable commits from the tip of a branch. But Git has another tool that can help us: the reference log, or just reflog, which has its own command, `git reflog`. The reflog logs all changes to a reference that has happened over time, meaning that every time a reference is changed to point to something else, this is logged. Let's see how this looks like in practice by creating a repository with the same history as illustrated above: a `main` branch with two commits, and a `feature` branch with a single commit off of `main`, where we delete the `feature` branch before integrating the changes into `main`:
 
-<pre class="git-command">
+<pre class="terminal">
 $ mkdir ~/reflog-example
 $ cd ~/reflog-example
 $ git init
@@ -41,29 +41,29 @@ $ git commit -am"C3"
 $ git switch main
 $ git branch -D feature
 $ git log --oneline --all --graph
-* <span class="sha1-col">6891983 (</span><span class="head-col">HEAD</span> <span class="sha1-col">-></span> <span class="active-branch-col">main</span><span class="sha1-col">)</span> C2
-* <span class="sha1-col">a961cba</span> C1
+* <span class="col-hash">6891983 (</span><span class="col-head">HEAD</span> <span class="col-hash">-></span> <span class="col-branch-local">main</span><span class="col-hash">)</span> C2
+* <span class="col-hash">a961cba</span> C1
 </pre>
 
 After deleting `feature`, we can no longer see the commits on that branch. If we run `git reflog` however, we can recover the branch:
 
-<pre class="git-command">
+<pre class="terminal">
 $ git reflog
-<span class="sha1-col">6891983 (</span><span class="head-col">HEAD</span> <span class="sha1-col">-></span> <span class="active-branch-col">main</span><span class="sha1-col">)</span> HEAD@{0}: checkout: moving from feature to main
-<span class="sha1-col">b2d535d</span> HEAD@{1}: commit: C3
-<span class="sha1-col">6891983 (</span><span class="head-col">HEAD</span> <span class="sha1-col">-></span> <span class="active-branch-col">main</span><span class="sha1-col">)</span> HEAD@{2}: checkout: moving from main to feature
-<span class="sha1-col">6891983 (</span><span class="head-col">HEAD</span> <span class="sha1-col">-></span> <span class="active-branch-col">main</span><span class="sha1-col">)</span> HEAD@{3}: commit: C2
-<span class="sha1-col">a961cba</span> HEAD@{4}: commit (initial): C1
+<span class="col-hash">6891983 (</span><span class="col-head">HEAD</span> <span class="col-hash">-></span> <span class="col-branch-local">main</span><span class="col-hash">)</span> HEAD@{0}: checkout: moving from feature to main
+<span class="col-hash">b2d535d</span> HEAD@{1}: commit: C3
+<span class="col-hash">6891983 (</span><span class="col-head">HEAD</span> <span class="col-hash">-></span> <span class="col-branch-local">main</span><span class="col-hash">)</span> HEAD@{2}: checkout: moving from main to feature
+<span class="col-hash">6891983 (</span><span class="col-head">HEAD</span> <span class="col-hash">-></span> <span class="col-branch-local">main</span><span class="col-hash">)</span> HEAD@{3}: commit: C2
+<span class="col-hash">a961cba</span> HEAD@{4}: commit (initial): C1
 </pre>
 
 By default, `git reflog` shows the reference log of HEAD. The format `HEAD @{x}`, means where was HEAD x moves ago. So `HEAD@{0}` means where is HEAD right now, `HEAD@{1}` means where was HEAD one move ago, and so one. From the reflog we can se that one move ago, HEAD was pointing to the C3 commit, the tip of the former `feature` branch, and we can see the SHA1 checksum of that commit is `b2d535d`. Now we can recover the `feature` branch simply by making a new branch pointing to that commit:
 
-<pre class="git-command">
+<pre class="terminal">
 $ git branch feature b2d535d
 $ git log --oneline --graph --all
-* <span class="sha1-col">b2d535d (</span><span class="active-branch-col">feature</span><span class="sha1-col">)</span> C3
-* <span class="sha1-col">6891983 (</span><span class="head-col">HEAD</span> <span class="sha1-col">-></span> <span class="active-branch">main</span><span class="sha1-col">)</span> C2
-* <span class="sha1-col">a961cba</span> C1
+* <span class="col-hash">b2d535d (</span><span class="col-branch-local">feature</span><span class="col-hash">)</span> C3
+* <span class="col-hash">6891983 (</span><span class="col-head">HEAD</span> <span class="col-hash">-></span> <span class="active-branch">main</span><span class="col-hash">)</span> C2
+* <span class="col-hash">a961cba</span> C1
 </pre>
 
 
@@ -76,7 +76,7 @@ In @sec-undoing-changes we showed how we can "undo" a commit using `git reset`. 
 
 Use the following commands to set up a repository with two commits on `main`:
 
-<pre class="git-command">
+<pre class="terminal">
 $ mkdir ~/ex-reflog-recover-undo
 $ cd ~/ex-reflog-recover-undo
 $ git init
@@ -93,7 +93,7 @@ Use `git reset` to "undo" the second commit and update the working directory and
 
 ::: {.callout-note title="Solution" collapse="true" icon="false"}
 
-<pre class="git-command">
+<pre class="terminal">
 $ git reset --hard HEAD^
 </pre>
 
@@ -105,17 +105,17 @@ Print the commit log to check that the second commit is not unreachable. Then us
 
 ::: {.callout-note title="Solution" collapse="true" icon="false"}
 
-<pre class="git-command">
+<pre class="terminal">
 $ git log --oneline --all
-<span class="sha1-col">d3e3264 (</span><span class="head-col">HEAD</span> <span class="sha1-col">-></span> <span class="active-branch-col">main</span><span class="sha1-col">)</span> First commit
+<span class="col-hash">d3e3264 (</span><span class="col-head">HEAD</span> <span class="col-hash">-></span> <span class="col-branch-local">main</span><span class="col-hash">)</span> First commit
 $ git reflog
-<span class="sha1-col">d3e3264 (</span><span class="head-col">HEAD</span> <span class="sha1-col">-></span> <span class="active-branch-col">main</span><span class="sha1-col">)</span> HEAD@{0}: reset: moving to HEAD^
-<span class="sha1-col">9071636</span> HEAD@{1}: commit: Second commit
-<span class="sha1-col">d3e3264 (</span><span class="head-col">HEAD</span> <span class="sha1-col">-></span> <span class="active-branch-col">main</span><span class="sha1-col">)</span> HEAD@{2}: commit (initial): First commit
+<span class="col-hash">d3e3264 (</span><span class="col-head">HEAD</span> <span class="col-hash">-></span> <span class="col-branch-local">main</span><span class="col-hash">)</span> HEAD@{0}: reset: moving to HEAD^
+<span class="col-hash">9071636</span> HEAD@{1}: commit: Second commit
+<span class="col-hash">d3e3264 (</span><span class="col-head">HEAD</span> <span class="col-hash">-></span> <span class="col-branch-local">main</span><span class="col-hash">)</span> HEAD@{2}: commit (initial): First commit
 $ git reset --hard 9071636
 $ git log --oneline
-<span class="sha1-col">9071636 (</span><span class="head-col">HEAD</span> <span class="sha1-col">-></span> <span class="active-branch-col">main</span><span class="sha1-col">)</span> Second commit
-<span class="sha1-col">d3e3264</span> First commit
+<span class="col-hash">9071636 (</span><span class="col-head">HEAD</span> <span class="col-hash">-></span> <span class="col-branch-local">main</span><span class="col-hash">)</span> Second commit
+<span class="col-hash">d3e3264</span> First commit
 </pre>
 
 :::

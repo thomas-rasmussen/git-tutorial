@@ -60,7 +60,7 @@ Git comes with a number of `git config` commands that can be used to read and se
 
 To list all options and their values in a config file you can use the the `git config list` command. If, for example, we wanted to list all global options we could use `git config list --global` which would give us something like
 
-<pre class="git-command">
+<pre class="terminal">
 user.name=Your name
 use.email=your@email.com
 </pre>
@@ -82,13 +82,13 @@ There are A LOT of things that can be configured in Git. Here we briefly highlig
 
 Specify what text editor Git should launch to edit text, eg when writing commmit messages. Git for Windows comes with an internal version of Vim that is used by default. If you do not know what Vim is, this is most certainly not the text editor you want Git to use. Notepad is pre-installed on all modern Windows operating systems, and you should be able to change the default text editor to Notepad across all your Git repositories by using the following command:
 
-<pre class="git-command">
+<pre class="terminal">
 git config set --global core.editor notepad
 </pre>
 
 This command assumes that the notepad executable can be found in directories given in $PATH. If for some reason the above does not work, locate the Notepad executable manually, and specify the full path to executable instead. This could look something like the below:
 
-<pre class="git-command">
+<pre class="terminal">
 git config set --global core.editor "C:\Windows\System32\notepad.exe"
 </pre>
 
@@ -136,19 +136,19 @@ The user.name and user.email variables determines what ends up in the author fie
 
 Git aliases can be used to create shorter commands that map to longer commands. Aliases can be a great help to make it easier to use commands that you find yourself using often, but that are hard to remember and/or are tedious to type out. As a contrived example, consider the `git status` command. You will type that command a lot. Git doesn't automatically infer your command if you type it in partially, but you could setup an alias so that you would only have to type `git st` if you don't want to type the whole command each time:
 
-<pre class="git-command">
+<pre class="terminal">
 git config set --global alias.st status
 </pre>
 
 As a more meaningful example consider the `git log` command. One of the biggest shortcomings of using Git from the terminal is the lack of a nice visualization of your commit history that comes with GUI's. Git users often find themselves using some variation of the following command to get a visualization of the commit history of a project in the terminal:
 
-<pre class="git-command">
+<pre class="terminal">
 git log --graph --oneline --all
 </pre>
 
 This is tedious to type out, and it can be difficult to remember all the options you need to add. Instead one could make an elegant alias:
 
-<pre class= "git-command">
+<pre class= "terminal">
 git config set --global alias.history "log --graph --oneline --all"
 </pre>
 

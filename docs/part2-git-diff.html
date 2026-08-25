@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>10&nbsp; Using git diff to show code changes – Git tutorial</title>
+<title>9&nbsp; Using git diff to show code changes – Git tutorial</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -37,7 +37,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./part2-github.html" rel="next">
-<link href="./part2-collaboration.html" rel="prev">
+<link href="./part2-git-reflog.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -47,7 +47,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-18447e9d16e0bfc3229421fc5cc130e2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-2aad03a8b4e422ea2bd4d420080b3680.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -75,7 +75,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script src="custom-js.js"></script>
 
 
 <link rel="stylesheet" href="styles.css">
@@ -90,7 +89,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part2-git-reflog.html">Part II</a></li><li class="breadcrumb-item"><a href="./part2-git-diff.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Using <code>git diff</code> to show code changes</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part2-git-reflog.html">Part II</a></li><li class="breadcrumb-item"><a href="./part2-git-diff.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Using <code>git diff</code> to show code changes</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -194,38 +193,20 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part2-collaboration.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Collaboration</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./part2-git-diff.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Using <code>git diff</code> to show code changes</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Using <code>git diff</code> to show code changes</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./part2-github.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction to GitHub</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./part2-git-internals.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Git internals</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./part2-git-stash.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">git stash.</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Introduction to GitHub</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./part2-git-rebase.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Rebasing</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Rebasing</span></span></a>
   </div>
 </li>
       </ul>
@@ -269,7 +250,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#show-changes-in-the-working-tree---understanding-the-git-diff-output" id="toc-show-changes-in-the-working-tree---understanding-the-git-diff-output" class="nav-link active" data-scroll-target="#show-changes-in-the-working-tree---understanding-the-git-diff-output"><span class="header-section-number">10.1</span> Show changes in the working tree - Understanding the <code>git diff</code> output</a>
+  <li><a href="#show-changes-in-the-working-tree---understanding-the-git-diff-output" id="toc-show-changes-in-the-working-tree---understanding-the-git-diff-output" class="nav-link active" data-scroll-target="#show-changes-in-the-working-tree---understanding-the-git-diff-output"><span class="header-section-number">9.1</span> Show changes in the working tree - Understanding the <code>git diff</code> output</a>
   <ul class="collapse">
   <li><a href="#structure-of-git-diff-output" id="toc-structure-of-git-diff-output" class="nav-link" data-scroll-target="#structure-of-git-diff-output">Structure of <code>git diff</code> output</a></li>
   <li><a href="#the-header" id="toc-the-header" class="nav-link" data-scroll-target="#the-header">The header</a></li>
@@ -279,24 +260,24 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#the-diff-content" id="toc-the-diff-content" class="nav-link" data-scroll-target="#the-diff-content">The diff content</a></li>
   <li><a href="#continuation-of-example" id="toc-continuation-of-example" class="nav-link" data-scroll-target="#continuation-of-example">Continuation of example</a></li>
   </ul></li>
-  <li><a href="#compare-index-with-latest-commit" id="toc-compare-index-with-latest-commit" class="nav-link" data-scroll-target="#compare-index-with-latest-commit"><span class="header-section-number">10.2</span> Compare index with latest commit</a></li>
-  <li><a href="#compare-two-commits" id="toc-compare-two-commits" class="nav-link" data-scroll-target="#compare-two-commits"><span class="header-section-number">10.3</span> Compare two commits</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">10.4</span> Exercises</a>
+  <li><a href="#compare-index-with-latest-commit" id="toc-compare-index-with-latest-commit" class="nav-link" data-scroll-target="#compare-index-with-latest-commit"><span class="header-section-number">9.2</span> Compare index with latest commit</a></li>
+  <li><a href="#compare-two-commits" id="toc-compare-two-commits" class="nav-link" data-scroll-target="#compare-two-commits"><span class="header-section-number">9.3</span> Compare two commits</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">9.4</span> Exercises</a>
   <ul class="collapse">
   <li><a href="#exercise-1---compare-files-outside-a-git-repository" id="toc-exercise-1---compare-files-outside-a-git-repository" class="nav-link" data-scroll-target="#exercise-1---compare-files-outside-a-git-repository">Exercise 1 - Compare files outside a Git repository</a></li>
   <li><a href="#exercise-2---multiple-diff-hunks" id="toc-exercise-2---multiple-diff-hunks" class="nav-link" data-scroll-target="#exercise-2---multiple-diff-hunks">Exercise 2 - Multiple diff hunks</a></li>
   <li><a href="#compare-brances" id="toc-compare-brances" class="nav-link" data-scroll-target="#compare-brances">Compare brances</a></li>
   </ul></li>
-  <li><a href="#todo" id="toc-todo" class="nav-link" data-scroll-target="#todo"><span class="header-section-number">10.5</span> TODO</a></li>
+  <li><a href="#todo" id="toc-todo" class="nav-link" data-scroll-target="#todo"><span class="header-section-number">9.5</span> TODO</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part2-git-reflog.html">Part II</a></li><li class="breadcrumb-item"><a href="./part2-git-diff.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Using <code>git diff</code> to show code changes</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part2-git-reflog.html">Part II</a></li><li class="breadcrumb-item"><a href="./part2-git-diff.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Using <code>git diff</code> to show code changes</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Using <code>git diff</code> to show code changes</span></h1>
+<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Using <code>git diff</code> to show code changes</span></h1>
 </div>
 
 
@@ -315,11 +296,11 @@ ul.task-list li input[type="checkbox"] {
 
 <p>A <em>diff</em> is a program that compares the content of files or directories, line by line, and shows the differences between them. Git comes with its own diff command, <code>git diff</code>, which can be used to compare different states of a repository. Using diffs allows developers to inspect changes before adding them to the index or making a commit, compare changes made in a feature branch with your main branch before merging and so on, which is an essential skill to learn when using Git.</p>
 <p>This chapter will focus under understanding the output that <code>git diff</code> produces and introducing some of the most common ways diffs are used in Git. As always, we will only scratch the surface of what is possible to do.</p>
-<section id="show-changes-in-the-working-tree---understanding-the-git-diff-output" class="level2" data-number="10.1">
-<h2 data-number="10.1" class="anchored" data-anchor-id="show-changes-in-the-working-tree---understanding-the-git-diff-output"><span class="header-section-number">10.1</span> Show changes in the working tree - Understanding the <code>git diff</code> output</h2>
+<section id="show-changes-in-the-working-tree---understanding-the-git-diff-output" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="show-changes-in-the-working-tree---understanding-the-git-diff-output"><span class="header-section-number">9.1</span> Show changes in the working tree - Understanding the <code>git diff</code> output</h2>
 <p>Using <code>git diff</code> with no arguments will show changes made in the working tree that has not yet been staged for the next commit. More precisely, Git compares the working tree and the index. This invocation of <code>git diff</code> can be used to see exactly what changes would be added to the index if <code>git add</code> was used.</p>
 <p>Let’s explore this with an example where we also go through how to interpret the output that <code>git diff</code> provides. First, let’s initiate a Git repository where we create a file, add it to the index, and use <code>git diff</code>:</p>
-<pre class="git-command">$ mkdir ~/example-git-diff
+<pre class="terminal">$ mkdir ~/example-git-diff
 $ cd ~/example-git-diff
 $ git init
 $ echo "Content in index" &gt; file1.txt
@@ -331,21 +312,21 @@ No commits yet
 
 Changes to be committed:
   (use "git rm --cached <file>..." to unstage)
-        <span class="bash-green">new file:   file1.txt</span>
+        <span class="col-status-added">new file:   file1.txt</span>
 
 $ git diff
 
 </file></pre>
 <p>Since we have not added any changes to the working tree after adding file1.txt to the index, the state of file1.txt is the same in the working tree and the index, so <code>git diff</code> produces no output. Now, let’s add some changes to file1.txt and run <code>git diff</code> again:</p>
-<pre class="git-command">$ echo "New content in working tree" &gt;&gt; file1.txt
+<pre class="terminal">$ echo "New content in working tree" &gt;&gt; file1.txt
 $ git diff
-<span style="color:white">diff --git a/file1.txt b/file1.txt</span>
-<span style="color:white">index fc997de..ed98e30 100644</span>
-<span style="color:white">--- a/file1.txt</span>
-<span style="color:white">+++ b/file1.txt</span>
-<span style="color:teal">@@ -1 +1,2 @@</span>
+<span class="col-diff-header">diff --git a/file1.txt b/file1.txt</span>
+<span class="col-diff-metadata">index fc997de..ed98e30 100644</span>
+<span class="col-diff-markers">--- a/file1.txt</span>
+<span class="col-diff-markers">+++ b/file1.txt</span>
+<span class="col-diff-hunk-header">@@ -1 +1,2 @@</span>
  Content in index
-<span class="bash-green">+New content in working tree</span>
+<span class="col-diff-added">+New content in working tree</span>
 </pre>
 <p>The output that <code>git diff</code> produces is quite technical, so lets go through it line by line.</p>
 <section id="structure-of-git-diff-output" class="level3">
@@ -355,7 +336,7 @@ $ git diff
 <section id="the-header" class="level3">
 <h3 class="anchored" data-anchor-id="the-header">The header</h3>
 <p>The first line</p>
-<pre class="git-command"><span style="color:white">diff --git a/file1.txt b/file1.txt</span>
+<pre class="terminal"><span class="col-diff-header">diff --git a/file1.txt b/file1.txt</span>
 </pre>
 <p>in each hunk is called the header. It is informing us what inputs has been given to the diff. We can see that two versions of file1.txt has been passed to the diff, a/file1.txt and b/file1.txt. It looks like Git is comparing two files with the file paths a/file1.txt and b/file1.txt, which is not the case. Git is just informing us, in a somewhat confusing way, that the first input has been assigned the symbol “a” and the second input has been assigned the symbol “b”. In this example where we have called <code>git diff</code> with no arguments, the first input “a” is the version of file1.txt in the index, and “b” is the version of file1.txt in the working tree. You can think of version “a” as the “old” or “original” version of the file, and “b” as the “new” or “modified” version of the file. Again, this makes sense in our current example where we want to see the changes in the working tree not yet added to the index: the old version is the version in the index, and the new version is the version in the working tree.</p>
 <p>The start of the line <code>diff --git</code> might look like that Git has run the BASH command <code>diff</code> with a <code>--git</code> flag, but this is not actually the case. This is just Git’s way of telling us that the diff has been produced by Git’s own internal diff function.</p>
@@ -363,10 +344,10 @@ $ git diff
 <section id="git-meta-data" class="level3">
 <h3 class="anchored" data-anchor-id="git-meta-data">Git meta data</h3>
 <p>The second line</p>
-<pre class="git-command"><span style="color:white">index fc997de..ed98e30 100644</span>
+<pre class="terminal"><span class="col-diff-metadata">index fc997de..ed98e30 100644</span>
 </pre>
 <p>displays some Git metadata. The first word “index” in this context does not refer to the index/staging area in Git, but is instead indicating that what follows is an indexed identifier of the data being compared. The next two words are (abbreviated) SHA-1 hash identifiers that Git uses to refer to the specific versions of the content being compared. So “fc997de” is the SHA-1 hash of file1.txt version in the index, and “ed98e30” is the SHA-1 hash of version of file1.txt in the working tree. We can check this by manually computing the checksum of the two different versions of the file:</p>
-<pre class="git-command"><span># SHA-1 hash of file1.txt in index</span>
+<pre class="terminal"><span># SHA-1 hash of file1.txt in index</span>
 $ git ls-files -s file1.txt
 100644 fc997ded06b626fcc07db7da1e3a7bbf4e7349d4 0       file1.txt
 <span># SHA-1 hash of file1.txt in working tree</span>
@@ -378,15 +359,15 @@ ed98e302716a8f7df192d2e7474f8ee96b13c35b
 <section id="markers-for-changes" class="level3">
 <h3 class="anchored" data-anchor-id="markers-for-changes">Markers for changes</h3>
 <p>The next lines</p>
-<pre class="git-command"><span style="color:white">--- a/file1.txt</span>
-<span style="color:white">+++ b/file1.txt</span>
+<pre class="terminal"><span class="col-diff-markers">--- a/file1.txt</span>
+<span class="col-diff-markers">+++ b/file1.txt</span>
 </pre>
 <p>are a legend that assigns symbols to diff input sources. In this case, changes from version “a” of the file is marked with a “—”, and changes from version “b” is marked with a “+++” symbol.</p>
 </section>
 <section id="the-hunk-header" class="level3">
 <h3 class="anchored" data-anchor-id="the-hunk-header">The hunk header</h3>
 <p>The next line</p>
-<pre class="git-command"><span style="color:teal">@@ -1 +1,2 @@</span>
+<pre class="terminal"><span class="col-diff-hunk-header">@@ -1 +1,2 @@</span>
 </pre>
 <p>is the “hunk header”. It is a summary of shown lines from the files being compared. The “@” symbols marks the beginning and end of the hunk header. It serves as a delimiter that Git uses to identify the hunk header.</p>
 <ul>
@@ -398,8 +379,8 @@ ed98e302716a8f7df192d2e7474f8ee96b13c35b
 <section id="the-diff-content" class="level3">
 <h3 class="anchored" data-anchor-id="the-diff-content">The diff content</h3>
 <p>The remaining output</p>
-<pre class="git-command"> Content in index
-<span class="bash-green">+New content in working tree</span>
+<pre class="terminal"> Content in index
+<span class="col-diff-added">+New content in working tree</span>
 </pre>
 <p>is the diff content, and consists of three different types of diff lines.</p>
 <ul>
@@ -412,7 +393,7 @@ ed98e302716a8f7df192d2e7474f8ee96b13c35b
 <section id="continuation-of-example" class="level3">
 <h3 class="anchored" data-anchor-id="continuation-of-example">Continuation of example</h3>
 <p>Let’s expand our example now that we understand the output from <code>git diff</code>. First, let’s add the “New content in working tree” line to the index, and commit file1.txt to the repository:</p>
-<pre class="git-command"><span># Current state of file1.txt in the working directory</span>
+<pre class="terminal"><span># Current state of file1.txt in the working directory</span>
 $ cat file1.txt
 Content in index
 New content in working tree
@@ -420,42 +401,42 @@ $ git add .
 $ git commit -m"Add file1.txt"
 </pre>
 <p>Yet again, let’s add some changes to file1.txt in the working tree and use <code>git diff</code>:</p>
-<pre class="git-command">$ echo "Changes after commit" &gt;&gt; file1.txt
+<pre class="terminal">$ echo "Changes after commit" &gt;&gt; file1.txt
 $ git diff
-<span style="color:white">diff --git a/file1.txt b/file1.txt</span>
-<span style="color:white">index ed98e30..e283c5a 100644</span>
-<span style="color:white">--- a/file1.txt</span>
-<span style="color:white">+++ b/file1.txt</span>
-<span style="color:teal">@@ -1,2 +1,3 @@</span>
+<span class="col-diff-header">diff --git a/file1.txt b/file1.txt</span>
+<span class="col-diff-metadata">index ed98e30..e283c5a 100644</span>
+<span class="col-diff-markers">--- a/file1.txt</span>
+<span class="col-diff-markers">+++ b/file1.txt</span>
+<span class="col-diff-hunk-header">@@ -1,2 +1,3 @@</span>
  Content in index
  New content in working tree
-<span class="bash-green">+Changes after commit</span>
+<span class="col-diff-added">+Changes after commit</span>
 </pre>
 <p>First of all, it might be surprising why this is showing any output at all. As stated before, <code>git diff</code> compares the working tree and the index, but we have not added anything to the index, so why is Git telling us that the line “Changes after commit” is in the file1.txt version in the working space, but not in the version of the file in the index? Why is it not producing no output as when we initially made changes in the working tree and used <code>git diff</code> before adding anything to the index? This is because we have made a commit in the meantime. The index keeps track of all files it knows about, and since we have made a commit where we added file1.txt to the repository, the index is currently containing information on the version of file1.txt that was last commited. So, if we have not staged anything since our last commit, we can actually use <code>git diff</code> to compare the state of the working tree with the latest commit on the active branch, if the files are already tracked by Git! We can show this more clearly by adding a new file in the working tree and running <code>git diff</code> again:</p>
-<pre class="git-command">$ echo "Content of file2.txt" &gt; file2.txt
+<pre class="terminal">$ echo "Content of file2.txt" &gt; file2.txt
 $ git diff
-<span style="color:white">diff --git a/file1.txt b/file1.txt</span>
-<span style="color:white">index ed98e30..e283c5a 100644</span>
-<span style="color:white">--- a/file1.txt</span>
-<span style="color:white">+++ b/file1.txt</span>
-<span style="color:teal">@@ -1,2 +1,3 @@</span>
+<span class="col-diff-header">diff --git a/file1.txt b/file1.txt</span>
+<span class="col-diff-metadata">index ed98e30..e283c5a 100644</span>
+<span class="col-diff-markers">--- a/file1.txt</span>
+<span class="col-diff-markers" "="">+++ b/file1.txt</span>
+<span class="col-diff-hunk-header">@@ -1,2 +1,3 @@</span>
  Content in index
  New content in working tree
-<span class="bash-green">+Changes after commit</span>
+<span class="col-diff-added">+Changes after commit</span>
 </pre>
 <p>We can see that <code>git diff</code> still only show the changes in file1.txt in the working tree, since Git is not currently tracking file2.txt, so the index does not contain any information on that file.</p>
 <p>Looking at the <code>git diff</code> output, we can see that the output is easier to understand now: The “-1,2” part of the hunk header is telling us that the diff lines are showing the two first lines of the version of file1.txt from the index, namely the lines “Content in index” and “New content in the working tree”, both of which are context lines since they are also present in the version in the working tree. The “+1,3” is additionally telling us that the 3 first lines are shown from the version of file1.txt in the working tree with the two same context lines and the addition line “Changes after commit”.</p>
 <p>Let’s wrap up this example by deleting the repository:</p>
-<pre class="git-command">$ cd
+<pre class="terminal">$ cd
 $ rm -rf ~/example-git-diff
 </pre>
 </section>
 </section>
-<section id="compare-index-with-latest-commit" class="level2" data-number="10.2">
-<h2 data-number="10.2" class="anchored" data-anchor-id="compare-index-with-latest-commit"><span class="header-section-number">10.2</span> Compare index with latest commit</h2>
+<section id="compare-index-with-latest-commit" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="compare-index-with-latest-commit"><span class="header-section-number">9.2</span> Compare index with latest commit</h2>
 <p>Another common way to use <code>git diff</code> is to compare the index to the latest commit on the active branch, by using the <code>--staged</code> flag. This invocation of <code>git diff</code> can be used to see exactly what changes are committed before using <code>git commit</code>.</p>
 <p>Let’s illustrate this with a new example. First we initialize a repository with a single commit of two files:</p>
-<pre class="git-command">$ mkdir ~/example-git-diff2
+<pre class="terminal">$ mkdir ~/example-git-diff2
 $ cd ~/example-git-diff2
 $ git init
 $ echo "Content in file1.txt" &gt; file1.txt
@@ -464,40 +445,40 @@ $ git add .
 $ git commit -m"Add file1.txt and file2.txt"
 </pre>
 <p>Now, we make changes to both files, but we only add the changes to file1.txt to the index, and then we use <code>git diff --staged</code>:</p>
-<pre class="git-command">$ echo "More content in file1.txt" &gt;&gt; file1.txt
+<pre class="terminal">$ echo "More content in file1.txt" &gt;&gt; file1.txt
 $ echo "More content in file2.txt" &gt;&gt; file2.txt
 $ git add file1.txt
 $ git status
 On branch main
 Changes to be committed:
   (use "git restore --staged <file>..." to unstage)
-        <span class="bash-green">modified:   file1.txt</span>
+        <span class="col-status-added">modified:   file1.txt</span>
 
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git restore <file>..." to discard changes in working directory)
-        <span style="color:red">modified:   file2.txt</span>
+        <span class="col-status-changed">modified:   file2.txt</span>
 
 $ git diff --staged
-<span style="color:white">diff --git a/file1.txt b/file1.txt</span>
-<span style="color:white">index a1b2117..b00037e 100644</span>
-<span style="color:white">--- a/file1.txt</span>
-<span style="color:white">+++ b/file1.txt</span>
-<span style="color:teal">@@ -1 +1,2 @@</span>
+<span class="col-diff-header">diff --git a/file1.txt b/file1.txt</span>
+<span class="col-diff-metadata">index a1b2117..b00037e 100644</span>
+<span class="col-diff-markers">--- a/file1.txt</span>
+<span class="col-diff-markers">+++ b/file1.txt</span>
+<span class="col-diff-hunk-header">@@ -1 +1,2 @@</span>
  Content in file1.txt
-<span class="bash-green">+More content in file1.txt</span>
+<span class="col-diff-added">+More content in file1.txt</span>
 </file></file></file></pre>
 <p>We can see that we are indeed only shown the changes to file1.txt that would be added to the repository if we were to use <code>git commit</code> at this point, and that we are not shown the changes to file1.txt in the working tree which has not been added to the index.</p>
 <p>Let’s wrap up by deleting the example folder:</p>
-<pre class="git-command">$ cd
+<pre class="terminal">$ cd
 $ rm -rf ~/example-git-diff2
 </pre>
 </section>
-<section id="compare-two-commits" class="level2" data-number="10.3">
-<h2 data-number="10.3" class="anchored" data-anchor-id="compare-two-commits"><span class="header-section-number">10.3</span> Compare two commits</h2>
+<section id="compare-two-commits" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="compare-two-commits"><span class="header-section-number">9.3</span> Compare two commits</h2>
 <p>It is also possible to diff two commits, to see the differences between them using <code>git diff &lt;commit&gt; &lt;commit&gt;</code>, where <code>&lt;commit&gt;</code> is the (abbreviated) SHA-1 checksum of a commit object. One of the most common uses of this form of <code>git diff</code> is <code>git diff HEAD^ HEAD</code> which shows changes introduced in the most recent commit on the active branch. As you might recall, <code>HEAD</code>, is just a pointer to the most recent commit on the active branch, and <code>HEAD^</code> is the parent commit of <code>HEAD</code>. This is a neat way to make the comparison of interest without having to type out tedious and hard to remember checksums in the terminal. This also illustrates that we can use refs to refer to commits, instead of actual commit checksums in the call to <code>git diff</code>. This means that we compare branches with the same type of call eg <code>git diff main feature_a</code> to see what changes has been introduced in a feature branch before we merge it to our main branch.</p>
 <p>Again, let’s illustrate this with an example. First we create a repository with a series of commits, making changes to a single file:</p>
-<pre class="git-command">$ mkdir ~/example-git-diff3
+<pre class="terminal">$ mkdir ~/example-git-diff3
 $ cd ~/example-git-diff3
 $ git init
 $ echo "Content added in commit A" &gt; file1.txt
@@ -508,80 +489,81 @@ $ git commit -am"Commit B"
 $ echo "Content added in commit C" &gt;&gt; file1.txt
 $ git commit -am"Commit C"
 $ git log --oneline
-<span class="sha1-col">d32fc58 (</span><span class="head-col">HEAD</span> <span class="sha1-col">-&gt;</span> <span class="active-branch-col">main</span><span class="sha1-col">)</span> Commit C
-<span class="sha1-col">9b4a089</span> Commit B
-<span class="sha1-col">cd80503</span> Commit A
+<span class="col-hash">d32fc58 (</span><span class="col-head">HEAD</span> <span class="col-hash">-&gt;</span> <span class="col-branch-local">main</span><span class="col-hash">)</span> Commit C
+<span class="col-hash">9b4a089</span> Commit B
+<span class="col-hash">cd80503</span> Commit A
 </pre>
 <p>As previously explained, if we want to see the changes introduced in the newest commit, Commit C, we can do it in two ways. We can either specify the commit checksums directly, or we can use the <code>git diff HEAD^ HEAD</code> form:</p>
-<pre class="git-command">$ git diff HEAD^ HEAD
-<span style="color:white">diff --git a/file1.txt b/file1.txt</span>
-<span style="color:white">index e8e75be..419b45c 100644</span>
-<span style="color:white">--- a/file1.txt</span>
-<span style="color:white">+++ b/file1.txt</span>
-<span style="color:teal">@@ -1,2 +1,3 @@</span>
+<pre class="terminal">$ git diff HEAD^ HEAD
+<span class="col-diff-header">diff --git a/file1.txt b/file1.txt</span>
+<span class="col-diff-metadata">index e8e75be..419b45c 100644</span>
+<span class="col-diff-markers">--- a/file1.txt</span>
+<span class="col-diff-markers">+++ b/file1.txt</span>
+<span class="col-diff-hunk-header">@@ -1,2 +1,3 @@</span>
  Content added in commit A
  Content added in commit B
-<span class="bash-green">+Content added in commit C</span>
+<span class="col-diff-added">+Content added in commit C</span>
 
-$<span style="color:white">diff --git a/file1.txt b/file1.txt</span>
-<span style="color:white">index e8e75be..419b45c 100644</span>
-<span style="color:white">--- a/file1.txt</span>
-<span style="color:white">+++ b/file1.txt</span>
-<span style="color:teal">@@ -1,2 +1,3 @@</span>
+$ git diff 9b4a098 d32fc58 
+<span class="col-diff-header">diff --git a/file1.txt b/file1.txt</span>
+<span class="col-diff-metadata">index e8e75be..419b45c 100644</span>
+<span class="col-diff-markers">--- a/file1.txt</span>
+<span class="col-diff-markers">+++ b/file1.txt</span>
+<span class="col-diff-hunk-header">@@ -1,2 +1,3 @@</span>
  Content added in commit A
  Content added in commit B
-<span class="bash-green">+Content added in commit C</span> git diff 9b4a098 d32fc58 
+<span class="col-diff-added">+Content added in commit C</span>
 </pre>
 <p>We can see that we get the exact same results, but that the <code>git diff HEAD^ HEAD</code> form of using <code>git diff</code> is much easier to use.</p>
 <p>Let’s continue the example by making a branch, and making a commit on that branch:</p>
-<pre class="git-command">$ git switch -c feature_a
+<pre class="terminal">$ git switch -c feature_a
 $ echo "Content added on feature_a branch" &gt;&gt; file1.txt
 $ git add .
 $ git commit -m"Update file1.txt"
 $ git log --oneline
-8b8e809 (HEAD -&gt; feature_a) Update file1.txt
-d32fc58 (main) Commit C
-9b4a089 Commit B
-cd80503 Commit A
+<span class="col-hash">8b8e809 (</span><span class="col-head">HEAD</span> <span class="col-hash">-&gt;</span> <span class="col-branch-local">feature_a</span><span class="col-hash">)</span> Update file1.txt
+<span class="col-hash">d32fc58 (</span><span class="col-branch-local">main</span><span class="col-hash">)</span> Commit C
+<span class="col-hash">9b4a089</span> Commit B
+<span class="col-hash">cd80503</span> Commit A
 </pre>
 <p>Let’s say we want to merge the feature branch into the main branch, but that we want to see exactly what changes we would be adding before we do so. Again we could explictly compare commit ID’s, or we could simply specify the branch names in the <code>git diff</code> command:</p>
-<pre class="git-command">$ git diff d32fc58 8b8e809
-<span style="color:white">diff --git a/file1.txt b/file1.txt</span>
-<span style="color:white">index 419b45c..89b6cb2 100644</span>
-<span style="color:white">--- a/file1.txt</span>
-<span style="color:white">+++ b/file1.txt</span>
-<span style="color:teal">@@ -1,3 +1,4 @@</span>
+<pre class="terminal">$ git diff d32fc58 8b8e809
+<span class="col-diff-header">diff --git a/file1.txt b/file1.txt</span>
+<span class="col-diff-metadata">index 419b45c..89b6cb2 100644</span>
+<span class="col-diff-markers">--- a/file1.txt</span>
+<span class="col-diff-markers">+++ b/file1.txt</span>
+<span class="col-diff-hunk-header">@@ -1,3 +1,4 @@</span>
  Content added in commit A
  Content added in commit B
  Content added in commit C
-<span class="bash-green">+Content added on feature_a branch</span>
+<span class="col-diff-added">+Content added on feature_a branch</span>
 
 $ git diff main feature_a
-<span style="color:white">diff --git a/file1.txt b/file1.txt</span>
-<span style="color:white">index 419b45c..89b6cb2 100644</span>
-<span style="color:white">--- a/file1.txt</span>
-<span style="color:white">+++ b/file1.txt</span>
-<span style="color:teal">@@ -1,3 +1,4 @@</span>
+<span class="col-diff-header">diff --git a/file1.txt b/file1.txt</span>
+<span class="col-diff-metadata">index 419b45c..89b6cb2 100644</span>
+<span class="col-diff-markers">--- a/file1.txt</span>
+<span class="col-diff-markers">+++ b/file1.txt</span>
+<span class="col-diff-hunk-header">@@ -1,3 +1,4 @@</span>
  Content added in commit A
  Content added in commit B
  Content added in commit C
-<span class="bash-green">+Content added on feature_a branch</span>
+<span class="col-diff-added">+Content added on feature_a branch</span>
 </pre>
 <p>Again we see that we get identical results, but it is much easier to refer to the commits with branch references.</p>
 <p>To wrap up the example we delete the repository:</p>
-<pre class="git-command">$ cd
+<pre class="terminal">$ cd
 $ rm -rf ~/example-git-diff3
 </pre>
 </section>
-<section id="exercises" class="level2" data-number="10.4">
-<h2 data-number="10.4" class="anchored" data-anchor-id="exercises"><span class="header-section-number">10.4</span> Exercises</h2>
+<section id="exercises" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="exercises"><span class="header-section-number">9.4</span> Exercises</h2>
 <p>TODO: The main purpose of the exercises should be to expand on the introduced types of diffs with more complicated example with multiple files, chunks of changes etc.</p>
 <section id="exercise-1---compare-files-outside-a-git-repository" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-1---compare-files-outside-a-git-repository">Exercise 1 - Compare files outside a Git repository</h3>
 <p>In this chapter we have focused on comparing differences in objects in a Git repository. But you can actually also diff two random files on your computer outside of a Git repository using <code>git diff &lt;path&gt; &lt;path&gt;</code>, where <code>&lt;path&gt;</code> is a path to a file on your filesystem.</p>
 <p>Imagine you are part of a research group that is writing an article. The previous version of the article draft, article_draft_v2.txt is updated by the first author, and you want to get an overview of the exact changes that have been introduced in the new version, article_draft_v3.txt<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p>
 <p>Use the following commands to generate the files for the exercise (Consider copy+pasting the echo commands into the terminal to avoid spelling errors):</p>
-<pre class="git-command">$ mkdir ~/git-diff-ex1
+<pre class="terminal">$ mkdir ~/git-diff-ex1
 $ echo -e "Introduction\nMethods\nResults\nDiscussion\nConclusion" &gt; ~/git-diff-ex1/article_draft_v2.txt
 $ echo -e "Abstract\nIntroduction\nMethods\nResults\nDiscussion\nConclusion\nSupplementary analyses" &gt; ~/git-diff-ex1/article_draft_v3.txt
 $ cat ~/git-diff-ex1/article_draft_v2.txt
@@ -613,19 +595,19 @@ Supplementary analyses
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre class="git-command">$ git diff ~/git-diff-ex1/article_draft_v2.txt ~/git-diff-ex1/article_draft_v3.txt
-<span style="color:white">diff --git a/~/git-diff-ex1/article_draft_v2.txt b/~/git-diff-ex1/article_draft_v3.txt</span>
-<span style="color:white">index b266301..e554467 100644</span>
-<span style="color:white">--- a/~/git-diff-ex1/article_draft_v2.txt</span>
-<span style="color:white">+++ b/~/git-diff-ex1/article_draft_v3.txt</span>
-<span style="color:teal">@@ -1,5 +1,7 @@</span>
-<span class="bash-green">+Abstract</span>
+<pre class="terminal">$ git diff ~/git-diff-ex1/article_draft_v2.txt ~/git-diff-ex1/article_draft_v3.txt
+<span class="col-diff-header">diff --git a/~/git-diff-ex1/article_draft_v2.txt b/~/git-diff-ex1/article_draft_v3.txt</span>
+<span class="col-diff-metadata">index b266301..e554467 100644</span>
+<span class="col-diff-markers">--- a/~/git-diff-ex1/article_draft_v2.txt</span>
+<span class="col-diff-markers">+++ b/~/git-diff-ex1/article_draft_v3.txt</span>
+<span class="col-diff-hunk-header">@@ -1,5 +1,7 @@</span>
+<span class="col-diff-added">+Abstract</span>
  Introduction
  Methods
  Results
  Discussion
  Conclusion
-<span class="bash-green">+Supplementary analyses</span>
+<span class="col-diff-added">+Supplementary analyses</span>
 </pre>
 </div>
 </div>
@@ -646,7 +628,7 @@ Supplementary analyses
 <div class="callout-body-container callout-body">
 <p><strong>The header</strong></p>
 <p>The first line of the output</p>
-<pre class="git-command"><span style="color:white">diff --git a/~/git-diff-ex1/article_draft_v2.txt b/~/git-diff-ex1/article_draft_v3.txt</span>
+<pre class="terminal"><span class="col-diff-header">diff --git a/~/git-diff-ex1/article_draft_v2.txt b/~/git-diff-ex1/article_draft_v3.txt</span>
 </pre>
 <p>is the header.</p>
 <ul>
@@ -656,20 +638,20 @@ Supplementary analyses
 </ul>
 <p><strong>Git meta data</strong></p>
 <p>The second line of the output</p>
-<pre class="git-command"><span style="color:white">index b266301..e554467 100644</span>
+<pre class="terminal"><span class="col-diff-metadata">index b266301..e554467 100644</span>
 </pre>
 <p>is the Git meta data.</p>
 <ul>
 <li><p>“index”: This does not refer to the staging area in this context, but instead is used to to tell us that what follows is indexed identifiers of the data being compared.</p></li>
 <li><p>“b266301”: (abbreviated) SHA-1 checksum of the first input. We can check this by hashing the file ourselves:</p></li>
 </ul>
-<pre class="git-command">$ git hash-object ~/git-diff-ex1/folder1/file1.txt
+<pre class="terminal">$ git hash-object ~/git-diff-ex1/folder1/file1.txt
 b2663016d267a1ab40f4555dd731715c1fe5bba6
 </pre>
 <ul>
 <li>“e554467”: (abbreviated) SHA-1 checksum of the second input. We can check this by hashing the file ourselves:</li>
 </ul>
-<pre class="git-command">$ git hash-object ~/git-diff-ex1/folder2/file2.txt
+<pre class="terminal">$ git hash-object ~/git-diff-ex1/folder2/file2.txt
 e554467d786e0a61ce9943be4e666d3618c6dd42
 </pre>
 <ul>
@@ -678,13 +660,13 @@ e554467d786e0a61ce9943be4e666d3618c6dd42
 </ul>
 <p><strong>Markers for changes</strong></p>
 <p>The third and fourth line of the output</p>
-<pre class="git-command"><span style="color:white">--- a/~/git-diff-ex1/article_draft_v2.txt</span>
-<span style="color:white">+++ b/~/git-diff-ex1/article_draft_v3.txt</span>
+<pre class="terminal"><span class="col-diff-markers">--- a/~/git-diff-ex1/article_draft_v2.txt</span>
+<span class="col-diff-markers">+++ b/~/git-diff-ex1/article_draft_v3.txt</span>
 </pre>
 <p>is a legend that assigns symbols to the different input sources. Here, changes from article_draft_v2.txt is given the symbol "---", and changes from article_draft_v3.txt is given the symbol “+++”.</p>
 <p><strong>Hunk header</strong></p>
 <p>The sixth line of the output</p>
-<pre class="git-command"><span style="color:teal">@@ -1,5 +1,7 @@</span>
+<pre class="terminal"><span class="col-diff-hunk-header">@@ -1,5 +1,7 @@</span>
 </pre>
 <p>is the hunk header. The hunk header is a summary of lines shown from the two inputs being compared.</p>
 <ul>
@@ -694,20 +676,20 @@ e554467d786e0a61ce9943be4e666d3618c6dd42
 </ul>
 <p><strong>Diff lines</strong></p>
 <p>The remaining lines of of the output</p>
-<pre class="git-command"><span class="bash-green">+Abstract</span>
+<pre class="terminal"><span class="col-diff-added">+Abstract</span>
  Introduction
  Methods
  Results
  Discussion
  Conclusion
-<span class="bash-green">+Supplementary analyses</span>
+<span class="col-diff-added">+Supplementary analyses</span>
 </pre>
 <p>is the diff content. There are no red deletion lines, meaning that nothing has from article_draft_v2.txt has been removed in article_draft_v3.txt. There are two green addition lines, meaning that two lines have been added in article_draft_v3.txt that were not present in article_draft_v2.txt. Finally, several grey context lines are included in the output, giving context to where in article_draft_v3.txt lines have been added.</p>
 </div>
 </div>
 </div>
 <p>Wrap up by deleting the files created for the exercise:</p>
-<pre class="git-command">$ cd
+<pre class="terminal">$ cd
 $ rm -rf ~/git-diff-ex1
 </pre>
 </section>
@@ -715,7 +697,7 @@ $ rm -rf ~/git-diff-ex1
 <h3 class="anchored" data-anchor-id="exercise-2---multiple-diff-hunks">Exercise 2 - Multiple diff hunks</h3>
 <p>So far we have only looked at examples where there is a single diff hunk in the output from <code>git diff</code>, showing all lines from the diffed file. If the file being diffed is very long and has changes that are very far apart, Git is not going to show the entire file but will instead separate the changes into multiple diff hunks, showing only a few context lines around changes in each hunk. If multiple files are being diffed, there would also be at least one diff hunk for each file.</p>
 <p>Run the following commands to set-up a Git repository with a commit of two files, with additional changes in the worktree to the files after the commit:</p>
-<pre class="git-command">$ mkdir ~/git-diff-ex2
+<pre class="terminal">$ mkdir ~/git-diff-ex2
 $ cd ~/git-diff-ex2
 $ git init
 $ echo "Content of file1" &gt; file1.txt
@@ -740,21 +722,21 @@ $ echo "Additional content" &gt;&gt; file2.txt
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>To make a diff of the worktree and the index, we can simply use <code>git diff</code> with no arguments:</p>
-<pre class="git-command">$ git diff
-<span style="color:white">diff --git a/file1.txt b/file1.txt</span>
-<span style="color:white">index 65e756a..e24b6bc 100644</span>
-<span style="color:white">--- a/file1.txt</span>
-<span style="color:white">+++ b/file1.txt</span>
-<span style="color:teal">@@ -1 +1,2 @@</span>
+<pre class="terminal">$ git diff
+<span class="col-diff-header">diff --git a/file1.txt b/file1.txt</span>
+<span class="col-diff-metadata">index 65e756a..e24b6bc 100644</span>
+<span class="col-diff-markers">--- a/file1.txt</span>
+<span class="col-diff-markers">+++ b/file1.txt</span>
+<span class="col-diff-hunk-header">@@ -1 +1,2 @@</span>
  Content of file1
-<span class="bash-green">+Additional content</span>
-<span style="color:white">diff --git a/file2.txt b/file2.txt</span>
-<span style="color:white">index aad9de2..6541eda 100644</span>
-<span style="color:white">--- a/file2.txt</span>
-<span style="color:white">+++ b/file2.txt</span>
-<span style="color:teal">@@ -1 +1,2 @@</span>
+<span class="col-diff-added">+Additional content</span>
+<span class="col-diff-header">diff --git a/file2.txt b/file2.txt</span>
+<span class="col-diff-metadata">index aad9de2..6541eda 100644</span>
+<span class="col-diff-markers">--- a/file2.txt</span>
+<span class="col-diff-markers">+++ b/file2.txt</span>
+<span class="col-diff-hunk-header">@@ -1 +1,2 @@</span>
  Content of file2
-<span class="bash-green">+Additional content</span>
+<span class="col-diff-added">+Additional content</span>
 </pre>
 </div>
 </div>
@@ -778,7 +760,7 @@ $ echo "Additional content" &gt;&gt; file2.txt
 </div>
 </div>
 <p>Wrap up by deleting the files created for the exercise:</p>
-<pre class="git-command">$ cd
+<pre class="terminal">$ cd
 $ rm -rf ~/git-diff-ex2
 </pre>
 </section>
@@ -788,8 +770,8 @@ $ rm -rf ~/git-diff-ex2
 <p>purpose: Illustrates how to see what changes have been introduced in a feature branch, for example.</p>
 </section>
 </section>
-<section id="todo" class="level2" data-number="10.5">
-<h2 data-number="10.5" class="anchored" data-anchor-id="todo"><span class="header-section-number">10.5</span> TODO</h2>
+<section id="todo" class="level2" data-number="9.5">
+<h2 data-number="9.5" class="anchored" data-anchor-id="todo"><span class="header-section-number">9.5</span> TODO</h2>
 <ul>
 <li><p>Add text somewhere (probably in first section) that emphasizes that the goal of git diff is not just to show new lines but also to illustrate what lines were removed or replaced. Ie to show a comprehensive view of alterations, both additions, deltions and context, which enables us to fully comprehend the evolution from one version to another of a file.</p></li>
 <li><p>It is not intuitive at all how to call <code>git diff</code> to compare the different states of interest. Add a table with basic calls that can be used as a reference. Something like what is done in https://www.datacamp.com/tutorial/git-diff-guide?dc_referrer=https%3A%2F%2Fwww.google.com%2F</p></li>
@@ -1213,13 +1195,13 @@ $ rm -rf ~/git-diff-ex2
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./part2-collaboration.html" class="pagination-link" aria-label="Collaboration">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Collaboration</span></span>
+      <a href="./part2-git-reflog.html" class="pagination-link" aria-label="Recovering deleted commits">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Recovering deleted commits</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./part2-github.html" class="pagination-link" aria-label="Introduction to GitHub">
-        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction to GitHub</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Introduction to GitHub</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

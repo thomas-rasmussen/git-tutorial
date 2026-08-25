@@ -27,11 +27,8 @@ book:
     - part: "Part II"
       chapters:
       - part2-git-reflog.qmd
-      - part2-collaboration.qmd
       - part2-git-diff.qmd
       - part2-github.qmd
-      - part2-git-internals.qmd
-      - part2-git-stash.qmd
       - part2-git-rebase.qmd
       
   appendices:
@@ -47,11 +44,5 @@ format:
     toc-expand: true
     toc-depth: 3
     css: styles.css
-    theme: minty
+    theme: lumen
     link-external-newwindow: true
-    include-in-header:
-      text: |
-       <script src="custom-js.js"></script>
-
-
-

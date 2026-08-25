@@ -47,7 +47,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-18447e9d16e0bfc3229421fc5cc130e2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-2aad03a8b4e422ea2bd4d420080b3680.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="site_libs/quarto-contrib/kbd/kbd.js"></script>
 <link href="site_libs/quarto-contrib/kbd/kbd.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -77,7 +77,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script src="custom-js.js"></script>
 
 
 <link rel="stylesheet" href="styles.css">
@@ -196,38 +195,20 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part2-collaboration.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Collaboration</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./part2-git-diff.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Using <code>git diff</code> to show code changes</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Using <code>git diff</code> to show code changes</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./part2-github.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction to GitHub</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./part2-git-internals.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Git internals</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./part2-git-stash.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">git stash.</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Introduction to GitHub</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./part2-git-rebase.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Rebasing</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Rebasing</span></span></a>
   </div>
 </li>
       </ul>
@@ -311,10 +292,10 @@ ul.task-list li input[type="checkbox"] {
 
 <p><a href="https://gitforwindows.org/" target="_blank">Git for Windows</a> is a set of tools for Windows users. Of main interest, Git for Windows provides a Bash emulation used to run Git from the command line. Using Git Bash, Windows users can use “git” commands exactly like one would do in Linux and Unix environments. Besides the full set of Git core commands, Git Bash is also packaged with additional shell commands that can be useful.</p>
 <p>When you open Git Bash, you will see something like this:</p>
-<pre class="bash-terminal"><span class="git-insert">~</span>
+<pre class="terminal"><span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">~</span>
 $
 </pre>
-<p>The <span class="bash-green">user_id@computer_id</span> is an ID based on name of the user that is logged in, and the name of the device running Git Bash. The <span class="bash-pink">MINGW64</span> part is the name of the compiler used to build Git Bash. The <span class="bash-gold">~</span> at the end of the first line indicates the current directory. A tilde means that the current directory is the home directory of the user.</p>
+<p><span class="col-green">user_id@computer_id</span> is an ID based on name of the user that is logged in, and the name of the device running Git Bash. <span class="col-magenta">MINGW64</span> part is the name of the compiler used to build Git Bash. The <span class="col-yellow">~</span> at the end of the first line indicates the current directory. A tilde means that the current directory is the home directory of the user.</p>
 <section id="shortcut-keys" class="level2" data-number="A.1">
 <h2 data-number="A.1" class="anchored" data-anchor-id="shortcut-keys"><span class="header-section-number">A.1</span> Shortcut keys</h2>
 <p>An extensive list of available commands in Bash can be found <a href="https://ss64.com/bash/syntax-keyboard.html" target="_blank">here</a>. Not all of them are available in Git Bash. Below is a short list of useful shortcut keys.</p>
@@ -468,9 +449,9 @@ $
 <section id="example---change-directory" class="level4">
 <h4 class="anchored" data-anchor-id="example---change-directory">Example - Change directory</h4>
 <p>We can use <code>cd</code> to change the working directory by providing a file path to the directory.</p>
-<pre class="bash-terminal"><span class="git-insert">~</span>
+<pre class="terminal"><span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">~</span>
 $ cd C:/path/to/directory
-<span class="git-insert">/c/path/to/directory</span>
+<span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">/c/path/to/directory</span>
 $
 </pre>
 <p>Note that the working directory was set as <span style="font-family:monospace">C:/path/to/directory</span>, but is displayed on the form <span style="font-family:monospace">/c/path/to/directory</span></p>
@@ -478,55 +459,55 @@ $
 <section id="example---file-path-with-spaces" class="level4">
 <h4 class="anchored" data-anchor-id="example---file-path-with-spaces">Example - file path with spaces</h4>
 <p>If a file path contains spaces, enclose the file path in (double) quotes.</p>
-<pre class="bash-terminal"><span class="git-insert">~</span>
+<pre class="terminal"><span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">~</span>
 $ cd "/c/path/to/some directory"
-<span class="git-insert">/c/path/to/some directory</span>
+<span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">/c/path/to/some directory</span>
 $
 </pre>
 </section>
 <section id="example---change-to-subdirectory" class="level4">
 <h4 class="anchored" data-anchor-id="example---change-to-subdirectory">Example - Change to subdirectory</h4>
 <p>To change the current working directory to a subdirectory of the current working directory, we can simple set <code>DIR</code> to the subdirectory name.</p>
-<pre class="bash-terminal"><span class="git-insert">/c/path/to/dir</span>
+<pre class="terminal"><span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">/c/path/to/dir</span>
 $ cd subfolder
-<span class="git-insert">/c/path/to/dir/subfolder</span>
+<span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">/c/path/to/dir/subfolder</span>
 $
 </pre>
 </section>
 <section id="example---change-to-parent-directory" class="level4">
 <h4 class="anchored" data-anchor-id="example---change-to-parent-directory">Example - Change to parent directory</h4>
 <p>We can change the working directory to the parent directory by setting <code>DIR</code> to “..”.</p>
-<pre class="bash-terminal"><span class="git-insert">/c/path/to/dir</span>
+<pre class="terminal"><span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">/c/path/to/dir</span>
 $ cd ..
-<span class="git-insert">/c/path/to</span>
+<span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">/c/path/to</span>
 $
 </pre>
 <p>You can also use “..” more generally when specifying a file path, to denote the parent directory</p>
-<pre class="bash-terminal" "=""><span class="git-insert">/c/path/to/dir_a</span>
+<pre class="terminal" "=""><span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">/c/path/to/dir_a</span>
 $ cd ../dir_b
-<span class="git-insert">/c/path/to/dir_b</span>
+<span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">/c/path/to/dir_b</span>
 $
 </pre>
 </section>
 <section id="example---change-to-previous-directory" class="level4">
 <h4 class="anchored" data-anchor-id="example---change-to-previous-directory">Example - Change to previous directory</h4>
 <p>We can change the working directory to the previous working directory by setting <code>DIR</code> to “-”.</p>
-<pre class="bash-terminal"><span class="git-insert">/c/current/cd/dir</span>
+<pre class="terminal"><span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">/c/current/cd/dir</span>
 $ cd -
-<span class="git-insert">/c/previous/cd/dir</span>
+<span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">/c/previous/cd/dir</span>
 $
 </pre>
 </section>
 <section id="example---changing-working-directory-to-users-home-directory" class="level4">
 <h4 class="anchored" data-anchor-id="example---changing-working-directory-to-users-home-directory">Example - Changing working directory to user’s home directory</h4>
 <p>We can set the current working directory to the user’s home directory by not specifying <code>DIR</code>, or by setting <code>DIR</code> to “~”.</p>
-<pre class="bash-terminal"><span class="git-insert">/c/current/dir</span>
+<pre class="terminal"><span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">/c/current/dir</span>
 $ cd ~
-<span class="git-insert">~</span>
+<span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">~</span>
 $ cd -
-<span class="git-insert">/c/current/dir</span>
+<span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">/c/current/dir</span>
 $ cd
-<span class="git-insert">~</span>
+<span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">~</span>
 $
 </pre>
 </section>
@@ -539,13 +520,13 @@ $
 <section id="example" class="level4">
 <h4 class="anchored" data-anchor-id="example">Example</h4>
 <p>Imagine we had the history shown in the terminal below, ending with a <code>clear</code> command.</p>
-<pre class="bash-terminal"><span class="git-insert">~</span>
+<pre class="terminal"><span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">~</span>
 $ cd C:/path/to/directory
-<span class="git-insert">/c/path/to/directory</span>
+<span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">/c/path/to/directory</span>
 $ clear
 </pre>
 <p>This would result in the terminal shown below.</p>
-<pre class="bash-terminal"><span class="git-insert">/c/path/to/directory</span>
+<pre class="terminal"><span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">/c/path/to/directory</span>
 $
 </pre>
 <p>Clearing the terminal screen can also be done using the shortcut key <kbd title="Ctrl+l" aria-hidden="true">Ctrl+l</kbd><span class="visually-hidden">Ctrl+l</span></p>
@@ -559,7 +540,7 @@ $
 <section id="example---create-empty-text-file" class="level4">
 <h4 class="anchored" data-anchor-id="example---create-empty-text-file">Example - Create empty text file</h4>
 <p>You can create an empty file by not providing any <code>STRING</code> and using the “&gt;” redirection operator (this will overwrite the any existing file with the same name).</p>
-<pre class="bash-terminal"><span class="git-insert">~</span>
+<pre class="terminal"><span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">~</span>
 $ echo &gt; empty_file.txt
 </pre>
 <div class="notepad-file">
@@ -572,7 +553,7 @@ $ echo &gt; empty_file.txt
 <section id="example---create-text-file-with-content" class="level4">
 <h4 class="anchored" data-anchor-id="example---create-text-file-with-content">Example - Create text file with content</h4>
 <p>We can create a new text file with some content in it (or overwrite an existing file) by using the “&gt;” redirection operator and by providing a <code>STRING</code> with the content.</p>
-<pre class="bash-terminal"><span class="git-insert">~</span>
+<pre class="terminal"><span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">~</span>
 $ echo "Some content" &gt; new_file.txt
 </pre>
 <div class="notepad-file">
@@ -585,9 +566,9 @@ Some content
 <section id="example---append-content-to-existing-text-file" class="level4">
 <h4 class="anchored" data-anchor-id="example---append-content-to-existing-text-file">Example - Append content to existing text file</h4>
 <p>To append content to an existing text file use the “&gt;&gt;” redirection operator.</p>
-<pre class="bash-terminal"><span class="git-insert">~</span>
+<pre class="terminal"><span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">~</span>
 $ echo "Some content" &gt; append_file.txt
-<span class="git-insert">~</span>
+<span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">~</span>
 $ echo "Some more content" &gt;&gt; append_file.txt
 </pre>
 <div class="notepad-file">
@@ -609,29 +590,29 @@ Some more content
 <section id="example---list-content-of-work-directory" class="level4">
 <h4 class="anchored" data-anchor-id="example---list-content-of-work-directory">Example - List content of work directory</h4>
 <p>If we want to see a list of content in the current work directory, we can use <code>ls</code>.</p>
-<pre class="bash-terminal"><span class="git-insert">/c/some/dir</span>
+<pre class="terminal"><span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">/c/some/dir</span>
 $ ls
-<span class="bash-violet">dir_a</span>/ file_a.txt file_c.txt file_e.txt
-<span class="bash-violet">dir_b</span>/ file_b.txt file_d.txt file_f.txt
+<span class="col-bright-blue">dir_a</span>/ file_a.txt file_c.txt file_e.txt
+<span class="col-bright-blue">dir_b</span>/ file_b.txt file_d.txt file_f.txt
 </pre>
 <p>By default multiple entries are listed in each line and directories are colour-coded and has a “/” suffix.</p>
 </section>
 <section id="example---list-all-content-of-a-directory" class="level4">
 <h4 class="anchored" data-anchor-id="example---list-all-content-of-a-directory">Example - List all content of a directory</h4>
 By default, entries starting with a dot (.), i.e.&nbsp;hidden files, are ignored. Use the “-a” option to list all files.
-<pre class="bash-terminal"><span class="git-insert">/c/some/git_repo</span>
+<pre class="terminal"><span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">/c/some/git_repo</span>
 $ ls -a
-<span class="bash-violet">.git</span>/ file_a.txt file_c.txt file_e.txt
+<span class="col-bright-blue">.git</span>/ file_a.txt file_c.txt file_e.txt
 .gitignore file_b.txt file_d.txt file_f.txt
 </pre>
 </section>
 <section id="example---list-one-entry-per-line" class="level4">
 <h4 class="anchored" data-anchor-id="example---list-one-entry-per-line">Example - List one entry per line</h4>
 <p>We can use the “-1” option to list only one entry per line.</p>
-<pre class="bash-terminal"><span class="git-insert">/c/some/dir</span>
+<pre class="terminal"><span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">/c/some/dir</span>
 $ ls -1
-<span class="bash-violet">dir_a</span>/
-<span class="bash-violet">dir_b</span>/
+<span class="col-bright-blue">dir_a</span>/
+<span class="col-bright-blue">dir_b</span>/
 file_a.txt
 file_b.txt
 file_c.txt
@@ -650,18 +631,18 @@ file_f.txt
 <section id="example-1" class="level4">
 <h4 class="anchored" data-anchor-id="example-1">Example</h4>
 <p>Create new folders. Note that we don’t have to enclose the folder name in quotes if it contains no spaces.</p>
-<pre class="bash-terminal"><span class="git-insert">/c/some/dir</span>
+<pre class="terminal"><span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">/c/some/dir</span>
 $ ls -1
 file_a.txt
 file_b.txt
-<span class="git-insert">/c/some/dir</span>
+<span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">/c/some/dir</span>
 $ mkdir new-folder
-<span class="git-insert">/c/some/dir</span>
+<span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">/c/some/dir</span>
 $ mkdir "new-folder"
-<span class="git-insert">/c/some/dir</span>
+<span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">/c/some/dir</span>
 $ ls -1
-<span class="bash-violet">new-folder</span>/
-<span class="bash-violet">'new folder'</span>/
+<span class="col-bright-blue">new-folder</span>/
+<span class="col-bright-blue">'new folder'</span>/
 file_a.txt
 file_b.txt
 </pre>
@@ -675,7 +656,7 @@ file_b.txt
 <section id="example-2" class="level4">
 <h4 class="anchored" data-anchor-id="example-2">Example</h4>
 <p>When working with Git this command is mainly used to see where the current user’s home directory is, since the current working directory is always shown in the terminal.</p>
-<pre class="bash-terminal"><span class="git-insert">~</span>
+<pre class="terminal"><span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">~</span>
 $ pwd
 /c/absolute/path/to/home/directory
 </pre>
@@ -692,12 +673,12 @@ $ pwd
 <p><strong>Link to documentation:</strong><br> <a href="https://ss64.com/bash/rm.html" target="_blank">https://ss64.com/bash/rm.html</a></p>
 <section id="example---remove-file" class="level4">
 <h4 class="anchored" data-anchor-id="example---remove-file">Example - Remove file</h4>
-<pre class="bash-terminal"><span class="git-insert">/c/some/dir</span>
+<pre class="terminal"><span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">/c/some/dir</span>
 $ ls
 file_a.txt file_b.txt
-<span class="git-insert">/c/some/dir</span>
+<span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">/c/some/dir</span>
 $ rm file_a.txt
-<span class="git-insert">/c/some/dir</span>
+<span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">/c/some/dir</span>
 $ ls
 file_b.txt
 </pre>
@@ -712,7 +693,7 @@ file_b.txt
 <section id="example---open-current-working-directory-in-windows-explorer" class="level4">
 <h4 class="anchored" data-anchor-id="example---open-current-working-directory-in-windows-explorer">Example - Open current working directory in Windows explorer</h4>
 <p>We can open the current working directory in Windows explorer by simply using <code>start .</code></p>
-<pre class="bash-terminal"><span class="git-insert">/c/some/dir</span>
+<pre class="terminal"><span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">/c/some/dir</span>
 $ start .
 </pre>
 
@@ -1130,7 +1111,7 @@ $ start .
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./part2-git-rebase.html" class="pagination-link" aria-label="Rebasing">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Rebasing</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Rebasing</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

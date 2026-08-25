@@ -47,7 +47,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-18447e9d16e0bfc3229421fc5cc130e2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-2aad03a8b4e422ea2bd4d420080b3680.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -75,7 +75,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script src="custom-js.js"></script>
 
 
 <link rel="stylesheet" href="styles.css">
@@ -194,38 +193,20 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part2-collaboration.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Collaboration</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./part2-git-diff.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Using <code>git diff</code> to show code changes</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Using <code>git diff</code> to show code changes</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./part2-github.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction to GitHub</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./part2-git-internals.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Git internals</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./part2-git-stash.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">git stash.</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Introduction to GitHub</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./part2-git-rebase.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Rebasing</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Rebasing</span></span></a>
   </div>
 </li>
       </ul>
@@ -309,7 +290,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="git-commit---amend---amending-the-lastest-commit" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="git-commit---amend---amending-the-lastest-commit"><span class="header-section-number">4.1</span> <code>git commit --amend</code> - Amending the lastest commit</h2>
 <p>A common mistake is to make an error in the commit log message, or making a premature commit where you forgot to stage all the intended changes. You could fix the mistake by making another commit where you staged the forgotten changes and/or updated the commit message, but there is a more convenient way to fix these types of issues. You can simply stage the changes you forgot, and use the <code>git commit --amend</code> command.</p>
-<pre class="git-command">$ git commit --amend
+<pre class="terminal">$ git commit --amend
 </pre>
 <p>This will replace the original commit with a new commit where the additional changes have been added. When prompted to enter a commit message during the commit, you will see that the commit message from the original commit has already been filled in, and you can update it as you see fit.</p>
 <div style="width:50%;margin:auto">
@@ -326,7 +307,7 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-number="4.2" class="anchored" data-anchor-id="git-restore---unstaging-staged-files-and-unmodifying-modified-files."><span class="header-section-number">4.2</span> <code>git restore</code> - unstaging staged files and unmodifying modified files.</h2>
 <p>In this section we will show how we can use <code>git restore</code> to restore files in the staging area and working directory with content from a restore source. We can use this to “undo” changes we have staged, or unmodify files we have modified in the working directory.</p>
 <p>Lets say we made changes to a file and added the changes to the staging area. How can we “undo” this, ie unstage the file? What we want to do is to restore the staging area to match the content in the working directory. If we create an example Git repository and use the <code>git status</code> command, it will actually give us the answer:</p>
-<pre class="git-command">$ mkdir ~/example-git-restore
+<pre class="terminal">$ mkdir ~/example-git-restore
 $ cd ~/example-git-restore
 $ git init
 $ echo "content" &gt; file_a.txt
@@ -338,20 +319,20 @@ $ git status
 On branch main
 Changes to be committed:
   (use "git restore --staged <file>..." to unstage)
-        <span class="bash-green">modified:   file_a.txt</span>
+        <span class="col-status-added">modified:   file_a.txt</span>
 </file></pre>
 <p>Git is directly telling us that if we want to unstage the changes in file_a.txt that has been added to the staging area, we can use the command <code>git restore --staged file_a.txt</code>. Let try that:</p>
-<pre class="git-command">$ git restore --staged file_a.txt
+<pre class="terminal">$ git restore --staged file_a.txt
 $ git status
 On branch main
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git restore <file>..." to discard changes in working directory)
-        <span style="color:red">modified:   file_a.txt</span>
+        <span class="col-status-changed">modified:   file_a.txt</span>
 </file></file></pre>
 <p>So what does <code>git restore --staged file_a.txt</code> do? The <code>--staged</code> option is telling git to restore the file_a.txt content in the index, and since we have not specified what source to restore from, git uses the content of file_a.txt from HEAD. This amounts to unstaging the file. As we can see from the output, the file is back to being modfied, but unstaged.</p>
 <p>What if we regret the changes we have made to file_a.txt and want to unmodify it entirely, ie restore the file back to how it looked in the last commit? As we can see from the previous output <code>git status</code> is again directly giving us the answer: We can use the command <code>git restore file_a.txt</code>. Let try it.</p>
-<pre class="git-command">$ git restore file_a.txt
+<pre class="terminal">$ git restore file_a.txt
 $ git status
 On branch main
 nothing to commit, working tree clean
@@ -364,7 +345,7 @@ content
 <section id="git-rm---removing-files-from-a-git-repository" class="level2" data-number="4.3">
 <h2 data-number="4.3" class="anchored" data-anchor-id="git-rm---removing-files-from-a-git-repository"><span class="header-section-number">4.3</span> <code>git rm</code> - Removing files from a Git repository</h2>
 <p>A common scenario is that you want to stop tracking a file. Git will recognize if you manually delete files in the working directory and will update the working directory automatically. But it will not update the index with the removal of the file, which you would then have to do yourself using <code>git add</code>. This two-step process can be done more effectively using the <code>git rm</code> command which can be used to remove files from the working tree and index. Lets illustrate it with an example. First, lets set up a repository where we have committed a couple of files:</p>
-<pre class="git-command">$ mkdir ~/example-git-rm
+<pre class="terminal">$ mkdir ~/example-git-rm
 $ cd ~/example-git-rm
 $ git init
 $ echo "file_a" &gt; file_a.txt
@@ -373,23 +354,23 @@ $ git add .
 $ git commit -m"Add file_a.txt and file_b.txt"
 </pre>
 <p>First, we remove file_a.txt using the <code>git rm</code> command.</p>
-<pre class="git-command">$ git rm file_a.txt
+<pre class="terminal">$ git rm file_a.txt
 $ git status
 On branch main
 Changes to be committed:
   (use "git restore --staged <file>..." to unstage)
-        <span class="bash-green">deleted:    file_a.txt</span>
+        <span class="col-status-added">deleted:    file_a.txt</span>
 $ git commit -m"Remove file_a.txt"
 </file></pre>
 <p>Note that file_a is removed from the working tree and that the index has been updated, so we can use <code>git commit</code> directly after removing the file.</p>
 <p>Now, lets try manually removing file_b.txt. Note that Git recognizes that the file has been deleted from the repo, but the index is not updated, so we have to use <code>git add</code> ourselves to update the index.</p>
-<pre class="git-command">$ rm file_b.txt
+<pre class="terminal">$ rm file_b.txt
 $ git status
 On branch main
 Changes not staged for commit:
   (use "git add/rm <file>..." to update what will be committed)
   (use "git restore <file>..." to discard changes in working directory)
-        <span style="color:red">deleted:    file_b.txt</span>
+        <span class="col-status-changed">deleted:    file_b.txt</span>
 
 no changes added to commit (use "git add" and/or "git commit -a")
 $ git add file_b.txt
@@ -401,7 +382,7 @@ $ git commmit -m"Remove file_b.txt"
 <h2 data-number="4.4" class="anchored" data-anchor-id="git-reset---undoing-a-commit"><span class="header-section-number">4.4</span> <code>git reset</code> - “Undoing” a commit</h2>
 <p>The <code>git reset</code> command is quite versatile and can also be used instead of the <code>git restore</code> command. For now, we will simply show how to use it to “undo” a commit that we have made, without going into details that uses concepts we have not introduced yet.</p>
 <p>Imagine you have the following Git repository where you just commmited some changes that you regret, and now you want to remove them.</p>
-<pre class="git-command">$ mkdir ~/example-git-reset
+<pre class="terminal">$ mkdir ~/example-git-reset
 $ cd ~/example-git-reset
 $ git init
 $ echo "content" &gt; file.txt
@@ -412,13 +393,13 @@ $ git add .
 $ git commit -m"Update file.txt"
 </pre>
 <p>We can do this by finding the checksum of the previous commit and “reset” the Git repository to that commit:</p>
-<pre class="git-command">$ git log --oneline
-246b682 (HEAD -&gt; main) Update file.txt
-c481e82 Add file.txt
+<pre class="terminal">$ git log --oneline
+<span class="col-hash">246b682 (</span><span class="col-head">HEAD</span> <span class="col-hash">-&gt;</span> <span class="col-branch-local">main</span><span class="col-hash">)</span> Update file.txt
+<span class="col-hash">c481e82</span> Add file.txt
 $ git reset --hard c481e82
 HEAD is now at c481e82 Add file.txt
-$ gitr log --oneline
-c481e82 (HEAD -&gt; main) Add file.txt
+$ git log --oneline
+<span class="col-hash">c481e82 (</span><span class="col-head">HEAD</span> <span class="col-hash">-&gt;</span> <span class="col-branch-local">main</span><span class="col-hash">)</span> Add file.txt
 </pre>
 </section>
 <section id="exercises" class="level2" data-number="4.5">
@@ -426,7 +407,7 @@ c481e82 (HEAD -&gt; main) Add file.txt
 <section id="exercise-1---amend-a-commit" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-1---amend-a-commit">Exercise 1 - Amend a commit</h3>
 <p>In this Exercise we will practice amending a commit. Run the following code to set-up a Git repository with a commit we want to amend:</p>
-<pre class="git-command">$ mkdir ~/ex-amend
+<pre class="terminal">$ mkdir ~/ex-amend
 $ cd ~/ex-amend
 $ git init
 $ echo "content of file_a" &gt; file_a.txt
@@ -450,8 +431,8 @@ $ git commit -m"Add file_a.txt"
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>You can use the <code>git log</code> command to see the checksum of the commit. You could also additionally use the <code>--oneline</code> option to get a nice one-line output with a short version of the checksum:</p>
-<pre class="git-command">$ git log --oneline
-712d2c6 (HEAD -&gt; main) Add file_a.txt
+<pre class="terminal">$ git log --oneline
+<span class="col-hash">712d2c6 (</span><span class="col-head">HEAD</span> <span class="col-hash">-&gt;</span> <span class="col-branch-local">main</span><span class="col-hash">)</span> Add file_a.txt
 </pre>
 </div>
 </div>
@@ -470,7 +451,7 @@ $ git commit -m"Add file_a.txt"
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 You can use the <code>--no-edit</code> option to tell Git to use reuse the original commit message:
-<pre class="git-command">$ git add file_b.txt file_c.txt
+<pre class="terminal">$ git add file_b.txt file_c.txt
 $ git commit --amend --no-edit
 </pre>
 <p>Alternatively, you can omit the <code>--no-edit</code> option, and simply keep the current commit message that Git opens in a text editor.</p>
@@ -490,8 +471,8 @@ $ git commit --amend --no-edit
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre class="git-command">$ git log --oneline
-0ef247d (HEAD -&gt; main) Add file_a.txt
+<pre class="terminal">$ git log --oneline
+<span class="col-hash">0ef247d (</span><span class="col-head">HEAD</span> <span class="col-hash">-&gt;</span> <span class="col-branch-local">main</span><span class="col-hash">)</span> Add file_a.txt
 </pre>
 <p>The checksum has changed. The reason for this is that Git has amended the commit by <em>replacing</em> it with a new commit. This new commit does not have the same content, so the checksum is different.</p>
 </div>
@@ -510,7 +491,7 @@ $ git commit --amend --no-edit
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre class="git-command">$ git commit --amend -m"Add file_a.txt, file_b.txt, and file_c.txt"
+<pre class="terminal">$ git commit --amend -m"Add file_a.txt, file_b.txt, and file_c.txt"
 </pre>
 <p>Here we use the optional <code>-m</code> option to specify the commit message directly in the command so that we don’t have to type it in the text editor Git would otherwise open.</p>
 </div>
@@ -529,8 +510,8 @@ $ git commit --amend --no-edit
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre class="git-command">$ git log --oneline
-cade118 (HEAD -&gt; main) Add file_a.txt, file_b.txt, and file_c.txt
+<pre class="terminal">$ git log --oneline
+<span class="col-hash">cade118 (</span><span class="col-head">HEAD</span> <span class="col-hash">-&gt;</span> <span class="col-branch-local">main</span><span class="col-hash">)</span> Add file_a.txt, file_b.txt, and file_c.txt
 </pre>
 <p>The checksum has changed again. Again, the commit has been replaced by a new commit where we have updated the commit message. Since the commit message is part of the the commit that has been checksummed, the checksum has changed.</p>
 </div>
@@ -540,7 +521,7 @@ cade118 (HEAD -&gt; main) Add file_a.txt, file_b.txt, and file_c.txt
 <section id="exercise-2---using-git-restore" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-2---using-git-restore">Exercise 2 - Using <code>git restore</code></h3>
 <p>Run the following commands to set-up a Git repository for the exercise.</p>
-<pre class="git-command">$ mkdir ~/ex-git-restore
+<pre class="terminal">$ mkdir ~/ex-git-restore
 $ cd ~/ex-git-restore
 $ git init
 $ echo "file_a content" &gt; file_a.txt
@@ -566,7 +547,7 @@ $ git add .
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre class="git-command">$ git restore --staged file_b.txt
+<pre class="terminal">$ git restore --staged file_b.txt
 $ git commit -m"Update file_a.txt"
 </pre>
 </div>
@@ -586,7 +567,7 @@ $ git commit -m"Update file_a.txt"
 </div>
 <div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre class="git-command">$ git restore file_b.txt
+<pre class="terminal">$ git restore file_b.txt
 $ git status
 On branch main
 nothing to commit, working tree clean
@@ -600,7 +581,7 @@ file_b content
 <section id="exercise-3-optionalhard---removing-a-modifiedstaged-file-from-a-git-repository" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-3-optionalhard---removing-a-modifiedstaged-file-from-a-git-repository">Exercise 3 (optional/hard) - Removing a modified/staged file from a Git repository</h3>
 <p>Setup a Git repository with a modified and staged filed with the commands below:</p>
-<pre class="git-command">$ mkdir ~/ex-git-rm
+<pre class="terminal">$ mkdir ~/ex-git-rm
 $ cd ~/ex-git-rm
 $ git init
 $ echo "file_a" &gt; file_a.txt
@@ -613,16 +594,22 @@ $ git add file_b.txt
 </pre>
 <p><strong>1. Attempt to use <code>git rm</code> to remove file_a.txt. What happens?</strong></p>
 <p><strong>2. Explore the documentation to figure out why this happens</strong></p>
-<p>$ git status On branch main Changes not staged for commit: (use “git add <file>…” to update what will be committed) (use “git restore <file>…” to discard changes in working directory) <span style="color:red">modified: file_a.txt</span></file></file></p>
-no changes added to commit (use “git add” and/or “git commit -a”)
+<pre class="terminal">$ git status
+On branch main
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        <span class="col-status-changed">modified:   file_a.txt</span>
 
+no changes added to commit (use "git add" and/or "git commit -a")
+</file></file></pre>
 <p>Remove file_a using git rm. Note that file_a is removed from the working tree and the index is updated.</p>
-<pre class="git-command">$ git rm file_a.txt
+<pre class="terminal">$ git rm file_a.txt
 $ git status
 $ git commit -m"Remove file_a.txt"
 </pre>
 <p>Manually remove file_b. Note Git recognizes that the file has been deleted from the repo, but the index is not updated.</p>
-<pre class="git-command">$ rm file_b.txt
+<pre class="terminal">$ rm file_b.txt
 $ git status
 $ git add file_b.txt
 $ git commmit -m"Remove file_b.txt"
@@ -633,7 +620,7 @@ $ git commmit -m"Remove file_b.txt"
 <section id="exercise-4---undo-commits" class="level2" data-number="4.6">
 <h2 data-number="4.6" class="anchored" data-anchor-id="exercise-4---undo-commits"><span class="header-section-number">4.6</span> Exercise 4 - “Undo” commits</h2>
 <p>Run the following commands to set-up a Git repository:</p>
-<pre class="git-command">$ mkdir ~/ex-undo-commit
+<pre class="terminal">$ mkdir ~/ex-undo-commit
 $ cd ~/ex-undo-commit
 $ git init
 $ echo "content" &gt; file.txt
@@ -661,13 +648,13 @@ $ git commit -m"Update file.txt again"
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>We can use the `git reset`` command to reset the Git repository to the state before we started making changes to file.txt</p>
-<pre class="git-command">$ git log --oneline
-2cd5429 (HEAD -&gt; main) Update file.txt again
-1836bbe Update file.txt
-4387462 Add file.txt
+<pre class="terminal">$ git log --oneline
+<span class="col-hash">2cd5429 </span>(<span class="col-head">HEAD</span> <span class="col-hash">-&gt;</span> <span class="col-branch-local">main</span><span class="col-hash">)</span> Update file.txt again
+<span class="col-hash">1836bbe</span> Update file.txt
+<span class="col-hash">4387462</span> Add file.txt
 $ git reset --hard 4387462
 $ git log --oneline
-4387462 (HEAD -&gt; main) Add file.txt
+<span class="col-hash">4387462 (</span><span class="col-head">HEAD</span> <span class="col-hash">-&gt;</span> <span class="col-branch-local">main</span><span class="col-hash">)</span> Add file.txt
 </pre>
 </div>
 </div>

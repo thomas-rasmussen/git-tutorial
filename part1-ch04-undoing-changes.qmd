@@ -6,7 +6,7 @@ While working with Git, you will undoubtedly end up in a situation where you wan
 
 A common mistake is to make an error in the commit log message, or making a premature commit where you forgot to stage all the intended changes. You could fix the mistake by making another commit where you staged the forgotten changes and/or updated the commit message, but there is a more convenient way to fix these types of issues. You can simply stage the changes you forgot, and use the `git commit --amend` command. 
 
-<pre class="git-command">
+<pre class="terminal">
 $ git commit --amend
 </pre>
 
@@ -24,7 +24,7 @@ In this section we will show how we can use `git restore` to restore files in th
 
 Lets say we made changes to a file and added the changes to the staging area. How can we "undo" this, ie unstage the file? What we want to do is to restore the staging area to match the content in the working directory. If we create an example Git repository and use the `git status` command, it will actually give us the answer:
 
-<pre class="git-command">
+<pre class="terminal">
 $ mkdir ~/example-git-restore
 $ cd ~/example-git-restore
 $ git init
@@ -37,26 +37,26 @@ $ git status
 On branch main
 Changes to be committed:
   (use "git restore --staged <file>..." to unstage)
-        <span class="bash-green">modified:   file_a.txt</span>
+        <span class="col-status-added">modified:   file_a.txt</span>
 </pre>
 
 Git is directly telling us that if we want to unstage the changes in file_a.txt that has been added to the staging area, we can use the command `git restore --staged file_a.txt`. Let try that:
 
-<pre class="git-command">
+<pre class="terminal">
 $ git restore --staged file_a.txt
 $ git status
 On branch main
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git restore <file>..." to discard changes in working directory)
-        <span style="color:red">modified:   file_a.txt</span>
+        <span class="col-status-changed">modified:   file_a.txt</span>
 </pre>
 
 So what does `git restore --staged file_a.txt` do? The `--staged` option is telling git to restore the file_a.txt content in the index, and since we have not specified what source to restore from, git uses the content of file_a.txt from HEAD. This amounts to unstaging the file. As we can see from the output, the file is back to being modfied, but unstaged.
 
 What if we regret the changes we have made to file_a.txt and want to unmodify it entirely, ie restore the file back to how it looked in the last commit? As we can see from the previous output `git status` is again directly giving us the answer: We can use the command `git restore file_a.txt`. Let try it.
 
-<pre class="git-command">
+<pre class="terminal">
 $ git restore file_a.txt
 $ git status
 On branch main
@@ -74,7 +74,7 @@ It is important to understand that `git restore <file>` is a dangerous command t
 
 A common scenario is that you want to stop tracking a file. Git will recognize if you manually delete files in the working directory and will update the working directory automatically. But it will not update the index with the removal of the file, which you would then have to do yourself using `git add`. This two-step process can be done more effectively using the `git rm` command which can be used to remove files from the working tree and index. Lets illustrate it with an example. First, lets set up a repository where we have committed a couple of files:
 
-<pre class="git-command">
+<pre class="terminal">
 $ mkdir ~/example-git-rm
 $ cd ~/example-git-rm
 $ git init
@@ -87,13 +87,13 @@ $ git commit -m"Add file_a.txt and file_b.txt"
 
 First, we remove file_a.txt using the `git rm` command.
 
-<pre class="git-command">
+<pre class="terminal">
 $ git rm file_a.txt
 $ git status
 On branch main
 Changes to be committed:
   (use "git restore --staged <file>..." to unstage)
-        <span class="bash-green">deleted:    file_a.txt</span>
+        <span class="col-status-added">deleted:    file_a.txt</span>
 $ git commit -m"Remove file_a.txt"
 </pre>
 
@@ -102,14 +102,14 @@ we can use `git commit` directly after removing the file.
 
 Now, lets try manually removing file_b.txt. Note that Git recognizes that the file has been deleted from the repo, but the index is not updated, so we have to use `git add` ourselves to update the index.
 
-<pre class="git-command">
+<pre class="terminal">
 $ rm file_b.txt
 $ git status
 On branch main
 Changes not staged for commit:
   (use "git add/rm <file>..." to update what will be committed)
   (use "git restore <file>..." to discard changes in working directory)
-        <span style="color:red">deleted:    file_b.txt</span>
+        <span class="col-status-changed">deleted:    file_b.txt</span>
 
 no changes added to commit (use "git add" and/or "git commit -a")
 $ git add file_b.txt
@@ -124,7 +124,7 @@ The `git reset` command is quite versatile and can also be used instead of the `
 
 Imagine you have the following Git repository where you just commmited some changes that you regret, and now you want to remove them.
 
-<pre class="git-command">
+<pre class="terminal">
 $ mkdir ~/example-git-reset
 $ cd ~/example-git-reset
 $ git init
@@ -138,14 +138,14 @@ $ git commit -m"Update file.txt"
 
 We can do this by finding the checksum of the previous commit and "reset" the Git repository to that commit:
 
-<pre class="git-command">
+<pre class="terminal">
 $ git log --oneline
-246b682 (HEAD -> main) Update file.txt
-c481e82 Add file.txt
+<span class="col-hash">246b682 (</span><span class="col-head">HEAD</span> <span class="col-hash">-></span> <span class="col-branch-local">main</span><span class="col-hash">)</span> Update file.txt
+<span class="col-hash">c481e82</span> Add file.txt
 $ git reset --hard c481e82
 HEAD is now at c481e82 Add file.txt
-$ gitr log --oneline
-c481e82 (HEAD -> main) Add file.txt
+$ git log --oneline
+<span class="col-hash">c481e82 (</span><span class="col-head">HEAD</span> <span class="col-hash">-></span> <span class="col-branch-local">main</span><span class="col-hash">)</span> Add file.txt
 </pre>
 
 
@@ -156,7 +156,7 @@ c481e82 (HEAD -> main) Add file.txt
 
 In this Exercise we will practice amending a commit. Run the following code to set-up a Git repository with a commit we want to amend:
 
-<pre class="git-command">
+<pre class="terminal">
 $ mkdir ~/ex-amend
 $ cd ~/ex-amend
 $ git init
@@ -174,9 +174,9 @@ In the Git repository created by these commands, we have made a commit adding fi
 ::: {.callout-note title="Solution" collapse="true" icon="false"}
 You can use the `git log` command to see the checksum of the commit. You could also additionally use the `--oneline` option to get a nice one-line output with a short version of the checksum:
 
-<pre class= "git-command">
+<pre class= "terminal">
 $ git log --oneline
-712d2c6 (HEAD -> main) Add file_a.txt
+<span class="col-hash">712d2c6 (</span><span class="col-head">HEAD</span> <span class="col-hash">-></span> <span class="col-branch-local">main</span><span class="col-hash">)</span> Add file_a.txt
 </pre>
 
 :::
@@ -185,7 +185,7 @@ $ git log --oneline
 
 ::: {.callout-note title="Solution" collapse="true" icon="false"}
 You can use the `--no-edit` option to tell Git to use reuse the original commit message:
-<pre class="git-command">
+<pre class="terminal">
 $ git add file_b.txt file_c.txt
 $ git commit --amend --no-edit
 </pre>
@@ -195,9 +195,9 @@ Alternatively, you can omit the `--no-edit` option, and simply keep the current 
 **3. Look at the commit checksum again. Has it changed? Why?**
 
 ::: {.callout-note title="Solution" collapse="true" icon="false"}
-<pre class="git-command">
+<pre class="terminal">
 $ git log --oneline
-0ef247d (HEAD -> main) Add file_a.txt
+<span class="col-hash">0ef247d (</span><span class="col-head">HEAD</span> <span class="col-hash">-></span> <span class="col-branch-local">main</span><span class="col-hash">)</span> Add file_a.txt
 </pre>
 
 The checksum has changed. The reason for this is that Git has amended the commit by *replacing* it with a new commit. This new commit does not have the same content, so the checksum is different.
@@ -206,7 +206,7 @@ The checksum has changed. The reason for this is that Git has amended the commit
 **4. Amend the commit again to update the commit message we "forgot" to update in the previous amended commit.**
 
 ::: {.callout-note title="Solution" collapse="true" icon="false"}
-<pre class="git-command">
+<pre class="terminal">
 $ git commit --amend -m"Add file_a.txt, file_b.txt, and file_c.txt"
 </pre>
 
@@ -216,9 +216,9 @@ Here we use the optional `-m` option to specify the commit message directly in t
 **5. Look at the commit checksum again. Has it changed? Why?**
 
 ::: {.callout-note title="Solution" collapse="true" icon="false"}
-<pre class="git-command">
+<pre class="terminal">
 $ git log --oneline
-cade118 (HEAD -> main) Add file_a.txt, file_b.txt, and file_c.txt
+<span class="col-hash">cade118 (</span><span class="col-head">HEAD</span> <span class="col-hash">-></span> <span class="col-branch-local">main</span><span class="col-hash">)</span> Add file_a.txt, file_b.txt, and file_c.txt
 </pre>
 
 The checksum has changed again. Again, the commit has been replaced by a new commit where we have updated the commit message. Since the commit message is part of the the commit that has been checksummed, the checksum has changed.
@@ -228,7 +228,7 @@ The checksum has changed again. Again, the commit has been replaced by a new com
 
 Run the following commands to set-up a Git repository for the exercise.
 
-<pre class="git-command">
+<pre class="terminal">
 $ mkdir ~/ex-git-restore
 $ cd ~/ex-git-restore
 $ git init
@@ -248,7 +248,7 @@ Here we have created a Git repository where we have committed two files, then ma
 We were too fast on the trigger. We actually don't want to commit the changes to both files at the same time. Unstage file_b.txt and commit only file_a.txt.
 
 ::: {.callout-note title="Solution" collapse="true" icon="false"}
-<pre class="git-command">
+<pre class="terminal">
 $ git restore --staged file_b.txt
 $ git commit -m"Update file_a.txt"
 </pre>
@@ -260,7 +260,7 @@ $ git commit -m"Update file_a.txt"
 Upon further introspection, we decide that we do not want to commit the changes we have made to file_b.txt after all. Unmodify file_b.txt, ie restore the working directory to look like it did in the previous commit.
 
 ::: {.callout-note title="Solution" collapse="true" icon="false"}
-<pre class="git-command">
+<pre class="terminal">
 $ git restore file_b.txt
 $ git status
 On branch main
@@ -274,7 +274,7 @@ file_b content
 
 Setup a Git repository with a modified and staged filed with the commands below:
 
-<pre class="git-command">
+<pre class="terminal">
 $ mkdir ~/ex-git-rm
 $ cd ~/ex-git-rm
 $ git init
@@ -291,13 +291,13 @@ $ git add file_b.txt
 
 **2. Explore the documentation to figure out why this happens**
 
-
+<pre class="terminal">
 $ git status
 On branch main
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git restore <file>..." to discard changes in working directory)
-        <span style="color:red">modified:   file_a.txt</span>
+        <span class="col-status-changed">modified:   file_a.txt</span>
 
 no changes added to commit (use "git add" and/or "git commit -a")
 </pre>
@@ -306,7 +306,7 @@ no changes added to commit (use "git add" and/or "git commit -a")
 
 Remove file_a using git rm. Note that file_a is removed from the working tree and the index is updated.
 
-<pre class="git-command">
+<pre class="terminal">
 $ git rm file_a.txt
 $ git status
 $ git commit -m"Remove file_a.txt"
@@ -314,7 +314,7 @@ $ git commit -m"Remove file_a.txt"
 
 Manually remove file_b. Note Git recognizes that the file has been deleted from the repo, but the index is not updated.
 
-<pre class="git-command">
+<pre class="terminal">
 $ rm file_b.txt
 $ git status
 $ git add file_b.txt
@@ -326,7 +326,7 @@ $ git commmit -m"Remove file_b.txt"
 
 Run the following commands to set-up a Git repository:
 
-<pre class="git-command">
+<pre class="terminal">
 $ mkdir ~/ex-undo-commit
 $ cd ~/ex-undo-commit
 $ git init
@@ -348,14 +348,14 @@ Here, we have added a file, file.txt, and made changes to it in two commits. At 
 ::: {.callout-note title ="Solution" collapse=true icon=false}
 We can use the `git reset`` command to reset the Git repository to the state before we started making changes to file.txt
 
-<pre class="git-command">
+<pre class="terminal">
 $ git log --oneline
-2cd5429 (HEAD -> main) Update file.txt again
-1836bbe Update file.txt
-4387462 Add file.txt
+<span class="col-hash">2cd5429 </span>(<span class="col-head">HEAD</span> <span class="col-hash">-></span> <span class="col-branch-local">main</span><span class="col-hash">)</span> Update file.txt again
+<span class="col-hash">1836bbe</span> Update file.txt
+<span class="col-hash">4387462</span> Add file.txt
 $ git reset --hard 4387462
 $ git log --oneline
-4387462 (HEAD -> main) Add file.txt
+<span class="col-hash">4387462 (</span><span class="col-head">HEAD</span> <span class="col-hash">-></span> <span class="col-branch-local">main</span><span class="col-hash">)</span> Add file.txt
 </pre>
 :::
 

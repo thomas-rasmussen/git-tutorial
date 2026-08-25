@@ -38,7 +38,7 @@ As noted above, it is important to stress that rebasing changes the commit histo
 
 Now that we have a basic understanding of what rebasing is, let's see how to do it in practice. First, let's set up a repository with a commit history akin to commit history in the illustration above: 
 
-<pre class="git-command">
+<pre class="terminal">
 $ mkdir ~/rebase-example
 $ cd ~/rebase-example
 $ git init
@@ -57,29 +57,29 @@ $ touch file2.txt
 $ git add .
 $ git commit -m"C2"
 $ git log --oneline --graph --all
-* <span class="sha1-col">26806c3 (</span><span class="head-col">HEAD</span> <span class="sha1-col">-> </span><span class="active-branch-col">main</span><span class="sha1-col">)</span> C2
-<span style="color:red">|</span> * <span class="sha1-col">3aa6d72 (</span><span class="active-branch-col">feature</span><span class="sha1-col">)</span> C4
-<span style="color:red">|</span> * <span class="sha1-col">1e8657b</span> C3
-<span style="color:red">|/</span>
-* <span class="sha1-col">7639344</span> C1
+* <span class="col-hash">26806c3 (</span><span class="col-head">HEAD</span> <span class="col-hash">-> </span><span class="col-branch-local">main</span><span class="col-hash">)</span> C2
+<span class="col-log-graphline1">|</span> * <span class="col-hash">3aa6d72 (</span><span class="col-branch-local">feature</span><span class="col-hash">)</span> C4
+<span class="col-log-graphline1">|</span> * <span class="col-hash">1e8657b</span> C3
+<span class="col-log-graphline1">|/</span>
+* <span class="col-hash">7639344</span> C1
 
 </pre>
 
 As in the illustration in the start of the chapter, we want to rebase the commits on `feature` onto `main`. To do this we can use the `git rebase` command. Using the form `git rebase <branch>` Git will rebase the active branch (the branch HEAD is pointing to) onto `<branch>`:
 
-<pre class="git-command">
+<pre class="terminal">
 $ git switch feature
 $ git rebase main
 </pre>
 
 In this simple example, Git will successfully rebase the commits on `feature` onto `main` without any additional input. Let's look at the commit history after the rebase:
 
-<pre class="git-command">
+<pre class="terminal">
 git log --oneline --graph --all
-* <span class="sha1-col">d5843e4 (</span><span class="head-col">HEAD</span> <span class="sha1-col">-></span> <span class="active-branch-col">feature</span><span class="sha1-col">)</span> C4
-* <span class="sha1-col">ffd1adb</span> C3
-* <span class="sha1-col">26806c3 (</span><span class="active-branch-col">main</span><span class="sha1-col">)</span> C2
-* <span class="sha1-col">7639344</span> C1
+* <span class="col-hash">d5843e4 (</span><span class="col-head">HEAD</span> <span class="col-hash">-></span> <span class="col-branch-local">feature</span><span class="col-hash">)</span> C4
+* <span class="col-hash">ffd1adb</span> C3
+* <span class="col-hash">26806c3 (</span><span class="col-branch-local">main</span><span class="col-hash">)</span> C2
+* <span class="col-hash">7639344</span> C1
 </pre>
 
 As expected we can see that the commit ID of the C3 and C4 commit has changed, while the commit ID of C1 and C2 has stayed the same.
@@ -95,7 +95,7 @@ As expected we can see that the commit ID of the C3 and C4 commit has changed, w
 
 So far we have talked about (standard) Git rebasing. As you have seen, rebasing can be used to replay commits from one branch onto another branch. But rebasing is way more flexible than than just doing that. Using the `-i` flag, we can do interactive rebasing, which gives us more options. For example, we can split or combine commits while rebasing. Let see how this look like in practice. Imagine that we have implemented a feature in a series of commits in a feature branch that we want to merge into the main branch:
 
-<pre class="git-command">
+<pre class="terminal">
 $ mkdir ~/rebase-squash
 $ cd ~/rebase-squash
 $ git init
@@ -111,15 +111,15 @@ $ git commit -am"Fix bug"
 $ echo "Refactor code" >> file.txt
 $ git commit -am"Refactor to make more effecient"
 $ git log --oneline
-<span class="sha1-col">321b893 (</span><span class="head-col">HEAD</span> <span class="sha1-col">-></span> <span class="active-branch-col">add-new-feature</span><span class="sha1-col">)</span> Refactor to make more efficient
-<span class="sha1-col">83f522f</span> Fix bug
-<span class="sha1-col">86adade</span> First draft of implementation
-<span class="sha1-col">dc71be8 (</span><span class="active-branch-col">main</span><span class="sha1-col">)</span> Initial commit
+<span class="col-hash">321b893 (</span><span class="col-head">HEAD</span> <span class="col-hash">-></span> <span class="col-branch-local">add-new-feature</span><span class="col-hash">)</span> Refactor to make more efficient
+<span class="col-hash">83f522f</span> Fix bug
+<span class="col-hash">86adade</span> First draft of implementation
+<span class="col-hash">dc71be8 (</span><span class="col-branch-local">main</span><span class="col-hash">)</span> Initial commit
 </pre>
 
 We could simply do a fast-forward merge to integrate the changes from `feature` into `main`, but as is almost always the case, the individual commits on the feature branch are not that interesting in themselves, and are a product of trial and error while developing the feature. In a perfect world we would have been able to implement the entire feature in a single commit without having to fix any bugs or inefficient code. We can rewrite the history of the development of the feature by squashing the three commits on the feature branch into a single commit using interactive rebasing:
 
-<pre class="git-command">
+<pre class="terminal">
 $ git rebase -i main
 </pre>
 
@@ -238,10 +238,10 @@ Implement feature
 
 Again, we save and close the file. Git now does the rebasing, and we are done. Let's look at the commit history again:
 
-<pre class="git-command">
+<pre class="terminal">
 $ git log --oneline
-<span class="sha1-col">3df4aa8 (</span><span class="head-col">HEAD</span> <span class="sha1-col">-></span> <span class="active-branch-col">add-new-feature</span><span class="sha1-col">)</span> Implement feature
-<span class="sha1-col">dc71be8 (</span><span class="active-branch-col">main</span><span class="sha1-col">)</span> Initial commit
+<span class="col-hash">3df4aa8 (</span><span class="col-head">HEAD</span> <span class="col-hash">-></span> <span class="col-branch-local">add-new-feature</span><span class="col-hash">)</span> Implement feature
+<span class="col-hash">dc71be8 (</span><span class="col-branch-local">main</span><span class="col-hash">)</span> Initial commit
 </pre>
 
 We have now rewritten the history of commits, so that it looks like we implemented the feature perfectly in a single commit, and we can do a simple fast-forward merge to integrate the changes into the main branch.
@@ -259,7 +259,7 @@ So far we have only considered trivial examples where we have no merge conflicts
 
 Which can be created with the following commmands:
 
-<pre class="git-command">
+<pre class="terminal">
 $ mkdir ~/rebase-merge-conflict
 $ cd rebase-merge-conflict
 $ git init
@@ -273,32 +273,32 @@ $ git switch main
 $ echo "Second commit on main branch" >> file.txt
 $ git commit -am"Second commit on main branch"
 $ git log --oneline --all --graph
-* <span class="sha1-col">b744d7b (</span><span class="head-col">HEAD</span> <span class="sha1-col">-></span> <span class="active-branch-col">main</span><span class="sha1-col">)</span> Second commit on main branch
-<span style="color:red">|</span> * <span class="sha1-col">6f7e6de (</span><span class="active-branch-col">feature</span><span class="sha1-col">)</span> Commit on feature branch
-<span style="color:red">|/</span>
-* <span class="sha1-col">87d57f0</span> First commit on main branch
+* <span class="col-hash">b744d7b (</span><span class="col-head">HEAD</span> <span class="col-hash">-></span> <span class="col-branch-local">main</span><span class="col-hash">)</span> Second commit on main branch
+<span class="col-log-graphline1">|</span> * <span class="col-hash">6f7e6de (</span><span class="col-branch-local">feature</span><span class="col-hash">)</span> Commit on feature branch
+<span class="col-log-graphline1">|/</span>
+* <span class="col-hash">87d57f0</span> First commit on main branch
 </pre>
 
 We want to rebase the `feature` branch onto the `main` branch, but when we try to do this we get the following feedback from Git:
 
-<pre class="git-command">
+<pre class="terminal">
 $ git switch feature
 $ git rebase main
 Auto-merging file.txt
 CONFLICT (content): Merge conflict in file.txt
 error: could not apply 6f7e6de... Commit on feature branch
-<span class="sha1-col">hint: Resolve all conflicts manually, mark them as resolved with</span>
-<span class="sha1-col">hint: "git add/rm <conflicted_files>", then run "git rebase --continue".</span>
-<span class="sha1-col">hint: You can instead skip this commit: run "git rebase --skip".</span>
-<span class="sha1-col">hint: To abort and get back to the state before "git rebase", run "git rebase --abort".</span>
-<span class="sha1-col">hint: Disable this message with "git config set advice.mergeConflict false"</span>
+<span class="col-hash">hint: Resolve all conflicts manually, mark them as resolved with</span>
+<span class="col-hash">hint: "git add/rm <conflicted_files>", then run "git rebase --continue".</span>
+<span class="col-hash">hint: You can instead skip this commit: run "git rebase --skip".</span>
+<span class="col-hash">hint: To abort and get back to the state before "git rebase", run "git rebase --abort".</span>
+<span class="col-hash">hint: Disable this message with "git config set advice.mergeConflict false"</span>
 Could not apply 6f7e6de... # Commit on feature branch
 
 </pre>
 
 Git helpfully informs us that we have a merge conflict in file.txt. Normally, you would open file.txt in a text editor and resolve the conflict, but here we will just remake the file in the terminal, including the changes from both branches:
 
-<pre class="git-command">
+<pre class="terminal">
 $ cat file.txt
 First commit on main branch
 <<<<<<< HEAD
@@ -317,18 +317,18 @@ Commit on feature branch
 
 We can now use `git add` and continue the rebase with `git rebase --continue` as instructed:
 
-<pre class="git-command">
+<pre class="terminal">
 $ git add .
 $ git rebase --continue
 </pre>
 
 This will finalize the rebase, and Git opens a file for us to edit the commit message for the rebased commit, which we simply keep as "Commit on feature branch". The commit history now looks as following:
 
-<pre class="git-command">
+<pre class="terminal">
 git log --oneline --graph --oneline
-* <span class="sha1-col">a0daf9d </span>(<span class="head-col">HEAD</span> <span class="sha1-col">-></span> <span class="active-branch">feature</span><span class="sha1-col">)</span> Commit on feature branch
-* <span class="sha1-col">b744d7b (</span><span class="active-branch-col">main</span><span class="sha1-col">)</span> Second commit on main branch
-* <span class="sha1-col">87d57f0</span> First commit on main branch
+* <span class="col-hash">a0daf9d </span>(<span class="col-head">HEAD</span> <span class="col-hash">-></span> <span class="active-branch">feature</span><span class="col-hash">)</span> Commit on feature branch
+* <span class="col-hash">b744d7b (</span><span class="col-branch-local">main</span><span class="col-hash">)</span> Second commit on main branch
+* <span class="col-hash">87d57f0</span> First commit on main branch
 </pre>
 
 Which is also illustrated in the diagram below:
@@ -339,7 +339,7 @@ Which is also illustrated in the diagram below:
 
 We end this example with cleaning up:
 
-<pre class="git-command">
+<pre class="terminal">
 $ cd
 $ rm rebase-merge-conflict -rf
 </pre>
@@ -359,7 +359,7 @@ If we run the command `git rebase <commit ID>` using the commit ID for the C1 co
 
 So we can use the same form of `git rebase` to rebase commits on the active branch. Let's illustrate this with an example. Let's first set up a repository with 4 commits as illustrated above:
 
-<pre class="git-command">
+<pre class="terminal">
 $ mkdir rebase-branch-onto-self
 $ cd rebase-branch-onto-self
 $ git init
@@ -386,7 +386,7 @@ Fourth commit
 
 Imagine we want to squash C2 and C3 into a single commit. We could do this by interactively rebasing C2, C3, and C4 onto C1, squashing C2 and C3 in the process:
 
-<pre class="git-command">
+<pre class="terminal">
 $ git rebase -i 1c94325
 </pre>
 
@@ -407,7 +407,7 @@ pick 553f5f8 # C4
 
 Next Git will prompt us to make a commit message, which we set to "C2 and C3". If we look at the commit history, now it looks like this:
 
-<pre class="git-command">
+<pre class="terminal">
 $ git log --oneline
 fa7b717 (HEAD -> main) C4
 ec510fc C2 and C3
@@ -448,7 +448,7 @@ The opinion of this tutorial is that preserving the true commit history of a rep
 
 Use the following commands to set up a repository with 3 commits on the `main` branch:
 
-<pre class="git-command">
+<pre class="terminal">
 $ mkdir ~/ex-rebase-squash
 $ cd ~/ex-rebase-squash
 $ git init
@@ -473,11 +473,11 @@ Use `git log` with appropriate flags to print the commit log, and use `cat` to p
 
 ::: {.callout-note title="Solution" collapse="true" icon="false"}
 
-<pre class="git-command">
+<pre class="terminal">
 $ git log --oneline
-<span class="sha1-col">6882f38 (</span><span class="head-col">HEAD</span> <span class="sha1-col">-></span> <span class="active-branch-col">main</span><span class="sha1-col">)</span> Third commit
-<span class="sha1-col">c06bb27</span> Second commit
-<span class="sha1-col">ad2c6c5</span> First commit
+<span class="col-hash">6882f38 (</span><span class="col-head">HEAD</span> <span class="col-hash">-></span> <span class="col-branch-local">main</span><span class="col-hash">)</span> Third commit
+<span class="col-hash">c06bb27</span> Second commit
+<span class="col-hash">ad2c6c5</span> First commit
 $ cat file.txt
 Content of first commit
 Content of second commit
@@ -499,7 +499,7 @@ Use `git rebase --help` to find documentation on the `git rebase` command. Look 
 ::: {.callout-note title="Solution" collapse="true" icon="false"}
 Run the following command to interactively rebase all the commits, including the root commit, on the `main` branch:
 
-<pre class="git-command">
+<pre class="terminal">
 $ git rebase -i --root
 </pre>
 
@@ -528,9 +528,9 @@ Print the new commit log and check that file.txt still has the same content. Als
 
 ::: {.callout-note title="Solution" collapse="true" icon="false"}
 
-<pre class="git-command">
+<pre class="terminal">
 $ git log --oneline
-<span class="sha1-col">b082fad (</span><span class="head-col">HEAD</span> <span class="sha1-col">-></span> <span class="active-branch-col">main</span><span class="sha1-col">)</span> Squashed commit
+<span class="col-hash">b082fad (</span><span class="col-head">HEAD</span> <span class="col-hash">-></span> <span class="col-branch-local">main</span><span class="col-hash">)</span> Squashed commit
 $ cat file.txt
 Content of first commit
 Content of second commit
@@ -546,7 +546,7 @@ The commit ID of the squashed commit is different than any of the commit ID's fr
 
 Create the following repository where a README and some base code for a project is created and edited on the `main` branch, while at the same time, a feature is being implemented in the `implement-feature` branch:
 
-<pre class="git-command">
+<pre class="terminal">
 $ mkdir ~/ex-rebase-merge-conflicts
 $ cd ~/ex-rebase-merge-conflictts
 $ git init
@@ -581,13 +581,13 @@ If you have followed the instructions above you are currently on the `main` bran
 
 ::: {.callout-tip title="Solution" collapse="true" icon="false"}
 
-<pre class="git-command">
+<pre class="terminal">
 $ git log --all --graph --oneline
-* <span class="sha1-col">cb32850 (</span><span class="head-col">HEAD </span><span class="sha1-col">-></span> <span class="active-branch-col">main</span><span class="sha1-col">)</span> Update base code and README
-<span style="color:red">|</span> * <span class="sha1-col">03baf98 (</span><span class="active-branch-col">implement-feature</span><span class="sha1-col">)</span> Add info on feature in README
-<span style="color:red">|</span> * <span class="sha1-col">2cbc9bf</span> Implement feature
-<span style="color:red">|/</span>
-* <span class="sha1-col">3bb821e</span> Initial commit
+* <span class="col-hash">cb32850 (</span><span class="col-head">HEAD </span><span class="col-hash">-></span> <span class="col-branch-local">main</span><span class="col-hash">)</span> Update base code and README
+<span class="col-log-graphline1">|</span> * <span class="col-hash">03baf98 (</span><span class="col-branch-local">implement-feature</span><span class="col-hash">)</span> Add info on feature in README
+<span class="col-log-graphline1">|</span> * <span class="col-hash">2cbc9bf</span> Implement feature
+<span class="col-log-graphline1">|/</span>
+* <span class="col-hash">3bb821e</span> Initial commit
 </pre>
 
 :::
@@ -606,7 +606,7 @@ If you followed the above steps to create the repository, the active branch is `
 
 Run the followig commands to initiaze the rebase:
 
-<pre class="git-command">
+<pre class="terminal">
 $ git switch implement-feature
 $ git rebase -i main
 </pre>
@@ -646,7 +646,7 @@ The patch of changes from `2cbc9bf` is basically saying "Append the line 'New co
 
 Open, edit, and save, the file in your favorite file editor. Here we show how to edit the file by recreating it using shell commands:
 
-<pre class="git-command">
+<pre class="terminal">
 $ cat basecode.txt
 <<<<<<< HEAD
 Updated base code for project
@@ -673,7 +673,7 @@ Follow the instructions provided by Git in the terminal
 
 ::: {.callout-note title="Solution" collapse="true" icon="false"}
 
-<pre class="git-command">
+<pre class="terminal">
 $ git add .
 $ git rebase --continue
 </pre>
@@ -699,7 +699,7 @@ The reason for the conflict is analogous to why we had a merge conflict in codeb
 
 Open, edit, and save, the file in your favorite file editor. Here we show how to edit the file by recreating it using shell commands:
 
-<pre class="git-command">
+<pre class="terminal">
 $ cat README.txt
 <<<<<<< HEAD
 Updated project README
@@ -726,7 +726,7 @@ Follow the instructions provided by Git in the terminal
 
 ::: {.callout-note title="Solution" collapse="true" icon="false"}
 
-<pre class="git-command">
+<pre class="terminal">
 $ git add .
 $ git rebase --continue
 </pre>
@@ -739,11 +739,11 @@ Print the commit log again to see how the rebase history of commits looks like a
 
 ::: {.callout-note title="Solution" collapse="true" icon="false"}
 
-<pre class="git-command">
+<pre class="terminal">
 $ git log --oneline --graph --all
-* <span class="sha1-col">603e19f (</span><span class="head-col">HEAD</span> <span class="sha1-col">-></span> <span class="active-branch-col">implement-feature</span><span class="sha1-col">)</span> Implement feature
-* <span class="sha1-col">cb32850 (</span><span class="active-branch-col">main</span><span class="sha1-col">)</span> Update base code and README
-* <span class="sha1-col">3bb821e</span> Initial commit
+* <span class="col-hash">603e19f (</span><span class="col-head">HEAD</span> <span class="col-hash">-></span> <span class="col-branch-local">implement-feature</span><span class="col-hash">)</span> Implement feature
+* <span class="col-hash">cb32850 (</span><span class="col-branch-local">main</span><span class="col-hash">)</span> Update base code and README
+* <span class="col-hash">3bb821e</span> Initial commit
 </pre>
 
 We rebased `implement-feature` onto the `main` branch, so the two commit on the `main` branch, `3bb821e` and `cb32850` are unchanged. The two commits on the `implement-feature` branch have been replayed onto `main` and have also been squashed, both resulting in the new combined commit having a new commit ID, `603e19f`.
@@ -752,7 +752,7 @@ We rebased `implement-feature` onto the `main` branch, so the two commit on the 
 
 We have now rebased (and cleaned) the commits on `implement-feature` onto `main` and can incorporate the changes into `main` with a simple fast-forward merge. We end the exercise by cleaning up:
 
-<pre class="git-command">
+<pre class="terminal">
 $ cd
 $ rm ex-rebase-merge-conflicts -rf
 </pre>
@@ -762,7 +762,7 @@ $ rm ex-rebase-merge-conflicts -rf
 
 Run the following commands to create a repository with two commits on `main`:
 
-<pre class="git-command">
+<pre class="terminal">
 $ mkdir ex-rebase-reorder
 $ cd ex-rebase-reorder
 $ git init
@@ -773,8 +773,8 @@ $ echo "Project README" > README.txt
 $ git add .
 $ git commit -m"Add README"
 $ git log --oneline
-<span class="sha1-col">b93c2a0 (</span><span class="head-col">HEAD</span> <span class="sha1-col">-></span> <span class="active-branch-col">main</span><span class="sha1-col">)</span> Add README
-<span class="sha1-col">5e8e19d</span> Add feature
+<span class="col-hash">b93c2a0 (</span><span class="col-head">HEAD</span> <span class="col-hash">-></span> <span class="col-branch-local">main</span><span class="col-hash">)</span> Add README
+<span class="col-hash">5e8e19d</span> Add feature
 </pre>
 
 In our eagerness to start the project we jumped directly into implementing a feature, and then subsequently remembered to add a README to the project. Rewrite the history of the project, so that the README is added as the first commit and then the feature is implemented in the second commit.
@@ -793,7 +793,7 @@ You need to rebase the all the commits on `main`, including the root commit. See
 
 Run the following command to rebase all the commits on `main` including the root commit:
 
-<pre class="git-command">
+<pre class="terminal">
 $ git rebase -i --root
 </pre>
 
@@ -820,10 +820,10 @@ Print the commit log. Have the commit ID's changed? Why?
 
 ::: {.callout-note title="Solution" collapse="true" icon="false"}
 
-<pre class="git-command">
+<pre class="terminal">
 $ git log --oneline
-<span class="sha1-col">50f0523 (</span><span class="head-col">HEAD</span> <span class="sha1-col">-></span> <span class="active-branch-col">main</span><span class="sha1-col">)</span> Add feature
-<span class="sha1-col">0bdde57</span> Add README
+<span class="col-hash">50f0523 (</span><span class="col-head">HEAD</span> <span class="col-hash">-></span> <span class="col-branch-local">main</span><span class="col-hash">)</span> Add feature
+<span class="col-hash">0bdde57</span> Add README
 </pre>
 
 The commit ID for both commits have changed. This is because we have rewritten the history. The patch of changes implementing the feature is now done first, in the empty repository, not on top of the repository where the README already exists. Likewise, the patch of changes adding the README is now done on top of the commit that has already added the feature, also changing the commit ID.
@@ -832,7 +832,7 @@ The commit ID for both commits have changed. This is because we have rewritten t
 
 Clean up:
 
-<pre class="git-command">
+<pre class="terminal">
 $ cd
 $ rm ~/ex-rebase-reorder -rf
 </pre>
@@ -842,7 +842,7 @@ $ rm ~/ex-rebase-reorder -rf
 
 Run the following commands to create a repository with two commits adding both a README and two features:
 
-<pre class="git-command">
+<pre class="terminal">
 $ mkdir ~/ex-rebase-split
 $ cd ~/ex-rebase-split
 $ git init
@@ -854,8 +854,8 @@ $ touch feature2.txt
 $ git add .
 $ git commit -m"Add feature1 and feature2"
 $ git log --oneline
-<span class="sha1-col">d7c6a64 (</span><span class="head-col">HEAD</span> <span class="sha1-col">-></span> <span class="active-branch-col">main</span><span class="sha1-col">)</span> Add feature1 and feature2
-<span class="sha1-col">06b1273</span> Initial commit
+<span class="col-hash">d7c6a64 (</span><span class="col-head">HEAD</span> <span class="col-hash">-></span> <span class="col-branch-local">main</span><span class="col-hash">)</span> Add feature1 and feature2
+<span class="col-hash">06b1273</span> Initial commit
 </pre>
 
 We decide that adding both features in the same commit is not ideal, and we want to split the commit into two, one for each implementation of a feature. The question is how, which we will explore here.
@@ -879,7 +879,7 @@ Use the information provided in the documentation to split the `d7c6a64` commit.
 
 As explained in the documentation we can run the following command to rebase the `d7c6a64` commit:
 
-<pre class="git-command">
+<pre class="terminal">
 $ git rebase -i d7c6a64^
 </pre>
 
@@ -897,7 +897,7 @@ edit d7c6a64 # Add feature1 and feature2
 ```
 Next, we run the following command to move HEAD to the previous commit and unstage feature1.txt feature2.txt:
 
-<pre class="git-command">
+<pre class="terminal">
 $ git reset HEAD^
 $ git status
 <span style="color:red">interactive rebase in progress; onto</span> 06b1273
@@ -910,14 +910,14 @@ You are currently editing a commit while rebasing branch 'main' on '06b1273'.
 
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
-        <span style="color:red">feature1.txt</span>
-        <span style="color:red">feature2.txt</span>
+        <span class="col-status-changed">feature1.txt</span>
+        <span class="col-status-changed">feature2.txt</span>
 </pre>
 
 
 This leaves us in a state where feature1.txt and feature2.txt is in the working directory, but they have not been staged yet. We can now add and commit them one at a time to split up the commit into two:
 
-<pre class="git-command">
+<pre class="terminal">
 $ git add feature1.txt
 $ git commit -m"Add feature1"
 $ git add feature2.txt
@@ -926,12 +926,12 @@ $ git commit -m"Add feature2"
 
 Finally, we continue the rebase and print the commit log:
 
-<pre class="git-command">
+<pre class="terminal">
 $ git rebase --continue
 $ git log --oneline
-<span class="sha1-col">f81244f (</span><span class="head-col">HEAD</span> <span class="sha1-col">-></span> <span class="active-branch-col">main</span><span class="sha1-col">)</span> Add feature2.txt
-<span class="sha1-col">2423455</span> Add feature1
-<span class="sha1-col">06b1273</span> Initial commit
+<span class="col-hash">f81244f (</span><span class="col-head">HEAD</span> <span class="col-hash">-></span> <span class="col-branch-local">main</span><span class="col-hash">)</span> Add feature2.txt
+<span class="col-hash">2423455</span> Add feature1
+<span class="col-hash">06b1273</span> Initial commit
 </pre>
 :::
 
@@ -943,7 +943,7 @@ This exercise assumes you have read @sec-git-reflog.
 
 Sometimes things will go wrong when using Git. This is also the case when doing a rebase. Maybe the rebase did not do what you wanted it to do, or maybe the whole rebase process went haywire for unknown reasons. If you realise something is wrong doing the rebase you should be able to use `git rebase --abort` to restore your repository back to the state before you initiated the rebase, but maybe even this might go wrong for whatever reason. A more general approach to recover from a rebase that goes wrong or that you regret, is to use `git reflog` to identify the commit ID HEAD was pointing to before the rebase, and  use `git reset` to move HEAD back to the commit it was pointing to prior to the rebase. Use the following commands to set up a repository with 3 commits:
 
-<pre class="git-command">
+<pre class="terminal">
 $ mkdir ~/ex-rebase-undo
 $ cd ~/ex-rebase-undo
 $ git init
@@ -955,9 +955,9 @@ $ git commit -am"Second commit"
 $ echo "Third commit" >> file.txt
 $ git commit -am"Third commit"
 $ git log --oneline
-<span class="sha1-col">8993eb8 (</span><span class="head-col">HEAD</span> <span class="sha1-col">-></span> <span class="active-branch-col">main</span><span class="sha1-col">)</span> Third commit
-<span class="sha1-col">1dd5e36</span> Second commit
-<span class="sha1-col">cd2c018</span> First commit
+<span class="col-hash">8993eb8 (</span><span class="col-head">HEAD</span> <span class="col-hash">-></span> <span class="col-branch-local">main</span><span class="col-hash">)</span> Third commit
+<span class="col-hash">1dd5e36</span> Second commit
+<span class="col-hash">cd2c018</span> First commit
 </pre>
 
 <b>Step 1 - Rebase commits</b>
@@ -982,7 +982,7 @@ Consider how to specify the range of commits to rebase. You need to use use `git
 
 Run the following command:
 
-<pre class="git-command">
+<pre class="terminal">
 $ git rebase -i cd2c018
 </pre>
 
@@ -1016,7 +1016,7 @@ Second and third commit
 </div>
 ```
 
-<pre class="git-command">
+<pre class="terminal">
 $ git log --oneline
 947a6fc (HEAD -> main) Second and third commit
 cd2c018 First commit
@@ -1031,7 +1031,7 @@ Regret this decision immediately. Use `git reflog` to identify the commit ID of 
 
 ::: {.callout-note title="Solution" collapse="true" icon="false"}
 
-<pre class="git-command">
+<pre class="terminal">
 947a6fc (HEAD -> main) HEAD@{0}: rebase (finish): returning to refs/heads/main
 947a6fc (HEAD -> main) HEAD@{1}: rebase (squash): Second and third commit
 1dd5e36 HEAD@{2}: rebase (start): checkout cd2c018
@@ -1042,7 +1042,7 @@ cd2c018 HEAD@{5}: commit (initial): First commit
 
 We can see from the log that the old "Third commit" ID is 8993eb8. We can now use `git reset --hard` to restore the repository to the state before the rebase:
 
-<pre class="git-command">
+<pre class="terminal">
 $ git reset --hard 8993eb8
 $ git log --oneline
 8993eb8 (HEAD -> main) Third commit

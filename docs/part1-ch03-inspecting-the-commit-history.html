@@ -47,7 +47,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-18447e9d16e0bfc3229421fc5cc130e2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-2aad03a8b4e422ea2bd4d420080b3680.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -75,7 +75,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script src="custom-js.js"></script>
 
 
 <link rel="stylesheet" href="styles.css">
@@ -194,38 +193,20 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part2-collaboration.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Collaboration</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./part2-git-diff.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Using <code>git diff</code> to show code changes</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Using <code>git diff</code> to show code changes</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./part2-github.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction to GitHub</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./part2-git-internals.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Git internals</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./part2-git-stash.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">git stash.</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Introduction to GitHub</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./part2-git-rebase.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Rebasing</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Rebasing</span></span></a>
   </div>
 </li>
       </ul>
@@ -306,14 +287,14 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-number="3.1" class="anchored" data-anchor-id="data-integrity-in-git"><span class="header-section-number">3.1</span> Data integrity in Git</h2>
 <p>Before we start talking about the commit histories and changes to files, we need to talk about data integrity and checksums in Git. Any stream of data, for example a file or a directory of files, can be summarized into a single value, a so-called checksum. Even a single bit flip in a data stream would result in an entirely new checksum. Git checksums <em>everything</em>. This means that if something changes (including data corruption), Git will know about it. Git uses this to ensure the integrity of a project. In Git everything is checksummed before it is stored, and stored files/directories are referred to by that checksum. It also means that if the checksum of your state of a project (a commit ID) matches the checksum of another clone of the project, you can be assured that the entire project up until that point is identical.</p>
 <p>The method that Git uses for making checksums is called a SHA-1 hash. This is a 40-characters string composed of hexadecimal characters and looks something like shown below.</p>
-<pre class="git-command">840552db75d3d52894732b753892427b3f2cafa8
+<pre class="terminal">840552db75d3d52894732b753892427b3f2cafa8
 </pre>
 <p>Since Git uses checksums so much, you will see these checksums everywhere. In particular, every time you commit a snapshot of files to a Git repository, the snapshot is associated with a checksum value.</p>
 </section>
 <section id="basic-use-of-git-log" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="basic-use-of-git-log"><span class="header-section-number">3.2</span> Basic use of <code>git log</code></h2>
 <p>To illustrate how how to inspect the commit history, we create a simple Git repository to work with.</p>
-<pre class="git-command">$ cd ~
+<pre class="terminal">$ cd ~
 $ mkdir example-git-log
 $ cd example-git-log
 $ git init
@@ -322,8 +303,8 @@ $ git add file.txt
 $ git commit -m"First commit"
 </pre>
 <p>If you use <code>git log</code> on this repository, you will get output similar to the below:</p>
-<pre class="git-command">$ git log
-<span class="bash-gold">commit 3d00987b9c770a8881e1ea1024c119e2c19b091a</span> (HEAD -&gt; main)
+<pre class="terminal">$ git log
+<span class="col-hash">commit 3d00987b9c770a8881e1ea1024c119e2c19b091a</span> (HEAD -&gt; main)
 Author: Thomas Rasmussen &lt;thomasboejer@gmail.com&gt;
 Date:   Mon Oct 13 08:28:10 2025 +0200
 
@@ -331,49 +312,49 @@ Date:   Mon Oct 13 08:28:10 2025 +0200
 </pre>
 <p>In the output we can see that there have been one commit to the repository, and we are presented with information on the author of the commit, the date of the commit, the commit checksum, and the commit messsage.</p>
 <p>Lets add another commit to the repository look at the commit history again:</p>
-<pre class="git-command">$ echo "Second commit" &gt;&gt; file.txt
+<pre class="terminal">$ echo "Second commit" &gt;&gt; file.txt
 $ git add file.txt
 $ git commit -m"Second commit"
 $ git log
-commit <span class="bash-gold">6ea3956e99f1d0227c01e05622e952bffec0eafc</span> (HEAD -&gt; main)
+commit <span class="col-hash">6ea3956e99f1d0227c01e05622e952bffec0eafc</span> (HEAD -&gt; main)
 Author: Thomas Rasmussen &lt;thomasboejer@gmail.com&gt;
 Date:   Mon Oct 13 08:33:54 2025 +0200
 
     Second commit
 
-<span class="bash-gold">commit 3d00987b9c770a8881e1ea1024c119e2c19b091a</span>
+<span class="col-hash">commit 3d00987b9c770a8881e1ea1024c119e2c19b091a</span>
 Author: Thomas Rasmussen &lt;thomasboejer@gmail.com&gt;
 Date:   Mon Oct 13 08:28:10 2025 +0200
 
     First commit
 </pre>
 <p>We can see that commits are listed in reverse chronological orders, with the newest commit showing up first. We can also see that the information we are shown is quite verbose, and with many commits to a repository will make it hard to get an overview of the commit history. Typically, we are primarily interested in the commit checksum and the commit message of commits to a repository. We can get Git to show us exactly this using the <code>--oneline</code> option:</p>
-<pre class="git-command">$ git log --oneline
-<span class="bash-gold">6ea3956</span> (HEAD -&gt; main) Second commit
-<span class="bash-gold">3d00987</span> First commit
+<pre class="terminal">$ git log --oneline
+<span class="col-hash">6ea3956 (</span><span class="col-head">HEAD</span> <span class="col-hash">-&gt;</span> <span class="col-branch-local">main</span><span class="col-hash">)</span> Second commit
+<span class="col-hash">3d00987</span> First commit
 </pre>
 <p>Note that when using this option, only the first 7 characters of checksums are shown. Git will automatically show more characters if necessary to make the ID’s’ unique. At this point you might be concerned about the possibility of different commits having the same checksum, a so-called SHA-1 collision. Don’t worry, this is extremely unlikely<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>:</p>
 <blockquote class="blockquote">
 <p>Here’s an example to give you an idea of what it would take to get a SHA-1 collision. If all 6.5 billion humans on Earth were programming, and every second, each one was producing code that was the equivalent of the entire Linux kernel history (6.5 million Git objects) and pushing it into one enormous Git repository, it would take roughly 2 years until that repository contained enough objects to have a 50% probability of a single SHA-1 object collision. Thus, an organic SHA-1 collision is less likely than every member of your programming team being attacked and killed by wolves in unrelated incidents on the same night.</p>
 </blockquote>
 <p>Another thing we are often interested in, is the exact changes that was introduced in a commit. We can tell Git to show us the differences (the patch output) introduced in each commit by applying the <code>-p</code> option to <code>git log</code>. Let’s apply this option together with<code>--oneline</code>:</p>
-<pre class="git-command">$ git log --oneline -p
-<span class="bash-gold">6ea3956</span> (HEAD -&gt; main) Second commit
-<span style="color:white">diff --git a/file.text</span> b/file.text
-<span style="color:white">new file mode 100644</span>
-<span style="color:white">index 0000000..c133ee6</span>
-<span style="color:white">--- /dev/null</span>
-<span style="color:white">+++ b/file.text</span>
-@@ -0,0 +1 @@
-<span class="bash-green">+Second commit</span>
-<span class="bash-gold">3d00987 First commit</span>
-<span style="color:white">diff --git a/file.txt b/file.txt</span>
-<span style="color:white">new file mode 100644</span>
-<span style="color:white">index 0000000..6eaf244</span>
-<span style="color:white">--- /dev/null</span>
-<span style="color:white">+++ b/file.txt</span>
-@@ -0,0 +1 @@
-<span class="bash-green">+First commit</span>
+<pre class="terminal">$ git log --oneline -p
+<span class="col-hash">6ea3956</span> (HEAD -&gt; main) Second commit
+<span class="col-diff-header">diff --git a/file.text</span> b/file.text
+<span class="col-diff-metadata">new file mode 100644</span>
+<span class="col-diff-metadata">index 0000000..c133ee6</span>
+<span class="col-diff-metadata">--- /dev/null</span>
+<span class="col-diff-metadata">+++ b/file.text</span>
+<span class="col-diff-hunk-header">@@ -0,0 +1 @@</span>
+<span class="col-diff-added">+Second commit</span>
+<span class="col-hash">3d00987 First commit</span>
+<span class="col-diff-header">diff --git a/file.txt b/file.txt</span>
+<span class="col-diff-metadata">new file mode 100644</span>
+<span class="col-diff-metadata">index 0000000..6eaf244</span>
+<span class="col-diff-metadata">--- /dev/null</span>
+<span class="col-diff-metadata">+++ b/file.txt</span>
+<span class="col-diff-hunk-header">@@ -0,0 +1 @@</span>
+<span class="col-diff-added">+First commit</span>
 </pre>
 <p>There is a lot of technical information in this output, which we will not discuss, but we can see that the the line of text that was added in each commit is clearly marked in green.</p>
 </section>

@@ -36,7 +36,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./part2-collaboration.html" rel="next">
+<link href="./part2-git-diff.html" rel="next">
 <link href="./part1-ch07-workflows.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -47,7 +47,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-18447e9d16e0bfc3229421fc5cc130e2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-2aad03a8b4e422ea2bd4d420080b3680.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -75,7 +75,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script src="custom-js.js"></script>
 
 
 <link rel="stylesheet" href="styles.css">
@@ -194,38 +193,20 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part2-collaboration.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Collaboration</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./part2-git-diff.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Using <code>git diff</code> to show code changes</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Using <code>git diff</code> to show code changes</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./part2-github.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction to GitHub</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./part2-git-internals.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Git internals</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./part2-git-stash.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">git stash.</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Introduction to GitHub</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./part2-git-rebase.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Rebasing</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Rebasing</span></span></a>
   </div>
 </li>
       </ul>
@@ -320,7 +301,7 @@ Unreachable commits on a deleted branch
 <section id="identifying-and-recovering-unreachable-commits-using-the-reference-log" class="level2" data-number="8.2">
 <h2 data-number="8.2" class="anchored" data-anchor-id="identifying-and-recovering-unreachable-commits-using-the-reference-log"><span class="header-section-number">8.2</span> Identifying and recovering unreachable commits using the reference log</h2>
 <p>To recover a lost commit, the first step is to recover the SHA-1 checksum of that commit. Since this commit is now unreachable, we can not use <code>git log &lt;branch&gt;</code> to find the SHA-1 checksum, since <code>git log &lt;branch&gt;</code> only includes reachable commits from the tip of a branch. But Git has another tool that can help us: the reference log, or just reflog, which has its own command, <code>git reflog</code>. The reflog logs all changes to a reference that has happened over time, meaning that every time a reference is changed to point to something else, this is logged. Let’s see how this looks like in practice by creating a repository with the same history as illustrated above: a <code>main</code> branch with two commits, and a <code>feature</code> branch with a single commit off of <code>main</code>, where we delete the <code>feature</code> branch before integrating the changes into <code>main</code>:</p>
-<pre class="git-command">$ mkdir ~/reflog-example
+<pre class="terminal">$ mkdir ~/reflog-example
 $ cd ~/reflog-example
 $ git init
 $ echo "Content of C1" &gt; file.txt
@@ -334,23 +315,23 @@ $ git commit -am"C3"
 $ git switch main
 $ git branch -D feature
 $ git log --oneline --all --graph
-* <span class="sha1-col">6891983 (</span><span class="head-col">HEAD</span> <span class="sha1-col">-&gt;</span> <span class="active-branch-col">main</span><span class="sha1-col">)</span> C2
-* <span class="sha1-col">a961cba</span> C1
+* <span class="col-hash">6891983 (</span><span class="col-head">HEAD</span> <span class="col-hash">-&gt;</span> <span class="col-branch-local">main</span><span class="col-hash">)</span> C2
+* <span class="col-hash">a961cba</span> C1
 </pre>
 <p>After deleting <code>feature</code>, we can no longer see the commits on that branch. If we run <code>git reflog</code> however, we can recover the branch:</p>
-<pre class="git-command">$ git reflog
-<span class="sha1-col">6891983 (</span><span class="head-col">HEAD</span> <span class="sha1-col">-&gt;</span> <span class="active-branch-col">main</span><span class="sha1-col">)</span> HEAD@{0}: checkout: moving from feature to main
-<span class="sha1-col">b2d535d</span> HEAD@{1}: commit: C3
-<span class="sha1-col">6891983 (</span><span class="head-col">HEAD</span> <span class="sha1-col">-&gt;</span> <span class="active-branch-col">main</span><span class="sha1-col">)</span> HEAD@{2}: checkout: moving from main to feature
-<span class="sha1-col">6891983 (</span><span class="head-col">HEAD</span> <span class="sha1-col">-&gt;</span> <span class="active-branch-col">main</span><span class="sha1-col">)</span> HEAD@{3}: commit: C2
-<span class="sha1-col">a961cba</span> HEAD@{4}: commit (initial): C1
+<pre class="terminal">$ git reflog
+<span class="col-hash">6891983 (</span><span class="col-head">HEAD</span> <span class="col-hash">-&gt;</span> <span class="col-branch-local">main</span><span class="col-hash">)</span> HEAD@{0}: checkout: moving from feature to main
+<span class="col-hash">b2d535d</span> HEAD@{1}: commit: C3
+<span class="col-hash">6891983 (</span><span class="col-head">HEAD</span> <span class="col-hash">-&gt;</span> <span class="col-branch-local">main</span><span class="col-hash">)</span> HEAD@{2}: checkout: moving from main to feature
+<span class="col-hash">6891983 (</span><span class="col-head">HEAD</span> <span class="col-hash">-&gt;</span> <span class="col-branch-local">main</span><span class="col-hash">)</span> HEAD@{3}: commit: C2
+<span class="col-hash">a961cba</span> HEAD@{4}: commit (initial): C1
 </pre>
 <p>By default, <code>git reflog</code> shows the reference log of HEAD. The format <code>HEAD @{x}</code>, means where was HEAD x moves ago. So <code>HEAD@{0}</code> means where is HEAD right now, <code>HEAD@{1}</code> means where was HEAD one move ago, and so one. From the reflog we can se that one move ago, HEAD was pointing to the C3 commit, the tip of the former <code>feature</code> branch, and we can see the SHA1 checksum of that commit is <code>b2d535d</code>. Now we can recover the <code>feature</code> branch simply by making a new branch pointing to that commit:</p>
-<pre class="git-command">$ git branch feature b2d535d
+<pre class="terminal">$ git branch feature b2d535d
 $ git log --oneline --graph --all
-* <span class="sha1-col">b2d535d (</span><span class="active-branch-col">feature</span><span class="sha1-col">)</span> C3
-* <span class="sha1-col">6891983 (</span><span class="head-col">HEAD</span> <span class="sha1-col">-&gt;</span> <span class="active-branch">main</span><span class="sha1-col">)</span> C2
-* <span class="sha1-col">a961cba</span> C1
+* <span class="col-hash">b2d535d (</span><span class="col-branch-local">feature</span><span class="col-hash">)</span> C3
+* <span class="col-hash">6891983 (</span><span class="col-head">HEAD</span> <span class="col-hash">-&gt;</span> <span class="active-branch">main</span><span class="col-hash">)</span> C2
+* <span class="col-hash">a961cba</span> C1
 </pre>
 </section>
 <section id="exercises" class="level2" data-number="8.3">
@@ -359,7 +340,7 @@ $ git log --oneline --graph --all
 <h3 class="anchored" data-anchor-id="recover-an-undone-commit">Recover an “undone” commit</h3>
 <p>In <a href="part1-ch04-undoing-changes.html" class="quarto-xref"><span>Chapter 4</span></a> we showed how we can “undo” a commit using <code>git reset</code>. In this exercise you will recover a commit that was accidentially “undone”.</p>
 <p>Use the following commands to set up a repository with two commits on <code>main</code>:</p>
-<pre class="git-command">$ mkdir ~/ex-reflog-recover-undo
+<pre class="terminal">$ mkdir ~/ex-reflog-recover-undo
 $ cd ~/ex-reflog-recover-undo
 $ git init
 $ echo "Content" &gt; file.txt
@@ -382,7 +363,7 @@ $ git commit -am"Second commit"
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre class="git-command">$ git reset --hard HEAD^
+<pre class="terminal">$ git reset --hard HEAD^
 </pre>
 </div>
 </div>
@@ -401,16 +382,16 @@ $ git commit -am"Second commit"
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre class="git-command">$ git log --oneline --all
-<span class="sha1-col">d3e3264 (</span><span class="head-col">HEAD</span> <span class="sha1-col">-&gt;</span> <span class="active-branch-col">main</span><span class="sha1-col">)</span> First commit
+<pre class="terminal">$ git log --oneline --all
+<span class="col-hash">d3e3264 (</span><span class="col-head">HEAD</span> <span class="col-hash">-&gt;</span> <span class="col-branch-local">main</span><span class="col-hash">)</span> First commit
 $ git reflog
-<span class="sha1-col">d3e3264 (</span><span class="head-col">HEAD</span> <span class="sha1-col">-&gt;</span> <span class="active-branch-col">main</span><span class="sha1-col">)</span> HEAD@{0}: reset: moving to HEAD^
-<span class="sha1-col">9071636</span> HEAD@{1}: commit: Second commit
-<span class="sha1-col">d3e3264 (</span><span class="head-col">HEAD</span> <span class="sha1-col">-&gt;</span> <span class="active-branch-col">main</span><span class="sha1-col">)</span> HEAD@{2}: commit (initial): First commit
+<span class="col-hash">d3e3264 (</span><span class="col-head">HEAD</span> <span class="col-hash">-&gt;</span> <span class="col-branch-local">main</span><span class="col-hash">)</span> HEAD@{0}: reset: moving to HEAD^
+<span class="col-hash">9071636</span> HEAD@{1}: commit: Second commit
+<span class="col-hash">d3e3264 (</span><span class="col-head">HEAD</span> <span class="col-hash">-&gt;</span> <span class="col-branch-local">main</span><span class="col-hash">)</span> HEAD@{2}: commit (initial): First commit
 $ git reset --hard 9071636
 $ git log --oneline
-<span class="sha1-col">9071636 (</span><span class="head-col">HEAD</span> <span class="sha1-col">-&gt;</span> <span class="active-branch-col">main</span><span class="sha1-col">)</span> Second commit
-<span class="sha1-col">d3e3264</span> First commit
+<span class="col-hash">9071636 (</span><span class="col-head">HEAD</span> <span class="col-hash">-&gt;</span> <span class="col-branch-local">main</span><span class="col-hash">)</span> Second commit
+<span class="col-hash">d3e3264</span> First commit
 </pre>
 </div>
 </div>
@@ -833,8 +814,8 @@ $ git log --oneline
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./part2-collaboration.html" class="pagination-link" aria-label="Collaboration">
-        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Collaboration</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./part2-git-diff.html" class="pagination-link" aria-label="Using `git diff` to show code changes">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Using <code>git diff</code> to show code changes</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

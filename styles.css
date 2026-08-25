@@ -1,59 +1,26 @@
-.bash-terminal{
+/* Remove the title from the index page. */
+.quarto-title {
+  display: none;
+}
+
+
+/* Class to emulate terminal */
+.terminal {
+  font-family: monospace;
+  border-radius: 5px;
+  padding: 0.5em;
+  margin: 0.2em;
+  background-color: black;
   color: #afafaf;
-  background-color: black;
-  font-family: monospace;
-  padding:0.5em;
+  font-size: 0.9em;
 }
 
-.bash-gold {
-  color: #c0a000;
-  background-color: black;
-  font-family: monospace;
-}
 
-.bash-pink {
-  color: #b148c6;
-  background-color: black;
-  font-family: monospace;
-}
-
-.bash-cyan {
-  color: #00FFFF;
-  background-color: black;
-  font-family: monospace;
-}
-.bash-grey {
-  color: #afafaf;
-  background-color: black;
-  font-family: monospace;
-}
-
-.bash-bright-green {
-  color: #00f200;
-  background-color: black;
-  font-family: monospace;
-}
-.bash-green {
-  color: #1ca800;
-  background-color: black;
-  font-family: monospace;
-}
-
-.bash-violet{
- color: #7197ff;
- background-color:black;
- font-family: monospace;
-}
-
-.git-branch {
-  color: #04a18d;
-  background-color:black;
-  font-family: monospace;
-}
-
+/* Classes used to emulate notepad file content */
 .notepad-file {
   border: 1px solid black;
   border-radius:5px;
+  margin: 0.2em;
 }
 .notepad-header {
   background-color:lightblue;
@@ -71,36 +38,127 @@
   font-size:0.9em
 }
 
-.git-command {
-  font-family: monospace;
-  border-radius: 5px;
-  padding: 0.5em;
-  margin: 0.2em;
-  background-color: black;
-  color: #afafaf;
-  font-size: 0.9em;
+/* Classes used to colour git-specific output in terminal */
+.col-branch-local {
+  color: #00BF00;
 }
 
-/* Remove the title from the index page. */
-.quarto-title {
-  display: none;
+.col-branch-remote {
+  color: #BF0000;
 }
 
-/* New classes for terminal colours intended to replace bash-<colour> classes */
-
-/* sha1-col is also used for paratheses and arrows in git terminal output */
-.sha1-col {
-  color: #c0a000;
+.col-hash {
+  color: #BFBF00;
 }
 
-.head-col {
-  color: #00FFFF;
+.col-head {
+  color: #00BFBF;
 }
 
-.active-branch-col {
-  color: #00f200;
+.col-diff-added {
+  color: #00BF00;
 }
 
-.remote-col {
-  color: #ff7676;
+.col-diff-deleted {
+  color: #BF0000;
 }
+
+.col-diff-header {
+  color: #FFFFFF;
+}
+
+.col-diff-hunk-header {
+  color: #00BFBF;
+}
+
+.col-diff-markers {
+  color: #FFFFFF;
+}
+
+.col-diff-metadata {
+  color: #FFFFFF;
+}
+
+.col-log-graphline1 {
+  color: #BF0000;
+}
+
+.col-log-graphline2 {
+  color: #00BF00;
+}
+
+.col-status-added {
+  color: #00BF00;
+}
+
+.col-status-changed {
+  color: #BF0000;
+}
+
+
+/* Classes used to colour general output in terminal */
+.col-black {
+  color: #000000;
+}
+
+.col-bright-black {
+  color: #404040;
+}
+
+.col-blue {
+  color: #0000BF;
+}
+
+.col-bright-blue {
+  color: #6060FF;
+}
+
+.col-cyan {
+  color: #00BFBF;
+}
+
+.col-bright-cyan {
+  color: #40FFFF;
+}
+
+.col-green {
+  color: #00BF00;
+}
+
+.col-bright-green {
+  color: #40FF40;
+}
+
+.col-magenta {
+  color: #BF00BF;
+}
+
+.col-bright-magenta {
+  color: #FF40FF;
+}
+
+.col-red {
+  color: #BF0000;
+}
+
+.col-bright-red {
+  color: #FF4040;
+}
+
+.col-grey {
+  color: #BFBFBF;
+}
+
+.col-white {
+  color: #FFFFFF;
+}
+
+.col-yellow {
+  color: #BFBF00;
+}
+
+.col-bright-yellow {
+  color: #FFFF40;
+}
+
+

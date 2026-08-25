@@ -1,5 +1,5 @@
 
-![](diagrams/title-slide-background.svg)
+![](diagrams/title-slide-background.drawio.svg)
 
 # Preface {.unnumbered}
 
@@ -27,4 +27,4 @@ This tutorial assumes you are using Git version 2.51.0 or newer. If you are usin
 
 This tutorial also assumes you are on a Windows machine and have "Git for Windows" installed. See @sec-git-for-windows for more details. Since we will be running Git exclusively from the command line using Git BASH, a BASH emulator, macOS and Linux users should also be able to follow along with only few modifications.
 
-Finally, if you want to follow along in @sec-introduction-to-github, you will need to create a GitHub account and authenticate with it, using the GitHub CLI, which you also need to install. See @sec-github-setup for more details.
+Finally, if you want to follow along in @sec-introduction-to-github, you will need to create a GitHub account and authenticate with it, using the GitHub CLI, which you also need to install. See @sec-introduction-to-github for more details on how two do this.

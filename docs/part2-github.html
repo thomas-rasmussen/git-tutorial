@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>11&nbsp; Introduction to GitHub – Git tutorial</title>
+<title>10&nbsp; Introduction to GitHub – Git tutorial</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -36,7 +36,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./part2-git-internals.html" rel="next">
+<link href="./part2-git-rebase.html" rel="next">
 <link href="./part2-git-diff.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -47,7 +47,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-18447e9d16e0bfc3229421fc5cc130e2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-2aad03a8b4e422ea2bd4d420080b3680.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -75,7 +75,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script src="custom-js.js"></script>
 
 
 <link rel="stylesheet" href="styles.css">
@@ -90,7 +89,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part2-git-reflog.html">Part II</a></li><li class="breadcrumb-item"><a href="./part2-github.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction to GitHub</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part2-git-reflog.html">Part II</a></li><li class="breadcrumb-item"><a href="./part2-github.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Introduction to GitHub</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -194,38 +193,20 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part2-collaboration.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Collaboration</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./part2-git-diff.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Using <code>git diff</code> to show code changes</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Using <code>git diff</code> to show code changes</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./part2-github.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction to GitHub</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./part2-git-internals.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Git internals</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./part2-git-stash.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">git stash.</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Introduction to GitHub</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./part2-git-rebase.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Rebasing</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Rebasing</span></span></a>
   </div>
 </li>
       </ul>
@@ -269,21 +250,21 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#create-a-github-account-and-install-the-github-cli" id="toc-create-a-github-account-and-install-the-github-cli" class="nav-link active" data-scroll-target="#create-a-github-account-and-install-the-github-cli"><span class="header-section-number">11.1</span> Create a GitHub account and install the GitHub CLI</a></li>
-  <li><a href="#authenticate-with-your-github-account" id="toc-authenticate-with-your-github-account" class="nav-link" data-scroll-target="#authenticate-with-your-github-account"><span class="header-section-number">11.2</span> Authenticate with your GitHub account</a></li>
-  <li><a href="#licenses" id="toc-licenses" class="nav-link" data-scroll-target="#licenses"><span class="header-section-number">11.3</span> Licenses</a></li>
-  <li><a href="#creating-a-repository-on-github" id="toc-creating-a-repository-on-github" class="nav-link" data-scroll-target="#creating-a-repository-on-github"><span class="header-section-number">11.4</span> Creating a repository on GitHub</a>
+  <li><a href="#create-a-github-account-and-install-the-github-cli" id="toc-create-a-github-account-and-install-the-github-cli" class="nav-link active" data-scroll-target="#create-a-github-account-and-install-the-github-cli"><span class="header-section-number">10.1</span> Create a GitHub account and install the GitHub CLI</a></li>
+  <li><a href="#authenticate-with-your-github-account" id="toc-authenticate-with-your-github-account" class="nav-link" data-scroll-target="#authenticate-with-your-github-account"><span class="header-section-number">10.2</span> Authenticate with your GitHub account</a></li>
+  <li><a href="#licenses" id="toc-licenses" class="nav-link" data-scroll-target="#licenses"><span class="header-section-number">10.3</span> Licenses</a></li>
+  <li><a href="#creating-a-repository-on-github" id="toc-creating-a-repository-on-github" class="nav-link" data-scroll-target="#creating-a-repository-on-github"><span class="header-section-number">10.4</span> Creating a repository on GitHub</a>
   <ul class="collapse">
   <li><a href="#initialize-a-new-git-repository-on-github" id="toc-initialize-a-new-git-repository-on-github" class="nav-link" data-scroll-target="#initialize-a-new-git-repository-on-github">Initialize a new Git repository on GitHub</a></li>
   <li><a href="#upload-repository-from-existing-local-repository" id="toc-upload-repository-from-existing-local-repository" class="nav-link" data-scroll-target="#upload-repository-from-existing-local-repository">Upload repository from existing local repository</a></li>
   </ul></li>
-  <li><a href="#tools-to-facilitate-collaboration" id="toc-tools-to-facilitate-collaboration" class="nav-link" data-scroll-target="#tools-to-facilitate-collaboration"><span class="header-section-number">11.5</span> Tools to facilitate collaboration</a>
+  <li><a href="#tools-to-facilitate-collaboration" id="toc-tools-to-facilitate-collaboration" class="nav-link" data-scroll-target="#tools-to-facilitate-collaboration"><span class="header-section-number">10.5</span> Tools to facilitate collaboration</a>
   <ul class="collapse">
   <li><a href="#issues" id="toc-issues" class="nav-link" data-scroll-target="#issues">Issues</a></li>
   <li><a href="#forks-and-pull-requests" id="toc-forks-and-pull-requests" class="nav-link" data-scroll-target="#forks-and-pull-requests">Forks and pull requests</a></li>
   </ul></li>
-  <li><a href="#github-pages" id="toc-github-pages" class="nav-link" data-scroll-target="#github-pages"><span class="header-section-number">11.6</span> GitHub pages</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">11.7</span> Exercises</a>
+  <li><a href="#github-pages" id="toc-github-pages" class="nav-link" data-scroll-target="#github-pages"><span class="header-section-number">10.6</span> GitHub pages</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">10.7</span> Exercises</a>
   <ul class="collapse">
   <li><a href="#exercise-1---managing-github-repositories-using-the-github-cli" id="toc-exercise-1---managing-github-repositories-using-the-github-cli" class="nav-link" data-scroll-target="#exercise-1---managing-github-repositories-using-the-github-cli">Exercise 1 - Managing GitHub repositories using the GitHub CLI</a></li>
   <li><a href="#exercise-2---contributing-to-an-open-source-project" id="toc-exercise-2---contributing-to-an-open-source-project" class="nav-link" data-scroll-target="#exercise-2---contributing-to-an-open-source-project">Exercise 2 - Contributing to an open-source project</a></li>
@@ -294,9 +275,9 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part2-git-reflog.html">Part II</a></li><li class="breadcrumb-item"><a href="./part2-github.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction to GitHub</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part2-git-reflog.html">Part II</a></li><li class="breadcrumb-item"><a href="./part2-github.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Introduction to GitHub</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction to GitHub</span></h1>
+<h1 class="title"><span id="sec-introduction-to-github" class="quarto-section-identifier"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Introduction to GitHub</span></span></h1>
 </div>
 
 
@@ -315,47 +296,47 @@ ul.task-list li input[type="checkbox"] {
 
 <p>GitHub is a web-based service that hosts Git repositories. Simply put, you can host a remote of your Git repository on GitHub instead of having a remote locally on your network. This makes it possible for you to access your Git repository from any computer with an internet connection, which is obviously beneficial. But GitHub is also much more than that. GitHub offers many features that facilitate collaboration, and can be used for much more than simply storing your repository on the internet. It is outside the scope of this tutorial to go into much detail about what GitHub can be used for and how, since it would quickly become an entire tutorial in itself, but we will introduce and illustrate some basic features that should make it clear how valuable a tool GitHub can be.</p>
 <p>GitHub has a web user-interface that is easy to navigate and use, and is most likely the easiest way to to interact with your GitHub account and your repositories for most people, especially if you are not comfortable using a CLI. But illustrating how to use the web user-interface in a tutorial with an enormous amount of screenshots, is most certainly not the best way to learn how to use GitHub. Because of this, and in line with the philosophy of this tutorial, we will instead opt to use the GitHub CLI to interact with GitHub from the command line. This will work just as well for the simple features we will introduce in this tutorial, but there might be some advanced features that are not possible to use through the GitHub CLI, or it simply easier to do through the web user-interface. Keep this in mind if you want to use GitHub in the future. There is plenty of documentation on the <a href="https://docs.github.com/en">GitHub website</a> on how to use the web-interface.</p>
-<section id="create-a-github-account-and-install-the-github-cli" class="level2" data-number="11.1">
-<h2 data-number="11.1" class="anchored" data-anchor-id="create-a-github-account-and-install-the-github-cli"><span class="header-section-number">11.1</span> Create a GitHub account and install the GitHub CLI</h2>
+<section id="create-a-github-account-and-install-the-github-cli" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="create-a-github-account-and-install-the-github-cli"><span class="header-section-number">10.1</span> Create a GitHub account and install the GitHub CLI</h2>
 <p>To do basically anything other than browsing and cloning repositories on GitHub, you need to create an account. You can create a free GitHub account by going to <a href="https://github.com">https://github.com</a> and sign up.</p>
 <p>As stated, we will interact with GitHub from the command line using the GitHub CLI. You can install it from Git BASH by running the following command:</p>
-<pre class="git-command">$ winget install --id GitHub.cli
+<pre class="terminal">$ winget install --id GitHub.cli
 </pre>
 <p>This should work from git BASH. If not, try running the command in PowerShell. Alternatively, download and install it from <a href="https://cli.github.com/">https://cli.github.com/</a>.</p>
 <p>You need to restart your terminal before you can use the GitHub CLI <code>gh</code> commands.</p>
 </section>
-<section id="authenticate-with-your-github-account" class="level2" data-number="11.2">
-<h2 data-number="11.2" class="anchored" data-anchor-id="authenticate-with-your-github-account"><span class="header-section-number">11.2</span> Authenticate with your GitHub account</h2>
+<section id="authenticate-with-your-github-account" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="authenticate-with-your-github-account"><span class="header-section-number">10.2</span> Authenticate with your GitHub account</h2>
 <p>The most technical aspect of using GitHub is to authenticate with your GitHub account. You need to do this to verify to GitHub that you are who you claim to be, so that you are allowed to access your GitHub account and push changes to your repositories etc. You can authenticate with your GitHub account from the command line using either HTTPS or SSH. It is outside the scope of this tutorial to go into any details about what this means, and to explain the pros and cons of each protocol. Here we will simply show how you can authenticate using HTTPS using the GitHub CLI. To authenticate with your GitHub account, run the following command:</p>
-<pre class="git-command">$ gh auth login -p"https" -cw
+<pre class="terminal">$ gh auth login -p"https" -cw
 </pre>
 <p>Follow the link given in the terminal. If you are not logged into your GitHub account already, you will be prompted to do so first. Then you will be asked to enter the one-time code that was provided in the terminal output (which should already be copied to the clipboard). You should only need to do this once for each machine you work on.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 <p>The rest of this chapter assumes that you have created a GitHub account, and have authenticated with it to allow you to access and modify your repositories.</p>
 </section>
-<section id="licenses" class="level2" data-number="11.3">
-<h2 data-number="11.3" class="anchored" data-anchor-id="licenses"><span class="header-section-number">11.3</span> Licenses</h2>
+<section id="licenses" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="licenses"><span class="header-section-number">10.3</span> Licenses</h2>
 <p>Before talking about how to host repositories on GitHub, we need to talk briefly about licences. If you put a repository on GitHub to share it with others, you should include a license that specifies what other people can do with your code. You are not obligated to include a license, but if you don’t, default copyright laws apply, meaning that you retain all rights to your source code and no one may reproduce, distribute, or create derivative works from your work. This might not be what you want. GitHub strongly encourages you to include an open source licence, the MIT licence being a common choice. The MIT licence is a short permissive software license, that basically allows people to do whatever they want with your code, as long as they include the original copyright and licence in any copy of the code. Also, the licence states that you hold zero liability for use of the code. In many cases, this is a very reasonable license, and a good default choice. If you want to to learn more about licences, here are few resources that might be of interest:</p>
 <p><a href="https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository">https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository</a></p>
 <p><a href="https://opensource.guide/legal/#which-open-source-license-is-appropriate-for-my-project">https://opensource.guide/legal/#which-open-source-license-is-appropriate-for-my-project</a></p>
 <p><a href="https://choosealicense.com">https://choosealicense.com</a></p>
 <p><a href="https://www.tldrlegal.com">https://www.tldrlegal.com</a></p>
 </section>
-<section id="creating-a-repository-on-github" class="level2" data-number="11.4">
-<h2 data-number="11.4" class="anchored" data-anchor-id="creating-a-repository-on-github"><span class="header-section-number">11.4</span> Creating a repository on GitHub</h2>
+<section id="creating-a-repository-on-github" class="level2" data-number="10.4">
+<h2 data-number="10.4" class="anchored" data-anchor-id="creating-a-repository-on-github"><span class="header-section-number">10.4</span> Creating a repository on GitHub</h2>
 <p>There are two ways to get a repository on GitHub. You can either initialize a new project directly on GitHub, or you can upload a repository to GitHub from an existing local repository. If you are starting a new Git repository and you want to have a remote on GitHub, you have two choices: Initialize the repository on GitHub and clone it, or initialize the repository locally, and then upload it to GitHub. There is no right or wrong way to do this, it comes down to personal preferences.</p>
 <p>You can initialize or upload a Git repository on GitHub using the <code>gh repo create [&lt;name&gt;] [flags]</code> command. You can find documentation on this command at <a href="https://cli.github.com/manual/gh_repo_create">https://cli.github.com/manual/gh_repo_create</a>, or you can use <code>gh repo create --help</code> in the terminal. It is possible to create a repository interactively in the terminal by running <code>gh repo create</code> with no arguments, but that is not something we will explore here. Instead we will create repositories non-interactively, and in this case we need, as a minimum, to specify a name for the repository and use flags to specify if the repository is to be (<code>--public</code>) or private (<code>--private</code>). Public repositories can be seen by everyone, whereas private repositories can only been seen by yourself.</p>
 <section id="initialize-a-new-git-repository-on-github" class="level3">
 <h3 class="anchored" data-anchor-id="initialize-a-new-git-repository-on-github">Initialize a new Git repository on GitHub</h3>
 <p>Let’s illustrate how to initialize a new Git repository directly on GitHub. As mentioned before, besides giving the repository a name, we also need to to use a flag to specify whether the repository should be public or private. Furthermore, it is common practice to initialize a repository with an initial commit adding a README to the repository:</p>
-<pre class="git-command">$ gh repo create init-on-github --public --add-readme
+<pre class="terminal">$ gh repo create init-on-github --public --add-readme
 </pre>
 <p>This creates a new public repository called <code>init-on-github</code> in your GitHub account with an empty README file.</p>
 <p>You can now clone the repository, automatically setting up the repository on GitHub as a remote, and start working on the project:</p>
-<pre class="git-command">$ cd ~
+<pre class="terminal">$ cd ~
 $ git clone "https://github.com/your-user-name/init-on-github"
 $ cd init-on-github
 $ git log --oneline
-<span class="sha1-col">9caef1d (</span><span class="head-col">HEAD </span><span class="sha1-col">-&gt;</span> <span class="active-branch-col">main</span><span class="sha1-col">,</span> <span class="remote-col">origin/main</span><span class="sha1-col">,</span> <span class="remote-col">origin/HEAD</span><span class="sha1-col">)</span> Initial commit
+<span class="col-hash">9caef1d (</span><span class="col-head">HEAD </span><span class="col-hash">-&gt;</span> <span class="col-branch-local">main</span><span class="col-hash">,</span> <span class="col-branch-remote">origin/main</span><span class="col-hash">,</span> <span class="col-branch-remote">origin/HEAD</span><span class="col-hash">)</span> Initial commit
 $ ls
 README.md
 $ git remote -v
@@ -366,7 +347,7 @@ origin  https://github.com/your-user-name/init-on-github (push)
 <section id="upload-repository-from-existing-local-repository" class="level3">
 <h3 class="anchored" data-anchor-id="upload-repository-from-existing-local-repository">Upload repository from existing local repository</h3>
 <p>Imagine you have the following Git repository set up locally:</p>
-<pre class="git-command">$ mkdir ~/init-local-repo
+<pre class="terminal">$ mkdir ~/init-local-repo
 $ cd ~/init-local-repo
 $ git init
 $ touch README.txt
@@ -374,17 +355,17 @@ $ git add .
 $ git commit -m"Initial commit"
 </pre>
 <p>To upload the repository to GitHub, we can use <code>gh repo create</code> with the <code>--source</code> flag to specify a local repository to use as a source for the repository. Furthermore, we can use the <code>--push</code> flag to push the local commits to the GitHub repository, and use the <code>--remote</code> flag to specify the name for the remote:</p>
-<pre class="git-command">$ gh repo create init-local-repo --public --source=. --remote=origin --push
+<pre class="terminal">$ gh repo create init-local-repo --public --source=. --remote=origin --push
 $ git log --oneline
-<span class="sha1-col">f662630 (</span><span class="head-col">HEAD</span> <span class="sha1-col">-&gt;</span> <span class="active-branch-col">main</span><span class="sha1-col">,</span> <span class="remote-col">origin/main</span><span class="sha1-col">)</span> Initial commit
+<span class="col-hash">f662630 (</span><span class="col-head">HEAD</span> <span class="col-hash">-&gt;</span> <span class="col-branch-local">main</span><span class="col-hash">,</span> <span class="col-branch-remote">origin/main</span><span class="col-hash">)</span> Initial commit
 $ git remote -v
 origin  https://github.com/your-user-name/init-local-repo (fetch)
 origin  https://github.com/your-user-name/init-local-repo (push)
 </pre>
 </section>
 </section>
-<section id="tools-to-facilitate-collaboration" class="level2" data-number="11.5">
-<h2 data-number="11.5" class="anchored" data-anchor-id="tools-to-facilitate-collaboration"><span class="header-section-number">11.5</span> Tools to facilitate collaboration</h2>
+<section id="tools-to-facilitate-collaboration" class="level2" data-number="10.5">
+<h2 data-number="10.5" class="anchored" data-anchor-id="tools-to-facilitate-collaboration"><span class="header-section-number">10.5</span> Tools to facilitate collaboration</h2>
 <p>GitHub has a ton of features that are useful when collaborating on a project. Here we will briefly touch on some basic uses of some of these features.</p>
 <section id="issues" class="level3">
 <h3 class="anchored" data-anchor-id="issues">Issues</h3>
@@ -428,7 +409,7 @@ origin  https://github.com/your-user-name/init-local-repo (push)
 <section id="example" class="level4">
 <h4 class="anchored" data-anchor-id="example">Example</h4>
 <p>To illustrate how issues can be used, imagine a project with two collaborators that initiate and upload a repository they are going to work on to GitHub:</p>
-<pre class="git-command">$ mkdir ~/issues-example
+<pre class="terminal">$ mkdir ~/issues-example
 $ cd ~/issues-example
 $ git init
 $ echo "Project README" &gt; README.txt
@@ -437,17 +418,17 @@ $ git commit -m"Initial commit"
 $ gh repo create issues-example --public --source=. --remote=origin --push
 </pre>
 <p>Let’s say that collaborator A wants a feature implemented in the project. He communicate this to collaborator B by making an issue describing what he wants to implement:</p>
-<pre class="git-command">$ gh issue create --title "Implement feature A" --body "Text describing what to add and how."
+<pre class="terminal">$ gh issue create --title "Implement feature A" --body "Text describing what to add and how."
 </pre>
 <p>Collaborator B is notified (either directly by collaborator A or by a notification from GitHub) that collaborator A has created an issue in the repository, so he uses <code>gh issue list</code> to get an overview of the issues in the repository:</p>
-<pre class="git-command">$ gh issue list
+<pre class="terminal">$ gh issue list
 
 <span style="color:grey"><u>ID</u>  <u>TITLE              </u>  <u>LABELS</u>  <u>UPDATED           </u></span>
-<span class="bash-green">#1</span>  Implement feature A          <span style="color:grey">about 1 minute ago</span>
+<span class="col-bright-green">#1</span>  Implement feature A          <span style="color:grey">about 1 minute ago</span>
 
 </pre>
 <p>He then uses <code>gh issue view</code> to get some more detailed information on the issue that collaborator A has made:</p>
-<pre class="git-command"><span># Note that we are referring to the issue by its ID value</span>
+<pre class="terminal"><span># Note that we are referring to the issue by its ID value</span>
 $ gh issue view 1
 <span style="color:white">Implement feature A</span> thomas-rasmussen/issues-example#1
 <span class="bash-green">Open</span> • thomas-rasmussen opened about 1 hour ago • 0 comments
@@ -460,10 +441,10 @@ $ gh issue view 1
 
 </pre>
 <p>Collaborator B then adds a comment to the issue telling collaborator A to go ahead and implement the feature:</p>
-<pre class="git-command">$ gh issue comment 1 --body "LGTM"
+<pre class="terminal">$ gh issue comment 1 --body "LGTM"
 </pre>
 <p>Collaborator A sees this, implements the feature in a feature branch, merge the changes into the main branch, and pushes the changes to the remote on GitHub:</p>
-<pre class="git-command">$ git switch -c implement-feature-A
+<pre class="terminal">$ git switch -c implement-feature-A
 $ echo "Implementation of feature A" &gt; feature_a.txt
 $ git add .
 $ git commit
@@ -473,14 +454,14 @@ $ git push
 $ git branch -d implement-feature-A
 </pre>
 <p>Finally, collaborator A adds a comment to the issue saying that the feature has been added and pushed to the main branch, and then closes the issue:</p>
-<pre class="git-command">$ gh issue comment 1 --body "Implemented and merged to main branch"
+<pre class="terminal">$ gh issue comment 1 --body "Implemented and merged to main branch"
 $ gh issue close 1
 </pre>
 <p>Let’s wrap up this example by deleting the GitHub repository:</p>
-<pre class="git-command">$ gh repo delete issues-example --yes
+<pre class="terminal">$ gh repo delete issues-example --yes
 </pre>
 <p>You might not have permission to use this command. If this is the case run the following command and try again:</p>
-<pre class="git-command">$ gh auth refresh -s delete_repo
+<pre class="terminal">$ gh auth refresh -s delete_repo
 </pre>
 <p>We have only scraped the surface of what you can do with GitHub issues in this example, but it is hopefully clear how this tool can be valuable to organize work on a project.</p>
 </section>
@@ -493,11 +474,11 @@ $ gh issue close 1
 <section id="example-1" class="level4">
 <h4 class="anchored" data-anchor-id="example-1">Example</h4>
 <p>Let’s imagine that we want to contribute to the GitHub repository <a href="github.com/thomas-rasmussen-alt/git-tutorial-fork-example">github.com/thomas-rasmussen-alt/git-tutorial-fork-example</a>. First we make a fork of the repository and make a clone of the repository at the same time:</p>
-<pre class="git-command">$ cd
+<pre class="terminal">$ cd
 $ gh repo fork thomas-rasmussen-alt/git-tutorial-fork-example --clone
 </pre>
 <p>First of all, if we make a list of forked repositories on our account, we can see that a fork of git-tutorial-fork-example has been added:</p>
-<pre class="git-command">gh repo list --fork
+<pre class="terminal">gh repo list --fork
 
 Showing 1 of 1 repositories in @user-name that match your search
 
@@ -506,9 +487,9 @@ Showing 1 of 1 repositories in @user-name that match your search
 
 </pre>
 <p>Next we <code>cd</code> in to the local clone of the repository we also made, and inspect the remotes that have been automatically made:</p>
-<pre class="git-command">$ cd git-tutorial-fork-example
+<pre class="terminal">$ cd git-tutorial-fork-example
 $ git log --oneline
-<span class="sha1-col">dd7b9d9 (</span><span class="head-col">HEAD</span> <span class="sha1-col">-&gt;</span> <span class="active-branch-col">main</span><span class="sha1-col">,</span> <span class="remote-col">upstream/main</span><span class="sha1-col">,</span> <span class="remote-col">upstream/HEAD</span><span class="sha1-col">,</span> <span class="remote-col">origin/main</span><span class="sha1-col">,</span> <span class="remote-col">origin/HEAD</span><span class="sha1-col">)</span> Initial commit
+<span class="col-hash">dd7b9d9 (</span><span class="col-head">HEAD</span> <span class="col-hash">-&gt;</span> <span class="col-branch-local">main</span><span class="col-hash">,</span> <span class="col-branch-remote">upstream/main</span><span class="col-hash">,</span> <span class="col-branch-remote">upstream/HEAD</span><span class="col-hash">,</span> <span class="col-branch-remote">origin/main</span><span class="col-hash">,</span> <span class="col-branch-remote">origin/HEAD</span><span class="col-hash">)</span> Initial commit
 $ git remote -v
 origin  https://github.com/thomas-rasmussen/git-tutorial-fork-example.git (fetch)
 origin  https://github.com/thomas-rasmussen/git-tutorial-fork-example.git (push)
@@ -516,25 +497,25 @@ upstream        https://github.com/thomas-rasmussen-alt/git-tutorial-fork-exampl
 upstream        https://github.com/thomas-rasmussen-alt/git-tutorial-fork-example.git (push)
 </pre>
 <p>We can see that two remote have been set up: one to the fork (origin) and one to the original/upstream (upstream) repository. Next, we make the changes we want to contribute to the original project in our local clone and push the changes to the fork:</p>
-<pre class="git-command">$ git switch -c implement-feature
+<pre class="terminal">$ git switch -c implement-feature
 $ echo "Implementation of feature" &gt; feature.txt
 $ git add .
 $ git commit -m"Implement feature"
 $ git push
 $ git log --oneline
-<span class="sha1-col">d134f37 (</span><span class="head-col">HEAD</span> <span class="sha1-col">-&gt; </span><span class="active-branch-col">main</span><span class="sha1-col">,</span> <span class="remote-col">origin/main</span><span class="sha1-col">,</span> <span class="remote-col">origin/HEAD</span><span class="sha1-col">)</span> Implement feature
-<span class="sha1-col">dd7b9d9 (</span><span class="remote-col">upstream/main</span><span class="sha1-col">,</span> <span class="remote-col">upstream/HEAD</span><span class="sha1-col">)</span> Initial commit
+<span class="col-hash">d134f37 (</span><span class="col-head">HEAD</span> <span class="col-hash">-&gt; </span><span class="col-branch-local">main</span><span class="col-hash">,</span> <span class="col-branch-remote">origin/main</span><span class="col-hash">,</span> <span class="col-branch-remote">origin/HEAD</span><span class="col-hash">)</span> Implement feature
+<span class="col-hash">dd7b9d9 (</span><span class="col-branch-remote">upstream/main</span><span class="col-hash">,</span> <span class="col-branch-remote">upstream/HEAD</span><span class="col-hash">)</span> Initial commit
 </pre>
 <p>Finally, we send a pull request to the original repository, asking them to merge our suggested changes:</p>
-<pre class="git-command">$ gh pr create --title "Implement feature" --body "Implementation of important feature"
+<pre class="terminal">$ gh pr create --title "Implement feature" --body "Implementation of important feature"
 </pre>
 <p>TODO: This needs to be explained in more details. Also, could not get –base and –head flags to work. Got error “pull request create failed: GraphQL: No commits between main and main (createPullRequest), when specifying both as main. Finally, should have been implemented in a feature branch!</p>
 <p>The proposed changes can then be reviewed/discussed in the pull request before the owner of the original repository can merge the changes when and if they want to. We will omit illustrating this final step in this tutorial.</p>
 </section>
 </section>
 </section>
-<section id="github-pages" class="level2" data-number="11.6">
-<h2 data-number="11.6" class="anchored" data-anchor-id="github-pages"><span class="header-section-number">11.6</span> GitHub pages</h2>
+<section id="github-pages" class="level2" data-number="10.6">
+<h2 data-number="10.6" class="anchored" data-anchor-id="github-pages"><span class="header-section-number">10.6</span> GitHub pages</h2>
 <p>GitHub pages is a static site hosting service, that can take HTML, CSS, and Javascript files from a GitHub repository and turn them into a website. It is very simple to set up from a GitHub repository, and useful in a wide array of scenarios. Common use cases include:</p>
 <ul>
 <li><p>Documentation</p></li>
@@ -545,8 +526,8 @@ $ git log --oneline
 <p>As an example, the tutorial you are currently reading is hosted as a static website on GitHub pages, based on the main branch of the repository that creates the tutorial. Every time the main branch is updated, the website is automatically updated!</p>
 <p>It is outside the scope of this tutorial to go into details on how to use GitHub pages, but for more information see the official documentation at <a href="https://docs.github.com/en/pages">https://docs.github.com/en/pages</a></p>
 </section>
-<section id="exercises" class="level2" data-number="11.7">
-<h2 data-number="11.7" class="anchored" data-anchor-id="exercises"><span class="header-section-number">11.7</span> Exercises</h2>
+<section id="exercises" class="level2" data-number="10.7">
+<h2 data-number="10.7" class="anchored" data-anchor-id="exercises"><span class="header-section-number">10.7</span> Exercises</h2>
 <section id="exercise-1---managing-github-repositories-using-the-github-cli" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-1---managing-github-repositories-using-the-github-cli">Exercise 1 - Managing GitHub repositories using the GitHub CLI</h3>
 <p>In this exercise we will practice using some of the GitHub CLI commands that have been introduced in this chapter to illustrate how a simplified workflow using GitHub might look like.</p>
@@ -596,7 +577,7 @@ $ git log --oneline
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre class="git-command">$ gh repo create my-repo --public --add-readme --license=mit
+<pre class="terminal">$ gh repo create my-repo --public --add-readme --license=mit
 </pre>
 </div>
 </div>
@@ -631,7 +612,7 @@ $ git log --oneline
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre class="git-command">$ gh repo view my-repo --web
+<pre class="terminal">$ gh repo view my-repo --web
 </pre>
 </div>
 </div>
@@ -650,11 +631,11 @@ $ git log --oneline
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre class="git-command">$ cd
+<pre class="terminal">$ cd
 $ git clone https://github.com/user-name/my-repo.git
 $ cd my-repo
 $ git log --oneline
-5f0b7da (HEAD -&gt; main, origin/main, origin/HEAD) Initial commit
+5<span class="col-hash">f0b7da (</span><span class="col-head">HEAD</span> <span class="col-hash">-&gt;</span> <span class="col-branch-local">main</span><span class="col-hash">,</span> <span class="col-branch-remote">origin/main</span><span class="col-hash">,</span> <span class="col-branch-remote">origin/HEAD</span><span class="col-hash">)</span> Initial commit
 $ ls
 LICENSE  README.md
 </pre>
@@ -675,7 +656,7 @@ LICENSE  README.md
 </div>
 <div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre class="git-command">$ echo "Add change" &gt; file1.txt
+<pre class="terminal">$ echo "Add change" &gt; file1.txt
 $ git add .
 $ git commit -m"Add change"
 $ git push
@@ -714,7 +695,7 @@ $ git push
 </div>
 <div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre class="git-command">$ gh issue create --title "Implement feature A" --body "Description of feature to be added" --assignee "@me" --label "enhancement"
+<pre class="terminal">$ gh issue create --title "Implement feature A" --body "Description of feature to be added" --assignee "@me" --label "enhancement"
 </pre>
 </div>
 </div>
@@ -749,12 +730,12 @@ $ git push
 </div>
 <div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre class="git-command">$ gh issue list
+<pre class="terminal">$ gh issue list
 
 Showing 1 of 1 open issue in user-name/my-repo
 
 <span style="color:grey"><u>ID</u>  <u>TITLE              </u>  <u>LABELS     </u>  <u>UPDATED             </u></span>
-<span class="bash-green">#1</span>  Implement feature A  enhancement  <span style="color:grey">about 51 minutes ago</span>
+<span class="col-bright-green">#1</span>  Implement feature A  enhancement  <span style="color:grey">about 51 minutes ago</span>
 
 $ gh issue comment --web"
 </pre>
@@ -791,7 +772,7 @@ $ gh issue comment --web"
 </div>
 <div id="callout-13" class="callout-13-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre class="git-command">$ gh issue close 1 --reason "completed"
+<pre class="terminal">$ gh issue close 1 --reason "completed"
 </pre>
 </div>
 </div>
@@ -843,7 +824,7 @@ $ gh issue comment --web"
 </div>
 <div id="callout-16" class="callout-16-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre class="git-command">$ gh repo delete my-repo --yes
+<pre class="terminal">$ gh repo delete my-repo --yes
 $ cd
 $ rm my-repo -rf
 </pre>
@@ -886,7 +867,7 @@ $ rm my-repo -rf
 <div id="callout-18" class="callout-18-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>To fork and clone the repository at the same time using the GitHub CLI, use the following command:</p>
-<pre class="git-command"><span># cd to an appropriate directory before forking and cloning the repository. Here we choose the home directory. </span>
+<pre class="terminal"><span># cd to an appropriate directory before forking and cloning the repository. Here we choose the home directory. </span>
 $ cd
 $ gh repo fork thomas-rasmussesn/git-tutorial  --clone
 </pre>
@@ -907,7 +888,7 @@ $ gh repo fork thomas-rasmussesn/git-tutorial  --clone
 </div>
 <div id="callout-19" class="callout-19-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre class="git-command">$ cd git-tutorial
+<pre class="terminal">$ cd git-tutorial
 $ git switch -c pr-test
 $ echo "Pull request test" &gt; pr-test.txt
 $ git add .
@@ -930,7 +911,7 @@ $ git commit -m"Pull request test"
 </div>
 <div id="callout-20" class="callout-20-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre class="git-command">$ git push origin pr-test
+<pre class="terminal">$ git push origin pr-test
 </pre>
 </div>
 </div>
@@ -949,7 +930,7 @@ $ git commit -m"Pull request test"
 </div>
 <div id="callout-21" class="callout-21-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre class="git-command">$ gh pr create --title "PR test" --body "PR test"
+<pre class="terminal">$ gh pr create --title "PR test" --body "PR test"
 </pre>
 <p>If someone else has already made a pull request with the title “PR test” this will nok work and Git will tell you so. In this case pick another title.</p>
 </div>
@@ -969,7 +950,7 @@ $ git commit -m"Pull request test"
 </div>
 <div id="callout-22" class="callout-22-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre class="git-command">$ gh repo delete git-tutorial --yes
+<pre class="terminal">$ gh repo delete git-tutorial --yes
 $ cd
 $ rm git-tutorial -rf
 </pre>
@@ -1397,12 +1378,12 @@ $ rm git-tutorial -rf
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./part2-git-diff.html" class="pagination-link" aria-label="Using `git diff` to show code changes">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Using <code>git diff</code> to show code changes</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Using <code>git diff</code> to show code changes</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./part2-git-internals.html" class="pagination-link" aria-label="Git internals">
-        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Git internals</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./part2-git-rebase.html" class="pagination-link" aria-label="Rebasing">
+        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Rebasing</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

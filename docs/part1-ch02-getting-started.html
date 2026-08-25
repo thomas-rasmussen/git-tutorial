@@ -47,7 +47,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-18447e9d16e0bfc3229421fc5cc130e2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-2aad03a8b4e422ea2bd4d420080b3680.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -75,7 +75,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script src="custom-js.js"></script>
 
 
 <link rel="stylesheet" href="styles.css">
@@ -194,38 +193,20 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part2-collaboration.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Collaboration</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./part2-git-diff.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Using <code>git diff</code> to show code changes</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Using <code>git diff</code> to show code changes</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./part2-github.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction to GitHub</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./part2-git-internals.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Git internals</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./part2-git-stash.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">git stash.</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Introduction to GitHub</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./part2-git-rebase.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Rebasing</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Rebasing</span></span></a>
   </div>
 </li>
       </ul>
@@ -324,14 +305,14 @@ ul.task-list li input[type="checkbox"] {
 <section id="change-the-core-editor" class="level3">
 <h3 class="anchored" data-anchor-id="change-the-core-editor">Change the core editor</h3>
 <p>The first, and most important, thing we need to configure, is the text editor that Git opens when you need to type in a message. Git for Windows comes with a Vim installation, and by default Git uses Vim as a text editor. Vim is amazing, but it is also a complete mystery to people who do not know how it works.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> To change the default editor to Notepad, which is pre-installed on Windows, write the following command in your terminal:</p>
-<pre class="git-command">$ git config set --global core.editor notepad
+<pre class="terminal">$ git config set --global core.editor notepad
 </pre>
 <p>This tells Git to use Notepad as a text editor in all your Git repositories.</p>
 </section>
 <section id="identify-yourself" class="level3">
 <h3 class="anchored" data-anchor-id="identify-yourself">Identify yourself</h3>
 <p>Another thing you should configure in your Git installation is your username and email. Every commit you make to your Git repository contains information on the identity of the person who made it, and this information should be informative, i.e.&nbsp;be your real name and email. This ensures that if you are collaborating on a Git repository or sharing the repository online, it is clear to others who made what commits to the repository. You can set your username and email by writing the following commands in your terminal:</p>
-<pre class="git-command">$ git config set --global user.name "Your name"
+<pre class="terminal">$ git config set --global user.name "Your name"
 $ git config set --global user.email "your@email.com"
 </pre>
 </section>
@@ -342,7 +323,7 @@ $ git config set --global user.email "your@email.com"
 <section id="initialize-a-new-git-repository" class="level3">
 <h3 class="anchored" data-anchor-id="initialize-a-new-git-repository">Initialize a new Git repository</h3>
 <p>To initialize a Git repository in a directory, <code>cd</code> to the directory and use the <code>git init</code> command. This creates an empty Git repository in a new (hidden) subdirectory named “.git”.</p>
-<pre class="git-command">$ cd ~ # Change working directory to the home directory
+<pre class="terminal">$ cd ~ # Change working directory to the home directory
 $ mkdir new-git-repository # Make a new directory in home directory
 $ cd new-git-repo # Change working directory
 $ git init # Initialize Git repository
@@ -354,7 +335,7 @@ $ ls -A # List all subdirectories
 <h3 class="anchored" data-anchor-id="clone-an-existing-git-repository">Clone an existing Git repository</h3>
 <p>You can clone an existing Git repository using the <code>git clone</code> command. This makes a copy of the repository in a new directory in the working directory.</p>
 <p>You can clone a repository from anyway, e.g.&nbsp;from another folder on your machine, from a folder on a network drive, or from a url. The code for this tutorial is on available on Github. You could clone the repository by using the command below:</p>
-<pre class="git-command">$ git clone "https://github.com/thomas-rasmussen/git-tutorial.git"
+<pre class="terminal">$ git clone "https://github.com/thomas-rasmussen/git-tutorial.git"
 </pre>
 <p>This will clone the repository in a folder named “git-tutorial” in your current work directory.</p>
 </section>
@@ -374,7 +355,7 @@ $ ls -A # List all subdirectories
 <section id="checking-the-state-of-files" class="level2" data-number="2.4">
 <h2 data-number="2.4" class="anchored" data-anchor-id="checking-the-state-of-files"><span class="header-section-number">2.4</span> Checking the state of files</h2>
 <p>So how do we check the state of our files? The main command to do this is <code>git status</code>. If you run this command right after cloning a repository or commiting a snapshot of your files, you will see something like this.</p>
-<pre class="git-command">$ git status
+<pre class="terminal">$ git status
 On branch main
 nothing to commit, working tree clean
 </pre>
@@ -383,29 +364,29 @@ nothing to commit, working tree clean
 <section id="adding-files-to-the-index" class="level2" data-number="2.5">
 <h2 data-number="2.5" class="anchored" data-anchor-id="adding-files-to-the-index"><span class="header-section-number">2.5</span> Adding files to the index</h2>
 <p>To update the index, we use the <code>git add</code> command. This will update the index using the current content of the working tree, which can include updating files that are already in the index, include new files, or remove files that are no longer in the working tree. The index holds a snapshot of the content that we want to include in our next commit. To update the index based on all files in the repository you can use the commmand</p>
-<pre class="git-command">$ git add .
+<pre class="terminal">$ git add .
 </pre>
 <p>The “.” means “current directory”. You can also specify individual files to add to the index:</p>
-<pre class="git-command">$git add file_a.txt file_b.txt
+<pre class="terminal">$git add file_a.txt file_b.txt
 </pre>
 </section>
 <section id="committing-files-to-the-repository" class="level2" data-number="2.6">
 <h2 data-number="2.6" class="anchored" data-anchor-id="committing-files-to-the-repository"><span class="header-section-number">2.6</span> Committing files to the repository</h2>
 <p>We can commit files to the repository with the <code>git commit</code> command. This commands uses the current content of the index to create a new commit to the repository.</p>
-<pre class="git-command">$ git commit -m"Commit message"
+<pre class="terminal">$ git commit -m"Commit message"
 </pre>
 <p>If you do not specify a commit message with the <code>-m</code> option, Git will open a text editor, and request that you enter one there. After typing the commit message, save the file, and exit the editor.</p>
 </section>
 <section id="sec-getting-started-example" class="level2" data-number="2.7">
 <h2 data-number="2.7" class="anchored" data-anchor-id="sec-getting-started-example"><span class="header-section-number">2.7</span> Example</h2>
 <p>Let’s create our own Git repository from scratch to illustrate the concepts that have been introduced so far. First, we initialize a new Git repository in the home directory, and <code>cd</code> into the directory.</p>
-<pre class="git-command">$ cd ~
+<pre class="terminal">$ cd ~
 $ mkdir git-tutorial-example
 $ cd git-tutorial-example
 $ git init
 </pre>
 <p>Lets run <code>git status</code> to see the status of the working tree at this point.</p>
-<pre class="git-command">$ git status
+<pre class="terminal">$ git status
 On branch main
 
 No commits yet
@@ -414,22 +395,22 @@ nothing to commit (create/copy files and use "git add" to track)
 </pre>
 <p>As expected we are told that nothing has been committed to the repository, and that no files are tracked.</p>
 <p>Next, we create a new file in the directory.</p>
-<pre class="git-command">$ echo "Content of file_a.txt" &gt; file_a.txt
+<pre class="terminal">$ echo "Content of file_a.txt" &gt; file_a.txt
 </pre>
 <p>If we run <code>git status</code> again:</p>
-<pre class="git-command">$ git status
+<pre class="terminal">$ git status
 On branch main
 
 No commits yet
 
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
-        <span style="color:red">file_a.txt</span>
+        <span class="col-status-changed">file_a.txt</span>
 
 nothing added to commit but untracked files present (use "git add" to track)
 </file></pre>
 <p>Git now notifies us about the presence on an untracked file in the repository. Lets add the file to the index for the next commit, and run <code>git status</code> once more:</p>
-<pre class="git-command">$ git add file_a.txt
+<pre class="terminal">$ git add file_a.txt
 $ git status
 On branch main
 
@@ -437,10 +418,10 @@ No commits yet
 
 Changes to be committed:
   (use "git rm --cached <file>..." to unstage)
-        <span style="color:green">new file:   file_a.txt</span>
+        <span class="col-status-added">new file:   file_a.txt</span>
 </file></pre>
 <p>Git now tells us that file_a.txt has been added to the index and will be included, in its current state, to the next commit. Finally, lets commit the file to the repository and run <code>git status</code> a final time:</p>
-<pre class="git-command">$ git commit file_a.txt -m"Add file_a.txt to repository"
+<pre class="terminal">$ git commit file_a.txt -m"Add file_a.txt to repository"
 $ git status
 On branch main
 nothing to commit, working tree clean
@@ -450,13 +431,13 @@ nothing to commit, working tree clean
 <section id="accessing-manual-pages" class="level2" data-number="2.8">
 <h2 data-number="2.8" class="anchored" data-anchor-id="accessing-manual-pages"><span class="header-section-number">2.8</span> Accessing manual pages</h2>
 <p>We will end this chapter with a note on how to access the comprehensive manual help page for any of the Git commands. The manual pages can be accessed in different equivalent ways one of which is:</p>
-<pre class="git-command">$ git help &lt;command&gt;
+<pre class="terminal">$ git help &lt;command&gt;
 </pre>
 <p>For example, to get the manual page for the <code>git add</code> command run</p>
-<pre class="git-command">$ git help add
+<pre class="terminal">$ git help add
 </pre>
 <p>These manual pages are nice because they can be accessed anywhere, even offline. A short summary on how to use the command can also be printed in the terminal by using the <code>-h</code> option with a git command:</p>
-<pre class="git-command">$ git help add -h
+<pre class="terminal">$ git help add -h
 usage: git add [<options>] [--] <pathspec>...
 
     -n, --[no-]dry-run    dry run
@@ -541,7 +522,7 @@ usage: git add [<options>] [--] <pathspec>...
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre class="git-command">$ cd ~ # Make sure the working directory is set to the home directory
+<pre class="terminal">$ cd ~ # Make sure the working directory is set to the home directory
 $ mkdir ex-init-repo # Make a new subdirectory
 $ cd ex-init-repo # cd to new directory
 $ git init # Initialize git repository
@@ -556,7 +537,7 @@ $ git commit -m"Commit message" # Commit to repository
 <section id="exercise-2---using-the-manual-pages" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-2---using-the-manual-pages">Exercise 2 - Using the manual pages</h3>
 <p>In this exercise we will practice using the manual pages. First lets construct a simple git repository with different files in different states.</p>
-<pre class="git-command">$ cd ~
+<pre class="terminal">$ cd ~
 $ mkdir ex-man-pages
 $ cd ex-man-pages
 $ git init
@@ -569,20 +550,20 @@ $ echo "Content of file3" &gt; file3.txt
 $ git add file2.txt
 </pre>
 <p>If we run <code>git status</code> on the repository in this state we get the following output in the terminal</p>
-<pre class="git-command">$ git status
+<pre class="terminal">$ git status
 On branch main
 Changes to be committed:
   (use "git restore --staged <file>..." to unstage)
-        <span style="color:green">new file:   file2.txt</span>
+        <span class="col-status-added">new file:   file2.txt</span>
 
 Changes not staged for commit:
   (use "git add/rm <file>..." to update what will be committed)
   (use "git restore <file>..." to discard changes in working directory)
-        <span style="color:red">deleted:    file1.txt</span>
+        <span class="col-status-changed">deleted:    file1.txt</span>
 
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
-        <span style="color:red">file3.txt</span>
+        <span class="col-status-changed">file3.txt</span>
 </file></file></file></file></pre>
 <p>The output is rather verbose, and with more files (which is common) it quickly becomes unnecessarily hard to get an overview. It would be great if we could get the output from <code>git status</code> in a shorter, more condense, format.</p>
 <ol type="1">
@@ -617,10 +598,10 @@ Untracked files:
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>The option we are looking for is <code>-s</code>.</p>
-<pre class="git-command">$ git status -s
- <span style="color:red">D</span> file1.txt
-<span style="color:green">A</span>  file2.txt
-<span style="color:red">??</span> file3.txt
+<pre class="terminal">$ git status -s
+ <span class="col-status-changed">D</span> file1.txt
+<span class="col-status-added">A</span>  file2.txt
+<span class="col-status-changed">??</span> file3.txt
 
 </pre>
 </div>
@@ -665,7 +646,7 @@ Untracked files:
 </div>
 <div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre class="git-command">$ cd ~
+<pre class="terminal">$ cd ~
 $ mkdir ex-clone-repo
 $ cd ex-clone-repo
 $ git clone ../ex-init-repo # Clones the ex-init-repo repository located in the parent directory (..)

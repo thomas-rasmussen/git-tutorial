@@ -19,7 +19,7 @@ To initialize a bare Git repository, we simply use the `--bare` flag with `git i
 
 <div style="grid-column: 1">
 
-<pre class="git-command">
+<pre class="terminal">
 $ mkdir ~/example-bare-repository
 $ cd ~/example-bare-repository
 $ git init --bare
@@ -28,7 +28,7 @@ Initialized empty Git repository in ~/example-bare-repository/
 
 First, lets look at the structure of the project directory:
 
-<pre class="git-command">
+<pre class="terminal">
 $ ls
 HEAD  config  description  <span class="bash-violet">hooks/  info/ objects/  refs/</span>
 </pre>
@@ -36,7 +36,7 @@ HEAD  config  description  <span class="bash-violet">hooks/  info/ objects/  ref
 Listing the files in the repository, we can indeed see that the content of the top-level directory is what would normally be in the ".git" subdirectory.
 Next lets try to use `git status`, a command that uses the worktree:
 
-<pre class="git-command">
+<pre class="terminal">
 $ git status
 fatal: this operation must be run in a work tree
 </pre>
@@ -45,7 +45,7 @@ As expected Git informs us that we can't do this since there is no worktree.
 
 Finally, lets clean up by deleting the repository:
 
-<pre class="git-command">
+<pre class="terminal">
 $ rm -rf ~/example-bare-repository
 </pre>
 
@@ -70,7 +70,7 @@ If you clone a repository, Git will automatically add the cloned repository as a
 
 Lets clone the repository for this tutorial and see what remotes are available:
 
-<pre class="git-command">
+<pre class="terminal">
 $ cd ~
 $ git clone https://github.com/thomas-rasmussen/git-tutorial.git
 $ cd git-tutorial
@@ -80,7 +80,7 @@ origin
 
 Since we cloned a repository, Git has automatically added the cloned repository as a remote called "origin". There is nothing special about the name "origin", it is just the default name given by Git. You could call a remote anything, it is just a shortname with which we can easily reference the remote without typing the full URL. Since "origin" is the default name given by Git, the convention is that unless you have reason to do otherwise (for example if you have multiple remotes), just let Git give the remote the name "origin". If we want more information on a particular remote, we can use the `git remote show <remote>` command:
 
-<pre class="git-command">
+<pre class="terminal">
 $ git remote show origin
 * remote origin
   Fetch URL: https://github.com/thomas-rasmussen/git-tutorial.git
@@ -99,7 +99,7 @@ The command gives us a lot of information which we will discuss in more detail l
 
 Let wrap up by deleting the repository again:
 
-<pre class="git-command">
+<pre class="terminal">
 $ rm -rf ~/git-tutorial
 </pre>
 
@@ -108,7 +108,7 @@ $ rm -rf ~/git-tutorial
 
 We can also manually add a remote to a repository. Let's illustrate this by example. First let us make a simple project repository with a single commit:
 
-<pre class="git-command">
+<pre class="terminal">
 $ mkdir ~/example-manual-remote1
 $ cd ~/example-manual-remote1
 $ git init
@@ -119,13 +119,13 @@ $ git commit -m"Add file.txt"
 
 If we use `git remote` at this point, nothing is printed in the terminal, since this is a repository we have made ourselves, not one we have cloned, so no remotes have been automatically created:
 
-<pre class="git-command">
+<pre class="terminal">
 $ git remote
 </pre>
 
 Now lets create an empty bare repository we want to use as a remote:
 
-<pre class="git-command">
+<pre class="terminal">
 $ mkdir ~/example-manual-remote2
 $ cd ~/example-manual-remote2
 $ git init --bare
@@ -133,7 +133,7 @@ $ git init --bare
 
 To add the repository as a remote we can use the `git remote add <name> <url>` command, where `<name>` is the shortname we want to give the remote and with which we can easily reference it instead of using the full URL, and `<url>`, is the URL for the repository. As mentioned before, the convention is to name the remote "origin":
 
-<pre class="git-command">
+<pre class="terminal">
 $ cd ~/example-manual-remote1
 $ git remote add origin ~/example-manual-remote2
 $ git remote
@@ -142,7 +142,7 @@ origin
 
 We can now see we have a remote called "origin". If we use the `git remote show <remote>` command on this remote we get a noticeably more sparse output than in our previous example with a remote automatically created by cloning a repository:
 
-<pre class="git-command">
+<pre class="terminal">
 $ git remote show origin
 * remote origin
   Fetch URL: ~/example-manual-remote2/
@@ -157,14 +157,14 @@ As before, we can see that both the "fetch" and "pull" URL has been set to the s
 
 If you want to remove a remote for some reason (maybe the remote has been moved to a new server), you can do so using the `git remote remove <remote>` command. Lets remove the remote we just added in the example in the previous example:
 
-<pre class="git-command">
+<pre class="terminal">
 $ git remote remove origin
 $ git remote
 </pre>
 
 At this point we won't be using these repositories any more, so lets delete them:
 
-<pre class="git-command">
+<pre class="terminal">
 $ rm -rf ~/example-manual-remote1
 $ rm -rf ~/example-manual-remote2
 </pre>
@@ -174,7 +174,7 @@ $ rm -rf ~/example-manual-remote2
 
 If you want to integrate your local changes into a remote, you can *push* your local changes to the remote. You can do this using the `git push <remote> <branch>` command. This will take your local changes on the `<branch>` branch and integrate them into the remote `<branch>` branch, to make the remote reflect the current state of your local clone. Lets illustrate this with an example. Suppose we initialize a Git project and do some work in it:
 
-<pre class="git-command">
+<pre class="terminal">
 $ mkdir ~/example-push-fetch
 $ cd ~/example-push-fetch
 $ git init
@@ -188,7 +188,7 @@ $ git commit -m"Update file1.txt"
 
 Next, lets create a bare repository in another folder that we want to use as a remote. In this example our plan could be to use the remote as a backup:
 
-<pre class="git-command">
+<pre class="terminal">
 $ mkdir -p ~/git-remotes/example-push-fetch
 <span># The -p flag is used to make parent directories as needed,</span>
 <span># In this case the "git-remotes" directory that does not</span>
@@ -208,7 +208,7 @@ Note that we are placing the remote repository in another folder so we can give 
 
 At this point the remote is empty, and our repository has two commits:
 
-<pre class="git-command">
+<pre class="terminal">
 git log --oneline
 <span class="bash-gold">f6ed1b8 (</span><span class="bash-cyan">HEAD</span> <span class="bash-gold">-></span> <span class="bash-bright-green">main</span><span class="bash-gold">)</span> Update file1.txt
 <span class="bash-gold">4b201a5</span> Add file1.txt
@@ -224,7 +224,7 @@ git log --oneline
 
 We now decide that we are happy with our local commits, and that we want to push our local changes to the remote. We do this using the aforementioned `git push` command, pushing our local `main` branch to the remote:
 
-<pre class="git-command">
+<pre class="terminal">
 $ git push origin main
 Enumerating objects: 6, done.
 Counting objects: 100% (6/6), done.
@@ -240,7 +240,7 @@ The remote does not currently have a main branch (it's completely empty), and we
 
 If we run `git log` again, we see the following:
 
-<pre class="git-command">
+<pre class="terminal">
 $ git log --oneline
 <span class="sha1-col">f6ed1b8 (</span><span class="head-col">HEAD</span> <span class="sha1-col">-></span> <span class="active-branch-col">main</span><span class="sha1-col">,</span> <span class="remote-col">origin/main</span><span class="sha1-col">)</span> Update file1.txt
 <span class="sha1-col">4b201a5</span> Add file1.txt
@@ -248,14 +248,14 @@ $ git log --oneline
 
 <div style="display:flex; justify-content:center; align-items: center;">
 <figure>
-  <img src="diagrams/remotes_pushing_2.drawio.svg" "width="90%" height="90%">
+  <img src="diagrams/remotes_pushing_2.drawio.svg" width="90%" height="90%">
   <figcaption>State of repositories after pushing to remote</figcaption>
 </figure>
 </div>
 
 Git has added a "origin/main" pointer, tracking what commit the main branch in the remote was pointing at the last time we communicated with the remote. We can see that the state of the remote now matches our local repository. Lets run `git remote show` again at this point:
 
-<pre class="git-command">
+<pre class="terminal">
 $ git remote show origin
 * remote origin
   Fetch URL: ~/git-remotes/example-push-fetch
@@ -276,7 +276,7 @@ If the state of the remote changes, ie if someone else pushes changes to it, you
 
 To illustrate how this works in practice, lets expand the previous example. Lets imagine that a collaborator is added to the project to help out. We have already set up a remote that we intended to use as a backup, but now we can use it as as central repository for the project instead. Our new collaborator can get started by simply cloning the remote to set up their own local clone of the current state of the project:
 
-<pre class="git-command">
+<pre class="terminal">
 $ mkdir ~/collaborator
 $ cd ~/collaborator
 $ git clone ~/git-remotes/example-push-fetch
@@ -308,7 +308,7 @@ Our collaborator is now ready to contribute to the project. The state of our loc
 
 Let's imagine our collaborator jumps right into the project by adding a new file and pushing the change to the remote:
 
-<pre class="git-command">
+<pre class="terminal">
 $ echo "New file added by collaborator" > file2.txt
 $ git add .
 $ git commit -m"Add file2.txt"
@@ -332,7 +332,7 @@ At this point the state of the different repositories is as shown below:
 
 Now let's go back to our own local clone of the remote, and use `git log`:
 
-<pre class="git-command">
+<pre class="terminal">
 $ cd ~/example-push-fetch
 $ git log --oneline --all
 <span class="sha1-col">f6ed1b8 (</span><span class="head-col">HEAD</span> <span class="sha1-col">-></span> <span class="active-branch-col">main</span><span class="sha1-col">,</span> <span class="remote-col">origin/main</span><span class="sha1-col">)</span> Update file1.txt
@@ -341,7 +341,7 @@ $ git log --oneline --all
 
 We have not been communicating with the remote since our collaborator pushed changes to the remote, so the changes are not visible to us. To rectify this we fetch from the remote to update our information about the state of the remote:
 
-<pre class="git-command">
+<pre class="terminal">
 $ git fetch origin
 remote: Enumerating objects: 4, done.
 remote: Counting objects: 100% (4/4), done.
@@ -354,7 +354,7 @@ From ~/remotes/project_a
 
 The last part of the output tells us we have fetched information on a series of commits on the main branch in the remote. If we look at our commit log again we see the following:
 
-<pre class="git-command">
+<pre class="terminal">
 $ git log --oneline --all
 <span># Note the use of the --all flag is needed here to see the commits on the remote that are not in our local repository.</span>
 <span class="sha1-col">50c4e9e (</span><span class="remote-col">origin/main</span><span class="sha1-col">,</span> <span class="remote-col">origin/HEAD</span><span class="sha1-col">)</span> Add file2.txt
@@ -364,7 +364,7 @@ $ git log --oneline --all
 
 We can now integrate the changes into our own local repository using `git merge`:
 
-<pre class="git-command">
+<pre class="terminal">
 $ git merge origin/main
 <span class="sha1-col">50c4e9e (</span><span class="head-col">HEAD</span> <span class="sha1-col">-></span> <span class="active-branch-col">main</span><span class="sha1-col">,</span> <span class="remote-col">origin/main</span><span class="sha1-col">,</span> <span class="remote-col">origin/HEAD</span><span class="sha1-col">)</span> Add file2.txt
 <span class="sha1-col">f6ed1b8</span> Update file1.txt
@@ -387,7 +387,7 @@ It is also possible to directly integrate changes from the remote into your loca
 
 Let's imagine that our collaborator makes a series of questionable commits and pushes them to the remote:
 
-<pre class="git-command">
+<pre class="terminal">
 $ cd ~/collaborator/example-push-fetch
 $ echo "
 </pre>
@@ -426,7 +426,7 @@ TODO: move below code to section/chapter on merge conflicts?
 
 Git, very helpfully, tells us that we can not do this, since the remote contains work that we do not have locally, and it tells us we can use `git pull` to integrate the remote changes. The last advice on using `git pull` is not necessarily a good idea. This command does multiple things, namely `git fetch` to fetch updated information on refs from the remote, and then using `git merge` to integrate the remote changes directly into our local repository. But we do not know what changes have been pushed to the remote at the time we do a `git pull`, which could be problematic for us. It is better to use `git fetch` ourselves to update our information on the state of the remote repository, and then use `git merge` ourselves if we want to update our local copy:
 
-<pre class="git-command">
+<pre class="terminal">
 $ git fetch
 remote: Enumerating objects: 5, done.
 remote: Counting objects: 100% (5/5), done.
@@ -456,7 +456,7 @@ index e69de29..7e40661 100644
 We see that the commit histories have diverged, since changes have been pushed
 to the repository. We are happy with the contribution that our collaborator has added, but had we used `git pull` Git would have made a merge-commit to integrate the changes into our local repository, and we would instead prefer to rebase our changes onto the remote, to retain a linear commit history:
 
-<pre class="git-command">
+<pre class="terminal">
 $ git rebase -i origin/main
 $git log --oneline --all --graph
 * 9258c5a (HEAD -> main) Add file2.txt
@@ -468,7 +468,7 @@ file.txt  file2.txt
 
 The changes in the remote has now been integrated cleanly into our local copy, and we can now push our own changes:
 
-<pre class="git-command">
+<pre class="terminal">
 git push origin main
 git log --oneline --all --graph
 * 9258c5a (HEAD -> main, origin/main, origin/HEAD) Add file2.txt
@@ -485,7 +485,7 @@ In this exercise we will practice creating and using a local backup of a Git rep
 
 Set-up the following repository:
 
-<pre class="git-command">
+<pre class="terminal">
 $ mkdir ~/ex1
 $ cd ~/ex1
 $ git init
@@ -498,7 +498,7 @@ $ git commit -m "Add file1.txt"
 
 ::: {.callout-note title="Solution" collapse="true" icon="false"}
 
-<pre class="git-command">
+<pre class="terminal">
 $ mkdir ~/backups/ex1
 $ cd ~/backups/ex1
 $ git init --bare
@@ -510,7 +510,7 @@ $ git init --bare
 
 ::: {.callout-note title="Solution" collapse="true" icon="false"}
 
-<pre class="git-command">
+<pre class="terminal">
 $ cd ~/ex1
 $ git remote add origin ~/backups/ex1
 </pre>
@@ -522,7 +522,7 @@ $ git remote add origin ~/backups/ex1
 
 ::: {.callout-note title="Solution" collapse="true" icon="false"}
 
-<pre class="git-command">
+<pre class="terminal">
 $ git push origin main
 </pre>
 
@@ -534,7 +534,7 @@ We now have a backup of the history of the repository up until this point.
 
 ::: {.callout-note title="Solution" collapse="true" icon="false"}
 
-<pre class="git-command">
+<pre class="terminal">
 $ touch file2.txt
 $ git add .
 $ git commit -m"Add file2.txt"
@@ -545,7 +545,7 @@ $ git push origin main
 
 At this point we decide we want to checkout an old commit. In our infinite wisdom we attempt to do so using `git reset --hard` instead of `git checkout`:
 
-<pre class="git-command">
+<pre class="terminal">
 $ git reset --hard 08b2d5
 $ ls
 file.txt
@@ -557,7 +557,7 @@ Ta-da, we just permanently deleted file2.txt from our repository^[We actually di
 
 ::: {.callout-note title="Solution" collapse="true" icon="false"}
 
-<pre class="git-command">
+<pre class="terminal">
 $ git pull origin main
 $ git log --oneline --all --graph
 * 9258c5a (HEAD -> main, origin/main, origin/HEAD) Add file2.txt
@@ -578,7 +578,7 @@ In this exercise we are going to practice using three repositories on the same c
 
 Lets start by setting up a bare repository we are going to use as the central repository:
 
-<pre class="git-command">
+<pre class="terminal">
 $ mkdir ~/github/ex2
 $ cd ~/github/ex2
 $ git init --bare
@@ -586,7 +586,7 @@ $ git init --bare
 
 Now lets setup our "work computer" repository, and commit some code we developed during the day:
 
-<pre class="git-command">
+<pre class="terminal">
 $ mkdir ~/work_computer/ex2
 $ cd ~/work_computer/ex2
 $ git init
@@ -600,7 +600,7 @@ $ git commit -m"Add file1.txt and file2.txt"
 
 ::: {.callout-note title="Solution" collapse="true" icon="false"}
 
-<pre class="git-command">
+<pre class="terminal">
 $ git remote add github ~/github/ex2
 $ git push github main
 </pre>
@@ -613,7 +613,7 @@ At this point we imagine we go home, and later in the evening we want to continu
 
 ::: {.callout-note title="Solution" collapse="true" icon="false"}
 
-<pre class="git-command">
+<pre class="terminal">
 $ mkdir ~/personal_computer
 $ cd ~/personal_computer
 $ git clone ~/github/ex2
@@ -626,7 +626,7 @@ $ cd ~/personal_computer/ex2
 
 ::: {.callout-note title="Solution" collapse="true" icon="false"}
 
-<pre class="git-command">
+<pre class="terminal">
 $ echo "Add some content" >> file1.txt
 $ git add .
 $ git commit -m"Update file1.txt"
@@ -639,7 +639,7 @@ $ git push github main
 
 ::: {.callout-note title="Solution" collapse="true" icon="false"}
 
-<pre class="git-command">
+<pre class="terminal">
 $ cd ~/work-computer/ex2
 $ git pull origin main
 </pre>
@@ -681,7 +681,7 @@ TODO: this started as a motivating example to start the chapter, but I realized 
 
 But why do we need remotes in the first place? Why can't you simply share changes directly between two collaborators? This is because, if you push changes to another person's repository, that is also going to update their worktree and index. You would be overwriting whatever your collaborator is currently working on which is ofcourse not ideal. Doing this would be similar to trying to collaborate on a project by working on the same files at the same time. You would constantly be running the risk of overwriting someone else's work, or losing your own work because someone overwrites it. To illustrate this, lets make a concrete example. Lets say person A has set-up a project and done a little work in it that has been committed to the project:
 
-<pre class="git-command">
+<pre class="terminal">
 $ mkdir -p ~/example-collaboration/person_a/project #the -p flag creates missing parent directories as needed
 $ cd ~/example-collaboration/person_a/project
 $ git init
@@ -692,7 +692,7 @@ $ git commit -m"Add file1.txt"
 
 At this point, person B is brought in to help with the project, and makes a clone of person A's repository to work in.
 
-<pre class="git-command">
+<pre class="terminal">
 $ mkdir ~/example-collaboration/person_b
 $ cd ~/example-collaboration/person_b
 $ git clone ~/example-collaboration/person_a/project
@@ -701,7 +701,7 @@ $ cd project
 
 Cloning a repository automatically sets the cloned repository as a remote, and we can start pulling/pushing code to the remote immediately using `git pull` and `git push`. We will cover this in more details later. For now, let go back to person A, who has continued working on file1.txt and a new file, file2.txt:
 
-<pre class="git-command">
+<pre class="terminal">
 $ cd ~/example-collaboration/person_a/project
 $ echo "more content added by person A" >> file1.txt
 $ echo "new file made by person A" > file2.txt
@@ -709,7 +709,7 @@ $ echo "new file made by person A" > file2.txt
 
 While Person A is doing this work, person B is also making their own independent changes to file1.txt which they immediately commit in their local clone and push to the remote, which is person A's repository:
 
-<pre class="git-command">
+<pre class="terminal">
 $ cd ~/example-collaboration/person_b/project
 $ echo "more content added by person B" >> file1.txt
 $ git add .

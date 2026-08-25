@@ -47,7 +47,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-18447e9d16e0bfc3229421fc5cc130e2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-2aad03a8b4e422ea2bd4d420080b3680.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -75,7 +75,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script src="custom-js.js"></script>
 
 
 <link rel="stylesheet" href="styles.css">
@@ -194,38 +193,20 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part2-collaboration.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Collaboration</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./part2-git-diff.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Using <code>git diff</code> to show code changes</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Using <code>git diff</code> to show code changes</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./part2-github.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction to GitHub</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./part2-git-internals.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Git internals</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./part2-git-stash.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">git stash.</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Introduction to GitHub</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./part2-git-rebase.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Rebasing</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Rebasing</span></span></a>
   </div>
 </li>
       </ul>
@@ -307,7 +288,7 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-number="5.1" class="anchored" data-anchor-id="data-storage-in-git"><span class="header-section-number">5.1</span> Data storage in Git</h2>
 <p>To understand how branching works in Git, we need to take a step back and discuss how Git stores data in more details. As mentioned in <a href="part1-ch01-introduction-to-git.html#sec-file-storage-in-git" class="quarto-xref"><span>Section 1.2.2</span></a>, Git stores data as a series of snapshots. When you commit a version of files to a Git repository, Git makes a commit object using the index, that contains a pointer to the snapshot of content you staged for that commit. Beside the state of files included in the commit, the commit object also contains meta data on the author’s name and email (and this is why you should configure your Git installation), the commit message, and finally pointers to the commit, or commits, that came directory before it, ie its parent commit(s). The initial commit in a Git repository has no parent commit, a normal commit has one parent, and a merge commit has multiple parents (more on this later).</p>
 <p>To illustrate how all this works, lets make an example repository and go through the details step-by-step. First, lets initialize an empty repository:</p>
-<pre class="git-command">$ mkdir ~/example-data-storage
+<pre class="terminal">$ mkdir ~/example-data-storage
 $ cd ~/example-data-storage
 $ git init
 $ ls .git/
@@ -325,7 +306,7 @@ info  pack
 <p>Intuitively, you would think that the index holds a copy of all the files that goes into the commit. This is not the case. The index is just a sorted list of path names and the SHA-1 checksum of a blob object. We can use the <code>git ls-files --stage</code> command to show us the content of the index.</p>
 <p>TODO: expand above explaination</p>
 <p>Lets add a couple of files to the repository and stage them:</p>
-<pre class="git-command">$ echo "content a" &gt; file_a.txt
+<pre class="terminal">$ echo "content a" &gt; file_a.txt
 $ echo "content_b" &gt; file_b.txt
 $ git add .
 $ ls .git/
@@ -347,12 +328,12 @@ f054ce35dbe029a40a758df1e00103e6473e75
 </pre>
 <p>We can see that after we have created and staged <code>file_a.txt</code> and <code>file_b.txt</code>, an <code>index</code> file has been added in <code>.git/</code>, and that two objects have been added to the git repository, referred to by checksum values. We can also see that Git groups the objects in folders based on the first two characters of the checksum.</p>
 <p>We can also inspect the index:</p>
-<pre class="git-commmand">100644 e4542d77807392d80eb449356baa55c0cb657546 0       file_a.txt
+<pre class="terminal">100644 e4542d77807392d80eb449356baa55c0cb657546 0       file_a.txt
 100644 a6f054ce35dbe029a40a758df1e00103e6473e75 0       file_b.txt
 </pre>
 <p>TODO: need some more explaination on index content here: use https://shafiul.github.io//gitbook/7_the_git_index.html</p>
 <p>To inspect the content of our newly created blobs/objects, we need to use a low-level git command, <code>git cat-file</code> since objects are not stored as plain text-file, but is instead stores in other formats for efficiency reasons:</p>
-<pre class="git-command">$ git cat-file -y a6f054ce # Use -t option to the see the type of the object
+<pre class="terminal">$ git cat-file -y a6f054ce # Use -t option to the see the type of the object
 blob
 $ git cat-file -t e4542d77 
 blob
@@ -362,20 +343,20 @@ $ git cat-file -p e4542d77
 content a
 </pre>
 <p>First of all, notice how we can refer to checksums without using the full checksum value. Generally speaking, we only need to use the 7 first characters. We can see that the content of the object a6f054ce corresponds to the content of <code>file_b.txt</code> and that the content of object e4542d77 corresponds to the content of <code>file_a.txt</code>. Next, lets inspect the index using the low-level command <code>git ls-files</code>:</p>
-<pre class="git-command">$ git ls-files --stage
+<pre class="terminal">$ git ls-files --stage
 100644 e4542d77807392d80eb449356baa55c0cb657546 0       file_a.txt
 100644 a6f054ce35dbe029a40a758df1e00103e6473e75 0       file_b.txt
 </pre>
 <p>Here we have used the <code>--stage</code> option to get some information on staged files, most importantly the checksum and the name of the file, which is used to pull the relevant objects from the object database to include in the commit and name them.</p>
 <p>When we run <code>git commit</code>, Git checksums each subdirectory (which is just the project root directory containing <code>file_a.txt</code> and <code>file_b.txt</code> in this example), and stores them as a tree object in the Git repository. Git then creates a commit object that has the metadata and a pointer the the root project tree so it can re-create that snapshot when needed. Let continue our example to see this for ourselves:</p>
-<pre class="git-command">$ git commit -m"Initial commit"
+<pre class="terminal">$ git commit -m"Initial commit"
 [main (root-commit) 3d37117] Initial commit
  2 files changed, 2 insertions(+)
  create mode 100644 file_a.txt
  create mode 100644 file_b.txt
 </pre>
 <p>There is a lot of cryptic information outputted to the terminal, but of importance Git tells us that two files have been changed and lists the files. Additionally, we can see that a commit object has been made with the (abbreviated) checksum 3d37117. Before we take a closer look at this commit, lets first look at the index and the objects in the Git repository again:</p>
-<pre class="git-command">$ git ls-files --stage # No output now, nothing is staged for the next commit
+<pre class="terminal">$ git ls-files --stage # No output now, nothing is staged for the next commit
 $ ls .git/objects/
 <span class="bash-violet">3d  6c  a6  e4  info  pack</span>
 
@@ -396,7 +377,7 @@ f054ce35dbe029a40a758df1e00103e6473e75
 .git/objects/pack:
 </pre>
 <p>We can see that two new objects have been added to the database. One of the objects, 3d37117, is the commit object, and the other, 6cbce50, is the tree object included in the commit object, as we shall see in a moment. Lets take a closer look at the commit object:</p>
-<pre class="git-command">$ git cat-file -t 3d37117
+<pre class="terminal">$ git cat-file -t 3d37117
 commit
 $ git cat-file -p 3d37177
 tree 6cbce5031690670decc52d19e348c4a157beec9c
@@ -407,7 +388,7 @@ Initial commit
 </myemail@gmail.com></myemail@gmail.com></pre>
 <p>We see, as expected, that the commit object consists of a pointer to a tree object, 6cbce50 (the other object that was added to the database together with the commit object), information on the person who made the commit, a pointer to the parent commit, and the commit message. In this case the line with information on the parent commit is empty since this is the initial commit in the repository.</p>
 <p>Lets take a closer look at the tree object while we are at it:</p>
-<pre class="git-command">$ git cat-file -t 6cbc350
+<pre class="terminal">$ git cat-file -t 6cbc350
 tree
 $ git cat-file -p 6cbc350
 100644 blob e4542d77807392d80eb449356baa55c0cb657546    file_a.txt
@@ -478,7 +459,7 @@ Moving HEAD from one branch to another
 <section id="fast-forward-merge" class="level2" data-number="5.3">
 <h2 data-number="5.3" class="anchored" data-anchor-id="fast-forward-merge"><span class="header-section-number">5.3</span> Fast-forward merge</h2>
 <p>The simplest type of merge is a fast-forward merge, which we will illustrate with an example. Imagine we have the following basic repository with a single commit of a single file:</p>
-<pre class="git-command">$ mkdir ./fast-forward-merge
+<pre class="terminal">$ mkdir ./fast-forward-merge
 $ cd ./fast-forward-merge
 $ git init
 $ echo "content" &gt; file.txt
@@ -486,7 +467,7 @@ $ git add .
 $ git commit -m"Add file.txt"
 </pre>
 <p>Lets say that everything is working as intended in our repository right now, but that we want to update file.txt with some changes. Instead of making these changes directly on the main branch, we create a new branch, test, where we develop the changes:</p>
-<pre class="git-command">$ git switch -c test
+<pre class="terminal">$ git switch -c test
 $ echo "add changes" &gt;&gt; file.txt
 $ git add .
 $ git commit -m"Add changes to file.txt
@@ -494,28 +475,28 @@ $ echo "add more changes" &gt;&gt; file.txt
 $ git add .
 $ git commit -m"Add more changes to file.txt"
 $ git log --oneline --all --graph
-* 82b0b49 (HEAD -&gt; test) Add more changes to file.txt
-* 0242a6a Add changes to file.txt
-* ee99f60 (main) Add file.txt
+* <span class="col-hash">82b0b49 (</span><span class="col-head">HEAD</span> <span class="col-hash">-&gt;</span> <span class="col-branch-local">test</span><span class="col-hash">)</span> Add more changes to file.txt
+* <span class="col-hash">0242a6a</span> Add changes to file.txt
+* <span class="col-hash">ee99f60 (</span><span class="col-branch-local">main</span><span class="col-hash">)</span> Add file.txt
 </pre>
 <p>At this point we are happy with our changes to file.txt, and we now want to merge these changes into the main branch of the repository. We can do this by switching back to the main branch and use the <code>git merge</code> command to merge another branch into our active branch:</p>
-<pre class="git-command">$ git switch main
+<pre class="terminal">$ git switch main
 $ git merge test
 Updating ee99f60..82b0b49
 Fast-forward
  file.txt | 2 ++
  1 file changed, 2 insertions(+)
 git log --graph --oneline --all
-* 82b0b49 (HEAD -&gt; main, test) Add more changes to file.txt
-* 0242a6a Add changes to file.txt
-* ee99f60 Add file.txt
+* <span class="col-hash">82b0b49 (</span><span class="col-head">HEAD</span> <span class="col-hash">-&gt;</span> <span class="col-branch-local">main</span><span class="col-hash">,</span> <span class="col-branch-local">test</span><span class="col-hash">)</span> Add more changes to file.txt
+* <span class="col-hash">0242a6a</span> Add changes to file.txt
+* <span class="col-hash">ee99f60</span> Add file.txt
 </pre>
 <p>When doing the merge, we can see the phrase “Fast-forward” in the output. Because the commit 82b0b49 that the test branch is pointing to is directly ahead of the ee99f60 commit that the main branch is pointing to, we can merge the test branch to the main branch by simply moving the main branch pointer to the commit that the test branch is pointing at. In other words: in this simple scenario, the branches does not diverge, so we can simply “fast-forward” the main branch pointer.</p>
 </section>
 <section id="merge-commit" class="level2" data-number="5.4">
 <h2 data-number="5.4" class="anchored" data-anchor-id="merge-commit"><span class="header-section-number">5.4</span> Merge commit</h2>
-<p>Suppose we have a repository with two files,, where we experiment with updating one of the files in a separate branch:</p>
-<pre classs="git-command">$ mkdir ./merge-commit
+<p>Suppose we have a repository with two files, where we experiment with updating one of the files in a separate branch:</p>
+<pre class="terminal">$ mkdir ./merge-commit
 $ cd ./merge-commit
 $ git init
 $ echo "content" &gt; file1.txt
@@ -528,25 +509,36 @@ $ git add .
 $ git commit -m"Update file2.txt"
 </pre>
 <p>While working on this update to file2.txt, we discover that we have a bug in file1.txt that we want to fix immediately on the main branch, independent of the work we are currently doing on file2.txt. So we switch back to the main branch and fix the bug there:</p>
-<pre class="git-command">$ git switch main
+<pre class="terminal">$ git switch main
 $ echo "fix bug" &gt;&gt; file1.txt
 $ git add .
 $ git commit -m"Fix bug in file1.txt"
 $ git log --oneline --all --graph
-* 9b14dc1 (HEAD -&gt; main) Fix bug in file1.txt
-| * f9bcc9e (update-file2) Update file2.txt
-|/
-* c2c50b0 Add file1.txt and file2.txt
+* <span class="col-hash">9b14dc1 (</span><span class="col-head">HEAD</span> <span class="col-hash">-&gt;</span> <span class="col-branch-local">main</span><span class="col-hash">)</span> Fix bug in file1.txt
+<span class="col-log-graphline1">|</span> * <span class="col-hash">f9bcc9e</span> <span class="col-hash">(</span><span class="col-branch-local">update-file2</span><span class="col-hash">)</span> Update file2.txt
+<span class="col-log-graphline1">|/</span>
+* <span class="col-hash">c2c50b0</span> Add file1.txt and file2.txt
 </pre>
 <p>After doing this, we revisit our work on file2.txt and come to the conclusion that we are satified with the changes to file2.txt, and that we want to merge then into the main branch. Again, we switch to the main branch and use <code>git merge</code> to do this:</p>
-<pre class="git-command"><p>$ git switch main $ git merge update-file2 Merge made by the ‘ort’ strategy. file2.txt | 1 + 1 file changed, 1 insertion(+) $ git log –oneline –graph –all * e553fcb (HEAD -&gt; main) Merge branch ‘update-file2’ |<br>
-| * f9bcc9e (update-file2) Update file2.txt * | 9b14dc1 Fix bug in file1.txt |/ * c2c50b0 Add file1.txt and file2.txt</p>
+<pre class="terminal">$ git switch main
+$ git merge update-file2
+Merge made by the 'ort' strategy.
+ file2.txt | 1 +
+ 1 file changed, 1 insertion(+)
+$ git log --oneline --graph --all
+*   <span class="col-hash">e553fcb (</span><span class="col-head">HEAD</span> <span class="col-hash">-&gt;</span> <span class="col-branch-local">main</span><span class="col-hash">)</span> Merge branch 'update-file2'
+<span class="col-log-graphline1">|\</span>
+<span class="col-log-graphline1">|</span> * <span class="col-hash">f9bcc9e (</span><span class="col-branch-local">update-file2</span><span class="col-hash">)</span> Update file2.txt
+* <span class="col-log-graphline1">|</span> <span class="col-hash">9b14dc1</span> Fix bug in file1.txt
+<span class="col-log-graphline1">|/</span>
+* <span class="col-hash">c2c50b0</span> Add file1.txt and file2.txt
+</pre>
 <p>After using <code>git merge</code> Git open a text editor where it prompt us to enter a commit message. Here we have just accepted the pre-specified message “Merge branch ‘update-file’”. In this case we can see that a simple fast-forward merge was not used. This is because our two branches diverge, and we can’t simply move the main branch pointer forward. Instead, Git informs us that is has made a merge using the “ort” strategy. This is the default way Git tries to resolve merges, and can be used when we are trying to resolve a merge of two branches, which is what you will be doing most, if not all, the time. The “ort” strategy is a 3-way merge, where Git identifies the common ancestor commit from where the branches diverged (in this case c72c50b0), and uses this commit together with the commits pointed to by our two branches to create a new so-called “merge commit” (e53fcb) that incorporates the changes from both branches. Merge commits are special in the sense that they have more than one parent (in this case f9bcc9e and 9b14dc1).</p>
-</pre></section>
+</section>
 <section id="merge-conflicts" class="level2" data-number="5.5">
 <h2 data-number="5.5" class="anchored" data-anchor-id="merge-conflicts"><span class="header-section-number">5.5</span> Merge conflicts</h2>
 <p>So far, everything has been going smoothly: we simply use <code>git merge</code> to merge branches, and Git will figure out how to do it automatically, using either a fast-forward merge or a 3-way merge. But this will not always be the case. Sometimes there will be merge conflicts that has to be resolved manually. Take the following scenario:</p>
-<pre class="git-command">$ mkdir ./merge-conflict
+<pre class="terminal">$ mkdir ./merge-conflict
 $ cd ./merge-conflict
 $ git init
 $ echo "content" &gt; file.txt
@@ -561,19 +553,19 @@ $ echo "new content from main branch" &gt;&gt; file.txt
 $ git add .
 $ git commit -m"Add new content to file.txt on branch main"
 $ git log --oneline --all --graph
-* 10c4145 (HEAD -&gt; main) Add new content to file.txt on branch main
-| * 9e600a9 (new-branch) Add new content to file.txt on branch new-branch
-|/
-* 1593545 Add file.txt
+* <span class="col-hash">10c4145 (</span><span class="col-head">HEAD</span> <span class="col-hash">-&gt;</span> <span class="col-branch-local">main</span><span class="col-hash">)</span> Add new content to file.txt on branch main
+<span class="col-log-graphline1">|</span> * <span class="col-hash">9e600a9 (</span><span class="col-branch-local">new-branch</span><span class="col-hash">)</span> Add new content to file.txt on branch new-branch
+<span class="col-log-graphline1">|/</span>
+* <span class="col-hash">1593545</span> Add file.txt
 </pre>
 <p>Again, we will try to merge the new-branch branch to main by using <code>git merge</code>:</p>
-<pre class="git-command">$ git merge new-branch
+<pre class="terminal">$ git merge new-branch
 Auto-merging file.txt
 CONFLICT (content): Merge conflict in file.txt
 Automatic merge failed; fix conflicts and then commit the result.
 </pre>
 <p>This time we are informed by Git that we have a merge conflict in file.txt. This is because we have made diverging changes to file.txt in our two branches, so it is not clear how to merge these two versions of the file; we will have to tell Git manually how to do this. Git informs us that we need to fix the conflicts and then commit the results. Lets start by running <code>git status</code>:</p>
-<pre class="git-command">$ git status
+<pre class="terminal">$ git status
 On branch main
 You have unmerged paths.
   (fix conflicts and run "git commit")
@@ -586,7 +578,7 @@ Unmerged paths:
 no changes added to commit (use "git add" and/or "git commit -a")
 </file></pre>
 <p>Git tells us that we can about the merge by using <code>git merge --abort</code>, which is nice to know. Git also lists all files that has merge conflicts that has not been resolved, in this case the file file.txt. Lets see the state of file.txt:</p>
-<pre class="git-command">$ cat file.txt
+<pre class="terminal">$ cat file.txt
 content
 &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
 new content from main branch
@@ -595,7 +587,7 @@ new content from new-branch branch
 &gt;&gt;&gt;&gt;&gt;&gt;&gt; new-branch
 </pre>
 <p>We can see that Git has added markings to our file. The line “content” is the same in both versions of the file, so the first line is simply “content”, but the second line of the file is different for each branch, as indicated by the markings added to the file. Here the top part separated by “=======” referred to as HEAD is the version of the line from the branch we are currently one, namely main, and the bottom part referred to as new-branch is the version of the line from the new-branch branch. We can now edit the file manually to tell Git how we want to resolve this. In this example, lets say we decide that we want to to include the changes from both versions. We can do this by simply removing the markings that Git has added to file manually in our favorite text editor, eg we could use <code>notepad file.txt</code> to open the file in Notepad. To illustrate how the file is supposed to look like we will do this with the echo command instead here, using the <code>-e</code> flag to enable interpretation of backslash escapes, so we can use <code>\n</code> to create a new line:</p>
-<pre class="git-command">$ echo -e "content\nnew content from main branch\nnew content from new-branch branch"
+<pre class="terminal">$ echo -e "content\nnew content from main branch\nnew content from new-branch branch"
 content
 new content from main branch
 new content from new-branch branch
@@ -606,7 +598,7 @@ new content from main branch
 new content from new-branch branch
 </pre>
 <p>Git told us that after we have resolved the conflict, we are to use <code>git add</code> to mark the changes, so lets do that:</p>
-<pre class="git-command">$ git add .
+<pre class="terminal">$ git add .
 $ git status
 On branch main
 All conflicts fixed but you are still merging.
@@ -616,11 +608,11 @@ Changes to be committed:
         modified:   file.txt
 </pre>
 <p>After running <code>git status</code> again, we can now see that the conflicts have been resolved, and that we can use <code>git commit</code> to conclude the merge:</p>
-<pre class="git-command">$ git commit
+<pre class="terminal">$ git commit
 [main 01554d1] Merge branch 'new-branch'
 </pre>
 <p>This will again prompt Git to open a text editor, where we can enter a commit message. Here, we just keep the pre-specified message “Merge branch ‘new-branch’”. Finally, we can use <code>git log</code> to see the commit history, and check that the content of file.txt in the merge commit is as expected:</p>
-<pre class="git-command">$ git log --all --oneline --graph
+<pre class="terminal">$ git log --all --oneline --graph
 *   01554d1 (HEAD -&gt; main) Merge branch 'new-branch'
 |\
 | * 9e600a9 (new-branch) Add new content to file.txt on branch new-branch

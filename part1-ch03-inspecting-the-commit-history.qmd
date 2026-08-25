@@ -8,7 +8,7 @@ Before we start talking about the commit histories and changes to files, we need
 
 The method that Git uses for making checksums is called a SHA-1 hash. This is a 40-characters string composed of hexadecimal characters and looks something like shown below.
 
-<pre class="git-command">
+<pre class="terminal">
 840552db75d3d52894732b753892427b3f2cafa8
 </pre>
 
@@ -18,7 +18,7 @@ Since Git uses checksums so much, you will see these checksums everywhere. In pa
 
 To illustrate how how to inspect the commit history, we create a simple Git repository to work with.
 
-<pre class="git-command">
+<pre class="terminal">
 $ cd ~
 $ mkdir example-git-log
 $ cd example-git-log
@@ -30,9 +30,9 @@ $ git commit -m"First commit"
 
 If you use `git log` on this repository, you will get output similar to the below:
 
-<pre class="git-command">
+<pre class="terminal">
 $ git log
-<span class="bash-gold">commit 3d00987b9c770a8881e1ea1024c119e2c19b091a</span> (HEAD -> main)
+<span class="col-hash">commit 3d00987b9c770a8881e1ea1024c119e2c19b091a</span> (HEAD -> main)
 Author: Thomas Rasmussen &lt;thomasboejer@gmail.com&gt;
 Date:   Mon Oct 13 08:28:10 2025 +0200
 
@@ -43,18 +43,18 @@ In the output we can see that there have been one commit to the repository, and 
 
 Lets add another commit to the repository look at the commit history again:
 
-<pre class="git-command">
+<pre class="terminal">
 $ echo "Second commit" >> file.txt
 $ git add file.txt
 $ git commit -m"Second commit"
 $ git log
-commit <span class="bash-gold">6ea3956e99f1d0227c01e05622e952bffec0eafc</span> (HEAD -> main)
+commit <span class="col-hash">6ea3956e99f1d0227c01e05622e952bffec0eafc</span> (HEAD -> main)
 Author: Thomas Rasmussen &lt;thomasboejer@gmail.com&gt;
 Date:   Mon Oct 13 08:33:54 2025 +0200
 
     Second commit
 
-<span class="bash-gold">commit 3d00987b9c770a8881e1ea1024c119e2c19b091a</span>
+<span class="col-hash">commit 3d00987b9c770a8881e1ea1024c119e2c19b091a</span>
 Author: Thomas Rasmussen &lt;thomasboejer@gmail.com&gt;
 Date:   Mon Oct 13 08:28:10 2025 +0200
 
@@ -63,10 +63,10 @@ Date:   Mon Oct 13 08:28:10 2025 +0200
 
 We can see that commits are listed in reverse chronological orders, with the newest commit showing up first. We can also see that the information we are shown is quite verbose, and with many commits to a repository will make it hard to get an overview of the commit history. Typically, we are primarily interested in the commit checksum and the commit message of commits to a repository. We can get Git to show us exactly this using the `--oneline` option:
 
-<pre class="git-command">
+<pre class="terminal">
 $ git log --oneline
-<span class="bash-gold">6ea3956</span> (HEAD -> main) Second commit
-<span class="bash-gold">3d00987</span> First commit
+<span class="col-hash">6ea3956 (</span><span class="col-head">HEAD</span> <span class="col-hash">-></span> <span class="col-branch-local">main</span><span class="col-hash">)</span> Second commit
+<span class="col-hash">3d00987</span> First commit
 </pre>
 
 Note that when using this option, only the first 7 characters of checksums are shown. Git will automatically show more characters if necessary to make the ID's' unique. At this point you might be concerned about the possibility of different commits having the same checksum, a so-called SHA-1 collision. Don't worry, this is extremely unlikely^[https://git-scm.com/book/en/v2/Git-Tools-Revision-Selection]:
@@ -82,24 +82,24 @@ attacked and killed by wolves in unrelated incidents on the same night.
 
 Another thing we are often interested in, is the exact changes that was introduced in a commit. We can tell Git to show us the differences (the patch output) introduced in each commit by applying the `-p` option to `git log`. Let's apply this option together with`--oneline`:
 
-<pre class="git-command">
+<pre class="terminal">
 $ git log --oneline -p
-<span class="bash-gold">6ea3956</span> (HEAD -> main) Second commit
-<span style="color:white">diff --git a/file.text</span> b/file.text
-<span style="color:white">new file mode 100644</span>
-<span style="color:white">index 0000000..c133ee6</span>
-<span style="color:white">--- /dev/null</span>
-<span style="color:white">+++ b/file.text</span>
-@@ -0,0 +1 @@
-<span class="bash-green">+Second commit</span>
-<span class="bash-gold">3d00987 First commit</span>
-<span style="color:white">diff --git a/file.txt b/file.txt</span>
-<span style="color:white">new file mode 100644</span>
-<span style="color:white">index 0000000..6eaf244</span>
-<span style="color:white">--- /dev/null</span>
-<span style="color:white">+++ b/file.txt</span>
-@@ -0,0 +1 @@
-<span class="bash-green">+First commit</span>
+<span class="col-hash">6ea3956</span> (HEAD -> main) Second commit
+<span class="col-diff-header">diff --git a/file.text</span> b/file.text
+<span class="col-diff-metadata">new file mode 100644</span>
+<span class="col-diff-metadata">index 0000000..c133ee6</span>
+<span class="col-diff-metadata">--- /dev/null</span>
+<span class="col-diff-metadata">+++ b/file.text</span>
+<span class="col-diff-hunk-header">@@ -0,0 +1 @@</span>
+<span class="col-diff-added">+Second commit</span>
+<span class="col-hash">3d00987 First commit</span>
+<span class="col-diff-header">diff --git a/file.txt b/file.txt</span>
+<span class="col-diff-metadata">new file mode 100644</span>
+<span class="col-diff-metadata">index 0000000..6eaf244</span>
+<span class="col-diff-metadata">--- /dev/null</span>
+<span class="col-diff-metadata">+++ b/file.txt</span>
+<span class="col-diff-hunk-header">@@ -0,0 +1 @@</span>
+<span class="col-diff-added">+First commit</span>
 </pre>
 
 There is a lot of technical information in this output, which we will not discuss, but we can see that the the line of text that was added in each commit is clearly marked in green.

@@ -10,7 +10,7 @@ First of all, we need to do some basic configurations of Git, which we will do u
 
 The first, and most important, thing we need to configure, is the text editor that Git opens when you need to type in a message. Git for Windows comes with a Vim installation, and by default Git uses Vim as a text editor. Vim is amazing, but it is also a complete mystery to people who do not know how it works.^[If you open Vim by accident, type `<Esc>:q!<Enter>` to exit it. Pressing `<Esc>` is to make sure you are in normal mode before typing anything else, and `:q!` is a command to quit Vim and discard any unsaved changes.] To change the default editor to Notepad, which is pre-installed on Windows, write the following command in your terminal:
 
-<pre class="git-command">
+<pre class="terminal">
 $ git config set --global core.editor notepad
 </pre>
 
@@ -20,7 +20,7 @@ This tells Git to use Notepad as a text editor in all your Git repositories.
 
 Another thing you should configure in your Git installation is your username and email. Every commit you make to your Git repository contains information on the identity of the person who made it, and this information should be informative, i.e. be your real name and email. This ensures that if you are collaborating on a Git repository or sharing the repository online, it is clear to others who made what commits to the repository. You can set your username and email by writing the following commands in your terminal:
 
-<pre class="git-command">
+<pre class="terminal">
 $ git config set --global user.name "Your name"
 $ git config set --global user.email "your@email.com"
 </pre>
@@ -33,7 +33,7 @@ To start using Git, we need to either initialize a new Git repository, or clone 
 
 To initialize a Git repository in a directory, `cd` to the directory and use the `git init` command. This creates an empty Git repository in a new (hidden) subdirectory named ".git".
 
-<pre class="git-command">
+<pre class="terminal">
 $ cd ~ # Change working directory to the home directory
 $ mkdir new-git-repository # Make a new directory in home directory
 $ cd new-git-repo # Change working directory
@@ -48,7 +48,7 @@ You can clone an existing Git repository using the `git clone` command. This mak
 
 You can clone a repository from anyway, e.g. from another folder on your machine, from a folder on a network drive, or from a url. The code for this tutorial is on available on Github. You could clone the repository by using the command below:
 
-<pre class="git-command">
+<pre class="terminal">
 $ git clone "https://github.com/thomas-rasmussen/git-tutorial.git"
 </pre>
 
@@ -68,7 +68,7 @@ When you edit a tracked file, Git sees it as modified since it is different from
 
 So how do we check the state of our files? The main command to do this is `git status`. If you run this command right after cloning a repository or commiting a snapshot of your files, you will see something like this.
 
-<pre class="git-command">
+<pre class="terminal">
 $ git status
 On branch main
 nothing to commit, working tree clean
@@ -80,13 +80,13 @@ As the message states, the working tree is clean, i.e. the files in the reposito
 
 To update the index, we use the `git add` command. This will update the index using the current content of the working tree, which can include updating files that are already in the index, include new files, or remove files that are no longer in the working tree. The index holds a snapshot of the content that we want to include in our next commit. To update the index based on all files in the repository you can use the commmand
 
-<pre class="git-command">
+<pre class="terminal">
 $ git add .
 </pre>
 
 The "." means "current directory". You can also specify individual files to add to the index:
 
-<pre class="git-command">
+<pre class="terminal">
 $git add file_a.txt file_b.txt
 </pre>
 
@@ -96,7 +96,7 @@ $git add file_a.txt file_b.txt
 We can commit files to the repository with the `git commit` command. This commands
 uses the current content of the index to create a new commit to the repository.
 
-<pre class="git-command">
+<pre class="terminal">
 $ git commit -m"Commit message"
 </pre>
 
@@ -106,7 +106,7 @@ If you do not specify a commit message with the `-m` option, Git will open a tex
 
 Let's create our own Git repository from scratch to illustrate the concepts that have been introduced so far. First, we initialize a new Git repository in the home directory, and `cd` into the directory.
 
-<pre class="git-command">
+<pre class="terminal">
 $ cd ~
 $ mkdir git-tutorial-example
 $ cd git-tutorial-example
@@ -115,7 +115,7 @@ $ git init
 
 Lets run `git status` to see the status of the working tree at this point.
 
-<pre class="git-command">
+<pre class="terminal">
 $ git status
 On branch main
 
@@ -128,13 +128,13 @@ As expected we are told that nothing has been committed to the repository, and t
 
 Next, we create a new file in the directory.
 
-<pre class="git-command">
+<pre class="terminal">
 $ echo "Content of file_a.txt" > file_a.txt
 </pre>
 
 If we run `git status` again:
 
-<pre class="git-command">
+<pre class="terminal">
 $ git status
 On branch main
 
@@ -142,14 +142,14 @@ No commits yet
 
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
-        <span style="color:red">file_a.txt</span>
+        <span class="col-status-changed">file_a.txt</span>
 
 nothing added to commit but untracked files present (use "git add" to track)
 </pre>
 
 Git now notifies us about the presence on an untracked file in the repository. Lets add the file to the index for the next commit, and run `git status` once more:
 
-<pre class="git-command">
+<pre class="terminal">
 $ git add file_a.txt
 $ git status
 On branch main
@@ -158,12 +158,12 @@ No commits yet
 
 Changes to be committed:
   (use "git rm --cached <file>..." to unstage)
-        <span style="color:green">new file:   file_a.txt</span>
+        <span class="col-status-added">new file:   file_a.txt</span>
 </pre>
 
 Git now tells us that file_a.txt has been added to the index and will be included, in its current state, to the next commit. Finally, lets commit the file to the repository and run `git status` a final time:
 
-<pre class="git-command">
+<pre class="terminal">
 $ git commit file_a.txt -m"Add file_a.txt to repository"
 $ git status
 On branch main
@@ -176,19 +176,19 @@ Git now informs us that there is nothing to commit and that the working tree is 
 
 We will end this chapter with a note on how to access the comprehensive manual help page for any of the Git commands. The manual pages can be accessed in different equivalent ways one of which is:
 
-<pre class="git-command">
+<pre class="terminal">
 $ git help &lt;command&gt;
 </pre>
 
 For example, to get the manual page for the `git add` command run
 
-<pre class="git-command">
+<pre class="terminal">
 $ git help add
 </pre>
 
 These manual pages are nice because they can be accessed anywhere, even offline. A short summary on how to use the command can also be printed in the terminal by using the `-h` option with a git command:
 
-<pre class="git-command">
+<pre class="terminal">
 $ git help add -h
 usage: git add [<options>] [--] <pathspec>...
 
@@ -241,7 +241,7 @@ Look at the example in section @sec-getting-started-example.
 :::
 
 ::: {.callout-important title="Solution" collapse="true" icon="false"}
-<pre class="git-command">
+<pre class="terminal">
 $ cd ~ # Make sure the working directory is set to the home directory
 $ mkdir ex-init-repo # Make a new subdirectory
 $ cd ex-init-repo # cd to new directory
@@ -256,7 +256,7 @@ $ git commit -m"Commit message" # Commit to repository
 
 In this exercise we will practice using the manual pages. First lets construct a simple git repository with different files in different states.
 
-<pre class="git-command">
+<pre class="terminal">
 $ cd ~
 $ mkdir ex-man-pages
 $ cd ex-man-pages
@@ -272,21 +272,21 @@ $ git add file2.txt
 
 If we run `git status` on the repository in this state we get the following output in the terminal
 
-<pre class="git-command">
+<pre class="terminal">
 $ git status
 On branch main
 Changes to be committed:
   (use "git restore --staged <file>..." to unstage)
-        <span style="color:green">new file:   file2.txt</span>
+        <span class="col-status-added">new file:   file2.txt</span>
 
 Changes not staged for commit:
   (use "git add/rm <file>..." to update what will be committed)
   (use "git restore <file>..." to discard changes in working directory)
-        <span style="color:red">deleted:    file1.txt</span>
+        <span class="col-status-changed">deleted:    file1.txt</span>
 
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
-        <span style="color:red">file3.txt</span>
+        <span class="col-status-changed">file3.txt</span>
 </pre>
 
 The output is rather verbose, and with more files (which is common) it quickly becomes unnecessarily hard to get an overview. It would be great if we could get the output from `git status` in a shorter, more condense, format.
@@ -300,11 +300,11 @@ You can either look at the "OPTIONS" section of manual page using the `git help 
 ::: {.callout-note title="Solution" collapse="true" icon="false"}
 The option we are looking for is `-s`.
 
-<pre class="git-command">
+<pre class="terminal">
 $ git status -s
- <span style="color:red">D</span> file1.txt
-<span style="color:green">A</span>  file2.txt
-<span style="color:red">??</span> file3.txt
+ <span class="col-status-changed">D</span> file1.txt
+<span class="col-status-added">A</span>  file2.txt
+<span class="col-status-changed">??</span> file3.txt
 
 </pre>
 :::
@@ -324,7 +324,7 @@ In this exercise we will practice cloning an existing repository, namely the rep
 2. Clone the repository from the first exercise.
 
 ::: {.callout-note title="Solution" collapse="true" icon="false"}
-<pre class="git-command">
+<pre class="terminal">
 $ cd ~
 $ mkdir ex-clone-repo
 $ cd ex-clone-repo

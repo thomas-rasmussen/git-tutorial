@@ -1,4 +1,4 @@
-# Introduction to GitHub
+# Introduction to GitHub {#sec-introduction-to-github}
 
 GitHub is a web-based service that hosts Git repositories. Simply put, you can host a remote of your Git repository on GitHub instead of having a remote locally on your network. This makes it possible for you to access your Git repository from any computer with an internet connection, which is obviously beneficial. But GitHub is also much more than that. GitHub offers many features that facilitate collaboration, and can be used for much more than simply storing your repository on the internet. It is outside the scope of this tutorial to go into much detail about what GitHub can be used for and how, since it would quickly become an entire tutorial in itself, but we will introduce and illustrate some basic features that should make it clear how valuable a tool GitHub can be.
 
@@ -11,7 +11,7 @@ To do basically anything other than browsing and cloning repositories on GitHub,
 
 As stated, we will interact with GitHub from the command line using the GitHub CLI. You can install it from Git BASH by running the following command:
 
-<pre class="git-command">
+<pre class="terminal">
 $ winget install --id GitHub.cli
 </pre>
 
@@ -24,7 +24,7 @@ You need to restart your terminal before you can use the GitHub CLI `gh` command
 
 The most technical aspect of using GitHub is to authenticate with your GitHub account. You need to do this to verify to GitHub that you are who you claim to be, so that you are allowed to access your GitHub account and push changes to your repositories etc. You can authenticate with your GitHub account from the command line using either HTTPS or SSH. It is outside the scope of this tutorial to go into any details about what this means, and to explain the pros and cons of each protocol. Here we will simply show how you can authenticate using HTTPS using the GitHub CLI. To authenticate with your GitHub account, run the following command:
 
-<pre class="git-command">
+<pre class="terminal">
 $ gh auth login -p"https" -cw
 </pre>
 
@@ -57,7 +57,7 @@ You can initialize or upload a Git repository on GitHub using the `gh repo creat
 
 Let's illustrate how to initialize a new Git repository directly on GitHub. As mentioned before, besides giving the repository a name, we also need to to use a flag to specify whether the repository should be public or private. Furthermore, it is common practice to initialize a repository with an initial commit adding a README to the repository:
 
-<pre class="git-command">
+<pre class="terminal">
 $ gh repo create init-on-github --public --add-readme
 </pre>
 
@@ -65,12 +65,12 @@ This creates a new public repository called `init-on-github` in your GitHub acco
 
 You can now clone the repository, automatically setting up the repository on GitHub as a remote, and start working on the project:
 
-<pre class="git-command">
+<pre class="terminal">
 $ cd ~
 $ git clone "https://github.com/your-user-name/init-on-github"
 $ cd init-on-github
 $ git log --oneline
-<span class="sha1-col">9caef1d (</span><span class="head-col">HEAD </span><span class="sha1-col">-></span> <span class="active-branch-col">main</span><span class="sha1-col">,</span> <span class="remote-col">origin/main</span><span class="sha1-col">,</span> <span class="remote-col">origin/HEAD</span><span class="sha1-col">)</span> Initial commit
+<span class="col-hash">9caef1d (</span><span class="col-head">HEAD </span><span class="col-hash">-></span> <span class="col-branch-local">main</span><span class="col-hash">,</span> <span class="col-branch-remote">origin/main</span><span class="col-hash">,</span> <span class="col-branch-remote">origin/HEAD</span><span class="col-hash">)</span> Initial commit
 $ ls
 README.md
 $ git remote -v
@@ -83,7 +83,7 @@ origin  https://github.com/your-user-name/init-on-github (push)
 
 Imagine you have the following Git repository set up locally:
 
-<pre class="git-command">
+<pre class="terminal">
 $ mkdir ~/init-local-repo
 $ cd ~/init-local-repo
 $ git init
@@ -94,10 +94,10 @@ $ git commit -m"Initial commit"
 
 To upload the repository to GitHub, we can use `gh repo create` with the `--source` flag to specify a local repository to use as a source for the repository. Furthermore, we can use the `--push` flag to push the local commits to the GitHub repository, and use the `--remote` flag to specify the name for the remote:
 
-<pre class="git-command">
+<pre class="terminal">
 $ gh repo create init-local-repo --public --source=. --remote=origin --push
 $ git log --oneline
-<span class="sha1-col">f662630 (</span><span class="head-col">HEAD</span> <span class="sha1-col">-></span> <span class="active-branch-col">main</span><span class="sha1-col">,</span> <span class="remote-col">origin/main</span><span class="sha1-col">)</span> Initial commit
+<span class="col-hash">f662630 (</span><span class="col-head">HEAD</span> <span class="col-hash">-></span> <span class="col-branch-local">main</span><span class="col-hash">,</span> <span class="col-branch-remote">origin/main</span><span class="col-hash">)</span> Initial commit
 $ git remote -v
 origin  https://github.com/your-user-name/init-local-repo (fetch)
 origin  https://github.com/your-user-name/init-local-repo (push)
@@ -157,7 +157,7 @@ A full list of GitHub CLI commands related to issues, optional flags, and how to
 
 To illustrate how issues can be used, imagine a project with two collaborators that initiate and upload a repository they are going to work on to GitHub:
 
-<pre class="git-command">
+<pre class="terminal">
 $ mkdir ~/issues-example
 $ cd ~/issues-example
 $ git init
@@ -169,23 +169,23 @@ $ gh repo create issues-example --public --source=. --remote=origin --push
 
 Let's say that collaborator A wants a feature implemented in the project. He communicate this to collaborator B by making an issue describing what he wants to implement:
 
-<pre class="git-command">
+<pre class="terminal">
 $ gh issue create --title "Implement feature A" --body "Text describing what to add and how."
 </pre>
 
 Collaborator B is notified (either directly by collaborator A or by a notification from GitHub) that collaborator A has created an issue in the repository, so he uses `gh issue list` to get an overview of the issues in the repository:
 
-<pre class="git-command">
+<pre class="terminal">
 $ gh issue list
 
 <span style="color:grey"><u>ID</u>  <u>TITLE              </u>  <u>LABELS</u>  <u>UPDATED           </u></span>
-<span class="bash-green">#1</span>  Implement feature A          <span style="color:grey">about 1 minute ago</span>
+<span class="col-bright-green">#1</span>  Implement feature A          <span style="color:grey">about 1 minute ago</span>
 
 </pre>
 
 He then uses `gh issue view` to get some more detailed information on the issue that collaborator A has made:
 
-<pre class="git-command">
+<pre class="terminal">
 <span># Note that we are referring to the issue by its ID value</span>
 $ gh issue view 1
 <span style="color:white">Implement feature A</span> thomas-rasmussen/issues-example#1
@@ -201,13 +201,13 @@ $ gh issue view 1
 
 Collaborator B then adds a comment to the issue telling collaborator A to go ahead and implement the feature:
 
-<pre class="git-command">
+<pre class="terminal">
 $ gh issue comment 1 --body "LGTM"
 </pre>
 
 Collaborator A sees this, implements the feature in a feature branch, merge the changes into the main branch, and pushes the changes to the remote on GitHub:
 
-<pre class="git-command">
+<pre class="terminal">
 $ git switch -c implement-feature-A
 $ echo "Implementation of feature A" > feature_a.txt
 $ git add .
@@ -220,20 +220,20 @@ $ git branch -d implement-feature-A
 
 Finally, collaborator A adds a comment to the issue saying that the feature has been added and pushed to the main branch, and then closes the issue:
 
-<pre class="git-command">
+<pre class="terminal">
 $ gh issue comment 1 --body "Implemented and merged to main branch"
 $ gh issue close 1
 </pre>
 
 Let's wrap up this example by deleting the GitHub repository:
 
-<pre class="git-command">
+<pre class="terminal">
 $ gh repo delete issues-example --yes
 </pre>
 
 You might not have permission to use this command. If this is the case run the following command and try again:
 
-<pre class="git-command">
+<pre class="terminal">
 $ gh auth refresh -s delete_repo
 </pre>
 
@@ -253,14 +253,14 @@ Pull requests are proposals to merge code changes into a project. The changes ca
 
 Let's imagine that we want to contribute to the GitHub repository [github.com/thomas-rasmussen-alt/git-tutorial-fork-example](github.com/thomas-rasmussen-alt/git-tutorial-fork-example). First we make a fork of the repository and make a clone of the repository at the same time:
 
-<pre class="git-command">
+<pre class="terminal">
 $ cd
 $ gh repo fork thomas-rasmussen-alt/git-tutorial-fork-example --clone
 </pre>
 
 First of all, if we make a list of forked repositories on our account, we can see that a fork of git-tutorial-fork-example has been added:
 
-<pre class="git-command">
+<pre class="terminal">
 gh repo list --fork
 
 Showing 1 of 1 repositories in @user-name that match your search
@@ -272,10 +272,10 @@ Showing 1 of 1 repositories in @user-name that match your search
 
 Next we `cd` in to the local clone of the repository we also made, and inspect the remotes that have been automatically made:
 
-<pre class="git-command">
+<pre class="terminal">
 $ cd git-tutorial-fork-example
 $ git log --oneline
-<span class="sha1-col">dd7b9d9 (</span><span class="head-col">HEAD</span> <span class="sha1-col">-></span> <span class="active-branch-col">main</span><span class="sha1-col">,</span> <span class="remote-col">upstream/main</span><span class="sha1-col">,</span> <span class="remote-col">upstream/HEAD</span><span class="sha1-col">,</span> <span class="remote-col">origin/main</span><span class="sha1-col">,</span> <span class="remote-col">origin/HEAD</span><span class="sha1-col">)</span> Initial commit
+<span class="col-hash">dd7b9d9 (</span><span class="col-head">HEAD</span> <span class="col-hash">-></span> <span class="col-branch-local">main</span><span class="col-hash">,</span> <span class="col-branch-remote">upstream/main</span><span class="col-hash">,</span> <span class="col-branch-remote">upstream/HEAD</span><span class="col-hash">,</span> <span class="col-branch-remote">origin/main</span><span class="col-hash">,</span> <span class="col-branch-remote">origin/HEAD</span><span class="col-hash">)</span> Initial commit
 $ git remote -v
 origin  https://github.com/thomas-rasmussen/git-tutorial-fork-example.git (fetch)
 origin  https://github.com/thomas-rasmussen/git-tutorial-fork-example.git (push)
@@ -285,20 +285,20 @@ upstream        https://github.com/thomas-rasmussen-alt/git-tutorial-fork-exampl
 
 We can see that two remote have been set up: one to the fork (origin) and one to the original/upstream (upstream) repository. Next, we make the changes we want to contribute to the original project in our local clone and push the changes to the fork:
 
-<pre class="git-command">
+<pre class="terminal">
 $ git switch -c implement-feature
 $ echo "Implementation of feature" > feature.txt
 $ git add .
 $ git commit -m"Implement feature"
 $ git push
 $ git log --oneline
-<span class="sha1-col">d134f37 (</span><span class="head-col">HEAD</span> <span class="sha1-col">-> </span><span class="active-branch-col">main</span><span class="sha1-col">,</span> <span class="remote-col">origin/main</span><span class="sha1-col">,</span> <span class="remote-col">origin/HEAD</span><span class="sha1-col">)</span> Implement feature
-<span class="sha1-col">dd7b9d9 (</span><span class="remote-col">upstream/main</span><span class="sha1-col">,</span> <span class="remote-col">upstream/HEAD</span><span class="sha1-col">)</span> Initial commit
+<span class="col-hash">d134f37 (</span><span class="col-head">HEAD</span> <span class="col-hash">-> </span><span class="col-branch-local">main</span><span class="col-hash">,</span> <span class="col-branch-remote">origin/main</span><span class="col-hash">,</span> <span class="col-branch-remote">origin/HEAD</span><span class="col-hash">)</span> Implement feature
+<span class="col-hash">dd7b9d9 (</span><span class="col-branch-remote">upstream/main</span><span class="col-hash">,</span> <span class="col-branch-remote">upstream/HEAD</span><span class="col-hash">)</span> Initial commit
 </pre>
 
 Finally, we send a pull request to the original repository, asking them to merge our suggested changes:
 
-<pre class="git-command">
+<pre class="terminal">
 $ gh pr create --title "Implement feature" --body "Implementation of important feature"
 </pre>
 
@@ -349,7 +349,7 @@ Use the `--license` flag to add a license. You can find a list of available lice
 
 ::: {.callout-note title="Solution" collapse="true" icon="false"}
 
-<pre class="git-command">
+<pre class="terminal">
 $ gh repo create my-repo --public --add-readme --license=mit
 </pre>
 
@@ -369,7 +369,7 @@ Use the `--help` flag to see the documentation for the `gh repo view` command.
 
 ::: {.callout-note title="Solution" collapse="true" icon="false"}
 
-<pre class="git-command">
+<pre class="terminal">
 $ gh repo view my-repo --web
 </pre>
 
@@ -382,12 +382,12 @@ Make a local clone and `cd` into the repository. Afterwards look at the commit h
 
 ::: {.callout-note title="Solution" collapse="true" icon="false"}
 
-<pre class="git-command">
+<pre class="terminal">
 $ cd
 $ git clone https://github.com/user-name/my-repo.git
 $ cd my-repo
 $ git log --oneline
-5f0b7da (HEAD -> main, origin/main, origin/HEAD) Initial commit
+5<span class="col-hash">f0b7da (</span><span class="col-head">HEAD</span> <span class="col-hash">-></span> <span class="col-branch-local">main</span><span class="col-hash">,</span> <span class="col-branch-remote">origin/main</span><span class="col-hash">,</span> <span class="col-branch-remote">origin/HEAD</span><span class="col-hash">)</span> Initial commit
 $ ls
 LICENSE  README.md
 </pre>
@@ -401,7 +401,7 @@ Commit a change in the main branch, and push it to the GitHub repository.
 
 ::: {.callout-note title="Solution" collapse="true" icon="false"}
 
-<pre class="git-command">
+<pre class="terminal">
 $ echo "Add change" > file1.txt
 $ git add .
 $ git commit -m"Add change"
@@ -425,7 +425,7 @@ You can find a list of valid label values at [https://docs.github.com/en/issues/
 
 ::: {.callout-note title="Solution" collapse="true" icon="false"}
 
-<pre class="git-command">
+<pre class="terminal">
 $ gh issue create --title "Implement feature A" --body "Description of feature to be added" --assignee "@me" --label "enhancement"
 </pre>
 
@@ -444,13 +444,13 @@ Look at the documentation for the `gh issue comment`, using either the `--help` 
 
 ::: {.callout-note title="Solution" collapse="true" icon="false"}
 
-<pre class="git-command">
+<pre class="terminal">
 $ gh issue list
 
 Showing 1 of 1 open issue in user-name/my-repo
 
 <span style="color:grey"><u>ID</u>  <u>TITLE              </u>  <u>LABELS     </u>  <u>UPDATED             </u></span>
-<span class="bash-green">#1</span>  Implement feature A  enhancement  <span style="color:grey">about 51 minutes ago</span>
+<span class="col-bright-green">#1</span>  Implement feature A  enhancement  <span style="color:grey">about 51 minutes ago</span>
 
 $ gh issue comment --web"
 </pre>
@@ -470,7 +470,7 @@ You can find the documentation for the `gh issue close` command at [https://cli.
 
 ::: {.callout-note title="Solution" collapse="true" icon="false"}
 
-<pre class="git-command">
+<pre class="terminal">
 $ gh issue close 1 --reason "completed"
 </pre>
 :::
@@ -496,7 +496,7 @@ If you are uneasy about using the `rm`command (which is not unreasonable), just 
 
 ::: {.callout-note title="Solution" collapse="true" icon="false"}
 
-<pre class="git-command">
+<pre class="terminal">
 $ gh repo delete my-repo --yes
 $ cd
 $ rm my-repo -rf
@@ -525,7 +525,7 @@ You can fork a repository using the `gh repo fork` command. See [https://cli.git
 
 To fork and clone the repository at the same time using the GitHub CLI, use the following command:
 
-<pre class="git-command">
+<pre class="terminal">
 <span># cd to an appropriate directory before forking and cloning the repository. Here we choose the home directory. </span>
 $ cd
 $ gh repo fork thomas-rasmussesn/git-tutorial  --clone
@@ -540,7 +540,7 @@ Fix an error / implement a random change. Do this in a feature branch.
 
 ::: {.callout-tip title="Hint" collapse="true" icon="false"}
 
-<pre class="git-command">
+<pre class="terminal">
 $ cd git-tutorial
 $ git switch -c pr-test
 $ echo "Pull request test" > pr-test.txt
@@ -556,7 +556,7 @@ Push the changes to your fork of the original repository.
 
 ::: {.callout-note title="Solution" collapse="true" icon="false"}
 
-<pre class="git-command">
+<pre class="terminal">
 $ git push origin pr-test
 </pre>
 
@@ -568,7 +568,7 @@ Create a pull request to merge the changes into the main branch of the original 
 
 ::: {.callout-note title="Solution" collapse="true" icon="false"}
 
-<pre class="git-command">
+<pre class="terminal">
 $ gh pr create --title "PR test" --body "PR test"
 </pre>
 
@@ -583,7 +583,7 @@ Delete the fork and local clone now that you are done.
 
 ::: {.callout-note title="Solution" collapse="true" icon="false"}
 
-<pre class="git-command">
+<pre class="terminal">
 $ gh repo delete git-tutorial --yes
 $ cd
 $ rm git-tutorial -rf
