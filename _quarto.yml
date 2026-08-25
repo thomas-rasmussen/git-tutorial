@@ -26,6 +26,7 @@ book:
       - part1-ch07-workflows.qmd
     - part: "Part II"
       chapters:
+      - part2-git-reflog.qmd
       - part2-collaboration.qmd
       - part2-git-diff.qmd
       - part2-github.qmd

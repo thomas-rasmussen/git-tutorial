@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Appendix A — Git for Windows – Git tutorial</title>
+<title>8&nbsp; Recovering deleted commits – Git tutorial</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -36,8 +36,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./app-configuration-of-git.html" rel="next">
-<link href="./part2-git-rebase.html" rel="prev">
+<link href="./part2-collaboration.html" rel="next">
+<link href="./part1-ch07-workflows.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -48,8 +48,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-18447e9d16e0bfc3229421fc5cc130e2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<script src="site_libs/quarto-contrib/kbd/kbd.js"></script>
-<link href="site_libs/quarto-contrib/kbd/kbd.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -92,7 +90,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./app-git-for-windows.html">Appendices</a></li><li class="breadcrumb-item"><a href="./app-git-for-windows.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Git for Windows</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part2-git-reflog.html">Part II</a></li><li class="breadcrumb-item"><a href="./part2-git-reflog.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Recovering deleted commits</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -190,7 +188,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part2-git-reflog.html" class="sidebar-item-text sidebar-link">
+  <a href="./part2-git-reflog.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Recovering deleted commits</span></span></a>
   </div>
 </li>
@@ -243,7 +241,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./app-git-for-windows.html" class="sidebar-item-text sidebar-link active">
+  <a href="./app-git-for-windows.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Git for Windows</span></span></a>
   </div>
 </li>
@@ -271,18 +269,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#shortcut-keys" id="toc-shortcut-keys" class="nav-link active" data-scroll-target="#shortcut-keys"><span class="header-section-number">A.1</span> Shortcut keys</a></li>
-  <li><a href="#git-bash-commands" id="toc-git-bash-commands" class="nav-link" data-scroll-target="#git-bash-commands"><span class="header-section-number">A.2</span> Git BASH commands</a></li>
-  <li><a href="#note-on-command-options" id="toc-note-on-command-options" class="nav-link" data-scroll-target="#note-on-command-options"><span class="header-section-number">A.3</span> Note on command options</a>
+  <li><a href="#when-does-git-actually-delete-an-object" id="toc-when-does-git-actually-delete-an-object" class="nav-link active" data-scroll-target="#when-does-git-actually-delete-an-object"><span class="header-section-number">8.1</span> When does Git actually delete an object?</a></li>
+  <li><a href="#identifying-and-recovering-unreachable-commits-using-the-reference-log" id="toc-identifying-and-recovering-unreachable-commits-using-the-reference-log" class="nav-link" data-scroll-target="#identifying-and-recovering-unreachable-commits-using-the-reference-log"><span class="header-section-number">8.2</span> Identifying and recovering unreachable commits using the reference log</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">8.3</span> Exercises</a>
   <ul class="collapse">
-  <li><a href="#cd" id="toc-cd" class="nav-link" data-scroll-target="#cd">cd</a></li>
-  <li><a href="#clear" id="toc-clear" class="nav-link" data-scroll-target="#clear">clear</a></li>
-  <li><a href="#echo-echo" id="toc-echo-echo" class="nav-link" data-scroll-target="#echo-echo">echo &gt; / echo &gt;&gt;</a></li>
-  <li><a href="#ls" id="toc-ls" class="nav-link" data-scroll-target="#ls">ls</a></li>
-  <li><a href="#mkdir" id="toc-mkdir" class="nav-link" data-scroll-target="#mkdir">mkdir</a></li>
-  <li><a href="#pwd" id="toc-pwd" class="nav-link" data-scroll-target="#pwd">pwd</a></li>
-  <li><a href="#rm" id="toc-rm" class="nav-link" data-scroll-target="#rm">rm</a></li>
-  <li><a href="#start" id="toc-start" class="nav-link" data-scroll-target="#start">start</a></li>
+  <li><a href="#recover-an-undone-commit" id="toc-recover-an-undone-commit" class="nav-link" data-scroll-target="#recover-an-undone-commit">Recover an “undone” commit</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -290,9 +281,9 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./app-git-for-windows.html">Appendices</a></li><li class="breadcrumb-item"><a href="./app-git-for-windows.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Git for Windows</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part2-git-reflog.html">Part II</a></li><li class="breadcrumb-item"><a href="./part2-git-reflog.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Recovering deleted commits</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-git-for-windows" class="quarto-section-identifier">Appendix A — Git for Windows</span></h1>
+<h1 class="title"><span id="sec-git-reflog" class="quarto-section-identifier"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Recovering deleted commits</span></span></h1>
 </div>
 
 
@@ -309,415 +300,123 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p><a href="https://gitforwindows.org/" target="_blank">Git for Windows</a> is a set of tools for Windows users. Of main interest, Git for Windows provides a Bash emulation used to run Git from the command line. Using Git Bash, Windows users can use “git” commands exactly like one would do in Linux and Unix environments. Besides the full set of Git core commands, Git Bash is also packaged with additional shell commands that can be useful.</p>
-<p>When you open Git Bash, you will see something like this:</p>
-<pre class="bash-terminal"><span class="git-insert">~</span>
-$
-</pre>
-<p>The <span class="bash-green">user_id@computer_id</span> is an ID based on name of the user that is logged in, and the name of the device running Git Bash. The <span class="bash-pink">MINGW64</span> part is the name of the compiler used to build Git Bash. The <span class="bash-gold">~</span> at the end of the first line indicates the current directory. A tilde means that the current directory is the home directory of the user.</p>
-<section id="shortcut-keys" class="level2" data-number="A.1">
-<h2 data-number="A.1" class="anchored" data-anchor-id="shortcut-keys"><span class="header-section-number">A.1</span> Shortcut keys</h2>
-<p>An extensive list of available commands in Bash can be found <a href="https://ss64.com/bash/syntax-keyboard.html" target="_blank">here</a>. Not all of them are available in Git Bash. Below is a short list of useful shortcut keys.</p>
-<div style="margin-top:2em; margin-bottom:2em">
-
-<table class="table-striped caption-top table">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th">Description</th>
-<th data-quarto-table-cell-role="th">Shortcut</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="font-weight: bold">Moving the cursor</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>Go to beginning of line (Home)</td>
-<td style="font-family: monospace">Ctrl+a</td>
-</tr>
-<tr class="odd">
-<td>Go to end of line (End)</td>
-<td style="font-family: monospace">Ctrl+e</td>
-</tr>
-<tr class="even">
-<td>Previous command (Up arrow)</td>
-<td style="font-family: monospace">Ctrl+p</td>
-</tr>
-<tr class="odd">
-<td>Next command (Down arrow)</td>
-<td style="font-family: monospace">Ctrl+n</td>
-</tr>
-<tr class="even">
-<td>Go left/back one word</td>
-<td style="font-family: monospace">Alt+b</td>
-</tr>
-<tr class="odd">
-<td>Go right/forward one word</td>
-<td style="font-family: monospace">Alt+f</td>
-</tr>
-<tr class="even">
-<td>Go forward one character</td>
-<td style="font-family: monospace">Ctrl+f</td>
-</tr>
-<tr class="odd">
-<td>Go backward one character</td>
-<td style="font-family: monospace">Ctrl+b</td>
-</tr>
-<tr class="even">
-<td style="font-weight: bold">Editing</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>Copy</td>
-<td style="font-family: monospace">Ctrl+ins</td>
-</tr>
-<tr class="even">
-<td>Paste</td>
-<td style="font-family: monospace">Shift+ins</td>
-</tr>
-<tr class="odd">
-<td>Clear the screen</td>
-<td style="font-family: monospace">Ctrl+l</td>
-</tr>
-<tr class="even">
-<td>Delete the character before the cursor (Backspace)</td>
-<td style="font-family: monospace">Ctrl+h</td>
-</tr>
-<tr class="odd">
-<td>Delete the character after the cursor</td>
-<td style="font-family: monospace">Ctrl+d</td>
-</tr>
-<tr class="even">
-<td style="font-weight: bold">Process control</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>Interrupt/kill current process (SIGINT)</td>
-<td style="font-family: monospace">Ctrl+c</td>
-</tr>
-</tbody>
-</table>
-
+<p>When using Git, you will inevitable end up in a situation where you accidentally “delete” one or more commits, for example by deleting a branch before integrating the changes into the main code. The good news is, that the “deleted” commits are almost never truly gone, and they can be recovered. In this chapter we will introduce the reference log, also called reflog, which we can use to recover lost commits.</p>
+<section id="when-does-git-actually-delete-an-object" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="when-does-git-actually-delete-an-object"><span class="header-section-number">8.1</span> When does Git actually delete an object?</h2>
+<div style="display: grid; grid-template-columns: 60% 40%">
+<div style="grid-column: 1">
+<p>If you delete a branch with commits that have not been integrated into the main code, the only thing you have done is deleting the reference to a specific commit, i.e.&nbsp;the pointer to the tip of a series of commits. The commit objects are still in the Git database, but they are now unreachable: they are not ancestors of any commits that are on a branch. From time to time Git <em>will</em> delete unnecessary (unreachable) commits and optimize the repository when it deems it necessary, but this only happens when you do specific operations or after a long period of time in very large repositories. If you want to recover a lost commit, you can always do this as long as you do so right after accidentally “deleting them”.</p>
 </div>
-<p>Windows users are used to using <kbd title="Ctrl+c" aria-hidden="true">Ctrl+c</kbd><span class="visually-hidden">Ctrl+c</span> and <kbd title="Ctrl+v" aria-hidden="true">Ctrl+v</kbd><span class="visually-hidden">Ctrl+v</span> to “Copy” and “Paste”, but these shortcuts are not available in Git Bash, since they are reserved for other commands. it is possible to enable “Copy” using <kbd title="Ctrl+Shift+c" aria-hidden="true">Ctrl+Shift+c</kbd><span class="visually-hidden">Ctrl+Shift+c</span> and “Paste” using <kbd title="Ctrl+Shift+v" aria-hidden="true">Ctrl+Shift+v</kbd><span class="visually-hidden">Ctrl+Shift+v</span>, by right-clicking in the terminal, navigating to <span style="font-family:monospace">Options&gt;Keys</span>, and checking the “Ctrl+Shift+letter shortcuts” box.</p>
-</section>
-<section id="git-bash-commands" class="level2" data-number="A.2">
-<h2 data-number="A.2" class="anchored" data-anchor-id="git-bash-commands"><span class="header-section-number">A.2</span> Git BASH commands</h2>
-<p>It is not easy to understand what commands are (or are not) available in Git Bash, why they are (or are not) available, nor is it straight forward to find documentation on them. Some commands have documentation that can be accessed by typing <code>help [command-name]</code> in the terminal. More generally speaking, CMD, PowerShell, and BASH command documentation can be found many different places, for example <a href="https://ss64.com/" target="_blank">here</a>.</p>
-<p>Here we will introduce a few basic commands most of which are used extensively in this tutorial. We will also provide some focused documentation that covers how the commands are used in this tutorial, alongside links to more extensive documentation.</p>
-<div style="margin-top:2em;margin-bottom:2em;">
-
-<table class="table-striped caption-top table">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th" style="width: 25%">Command</th>
-<th data-quarto-table-cell-role="th" style="width: 75%">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="font-family: monospace">cd</td>
-<td>Change working directory</td>
-</tr>
-<tr class="even">
-<td style="font-family: monospace">clear</td>
-<td>Clear terminal window</td>
-</tr>
-<tr class="odd">
-<td style="font-family: monospace">echo &gt; / echo &gt;&gt;</td>
-<td>Create file / append content to file</td>
-</tr>
-<tr class="even">
-<td style="font-family: monospace">ls</td>
-<td>List directory content</td>
-</tr>
-<tr class="odd">
-<td style="font-family: monospace">mkdir</td>
-<td>Create folder</td>
-</tr>
-<tr class="even">
-<td style="font-family: monospace">pwd</td>
-<td>Print working directory</td>
-</tr>
-<tr class="odd">
-<td style="font-family: monospace">rm</td>
-<td>Remove files</td>
-</tr>
-<tr class="even">
-<td style="font-family: monospace">start</td>
-<td>Start a program/open a file/open a directory</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</section>
-<section id="note-on-command-options" class="level2" data-number="A.3">
-<h2 data-number="A.3" class="anchored" data-anchor-id="note-on-command-options"><span class="header-section-number">A.3</span> Note on command options</h2>
-<p>Most of the commands listed here can take different options, e.g.&nbsp;<code>ls</code> has an <code>-a</code> and a <code>-1</code> option. It is possible to use multiple options at once on the form <code>ls -a1</code> instead of the more verbose form <code>ls -a -1</code>.</p>
-<section id="cd" class="level3">
-<h3 class="anchored" data-anchor-id="cd">cd</h3>
-<p><strong>Syntax:</strong> <code>cd [DIR]</code><br></p>
-<p><strong>Description:</strong><br> Change the current directory to <code>DIR</code>.</p>
-<p>If <code>DIR</code> is not provided, changes the current directory to the value of the $HOME shell variable, i.e.&nbsp;the home directory of the user. <code>cd -</code> changes the working directory to the previous working directory ( “-” is converted to $OLDPWD).</p>
-<p>Note that forward slashes (/) are used to specify file paths, and that paths can be both on the form <span style="font-family:monospace">C:/path/to/directory</span> and <span style="font-family:monospace">/c/path/to/directory</span></p>
-<p>If the file path contains spaces, enclose the file path in (double) quotes.</p>
-<p>Git for Windows also comes with shell integration, so an alternative to using <code>cd</code> we can change the working directory by navigating to the folder in Windows explorer, right click on the folder (shift+right click on Windows 11) and select “Open Git Bash here”.</p>
-<p><strong>Link to documentation:</strong><br> <a href="https://ss64.com/bash/cd.html" target="_blank">https://ss64.com/bash/cd.html</a></p>
-<section id="example---change-directory" class="level4">
-<h4 class="anchored" data-anchor-id="example---change-directory">Example - Change directory</h4>
-<p>We can use <code>cd</code> to change the working directory by providing a file path to the directory.</p>
-<pre class="bash-terminal"><span class="git-insert">~</span>
-$ cd C:/path/to/directory
-<span class="git-insert">/c/path/to/directory</span>
-$
-</pre>
-<p>Note that the working directory was set as <span style="font-family:monospace">C:/path/to/directory</span>, but is displayed on the form <span style="font-family:monospace">/c/path/to/directory</span></p>
-</section>
-<section id="example---file-path-with-spaces" class="level4">
-<h4 class="anchored" data-anchor-id="example---file-path-with-spaces">Example - file path with spaces</h4>
-<p>If a file path contains spaces, enclose the file path in (double) quotes.</p>
-<pre class="bash-terminal"><span class="git-insert">~</span>
-$ cd "/c/path/to/some directory"
-<span class="git-insert">/c/path/to/some directory</span>
-$
-</pre>
-</section>
-<section id="example---change-to-subdirectory" class="level4">
-<h4 class="anchored" data-anchor-id="example---change-to-subdirectory">Example - Change to subdirectory</h4>
-<p>To change the current working directory to a subdirectory of the current working directory, we can simple set <code>DIR</code> to the subdirectory name.</p>
-<pre class="bash-terminal"><span class="git-insert">/c/path/to/dir</span>
-$ cd subfolder
-<span class="git-insert">/c/path/to/dir/subfolder</span>
-$
-</pre>
-</section>
-<section id="example---change-to-parent-directory" class="level4">
-<h4 class="anchored" data-anchor-id="example---change-to-parent-directory">Example - Change to parent directory</h4>
-<p>We can change the working directory to the parent directory by setting <code>DIR</code> to “..”.</p>
-<pre class="bash-terminal"><span class="git-insert">/c/path/to/dir</span>
-$ cd ..
-<span class="git-insert">/c/path/to</span>
-$
-</pre>
-<p>You can also use “..” more generally when specifying a file path, to denote the parent directory</p>
-<pre class="bash-terminal" "=""><span class="git-insert">/c/path/to/dir_a</span>
-$ cd ../dir_b
-<span class="git-insert">/c/path/to/dir_b</span>
-$
-</pre>
-</section>
-<section id="example---change-to-previous-directory" class="level4">
-<h4 class="anchored" data-anchor-id="example---change-to-previous-directory">Example - Change to previous directory</h4>
-<p>We can change the working directory to the previous working directory by setting <code>DIR</code> to “-”.</p>
-<pre class="bash-terminal"><span class="git-insert">/c/current/cd/dir</span>
-$ cd -
-<span class="git-insert">/c/previous/cd/dir</span>
-$
-</pre>
-</section>
-<section id="example---changing-working-directory-to-users-home-directory" class="level4">
-<h4 class="anchored" data-anchor-id="example---changing-working-directory-to-users-home-directory">Example - Changing working directory to user’s home directory</h4>
-<p>We can set the current working directory to the user’s home directory by not specifying <code>DIR</code>, or by setting <code>DIR</code> to “~”.</p>
-<pre class="bash-terminal"><span class="git-insert">/c/current/dir</span>
-$ cd ~
-<span class="git-insert">~</span>
-$ cd -
-<span class="git-insert">/c/current/dir</span>
-$ cd
-<span class="git-insert">~</span>
-$
-</pre>
-</section>
-</section>
-<section id="clear" class="level3">
-<h3 class="anchored" data-anchor-id="clear">clear</h3>
-<p><strong>Syntax:</strong> <code>clear</code></p>
-<p><strong>Description:</strong><br> Clear the terminal screen.</p>
-<p><strong>Link to documentation:</strong><br> No documentation available.</p>
-<section id="example" class="level4">
-<h4 class="anchored" data-anchor-id="example">Example</h4>
-<p>Imagine we had the history shown in the terminal below, ending with a <code>clear</code> command.</p>
-<pre class="bash-terminal"><span class="git-insert">~</span>
-$ cd C:/path/to/directory
-<span class="git-insert">/c/path/to/directory</span>
-$ clear
-</pre>
-<p>This would result in the terminal shown below.</p>
-<pre class="bash-terminal"><span class="git-insert">/c/path/to/directory</span>
-$
-</pre>
-<p>Clearing the terminal screen can also be done using the shortcut key <kbd title="Ctrl+l" aria-hidden="true">Ctrl+l</kbd><span class="visually-hidden">Ctrl+l</span></p>
-</section>
-</section>
-<section id="echo-echo" class="level3">
-<h3 class="anchored" data-anchor-id="echo-echo">echo &gt; / echo &gt;&gt;</h3>
-<p><strong>Syntax:</strong> <code>echo [STRING] &gt;&gt; [FILE]</code></p>
-<p><strong>Description:</strong><br> Append <code>STRING</code> content to <code>FILE</code> using the “&gt;&gt;” redirection operator. If the file does not exist it will be created. If “&gt;&gt;” is replaced with “&gt;” then the given <code>STRING</code> overwrites the content of <code>FILE</code>.</p>
-<p><strong>Link to documentation:</strong><br> <a href="https://ss64.com/bash/echo.html" target="_blank">https://ss64.com/bash/echo.html</a></p>
-<section id="example---create-empty-text-file" class="level4">
-<h4 class="anchored" data-anchor-id="example---create-empty-text-file">Example - Create empty text file</h4>
-<p>You can create an empty file by not providing any <code>STRING</code> and using the “&gt;” redirection operator (this will overwrite the any existing file with the same name).</p>
-<pre class="bash-terminal"><span class="git-insert">~</span>
-$ echo &gt; empty_file.txt
-</pre>
-<div class="notepad-file">
-<div class="notepad-header">empty_file.txt</div>
-<div class="notepad-body">
-⠀
+<div style="grid-column: 2">
+<figure class="figure">
+<img src="diagrams/reflog-deleted-branch.drawio.svg" class="figure-img">
+<figcaption>
+Unreachable commits on a deleted branch
+</figcaption>
+</figure>
 </div>
 </div>
 </section>
-<section id="example---create-text-file-with-content" class="level4">
-<h4 class="anchored" data-anchor-id="example---create-text-file-with-content">Example - Create text file with content</h4>
-<p>We can create a new text file with some content in it (or overwrite an existing file) by using the “&gt;” redirection operator and by providing a <code>STRING</code> with the content.</p>
-<pre class="bash-terminal"><span class="git-insert">~</span>
-$ echo "Some content" &gt; new_file.txt
+<section id="identifying-and-recovering-unreachable-commits-using-the-reference-log" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="identifying-and-recovering-unreachable-commits-using-the-reference-log"><span class="header-section-number">8.2</span> Identifying and recovering unreachable commits using the reference log</h2>
+<p>To recover a lost commit, the first step is to recover the SHA-1 checksum of that commit. Since this commit is now unreachable, we can not use <code>git log &lt;branch&gt;</code> to find the SHA-1 checksum, since <code>git log &lt;branch&gt;</code> only includes reachable commits from the tip of a branch. But Git has another tool that can help us: the reference log, or just reflog, which has its own command, <code>git reflog</code>. The reflog logs all changes to a reference that has happened over time, meaning that every time a reference is changed to point to something else, this is logged. Let’s see how this looks like in practice by creating a repository with the same history as illustrated above: a <code>main</code> branch with two commits, and a <code>feature</code> branch with a single commit off of <code>main</code>, where we delete the <code>feature</code> branch before integrating the changes into <code>main</code>:</p>
+<pre class="git-command">$ mkdir ~/reflog-example
+$ cd ~/reflog-example
+$ git init
+$ echo "Content of C1" &gt; file.txt
+$ git add .
+$ git commit -m"C1"
+$ echo "Content of C2" &gt;&gt; file.txt
+$ git commit -am"C2"
+$ git switch -c feature
+$ echo "Content of C3" &gt;&gt; file.txt
+$ git commit -am"C3"
+$ git switch main
+$ git branch -D feature
+$ git log --oneline --all --graph
+* <span class="sha1-col">6891983 (</span><span class="head-col">HEAD</span> <span class="sha1-col">-&gt;</span> <span class="active-branch-col">main</span><span class="sha1-col">)</span> C2
+* <span class="sha1-col">a961cba</span> C1
 </pre>
-<div class="notepad-file">
-<div class="notepad-header">new_file.txt</div>
-<div class="notepad-body">
-Some content
+<p>After deleting <code>feature</code>, we can no longer see the commits on that branch. If we run <code>git reflog</code> however, we can recover the branch:</p>
+<pre class="git-command">$ git reflog
+<span class="sha1-col">6891983 (</span><span class="head-col">HEAD</span> <span class="sha1-col">-&gt;</span> <span class="active-branch-col">main</span><span class="sha1-col">)</span> HEAD@{0}: checkout: moving from feature to main
+<span class="sha1-col">b2d535d</span> HEAD@{1}: commit: C3
+<span class="sha1-col">6891983 (</span><span class="head-col">HEAD</span> <span class="sha1-col">-&gt;</span> <span class="active-branch-col">main</span><span class="sha1-col">)</span> HEAD@{2}: checkout: moving from main to feature
+<span class="sha1-col">6891983 (</span><span class="head-col">HEAD</span> <span class="sha1-col">-&gt;</span> <span class="active-branch-col">main</span><span class="sha1-col">)</span> HEAD@{3}: commit: C2
+<span class="sha1-col">a961cba</span> HEAD@{4}: commit (initial): C1
+</pre>
+<p>By default, <code>git reflog</code> shows the reference log of HEAD. The format <code>HEAD @{x}</code>, means where was HEAD x moves ago. So <code>HEAD@{0}</code> means where is HEAD right now, <code>HEAD@{1}</code> means where was HEAD one move ago, and so one. From the reflog we can se that one move ago, HEAD was pointing to the C3 commit, the tip of the former <code>feature</code> branch, and we can see the SHA1 checksum of that commit is <code>b2d535d</code>. Now we can recover the <code>feature</code> branch simply by making a new branch pointing to that commit:</p>
+<pre class="git-command">$ git branch feature b2d535d
+$ git log --oneline --graph --all
+* <span class="sha1-col">b2d535d (</span><span class="active-branch-col">feature</span><span class="sha1-col">)</span> C3
+* <span class="sha1-col">6891983 (</span><span class="head-col">HEAD</span> <span class="sha1-col">-&gt;</span> <span class="active-branch">main</span><span class="sha1-col">)</span> C2
+* <span class="sha1-col">a961cba</span> C1
+</pre>
+</section>
+<section id="exercises" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="exercises"><span class="header-section-number">8.3</span> Exercises</h2>
+<section id="recover-an-undone-commit" class="level3">
+<h3 class="anchored" data-anchor-id="recover-an-undone-commit">Recover an “undone” commit</h3>
+<p>In <a href="part1-ch04-undoing-changes.html" class="quarto-xref"><span>Chapter 4</span></a> we showed how we can “undo” a commit using <code>git reset</code>. In this exercise you will recover a commit that was accidentially “undone”.</p>
+<p>Use the following commands to set up a repository with two commits on <code>main</code>:</p>
+<pre class="git-command">$ mkdir ~/ex-reflog-recover-undo
+$ cd ~/ex-reflog-recover-undo
+$ git init
+$ echo "Content" &gt; file.txt
+$ git add .
+$ git commit -m"First commit"
+$ echo "More content" &gt;&gt; file.txt
+$ git commit -am"Second commit"
+</pre>
+<p><b>Step 1 - “Undo” the second commit</b></p>
+<p>Use <code>git reset</code> to “undo” the second commit and update the working directory and index to match the content of the first commit.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre class="git-command">$ git reset --hard HEAD^
+</pre>
 </div>
 </div>
-</section>
-<section id="example---append-content-to-existing-text-file" class="level4">
-<h4 class="anchored" data-anchor-id="example---append-content-to-existing-text-file">Example - Append content to existing text file</h4>
-<p>To append content to an existing text file use the “&gt;&gt;” redirection operator.</p>
-<pre class="bash-terminal"><span class="git-insert">~</span>
-$ echo "Some content" &gt; append_file.txt
-<span class="git-insert">~</span>
-$ echo "Some more content" &gt;&gt; append_file.txt
+</div>
+<p><b>Step 2 - Recover the commit </b></p>
+<p>Print the commit log to check that the second commit is not unreachable. Then use the reference log to identify and recover the second commit using <code>git reset</code> again.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre class="git-command">$ git log --oneline --all
+<span class="sha1-col">d3e3264 (</span><span class="head-col">HEAD</span> <span class="sha1-col">-&gt;</span> <span class="active-branch-col">main</span><span class="sha1-col">)</span> First commit
+$ git reflog
+<span class="sha1-col">d3e3264 (</span><span class="head-col">HEAD</span> <span class="sha1-col">-&gt;</span> <span class="active-branch-col">main</span><span class="sha1-col">)</span> HEAD@{0}: reset: moving to HEAD^
+<span class="sha1-col">9071636</span> HEAD@{1}: commit: Second commit
+<span class="sha1-col">d3e3264 (</span><span class="head-col">HEAD</span> <span class="sha1-col">-&gt;</span> <span class="active-branch-col">main</span><span class="sha1-col">)</span> HEAD@{2}: commit (initial): First commit
+$ git reset --hard 9071636
+$ git log --oneline
+<span class="sha1-col">9071636 (</span><span class="head-col">HEAD</span> <span class="sha1-col">-&gt;</span> <span class="active-branch-col">main</span><span class="sha1-col">)</span> Second commit
+<span class="sha1-col">d3e3264</span> First commit
 </pre>
-<div class="notepad-file">
-<div class="notepad-header">append_file.txt</div>
-<div class="notepad-body">
-Some content<br>
-Some more content
 </div>
 </div>
-</section>
-</section>
-<section id="ls" class="level3">
-<h3 class="anchored" data-anchor-id="ls">ls</h3>
-<p><strong>Syntax:</strong> <code>ls [OPTIONS] [DIR]</code><br></p>
-<p>List directory content.</p>
-<p>List directories and files in <code>DIR</code>. If <code>DIR</code> is not provided, lists the content of the current working directory. Content is listed alphabetically.</p>
-<p><strong>OPTIONS:</strong><br> <strong>-a</strong><br> Do not ignore entries starting with dot (.), i.e.&nbsp;hidden files.<br> <strong>-1</strong><br> List one file per line.<br></p>
-<p><strong>Link to documentation:</strong><br> <a href="https://ss64.com/bash/ls.html" target="_blank">https://ss64.com/bash/ls.html</a></p>
-<section id="example---list-content-of-work-directory" class="level4">
-<h4 class="anchored" data-anchor-id="example---list-content-of-work-directory">Example - List content of work directory</h4>
-<p>If we want to see a list of content in the current work directory, we can use <code>ls</code>.</p>
-<pre class="bash-terminal"><span class="git-insert">/c/some/dir</span>
-$ ls
-<span class="bash-violet">dir_a</span>/ file_a.txt file_c.txt file_e.txt
-<span class="bash-violet">dir_b</span>/ file_b.txt file_d.txt file_f.txt
-</pre>
-<p>By default multiple entries are listed in each line and directories are colour-coded and has a “/” suffix.</p>
-</section>
-<section id="example---list-all-content-of-a-directory" class="level4">
-<h4 class="anchored" data-anchor-id="example---list-all-content-of-a-directory">Example - List all content of a directory</h4>
-By default, entries starting with a dot (.), i.e.&nbsp;hidden files, are ignored. Use the “-a” option to list all files.
-<pre class="bash-terminal"><span class="git-insert">/c/some/git_repo</span>
-$ ls -a
-<span class="bash-violet">.git</span>/ file_a.txt file_c.txt file_e.txt
-.gitignore file_b.txt file_d.txt file_f.txt
-</pre>
-</section>
-<section id="example---list-one-entry-per-line" class="level4">
-<h4 class="anchored" data-anchor-id="example---list-one-entry-per-line">Example - List one entry per line</h4>
-<p>We can use the “-1” option to list only one entry per line.</p>
-<pre class="bash-terminal"><span class="git-insert">/c/some/dir</span>
-$ ls -1
-<span class="bash-violet">dir_a</span>/
-<span class="bash-violet">dir_b</span>/
-file_a.txt
-file_b.txt
-file_c.txt
-file_d.txt
-file_e.txt
-file_f.txt
-</pre>
-</section>
-</section>
-<section id="mkdir" class="level3">
-<h3 class="anchored" data-anchor-id="mkdir">mkdir</h3>
-<p><strong>Syntax:</strong> <code>mk [FOLDER]</code><br></p>
-<p>Create folder.</p>
-<p>Create a new folder with name <code>FOLDER</code> in the current working directory, if it does not already exists. If the folder name contains spaces enclose the name in quotes.</p>
-<p><strong>Link to documentation:</strong><br> <a href="https://ss64.com/bash/mkdir.html" target="_blank">https://ss64.com/bash/mkdir.html</a></p>
-<section id="example-1" class="level4">
-<h4 class="anchored" data-anchor-id="example-1">Example</h4>
-<p>Create new folders. Note that we don’t have to enclose the folder name in quotes if it contains no spaces.</p>
-<pre class="bash-terminal"><span class="git-insert">/c/some/dir</span>
-$ ls -1
-file_a.txt
-file_b.txt
-<span class="git-insert">/c/some/dir</span>
-$ mkdir new-folder
-<span class="git-insert">/c/some/dir</span>
-$ mkdir "new-folder"
-<span class="git-insert">/c/some/dir</span>
-$ ls -1
-<span class="bash-violet">new-folder</span>/
-<span class="bash-violet">'new folder'</span>/
-file_a.txt
-file_b.txt
-</pre>
-</section>
-</section>
-<section id="pwd" class="level3">
-<h3 class="anchored" data-anchor-id="pwd">pwd</h3>
-<p><strong>Syntax:</strong> <code>pwd</code><br></p>
-<p>Print working directory.</p>
-<p><strong>Link to documentation:</strong><br> <a href="https://ss64.com/bash/pwd.html" target="_blank">https://ss64.com/bash/pwd.html</a></p>
-<section id="example-2" class="level4">
-<h4 class="anchored" data-anchor-id="example-2">Example</h4>
-<p>When working with Git this command is mainly used to see where the current user’s home directory is, since the current working directory is always shown in the terminal.</p>
-<pre class="bash-terminal"><span class="git-insert">~</span>
-$ pwd
-/c/absolute/path/to/home/directory
-</pre>
-</section>
-</section>
-<section id="rm" class="level3">
-<h3 class="anchored" data-anchor-id="rm">rm</h3>
-<p><strong>Syntax:</strong> `rm [OPTIONS] [FILE]``<br></p>
-<p>Remove files.</p>
-<p>To remove a file you must have write permission on the file and the folder where it is stored.</p>
-<p>By default, <code>rm</code> does not remove directories. Use the “-r” option to remove each listed directory too, along with all of its content.</p>
-<p>You should, obviously, be VERY careful when deleting files using terminal commands. Especially if you delete directories and their contents recursively.</p>
-<p><strong>OPTIONS:</strong><br> <strong>-f</strong><br> Ignore non-existent files, never prompt.<br> <strong>-r</strong><br> Remove directories and their contents recursively.</p>
-<p><strong>Link to documentation:</strong><br> <a href="https://ss64.com/bash/rm.html" target="_blank">https://ss64.com/bash/rm.html</a></p>
-<section id="example---remove-file" class="level4">
-<h4 class="anchored" data-anchor-id="example---remove-file">Example - Remove file</h4>
-<pre class="bash-terminal"><span class="git-insert">/c/some/dir</span>
-$ ls
-file_a.txt file_b.txt
-<span class="git-insert">/c/some/dir</span>
-$ rm file_a.txt
-<span class="git-insert">/c/some/dir</span>
-$ ls
-file_b.txt
-</pre>
-</section>
-</section>
-<section id="start" class="level3">
-<h3 class="anchored" data-anchor-id="start">start</h3>
-<p><strong>Syntax:</strong> <code>start [FILE/DIR/PROGRAM]</code><br></p>
-<p>Start a program, or open a file/directory in Windows Explorer.</p>
-<p><span style="color:blue">TODO: Try to find some documentation on this command. This does not seem to be the CMD <code>START</code> command? Why does something like<code>start firefox</code> actually work??? </span></p>
-<p><strong>Link to documentation:</strong><br></p>
-<section id="example---open-current-working-directory-in-windows-explorer" class="level4">
-<h4 class="anchored" data-anchor-id="example---open-current-working-directory-in-windows-explorer">Example - Open current working directory in Windows explorer</h4>
-<p>We can open the current working directory in Windows explorer by simply using <code>start .</code></p>
-<pre class="bash-terminal"><span class="git-insert">/c/some/dir</span>
-$ start .
-</pre>
+</div>
 
 
-</section>
 </section>
 </section>
 
@@ -1129,13 +828,13 @@ $ start .
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./part2-git-rebase.html" class="pagination-link" aria-label="Rebasing">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Rebasing</span></span>
+      <a href="./part1-ch07-workflows.html" class="pagination-link" aria-label="Workflows">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Workflows</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./app-configuration-of-git.html" class="pagination-link" aria-label="Configuration of Git">
-        <span class="nav-page-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Configuration of Git</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./part2-collaboration.html" class="pagination-link" aria-label="Collaboration">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Collaboration</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

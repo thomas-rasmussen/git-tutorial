@@ -1,4 +1,4 @@
-# Undoing changes
+# Undoing changes {#sec-undoing-changes}
 
 While working with Git, you will undoubtedly end up in a situation where you want to "undo" something. Maybe you want to change the commit message of the commit you just did, maybe you forgot to add a file to the staging area before committing, or maybe you committed changes to the repository that you want to delete. Git comes with several commands that can be used to "undo" things, some of which we will illustrate in this chapter. We will also illustrate that some of these commands needs to be used with care, since they can result in you losing work that has not been committed to the Git repository.
 

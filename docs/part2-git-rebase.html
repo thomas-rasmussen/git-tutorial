@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>13&nbsp; Rebasing – Git tutorial</title>
+<title>14&nbsp; Rebasing – Git tutorial</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -90,7 +90,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part2-collaboration.html">Part II</a></li><li class="breadcrumb-item"><a href="./part2-git-rebase.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Rebasing</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part2-git-reflog.html">Part II</a></li><li class="breadcrumb-item"><a href="./part2-git-rebase.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Rebasing</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -188,38 +188,44 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./part2-git-reflog.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Recovering deleted commits</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./part2-collaboration.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Collaboration</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Collaboration</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./part2-git-diff.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Using <code>git diff</code> to show code changes</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Using <code>git diff</code> to show code changes</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./part2-github.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Introduction to GitHub</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction to GitHub</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./part2-git-internals.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Git internals</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Git internals</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./part2-git-stash.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">git stash.</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">git stash.</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./part2-git-rebase.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Rebasing</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Rebasing</span></span></a>
   </div>
 </li>
       </ul>
@@ -263,13 +269,13 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#example" id="toc-example" class="nav-link active" data-scroll-target="#example"><span class="header-section-number">13.1</span> Example</a></li>
-  <li><a href="#interactive-rebasing" id="toc-interactive-rebasing" class="nav-link" data-scroll-target="#interactive-rebasing"><span class="header-section-number">13.2</span> Interactive rebasing</a></li>
-  <li><a href="#handling-merge-conflicts-while-rebasing" id="toc-handling-merge-conflicts-while-rebasing" class="nav-link" data-scroll-target="#handling-merge-conflicts-while-rebasing"><span class="header-section-number">13.3</span> Handling merge conflicts while rebasing</a></li>
-  <li><a href="#rebasing-commits-on-a-branch-onto-itself" id="toc-rebasing-commits-on-a-branch-onto-itself" class="nav-link" data-scroll-target="#rebasing-commits-on-a-branch-onto-itself"><span class="header-section-number">13.4</span> Rebasing commits on a branch onto itself</a></li>
-  <li><a href="#when-not-to-rebase" id="toc-when-not-to-rebase" class="nav-link" data-scroll-target="#when-not-to-rebase"><span class="header-section-number">13.5</span> When not to rebase</a></li>
-  <li><a href="#should-i-merge-or-rebase" id="toc-should-i-merge-or-rebase" class="nav-link" data-scroll-target="#should-i-merge-or-rebase"><span class="header-section-number">13.6</span> Should I merge or rebase?</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">13.7</span> Exercises</a>
+  <li><a href="#example" id="toc-example" class="nav-link active" data-scroll-target="#example"><span class="header-section-number">14.1</span> Example</a></li>
+  <li><a href="#interactive-rebasing" id="toc-interactive-rebasing" class="nav-link" data-scroll-target="#interactive-rebasing"><span class="header-section-number">14.2</span> Interactive rebasing</a></li>
+  <li><a href="#handling-merge-conflicts-while-rebasing" id="toc-handling-merge-conflicts-while-rebasing" class="nav-link" data-scroll-target="#handling-merge-conflicts-while-rebasing"><span class="header-section-number">14.3</span> Handling merge conflicts while rebasing</a></li>
+  <li><a href="#rebasing-commits-on-a-branch-onto-itself" id="toc-rebasing-commits-on-a-branch-onto-itself" class="nav-link" data-scroll-target="#rebasing-commits-on-a-branch-onto-itself"><span class="header-section-number">14.4</span> Rebasing commits on a branch onto itself</a></li>
+  <li><a href="#when-not-to-rebase" id="toc-when-not-to-rebase" class="nav-link" data-scroll-target="#when-not-to-rebase"><span class="header-section-number">14.5</span> When not to rebase</a></li>
+  <li><a href="#should-i-merge-or-rebase" id="toc-should-i-merge-or-rebase" class="nav-link" data-scroll-target="#should-i-merge-or-rebase"><span class="header-section-number">14.6</span> Should I merge or rebase?</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">14.7</span> Exercises</a>
   <ul class="collapse">
   <li><a href="#exercise-1---squashing-all-commits" id="toc-exercise-1---squashing-all-commits" class="nav-link" data-scroll-target="#exercise-1---squashing-all-commits">Exercise 1 - Squashing all commits</a></li>
   <li><a href="#exercise-2---resolve-multiple-merge-conflicts-during-rebase" id="toc-exercise-2---resolve-multiple-merge-conflicts-during-rebase" class="nav-link" data-scroll-target="#exercise-2---resolve-multiple-merge-conflicts-during-rebase">Exercise 2 - Resolve multiple merge conflicts during rebase</a></li>
@@ -283,9 +289,9 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part2-collaboration.html">Part II</a></li><li class="breadcrumb-item"><a href="./part2-git-rebase.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Rebasing</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part2-git-reflog.html">Part II</a></li><li class="breadcrumb-item"><a href="./part2-git-rebase.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Rebasing</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Rebasing</span></h1>
+<h1 class="title"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Rebasing</span></h1>
 </div>
 
 
@@ -325,8 +331,8 @@ Illustration of rebasing
 </div>
 <p>After rebasing we can now do a simple fast-forward merge to incorporate the changes from <code>feature</code> into <code>main</code>.</p>
 <p>As noted above, it is important to stress that rebasing changes the commit history. In this example, C3 and C4 was originally applied onto C1, but after the rebase they are applied to C2, which at the very minimum will change the parent commit in the metadata of the commit object, and thus will result in new checksums.</p>
-<section id="example" class="level2" data-number="13.1">
-<h2 data-number="13.1" class="anchored" data-anchor-id="example"><span class="header-section-number">13.1</span> Example</h2>
+<section id="example" class="level2" data-number="14.1">
+<h2 data-number="14.1" class="anchored" data-anchor-id="example"><span class="header-section-number">14.1</span> Example</h2>
 <p>Now that we have a basic understanding of what rebasing is, let’s see how to do it in practice. First, let’s set up a repository with a commit history akin to commit history in the illustration above:</p>
 <pre class="git-command">$ mkdir ~/rebase-example
 $ cd ~/rebase-example
@@ -369,8 +375,8 @@ $ git rebase main
 <p><img src="./diagrams/rebase-example.drawio.svg" class="img-fluid"></p>
 </div>
 </section>
-<section id="interactive-rebasing" class="level2" data-number="13.2">
-<h2 data-number="13.2" class="anchored" data-anchor-id="interactive-rebasing"><span class="header-section-number">13.2</span> Interactive rebasing</h2>
+<section id="interactive-rebasing" class="level2" data-number="14.2">
+<h2 data-number="14.2" class="anchored" data-anchor-id="interactive-rebasing"><span class="header-section-number">14.2</span> Interactive rebasing</h2>
 <p>So far we have talked about (standard) Git rebasing. As you have seen, rebasing can be used to replay commits from one branch onto another branch. But rebasing is way more flexible than than just doing that. Using the <code>-i</code> flag, we can do interactive rebasing, which gives us more options. For example, we can split or combine commits while rebasing. Let see how this look like in practice. Imagine that we have implemented a feature in a series of commits in a feature branch that we want to merge into the main branch:</p>
 <pre class="git-command">$ mkdir ~/rebase-squash
 $ cd ~/rebase-squash
@@ -496,8 +502,8 @@ Refactor to make more efficient
 <p>We have now rewritten the history of commits, so that it looks like we implemented the feature perfectly in a single commit, and we can do a simple fast-forward merge to integrate the changes into the main branch.</p>
 <p>As you might be able to grasp at this point, you can rewrite your commit history entirely as you see fit. Replaying commits from one branch to another, and squashing commits are some of the most common uses of rebasing, but this is, as always, only scraping the surface of what you can do with rebasing.</p>
 </section>
-<section id="handling-merge-conflicts-while-rebasing" class="level2" data-number="13.3">
-<h2 data-number="13.3" class="anchored" data-anchor-id="handling-merge-conflicts-while-rebasing"><span class="header-section-number">13.3</span> Handling merge conflicts while rebasing</h2>
+<section id="handling-merge-conflicts-while-rebasing" class="level2" data-number="14.3">
+<h2 data-number="14.3" class="anchored" data-anchor-id="handling-merge-conflicts-while-rebasing"><span class="header-section-number">14.3</span> Handling merge conflicts while rebasing</h2>
 <p>So far we have only considered trivial examples where we have no merge conflicts. If there is a merge conflict during rebasing, <code>git rebase</code> will stop at the time of the first conflict, add conflict markers to the files with conflicting changes, and give control back to the user to resolve the conflict, before moving forward with the rebase. During this process, Git will provide details on what to do and how, but generally speaking you resolve the conflict by editing files, use <code>git add</code> to mark the conflicts as resolved, and then use <code>git rebase --continue</code> to continue the rebasing process. During a rebase it is also possible to abort the process and return to the state of the repository before starting the rebase using <code>git rebase --abort</code>. Let’s illustrate a merge conflict during a rebase with an example. Consider the following repository:</p>
 <div style="width:100%;margin:auto">
 <div class="quarto-figure quarto-figure-center">
@@ -580,8 +586,8 @@ $ git rebase --continue
 $ rm rebase-merge-conflict -rf
 </pre>
 </section>
-<section id="rebasing-commits-on-a-branch-onto-itself" class="level2" data-number="13.4">
-<h2 data-number="13.4" class="anchored" data-anchor-id="rebasing-commits-on-a-branch-onto-itself"><span class="header-section-number">13.4</span> Rebasing commits on a branch onto itself</h2>
+<section id="rebasing-commits-on-a-branch-onto-itself" class="level2" data-number="14.4">
+<h2 data-number="14.4" class="anchored" data-anchor-id="rebasing-commits-on-a-branch-onto-itself"><span class="header-section-number">14.4</span> Rebasing commits on a branch onto itself</h2>
 <p>So far we have focused on rebasing commits from the active branch, pointed to by HEAD, onto another branch. But <code>git rebase</code> is a lot more flexible than this, which we will explore a little bit here to show how to rebase commits on a branch onto the branch itself. As has been explained earlier in the tutorial, a branch is literally just a pointer to a commit, and <code>git rebase</code> allows us to specify commit ID’s instead of branch names. Imagine we have a commit history as outlined below:</p>
 <p><img style="display:block;margin:auto" src="./diagrams/rebase-branch-onto-self.drawio.svg"></p>
 <p>If we run the command <code>git rebase &lt;commit ID&gt;</code> using the commit ID for the C1 commit, the following will happen:</p>
@@ -639,8 +645,8 @@ Fourth commit
 </pre>
 <p>Again, notice that the C1 commit ID is the same before, but that the commit ID for C4 has changed, since the history after C1 has be altered.</p>
 </section>
-<section id="when-not-to-rebase" class="level2" data-number="13.5">
-<h2 data-number="13.5" class="anchored" data-anchor-id="when-not-to-rebase"><span class="header-section-number">13.5</span> When not to rebase</h2>
+<section id="when-not-to-rebase" class="level2" data-number="14.5">
+<h2 data-number="14.5" class="anchored" data-anchor-id="when-not-to-rebase"><span class="header-section-number">14.5</span> When not to rebase</h2>
 <p>Rebasing is not always a good idea. When collaborating on a project with others, rebasing commits that other people base their work will result in a lot of confusion and irritation for everyone involved. Imagine a repository with two commits in the remote repository used as a central repository for the project. You make a local clone of this repository, and add a commit of your own. Now imagine a collaborator notices that the commit message in C2 was not ideal and runs <code>git commit --amend</code> to update it in their local clone and then uses <code>git push -f</code> to force-push the changes to the central repository, rewriting the history of commits there as well. Suddenly there is a mismatch between the history in the remote and your local repository. If you try to to push your own local changes now, Git won’t allow it, since your local history suddenly does not match the history of the central repository: the C2 commit has been replaced with C2’. It is possible to recover from situations like this, but in general these type of situations will create a lot of frustration and can result in very confusing commit histories. We will not go into more details on how to recover from situations like this in this tutorial<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, but will instead give the following advice: <b>do not rebase commits that other people may have based work on</b>.</p>
 <div style="width:100%;margin:auto">
 <div class="quarto-figure quarto-figure-center">
@@ -651,13 +657,13 @@ Fourth commit
 </div>
 </div>
 </section>
-<section id="should-i-merge-or-rebase" class="level2" data-number="13.6">
-<h2 data-number="13.6" class="anchored" data-anchor-id="should-i-merge-or-rebase"><span class="header-section-number">13.6</span> Should I merge or rebase?</h2>
+<section id="should-i-merge-or-rebase" class="level2" data-number="14.6">
+<h2 data-number="14.6" class="anchored" data-anchor-id="should-i-merge-or-rebase"><span class="header-section-number">14.6</span> Should I merge or rebase?</h2>
 <p>So what is best, merging or rebasing? Neither is objectively better than the other, it all depends on context. Merging is never wrong, but it can lead to commit histories full of intermediate messy commits that holds no value on their own, and merge commits makes commit histories harder to understand. Some people have the opinion that it is important to not alter the history; to preserve an exact record of what has happened. Other people favour altering the history of a repository to make sure that the commit history is linear and each commit is meaningful. Rebasing should always be done carefully. As a general rule, you should only rebase commits that does not live outside of your local clone of a project, or in branches that no other people work on. If you ever have to <code>git push -f</code> you are probably doing something you will regret and/or your collaborators will hate you for!</p>
 <p>The opinion of this tutorial is that preserving the true commit history of a repository is irrelevant. It is better to prioritise a clean linear commit history, by rebasing local commits before pushing them to a remote. On the other hand you should never rebase commits that others are potentially basing their work on, i.e.&nbsp;rebasing commits that are already on a remote, is often a recipe for disaster.</p>
 </section>
-<section id="exercises" class="level2" data-number="13.7">
-<h2 data-number="13.7" class="anchored" data-anchor-id="exercises"><span class="header-section-number">13.7</span> Exercises</h2>
+<section id="exercises" class="level2" data-number="14.7">
+<h2 data-number="14.7" class="anchored" data-anchor-id="exercises"><span class="header-section-number">14.7</span> Exercises</h2>
 <section id="exercise-1---squashing-all-commits" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-1---squashing-all-commits">Exercise 1 - Squashing all commits</h3>
 <p>Use the following commands to set up a repository with 3 commits on the <code>main</code> branch:</p>
@@ -1289,7 +1295,7 @@ $ git log --oneline
 </section>
 <section id="exercise-5---undoing-a-rebase" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-5---undoing-a-rebase">Exercise 5 - Undoing a rebase</h3>
-<p>This exercise assumes you have read the chapter on <code>git reflog</code>, see xxx.</p>
+<p>This exercise assumes you have read <a href="part2-git-reflog.html" class="quarto-xref"><span>Chapter 8</span></a>.</p>
 <p>Sometimes things will go wrong when using Git. This is also the case when doing a rebase. Maybe the rebase did not do what you wanted it to do, or maybe the whole rebase process went haywire for unknown reasons. If you realise something is wrong doing the rebase you should be able to use <code>git rebase --abort</code> to restore your repository back to the state before you initiated the rebase, but maybe even this might go wrong for whatever reason. A more general approach to recover from a rebase that goes wrong or that you regret, is to use <code>git reflog</code> to identify the commit ID HEAD was pointing to before the rebase, and use <code>git reset</code> to move HEAD back to the commit it was pointing to prior to the rebase. Use the following commands to set up a repository with 3 commits:</p>
 <pre class="git-command">$ mkdir ~/ex-rebase-undo
 $ cd ~/ex-rebase-undo
@@ -1831,7 +1837,7 @@ cd2c018 First commit
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./part2-git-stash.html" class="pagination-link" aria-label="git stash.">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">git stash.</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">git stash.</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

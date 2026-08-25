@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>9&nbsp; Using git diff to show code changes – Git tutorial</title>
+<title>10&nbsp; Using git diff to show code changes – Git tutorial</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -90,7 +90,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part2-collaboration.html">Part II</a></li><li class="breadcrumb-item"><a href="./part2-git-diff.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Using <code>git diff</code> to show code changes</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part2-git-reflog.html">Part II</a></li><li class="breadcrumb-item"><a href="./part2-git-diff.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Using <code>git diff</code> to show code changes</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -188,38 +188,44 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./part2-git-reflog.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Recovering deleted commits</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./part2-collaboration.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Collaboration</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Collaboration</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./part2-git-diff.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Using <code>git diff</code> to show code changes</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Using <code>git diff</code> to show code changes</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./part2-github.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Introduction to GitHub</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction to GitHub</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./part2-git-internals.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Git internals</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Git internals</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./part2-git-stash.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">git stash.</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">git stash.</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./part2-git-rebase.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Rebasing</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Rebasing</span></span></a>
   </div>
 </li>
       </ul>
@@ -263,7 +269,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#show-changes-in-the-working-tree---understanding-the-git-diff-output" id="toc-show-changes-in-the-working-tree---understanding-the-git-diff-output" class="nav-link active" data-scroll-target="#show-changes-in-the-working-tree---understanding-the-git-diff-output"><span class="header-section-number">9.1</span> Show changes in the working tree - Understanding the <code>git diff</code> output</a>
+  <li><a href="#show-changes-in-the-working-tree---understanding-the-git-diff-output" id="toc-show-changes-in-the-working-tree---understanding-the-git-diff-output" class="nav-link active" data-scroll-target="#show-changes-in-the-working-tree---understanding-the-git-diff-output"><span class="header-section-number">10.1</span> Show changes in the working tree - Understanding the <code>git diff</code> output</a>
   <ul class="collapse">
   <li><a href="#structure-of-git-diff-output" id="toc-structure-of-git-diff-output" class="nav-link" data-scroll-target="#structure-of-git-diff-output">Structure of <code>git diff</code> output</a></li>
   <li><a href="#the-header" id="toc-the-header" class="nav-link" data-scroll-target="#the-header">The header</a></li>
@@ -273,24 +279,24 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#the-diff-content" id="toc-the-diff-content" class="nav-link" data-scroll-target="#the-diff-content">The diff content</a></li>
   <li><a href="#continuation-of-example" id="toc-continuation-of-example" class="nav-link" data-scroll-target="#continuation-of-example">Continuation of example</a></li>
   </ul></li>
-  <li><a href="#compare-index-with-latest-commit" id="toc-compare-index-with-latest-commit" class="nav-link" data-scroll-target="#compare-index-with-latest-commit"><span class="header-section-number">9.2</span> Compare index with latest commit</a></li>
-  <li><a href="#compare-two-commits" id="toc-compare-two-commits" class="nav-link" data-scroll-target="#compare-two-commits"><span class="header-section-number">9.3</span> Compare two commits</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">9.4</span> Exercises</a>
+  <li><a href="#compare-index-with-latest-commit" id="toc-compare-index-with-latest-commit" class="nav-link" data-scroll-target="#compare-index-with-latest-commit"><span class="header-section-number">10.2</span> Compare index with latest commit</a></li>
+  <li><a href="#compare-two-commits" id="toc-compare-two-commits" class="nav-link" data-scroll-target="#compare-two-commits"><span class="header-section-number">10.3</span> Compare two commits</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">10.4</span> Exercises</a>
   <ul class="collapse">
   <li><a href="#exercise-1---compare-files-outside-a-git-repository" id="toc-exercise-1---compare-files-outside-a-git-repository" class="nav-link" data-scroll-target="#exercise-1---compare-files-outside-a-git-repository">Exercise 1 - Compare files outside a Git repository</a></li>
   <li><a href="#exercise-2---multiple-diff-hunks" id="toc-exercise-2---multiple-diff-hunks" class="nav-link" data-scroll-target="#exercise-2---multiple-diff-hunks">Exercise 2 - Multiple diff hunks</a></li>
   <li><a href="#compare-brances" id="toc-compare-brances" class="nav-link" data-scroll-target="#compare-brances">Compare brances</a></li>
   </ul></li>
-  <li><a href="#todo" id="toc-todo" class="nav-link" data-scroll-target="#todo"><span class="header-section-number">9.5</span> TODO</a></li>
+  <li><a href="#todo" id="toc-todo" class="nav-link" data-scroll-target="#todo"><span class="header-section-number">10.5</span> TODO</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part2-collaboration.html">Part II</a></li><li class="breadcrumb-item"><a href="./part2-git-diff.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Using <code>git diff</code> to show code changes</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part2-git-reflog.html">Part II</a></li><li class="breadcrumb-item"><a href="./part2-git-diff.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Using <code>git diff</code> to show code changes</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Using <code>git diff</code> to show code changes</span></h1>
+<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Using <code>git diff</code> to show code changes</span></h1>
 </div>
 
 
@@ -309,8 +315,8 @@ ul.task-list li input[type="checkbox"] {
 
 <p>A <em>diff</em> is a program that compares the content of files or directories, line by line, and shows the differences between them. Git comes with its own diff command, <code>git diff</code>, which can be used to compare different states of a repository. Using diffs allows developers to inspect changes before adding them to the index or making a commit, compare changes made in a feature branch with your main branch before merging and so on, which is an essential skill to learn when using Git.</p>
 <p>This chapter will focus under understanding the output that <code>git diff</code> produces and introducing some of the most common ways diffs are used in Git. As always, we will only scratch the surface of what is possible to do.</p>
-<section id="show-changes-in-the-working-tree---understanding-the-git-diff-output" class="level2" data-number="9.1">
-<h2 data-number="9.1" class="anchored" data-anchor-id="show-changes-in-the-working-tree---understanding-the-git-diff-output"><span class="header-section-number">9.1</span> Show changes in the working tree - Understanding the <code>git diff</code> output</h2>
+<section id="show-changes-in-the-working-tree---understanding-the-git-diff-output" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="show-changes-in-the-working-tree---understanding-the-git-diff-output"><span class="header-section-number">10.1</span> Show changes in the working tree - Understanding the <code>git diff</code> output</h2>
 <p>Using <code>git diff</code> with no arguments will show changes made in the working tree that has not yet been staged for the next commit. More precisely, Git compares the working tree and the index. This invocation of <code>git diff</code> can be used to see exactly what changes would be added to the index if <code>git add</code> was used.</p>
 <p>Let’s explore this with an example where we also go through how to interpret the output that <code>git diff</code> provides. First, let’s initiate a Git repository where we create a file, add it to the index, and use <code>git diff</code>:</p>
 <pre class="git-command">$ mkdir ~/example-git-diff
@@ -445,8 +451,8 @@ $ rm -rf ~/example-git-diff
 </pre>
 </section>
 </section>
-<section id="compare-index-with-latest-commit" class="level2" data-number="9.2">
-<h2 data-number="9.2" class="anchored" data-anchor-id="compare-index-with-latest-commit"><span class="header-section-number">9.2</span> Compare index with latest commit</h2>
+<section id="compare-index-with-latest-commit" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="compare-index-with-latest-commit"><span class="header-section-number">10.2</span> Compare index with latest commit</h2>
 <p>Another common way to use <code>git diff</code> is to compare the index to the latest commit on the active branch, by using the <code>--staged</code> flag. This invocation of <code>git diff</code> can be used to see exactly what changes are committed before using <code>git commit</code>.</p>
 <p>Let’s illustrate this with a new example. First we initialize a repository with a single commit of two files:</p>
 <pre class="git-command">$ mkdir ~/example-git-diff2
@@ -487,8 +493,8 @@ $ git diff --staged
 $ rm -rf ~/example-git-diff2
 </pre>
 </section>
-<section id="compare-two-commits" class="level2" data-number="9.3">
-<h2 data-number="9.3" class="anchored" data-anchor-id="compare-two-commits"><span class="header-section-number">9.3</span> Compare two commits</h2>
+<section id="compare-two-commits" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="compare-two-commits"><span class="header-section-number">10.3</span> Compare two commits</h2>
 <p>It is also possible to diff two commits, to see the differences between them using <code>git diff &lt;commit&gt; &lt;commit&gt;</code>, where <code>&lt;commit&gt;</code> is the (abbreviated) SHA-1 checksum of a commit object. One of the most common uses of this form of <code>git diff</code> is <code>git diff HEAD^ HEAD</code> which shows changes introduced in the most recent commit on the active branch. As you might recall, <code>HEAD</code>, is just a pointer to the most recent commit on the active branch, and <code>HEAD^</code> is the parent commit of <code>HEAD</code>. This is a neat way to make the comparison of interest without having to type out tedious and hard to remember checksums in the terminal. This also illustrates that we can use refs to refer to commits, instead of actual commit checksums in the call to <code>git diff</code>. This means that we compare branches with the same type of call eg <code>git diff main feature_a</code> to see what changes has been introduced in a feature branch before we merge it to our main branch.</p>
 <p>Again, let’s illustrate this with an example. First we create a repository with a series of commits, making changes to a single file:</p>
 <pre class="git-command">$ mkdir ~/example-git-diff3
@@ -567,8 +573,8 @@ $ git diff main feature_a
 $ rm -rf ~/example-git-diff3
 </pre>
 </section>
-<section id="exercises" class="level2" data-number="9.4">
-<h2 data-number="9.4" class="anchored" data-anchor-id="exercises"><span class="header-section-number">9.4</span> Exercises</h2>
+<section id="exercises" class="level2" data-number="10.4">
+<h2 data-number="10.4" class="anchored" data-anchor-id="exercises"><span class="header-section-number">10.4</span> Exercises</h2>
 <p>TODO: The main purpose of the exercises should be to expand on the introduced types of diffs with more complicated example with multiple files, chunks of changes etc.</p>
 <section id="exercise-1---compare-files-outside-a-git-repository" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-1---compare-files-outside-a-git-repository">Exercise 1 - Compare files outside a Git repository</h3>
@@ -782,8 +788,8 @@ $ rm -rf ~/git-diff-ex2
 <p>purpose: Illustrates how to see what changes have been introduced in a feature branch, for example.</p>
 </section>
 </section>
-<section id="todo" class="level2" data-number="9.5">
-<h2 data-number="9.5" class="anchored" data-anchor-id="todo"><span class="header-section-number">9.5</span> TODO</h2>
+<section id="todo" class="level2" data-number="10.5">
+<h2 data-number="10.5" class="anchored" data-anchor-id="todo"><span class="header-section-number">10.5</span> TODO</h2>
 <ul>
 <li><p>Add text somewhere (probably in first section) that emphasizes that the goal of git diff is not just to show new lines but also to illustrate what lines were removed or replaced. Ie to show a comprehensive view of alterations, both additions, deltions and context, which enables us to fully comprehend the evolution from one version to another of a file.</p></li>
 <li><p>It is not intuitive at all how to call <code>git diff</code> to compare the different states of interest. Add a table with basic calls that can be used as a reference. Something like what is done in https://www.datacamp.com/tutorial/git-diff-guide?dc_referrer=https%3A%2F%2Fwww.google.com%2F</p></li>
@@ -1208,12 +1214,12 @@ $ rm -rf ~/git-diff-ex2
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./part2-collaboration.html" class="pagination-link" aria-label="Collaboration">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Collaboration</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Collaboration</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./part2-github.html" class="pagination-link" aria-label="Introduction to GitHub">
-        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Introduction to GitHub</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction to GitHub</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -70,7 +70,6 @@ https://stevelosh.com/blog/2013/04/git-koans/ pure comedy gold!
 - Along the way, or maybe as an appendix/part II chapter, the downsides of Git should be mentioned? Like, some terminology is confusing at best, inconsistencies, lack of clear definitions of terms etc.
 - Consider if the tree command should be used to more clearly illustrate folder structures. Unfortunately, this command needs to be downloaded and installed, so it is not something that can/should be used in example code since users won't be able to use it themselves, especially not if they are using the Git for Widnows terminal. But maybe use to make diagrams to include alongside code to make it more clear how directories look like? But how do we do this in a good way then? Using screenshots of the terminal output from the tree command sounds awful. Maybe it would not be so bad manually constructing similar output in draw.io? Can the output from the terminal maybe simply be pasted into a text box in draw.io and formatted?
 - Make a part II chapter briefly talking about the advantages of using touch typing, (Neo)Vim, lazygit, and CLI programs in general, eg install commands like tree etc. Just a short chapter meant as an inspiration to those who want to explore going in the direction of using the terminal in general. Maybe the chapter should be called something like "Switching to using the terminal".
-- Add part II chapter on reflog. Mainly as a tool to recover "lost" commits?
 
 Found this very old resource:
 https://github.com/schacon/gitbook

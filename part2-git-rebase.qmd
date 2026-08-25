@@ -939,7 +939,7 @@ $ git log --oneline
 
 ### Exercise 5 - Undoing a rebase
 
-This exercise assumes you have read the chapter on `git reflog`, see xxx.
+This exercise assumes you have read @sec-git-reflog.
 
 Sometimes things will go wrong when using Git. This is also the case when doing a rebase. Maybe the rebase did not do what you wanted it to do, or maybe the whole rebase process went haywire for unknown reasons. If you realise something is wrong doing the rebase you should be able to use `git rebase --abort` to restore your repository back to the state before you initiated the rebase, but maybe even this might go wrong for whatever reason. A more general approach to recover from a rebase that goes wrong or that you regret, is to use `git reflog` to identify the commit ID HEAD was pointing to before the rebase, and  use `git reset` to move HEAD back to the commit it was pointing to prior to the rebase. Use the following commands to set up a repository with 3 commits:
 

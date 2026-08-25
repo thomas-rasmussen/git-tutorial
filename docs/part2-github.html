@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>10&nbsp; Introduction to GitHub – Git tutorial</title>
+<title>11&nbsp; Introduction to GitHub – Git tutorial</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -90,7 +90,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part2-collaboration.html">Part II</a></li><li class="breadcrumb-item"><a href="./part2-github.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Introduction to GitHub</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part2-git-reflog.html">Part II</a></li><li class="breadcrumb-item"><a href="./part2-github.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction to GitHub</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -188,38 +188,44 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./part2-git-reflog.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Recovering deleted commits</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./part2-collaboration.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Collaboration</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Collaboration</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./part2-git-diff.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Using <code>git diff</code> to show code changes</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Using <code>git diff</code> to show code changes</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./part2-github.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Introduction to GitHub</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction to GitHub</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./part2-git-internals.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Git internals</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Git internals</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./part2-git-stash.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">git stash.</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">git stash.</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./part2-git-rebase.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Rebasing</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Rebasing</span></span></a>
   </div>
 </li>
       </ul>
@@ -263,21 +269,21 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#create-a-github-account-and-install-the-github-cli" id="toc-create-a-github-account-and-install-the-github-cli" class="nav-link active" data-scroll-target="#create-a-github-account-and-install-the-github-cli"><span class="header-section-number">10.1</span> Create a GitHub account and install the GitHub CLI</a></li>
-  <li><a href="#authenticate-with-your-github-account" id="toc-authenticate-with-your-github-account" class="nav-link" data-scroll-target="#authenticate-with-your-github-account"><span class="header-section-number">10.2</span> Authenticate with your GitHub account</a></li>
-  <li><a href="#licenses" id="toc-licenses" class="nav-link" data-scroll-target="#licenses"><span class="header-section-number">10.3</span> Licenses</a></li>
-  <li><a href="#creating-a-repository-on-github" id="toc-creating-a-repository-on-github" class="nav-link" data-scroll-target="#creating-a-repository-on-github"><span class="header-section-number">10.4</span> Creating a repository on GitHub</a>
+  <li><a href="#create-a-github-account-and-install-the-github-cli" id="toc-create-a-github-account-and-install-the-github-cli" class="nav-link active" data-scroll-target="#create-a-github-account-and-install-the-github-cli"><span class="header-section-number">11.1</span> Create a GitHub account and install the GitHub CLI</a></li>
+  <li><a href="#authenticate-with-your-github-account" id="toc-authenticate-with-your-github-account" class="nav-link" data-scroll-target="#authenticate-with-your-github-account"><span class="header-section-number">11.2</span> Authenticate with your GitHub account</a></li>
+  <li><a href="#licenses" id="toc-licenses" class="nav-link" data-scroll-target="#licenses"><span class="header-section-number">11.3</span> Licenses</a></li>
+  <li><a href="#creating-a-repository-on-github" id="toc-creating-a-repository-on-github" class="nav-link" data-scroll-target="#creating-a-repository-on-github"><span class="header-section-number">11.4</span> Creating a repository on GitHub</a>
   <ul class="collapse">
   <li><a href="#initialize-a-new-git-repository-on-github" id="toc-initialize-a-new-git-repository-on-github" class="nav-link" data-scroll-target="#initialize-a-new-git-repository-on-github">Initialize a new Git repository on GitHub</a></li>
   <li><a href="#upload-repository-from-existing-local-repository" id="toc-upload-repository-from-existing-local-repository" class="nav-link" data-scroll-target="#upload-repository-from-existing-local-repository">Upload repository from existing local repository</a></li>
   </ul></li>
-  <li><a href="#tools-to-facilitate-collaboration" id="toc-tools-to-facilitate-collaboration" class="nav-link" data-scroll-target="#tools-to-facilitate-collaboration"><span class="header-section-number">10.5</span> Tools to facilitate collaboration</a>
+  <li><a href="#tools-to-facilitate-collaboration" id="toc-tools-to-facilitate-collaboration" class="nav-link" data-scroll-target="#tools-to-facilitate-collaboration"><span class="header-section-number">11.5</span> Tools to facilitate collaboration</a>
   <ul class="collapse">
   <li><a href="#issues" id="toc-issues" class="nav-link" data-scroll-target="#issues">Issues</a></li>
   <li><a href="#forks-and-pull-requests" id="toc-forks-and-pull-requests" class="nav-link" data-scroll-target="#forks-and-pull-requests">Forks and pull requests</a></li>
   </ul></li>
-  <li><a href="#github-pages" id="toc-github-pages" class="nav-link" data-scroll-target="#github-pages"><span class="header-section-number">10.6</span> GitHub pages</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">10.7</span> Exercises</a>
+  <li><a href="#github-pages" id="toc-github-pages" class="nav-link" data-scroll-target="#github-pages"><span class="header-section-number">11.6</span> GitHub pages</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">11.7</span> Exercises</a>
   <ul class="collapse">
   <li><a href="#exercise-1---managing-github-repositories-using-the-github-cli" id="toc-exercise-1---managing-github-repositories-using-the-github-cli" class="nav-link" data-scroll-target="#exercise-1---managing-github-repositories-using-the-github-cli">Exercise 1 - Managing GitHub repositories using the GitHub CLI</a></li>
   <li><a href="#exercise-2---contributing-to-an-open-source-project" id="toc-exercise-2---contributing-to-an-open-source-project" class="nav-link" data-scroll-target="#exercise-2---contributing-to-an-open-source-project">Exercise 2 - Contributing to an open-source project</a></li>
@@ -288,9 +294,9 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part2-collaboration.html">Part II</a></li><li class="breadcrumb-item"><a href="./part2-github.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Introduction to GitHub</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part2-git-reflog.html">Part II</a></li><li class="breadcrumb-item"><a href="./part2-github.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction to GitHub</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Introduction to GitHub</span></h1>
+<h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction to GitHub</span></h1>
 </div>
 
 
@@ -309,8 +315,8 @@ ul.task-list li input[type="checkbox"] {
 
 <p>GitHub is a web-based service that hosts Git repositories. Simply put, you can host a remote of your Git repository on GitHub instead of having a remote locally on your network. This makes it possible for you to access your Git repository from any computer with an internet connection, which is obviously beneficial. But GitHub is also much more than that. GitHub offers many features that facilitate collaboration, and can be used for much more than simply storing your repository on the internet. It is outside the scope of this tutorial to go into much detail about what GitHub can be used for and how, since it would quickly become an entire tutorial in itself, but we will introduce and illustrate some basic features that should make it clear how valuable a tool GitHub can be.</p>
 <p>GitHub has a web user-interface that is easy to navigate and use, and is most likely the easiest way to to interact with your GitHub account and your repositories for most people, especially if you are not comfortable using a CLI. But illustrating how to use the web user-interface in a tutorial with an enormous amount of screenshots, is most certainly not the best way to learn how to use GitHub. Because of this, and in line with the philosophy of this tutorial, we will instead opt to use the GitHub CLI to interact with GitHub from the command line. This will work just as well for the simple features we will introduce in this tutorial, but there might be some advanced features that are not possible to use through the GitHub CLI, or it simply easier to do through the web user-interface. Keep this in mind if you want to use GitHub in the future. There is plenty of documentation on the <a href="https://docs.github.com/en">GitHub website</a> on how to use the web-interface.</p>
-<section id="create-a-github-account-and-install-the-github-cli" class="level2" data-number="10.1">
-<h2 data-number="10.1" class="anchored" data-anchor-id="create-a-github-account-and-install-the-github-cli"><span class="header-section-number">10.1</span> Create a GitHub account and install the GitHub CLI</h2>
+<section id="create-a-github-account-and-install-the-github-cli" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="create-a-github-account-and-install-the-github-cli"><span class="header-section-number">11.1</span> Create a GitHub account and install the GitHub CLI</h2>
 <p>To do basically anything other than browsing and cloning repositories on GitHub, you need to create an account. You can create a free GitHub account by going to <a href="https://github.com">https://github.com</a> and sign up.</p>
 <p>As stated, we will interact with GitHub from the command line using the GitHub CLI. You can install it from Git BASH by running the following command:</p>
 <pre class="git-command">$ winget install --id GitHub.cli
@@ -318,24 +324,24 @@ ul.task-list li input[type="checkbox"] {
 <p>This should work from git BASH. If not, try running the command in PowerShell. Alternatively, download and install it from <a href="https://cli.github.com/">https://cli.github.com/</a>.</p>
 <p>You need to restart your terminal before you can use the GitHub CLI <code>gh</code> commands.</p>
 </section>
-<section id="authenticate-with-your-github-account" class="level2" data-number="10.2">
-<h2 data-number="10.2" class="anchored" data-anchor-id="authenticate-with-your-github-account"><span class="header-section-number">10.2</span> Authenticate with your GitHub account</h2>
+<section id="authenticate-with-your-github-account" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="authenticate-with-your-github-account"><span class="header-section-number">11.2</span> Authenticate with your GitHub account</h2>
 <p>The most technical aspect of using GitHub is to authenticate with your GitHub account. You need to do this to verify to GitHub that you are who you claim to be, so that you are allowed to access your GitHub account and push changes to your repositories etc. You can authenticate with your GitHub account from the command line using either HTTPS or SSH. It is outside the scope of this tutorial to go into any details about what this means, and to explain the pros and cons of each protocol. Here we will simply show how you can authenticate using HTTPS using the GitHub CLI. To authenticate with your GitHub account, run the following command:</p>
 <pre class="git-command">$ gh auth login -p"https" -cw
 </pre>
 <p>Follow the link given in the terminal. If you are not logged into your GitHub account already, you will be prompted to do so first. Then you will be asked to enter the one-time code that was provided in the terminal output (which should already be copied to the clipboard). You should only need to do this once for each machine you work on.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 <p>The rest of this chapter assumes that you have created a GitHub account, and have authenticated with it to allow you to access and modify your repositories.</p>
 </section>
-<section id="licenses" class="level2" data-number="10.3">
-<h2 data-number="10.3" class="anchored" data-anchor-id="licenses"><span class="header-section-number">10.3</span> Licenses</h2>
+<section id="licenses" class="level2" data-number="11.3">
+<h2 data-number="11.3" class="anchored" data-anchor-id="licenses"><span class="header-section-number">11.3</span> Licenses</h2>
 <p>Before talking about how to host repositories on GitHub, we need to talk briefly about licences. If you put a repository on GitHub to share it with others, you should include a license that specifies what other people can do with your code. You are not obligated to include a license, but if you don’t, default copyright laws apply, meaning that you retain all rights to your source code and no one may reproduce, distribute, or create derivative works from your work. This might not be what you want. GitHub strongly encourages you to include an open source licence, the MIT licence being a common choice. The MIT licence is a short permissive software license, that basically allows people to do whatever they want with your code, as long as they include the original copyright and licence in any copy of the code. Also, the licence states that you hold zero liability for use of the code. In many cases, this is a very reasonable license, and a good default choice. If you want to to learn more about licences, here are few resources that might be of interest:</p>
 <p><a href="https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository">https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository</a></p>
 <p><a href="https://opensource.guide/legal/#which-open-source-license-is-appropriate-for-my-project">https://opensource.guide/legal/#which-open-source-license-is-appropriate-for-my-project</a></p>
 <p><a href="https://choosealicense.com">https://choosealicense.com</a></p>
 <p><a href="https://www.tldrlegal.com">https://www.tldrlegal.com</a></p>
 </section>
-<section id="creating-a-repository-on-github" class="level2" data-number="10.4">
-<h2 data-number="10.4" class="anchored" data-anchor-id="creating-a-repository-on-github"><span class="header-section-number">10.4</span> Creating a repository on GitHub</h2>
+<section id="creating-a-repository-on-github" class="level2" data-number="11.4">
+<h2 data-number="11.4" class="anchored" data-anchor-id="creating-a-repository-on-github"><span class="header-section-number">11.4</span> Creating a repository on GitHub</h2>
 <p>There are two ways to get a repository on GitHub. You can either initialize a new project directly on GitHub, or you can upload a repository to GitHub from an existing local repository. If you are starting a new Git repository and you want to have a remote on GitHub, you have two choices: Initialize the repository on GitHub and clone it, or initialize the repository locally, and then upload it to GitHub. There is no right or wrong way to do this, it comes down to personal preferences.</p>
 <p>You can initialize or upload a Git repository on GitHub using the <code>gh repo create [&lt;name&gt;] [flags]</code> command. You can find documentation on this command at <a href="https://cli.github.com/manual/gh_repo_create">https://cli.github.com/manual/gh_repo_create</a>, or you can use <code>gh repo create --help</code> in the terminal. It is possible to create a repository interactively in the terminal by running <code>gh repo create</code> with no arguments, but that is not something we will explore here. Instead we will create repositories non-interactively, and in this case we need, as a minimum, to specify a name for the repository and use flags to specify if the repository is to be (<code>--public</code>) or private (<code>--private</code>). Public repositories can be seen by everyone, whereas private repositories can only been seen by yourself.</p>
 <section id="initialize-a-new-git-repository-on-github" class="level3">
@@ -377,8 +383,8 @@ origin  https://github.com/your-user-name/init-local-repo (push)
 </pre>
 </section>
 </section>
-<section id="tools-to-facilitate-collaboration" class="level2" data-number="10.5">
-<h2 data-number="10.5" class="anchored" data-anchor-id="tools-to-facilitate-collaboration"><span class="header-section-number">10.5</span> Tools to facilitate collaboration</h2>
+<section id="tools-to-facilitate-collaboration" class="level2" data-number="11.5">
+<h2 data-number="11.5" class="anchored" data-anchor-id="tools-to-facilitate-collaboration"><span class="header-section-number">11.5</span> Tools to facilitate collaboration</h2>
 <p>GitHub has a ton of features that are useful when collaborating on a project. Here we will briefly touch on some basic uses of some of these features.</p>
 <section id="issues" class="level3">
 <h3 class="anchored" data-anchor-id="issues">Issues</h3>
@@ -527,8 +533,8 @@ $ git log --oneline
 </section>
 </section>
 </section>
-<section id="github-pages" class="level2" data-number="10.6">
-<h2 data-number="10.6" class="anchored" data-anchor-id="github-pages"><span class="header-section-number">10.6</span> GitHub pages</h2>
+<section id="github-pages" class="level2" data-number="11.6">
+<h2 data-number="11.6" class="anchored" data-anchor-id="github-pages"><span class="header-section-number">11.6</span> GitHub pages</h2>
 <p>GitHub pages is a static site hosting service, that can take HTML, CSS, and Javascript files from a GitHub repository and turn them into a website. It is very simple to set up from a GitHub repository, and useful in a wide array of scenarios. Common use cases include:</p>
 <ul>
 <li><p>Documentation</p></li>
@@ -539,8 +545,8 @@ $ git log --oneline
 <p>As an example, the tutorial you are currently reading is hosted as a static website on GitHub pages, based on the main branch of the repository that creates the tutorial. Every time the main branch is updated, the website is automatically updated!</p>
 <p>It is outside the scope of this tutorial to go into details on how to use GitHub pages, but for more information see the official documentation at <a href="https://docs.github.com/en/pages">https://docs.github.com/en/pages</a></p>
 </section>
-<section id="exercises" class="level2" data-number="10.7">
-<h2 data-number="10.7" class="anchored" data-anchor-id="exercises"><span class="header-section-number">10.7</span> Exercises</h2>
+<section id="exercises" class="level2" data-number="11.7">
+<h2 data-number="11.7" class="anchored" data-anchor-id="exercises"><span class="header-section-number">11.7</span> Exercises</h2>
 <section id="exercise-1---managing-github-repositories-using-the-github-cli" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-1---managing-github-repositories-using-the-github-cli">Exercise 1 - Managing GitHub repositories using the GitHub CLI</h3>
 <p>In this exercise we will practice using some of the GitHub CLI commands that have been introduced in this chapter to illustrate how a simplified workflow using GitHub might look like.</p>
@@ -1391,12 +1397,12 @@ $ rm git-tutorial -rf
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./part2-git-diff.html" class="pagination-link" aria-label="Using `git diff` to show code changes">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Using <code>git diff</code> to show code changes</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Using <code>git diff</code> to show code changes</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./part2-git-internals.html" class="pagination-link" aria-label="Git internals">
-        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Git internals</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Git internals</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
