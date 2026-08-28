@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>7&nbsp; Workflows – Git tutorial</title>
+<title>7&nbsp; Git workflows – Git tutorial</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -89,7 +89,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part1-ch01-introduction-to-git.html">Part I</a></li><li class="breadcrumb-item"><a href="./part1-ch07-workflows.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Workflows</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part2-workflows.html">Part II</a></li><li class="breadcrumb-item"><a href="./part2-workflows.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Git workflows</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -168,12 +168,6 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Remote repositories</span></span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./part1-ch07-workflows.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Workflows</span></span></a>
-  </div>
-</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -185,6 +179,12 @@ ul.task-list li input[type="checkbox"] {
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./part2-workflows.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Git workflows</span></span></a>
+  </div>
+</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./part2-git-reflog.html" class="sidebar-item-text sidebar-link">
@@ -245,15 +245,26 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#considerations-when-selecting-a-workflow" id="toc-considerations-when-selecting-a-workflow" class="nav-link active" data-scroll-target="#considerations-when-selecting-a-workflow"><span class="header-section-number">7.1</span> Considerations when selecting a workflow</a></li>
+  <li><a href="#the-simplest-possible-workflow" id="toc-the-simplest-possible-workflow" class="nav-link" data-scroll-target="#the-simplest-possible-workflow"><span class="header-section-number">7.2</span> The simplest possible workflow</a></li>
+  <li><a href="#centralized-workflow" id="toc-centralized-workflow" class="nav-link" data-scroll-target="#centralized-workflow"><span class="header-section-number">7.3</span> Centralized workflow</a></li>
+  <li><a href="#feature-branch-workflow" id="toc-feature-branch-workflow" class="nav-link" data-scroll-target="#feature-branch-workflow"><span class="header-section-number">7.4</span> Feature branch workflow</a></li>
+  <li><a href="#forking-workflow" id="toc-forking-workflow" class="nav-link" data-scroll-target="#forking-workflow"><span class="header-section-number">7.5</span> Forking workflow</a></li>
+  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example"><span class="header-section-number">8</span> Example</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part1-ch01-introduction-to-git.html">Part I</a></li><li class="breadcrumb-item"><a href="./part1-ch07-workflows.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Workflows</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part2-workflows.html">Part II</a></li><li class="breadcrumb-item"><a href="./part2-workflows.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Git workflows</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Workflows</span></h1>
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Git workflows</span></h1>
 </div>
 
 
@@ -270,9 +281,60 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>A short introduction to Git workflows. Base on https://www.atlassian.com/git/tutorials/comparing-workflows</p>
+<p>Git is very flexible, and there is not one standardized approach on how to use it that you are supposed to follow. However, to use Git in a productive manner, it is important to develop or select a Git <em>workflow</em> to use, especially if you are collaborating with others. A Git workflow is a guideline on how to use Git, and a workflow should be selected and agreed upon by collaborators, before a project is initiated, so that it is clear to everyone how changes to the project is to be applied. In this chapter we will briefly introduce a couple of workflows and, as an example, explain the workflow that was used to develop this tutorial.</p>
+<section id="considerations-when-selecting-a-workflow" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="considerations-when-selecting-a-workflow"><span class="header-section-number">7.1</span> Considerations when selecting a workflow</h2>
+<p>When selecting a workflow you should consider several things:</p>
+<p><b>A workflow is a guideline, not a strict set of rules:</b><br> You don’t have to adhere strictly to a workflow you have selected. It is perfectly fine to make any kind of modifications you see fit. The only important thing is that your workflow works for you.</p>
+<p><b>Keep it simple:</b><br> Don’t select an overcomplicated workflow that you don’t need. You might end up in a situation where Git feels like it is hindering, not enhancing, productivity and collaboration. Also, your collaborators will not appreciate having to figure out how to manoeuvre some esoteric workflow that you concocted yourself.</p>
+<p><b>Have a plan for how to fix mistakes:</b><br> Consider how mistakes will be handled in the workflow. For example, if someone mistakenly rebases commits in the central repository, altering commits others are basing their work on, how will this be handled within the selected workflow? Using <code>git push -f</code> from another local clone to restore the history of the central repository, public lynching, using a forking workflow to restrict who can push to the central repository, or something else entirely?</p>
+<p><b>How the workflow scales :</b><br> If you know that the size of the team working on the project might increase, consider if the workflow also works in larger collaborations. For example, if you start a project on your own, but you know that collaborators will join the project in the future, you should probably, as a minimum, select a workflow using a remote as central repository.</p>
+</section>
+<section id="the-simplest-possible-workflow" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="the-simplest-possible-workflow"><span class="header-section-number">7.2</span> The simplest possible workflow</h2>
+<p>Let’s start with simplest possible workflow: working on a project on your own and simply making commits to <code>main</code> from time to time. You simply use <code>git init</code> to initialize a Git repository, and then use <code>git add .</code> and <code>git commit</code> when you feel like it. You are not exactly utilizing Git to the fullest using this workflow, but at the same time this is sometimes the most appropriate approach to use. For example, imagine you have a text document where you keep work-related notes, maybe as an alternative to using the Microsoft Sticky Notes app, and you would like to use Git so that you can easily recover old notes that you have deleted because you thought you didn’t need them any more. Making a commit on <code>main</code> every time you change your notes is probably all you need.</p>
+<div style="width:70%;margin:auto">
+<p><img src="./diagrams/workflows-simple.drawio.svg" class="img-fluid"></p>
+</div>
+</section>
+<section id="centralized-workflow" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="centralized-workflow"><span class="header-section-number">7.3</span> Centralized workflow</h2>
+<p>The centralized workflow is a simple workflow using a remote as a central repository. Each developer clones the repository and works on their own local copy of the project, making changes and commits locally on their <code>main</code> branch. When a developer wants to integrate their local changes they first fetch from the central repository. If nothing has changed since they started their local work, they can simply push their changes to <code>main</code> in the central repository. In case new commits have been on the central repository by others in the meantime, they replay their local commits onto the tip of <code>main</code> in the central repository, fixing any merge-conflicts in the process.</p>
+<div style="width:100%;margin:auto">
+<p><img src="./diagrams/workflows-centralized.drawio.svg" class="img-fluid"></p>
+</div>
+</section>
+<section id="feature-branch-workflow" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="feature-branch-workflow"><span class="header-section-number">7.4</span> Feature branch workflow</h2>
+<p>The feature branch workflow also uses a remote as a central repository, and the core idea behind the feature branch workflow is to move development of code away from the main branch and into other branches, so-called feature branches. This makes it easier to develop new features without disturbing the main version of the code. This keeps the main version of the code stable and always working. Pushing the feature branches to the central repository also enables the possibility of collaborators to review and discuss of code before it is integrated into <code>main</code>, either by the person who developed the feature or by a collaborator who has been assigned the task to be the only person who commits to <code>main</code>. If the central repository lives on a hosting site like GitHub this process is even smoother using pull request and discussion features of such sites. Developing code in a feature branch workflow where each task/feature is clearly defined and developed in a separate branch, will also lead to fewer and less complicated merge conflicts, since changes in each feature branch is less likely to be overlapping with changes made in other feature branches.</p>
+<div style="width:50%;margin:auto">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./diagrams/workflows-feature.drawio.svg" class="img-fluid figure-img"></p>
+<figcaption>Central repository</figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section id="forking-workflow" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="forking-workflow"><span class="header-section-number">7.5</span> Forking workflow</h2>
+<p>The forking workflow is fundamentally different from the previously introduced workflows. It is centered around using a Git hosting site, like GitHub, where you can fork a repository, i.e.&nbsp;collaborators can make a server-site clone of the official repository. Instead of cloning the central repository, collaborators make a fork of the official central repository, and clone that repository instead. In their local clone, collaborators develop changes, and then push them to their fork. Afterwards, they file a pull request to the maintainer of the official repository, and the maintainer can then decide if they want to integrate the changes. This workflow is often seen in public open source projects. The maintainer of the project is the only one with write access to the official project, but other people can still contribute to the project using this workflow.</p>
+</section>
+<section id="example" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Example</h1>
+<p>To give a concrete example of a Git workflow in a project, let’s look at the workflow that was used for the codebase used to make this tutorial. When deciding on a workflow the following considerations were made:</p>
+<ul>
+<li><p>Project developed by a single developer, so no need to worry too much about a structured workflow or rebasing commits.</p></li>
+<li><p>Want to be able to access the project from my personal computer.</p></li>
+<li><p>Want to host tutorial and slides on GitHub pages. Need a stable branch for this, where every new commit to the branch triggers and automatic update of the static website.</p></li>
+<li><p>Want another primary branch where I have a stable, but less polished version of the tutorial that is not quite ready to trigger an update of the tutorial on GitHub pages.</p></li>
+<li><p>Want to use a feature branch inspired workflow.</p></li>
+</ul>
+<p>Based on these considerations, it was of course as given that a remote on GitHub should be used as the central repository for project. The <code>main</code> branch was chosen to be used to generate the static website on GitHub pages, and another primary branch <code>dev</code>, branching off of <code>main</code>, was used to have another stable branch, from which feature branches were made. Every time the stable version on <code>dev</code> had progressed enough to warrant updating the website, <code>dev</code> was integrated into <code>main</code>, triggering an automatic update of the website. Using this workflow it would also be easy for others to contribute by using a forking workflow (although this was deemed highly unlikely to happen in practice). Finally, it is expected that this project will receive updates beyond the first final version. In this case, the entire history of the repository might be rewritten as a single commit, since the entire history up until the first version is irrelevant, and it will make the history cleaner going forward.</p>
+<p>In practice, the <code>dev</code> branch was barely used in practice (at least up until this point), since most of the time it felt appropriate to update the website each time a new feature had been implemented, e.g.&nbsp;a new draft of a chapter was added, revised etc.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

@@ -17,6 +17,8 @@
 
 - Currently does not show how to "undo" a commit. This would require introducing git reset --hard <checksum>. Can this also be done with git restore? UPDATE: the chapter now includes this, but in an unfinished manner? Needs further work.
 
+- Consider if it is better to merge the git reflog appendix into this chapter as a final section since it is a natural extension of this topic.
+
 
 **"Introduction to git" chapter:**
 
