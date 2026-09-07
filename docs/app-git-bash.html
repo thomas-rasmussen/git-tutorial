@@ -1,0 +1,1802 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Appendix A — Git Bash – Git tutorial</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./app-configuration-of-git.html" rel="next">
+<link href="./part2-git-rebase.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-2aad03a8b4e422ea2bd4d420080b3680.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/kbd/kbd.js"></script>
+<link href="site_libs/quarto-contrib/kbd/kbd.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./app-git-bash.html">Appendices</a></li><li class="breadcrumb-item"><a href="./app-git-bash.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Git Bash</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Git tutorial</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/thomas-rasmussen/git-tutorial" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part I</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./part1-ch01-introduction-to-git.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to Git</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./part1-ch02-getting-started.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Getting started</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./part1-ch03-inspecting-the-commit-history.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Inspecting the commit history</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./part1-ch04-undoing-changes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Undoing changes</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./part1-ch05-branching-and-merging.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Branching and merging</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./part1-ch06-remotes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Remote repositories</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part II</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./part2-workflows.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Git workflows</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./part2-git-reflog.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Recovering deleted commits</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./part2-git-diff.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Using <code>git diff</code> to show code changes</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./part2-github.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Introduction to GitHub</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./part2-git-rebase.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Rebasing</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./app-git-bash.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Git Bash</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./app-configuration-of-git.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Configuration of Git</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./app-resources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Resources</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#terminology" id="toc-terminology" class="nav-link active" data-scroll-target="#terminology"><span class="header-section-number">A.1</span> Terminology</a>
+  <ul class="collapse">
+  <li><a href="#terminal" id="toc-terminal" class="nav-link" data-scroll-target="#terminal">Terminal</a></li>
+  <li><a href="#shell" id="toc-shell" class="nav-link" data-scroll-target="#shell">Shell</a></li>
+  <li><a href="#prompts-and-outputs" id="toc-prompts-and-outputs" class="nav-link" data-scroll-target="#prompts-and-outputs">Prompts and outputs</a></li>
+  <li><a href="#working-from-the-command-line-using-a-cli-and-working-in-the-terminal" id="toc-working-from-the-command-line-using-a-cli-and-working-in-the-terminal" class="nav-link" data-scroll-target="#working-from-the-command-line-using-a-cli-and-working-in-the-terminal">Working from the command line, using a CLI, and working in the terminal</a></li>
+  </ul></li>
+  <li><a href="#using-the-git-bash-terminal" id="toc-using-the-git-bash-terminal" class="nav-link" data-scroll-target="#using-the-git-bash-terminal"><span class="header-section-number">A.2</span> Using the Git Bash terminal</a>
+  <ul class="collapse">
+  <li><a href="#shortcuts" id="toc-shortcuts" class="nav-link" data-scroll-target="#shortcuts">Shortcuts</a></li>
+  <li><a href="#comments" id="toc-comments" class="nav-link" data-scroll-target="#comments">Comments</a></li>
+  <li><a href="#the-current-working-directory-and-paths" id="toc-the-current-working-directory-and-paths" class="nav-link" data-scroll-target="#the-current-working-directory-and-paths">The current working directory and paths</a></li>
+  <li><a href="#command-line-completion" id="toc-command-line-completion" class="nav-link" data-scroll-target="#command-line-completion">Command-line completion</a></li>
+  </ul></li>
+  <li><a href="#bash-commands" id="toc-bash-commands" class="nav-link" data-scroll-target="#bash-commands"><span class="header-section-number">A.3</span> Bash commands</a>
+  <ul class="collapse">
+  <li><a href="#show-and-change-the-current-working-directory" id="toc-show-and-change-the-current-working-directory" class="nav-link" data-scroll-target="#show-and-change-the-current-working-directory">Show and change the current working directory</a></li>
+  <li><a href="#list-files-and-directories" id="toc-list-files-and-directories" class="nav-link" data-scroll-target="#list-files-and-directories">List files and directories</a></li>
+  <li><a href="#create-a-directory" id="toc-create-a-directory" class="nav-link" data-scroll-target="#create-a-directory">Create a directory</a></li>
+  <li><a href="#create-an-empty-file" id="toc-create-an-empty-file" class="nav-link" data-scroll-target="#create-an-empty-file">Create an empty file</a></li>
+  <li><a href="#append-to-or-overwrite-a-file" id="toc-append-to-or-overwrite-a-file" class="nav-link" data-scroll-target="#append-to-or-overwrite-a-file">Append to or overwrite a file</a></li>
+  <li><a href="#print-the-contents-of-a-file" id="toc-print-the-contents-of-a-file" class="nav-link" data-scroll-target="#print-the-contents-of-a-file">Print the contents of a file</a></li>
+  <li><a href="#move-or-rename-a-file" id="toc-move-or-rename-a-file" class="nav-link" data-scroll-target="#move-or-rename-a-file">Move or rename a file</a></li>
+  <li><a href="#delete-a-file-or-directory" id="toc-delete-a-file-or-directory" class="nav-link" data-scroll-target="#delete-a-file-or-directory">Delete a file or directory</a></li>
+  </ul></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">A.4</span> Exercises</a>
+  <ul class="collapse">
+  <li><a href="#exercise-1---practice-basic-commands" id="toc-exercise-1---practice-basic-commands" class="nav-link" data-scroll-target="#exercise-1---practice-basic-commands">Exercise 1 - Practice basic commands</a></li>
+  <li><a href="#exercise-2---specifying-paths-with-path-components" id="toc-exercise-2---specifying-paths-with-path-components" class="nav-link" data-scroll-target="#exercise-2---specifying-paths-with-path-components">Exercise 2 - Specifying paths with path components</a></li>
+  <li><a href="#exercise-3---creating-non-existent-parent-directories-using-mkdir" id="toc-exercise-3---creating-non-existent-parent-directories-using-mkdir" class="nav-link" data-scroll-target="#exercise-3---creating-non-existent-parent-directories-using-mkdir">Exercise 3 - Creating non-existent parent directories using <code>mkdir</code></a></li>
+  <li><a href="#exercise-4---filename-expansion" id="toc-exercise-4---filename-expansion" class="nav-link" data-scroll-target="#exercise-4---filename-expansion">Exercise 4 - Filename expansion</a></li>
+  <li><a href="#exercise-5---combining-flags" id="toc-exercise-5---combining-flags" class="nav-link" data-scroll-target="#exercise-5---combining-flags">Exercise 5 - Combining flags</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./app-git-bash.html">Appendices</a></li><li class="breadcrumb-item"><a href="./app-git-bash.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Git Bash</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span id="sec-git-bash" class="quarto-section-identifier">Appendix A — Git Bash</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Git Bash is a Bash emulation that allows you to use Git from the command line. It is part of <a href="https://gitforwindows.org/" target="_blank">Git for Windows</a>, which is a set of tools for Windows users, including a Bash emulator and a Git installation, among other things. Git Bash allows Windows users to run <code>git</code> commands in the same way as they would in Linux and Unix environments. Besides the full set of Git core commands, Git Bash is also packaged with additional basic Bash shell commands that can be useful.</p>
+<p>When you run Git Bash, a terminal window will open that looks something like this:</p>
+<pre class="terminal"><span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+$
+</pre>
+<p>Let’s break down what we see in the terminal:</p>
+<ul>
+<li><p><code>user-id@computer-id</code>: an ID based on the name of the logged-in user and the name of the device running Git Bash.</p></li>
+<li><p><code>MINGW64</code>: indicates that Git Bash is running in the 64-bit MinGW environment provided by Git for Windows. This is technical information that we do not need to worry about here.</p></li>
+<li><p>The <code>~</code> at the end of the first line, shown in yellow, represents the current working directory (more on this later). When you open Git Bash, the current working directory is typically your home directory, shown as <code>~</code>. The tilde (<code>~</code>) is a special character in Bash that represents the user’s home directory.</p></li>
+</ul>
+<section id="terminology" class="level2" data-number="A.1">
+<h2 data-number="A.1" class="anchored" data-anchor-id="terminology"><span class="header-section-number">A.1</span> Terminology</h2>
+<p>The terms <em>terminal</em>, <em>shell</em>, <em>command line</em>, and <em>CLI</em> are often used interchangeably. In most cases, this is fine and does not lead to confusion, but they are not synonyms, and understanding the difference makes it easier to work in text-based environments. Terms such as <em>prompt</em> and <em>output</em> are also commonly used when working in a terminal.</p>
+<section id="terminal" class="level3">
+<h3 class="anchored" data-anchor-id="terminal">Terminal</h3>
+<p>Originally, a <em>terminal</em> was a physical device consisting essentially of a keyboard and a screen that allowed a user to enter commands and view their output. Nowadays, when we talk about a terminal, we usually mean a <em>terminal emulator</em>: a program that emulates the behavior of a physical terminal in a window on your computer. Its primary functions are to display text and process keystrokes. The commands available to you are determined not by the terminal emulator, but by the <em>shell</em>. Likewise, the terminal itself does not run the commands you enter; it passes them to the shell, which executes them and displays any resulting output in the terminal window.</p>
+</section>
+<section id="shell" class="level3">
+<h3 class="anchored" data-anchor-id="shell">Shell</h3>
+<p>The program that actually runs the commands you type into the terminal is the <em>shell</em>. A shell performs several functions, but its main job is to interpret the commands you type in the terminal and execute them. Which commands are available depends on the commands installed on your system and those provided by the shell.</p>
+<p>A shell can be viewed as a REPL, which stands for:</p>
+<ul>
+<li><p>Read</p></li>
+<li><p>Evaluate</p></li>
+<li><p>Print</p></li>
+<li><p>Loop</p></li>
+</ul>
+<p>This means that shells are programs that:</p>
+<ul>
+<li><p>Read the commands that you type in the terminal.</p></li>
+<li><p>Evaluate those commands, possibly using other programs on your computer.</p></li>
+<li><p>Print the <em>output</em> of those commands in the terminal.</p></li>
+<li><p>Display a <em>prompt</em> so that you can type another command and repeat this process.</p></li>
+</ul>
+</section>
+<section id="prompts-and-outputs" class="level3">
+<h3 class="anchored" data-anchor-id="prompts-and-outputs">Prompts and outputs</h3>
+<p>Imagine we have the following session in the terminal:</p>
+<pre class="terminal"><span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+$ echo hello
+hello
+<span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+$
+</pre>
+<p>The <em>prompt</em> is <code>user-id@computer-id MINGW64 ~ $</code>. The prompt indicates that the shell is ready to accept a new command. The command entered was <code>echo hello</code>, and the <em>output</em> is <code>hello</code>.</p>
+<p>After typing the command <code>echo hello</code> and pressing <kbd title="Enter" aria-hidden="true">Enter</kbd><span class="visually-hidden">Enter</span>, the shell reads the command, interprets it, executes it (or invokes another program to do so), prints any output, and then displays a new prompt, indicating that it is ready for another command.</p>
+<p>When illustrating sessions in the Git Bash terminal in this tutorial, we will often omit the <code>user-id@computer-id MINGW64 ~</code> part of the prompt when it is not relevant. We only show the <code>$</code> to avoid cluttering the terminal with the repeated long prompt.</p>
+</section>
+<section id="working-from-the-command-line-using-a-cli-and-working-in-the-terminal" class="level3">
+<h3 class="anchored" data-anchor-id="working-from-the-command-line-using-a-cli-and-working-in-the-terminal">Working from the command line, using a CLI, and working in the terminal</h3>
+<p>The terms <em>working from the command line</em>, <em>using a CLI</em> (command-line interface), and <em>working in the terminal</em> are often used in similar contexts. Although they are not technically synonymous, they all refer to interacting with a computer using text-based commands.</p>
+</section>
+</section>
+<section id="using-the-git-bash-terminal" class="level2" data-number="A.2">
+<h2 data-number="A.2" class="anchored" data-anchor-id="using-the-git-bash-terminal"><span class="header-section-number">A.2</span> Using the Git Bash terminal</h2>
+<section id="shortcuts" class="level3">
+<h3 class="anchored" data-anchor-id="shortcuts">Shortcuts</h3>
+<p>Git Bash works well without additional configuration. The only thing that you, as a Windows user, might want to configure is how to copy and paste text from the terminal. Windows users are accustomed to using <kbd title="Ctrl+c" aria-hidden="true">Ctrl+c</kbd><span class="visually-hidden">Ctrl+c</span> and <kbd title="Ctrl+v" aria-hidden="true">Ctrl+v</kbd><span class="visually-hidden">Ctrl+v</span> to “copy” and “paste”, but these shortcuts are not available in Git Bash since they are reserved for other commands. You can enable copying with <kbd title="Ctrl+Shift+c" aria-hidden="true">Ctrl+Shift+c</kbd><span class="visually-hidden">Ctrl+Shift+c</span> and pasting with <kbd title="Ctrl+Shift+v" aria-hidden="true">Ctrl+Shift+v</kbd><span class="visually-hidden">Ctrl+Shift+v</span> by right-clicking the terminal, navigating to <span style="font-family:monospace">Options &gt; Keys</span>, and checking the “Ctrl+Shift+letter shortcuts” box.</p>
+<p>The terminal also has many useful shortcut keys. An extensive list can be found <a href="https://ss64.com/bash/syntax-keyboard.html" target="_blank">here</a>. Below is a list of commonly useful shortcuts:</p>
+<div style="margin-top:2em; margin-bottom:2em">
+
+<table class="table-striped caption-top table">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Description</th>
+<th data-quarto-table-cell-role="th">Shortcut</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Previous command (Up arrow)</td>
+<td style="font-family: monospace">Ctrl+p</td>
+</tr>
+<tr class="even">
+<td>Next command (Down arrow)</td>
+<td style="font-family: monospace">Ctrl+n</td>
+</tr>
+<tr class="odd">
+<td>Copy</td>
+<td style="font-family: monospace">Ctrl+ins</td>
+</tr>
+<tr class="even">
+<td>Paste</td>
+<td style="font-family: monospace">Shift+ins</td>
+</tr>
+<tr class="odd">
+<td>Clear the screen</td>
+<td style="font-family: monospace">Ctrl+l</td>
+</tr>
+<tr class="even">
+<td>Interrupt/kill current process (SIGINT)</td>
+<td style="font-family: monospace">Ctrl+c</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</section>
+<section id="comments" class="level3">
+<h3 class="anchored" data-anchor-id="comments">Comments</h3>
+<p>Lines starting with <code>#</code> are comments and will not be executed by the shell.</p>
+<pre class="terminal"><span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+$ # This is a comment that is not executed by the shell
+</pre>
+</section>
+<section id="the-current-working-directory-and-paths" class="level3">
+<h3 class="anchored" data-anchor-id="the-current-working-directory-and-paths">The current working directory and paths</h3>
+<p>The current working directory is the directory that the shell treats as the current location when resolving <em>relative paths</em> and executing commands. When you open Git Bash, the current working directory is typically your home directory, represented by <code>~</code>. Paths to files and directories can be written in two ways:</p>
+<p><b>Absolute paths:</b><br> An absolute path is a path that specifies the exact location of a file or directory, starting from the root directory (<code>/</code>). For example, <code>/c/Users/user-id</code> is the absolute path of your home directory (on a Windows system).</p>
+<p><b>Relative paths:</b><br> A relative path is a path that specifies the location of a file or directory relative to the current working directory. For example, if the current working directory is your home directory, <code>code/filename.txt</code> is a relative path to the <code>filename.txt</code> file in the <code>code</code> subdirectory of your home directory.</p>
+<p>If you specify a path starting with <code>/</code>, it will be interpreted as an absolute path, and if you do not, it will be interpreted as a relative path. The Bash shell has a feature called “tilde expansion”, which means you can also specify paths using, for example, <code>~/sub-directory</code> instead of <code>/c/Users/user-id/sub-directory</code>.</p>
+</section>
+<section id="command-line-completion" class="level3">
+<h3 class="anchored" data-anchor-id="command-line-completion">Command-line completion</h3>
+<p>It is possible to use command-line completion by pressing <kbd title="Tab" aria-hidden="true">Tab</kbd><span class="visually-hidden">Tab</span>. One useful application is auto-completing filenames and paths. For example, imagine you have a file called <code>a-very-long-file-name-that-is-tedious-to-type-out.txt</code> in a directory, and you need to type the path to that file. If you know that no other file in that directory starts with <code>a-very-</code>, you can simply type something like <code>/c/file/path/a-very-</code> and press <kbd title="Tab" aria-hidden="true">Tab</kbd><span class="visually-hidden">Tab</span>, and the terminal will fill in the rest of the name!</p>
+</section>
+</section>
+<section id="bash-commands" class="level2" data-number="A.3">
+<h2 data-number="A.3" class="anchored" data-anchor-id="bash-commands"><span class="header-section-number">A.3</span> Bash commands</h2>
+<p>The remainder of this chapter introduces basic Bash commands used throughout the tutorial to list and manipulate files and directories. You need to be familiar with these commands to understand the examples and exercises, although you do not necessarily need to use them yourself. File Explorer and a text editor can also be used to navigate directories and create or edit files. However, becoming comfortable with basic shell commands makes many of these tasks faster and will also make using Git from the command line more natural.</p>
+<p>The commands are introduced through common tasks, with a focus on basic uses of the commands, mostly without using flags (options).</p>
+<p>Documentation for some commands can be accessed by typing <code>command-name --help</code> in the terminal. Documentation for CMD, PowerShell, and Bash commands in general is available from many sources, for example <a href="https://ss64.com/" target="_blank">here</a>.</p>
+<section id="show-and-change-the-current-working-directory" class="level3">
+<h3 class="anchored" data-anchor-id="show-and-change-the-current-working-directory">Show and change the current working directory</h3>
+<p>You can use the <code>pwd</code> command to print the path of the current working directory, as illustrated below:</p>
+<pre class="terminal"><span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+$ pwd
+/c/Users/user-id
+</pre>
+<p>To change the current working directory, use the <code>cd</code> command. If no path is provided, <code>cd</code> changes the current working directory to the user’s home directory:</p>
+<pre class="terminal"><span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+$ # Use absolute path to change working directory
+$ cd /c/test/some-folder
+<span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">/c/test/some-folder</span>
+$ # Use `cd` to change the working directory back to the home directory
+$ cd
+<span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+$ # Use relative path to change working directory to an existing subdirectory of the home directory
+$ cd subdir
+<span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~/subdir</span>
+$
+</pre>
+<p>Git for Windows also integrates Git Bash with File Explorer. Instead of opening a terminal window and using <code>cd</code> to change the working directory, you can also navigate to the directory using File Explorer, right-click the directory (<kbd title="Shift+right-click" aria-hidden="true">Shift+right-click</kbd><span class="visually-hidden">Shift+right-click</span> on Windows 11), and select “Open Git Bash here”. This opens a terminal window with that directory as the current working directory.</p>
+</section>
+<section id="list-files-and-directories" class="level3">
+<h3 class="anchored" data-anchor-id="list-files-and-directories">List files and directories</h3>
+<p>To list files and directories in a directory, use the <code>ls</code> command. If you do not specify a path, <code>ls</code> lists the files and directories in the current working directory:</p>
+<pre class="terminal"><span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+$ # If we have two files, `file1.txt` and `file2.txt`, and a subdirectory
+$ # named `sub-dir` in the current working directory, running `ls` would
+$ # produce the following output:
+$ ls
+file1.txt  file2.txt  <span class="col-dir">sub-dir</span>/
+</pre>
+</section>
+<section id="create-a-directory" class="level3">
+<h3 class="anchored" data-anchor-id="create-a-directory">Create a directory</h3>
+<p>You can create a new directory using the <code>mkdir</code> command:</p>
+<pre class="terminal"><span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+$ # Create a directory named `new-dir` in the current working directory using a relative path
+$ mkdir new-dir
+$ # Create a subdirectory named `sub-dir` in `new-dir` using an absolute path
+$ mkdir /c/Users/user-id/new-dir/sub-dir
+</pre>
+<p>If you attempt to create a directory that already exists, you will receive an error, and the existing directory will remain unchanged.</p>
+</section>
+<section id="create-an-empty-file" class="level3">
+<h3 class="anchored" data-anchor-id="create-an-empty-file">Create an empty file</h3>
+<p>The <code>touch</code> command can be used to create an empty file:</p>
+<pre class="terminal"><span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+$ # Create a subdirectory in the current working directory and use `ls` to show that it is empty
+$ mkdir new-dir
+$ ls ~/new-dir
+
+$ # Use the `touch` command to create an empty file in the `new-dir` directory
+$ touch ~/new-dir/file.txt
+$ ls ~/new-dir
+file.txt
+</pre>
+</section>
+<section id="append-to-or-overwrite-a-file" class="level3">
+<h3 class="anchored" data-anchor-id="append-to-or-overwrite-a-file">Append to or overwrite a file</h3>
+<p>To append a line of text to a file, you can use the <code>echo</code> command together with the <code>&gt;&gt;</code> redirection operator, as shown below:</p>
+<pre class="terminal"><span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+$ # Create an empty file, then append a string as a new line to the file
+$ touch file.txt
+$ echo "New line" &gt;&gt; file.txt
+</pre>
+<p>If you append a string of text to a file that does not exist, the file will be created and the string will be the first and only line of the file. So, in the above example, we do not actually need to use the <code>touch</code> command first.</p>
+<p>If you want to overwrite the contents of a file, use the <code>&gt;</code> redirection operator instead of <code>&gt;&gt;</code>.</p>
+</section>
+<section id="print-the-contents-of-a-file" class="level3">
+<h3 class="anchored" data-anchor-id="print-the-contents-of-a-file">Print the contents of a file</h3>
+<p>In the previous sections, we showed how to create files and modify their contents, but we did not inspect the contents of the files during the examples. You can print the contents of a file in the terminal using the <code>cat</code> command:</p>
+<pre class="terminal"><span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+$ # Create file with two lines
+$ echo "First line" &gt;&gt; file.txt
+$ echo "Second line" &gt;&gt; file.txt
+$ # Print contents of the file in the terminal
+$ cat file.txt
+First line
+Second line
+$ # Overwrite the contents of the file and print them again
+$ echo "New content" &gt; file.txt
+$ cat file.txt
+New content
+</pre>
+</section>
+<section id="move-or-rename-a-file" class="level3">
+<h3 class="anchored" data-anchor-id="move-or-rename-a-file">Move or rename a file</h3>
+<p>Moving and renaming files are both performed with the <code>mv</code> command in Bash. The basic syntax of the command is <code>mv source destination</code>, where <code>source</code> is the file or directory to move or rename, and <code>destination</code> is the destination to which <code>source</code> should be moved, or the new name to assign to it. How, then, does <code>mv</code> know whether we want to rename or move a file or directory? <code>mv</code> checks whether <code>destination</code> is an existing directory. If it is, then <code>source</code> is moved to <code>destination</code>. If it is not, then <code>source</code> is renamed to <code>destination</code>. Let’s illustrate this with some examples:</p>
+<pre class="terminal"><span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+$ # Create subdirectory, `cd` into it, and create a file named `file1.txt`
+$ mkdir mv-test
+$ cd mv-test
+<span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">mv-test</span>
+$ touch file1.txt
+$ # Rename `file1.txt` to `file2.txt`. Since `file2.txt` is not an existing
+$ # directory, `mv` will rename `file1.txt` to `file2.txt`
+$ ls
+file1.txt
+$ mv file1.txt file2.txt
+$ ls
+file2.txt
+$ # Create a subdirectory named `subdir` and move `file2.txt` there.
+$ # Since `subdir` is a directory that exists, `mv` will not rename
+$ # `file2.txt` to `subdir` but will instead move the file to that
+$ # directory.
+$ mkdir subdir
+$ mv file2.txt subdir
+$ ls subdir
+file2.txt
+</pre>
+</section>
+<section id="delete-a-file-or-directory" class="level3">
+<h3 class="anchored" data-anchor-id="delete-a-file-or-directory">Delete a file or directory</h3>
+<p>The previous commands have left several files and directories in the home directory. The <code>rm</code> command can be used to delete files and directories. By default, <code>rm</code> does not delete directories, but you can do so by using the <code>-r</code> flag, which allows <code>rm</code> to delete directories and their contents recursively:</p>
+<pre class="terminal"><span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+$ # Create subdirectory named `rm-test` with a file named `file1.txt`
+$ mkdir rm-test
+$ touch rm-test/file1.txt
+$ # Delete the `rm-test` directory
+$ rm -r rm-test
+</pre>
+</section>
+</section>
+<section id="exercises" class="level2" data-number="A.4">
+<h2 data-number="A.4" class="anchored" data-anchor-id="exercises"><span class="header-section-number">A.4</span> Exercises</h2>
+<section id="exercise-1---practice-basic-commands" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-1---practice-basic-commands">Exercise 1 - Practice basic commands</h3>
+<p>In this exercise, you will practice using the basic commands introduced so far in this chapter.</p>
+<p><b>1. Change the current working directory to your home directory.</b></p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Hint">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>You are looking for a command that can be used to <strong>c</strong>hange <strong>d</strong>irectory.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>You can change the current working directory using the <code>cd</code> command. If you have just opened your terminal window, the current working directory is typically already set to your home directory, represented by the character <code>~</code>.</p>
+<pre class="terminal"><span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">/your/current/working/directory</span>
+$ # If no path is specified, cd sets the current working directory to
+$ # the home directory.
+$ cd
+<span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+$
+</pre>
+</div>
+</div>
+</div>
+<p><b>2. Find the full path to your home directory.</b></p>
+<p>It might be unclear to you where your home directory is located. Use a command to print the full path of your home directory in the terminal.</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Hint">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The current working directory is the home directory. You are looking for a command that can <strong>p</strong>rint the current <strong>w</strong>orking <strong>d</strong>irectory.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>You can use the <code>pwd</code> command to print the full path of the current working directory to the terminal:</p>
+<pre class="terminal"><span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+$ pwd
+/c/Users/user-id
+</pre>
+<p>The form of the path shown above assumes you are using Windows.</p>
+</div>
+</div>
+</div>
+<p><b>3. Create a directory.</b></p>
+<p>Create a directory named <code>ex01-git-bash</code> in your home directory, and use <code>cd</code> to enter it.</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Hint">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>You are looking for a command that can <strong>m</strong>a<strong>k</strong>e a <strong>dir</strong>ectory.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>You can use the <code>mkdir</code> command to create a directory:</p>
+<pre class="terminal"><span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+$ # Create a directory in the current working directory using a relative path.
+$ # This is equivalent to using the absolute path /c/Users/user-id/ex01-git-bash
+$ mkdir ex01-git-bash
+$ cd ex01-git-bash
+<span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~/ex01-git-bash</span>
+$
+</pre>
+</div>
+</div>
+</div>
+<p><b>4. Create and list files.</b></p>
+<p>Create two empty files named <code>file1.txt</code> and <code>file2.txt</code> in your current working directory (<code>~/ex01-git-bash</code>). After creating the files, list the files in the current working directory.</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Hint">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Maybe try to <strong>touch</strong> the files to create them? To list files in the current working directory, you need some way to <strong>l</strong>i<strong>s</strong>t them.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>You can create files using <code>touch</code> and list them using <code>ls</code>:</p>
+<pre class="terminal"><span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~/ex01-git-bash</span>
+$ # You can create a file in the current working directory by simply writing
+$ # the name of the file (relative path).
+$ touch file1.txt
+$ touch file2.txt
+$ # Using `ls` with no path lists files and directories in the current working directory.
+$ ls
+file1.txt file2.txt
+</pre>
+</div>
+</div>
+</div>
+<p><b>5. Add content to files.</b></p>
+<p>Add the line “This is file1.txt” to <code>file1.txt</code> and the line “This is file2.txt” to <code>file2.txt</code>. Print the contents of the files before and after adding the lines.</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Hint">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>To add a line to a file, you need some way to <strong>echo</strong> a string and redirect it to a file. To print the contents of a file in the terminal, you need a command to con<strong>cat</strong>enate and display file contents.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>You can add a line to a file using <code>echo</code> together with the <code>&gt;&gt;</code> redirection operator, and you can print the contents of the file using the <code>cat</code> command:</p>
+<pre class="terminal"><span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~/ex01-git-bash</span>
+$ # Print the contents of the empty files `file1.txt` and `file2.txt` before
+$ # adding lines to them
+$ cat file1.txt
+
+$ cat file2.txt
+
+$ # Add lines to the files
+$ echo "This is file1.txt" &gt;&gt; file1.txt
+$ echo "This is file2.txt" &gt;&gt; file2.txt
+$ # Print the contents again to check that the lines have been added
+$ cat file1.txt
+This is file1.txt
+$ cat file2.txt
+This is file2.txt
+</pre>
+</div>
+</div>
+</div>
+<p><b>6. Rename and move files.</b></p>
+<p>Rename <code>file1.txt</code> to <code>file1-new.txt</code>, create a subdirectory named <code>subdir</code> in the current working directory, and move <code>file2.txt</code> to this subdirectory. Finally, use <code>ls</code> to recursively list all files and directories in the current working directory. Note that you will need to use a flag with the <code>ls</code> command to do this.</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Hint 1">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Hint 1
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>There is a single command that can be used to both rename and <strong>m</strong>o<strong>v</strong>e files.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Hint 2">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Hint 2
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Use <code>ls --help</code> and look for a flag in the documentation that can be used to list subdirectories <strong>R</strong>ecursively.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The <code>mv</code> command can be used to both rename and move files. The flag that you need to use with the <code>ls</code> command is <code>-R</code>, which will list subdirectories recursively.</p>
+<pre class="terminal"><span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~/ex01-git-bash</span>
+$ # Rename `file1.txt` to `file1-new.txt`. The command below will rename,
+$ # not move the file, since `file1-new.txt` is not an existing directory.
+$ mv file1.txt file1-new.txt
+$ # Create subdirectory named `subdir` and move `file2.txt` to this directory.
+$ # The command below will move `file2.txt` to `subdir`, not rename the file
+$ # to `subdir`, since `subdir` is an existing directory.
+$ mkdir subdir
+$ mv file2.txt subdir
+$ # Recursively list all files and directories in the current
+$ # working directory using the `-R` flag
+$ ls -R
+.:
+file1-new.txt <span class="col-dir">subdir</span>/
+
+./subdir:
+file2.txt
+</pre>
+<p>We will address the character <code>.</code> in the output in the next exercise. Like <code>~</code>, <code>.</code> has a special meaning when used in a path: it represents the path to the current working directory.</p>
+</div>
+</div>
+</div>
+<p><b>7. Cleanup.</b></p>
+<p>Complete the exercise by cleaning up. <code>cd</code> back to your home directory and delete the <code>ex01-git-bash</code> directory. After deleting it, use <code>ls</code> to verify that the directory no longer exists.</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Hint 1">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Hint 1
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>You need to use a command to <strong>r</strong>e<strong>m</strong>ove the directory and the files in it.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Hint 2">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Hint 2
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>You are trying to delete a directory, so you need to use a flag with the <code>rm</code> command to <strong>r</strong>ecursively remove the directory and its contents. If you cannot remember what flag to use, look at the documentation for the command using <code>rm --help</code>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The <code>rm</code> command can be used to delete files and directories. Since we want to delete a directory and its contents, we need to use the <code>-r</code> flag:</p>
+<pre class="terminal"><span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~/ex01-git-bash</span>
+$ # `cd` back to the home directory
+$ cd
+<span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+$ # Delete the `ex01-git-bash` directory and all its contents, recursively, using the `-r` flag
+$ rm -r ex01-git-bash
+$ # Use the `ls` command to check that the directory has been deleted.
+$ # Output not shown here, since your home directory contains a long list
+$ # of files and directories that differs for each user.
+$ ls
+</pre>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-2---specifying-paths-with-path-components" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-2---specifying-paths-with-path-components">Exercise 2 - Specifying paths with path components</h3>
+<p>So far we have mainly used relative paths to specify paths in the current working directory. Sometimes it is more convenient to use <code>~</code> or <em>path components</em> like <code>.</code> and <code>..</code> to specify paths, rather than changing the current working directory.</p>
+<p>We have already introduced the <code>~</code> character, which has a special meaning in Bash: it expands to the path to the user’s home directory. There are also <em>path components</em> that are useful when working with directories:</p>
+<ul>
+<li><p><code>.</code>: Path component meaning the current directory.</p></li>
+<li><p><code>..</code>: Path component meaning the parent directory.</p></li>
+</ul>
+<p><b>1. <code>cd</code> to your home directory and create a directory named <code>ex02-git-bash</code> in your home directory using an absolute path.</b></p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Hint">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>After using <code>cd</code> to change your current working directory to your home directory, you can use <code>pwd</code> to print the absolute path of the current working directory.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-18" class="callout-18-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre class="terminal">$ cd
+<span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+$ # Use `pwd` to find the absolute path of your home directory
+$ pwd
+/c/Users/user-id
+$ # Use an absolute path to create a directory named `ex02-git-bash` in your
+$ # home directory
+$ mkdir /c/Users/user-id/ex02-git-bash
+</pre>
+</div>
+</div>
+</div>
+<p><b>2. Create a directory named <code>subdir</code> in the <code>ex02-git-bash</code> directory without changing the current working directory.</b></p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Hint">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-19" class="callout-19-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>You can do this using a relative path or an absolute path, potentially using <code>~</code> or <code>.</code> for convenience. In this scenario, the current working directory <em>is</em> the home directory, so <code>~</code> and <code>.</code> point to the same directory.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-20" class="callout-20-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre class="terminal"><span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+$ # This can be done in different ways, some more convenient than others:
+$ # 1. Using an absolute path:
+$ mkdir /c/Users/user-id/ex02-git-bash/subdir
+$ # 2. Using a relative path from the current working directory
+$ mkdir ex02-git-bash/subdir
+$ # 3. Using the special character `~`:
+$ mkdir ~/ex02-git-bash/subdir
+$ # 4. Using the path component `.`:
+$ mkdir ./ex02-git-bash/subdir
+</pre>
+<p>Note that the paths specified in the last three solutions all refer to the same absolute path as the first solution:</p>
+<ol start="2" type="1">
+<li><p>This is a relative path from the current working directory <code>/c/Users/user-id</code>, so the relative path <code>ex02-git-bash/subdir</code> resolves to <code>/c/Users/user-id/ex02-git-bash/subdir</code>.</p></li>
+<li><p>and 4. Since the current working directory is the home directory, <code>~</code> expands and <code>.</code> refer to the same directory, <code>/c/Users/user-id</code>. Therefore, they refer to the same absolute path.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<p><b>3. <code>cd</code> to the <code>subdir</code> directory, and create an empty file named <code>file1.txt</code> in the parent directory <code>ex02-git-bash</code>.</b></p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Hint">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-21" class="callout-21-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>There are multiple convenient ways of specifying the path when creating the file <code>file1.txt</code>. Consider using either the path component <code>..</code> or tilde expansion using <code>~</code>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-22" class="callout-22-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre class="terminal">$ # `cd` to the `subdir` directory
+$ cd ex02-git-bash/subdir
+<span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~/ex02-git-bash/subdir</span>
+$ # Create `file1.txt` in the parent directory `ex02-git-bash`
+$ # Approach using the path component `..`:
+$ touch ../file1.txt
+$ # Approach using the special character `~`:
+$ touch ~/ex02-git-bash/file1.txt
+</pre>
+</div>
+</div>
+</div>
+<p><b>4. <code>cd</code> to the home directory and delete the <code>ex02-git-bash</code> directory.</b></p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-23-contents" aria-controls="callout-23" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-23" class="callout-23-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre class="terminal">$ # There are several ways we could change the working directory to
+$ # the home directory:
+$ # 1. The most obvious one:
+$ cd
+$ # 2. Using the `~` special character:
+$ cd ~
+$ # Delete the `ex02-git-bash` directory. We need to use the `-r` flag
+$ # since we want to delete a directory and its contents.
+$ rm -r ex02-git-bash
+</pre>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-3---creating-non-existent-parent-directories-using-mkdir" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-3---creating-non-existent-parent-directories-using-mkdir">Exercise 3 - Creating non-existent parent directories using <code>mkdir</code></h3>
+<p>You sometimes need to create multiple nested directories, which can quickly become cumbersome. The <code>mkdir</code> command provides a flag that makes this much easier.</p>
+<p><b>1. Create the directory <code>~/dir1/dir2/dir3/dir4</code> using a single <code>mkdir</code> command.</b></p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Hint 1">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-24-contents" aria-controls="callout-24" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Hint 1
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-24" class="callout-24-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Use <code>mkdir --help</code> to view the documentation for the command.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Hint 2">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-25-contents" aria-controls="callout-25" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Hint 2
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-25" class="callout-25-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>You are looking for a flag that creates <strong>p</strong>arent directories as needed.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-26-contents" aria-controls="callout-26" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-26" class="callout-26-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre class="terminal"># Use the `-p` flag to create non-existent parent directories
+$ mkdir -p ~/dir1/dir2/dir3/dir4
+</pre>
+</div>
+</div>
+</div>
+<p><b>2. Use <code>ls</code> to list the subdirectories in <code>dir1</code> recursively.</b></p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Hint">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-27-contents" aria-controls="callout-27" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-27" class="callout-27-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Use <code>ls --help</code> to look at the documentation and find a flag to list subdirectories <strong>R</strong>ecursively.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-28-contents" aria-controls="callout-28" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-28" class="callout-28-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre class="terminal"># Use the `-R` flag to list subdirectories recursively
+$ ls -R ~/dir1
+/c/Users/user-id/dir1:
+<span class="col-dir">dir2</span>/
+
+/c/Users/user-id/dir1/dir2:
+<span class="col-dir">dir3</span>/
+
+/c/Users/user-id/dir1/dir2/dir3:
+<span class="col-dir">dir4</span>/
+
+/c/Users/user-id/dir1/dir2/dir3/dir4:
+
+</pre>
+</div>
+</div>
+</div>
+<p><b>3. Delete the <code>dir1</code> directory.</b></p>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-29-contents" aria-controls="callout-29" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-29" class="callout-29-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre class="terminal">$ rm -r ~/dir1
+</pre>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-4---filename-expansion" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-4---filename-expansion">Exercise 4 - Filename expansion</h3>
+<p>Bash can carry out <em>filename expansion</em>, a process known as <em>globbing</em>. Globbing recognizes and expands wildcard characters. It is outside the scope of this tutorial to go into detail about how this works, but we will introduce one useful application: limiting the output of the <code>ls</code> command.</p>
+<p>In filename expansion, <code>*</code> matches any string of characters, including an empty string. Imagine we want to list all <code>.txt</code> files in our home directory, a directory that may contain many files and directories. We can achieve this by changing the current working directory to the home directory and using the command <code>ls *.txt</code>, which tells <code>ls</code> to list all filenames that end in <code>.txt</code>.</p>
+<p>Try to solve this exercise without using <code>cd</code> to change your working directory to your home directory. If your current working directory is already the home directory, try not to rely on this assumption in your solution.</p>
+<p><b>1. Create two empty files <code>file1.txt</code> and <code>file2.txt</code> in your home directory.</b></p>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-30-contents" aria-controls="callout-30" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-30" class="callout-30-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre class="terminal">$ # We can create multiple files at the same time with one `touch` command:
+$ touch ~/file1.txt ~/file2.txt
+</pre>
+</div>
+</div>
+</div>
+<p><b>2. List all files in your home directory whose names start with “file”.</b></p>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-31-contents" aria-controls="callout-31" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-31" class="callout-31-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre class="terminal">$ ls ~/file*
+/c/Users/user-id/file1.txt  /c/Users/user-id/file2.txt
+</pre>
+</div>
+</div>
+</div>
+<p><b>3. Delete <code>file1.txt</code> and <code>file2.txt</code>.</b></p>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-32-contents" aria-controls="callout-32" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-32" class="callout-32-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre class="terminal">$ # We can delete multiple files at the same time with one `rm` command:
+$ rm ~/file1.txt ~/file2.txt
+</pre>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-5---combining-flags" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-5---combining-flags">Exercise 5 - Combining flags</h3>
+<p>When using a command with two or more flags, for example <code>command-name -a -b</code>, you can also combine the flags into a single option: <code>command-name -ab</code>.</p>
+<p><b>1. In your home directory, create a directory named <code>ex05-git-bash</code> and <code>cd</code> into it.</b></p>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-33-contents" aria-controls="callout-33" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-33" class="callout-33-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre class="terminal">$ mkdir ~/ex05-git-bash
+$ cd ~/ex05-git-bash
+</pre>
+</div>
+</div>
+</div>
+<p><b>2. Create a directory named <code>.git</code> and an empty file named <code>.gitignore</code> in the <code>ex05-git-bash</code> directory.</b></p>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-34-contents" aria-controls="callout-34" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-34" class="callout-34-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre class="terminal"><span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~/ex05-git-bash</span>
+$ touch .gitignore
+$ mkdir .git
+</pre>
+</div>
+</div>
+</div>
+<p><b>3. List directories and files in <code>ex05-git-bash</code>.</b></p>
+<ul>
+<li><p>List only one file or directory per line.</p></li>
+<li><p>Do not list the implied <code>.</code> and <code>..</code> directories.</p></li>
+<li><p>Combine the flags in your solution.</p></li>
+</ul>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Hint 1">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-35-contents" aria-controls="callout-35" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Hint 1
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-35" class="callout-35-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>You need to use the <code>ls</code> command, but <code>ls</code> does not list files whose names start with <code>.</code>, so-called hidden files, by default. You will need to consult the documentation to figure out what flags to use to include hidden files, and how to list one file or directory per line in the output.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Hint 2">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-36-contents" aria-controls="callout-36" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Hint 2
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-36" class="callout-36-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>You can view the documentation for the <code>ls</code> command with the command <code>ls --help</code>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Hint 3">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-37-contents" aria-controls="callout-37" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Hint 3
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-37" class="callout-37-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>You are looking for a flag to include almost all files, including hidden files, but excluding <code>.</code> and <code>..</code>, and a flag to list one file or directory per line.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-38-contents" aria-controls="callout-38" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-38" class="callout-38-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre class="terminal"><span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~/ex05-git-bash</span>
+$ ls -1A
+.git/
+.gitignore
+</pre>
+<p>When learning about Git, you will see that the Git object database is located in a <code>.git</code> directory. You will also see that <code>.gitignore</code> files can be used to tell Git which files to ignore. Understanding how <code>ls</code> handles these files therefore helps explain why they do not appear when using <code>ls</code> with no flags, and how to include them in the <code>ls</code> output.</p>
+</div>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./part2-git-rebase.html" class="pagination-link" aria-label="Rebasing">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Rebasing</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./app-configuration-of-git.html" class="pagination-link" aria-label="Configuration of Git">
+        <span class="nav-page-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Configuration of Git</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

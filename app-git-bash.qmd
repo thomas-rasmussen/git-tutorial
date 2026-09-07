@@ -1,0 +1,822 @@
+# Git Bash {#sec-git-bash}
+
+Git Bash is a Bash emulation that allows you to use Git from the command line. It is part of [Git for Windows](https://gitforwindows.org/){target="_blank"}, which is a set of tools for Windows users, including a Bash emulator and a Git installation, among other things. Git Bash allows Windows users to run `git` commands in the same way as they would in Linux and Unix environments. Besides the full set of Git core commands, Git Bash is also packaged with additional basic Bash shell commands that can be useful.
+
+When you run Git Bash, a terminal window will open that looks something like this:
+
+<pre class="terminal">
+<span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+$
+</pre>
+
+Let's break down what we see in the terminal:
+
+- `user-id@computer-id`: an ID based on the name of the logged-in user and the name of the device running Git Bash.
+
+- `MINGW64`: indicates that Git Bash is running in the 64-bit MinGW environment provided by Git for Windows. This is technical information that we do not need to worry about here.
+
+- The `~` at the end of the first line, shown in yellow, represents the current working directory (more on this later). When you open Git Bash, the current working directory is typically your home directory, shown as `~`. The tilde (`~`) is a special character in Bash that represents the user's home directory.
+
+
+## Terminology
+
+The terms *terminal*, *shell*, *command line*, and *CLI* are often used interchangeably. In most cases, this is fine and does not lead to confusion, but they are not synonyms, and understanding the difference makes it easier to work in text-based environments. Terms such as *prompt* and *output* are also commonly used when working in a terminal.
+
+
+### Terminal
+
+Originally, a *terminal* was a physical device consisting essentially of a keyboard and a screen that allowed a user to enter commands and view their output. Nowadays, when we talk about a terminal, we usually mean a *terminal emulator*: a program that emulates the behavior of a physical terminal in a window on your computer. Its primary functions are to display text and process keystrokes. The commands available to you are determined not by the terminal emulator, but by the *shell*. Likewise, the terminal itself does not run the commands you enter; it passes them to the shell, which executes them and displays any resulting output in the terminal window.
+
+
+### Shell
+
+The program that actually runs the commands you type into the terminal is the *shell*. A shell performs several functions, but its main job is to interpret the commands you type in the terminal and execute them. Which commands are available depends on the commands installed on your system and those provided by the shell.
+
+A shell can be viewed as a REPL, which stands for:
+
+- Read
+
+- Evaluate
+
+- Print
+
+- Loop
+
+This means that shells are programs that:
+
+- Read the commands that you type in the terminal.
+
+- Evaluate those commands, possibly using other programs on your computer.
+
+- Print the *output* of those commands in the terminal.
+
+- Display a *prompt* so that you can type another command and repeat this process.
+
+
+### Prompts and outputs
+
+Imagine we have the following session in the terminal:
+
+<pre class="terminal">
+<span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+$ echo hello
+hello
+<span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+$
+</pre>
+
+The *prompt* is `user-id@computer-id MINGW64 ~ $`. The prompt indicates that the shell is ready to accept a new command. The command entered was `echo hello`, and the *output* is `hello`.
+
+After typing the command `echo hello` and pressing {{< kbd Enter>}}, the shell reads the command, interprets it, executes it (or invokes another program to do so), prints any output, and then displays a new prompt, indicating that it is ready for another command.
+
+When illustrating sessions in the Git Bash terminal in this tutorial, we will often omit the `user-id@computer-id MINGW64 ~` part of the prompt when it is not relevant. We only show the `$` to avoid cluttering the terminal with the repeated long prompt.
+
+
+### Working from the command line, using a CLI, and working in the terminal
+
+The terms *working from the command line*, *using a CLI* (command-line interface), and *working in the terminal* are often used in similar contexts. Although they are not technically synonymous, they all refer to interacting with a computer using text-based commands.
+
+
+## Using the Git Bash terminal
+
+### Shortcuts
+
+Git Bash works well without additional configuration. The only thing that you, as a Windows user, might want to configure is how to copy and paste text from the terminal. Windows users are accustomed to using {{< kbd Ctrl+c>}} and {{< kbd Ctrl+v>}} to "copy" and "paste", but these shortcuts are not available in Git Bash since they are reserved for other commands. You can enable copying with {{< kbd Ctrl+Shift+c>}} and pasting with {{< kbd Ctrl+Shift+v>}} by right-clicking the terminal, navigating to [Options > Keys]{style="font-family:monospace"}, and checking the "Ctrl+Shift+letter shortcuts" box.
+
+The terminal also has many useful shortcut keys. An extensive list can be found [here](https://ss64.com/bash/syntax-keyboard.html){target="_blank"}. Below is a list of commonly useful shortcuts:
+
+
+```{=html}
+<div style="margin-top:2em; margin-bottom:2em">
+<table class="table-striped">
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Shortcut</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Previous command (Up arrow)</td>
+      <td style="font-family:monospace">Ctrl+p</td>
+    </tr>
+    <tr>
+      <td>Next command (Down arrow)</td>
+      <td style="font-family:monospace">Ctrl+n</td>
+    </tr>
+    <tr>
+      <td>Copy</td>
+      <td style="font-family:monospace">Ctrl+ins</td>
+    </tr>
+    <tr>
+      <td>Paste</td>
+      <td style="font-family:monospace">Shift+ins</td>
+    </tr>
+    <tr>
+      <td>Clear the screen</td>
+      <td style="font-family:monospace">Ctrl+l</td>
+    </tr>
+    <tr>
+      <td>Interrupt/kill current process (SIGINT)</td>
+      <td style="font-family:monospace">Ctrl+c</td>
+    </tr>  </tbody>
+</table>
+</div>
+```
+
+
+### Comments
+
+Lines starting with `#` are comments and will not be executed by the shell.
+
+<pre class="terminal">
+<span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+$ # This is a comment that is not executed by the shell
+</pre>
+
+
+### The current working directory and paths
+
+The current working directory is the directory that the shell treats as the current location when resolving *relative paths* and executing commands. When you open Git Bash, the current working directory is typically your home directory, represented by `~`. Paths to files and directories can be written in two ways:
+
+<b>Absolute paths:</b><br>
+An absolute path is a path that specifies the exact location of a file or directory, starting from the root directory (`/`). For example, `/c/Users/user-id` is the absolute path of your home directory (on a Windows system). 
+
+<b>Relative paths:</b><br>
+A relative path is a path that specifies the location of a file or directory relative to the current working directory. For example, if the current working directory is your home directory, `code/filename.txt` is a relative path to the `filename.txt` file in the `code` subdirectory of your home directory.
+
+If you specify a path starting with `/`, it will be interpreted as an absolute path, and if you do not, it will be interpreted as a relative path. The Bash shell has a feature called "tilde expansion", which means you can also specify paths using, for example, `~/sub-directory` instead of `/c/Users/user-id/sub-directory`.
+
+
+### Command-line completion
+
+It is possible to use command-line completion by pressing {{< kbd Tab>}}. One useful application is auto-completing filenames and paths. For example, imagine you have a file called `a-very-long-file-name-that-is-tedious-to-type-out.txt` in a directory, and you need to type the path to that file. If you know that no other file in that directory starts with `a-very-`, you can simply type something like `/c/file/path/a-very-` and press {{< kbd Tab>}}, and the terminal will fill in the rest of the name!
+
+
+## Bash commands
+
+The remainder of this chapter introduces basic Bash commands used throughout the tutorial to list and manipulate files and directories. You need to be familiar with these commands to understand the examples and exercises, although you do not necessarily need to use them yourself. File Explorer and a text editor can also be used to navigate directories and create or edit files. However, becoming comfortable with basic shell commands makes many of these tasks faster and will also make using Git from the command line more natural.
+
+The commands are introduced through common tasks, with a focus on basic uses of the commands, mostly without using flags (options).
+
+Documentation for some commands can be accessed by typing `command-name --help` in the terminal. Documentation for CMD, PowerShell, and Bash commands in general is available from many sources, for example [here](https://ss64.com/){target="_blank"}. 
+
+
+### Show and change the current working directory
+
+You can use the `pwd` command to print the path of the current working directory, as illustrated below:
+
+<pre class="terminal">
+<span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+$ pwd
+/c/Users/user-id
+</pre>
+
+To change the current working directory, use the `cd` command. If no path is provided, `cd` changes the current working directory to the user's home directory:
+
+<pre class="terminal">
+<span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+$ # Use absolute path to change working directory
+$ cd /c/test/some-folder
+<span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">/c/test/some-folder</span>
+$ # Use `cd` to change the working directory back to the home directory
+$ cd
+<span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+$ # Use relative path to change working directory to an existing subdirectory of the home directory
+$ cd subdir
+<span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~/subdir</span>
+$
+</pre>
+
+Git for Windows also integrates Git Bash with File Explorer. Instead of opening a terminal window and using `cd` to change the working directory, you can also navigate to the directory using File Explorer, right-click the directory ({{< kbd Shift+right-click >}} on Windows 11), and select "Open Git Bash here". This opens a terminal window with that directory as the current working directory.
+
+
+### List files and directories
+
+To list files and directories in a directory, use the `ls` command. If you do not specify a path, `ls` lists the files and directories in the current working directory:
+
+<pre class="terminal">
+<span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+$ # If we have two files, `file1.txt` and `file2.txt`, and a subdirectory
+$ # named `sub-dir` in the current working directory, running `ls` would
+$ # produce the following output:
+$ ls
+file1.txt  file2.txt  <span class="col-dir">sub-dir</span>/
+</pre>
+
+
+### Create a directory
+
+You can create a new directory using the `mkdir` command:
+
+<pre class="terminal">
+<span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+$ # Create a directory named `new-dir` in the current working directory using a relative path
+$ mkdir new-dir
+$ # Create a subdirectory named `sub-dir` in `new-dir` using an absolute path
+$ mkdir /c/Users/user-id/new-dir/sub-dir
+</pre>
+
+If you attempt to create a directory that already exists, you will receive an error, and the existing directory will remain unchanged.
+
+
+### Create an empty file
+
+The `touch` command can be used to create an empty file:
+
+<pre class="terminal">
+<span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+$ # Create a subdirectory in the current working directory and use `ls` to show that it is empty
+$ mkdir new-dir
+$ ls ~/new-dir
+
+$ # Use the `touch` command to create an empty file in the `new-dir` directory
+$ touch ~/new-dir/file.txt
+$ ls ~/new-dir
+file.txt
+</pre>
+
+
+### Append to or overwrite a file
+
+To append a line of text to a file, you can use the `echo` command together with the `>>` redirection operator, as shown below:
+
+<pre class="terminal">
+<span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+$ # Create an empty file, then append a string as a new line to the file
+$ touch file.txt
+$ echo "New line" >> file.txt
+</pre>
+
+If you append a string of text to a file that does not exist, the file will be created and the string will be the first and only line of the file. So, in the above example, we do not actually need to use the `touch` command first.
+
+If you want to overwrite the contents of a file, use the `>` redirection operator instead of `>>`.
+
+
+### Print the contents of a file
+
+In the previous sections, we showed how to create files and modify their contents, but we did not inspect the contents of the files during the examples. You can print the contents of a file in the terminal using the `cat` command:
+
+<pre class="terminal">
+<span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+$ # Create file with two lines
+$ echo "First line" >> file.txt
+$ echo "Second line" >> file.txt
+$ # Print contents of the file in the terminal
+$ cat file.txt
+First line
+Second line
+$ # Overwrite the contents of the file and print them again
+$ echo "New content" > file.txt
+$ cat file.txt
+New content
+</pre>
+
+
+### Move or rename a file
+
+Moving and renaming files are both performed with the `mv` command in Bash. The basic syntax of the command is `mv source destination`, where `source` is the file or directory to move or rename, and `destination` is the destination to which `source` should be moved, or the new name to assign to it. How, then, does `mv` know whether we want to rename or move a file or directory? `mv` checks whether `destination` is an existing directory. If it is, then `source` is moved to `destination`. If it is not, then `source` is renamed to `destination`. Let's illustrate this with some examples:
+
+<pre class="terminal">
+<span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+$ # Create subdirectory, `cd` into it, and create a file named `file1.txt`
+$ mkdir mv-test
+$ cd mv-test
+<span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">mv-test</span>
+$ touch file1.txt
+$ # Rename `file1.txt` to `file2.txt`. Since `file2.txt` is not an existing
+$ # directory, `mv` will rename `file1.txt` to `file2.txt`
+$ ls
+file1.txt
+$ mv file1.txt file2.txt
+$ ls
+file2.txt
+$ # Create a subdirectory named `subdir` and move `file2.txt` there.
+$ # Since `subdir` is a directory that exists, `mv` will not rename
+$ # `file2.txt` to `subdir` but will instead move the file to that
+$ # directory.
+$ mkdir subdir
+$ mv file2.txt subdir
+$ ls subdir
+file2.txt
+</pre>
+
+
+### Delete a file or directory
+
+The previous commands have left several files and directories in the home directory. The `rm` command can be used to delete files and directories. By default, `rm` does not delete directories, but you can do so by using the `-r` flag, which allows `rm` to delete directories and their contents recursively:
+
+<pre class="terminal">
+<span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+$ # Create subdirectory named `rm-test` with a file named `file1.txt`
+$ mkdir rm-test
+$ touch rm-test/file1.txt
+$ # Delete the `rm-test` directory
+$ rm -r rm-test
+</pre>
+
+
+## Exercises
+
+### Exercise 1 - Practice basic commands
+
+In this exercise, you will practice using the basic commands introduced so far in this chapter.
+
+<b>1. Change the current working directory to your home directory.</b>
+
+::: {.callout-tip title="Hint" collapse="true" icon="false"}
+
+You are looking for a command that can be used to **c**hange **d**irectory.
+
+:::
+
+::: {.callout-note title="Solution" collapse="true" icon="false"}
+
+You can change the current working directory using the `cd` command. If you have just opened your terminal window, the current working directory is typically already set to your home directory, represented by the character `~`.
+
+<pre class="terminal">
+<span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">/your/current/working/directory</span>
+$ # If no path is specified, cd sets the current working directory to
+$ # the home directory.
+$ cd
+<span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+$
+</pre>
+
+:::
+
+
+<b>2. Find the full path to your home directory.</b>
+
+It might be unclear to you where your home directory is located. Use a command to print the full path of your home directory in the terminal.
+
+::: {.callout-tip title="Hint" collapse="true" icon="false"}
+
+The current working directory is the home directory. You are looking for a command that can **p**rint the current **w**orking **d**irectory.
+
+:::
+
+
+::: {.callout-note title="Solution" collapse="true" icon="false"}
+
+You can use the `pwd` command to print the full path of the current working directory to the terminal:
+
+<pre class="terminal">
+<span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+$ pwd
+/c/Users/user-id
+</pre>
+
+The form of the path shown above assumes you are using Windows.
+
+:::
+
+
+<b>3. Create a directory.</b>
+
+Create a directory named `ex01-git-bash` in your home directory, and use `cd` to enter it.
+
+::: {.callout-tip title="Hint" collapse="true" icon="false"}
+
+You are looking for a command that can **m**a**k**e a **dir**ectory.
+
+:::
+
+::: {.callout-note title="Solution" collapse="true" icon="false"}
+
+You can use the `mkdir` command to create a directory:
+
+<pre class="terminal">
+<span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+$ # Create a directory in the current working directory using a relative path.
+$ # This is equivalent to using the absolute path /c/Users/user-id/ex01-git-bash
+$ mkdir ex01-git-bash
+$ cd ex01-git-bash
+<span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~/ex01-git-bash</span>
+$
+</pre>
+
+:::
+
+
+<b>4. Create and list files.</b>
+
+Create two empty files named `file1.txt` and `file2.txt` in your current working directory (`~/ex01-git-bash`). After creating the files, list the files in the current working directory.
+
+::: {.callout-tip title="Hint" collapse="true" icon="false"}
+
+Maybe try to **touch** the files to create them? To list files in the current working directory, you need some way to **l**i**s**t them.
+
+:::
+
+::: {.callout-note title="Solution" collapse="true" icon="false"}
+
+You can create files using `touch` and list them using `ls`:
+
+<pre class="terminal">
+<span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~/ex01-git-bash</span>
+$ # You can create a file in the current working directory by simply writing
+$ # the name of the file (relative path).
+$ touch file1.txt
+$ touch file2.txt
+$ # Using `ls` with no path lists files and directories in the current working directory.
+$ ls
+file1.txt file2.txt
+</pre>
+:::
+
+
+<b>5. Add content to files.</b>
+
+Add the line "This is file1.txt" to `file1.txt` and the line "This is file2.txt" to `file2.txt`. Print the contents of the files before and after adding the lines.
+
+::: {.callout-tip title="Hint" collapse="true" icon="false"}
+
+To add a line to a file, you need some way to **echo** a string and redirect it to a file. To print the contents of a file in the terminal, you need a command to con**cat**enate and display file contents.
+
+:::
+
+::: {.callout-note title="Solution" collapse="true" icon="false"}
+
+You can add a line to a file using `echo` together with the `>>` redirection operator, and you can print the contents of the file using the `cat` command:
+
+<pre class="terminal">
+<span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~/ex01-git-bash</span>
+$ # Print the contents of the empty files `file1.txt` and `file2.txt` before
+$ # adding lines to them
+$ cat file1.txt
+
+$ cat file2.txt
+
+$ # Add lines to the files
+$ echo "This is file1.txt" >> file1.txt
+$ echo "This is file2.txt" >> file2.txt
+$ # Print the contents again to check that the lines have been added
+$ cat file1.txt
+This is file1.txt
+$ cat file2.txt
+This is file2.txt
+</pre>
+
+:::
+
+<b>6. Rename and move files.</b>
+
+Rename `file1.txt` to `file1-new.txt`, create a subdirectory named `subdir` in the current working directory, and move `file2.txt` to this subdirectory. Finally, use `ls` to recursively list all files and directories in the current working directory. Note that you will need to use a flag with the `ls` command to do this.
+
+::: {.callout-tip title="Hint 1" collapse="true" icon="false"}
+
+There is a single command that can be used to both rename and **m**o**v**e files.
+
+:::
+
+::: {.callout-tip title="Hint 2" collapse="true" icon="false"}
+
+Use `ls --help` and look for a flag in the documentation that can be used to list subdirectories **R**ecursively.
+
+:::
+
+::: {.callout-note title="Solution" collapse="true" icon="false"}
+
+The `mv` command can be used to both rename and move files. The flag that you need to use with the `ls` command is `-R`, which will list subdirectories recursively.
+
+<pre class="terminal">
+<span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~/ex01-git-bash</span>
+$ # Rename `file1.txt` to `file1-new.txt`. The command below will rename,
+$ # not move the file, since `file1-new.txt` is not an existing directory.
+$ mv file1.txt file1-new.txt
+$ # Create subdirectory named `subdir` and move `file2.txt` to this directory.
+$ # The command below will move `file2.txt` to `subdir`, not rename the file
+$ # to `subdir`, since `subdir` is an existing directory.
+$ mkdir subdir
+$ mv file2.txt subdir
+$ # Recursively list all files and directories in the current
+$ # working directory using the `-R` flag
+$ ls -R
+.:
+file1-new.txt <span class="col-dir">subdir</span>/
+
+./subdir:
+file2.txt
+</pre>
+
+We will address the character `.` in the output in the next exercise. Like `~`, `.` has a special meaning when used in a path: it represents the path to the current working directory.
+
+:::
+
+<b>7. Cleanup.</b>
+
+Complete the exercise by cleaning up. `cd` back to your home directory and delete the `ex01-git-bash` directory. After deleting it, use `ls` to verify that the directory no longer exists.
+
+::: {.callout-tip title="Hint 1" collapse="true" icon="false"}
+
+You need to use a command to **r**e**m**ove the directory and the files in it.
+
+:::
+
+::: {.callout-tip title="Hint 2" collapse="true" icon="false"}
+
+You are trying to delete a directory, so you need to use a flag with the `rm` command to **r**ecursively remove the directory and its contents. If you cannot remember what flag to use, look at the documentation for the command using `rm --help`.
+
+:::
+
+::: {.callout-note title="Solution" collapse="true" icon="false"}
+
+The `rm` command can be used to delete files and directories. Since we want to delete a directory and its contents, we need to use the `-r` flag:
+
+<pre class="terminal">
+<span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~/ex01-git-bash</span>
+$ # `cd` back to the home directory
+$ cd
+<span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+$ # Delete the `ex01-git-bash` directory and all its contents, recursively, using the `-r` flag
+$ rm -r ex01-git-bash
+$ # Use the `ls` command to check that the directory has been deleted.
+$ # Output not shown here, since your home directory contains a long list
+$ # of files and directories that differs for each user.
+$ ls
+</pre>
+
+:::
+
+
+### Exercise 2 - Specifying paths with path components
+
+So far we have mainly used relative paths to specify paths in the current working directory. Sometimes it is more convenient to use `~` or *path components* like `.` and `..` to specify paths, rather than changing the current working directory.
+
+We have already introduced the `~` character, which has a special meaning in Bash: it expands to the path to the user's home directory. There are also *path components* that are useful when working with directories:
+
+- `.`: Path component meaning the current directory.
+
+- `..`: Path component meaning the parent directory.
+
+<b>1. `cd` to your home directory and create a directory named `ex02-git-bash` in your home directory using an absolute path.</b>
+
+::: {.callout-tip title="Hint" collapse="true" icon="false"}
+
+After using `cd` to change your current working directory to your home directory, you can use `pwd` to print the absolute path of the current working directory.
+
+:::
+
+::: {.callout-note title="Solution" collapse="true" icon="false"}
+
+<pre class="terminal">
+$ cd
+<span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+$ # Use `pwd` to find the absolute path of your home directory
+$ pwd
+/c/Users/user-id
+$ # Use an absolute path to create a directory named `ex02-git-bash` in your
+$ # home directory
+$ mkdir /c/Users/user-id/ex02-git-bash
+</pre>
+
+:::
+
+<b>2. Create a directory named `subdir` in the `ex02-git-bash` directory without changing the current working directory.</b>
+
+::: {.callout-tip title="Hint" collapse="true" icon="false"}
+
+You can do this using a relative path or an absolute path, potentially using `~` or `.` for convenience. In this scenario, the current working directory *is* the home directory, so `~` and `.` point to the same directory.
+
+:::
+
+::: {.callout-note title="Solution" collapse="true" icon="false"}
+
+<pre class="terminal">
+<span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+$ # This can be done in different ways, some more convenient than others:
+$ # 1. Using an absolute path:
+$ mkdir /c/Users/user-id/ex02-git-bash/subdir
+$ # 2. Using a relative path from the current working directory
+$ mkdir ex02-git-bash/subdir
+$ # 3. Using the special character `~`:
+$ mkdir ~/ex02-git-bash/subdir
+$ # 4. Using the path component `.`:
+$ mkdir ./ex02-git-bash/subdir
+</pre>
+
+Note that the paths specified in the last three solutions all refer to the same absolute path as the first solution:
+
+2. This is a relative path from the current working directory `/c/Users/user-id`, so the relative path `ex02-git-bash/subdir` resolves to `/c/Users/user-id/ex02-git-bash/subdir`.
+
+3. and 4. Since the current working directory is the home directory, `~` expands and `.` refer to the same directory, `/c/Users/user-id`. Therefore, they refer to the same absolute path.
+
+:::
+
+
+<b>3. `cd` to the `subdir` directory, and create an empty file named `file1.txt` in the parent directory `ex02-git-bash`.</b>
+
+::: {.callout-tip title="Hint" collapse="true" icon="false"}
+
+There are multiple convenient ways of specifying the path when creating the file `file1.txt`. Consider using either the path component `..` or tilde expansion using `~`.
+
+:::
+
+::: {.callout-note title="Solution" collapse="true" icon="false"}
+
+<pre class="terminal">
+$ # `cd` to the `subdir` directory
+$ cd ex02-git-bash/subdir
+<span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~/ex02-git-bash/subdir</span>
+$ # Create `file1.txt` in the parent directory `ex02-git-bash`
+$ # Approach using the path component `..`:
+$ touch ../file1.txt
+$ # Approach using the special character `~`:
+$ touch ~/ex02-git-bash/file1.txt
+</pre>
+
+:::
+
+<b>4. `cd` to the home directory and delete the `ex02-git-bash` directory.</b>
+
+::: {.callout-tip title="Solution" collapse="true" icon="false"}
+
+<pre class="terminal">
+$ # There are several ways we could change the working directory to
+$ # the home directory:
+$ # 1. The most obvious one:
+$ cd
+$ # 2. Using the `~` special character:
+$ cd ~
+$ # Delete the `ex02-git-bash` directory. We need to use the `-r` flag
+$ # since we want to delete a directory and its contents.
+$ rm -r ex02-git-bash
+</pre>
+
+:::
+
+
+### Exercise 3 - Creating non-existent parent directories using `mkdir`
+
+You sometimes need to create multiple nested directories, which can quickly become cumbersome. The `mkdir` command provides a flag that makes this much easier.
+
+<b>1. Create the directory `~/dir1/dir2/dir3/dir4` using a single `mkdir` command.</b>
+
+::: {.callout-tip title="Hint 1" collapse="true" icon="false"}
+
+Use `mkdir --help` to view the documentation for the command.
+
+:::
+
+::: {.callout-tip title="Hint 2" collapse="true" icon="false"}
+
+You are looking for a flag that creates **p**arent directories as needed.
+
+:::
+
+::: {.callout-note title="Solution" collapse="true" icon="false"}
+
+<pre class="terminal">
+# Use the `-p` flag to create non-existent parent directories
+$ mkdir -p ~/dir1/dir2/dir3/dir4
+</pre>
+
+:::
+
+<b>2. Use `ls` to list the subdirectories in `dir1` recursively.</b>
+
+::: {.callout-tip title="Hint" collapse="true" icon="false"}
+
+Use `ls --help` to look at the documentation and find a flag to list subdirectories **R**ecursively.
+
+:::
+
+::: {.callout-note title="Solution" collapse="true" icon="false"}
+
+<pre class="terminal">
+# Use the `-R` flag to list subdirectories recursively
+$ ls -R ~/dir1
+/c/Users/user-id/dir1:
+<span class="col-dir">dir2</span>/
+
+/c/Users/user-id/dir1/dir2:
+<span class="col-dir">dir3</span>/
+
+/c/Users/user-id/dir1/dir2/dir3:
+<span class="col-dir">dir4</span>/
+
+/c/Users/user-id/dir1/dir2/dir3/dir4:
+
+</pre>
+
+:::
+
+
+<b>3. Delete the `dir1` directory.</b>
+
+::: {.callout-note title="Solution" collapse="true" icon="false"}
+
+<pre class="terminal">
+$ rm -r ~/dir1
+</pre>
+
+:::
+
+
+### Exercise 4 - Filename expansion
+
+Bash can carry out *filename expansion*, a process known as *globbing*. Globbing recognizes and expands wildcard characters. It is outside the scope of this tutorial to go into detail about how this works, but we will introduce one useful application: limiting the output of the `ls` command.
+
+In filename expansion, `*` matches any string of characters, including an empty string. Imagine we want to list all `.txt` files in our home directory, a directory that may contain many files and directories. We can achieve this by changing the current working directory to the home directory and using the command `ls *.txt`, which tells `ls` to list all filenames that end in `.txt`.
+
+Try to solve this exercise without using `cd` to change your working directory to your home directory. If your current working directory is already the home directory, try not to rely on this assumption in your solution.
+
+<b>1. Create two empty files `file1.txt` and `file2.txt` in your home directory.</b>
+
+::: {.callout-note title="Solution" collapse="true" icon="false"}
+
+<pre class="terminal">
+$ # We can create multiple files at the same time with one `touch` command:
+$ touch ~/file1.txt ~/file2.txt
+</pre>
+
+:::
+
+<b>2. List all files in your home directory whose names start with "file".</b>
+
+::: {.callout-note title="Solution" collapse="true" icon="false"}
+
+<pre class="terminal">
+$ ls ~/file*
+/c/Users/user-id/file1.txt  /c/Users/user-id/file2.txt
+</pre>
+
+:::
+
+<b>3. Delete `file1.txt` and `file2.txt`.</b>
+
+::: {.callout-note title="Solution" collapse="true" icon="false"}
+
+<pre class="terminal">
+$ # We can delete multiple files at the same time with one `rm` command:
+$ rm ~/file1.txt ~/file2.txt
+</pre>
+
+:::
+
+
+### Exercise 5 - Combining flags
+
+When using a command with two or more flags, for example `command-name -a -b`, you can also combine the flags into a single option: `command-name -ab`.
+
+<b>1. In your home directory, create a directory named `ex05-git-bash` and `cd` into it.</b>
+
+::: {.callout-note title="Solution" collapse="true" icon="false"}
+
+<pre class="terminal">
+$ mkdir ~/ex05-git-bash
+$ cd ~/ex05-git-bash
+</pre>
+
+:::
+
+<b>2. Create a directory named `.git` and an empty file named `.gitignore` in the `ex05-git-bash` directory.</b>
+
+::: {.callout-note title="Solution" collapse="true" icon="false"}
+
+<pre class="terminal">
+<span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~/ex05-git-bash</span>
+$ touch .gitignore
+$ mkdir .git
+</pre>
+:::
+
+<b>3. List directories and files in `ex05-git-bash`.</b>
+
+- List only one file or directory per line.
+
+- Do not list the implied `.` and `..` directories.
+
+- Combine the flags in your solution.
+
+::: {.callout-tip title="Hint 1" collapse="true" icon="false"}
+
+You need to use the `ls` command, but `ls` does not list files whose names start with `.`, so-called hidden files, by default. You will need to consult the documentation to figure out what flags to use to include hidden files, and how to list one file or directory per line in the output.
+
+:::
+
+::: {.callout-tip title="Hint 2" collapse="true" icon="false"}
+
+You can view the documentation for the `ls` command with the command `ls --help`.
+
+:::
+
+::: {.callout-tip title="Hint 3" collapse="true" icon="false"}
+
+You are looking for a flag to include almost all files, including hidden files, but excluding `.` and `..`, and a flag to list one file or directory per line.
+
+:::
+
+::: {.callout-note title="Solution" collapse="true" icon="false"}
+
+<pre class="terminal">
+<span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~/ex05-git-bash</span>
+$ ls -1A
+.git/
+.gitignore
+</pre>
+
+When learning about Git, you will see that the Git object database is located in a `.git` directory. You will also see that `.gitignore` files can be used to tell Git which files to ignore. Understanding how `ls` handles these files therefore helps explain why they do not appear when using `ls` with no flags, and how to include them in the `ls` output.
+
+:::

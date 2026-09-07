@@ -2,6 +2,8 @@
 
 [Link to tutorial](https://thomas-rasmussen.github.io/git-tutorial/)
 
+
+
 **---TODO: content---**
 
 **"Getting started" chapter:**
@@ -23,15 +25,6 @@
 **"Introduction to git" chapter:**
 
 - "Everything is checksummed" section: maybe add some more details and/or write an appendix?
-
-
-**"Git for windows" Chapter:**
-
-- The entire chapter needs to be rewritten with a focus on introducing commands that are used ubiquitously in the tutorial, and with way less focus on the general capability/documentation of each command.
-
-- Add information on how lines starting with "#" are comments.
-
-- Introduce some tips and tricks for the command line, like ctrl+l to clear the log, autocompletion using tab etc.
 
 
 **"Configuration of Git" chapter:**

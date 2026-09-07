@@ -11,8 +11,17 @@
   padding: 0.5em;
   margin: 0.2em;
   background-color: black;
-  color: #afafaf;
+  color: #BFBFBF;
   font-size: 0.9em;
+}
+
+.terminal-inline {
+  font-family: monospace;
+  background-color: black;
+  color: #BFBFBF;
+  border-radius: 5px;
+  padding-left: 0.1em;
+  padding-right: 0.1em;
 }
 
 
@@ -161,4 +170,18 @@
   color: #FFFF40;
 }
 
+.col-cd {
+  color: #C0A000;
+}
 
+.col-user-id {
+  color: #1CA800;
+}
+
+.col-compiler {
+  color: #B148B1;
+}
+
+.col-dir {
+  color: #7D97FF;
+}
