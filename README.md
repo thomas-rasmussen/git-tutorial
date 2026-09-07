@@ -2,6 +2,26 @@
 
 [Link to tutorial](https://thomas-rasmussen.github.io/git-tutorial/)
 
+TODO: Rework of "Git for Windows" chapter:
+
+- The entire chapter needs to be rewritten with a focus on introducing commands that are used ubiquitously in the tutorial, and with way less focus on the general capability/documentation of each command. Maybe structure with sections on how to do common task, e.g. a section for how to list files in a directory,
+how to delete af file etc.
+
+- Add information on how lines starting with "#" are comments.
+
+- Introduce some tips and tricks for the command line, like ctrl+l to clear the log, autocompletion using tab etc.
+
+- Make sure there is a section (in the start-ish) explaining the difference between a terminal and a shell.
+
+  - https://www.geeksforgeeks.org/operating-systems/difference-between-terminal-console-shell-and-command-line/
+  
+  - https://www.boot.dev/blog/devops/shell-vs-terminal
+
+- Fine-tune colors used in output.
+
+- Add paragraph in preface linking to chapter for readers who are unfamiliar with BASH. Also double-check line saying that macOS also uses BASH. Not true, they typically use Zsh. But Zsh is basically a superset of BASH, so most/all commands used in tutorial also works in Zsh.
+
+
 **---TODO: content---**
 
 **"Getting started" chapter:**
@@ -23,15 +43,6 @@
 **"Introduction to git" chapter:**
 
 - "Everything is checksummed" section: maybe add some more details and/or write an appendix?
-
-
-**"Git for windows" Chapter:**
-
-- The entire chapter needs to be rewritten with a focus on introducing commands that are used ubiquitously in the tutorial, and with way less focus on the general capability/documentation of each command.
-
-- Add information on how lines starting with "#" are comments.
-
-- Introduce some tips and tricks for the command line, like ctrl+l to clear the log, autocompletion using tab etc.
 
 
 **"Configuration of Git" chapter:**
