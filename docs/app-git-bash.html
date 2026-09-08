@@ -252,9 +252,17 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#shortcut-keys" id="toc-shortcut-keys" class="nav-link active" data-scroll-target="#shortcut-keys"><span class="header-section-number">A.1</span> Shortcut keys</a></li>
-  <li><a href="#git-bash-commands" id="toc-git-bash-commands" class="nav-link" data-scroll-target="#git-bash-commands"><span class="header-section-number">A.2</span> Git BASH commands</a></li>
-  <li><a href="#note-on-command-options" id="toc-note-on-command-options" class="nav-link" data-scroll-target="#note-on-command-options"><span class="header-section-number">A.3</span> Note on command options</a>
+  <li><a href="#terminology" id="toc-terminology" class="nav-link active" data-scroll-target="#terminology"><span class="header-section-number">A.1</span> Terminology</a>
+  <ul class="collapse">
+  <li><a href="#terminal" id="toc-terminal" class="nav-link" data-scroll-target="#terminal">Terminal</a></li>
+  <li><a href="#shell" id="toc-shell" class="nav-link" data-scroll-target="#shell">Shell</a></li>
+  <li><a href="#prompts-and-outputs" id="toc-prompts-and-outputs" class="nav-link" data-scroll-target="#prompts-and-outputs">Prompts and outputs</a></li>
+  <li><a href="#command-line-cli" id="toc-command-line-cli" class="nav-link" data-scroll-target="#command-line-cli">Command line / CLI</a></li>
+  </ul></li>
+  <li><a href="#using-git-bash" id="toc-using-git-bash" class="nav-link" data-scroll-target="#using-git-bash"><span class="header-section-number">A.2</span> Using Git Bash</a></li>
+  <li><a href="#shortcut-keys" id="toc-shortcut-keys" class="nav-link" data-scroll-target="#shortcut-keys"><span class="header-section-number">A.3</span> Shortcut keys</a></li>
+  <li><a href="#git-bash-commands" id="toc-git-bash-commands" class="nav-link" data-scroll-target="#git-bash-commands"><span class="header-section-number">A.4</span> Git BASH commands</a></li>
+  <li><a href="#note-on-command-options" id="toc-note-on-command-options" class="nav-link" data-scroll-target="#note-on-command-options"><span class="header-section-number">A.5</span> Note on command options</a>
   <ul class="collapse">
   <li><a href="#cd" id="toc-cd" class="nav-link" data-scroll-target="#cd">cd</a></li>
   <li><a href="#clear" id="toc-clear" class="nav-link" data-scroll-target="#clear">clear</a></li>
@@ -290,14 +298,59 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p><a href="https://gitforwindows.org/" target="_blank">Git for Windows</a> is a set of tools for Windows users. Of main interest, Git for Windows provides a Bash emulation used to run Git from the command line. Using Git Bash, Windows users can use “git” commands exactly like one would do in Linux and Unix environments. Besides the full set of Git core commands, Git Bash is also packaged with additional shell commands that can be useful.</p>
-<p>When you open Git Bash, you will see something like this:</p>
-<pre class="terminal"><span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">~</span>
+<p>Git Bash is a Bash emulation used to run Git from the command line. It is part of <a href="https://gitforwindows.org/" target="_blank">Git for Windows</a> which is a set of tools for Windows users including both a Bash emulator and a Git installation among other things. Using Git Bash, Windows users can use “git” commands exactly like one would do in Linux and Unix environments. Besides the full set of Git core commands, Git Bash is also packaged with additional basic Bash shell commands that can be useful.</p>
+<p>When you run Git Bash, a terminal window will open looking something like this:</p>
+<pre class="terminal"><span class="col-user-id">user_id$computer_id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
 $
 </pre>
-<p><span class="col-green">user_id@computer_id</span> is an ID based on name of the user that is logged in, and the name of the device running Git Bash. <span class="col-magenta">MINGW64</span> part is the name of the compiler used to build Git Bash. The <span class="col-yellow">~</span> at the end of the first line indicates the current directory. A tilde means that the current directory is the home directory of the user.</p>
-<section id="shortcut-keys" class="level2" data-number="A.1">
-<h2 data-number="A.1" class="anchored" data-anchor-id="shortcut-keys"><span class="header-section-number">A.1</span> Shortcut keys</h2>
+<p><span class="col-user-id">user_id@computer_id</span> is an ID based on name of the user that is logged in, and the name of the device running Git Bash. <span class="col-compiler">MINGW64</span> part is the name of the compiler used to build Git Bash. The <span class="col-cd">~</span> at the end of the first line indicates the current directory. A tilde means that the current directory is the home directory of the user.</p>
+<section id="terminology" class="level2" data-number="A.1">
+<h2 data-number="A.1" class="anchored" data-anchor-id="terminology"><span class="header-section-number">A.1</span> Terminology</h2>
+<p>The terms “terminal”, “shell”, “command line”, and “CLI” are often used interchangeably. In most cases this is fine and does not lead to confusion, but they are not synonyms, and understanding the difference makes understanding how to work in text-based environments easier. Furthermore, terms like “prompt” and “output” is often used in connection with working from the terminal.</p>
+<section id="terminal" class="level3">
+<h3 class="anchored" data-anchor-id="terminal">Terminal</h3>
+<p>Originally, a <em>terminal</em> was a physical device that you could type commands into, basically a keyboard and a screen. In present times, when we talk about a terminal, we actually mean a <em>terminal emulator</em>. A terminal emulator is a program that emulates a physical terminal. It’s a program that lets you type commands into a window on your computer. It is responsible for drawing text on your screen and processing your keystrokes. And that is basically all it does. Which commands you’re able to use is not determined by the terminal emulator, but by the <em>shell</em>. Likewise, the terminal does not run the commands that you type in, the shell does. The terminal takes your commands, gives them to the shell, the shell then runs the commands and prints any resulting output in the terminal.</p>
+</section>
+<section id="shell" class="level3">
+<h3 class="anchored" data-anchor-id="shell">Shell</h3>
+<p>The program that actually runs the commands you type in the terminal is the shell. A shell does a lot of things, but their main job is to interpret the commands that you type in the terminal and execute them. Which commands you are able to use is determined by what commands that comes with the shell you use.</p>
+<p>Shells are often referred to as “REPLs”. REPL stnad for:</p>
+<ul>
+<li><p>Read</p></li>
+<li><p>Evaluate</p></li>
+<li><p>Print</p></li>
+<li><p>Loop</p></li>
+</ul>
+<p>This means that shells are programs that:</p>
+<ul>
+<li><p>Read the commands that you type</p></li>
+<li><p>Evaluate those commands, maybe using other programs on your computer</p></li>
+<li><p>Print the <em>output</em> of those commands</p></li>
+<li><p>Give you a <em>prompt</em> to type another command and repeat</p></li>
+</ul>
+</section>
+<section id="prompts-and-outputs" class="level3">
+<h3 class="anchored" data-anchor-id="prompts-and-outputs">Prompts and outputs</h3>
+<p>Imagine we have the following session in a terminal:</p>
+<pre class="terminal"><span class="col-user-id">user_id$computer_id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+$ echo hello
+hello
+<span class="col-user-id">user_id$computer_id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+$
+</pre>
+<p>The <em>prompt</em> is <span class="terminal-inline"><span class="col-user-id">user_id$computer_id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span> $</span>. The prompt is telling you that the shell is ready to accept a new command. The command that was typed was <span class="terminal-inline">echo hello</span>, and the <em>output</em> is <span class="terminal-inline">hello</span>.</p>
+<p>After typing the command <span class="terminal-inline">echo hello</span> and pressing <kbd title="Enter" aria-hidden="true">Enter</kbd><span class="visually-hidden">Enter</span>, the shell reads it, evaluates it, prints the output of the command, and then prints a promt to let you know that it is ready to read another command.</p>
+</section>
+<section id="command-line-cli" class="level3">
+<h3 class="anchored" data-anchor-id="command-line-cli">Command line / CLI</h3>
+<p>The terms <em>command line</em> and <em>CLI</em> (command-line interface) are also often used interchangeably with the terms <em>terminal</em> and <em>shell</em> to refer to the same thing: Using a program to interact with your computer using text-based commands.</p>
+</section>
+</section>
+<section id="using-git-bash" class="level2" data-number="A.2">
+<h2 data-number="A.2" class="anchored" data-anchor-id="using-git-bash"><span class="header-section-number">A.2</span> Using Git Bash</h2>
+</section>
+<section id="shortcut-keys" class="level2" data-number="A.3">
+<h2 data-number="A.3" class="anchored" data-anchor-id="shortcut-keys"><span class="header-section-number">A.3</span> Shortcut keys</h2>
 <p>An extensive list of available commands in Bash can be found <a href="https://ss64.com/bash/syntax-keyboard.html" target="_blank">here</a>. Not all of them are available in Git Bash. Below is a short list of useful shortcut keys.</p>
 <div style="margin-top:2em; margin-bottom:2em">
 
@@ -383,8 +436,8 @@ $
 </div>
 <p>Windows users are used to using <kbd title="Ctrl+c" aria-hidden="true">Ctrl+c</kbd><span class="visually-hidden">Ctrl+c</span> and <kbd title="Ctrl+v" aria-hidden="true">Ctrl+v</kbd><span class="visually-hidden">Ctrl+v</span> to “Copy” and “Paste”, but these shortcuts are not available in Git Bash, since they are reserved for other commands. it is possible to enable “Copy” using <kbd title="Ctrl+Shift+c" aria-hidden="true">Ctrl+Shift+c</kbd><span class="visually-hidden">Ctrl+Shift+c</span> and “Paste” using <kbd title="Ctrl+Shift+v" aria-hidden="true">Ctrl+Shift+v</kbd><span class="visually-hidden">Ctrl+Shift+v</span>, by right-clicking in the terminal, navigating to <span style="font-family:monospace">Options&gt;Keys</span>, and checking the “Ctrl+Shift+letter shortcuts” box.</p>
 </section>
-<section id="git-bash-commands" class="level2" data-number="A.2">
-<h2 data-number="A.2" class="anchored" data-anchor-id="git-bash-commands"><span class="header-section-number">A.2</span> Git BASH commands</h2>
+<section id="git-bash-commands" class="level2" data-number="A.4">
+<h2 data-number="A.4" class="anchored" data-anchor-id="git-bash-commands"><span class="header-section-number">A.4</span> Git BASH commands</h2>
 <p>It is not easy to understand what commands are (or are not) available in Git Bash, why they are (or are not) available, nor is it straight forward to find documentation on them. Some commands have documentation that can be accessed by typing <code>help [command-name]</code> in the terminal. More generally speaking, CMD, PowerShell, and BASH command documentation can be found many different places, for example <a href="https://ss64.com/" target="_blank">here</a>.</p>
 <p>Here we will introduce a few basic commands most of which are used extensively in this tutorial. We will also provide some focused documentation that covers how the commands are used in this tutorial, alongside links to more extensive documentation.</p>
 <div style="margin-top:2em;margin-bottom:2em;">
@@ -434,8 +487,8 @@ $
 
 </div>
 </section>
-<section id="note-on-command-options" class="level2" data-number="A.3">
-<h2 data-number="A.3" class="anchored" data-anchor-id="note-on-command-options"><span class="header-section-number">A.3</span> Note on command options</h2>
+<section id="note-on-command-options" class="level2" data-number="A.5">
+<h2 data-number="A.5" class="anchored" data-anchor-id="note-on-command-options"><span class="header-section-number">A.5</span> Note on command options</h2>
 <p>Most of the commands listed here can take different options, e.g.&nbsp;<code>ls</code> has an <code>-a</code> and a <code>-1</code> option. It is possible to use multiple options at once on the form <code>ls -a1</code> instead of the more verbose form <code>ls -a -1</code>.</p>
 <section id="cd" class="level3">
 <h3 class="anchored" data-anchor-id="cd">cd</h3>

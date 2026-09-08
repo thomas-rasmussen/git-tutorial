@@ -1,15 +1,78 @@
 # Git Bash {#sec-git-bash}
 
-[Git for Windows](https://gitforwindows.org/){target="_blank"} is a set of tools for Windows users. Of main interest, Git for Windows provides a Bash emulation used to run Git from the command line. Using Git Bash, Windows users can use "git" commands exactly like one would do in Linux and Unix environments. Besides the full set of Git core commands, Git Bash is also packaged with additional shell commands that can be useful.
+Git Bash is a Bash emulation used to run Git from the command line. It is part of [Git for Windows](https://gitforwindows.org/){target="_blank"} which is a set of tools for Windows users including both a Bash emulator and a Git installation among other things. Using Git Bash, Windows users can use "git" commands exactly like one would do in Linux and Unix environments. Besides the full set of Git core commands, Git Bash is also packaged with additional basic Bash shell commands that can be useful.
 
-When you open Git Bash, you will see something like this:
+When you run Git Bash, a terminal window will open looking something like this:
 
 <pre class="terminal">
-<span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">~</span>
+<span class="col-user-id">user_id$computer_id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
 $
 </pre>
 
-<span class="col-green">user_id@computer_id</span> is an ID based on name of the user that is logged in, and the name of the device running Git Bash. <span class="col-magenta">MINGW64</span> part is the name of the compiler used to build Git Bash. The <span class="col-yellow">~</span> at the end of the first line indicates the current directory. A tilde means that the current directory is the home directory of the user.
+<span class="col-user-id">user_id@computer_id</span> is an ID based on name of the user that is logged in, and the name of the device running Git Bash. <span class="col-compiler">MINGW64</span> part is the name of the compiler used to build Git Bash. The <span class="col-cd">~</span> at the end of the first line indicates the current directory. A tilde means that the current directory is the home directory of the user.
+
+
+## Terminology
+
+The terms "terminal", "shell", "command line", and "CLI" are often used interchangeably. In most cases this is fine and does not lead to confusion, but they are not synonyms, and understanding the difference makes understanding how to work in text-based environments easier. Furthermore, terms like "prompt" and "output" is often used in connection with working from the terminal.
+
+
+### Terminal
+
+Originally, a *terminal* was a physical device that you could type commands into, basically a keyboard and a screen. In present times, when we talk about a terminal, we actually mean a *terminal emulator*. A terminal emulator is a program that emulates a physical terminal. It's a program that lets you type commands into a window on your computer. It is responsible for drawing text on your screen and processing your keystrokes. And that is basically all it does. Which commands you're able to use is not determined by the terminal emulator, but by the *shell*. Likewise, the terminal does not run the commands that you type in, the shell does. The terminal takes your commands, gives them to the shell, the shell then runs the commands and prints any resulting output in the terminal.
+
+
+### Shell
+
+The program that actually runs the commands you type in the terminal is the shell. A shell does a lot of things, but their main job is to interpret the commands that you type in the terminal and execute them. Which commands you are able to use is determined by what commands that comes with the shell you use.
+
+Shells are often referred to as "REPLs". REPL stnad for:
+
+- Read
+
+- Evaluate
+
+- Print
+
+- Loop
+
+This means that shells are programs that:
+
+- Read the commands that you type
+
+- Evaluate those commands, maybe using other programs on your computer
+
+- Print the *output* of those commands
+
+- Give you a *prompt* to type another command and repeat
+
+
+### Prompts and outputs
+
+Imagine we have the following session in a terminal:
+
+<pre class="terminal">
+<span class="col-user-id">user_id$computer_id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+$ echo hello
+hello
+<span class="col-user-id">user_id$computer_id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+$
+</pre>
+
+The *prompt* is <span class="terminal-inline"><span class="col-user-id">user_id$computer_id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+$</span>. The prompt is telling you that the shell is ready to accept a new command. The command that was typed was <span class="terminal-inline">echo hello</span>, and the *output* is <span class="terminal-inline">hello</span>.
+
+After typing the command <span class="terminal-inline">echo hello</span> and pressing {{< kbd Enter>}}, the shell reads it, evaluates it, prints the output of the command, and then prints a promt to let you know that it is ready to read another command.
+
+
+### Command line / CLI
+
+The terms *command line* and *CLI* (command-line interface) are also often used
+interchangeably with the terms *terminal* and *shell* to refer to the same thing: Using a program to interact with your computer using text-based commands.
+
+
+## Using Git Bash
+
 
 ## Shortcut keys
 

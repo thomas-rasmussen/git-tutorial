@@ -11,14 +11,6 @@ how to delete af file etc.
 
 - Introduce some tips and tricks for the command line, like ctrl+l to clear the log, autocompletion using tab etc.
 
-- Make sure there is a section (in the start-ish) explaining the difference between a terminal and a shell.
-
-  - https://www.geeksforgeeks.org/operating-systems/difference-between-terminal-console-shell-and-command-line/
-  
-  - https://www.boot.dev/blog/devops/shell-vs-terminal
-
-- Fine-tune colors used in output.
-
 
 **---TODO: content---**
 
