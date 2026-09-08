@@ -32,7 +32,7 @@ book:
       - part2-git-rebase.qmd
       
   appendices:
-    - app-git-for-windows.qmd
+    - app-git-bash.qmd
     - app-configuration-of-git.qmd
     - app-resources.qmd
 
