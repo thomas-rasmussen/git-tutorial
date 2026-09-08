@@ -19,8 +19,6 @@ how to delete af file etc.
 
 - Fine-tune colors used in output.
 
-- Add paragraph in preface linking to chapter for readers who are unfamiliar with BASH. Also double-check line saying that macOS also uses BASH. Not true, they typically use Zsh. But Zsh is basically a superset of BASH, so most/all commands used in tutorial also works in Zsh.
-
 
 **---TODO: content---**
 
