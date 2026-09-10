@@ -73,6 +73,8 @@ interchangeably with the terms *terminal* and *shell* to refer to the same thing
 
 ## Using Git Bash
 
+The remainder of this chapter is focused on introducing basic Bash commands that are ubiquitously used in this tutorial alongside "git" commands, to create/list directories and files, edit them, and so on. While you do need to be familiar with these commands to understand the examples and exercises in the tutorial, you don't necessarily need to use them yourself if you prefer to use the File Explorer and a text editor to navigate directories, create/edit files, and so on. But in many cases, it is *way* faster to use Bash commands, at least when you get used to it.
+
 
 ## Shortcut keys
 
