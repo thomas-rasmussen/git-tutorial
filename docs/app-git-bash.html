@@ -259,10 +259,9 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#prompts-and-outputs" id="toc-prompts-and-outputs" class="nav-link" data-scroll-target="#prompts-and-outputs">Prompts and outputs</a></li>
   <li><a href="#command-line-cli" id="toc-command-line-cli" class="nav-link" data-scroll-target="#command-line-cli">Command line / CLI</a></li>
   </ul></li>
-  <li><a href="#using-git-bash" id="toc-using-git-bash" class="nav-link" data-scroll-target="#using-git-bash"><span class="header-section-number">A.2</span> Using Git Bash</a></li>
-  <li><a href="#shortcut-keys" id="toc-shortcut-keys" class="nav-link" data-scroll-target="#shortcut-keys"><span class="header-section-number">A.3</span> Shortcut keys</a></li>
-  <li><a href="#git-bash-commands" id="toc-git-bash-commands" class="nav-link" data-scroll-target="#git-bash-commands"><span class="header-section-number">A.4</span> Git BASH commands</a></li>
-  <li><a href="#note-on-command-options" id="toc-note-on-command-options" class="nav-link" data-scroll-target="#note-on-command-options"><span class="header-section-number">A.5</span> Note on command options</a>
+  <li><a href="#using-the-bash-terminal" id="toc-using-the-bash-terminal" class="nav-link" data-scroll-target="#using-the-bash-terminal"><span class="header-section-number">A.2</span> Using the Bash terminal</a></li>
+  <li><a href="#bash-commands" id="toc-bash-commands" class="nav-link" data-scroll-target="#bash-commands"><span class="header-section-number">A.3</span> Bash commands</a></li>
+  <li><a href="#todo-move-this-to-an-exercise-note-on-command-options" id="toc-todo-move-this-to-an-exercise-note-on-command-options" class="nav-link" data-scroll-target="#todo-move-this-to-an-exercise-note-on-command-options"><span class="header-section-number">A.4</span> TODO: MOVE THIS TO AN EXERCISE??? Note on command options</a>
   <ul class="collapse">
   <li><a href="#cd" id="toc-cd" class="nav-link" data-scroll-target="#cd">cd</a></li>
   <li><a href="#clear" id="toc-clear" class="nav-link" data-scroll-target="#clear">clear</a></li>
@@ -303,7 +302,7 @@ ul.task-list li input[type="checkbox"] {
 <pre class="terminal"><span class="col-user-id">user_id$computer_id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
 $
 </pre>
-<p><span class="col-user-id">user_id@computer_id</span> is an ID based on name of the user that is logged in, and the name of the device running Git Bash. <span class="col-compiler">MINGW64</span> part is the name of the compiler used to build Git Bash. The <span class="col-cd">~</span> at the end of the first line indicates the current directory. A tilde means that the current directory is the home directory of the user.</p>
+<p><span class="col-user-id">user_id@computer_id</span> is an ID based on name of the user that is logged in, and the name of the device running Git Bash. The <span class="col-compiler">MINGW64</span> part, is the name of the compiler used to build Git Bash. The <span class="col-cd">~</span> at the end of the first line indicates the current directory. A tilde means that the current directory is the home directory of the user.</p>
 <section id="terminology" class="level2" data-number="A.1">
 <h2 data-number="A.1" class="anchored" data-anchor-id="terminology"><span class="header-section-number">A.1</span> Terminology</h2>
 <p>The terms “terminal”, “shell”, “command line”, and “CLI” are often used interchangeably. In most cases this is fine and does not lead to confusion, but they are not synonyms, and understanding the difference makes understanding how to work in text-based environments easier. Furthermore, terms like “prompt” and “output” is often used in connection with working from the terminal.</p>
@@ -313,8 +312,8 @@ $
 </section>
 <section id="shell" class="level3">
 <h3 class="anchored" data-anchor-id="shell">Shell</h3>
-<p>The program that actually runs the commands you type in the terminal is the shell. A shell does a lot of things, but their main job is to interpret the commands that you type in the terminal and execute them. Which commands you are able to use is determined by what commands that comes with the shell you use.</p>
-<p>Shells are often referred to as “REPLs”. REPL stnad for:</p>
+<p>The program that actually runs the commands you type in the terminal is the shell. A shell does a lot of different things, but its job is to interpret the commands that you type in the terminal and execute them. Which commands you are able to use is determined by what commands that comes with the shell you use.</p>
+<p>Shells are often referred to as “REPLs”. REPL stands for:</p>
 <ul>
 <li><p>Read</p></li>
 <li><p>Evaluate</p></li>
@@ -339,20 +338,17 @@ hello
 $
 </pre>
 <p>The <em>prompt</em> is <span class="terminal-inline"><span class="col-user-id">user_id$computer_id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span> $</span>. The prompt is telling you that the shell is ready to accept a new command. The command that was typed was <span class="terminal-inline">echo hello</span>, and the <em>output</em> is <span class="terminal-inline">hello</span>.</p>
-<p>After typing the command <span class="terminal-inline">echo hello</span> and pressing <kbd title="Enter" aria-hidden="true">Enter</kbd><span class="visually-hidden">Enter</span>, the shell reads it, evaluates it, prints the output of the command, and then prints a promt to let you know that it is ready to read another command.</p>
+<p>After typing the command <span class="terminal-inline">echo hello</span> and pressing <kbd title="Enter" aria-hidden="true">Enter</kbd><span class="visually-hidden">Enter</span>, the shell reads it, evaluates it, prints the output of the command (if any), and then prints a prompt to let you know that it is ready to read another command.</p>
 </section>
 <section id="command-line-cli" class="level3">
 <h3 class="anchored" data-anchor-id="command-line-cli">Command line / CLI</h3>
 <p>The terms <em>command line</em> and <em>CLI</em> (command-line interface) are also often used interchangeably with the terms <em>terminal</em> and <em>shell</em> to refer to the same thing: Using a program to interact with your computer using text-based commands.</p>
 </section>
 </section>
-<section id="using-git-bash" class="level2" data-number="A.2">
-<h2 data-number="A.2" class="anchored" data-anchor-id="using-git-bash"><span class="header-section-number">A.2</span> Using Git Bash</h2>
-<p>The remainder of this chapter is focused on introducing basic Bash commands that are ubiquitously used in this tutorial alongside “git” commands, to create/list directories and files, edit them, and so on. While you do need to be familiar with these commands to understand the examples and exercises in the tutorial, you don’t necessarily need to use them yourself if you prefer to use the File Explorer and a text editor to navigate directories, create/edit files, and so on. But in many cases, it is <em>way</em> faster to use Bash commands, at least when you get used to it.</p>
-</section>
-<section id="shortcut-keys" class="level2" data-number="A.3">
-<h2 data-number="A.3" class="anchored" data-anchor-id="shortcut-keys"><span class="header-section-number">A.3</span> Shortcut keys</h2>
-<p>An extensive list of available commands in Bash can be found <a href="https://ss64.com/bash/syntax-keyboard.html" target="_blank">here</a>. Not all of them are available in Git Bash. Below is a short list of useful shortcut keys.</p>
+<section id="using-the-bash-terminal" class="level2" data-number="A.2">
+<h2 data-number="A.2" class="anchored" data-anchor-id="using-the-bash-terminal"><span class="header-section-number">A.2</span> Using the Bash terminal</h2>
+<p>The terminal that comes with Git Bash for Windows works fine right out of the box. The only thing that Windows users might want to configure, is how to copy and paste text from the terminal. Windows users are used to being able to use <kbd title="Ctrl+c" aria-hidden="true">Ctrl+c</kbd><span class="visually-hidden">Ctrl+c</span> and <kbd title="Ctrl+v" aria-hidden="true">Ctrl+v</kbd><span class="visually-hidden">Ctrl+v</span> to “Copy” and “Paste”, but these shortcuts are not available in Git Bash, since they are reserved for other commands. it is possible to enable “Copy” using <kbd title="Ctrl+Shift+c" aria-hidden="true">Ctrl+Shift+c</kbd><span class="visually-hidden">Ctrl+Shift+c</span> and “Paste” using <kbd title="Ctrl+Shift+v" aria-hidden="true">Ctrl+Shift+v</kbd><span class="visually-hidden">Ctrl+Shift+v</span>, by right-clicking in the terminal, navigating to <span style="font-family:monospace">Options&gt;Keys</span>, and checking the “Ctrl+Shift+letter shortcuts” box.</p>
+<p>The terminal also has many useful shortcut keys. An extensive list can be found <a href="https://ss64.com/bash/syntax-keyboard.html" target="_blank">here</a>, and below is a very short list of the most useful shortcuts:</p>
 <div style="margin-top:2em; margin-bottom:2em">
 
 <table class="table-striped caption-top table">
@@ -364,44 +360,12 @@ $
 </thead>
 <tbody>
 <tr class="odd">
-<td style="font-weight: bold">Moving the cursor</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>Go to beginning of line (Home)</td>
-<td style="font-family: monospace">Ctrl+a</td>
-</tr>
-<tr class="odd">
-<td>Go to end of line (End)</td>
-<td style="font-family: monospace">Ctrl+e</td>
-</tr>
-<tr class="even">
 <td>Previous command (Up arrow)</td>
 <td style="font-family: monospace">Ctrl+p</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Next command (Down arrow)</td>
 <td style="font-family: monospace">Ctrl+n</td>
-</tr>
-<tr class="even">
-<td>Go left/back one word</td>
-<td style="font-family: monospace">Alt+b</td>
-</tr>
-<tr class="odd">
-<td>Go right/forward one word</td>
-<td style="font-family: monospace">Alt+f</td>
-</tr>
-<tr class="even">
-<td>Go forward one character</td>
-<td style="font-family: monospace">Ctrl+f</td>
-</tr>
-<tr class="odd">
-<td>Go backward one character</td>
-<td style="font-family: monospace">Ctrl+b</td>
-</tr>
-<tr class="even">
-<td style="font-weight: bold">Editing</td>
-<td></td>
 </tr>
 <tr class="odd">
 <td>Copy</td>
@@ -416,18 +380,6 @@ $
 <td style="font-family: monospace">Ctrl+l</td>
 </tr>
 <tr class="even">
-<td>Delete the character before the cursor (Backspace)</td>
-<td style="font-family: monospace">Ctrl+h</td>
-</tr>
-<tr class="odd">
-<td>Delete the character after the cursor</td>
-<td style="font-family: monospace">Ctrl+d</td>
-</tr>
-<tr class="even">
-<td style="font-weight: bold">Process control</td>
-<td></td>
-</tr>
-<tr class="odd">
 <td>Interrupt/kill current process (SIGINT)</td>
 <td style="font-family: monospace">Ctrl+c</td>
 </tr>
@@ -435,12 +387,12 @@ $
 </table>
 
 </div>
-<p>Windows users are used to using <kbd title="Ctrl+c" aria-hidden="true">Ctrl+c</kbd><span class="visually-hidden">Ctrl+c</span> and <kbd title="Ctrl+v" aria-hidden="true">Ctrl+v</kbd><span class="visually-hidden">Ctrl+v</span> to “Copy” and “Paste”, but these shortcuts are not available in Git Bash, since they are reserved for other commands. it is possible to enable “Copy” using <kbd title="Ctrl+Shift+c" aria-hidden="true">Ctrl+Shift+c</kbd><span class="visually-hidden">Ctrl+Shift+c</span> and “Paste” using <kbd title="Ctrl+Shift+v" aria-hidden="true">Ctrl+Shift+v</kbd><span class="visually-hidden">Ctrl+Shift+v</span>, by right-clicking in the terminal, navigating to <span style="font-family:monospace">Options&gt;Keys</span>, and checking the “Ctrl+Shift+letter shortcuts” box.</p>
+<p>Finally, it is possible to use command-line completion by pressing <kbd title="Tab" aria-hidden="true">Tab</kbd><span class="visually-hidden">Tab</span>. One very useful trick is to use this to auto-complete file names in your current working directory. For example, imagine you have to type out “a-very-long-file-name-that-is-tedious-to-type-out.txt”. If you know that no other file in your current directory has a name that starts with “a-very-” you can simply type “a-very-” and hit <kbd title="Tab" aria-hidden="true">Tab</kbd><span class="visually-hidden">Tab</span>, and the terminal will fill in the rest of the name!</p>
 </section>
-<section id="git-bash-commands" class="level2" data-number="A.4">
-<h2 data-number="A.4" class="anchored" data-anchor-id="git-bash-commands"><span class="header-section-number">A.4</span> Git BASH commands</h2>
-<p>It is not easy to understand what commands are (or are not) available in Git Bash, why they are (or are not) available, nor is it straight forward to find documentation on them. Some commands have documentation that can be accessed by typing <code>help [command-name]</code> in the terminal. More generally speaking, CMD, PowerShell, and BASH command documentation can be found many different places, for example <a href="https://ss64.com/" target="_blank">here</a>.</p>
-<p>Here we will introduce a few basic commands most of which are used extensively in this tutorial. We will also provide some focused documentation that covers how the commands are used in this tutorial, alongside links to more extensive documentation.</p>
+<section id="bash-commands" class="level2" data-number="A.3">
+<h2 data-number="A.3" class="anchored" data-anchor-id="bash-commands"><span class="header-section-number">A.3</span> Bash commands</h2>
+<p>The remainder of this chapter is focused on introducing basic Bash commands that are ubiquitously used in this tutorial to create/list directories and files, edit them, and so on. While you <em>do</em> need to be familiar with these commands to understand the examples and exercises in the tutorial, you don’t necessarily need to use them yourself, if you prefer to use the File Explorer and a text editor to navigate directories, create/edit files, and so on. That being said, it is <em>way</em> faster to use shell commands to do these tasks, at least when you get used to it. If you are unfamiliar with using a terminal, this is also a great opportunity to practice being comfortable doing basic stuff using shell commands, and it will make using Git from the command line feel a lot more natural.</p>
+<p>It is not easy to understand<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> what (Bash) shell commands are (or are not) available when using the terminal that comes with Git for Windows , why they are (or are not) available, nor is it straight forward to find documentation on them. Some commands have documentation that can be accessed by typing <code>help [command-name]</code> in the terminal. More generally speaking, CMD, PowerShell, and Bash command documentation can be found many different places, for example <a href="https://ss64.com/" target="_blank">here</a>. Below is an overview of the commands that are going to be introduced the remainder of the chapter:</p>
 <div style="margin-top:2em;margin-bottom:2em;">
 
 <table class="table-striped caption-top table">
@@ -461,7 +413,7 @@ $
 </tr>
 <tr class="odd">
 <td style="font-family: monospace">echo &gt; / echo &gt;&gt;</td>
-<td>Create file / append content to file</td>
+<td>Create/append content to file</td>
 </tr>
 <tr class="even">
 <td style="font-family: monospace">ls</td>
@@ -472,14 +424,18 @@ $
 <td>Create folder</td>
 </tr>
 <tr class="even">
+<td style="font-family: monospace">mv</td>
+<td>Rename/move file</td>
+</tr>
+<tr class="odd">
 <td style="font-family: monospace">pwd</td>
 <td>Print working directory</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="font-family: monospace">rm</td>
 <td>Remove files</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="font-family: monospace">start</td>
 <td>Start a program/open a file/open a directory</td>
 </tr>
@@ -488,8 +444,8 @@ $
 
 </div>
 </section>
-<section id="note-on-command-options" class="level2" data-number="A.5">
-<h2 data-number="A.5" class="anchored" data-anchor-id="note-on-command-options"><span class="header-section-number">A.5</span> Note on command options</h2>
+<section id="todo-move-this-to-an-exercise-note-on-command-options" class="level2" data-number="A.4">
+<h2 data-number="A.4" class="anchored" data-anchor-id="todo-move-this-to-an-exercise-note-on-command-options"><span class="header-section-number">A.4</span> TODO: MOVE THIS TO AN EXERCISE??? Note on command options</h2>
 <p>Most of the commands listed here can take different options, e.g.&nbsp;<code>ls</code> has an <code>-a</code> and a <code>-1</code> option. It is possible to use multiple options at once on the form <code>ls -a1</code> instead of the more verbose form <code>ls -a -1</code>.</p>
 <section id="cd" class="level3">
 <h3 class="anchored" data-anchor-id="cd">cd</h3>
@@ -754,6 +710,12 @@ $ start .
 
 </section>
 </section>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>At least not for the author of this tutorial…<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
 </section>
 
 </main> <!-- /main -->

@@ -4,12 +4,9 @@
 
 TODO: Rework of "Git for Windows" chapter:
 
-- The entire chapter needs to be rewritten with a focus on introducing commands that are used ubiquitously in the tutorial, and with way less focus on the general capability/documentation of each command. Maybe structure with sections on how to do common task, e.g. a section for how to list files in a directory,
-how to delete af file etc.
+- Rework last part of chapter where commands are introduced. Documentation should be way more limited, and instead structured around how to do differnet things, eg create a file.
 
 - Add information on how lines starting with "#" are comments.
-
-- Introduce some tips and tricks for the command line, like ctrl+l to clear the log, autocompletion using tab etc.
 
 
 **---TODO: content---**

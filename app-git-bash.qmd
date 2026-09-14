@@ -9,7 +9,7 @@ When you run Git Bash, a terminal window will open looking something like this:
 $
 </pre>
 
-<span class="col-user-id">user_id@computer_id</span> is an ID based on name of the user that is logged in, and the name of the device running Git Bash. <span class="col-compiler">MINGW64</span> part is the name of the compiler used to build Git Bash. The <span class="col-cd">~</span> at the end of the first line indicates the current directory. A tilde means that the current directory is the home directory of the user.
+<span class="col-user-id">user_id@computer_id</span> is an ID based on name of the user that is logged in, and the name of the device running Git Bash. The <span class="col-compiler">MINGW64</span> part, is the name of the compiler used to build Git Bash. The <span class="col-cd">~</span> at the end of the first line indicates the current directory. A tilde means that the current directory is the home directory of the user.
 
 
 ## Terminology
@@ -24,9 +24,9 @@ Originally, a *terminal* was a physical device that you could type commands into
 
 ### Shell
 
-The program that actually runs the commands you type in the terminal is the shell. A shell does a lot of things, but their main job is to interpret the commands that you type in the terminal and execute them. Which commands you are able to use is determined by what commands that comes with the shell you use.
+The program that actually runs the commands you type in the terminal is the shell. A shell does a lot of different things, but its job is to interpret the commands that you type in the terminal and execute them. Which commands you are able to use is determined by what commands that comes with the shell you use.
 
-Shells are often referred to as "REPLs". REPL stnad for:
+Shells are often referred to as "REPLs". REPL stands for:
 
 - Read
 
@@ -62,7 +62,7 @@ $
 The *prompt* is <span class="terminal-inline"><span class="col-user-id">user_id$computer_id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
 $</span>. The prompt is telling you that the shell is ready to accept a new command. The command that was typed was <span class="terminal-inline">echo hello</span>, and the *output* is <span class="terminal-inline">hello</span>.
 
-After typing the command <span class="terminal-inline">echo hello</span> and pressing {{< kbd Enter>}}, the shell reads it, evaluates it, prints the output of the command, and then prints a promt to let you know that it is ready to read another command.
+After typing the command <span class="terminal-inline">echo hello</span> and pressing {{< kbd Enter>}}, the shell reads it, evaluates it, prints the output of the command (if any), and then prints a prompt to let you know that it is ready to read another command.
 
 
 ### Command line / CLI
@@ -71,14 +71,12 @@ The terms *command line* and *CLI* (command-line interface) are also often used
 interchangeably with the terms *terminal* and *shell* to refer to the same thing: Using a program to interact with your computer using text-based commands.
 
 
-## Using Git Bash
+## Using the Bash terminal
 
-The remainder of this chapter is focused on introducing basic Bash commands that are ubiquitously used in this tutorial alongside "git" commands, to create/list directories and files, edit them, and so on. While you do need to be familiar with these commands to understand the examples and exercises in the tutorial, you don't necessarily need to use them yourself if you prefer to use the File Explorer and a text editor to navigate directories, create/edit files, and so on. But in many cases, it is *way* faster to use Bash commands, at least when you get used to it.
+The terminal that comes with Git Bash for Windows works fine right out of the box. The only thing that Windows users might want to configure, is how to copy and paste text from the terminal. Windows users are used to being able to use {{< kbd Ctrl+c>}} and {{< kbd Ctrl+v>}} to "Copy" and "Paste", but these shortcuts are not available in Git Bash, since they are reserved for other commands. it is possible to enable "Copy" using {{< kbd Ctrl+Shift+c>}} and "Paste" using {{< kbd Ctrl+Shift+v>}}, by right-clicking in the terminal, navigating to [Options>Keys]{style="font-family:monospace"}, and checking the "Ctrl+Shift+letter shortcuts" box.
 
+The terminal also has many useful shortcut keys. An extensive list can be found [here](https://ss64.com/bash/syntax-keyboard.html){target="_blank"}, and below is a very short list of the most useful shortcuts:
 
-## Shortcut keys
-
-An extensive list of available commands in Bash can be found [here](https://ss64.com/bash/syntax-keyboard.html){target="_blank"}. Not all of them are available in Git Bash. Below is a short list of useful shortcut keys.
 
 ```{=html}
 <div style="margin-top:2em; margin-bottom:2em">
@@ -91,44 +89,12 @@ An extensive list of available commands in Bash can be found [here](https://ss64
   </thead>
   <tbody>
     <tr>
-      <td style="font-weight:bold">Moving the cursor</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>Go to beginning of line (Home)</td>
-      <td style="font-family:monospace">Ctrl+a</td>
-    </tr>
-    <tr>
-      <td>Go to end of line (End)</td>
-      <td style="font-family:monospace">Ctrl+e</td>
-    </tr>
-    <tr>
       <td>Previous command (Up arrow)</td>
       <td style="font-family:monospace">Ctrl+p</td>
     </tr>
     <tr>
       <td>Next command (Down arrow)</td>
       <td style="font-family:monospace">Ctrl+n</td>
-    </tr>
-    <tr>
-      <td>Go left/back one word</td>
-      <td style="font-family:monospace">Alt+b</td>
-    </tr>
-    <tr>
-      <td>Go right/forward one word</td>
-      <td style="font-family:monospace">Alt+f</td>
-    </tr>
-    <tr>
-      <td>Go forward one character</td>
-      <td style="font-family:monospace">Ctrl+f</td>
-    </tr>
-    <tr>
-      <td>Go backward one character</td>
-      <td style="font-family:monospace">Ctrl+b</td>
-    </tr>
-    <tr>
-      <td style="font-weight:bold">Editing</td>
-      <td></td>
     </tr>
     <tr>
       <td>Copy</td>
@@ -143,18 +109,6 @@ An extensive list of available commands in Bash can be found [here](https://ss64
       <td style="font-family:monospace">Ctrl+l</td>
     </tr>
     <tr>
-      <td>Delete the character before the cursor (Backspace)</td>
-      <td style="font-family:monospace">Ctrl+h</td>
-    </tr>
-    <tr>
-      <td>Delete the character after the cursor</td>
-      <td style="font-family:monospace">Ctrl+d</td>
-    </tr>
-    <tr>
-      <td style="font-weight:bold">Process control</td>
-      <td></td>
-    </tr>
-    <tr>
       <td>Interrupt/kill current process (SIGINT)</td>
       <td style="font-family:monospace">Ctrl+c</td>
     </tr>  </tbody>
@@ -162,13 +116,14 @@ An extensive list of available commands in Bash can be found [here](https://ss64
 </div>
 ```
 
-Windows users are used to using {{< kbd Ctrl+c>}} and {{< kbd Ctrl+v>}} to "Copy" and "Paste", but these shortcuts are not available in Git Bash, since they are reserved for other commands. it is possible to enable "Copy" using {{< kbd Ctrl+Shift+c>}} and "Paste" using {{< kbd Ctrl+Shift+v>}}, by right-clicking in the terminal, navigating to [Options>Keys]{style="font-family:monospace"}, and checking the "Ctrl+Shift+letter shortcuts" box.
+Finally, it is possible to use command-line completion by pressing {{< kbd Tab>}}. One very useful trick is to use this to auto-complete file names in your current working directory. For example, imagine you have to type out "a-very-long-file-name-that-is-tedious-to-type-out.txt". If you know that no other file in your current directory has a name that starts with "a-very-" you can simply type "a-very-" and hit {{< kbd Tab>}}, and the terminal will fill in the rest of the name!
 
-## Git BASH commands
 
-It is not easy to understand what commands are (or are not) available in Git Bash, why they are (or are not) available, nor is it straight forward to find documentation on them. Some commands have documentation that can be accessed by typing `help [command-name]` in the terminal. More generally speaking, CMD, PowerShell, and BASH command documentation can be found many different places, for example [here](https://ss64.com/){target="_blank"}.
+## Bash commands
 
-Here we will introduce a few basic commands most of which are used extensively in this tutorial. We will also provide some focused documentation that covers how the commands are used in this tutorial, alongside links to more extensive documentation.
+The remainder of this chapter is focused on introducing basic Bash commands that are ubiquitously used in this tutorial to create/list directories and files, edit them, and so on. While you *do* need to be familiar with these commands to understand the examples and exercises in the tutorial, you don't necessarily need to use them yourself, if you prefer to use the File Explorer and a text editor to navigate directories, create/edit files, and so on. That being said, it is *way* faster to use shell commands to do these tasks, at least when you get used to it. If you are unfamiliar with using a terminal, this is also a great opportunity to practice being comfortable doing basic stuff using shell commands, and it will make using Git from the command line feel a lot more natural.
+
+It is not easy to understand^[At least not for the author of this tutorial...] what (Bash) shell commands are (or are not) available when using the terminal that comes with Git for Windows , why they are (or are not) available, nor is it straight forward to find documentation on them. Some commands have documentation that can be accessed by typing `help [command-name]` in the terminal. More generally speaking, CMD, PowerShell, and Bash command documentation can be found many different places, for example [here](https://ss64.com/){target="_blank"}. Below is an overview of the commands that are going to be introduced the remainder of the chapter:
 
 ```{=html}
 <div style="margin-top:2em;margin-bottom:2em;">
@@ -190,7 +145,7 @@ Here we will introduce a few basic commands most of which are used extensively i
     </tr>
     <tr>
       <td style="font-family:monospace">echo > / echo >></td>
-      <td>Create file / append content to file</td>
+      <td>Create/append content to file</td>
     </tr>
     <tr>
       <td style="font-family:monospace">ls</td>
@@ -199,6 +154,10 @@ Here we will introduce a few basic commands most of which are used extensively i
     <tr>
       <td style="font-family:monospace">mkdir</td>
       <td>Create folder</td>
+    </tr>
+    <tr>
+      <td style="font-family:monospace">mv</td>
+      <td>Rename/move file</td>
     </tr>
     <tr>
       <td style="font-family:monospace">pwd</td>
@@ -217,7 +176,7 @@ Here we will introduce a few basic commands most of which are used extensively i
 </div>
 ```
 
-## Note on command options
+## TODO: MOVE THIS TO AN EXERCISE??? Note on command options
 
 Most of the commands listed here can take different options, e.g. `ls` has an `-a` and a `-1` option. It is possible to use multiple options at once on the form `ls -a1` instead of the more verbose form `ls -a -1`.
 

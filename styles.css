@@ -19,6 +19,9 @@
   font-family: monospace;
   background-color: black;
   color: #BFBFBF;
+  border-radius: 5px;
+  padding-left: 0.1em;
+  padding-right: 0.1em;
 }
 
 
