@@ -4,9 +4,13 @@
 
 TODO: Rework of "Git for Windows" chapter:
 
-- Rework last part of chapter where commands are introduced. Documentation should be way more limited, and instead structured around how to do differnet things, eg create a file.
+- Remove all the extensive examples, and focus on illustrating the main way to use the commands. Move more "advanced" uses of the commands to the exercises.
 
-- Add information on how lines starting with "#" are comments.
+- Add exercises. Focus on educating the reader to find and explore the documentation on the commands, and introduce useful flags.
+
+- Chapter is currently missing information on how to specify both full and relative paths when using commands. Should properly be explained immidiately before starting to introduce Bash commands. Probably also add exercise practicing using ./../- with cd command?
+
+- In exercise 2 and later, nudge reader to figure out what flags to use themself by teaching them how to find documentation on the command, primarily using `command-name --help` when available.
 
 
 **---TODO: content---**

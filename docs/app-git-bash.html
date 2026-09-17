@@ -257,20 +257,27 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#terminal" id="toc-terminal" class="nav-link" data-scroll-target="#terminal">Terminal</a></li>
   <li><a href="#shell" id="toc-shell" class="nav-link" data-scroll-target="#shell">Shell</a></li>
   <li><a href="#prompts-and-outputs" id="toc-prompts-and-outputs" class="nav-link" data-scroll-target="#prompts-and-outputs">Prompts and outputs</a></li>
-  <li><a href="#command-line-cli" id="toc-command-line-cli" class="nav-link" data-scroll-target="#command-line-cli">Command line / CLI</a></li>
+  <li><a href="#command-line-cli-working-for-the-terminal" id="toc-command-line-cli-working-for-the-terminal" class="nav-link" data-scroll-target="#command-line-cli-working-for-the-terminal">Command line / CLI / working for the terminal</a></li>
   </ul></li>
   <li><a href="#using-the-bash-terminal" id="toc-using-the-bash-terminal" class="nav-link" data-scroll-target="#using-the-bash-terminal"><span class="header-section-number">A.2</span> Using the Bash terminal</a></li>
-  <li><a href="#bash-commands" id="toc-bash-commands" class="nav-link" data-scroll-target="#bash-commands"><span class="header-section-number">A.3</span> Bash commands</a></li>
-  <li><a href="#todo-move-this-to-an-exercise-note-on-command-options" id="toc-todo-move-this-to-an-exercise-note-on-command-options" class="nav-link" data-scroll-target="#todo-move-this-to-an-exercise-note-on-command-options"><span class="header-section-number">A.4</span> TODO: MOVE THIS TO AN EXERCISE??? Note on command options</a>
+  <li><a href="#bash-commands" id="toc-bash-commands" class="nav-link" data-scroll-target="#bash-commands"><span class="header-section-number">A.3</span> Bash commands</a>
   <ul class="collapse">
-  <li><a href="#cd" id="toc-cd" class="nav-link" data-scroll-target="#cd">cd</a></li>
-  <li><a href="#clear" id="toc-clear" class="nav-link" data-scroll-target="#clear">clear</a></li>
-  <li><a href="#echo-echo" id="toc-echo-echo" class="nav-link" data-scroll-target="#echo-echo">echo &gt; / echo &gt;&gt;</a></li>
-  <li><a href="#ls" id="toc-ls" class="nav-link" data-scroll-target="#ls">ls</a></li>
-  <li><a href="#mkdir" id="toc-mkdir" class="nav-link" data-scroll-target="#mkdir">mkdir</a></li>
-  <li><a href="#pwd" id="toc-pwd" class="nav-link" data-scroll-target="#pwd">pwd</a></li>
-  <li><a href="#rm" id="toc-rm" class="nav-link" data-scroll-target="#rm">rm</a></li>
-  <li><a href="#start" id="toc-start" class="nav-link" data-scroll-target="#start">start</a></li>
+  <li><a href="#showchange-current-working-directory" id="toc-showchange-current-working-directory" class="nav-link" data-scroll-target="#showchange-current-working-directory">Show/change current working directory</a></li>
+  <li><a href="#list-filesdirectories" id="toc-list-filesdirectories" class="nav-link" data-scroll-target="#list-filesdirectories">List files/directories</a></li>
+  <li><a href="#create-directory" id="toc-create-directory" class="nav-link" data-scroll-target="#create-directory">Create directory</a></li>
+  <li><a href="#create-empty-file" id="toc-create-empty-file" class="nav-link" data-scroll-target="#create-empty-file">Create empty file</a></li>
+  <li><a href="#append-line-to-file" id="toc-append-line-to-file" class="nav-link" data-scroll-target="#append-line-to-file">Append line to file</a></li>
+  <li><a href="#print-content-of-file" id="toc-print-content-of-file" class="nav-link" data-scroll-target="#print-content-of-file">Print content of file</a></li>
+  <li><a href="#moverename-file" id="toc-moverename-file" class="nav-link" data-scroll-target="#moverename-file">Move/rename file</a></li>
+  <li><a href="#delete-filedirectory" id="toc-delete-filedirectory" class="nav-link" data-scroll-target="#delete-filedirectory">Delete file/directory</a></li>
+  </ul></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">A.4</span> Exercises</a>
+  <ul class="collapse">
+  <li><a href="#exercise-1---practice-basic-commands" id="toc-exercise-1---practice-basic-commands" class="nav-link" data-scroll-target="#exercise-1---practice-basic-commands">Exercise 1 - Practice basic commands</a></li>
+  <li><a href="#exercise-2---specifying-paths" id="toc-exercise-2---specifying-paths" class="nav-link" data-scroll-target="#exercise-2---specifying-paths">Exercise 2 - Specifying paths</a></li>
+  <li><a href="#exercise-3---using-multiple-flags-in-a-command" id="toc-exercise-3---using-multiple-flags-in-a-command" class="nav-link" data-scroll-target="#exercise-3---using-multiple-flags-in-a-command">Exercise 3 - Using multiple flags in a command</a></li>
+  <li><a href="#exercise-4---overwrite-content-of-file" id="toc-exercise-4---overwrite-content-of-file" class="nav-link" data-scroll-target="#exercise-4---overwrite-content-of-file">Exercise 4 - Overwrite content of file</a></li>
+  <li><a href="#exercise-5---making-parent-directories-as-needed-when-using-mkdir" id="toc-exercise-5---making-parent-directories-as-needed-when-using-mkdir" class="nav-link" data-scroll-target="#exercise-5---making-parent-directories-as-needed-when-using-mkdir">Exercise 5 - Making parent directories as needed when using mkdir</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -302,7 +309,7 @@ ul.task-list li input[type="checkbox"] {
 <pre class="terminal"><span class="col-user-id">user_id$computer_id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
 $
 </pre>
-<p><span class="col-user-id">user_id@computer_id</span> is an ID based on name of the user that is logged in, and the name of the device running Git Bash. The <span class="col-compiler">MINGW64</span> part, is the name of the compiler used to build Git Bash. The <span class="col-cd">~</span> at the end of the first line indicates the current directory. A tilde means that the current directory is the home directory of the user.</p>
+<p><span class="terminal-inline col-user-id">user_id@computer_id</span> is an ID based on the name of the user that is logged in, and the name of the device running Git Bash. The <span class="terminal-inline col-compiler">MINGW64</span> part, is the name of the compiler used to build Git Bash. The tilde (<span class="terminal-inline col-cd">~</span>) at the end of the first line indicates the current working directory. A tilde means that the current working directory is the home directory of the user.</p>
 <section id="terminology" class="level2" data-number="A.1">
 <h2 data-number="A.1" class="anchored" data-anchor-id="terminology"><span class="header-section-number">A.1</span> Terminology</h2>
 <p>The terms “terminal”, “shell”, “command line”, and “CLI” are often used interchangeably. In most cases this is fine and does not lead to confusion, but they are not synonyms, and understanding the difference makes understanding how to work in text-based environments easier. Furthermore, terms like “prompt” and “output” is often used in connection with working from the terminal.</p>
@@ -312,7 +319,7 @@ $
 </section>
 <section id="shell" class="level3">
 <h3 class="anchored" data-anchor-id="shell">Shell</h3>
-<p>The program that actually runs the commands you type in the terminal is the shell. A shell does a lot of different things, but its job is to interpret the commands that you type in the terminal and execute them. Which commands you are able to use is determined by what commands that comes with the shell you use.</p>
+<p>The program that actually runs the commands you type in the terminal is the shell. A shell does a lot of different things, but its main job is to interpret the commands that you type in the terminal and execute them. Which commands you are able to use is determined by what commands that comes with the shell you use.</p>
 <p>Shells are often referred to as “REPLs”. REPL stands for:</p>
 <ul>
 <li><p>Read</p></li>
@@ -340,15 +347,15 @@ $
 <p>The <em>prompt</em> is <span class="terminal-inline"><span class="col-user-id">user_id$computer_id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span> $</span>. The prompt is telling you that the shell is ready to accept a new command. The command that was typed was <span class="terminal-inline">echo hello</span>, and the <em>output</em> is <span class="terminal-inline">hello</span>.</p>
 <p>After typing the command <span class="terminal-inline">echo hello</span> and pressing <kbd title="Enter" aria-hidden="true">Enter</kbd><span class="visually-hidden">Enter</span>, the shell reads it, evaluates it, prints the output of the command (if any), and then prints a prompt to let you know that it is ready to read another command.</p>
 </section>
-<section id="command-line-cli" class="level3">
-<h3 class="anchored" data-anchor-id="command-line-cli">Command line / CLI</h3>
-<p>The terms <em>command line</em> and <em>CLI</em> (command-line interface) are also often used interchangeably with the terms <em>terminal</em> and <em>shell</em> to refer to the same thing: Using a program to interact with your computer using text-based commands.</p>
+<section id="command-line-cli-working-for-the-terminal" class="level3">
+<h3 class="anchored" data-anchor-id="command-line-cli-working-for-the-terminal">Command line / CLI / working for the terminal</h3>
+<p>The terms <em>command line</em> and <em>CLI</em> (command-line interface), <em>working from the terminal</em> are also often used interchangeably with the terms <em>terminal</em> and <em>shell</em> to refer to the same thing: Using a program to interact with your computer using text-based commands.</p>
 </section>
 </section>
 <section id="using-the-bash-terminal" class="level2" data-number="A.2">
 <h2 data-number="A.2" class="anchored" data-anchor-id="using-the-bash-terminal"><span class="header-section-number">A.2</span> Using the Bash terminal</h2>
-<p>The terminal that comes with Git Bash for Windows works fine right out of the box. The only thing that Windows users might want to configure, is how to copy and paste text from the terminal. Windows users are used to being able to use <kbd title="Ctrl+c" aria-hidden="true">Ctrl+c</kbd><span class="visually-hidden">Ctrl+c</span> and <kbd title="Ctrl+v" aria-hidden="true">Ctrl+v</kbd><span class="visually-hidden">Ctrl+v</span> to “Copy” and “Paste”, but these shortcuts are not available in Git Bash, since they are reserved for other commands. it is possible to enable “Copy” using <kbd title="Ctrl+Shift+c" aria-hidden="true">Ctrl+Shift+c</kbd><span class="visually-hidden">Ctrl+Shift+c</span> and “Paste” using <kbd title="Ctrl+Shift+v" aria-hidden="true">Ctrl+Shift+v</kbd><span class="visually-hidden">Ctrl+Shift+v</span>, by right-clicking in the terminal, navigating to <span style="font-family:monospace">Options&gt;Keys</span>, and checking the “Ctrl+Shift+letter shortcuts” box.</p>
-<p>The terminal also has many useful shortcut keys. An extensive list can be found <a href="https://ss64.com/bash/syntax-keyboard.html" target="_blank">here</a>, and below is a very short list of the most useful shortcuts:</p>
+<p>The terminal that comes with Git for Windows works fine right out of the box. The only thing that you, as a Windows user, might want to configure, is how to copy and paste text from the terminal. Windows users are used to being able to use <kbd title="Ctrl+c" aria-hidden="true">Ctrl+c</kbd><span class="visually-hidden">Ctrl+c</span> and <kbd title="Ctrl+v" aria-hidden="true">Ctrl+v</kbd><span class="visually-hidden">Ctrl+v</span> to “Copy” and “Paste”, but these shortcuts are not available in Git Bash, since they are reserved for other commands. it is possible to enable “Copy” using <kbd title="Ctrl+Shift+c" aria-hidden="true">Ctrl+Shift+c</kbd><span class="visually-hidden">Ctrl+Shift+c</span> and “Paste” using <kbd title="Ctrl+Shift+v" aria-hidden="true">Ctrl+Shift+v</kbd><span class="visually-hidden">Ctrl+Shift+v</span>, by right-clicking in the terminal, navigating to <span style="font-family:monospace">Options&gt;Keys</span>, and checking the “Ctrl+Shift+letter shortcuts” box.</p>
+<p>The terminal also has many useful shortcut keys. An extensive list can be found <a href="https://ss64.com/bash/syntax-keyboard.html" target="_blank">here</a>, and below is a short list of the most useful shortcuts:</p>
 <div style="margin-top:2em; margin-bottom:2em">
 
 <table class="table-striped caption-top table">
@@ -387,328 +394,436 @@ $
 </table>
 
 </div>
-<p>Finally, it is possible to use command-line completion by pressing <kbd title="Tab" aria-hidden="true">Tab</kbd><span class="visually-hidden">Tab</span>. One very useful trick is to use this to auto-complete file names in your current working directory. For example, imagine you have to type out “a-very-long-file-name-that-is-tedious-to-type-out.txt”. If you know that no other file in your current directory has a name that starts with “a-very-” you can simply type “a-very-” and hit <kbd title="Tab" aria-hidden="true">Tab</kbd><span class="visually-hidden">Tab</span>, and the terminal will fill in the rest of the name!</p>
+<p>Lines starting with “#” are comments, and will not be executed by the shell.</p>
+<p>Finally, it is possible to use command-line completion by pressing <kbd title="Tab" aria-hidden="true">Tab</kbd><span class="visually-hidden">Tab</span>. One very useful trick is to use this to auto-complete typing file names in your current working directory. For example, imagine you have to type out “a-very-long-file-name-that-is-tedious-to-type-out.txt”. If you know that no other file in your current directory has a name that starts with “a-very-” you can simply type “a-very-” and hit <kbd title="Tab" aria-hidden="true">Tab</kbd><span class="visually-hidden">Tab</span>, and the terminal will fill in the rest of the name!</p>
 </section>
 <section id="bash-commands" class="level2" data-number="A.3">
 <h2 data-number="A.3" class="anchored" data-anchor-id="bash-commands"><span class="header-section-number">A.3</span> Bash commands</h2>
 <p>The remainder of this chapter is focused on introducing basic Bash commands that are ubiquitously used in this tutorial to create/list directories and files, edit them, and so on. While you <em>do</em> need to be familiar with these commands to understand the examples and exercises in the tutorial, you don’t necessarily need to use them yourself, if you prefer to use the File Explorer and a text editor to navigate directories, create/edit files, and so on. That being said, it is <em>way</em> faster to use shell commands to do these tasks, at least when you get used to it. If you are unfamiliar with using a terminal, this is also a great opportunity to practice being comfortable doing basic stuff using shell commands, and it will make using Git from the command line feel a lot more natural.</p>
-<p>It is not easy to understand<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> what (Bash) shell commands are (or are not) available when using the terminal that comes with Git for Windows , why they are (or are not) available, nor is it straight forward to find documentation on them. Some commands have documentation that can be accessed by typing <code>help [command-name]</code> in the terminal. More generally speaking, CMD, PowerShell, and Bash command documentation can be found many different places, for example <a href="https://ss64.com/" target="_blank">here</a>. Below is an overview of the commands that are going to be introduced the remainder of the chapter:</p>
-<div style="margin-top:2em;margin-bottom:2em;">
-
-<table class="table-striped caption-top table">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th" style="width: 25%">Command</th>
-<th data-quarto-table-cell-role="th" style="width: 75%">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="font-family: monospace">cd</td>
-<td>Change working directory</td>
-</tr>
-<tr class="even">
-<td style="font-family: monospace">clear</td>
-<td>Clear terminal window</td>
-</tr>
-<tr class="odd">
-<td style="font-family: monospace">echo &gt; / echo &gt;&gt;</td>
-<td>Create/append content to file</td>
-</tr>
-<tr class="even">
-<td style="font-family: monospace">ls</td>
-<td>List directory content</td>
-</tr>
-<tr class="odd">
-<td style="font-family: monospace">mkdir</td>
-<td>Create folder</td>
-</tr>
-<tr class="even">
-<td style="font-family: monospace">mv</td>
-<td>Rename/move file</td>
-</tr>
-<tr class="odd">
-<td style="font-family: monospace">pwd</td>
-<td>Print working directory</td>
-</tr>
-<tr class="even">
-<td style="font-family: monospace">rm</td>
-<td>Remove files</td>
-</tr>
-<tr class="odd">
-<td style="font-family: monospace">start</td>
-<td>Start a program/open a file/open a directory</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</section>
-<section id="todo-move-this-to-an-exercise-note-on-command-options" class="level2" data-number="A.4">
-<h2 data-number="A.4" class="anchored" data-anchor-id="todo-move-this-to-an-exercise-note-on-command-options"><span class="header-section-number">A.4</span> TODO: MOVE THIS TO AN EXERCISE??? Note on command options</h2>
-<p>Most of the commands listed here can take different options, e.g.&nbsp;<code>ls</code> has an <code>-a</code> and a <code>-1</code> option. It is possible to use multiple options at once on the form <code>ls -a1</code> instead of the more verbose form <code>ls -a -1</code>.</p>
-<section id="cd" class="level3">
-<h3 class="anchored" data-anchor-id="cd">cd</h3>
-<p><strong>Syntax:</strong> <code>cd [DIR]</code><br></p>
-<p><strong>Description:</strong><br> Change the current directory to <code>DIR</code>.</p>
-<p>If <code>DIR</code> is not provided, changes the current directory to the value of the $HOME shell variable, i.e.&nbsp;the home directory of the user. <code>cd -</code> changes the working directory to the previous working directory ( “-” is converted to $OLDPWD).</p>
-<p>Note that forward slashes (/) are used to specify file paths, and that paths can be both on the form <span style="font-family:monospace">C:/path/to/directory</span> and <span style="font-family:monospace">/c/path/to/directory</span></p>
-<p>If the file path contains spaces, enclose the file path in (double) quotes.</p>
-<p>Git for Windows also comes with shell integration, so an alternative to using <code>cd</code> we can change the working directory by navigating to the folder in Windows explorer, right click on the folder (shift+right click on Windows 11) and select “Open Git Bash here”.</p>
-<p><strong>Link to documentation:</strong><br> <a href="https://ss64.com/bash/cd.html" target="_blank">https://ss64.com/bash/cd.html</a></p>
-<section id="example---change-directory" class="level4">
-<h4 class="anchored" data-anchor-id="example---change-directory">Example - Change directory</h4>
-<p>We can use <code>cd</code> to change the working directory by providing a file path to the directory.</p>
-<pre class="terminal"><span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">~</span>
-$ cd C:/path/to/directory
-<span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">/c/path/to/directory</span>
-$
-</pre>
-<p>Note that the working directory was set as <span style="font-family:monospace">C:/path/to/directory</span>, but is displayed on the form <span style="font-family:monospace">/c/path/to/directory</span></p>
-</section>
-<section id="example---file-path-with-spaces" class="level4">
-<h4 class="anchored" data-anchor-id="example---file-path-with-spaces">Example - file path with spaces</h4>
-<p>If a file path contains spaces, enclose the file path in (double) quotes.</p>
-<pre class="terminal"><span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">~</span>
-$ cd "/c/path/to/some directory"
-<span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">/c/path/to/some directory</span>
-$
-</pre>
-</section>
-<section id="example---change-to-subdirectory" class="level4">
-<h4 class="anchored" data-anchor-id="example---change-to-subdirectory">Example - Change to subdirectory</h4>
-<p>To change the current working directory to a subdirectory of the current working directory, we can simple set <code>DIR</code> to the subdirectory name.</p>
-<pre class="terminal"><span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">/c/path/to/dir</span>
-$ cd subfolder
-<span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">/c/path/to/dir/subfolder</span>
-$
-</pre>
-</section>
-<section id="example---change-to-parent-directory" class="level4">
-<h4 class="anchored" data-anchor-id="example---change-to-parent-directory">Example - Change to parent directory</h4>
-<p>We can change the working directory to the parent directory by setting <code>DIR</code> to “..”.</p>
-<pre class="terminal"><span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">/c/path/to/dir</span>
-$ cd ..
-<span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">/c/path/to</span>
-$
-</pre>
-<p>You can also use “..” more generally when specifying a file path, to denote the parent directory</p>
-<pre class="terminal" "=""><span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">/c/path/to/dir_a</span>
-$ cd ../dir_b
-<span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">/c/path/to/dir_b</span>
-$
-</pre>
-</section>
-<section id="example---change-to-previous-directory" class="level4">
-<h4 class="anchored" data-anchor-id="example---change-to-previous-directory">Example - Change to previous directory</h4>
-<p>We can change the working directory to the previous working directory by setting <code>DIR</code> to “-”.</p>
-<pre class="terminal"><span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">/c/current/cd/dir</span>
-$ cd -
-<span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">/c/previous/cd/dir</span>
-$
-</pre>
-</section>
-<section id="example---changing-working-directory-to-users-home-directory" class="level4">
-<h4 class="anchored" data-anchor-id="example---changing-working-directory-to-users-home-directory">Example - Changing working directory to user’s home directory</h4>
-<p>We can set the current working directory to the user’s home directory by not specifying <code>DIR</code>, or by setting <code>DIR</code> to “~”.</p>
-<pre class="terminal"><span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">/c/current/dir</span>
-$ cd ~
-<span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">~</span>
-$ cd -
-<span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">/c/current/dir</span>
-$ cd
-<span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">~</span>
-$
-</pre>
-</section>
-</section>
-<section id="clear" class="level3">
-<h3 class="anchored" data-anchor-id="clear">clear</h3>
-<p><strong>Syntax:</strong> <code>clear</code></p>
-<p><strong>Description:</strong><br> Clear the terminal screen.</p>
-<p><strong>Link to documentation:</strong><br> No documentation available.</p>
-<section id="example" class="level4">
-<h4 class="anchored" data-anchor-id="example">Example</h4>
-<p>Imagine we had the history shown in the terminal below, ending with a <code>clear</code> command.</p>
-<pre class="terminal"><span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">~</span>
-$ cd C:/path/to/directory
-<span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">/c/path/to/directory</span>
-$ clear
-</pre>
-<p>This would result in the terminal shown below.</p>
-<pre class="terminal"><span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">/c/path/to/directory</span>
-$
-</pre>
-<p>Clearing the terminal screen can also be done using the shortcut key <kbd title="Ctrl+l" aria-hidden="true">Ctrl+l</kbd><span class="visually-hidden">Ctrl+l</span></p>
-</section>
-</section>
-<section id="echo-echo" class="level3">
-<h3 class="anchored" data-anchor-id="echo-echo">echo &gt; / echo &gt;&gt;</h3>
-<p><strong>Syntax:</strong> <code>echo [STRING] &gt;&gt; [FILE]</code></p>
-<p><strong>Description:</strong><br> Append <code>STRING</code> content to <code>FILE</code> using the “&gt;&gt;” redirection operator. If the file does not exist it will be created. If “&gt;&gt;” is replaced with “&gt;” then the given <code>STRING</code> overwrites the content of <code>FILE</code>.</p>
-<p><strong>Link to documentation:</strong><br> <a href="https://ss64.com/bash/echo.html" target="_blank">https://ss64.com/bash/echo.html</a></p>
-<section id="example---create-empty-text-file" class="level4">
-<h4 class="anchored" data-anchor-id="example---create-empty-text-file">Example - Create empty text file</h4>
-<p>You can create an empty file by not providing any <code>STRING</code> and using the “&gt;” redirection operator (this will overwrite the any existing file with the same name).</p>
-<pre class="terminal"><span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">~</span>
-$ echo &gt; empty_file.txt
-</pre>
-<div class="notepad-file">
-<div class="notepad-header">empty_file.txt</div>
-<div class="notepad-body">
-⠀
-</div>
-</div>
-</section>
-<section id="example---create-text-file-with-content" class="level4">
-<h4 class="anchored" data-anchor-id="example---create-text-file-with-content">Example - Create text file with content</h4>
-<p>We can create a new text file with some content in it (or overwrite an existing file) by using the “&gt;” redirection operator and by providing a <code>STRING</code> with the content.</p>
-<pre class="terminal"><span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">~</span>
-$ echo "Some content" &gt; new_file.txt
-</pre>
-<div class="notepad-file">
-<div class="notepad-header">new_file.txt</div>
-<div class="notepad-body">
-Some content
-</div>
-</div>
-</section>
-<section id="example---append-content-to-existing-text-file" class="level4">
-<h4 class="anchored" data-anchor-id="example---append-content-to-existing-text-file">Example - Append content to existing text file</h4>
-<p>To append content to an existing text file use the “&gt;&gt;” redirection operator.</p>
-<pre class="terminal"><span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">~</span>
-$ echo "Some content" &gt; append_file.txt
-<span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">~</span>
-$ echo "Some more content" &gt;&gt; append_file.txt
-</pre>
-<div class="notepad-file">
-<div class="notepad-header">append_file.txt</div>
-<div class="notepad-body">
-Some content<br>
-Some more content
-</div>
-</div>
-</section>
-</section>
-<section id="ls" class="level3">
-<h3 class="anchored" data-anchor-id="ls">ls</h3>
-<p><strong>Syntax:</strong> <code>ls [OPTIONS] [DIR]</code><br></p>
-<p>List directory content.</p>
-<p>List directories and files in <code>DIR</code>. If <code>DIR</code> is not provided, lists the content of the current working directory. Content is listed alphabetically.</p>
-<p><strong>OPTIONS:</strong><br> <strong>-a</strong><br> Do not ignore entries starting with dot (.), i.e.&nbsp;hidden files.<br> <strong>-1</strong><br> List one file per line.<br></p>
-<p><strong>Link to documentation:</strong><br> <a href="https://ss64.com/bash/ls.html" target="_blank">https://ss64.com/bash/ls.html</a></p>
-<section id="example---list-content-of-work-directory" class="level4">
-<h4 class="anchored" data-anchor-id="example---list-content-of-work-directory">Example - List content of work directory</h4>
-<p>If we want to see a list of content in the current work directory, we can use <code>ls</code>.</p>
-<pre class="terminal"><span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">/c/some/dir</span>
-$ ls
-<span class="col-bright-blue">dir_a</span>/ file_a.txt file_c.txt file_e.txt
-<span class="col-bright-blue">dir_b</span>/ file_b.txt file_d.txt file_f.txt
-</pre>
-<p>By default multiple entries are listed in each line and directories are colour-coded and has a “/” suffix.</p>
-</section>
-<section id="example---list-all-content-of-a-directory" class="level4">
-<h4 class="anchored" data-anchor-id="example---list-all-content-of-a-directory">Example - List all content of a directory</h4>
-By default, entries starting with a dot (.), i.e.&nbsp;hidden files, are ignored. Use the “-a” option to list all files.
-<pre class="terminal"><span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">/c/some/git_repo</span>
-$ ls -a
-<span class="col-bright-blue">.git</span>/ file_a.txt file_c.txt file_e.txt
-.gitignore file_b.txt file_d.txt file_f.txt
-</pre>
-</section>
-<section id="example---list-one-entry-per-line" class="level4">
-<h4 class="anchored" data-anchor-id="example---list-one-entry-per-line">Example - List one entry per line</h4>
-<p>We can use the “-1” option to list only one entry per line.</p>
-<pre class="terminal"><span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">/c/some/dir</span>
-$ ls -1
-<span class="col-bright-blue">dir_a</span>/
-<span class="col-bright-blue">dir_b</span>/
-file_a.txt
-file_b.txt
-file_c.txt
-file_d.txt
-file_e.txt
-file_f.txt
-</pre>
-</section>
-</section>
-<section id="mkdir" class="level3">
-<h3 class="anchored" data-anchor-id="mkdir">mkdir</h3>
-<p><strong>Syntax:</strong> <code>mk [FOLDER]</code><br></p>
-<p>Create folder.</p>
-<p>Create a new folder with name <code>FOLDER</code> in the current working directory, if it does not already exists. If the folder name contains spaces enclose the name in quotes.</p>
-<p><strong>Link to documentation:</strong><br> <a href="https://ss64.com/bash/mkdir.html" target="_blank">https://ss64.com/bash/mkdir.html</a></p>
-<section id="example-1" class="level4">
-<h4 class="anchored" data-anchor-id="example-1">Example</h4>
-<p>Create new folders. Note that we don’t have to enclose the folder name in quotes if it contains no spaces.</p>
-<pre class="terminal"><span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">/c/some/dir</span>
-$ ls -1
-file_a.txt
-file_b.txt
-<span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">/c/some/dir</span>
-$ mkdir new-folder
-<span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">/c/some/dir</span>
-$ mkdir "new-folder"
-<span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">/c/some/dir</span>
-$ ls -1
-<span class="col-bright-blue">new-folder</span>/
-<span class="col-bright-blue">'new folder'</span>/
-file_a.txt
-file_b.txt
-</pre>
-</section>
-</section>
-<section id="pwd" class="level3">
-<h3 class="anchored" data-anchor-id="pwd">pwd</h3>
-<p><strong>Syntax:</strong> <code>pwd</code><br></p>
-<p>Print working directory.</p>
-<p><strong>Link to documentation:</strong><br> <a href="https://ss64.com/bash/pwd.html" target="_blank">https://ss64.com/bash/pwd.html</a></p>
-<section id="example-2" class="level4">
-<h4 class="anchored" data-anchor-id="example-2">Example</h4>
-<p>When working with Git this command is mainly used to see where the current user’s home directory is, since the current working directory is always shown in the terminal.</p>
-<pre class="terminal"><span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">~</span>
+<p>It is not easy to understand<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> what Bash shell commands are (or are not) available when using the terminal that comes with Git for Windows , why they are (or are not) available, nor is it straight forward to find documentation on (some of) them. Some commands have documentation that can be accessed by typing <code>help [command-name]</code> or <code>command-name --help</code> in the terminal. More generally speaking, CMD, PowerShell, and Bash command documentation can be found many different places, for example <a href="https://ss64.com/" target="_blank">here</a>.</p>
+<p>The introduction of the commands is structured around how to do different common tasks, and will focus on very basic uses of the commands, mostly without using any flags (options). The exercises at the end will go a little more in-depth with exploring documentation and using flags with the commands.</p>
+<section id="showchange-current-working-directory" class="level3">
+<h3 class="anchored" data-anchor-id="showchange-current-working-directory">Show/change current working directory</h3>
+<p>The current working directory is the active folder on your computer where your shell runs and perform file operations. When you open your terminal, the current directory is usually your home folder (“~”). We can use the <code>pwd</code> command to print the name of the current working directory, as illustrated below:</p>
+<pre class="terminal"><span class="col-user-id">user_id$computer_id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
 $ pwd
-/c/absolute/path/to/home/directory
+/c/Users/user_id
+</pre>
+<p>To change the current working directory, we can use the <code>cd</code> command. If a path is not provided, the current working directory is changed to the home directory of the user.</p>
+<pre class="terminal"><span class="col-user-id">user_id$computer_id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+$ cd /c/test/some-folder
+<span class="col-user-id">user_id$computer_id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">/c/test/some-folder</span>
+$ 
+</pre>
+<p>If you want to <code>cd</code> into a subdirectory of the current working directory, you don’t have to write the full path, you can just write the name of the subdirectory:</p>
+<pre class="terminal"><span class="col-user-id">user_id$computer_id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+$ cd some-sub-dir
+<span class="col-user-id">user_id$computer_id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~/some-sub-dir</span>
+$ 
+</pre>
+<p>Note that forward slashes (/) are used to specify file paths, and that paths can be both on the form <span style="font-family:monospace">C:/path/to/directory</span> and <span style="font-family:monospace">/c/path/to/directory</span> If the file path contains spaces, enclose the file path in (double) quotes.</p>
+<p>Git for Windows also comes with shell integration, so you can also change the working directory by navigating to the folder using File Explorer, right click on the folder (shift+right click on Windows 11) and select “Open Git Bash here”.</p>
+</section>
+<section id="list-filesdirectories" class="level3">
+<h3 class="anchored" data-anchor-id="list-filesdirectories">List files/directories</h3>
+<p>To list files and directories in the current working directory, you can use the <code>ls</code> command. Imagine your current working directory had two files, file1.txt and file2.txt, and a subdirectory called “sub-dir”. If you used the <code>ls</code> command you would see the following output in the terminal:</p>
+<pre class="terminal"><span class="col-user-id">user_id$computer_id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">some-dir</span>
+$ cd ls
+file1.txt  file2.txt  <span class="col-dir">sub-dir</span>/
 </pre>
 </section>
+<section id="create-directory" class="level3">
+<h3 class="anchored" data-anchor-id="create-directory">Create directory</h3>
+<p>You can create a new directory in your current working directory by using the <code>mkdir dir-name</code> command, which will create a directory named “dir-name”. If the directory already exists, nothing will happen, i.e.&nbsp;the content of the directory will not be overwritten:</p>
+<pre class="terminal"><span class="col-user-id">user_id$computer_id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+<span># Create directory</span>
+$ mkdir new-dir
+<span># Try to create a new directory with the same name</span>
+$ mkdir new-dir
+mkdir: cannot create directory ‘new-dir’: File exists
+</pre>
 </section>
-<section id="rm" class="level3">
-<h3 class="anchored" data-anchor-id="rm">rm</h3>
-<p><strong>Syntax:</strong> `rm [OPTIONS] [FILE]``<br></p>
-<p>Remove files.</p>
-<p>To remove a file you must have write permission on the file and the folder where it is stored.</p>
-<p>By default, <code>rm</code> does not remove directories. Use the “-r” option to remove each listed directory too, along with all of its content.</p>
-<p>You should, obviously, be VERY careful when deleting files using terminal commands. Especially if you delete directories and their contents recursively.</p>
-<p><strong>OPTIONS:</strong><br> <strong>-f</strong><br> Ignore non-existent files, never prompt.<br> <strong>-r</strong><br> Remove directories and their contents recursively.</p>
-<p><strong>Link to documentation:</strong><br> <a href="https://ss64.com/bash/rm.html" target="_blank">https://ss64.com/bash/rm.html</a></p>
-<section id="example---remove-file" class="level4">
-<h4 class="anchored" data-anchor-id="example---remove-file">Example - Remove file</h4>
-<pre class="terminal"><span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">/c/some/dir</span>
+<section id="create-empty-file" class="level3">
+<h3 class="anchored" data-anchor-id="create-empty-file">Create empty file</h3>
+<p>To create an empty file in current work directory, use the <code>touch</code> command:</p>
+<pre class="terminal"><span class="col-user-id">user_id$computer_id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+$ touch create-empty-file.txt
+ls
+create-empty-file.txt
+</pre>
+</section>
+<section id="append-line-to-file" class="level3">
+<h3 class="anchored" data-anchor-id="append-line-to-file">Append line to file</h3>
+<p>To append a string of text as a new line in a file, you can use the <code>echo</code> command together with the <code>&gt;&gt;</code> redirection operators as shown below. If the specified file does not exist, it will be created:</p>
+<pre class="terminal"><span class="col-user-id">user_id$computer_id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
 $ ls
-file_a.txt file_b.txt
-<span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">/c/some/dir</span>
-$ rm file_a.txt
-<span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">/c/some/dir</span>
+$ echo "First line" &gt;&gt; file.txt
 $ ls
-file_b.txt
+file.txt
+</pre>
+</section>
+<section id="print-content-of-file" class="level3">
+<h3 class="anchored" data-anchor-id="print-content-of-file">Print content of file</h3>
+<p>To print the content of file in the terminal, use the <code>cat</code> command:</p>
+<pre class="terminal"><span class="col-user-id">user_id$computer_id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+$ echo "First line" &gt;&gt; file.txt
+$ echo "Second line" &gt;&gt; file.txt
+$ cat file.txt
+First line
+Second line
+</pre>
+</section>
+<section id="moverename-file" class="level3">
+<h3 class="anchored" data-anchor-id="moverename-file">Move/rename file</h3>
+<p>To move or rename a file or directory use the <code>mv</code> command. To rename a file/directory, use the form <code>rm old-name new-name</code> and to move a file/directory use the form <code>rm source-file distination-directory</code>:</p>
+<pre class="terminal"><span class="col-user-id">user_id$computer_id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+# Create file1.txt
+$ touch file1.txt
+$ ls
+file1.txt
+$ # Rename file1.txt
+$ mv file1.txt file2.txt
+$ ls
+file2.txt
+$ # Move file to subdirectory
+$ mkdir subdir
+$ mv file2.txt subdir
+$ cd subdir
+$ ls
+file2.txt
+</pre>
+</section>
+<section id="delete-filedirectory" class="level3">
+<h3 class="anchored" data-anchor-id="delete-filedirectory">Delete file/directory</h3>
+<p>You can delete files and directories using the <code>rm</code> command. Note that you must have write permission on the file and the folder where it is stores to be able to delete it. By default, <code>rm</code> does not remove directories. Use the <code>-r</code> flag to remove each directories and their contents, recursively.</p>
+<pre class="terminal"><span class="col-user-id">user_id$computer_id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+$ # Create file
+$ touch file1.txt
+$ ls
+file1.txt
+$ # Remove file
+$ rm file1.txt
+$ ls
+
 </pre>
 </section>
 </section>
-<section id="start" class="level3">
-<h3 class="anchored" data-anchor-id="start">start</h3>
-<p><strong>Syntax:</strong> <code>start [FILE/DIR/PROGRAM]</code><br></p>
-<p>Start a program, or open a file/directory in Windows Explorer.</p>
-<p><span style="color:blue">TODO: Try to find some documentation on this command. This does not seem to be the CMD <code>START</code> command? Why does something like<code>start firefox</code> actually work??? </span></p>
-<p><strong>Link to documentation:</strong><br></p>
-<section id="example---open-current-working-directory-in-windows-explorer" class="level4">
-<h4 class="anchored" data-anchor-id="example---open-current-working-directory-in-windows-explorer">Example - Open current working directory in Windows explorer</h4>
-<p>We can open the current working directory in Windows explorer by simply using <code>start .</code></p>
-<pre class="terminal"><span class="col-green">user_id$computer_id</span> <span class="col-magenta">MINGW64</span> <span class="col-yellow">/c/some/dir</span>
-$ start .
+<section id="exercises" class="level2" data-number="A.4">
+<h2 data-number="A.4" class="anchored" data-anchor-id="exercises"><span class="header-section-number">A.4</span> Exercises</h2>
+<section id="exercise-1---practice-basic-commands" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-1---practice-basic-commands">Exercise 1 - Practice basic commands</h3>
+<p>In this exercise you will practice basic use of all the commands that have been introduced in this chapter.</p>
+<p><b>1. Change the current working directory to your home directory</b></p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Hint">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>You are looking for a command that can be used to <strong>c</strong>hange <strong>d</strong>irectory.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>You can change the current working directory using the <code>cd</code> command. If you just opened your terminal window, the current working directory is probably already set to your home directory, denoted by “~”.</p>
+<pre class="terminal"><span class="col-user-id">user_id$computer_id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+$ # If no path is specified, cd sets the current working directory to
+$ # the home directory.
+$ cd
 </pre>
+</div>
+</div>
+</div>
+<p><b>2. Find the full path to your home directory</b></p>
+<p>It might be unclear to you where exactly your home directory is located. Use a command to print the full path of the current working directory in the terminal.</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Hint">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>You are looking for a command that can <strong>p</strong>rint the current <strong>w</strong>orking <strong>d</strong>irectory.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>You can use the <code>pwd</code> command to print the full path of the current working directory in the terminal:</p>
+<pre class="terminal"><span class="col-user-id">user_id$computer_id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+$ pwd
+/c/path/to/your/home-directory
+</pre>
+</div>
+</div>
+</div>
+<p><b>3. Create a new folder</b></p>
+<p>Create a new folder named “git-bash-tests” in your home directory, and <code>cd</code> into the directory.</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Hint">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>You are looking for a command that can <strong>m</strong>a<strong>k</strong>e a <strong>dir</strong>ectory.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>You can use the <code>mkdir</code> command to make a new directory in your current working directory:</p>
+<pre class="terminal"><span class="col-user-id">user_id$computer_id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+$ mkdir git-bash-tests
+$ cd git-bash-tests
+<span class="col-user-id">user_id$computer_id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~/git-bash-test</span>
+$
+</pre>
+</div>
+</div>
+</div>
+<p><b>4. Create files</b></p>
+<p>Create two empty files, named “file1.txt” and “file2.txt” in your current working directory. After creating the files, print all files in the current working directory in the terminal.</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Hint">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Maybe try to <strong>touch</strong> the files to create them? To print files in the current working directory, you need some way to <strong>l</strong>i<strong>s</strong>t them.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>You can create a file using the <code>touch</code> command:</p>
+<pre class="terminal"><span class="col-user-id">user_id$computer_id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~/git-bash-test</span>
+$ touch file1.txt
+$ touch file2.txt
+$ ls
+file1.txt file2.txt
+</pre>
+</div>
+</div>
+</div>
+<p><b>5. Add lines to files</b></p>
+<p>Add the line “This is file1.txt” to the “file1.txt” file, and the line “This is file2.txt” to the “file2.txt” file. After adding the lines, print the content of the files in the terminal.</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Hint">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>To add a line to a file, you need some way <strong>echo</strong> a string and redirect it to a file. To print the content of a file in the terminal, you need a command to con<strong>cat</strong>enate the content to the terminal window.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>You can add a line to a file using the <code>echo</code> command together with <code>&gt;&gt;</code> operator, and you can print the content of the file using <code>cat</code>:</p>
+<pre class="terminal"><span class="col-user-id">user_id$computer_id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~/git-bash-test</span>
+$ echo "This is file1.txt" &gt;&gt; file1.txt
+$ echo "This is file2.txt" &gt;&gt; file2.txt
+$ cat file1.txt
+This is file1.txt
+$ cat file2.txt
+This is file2.txt
+</pre>
+</div>
+</div>
+</div>
+<p><b>6. Rename and move files</b></p>
+<p>Rename “file1.txt” to “file1-new.txt”, create a subdirectory called “subdirectory” and move “file2.txt” to this subdirectory.</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Hint">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>There is a single command that can be used to both rename and <strong>m</strong>o<strong>v</strong>e files.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The <code>mv</code> command can be used to both rename and move files:</p>
+<pre class="terminal"><span class="col-user-id">user_id$computer_id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~/git-bash-test</span>
+$ # Rename file1.txt
+$ mv file1.txt file1-new.txt
+$ # Create subdirectory and move file2.txt
+$ mkdir subdirectory
+$ mv file2.txt subdirectory
+$ # Check that files have been renamed and moved. Note that we are using the
+$ # -R flag to list subdirectories recursively
+$ ls -R
+.:
+file1-new.txt <span class="col-dir">subdirectory</span>/
+
+./subdirectory:
+file2.txt
+</pre>
+</div>
+</div>
+</div>
+<p><b>7. Cleanup</b></p>
+<p>Complete the exercise by cleaning up: <code>cd</code> back to your home directory and delete the “git-bash-test” folder.</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Hint">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>You need to use a command to <strong>r</strong>e<strong>m</strong>ove the folder. Remember that you are trying to delete a directory, so you might need to use a flag for this.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The <code>rm</code> command can be used to delete files and directories. Since we want to delete a directory, we need to use the <code>-r</code> flag:</p>
+<pre class="terminal"><span class="col-user-id">user_id$computer_id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~/git-bash-test</span>
+$ # We first need to cd outside the directory we want to delete
+$ cd
+<span class="col-user-id">user_id$computer_id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+$ rm git-bash-test -r
+</pre>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-2---specifying-paths" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-2---specifying-paths">Exercise 2 - Specifying paths</h3>
+<ul>
+<li>introduce ./-/.. when using cd. find doc using help cd command</li>
+</ul>
+</section>
+<section id="exercise-3---using-multiple-flags-in-a-command" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-3---using-multiple-flags-in-a-command">Exercise 3 - Using multiple flags in a command</h3>
+<p>Most of the commands listed here can take different options, e.g.&nbsp;<code>ls</code> has an <code>-a</code> and a <code>-1</code> option. It is possible to use multiple options at once on the form <code>ls -a1</code> instead of the more verbose form <code>ls -a -1</code>.</p>
+</section>
+<section id="exercise-4---overwrite-content-of-file" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-4---overwrite-content-of-file">Exercise 4 - Overwrite content of file</h3>
+<ul>
+<li>Introduce “&gt;” operator together with echo command to overwrite the content of a file.</li>
+</ul>
+</section>
+<section id="exercise-5---making-parent-directories-as-needed-when-using-mkdir" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-5---making-parent-directories-as-needed-when-using-mkdir">Exercise 5 - Making parent directories as needed when using mkdir</h3>
+<ul>
+<li>Introduce -p flag with mkdir to automatically make non-existent parent directories.</li>
+</ul>
 
 
-</section>
 </section>
 </section>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
