@@ -38,6 +38,7 @@ book:
 
 format:
   html:
+    crossrefs-hover: false
     number-sections: true
     number-depth: 2
     toc: true
