@@ -10,6 +10,7 @@
 
 - Add exercise where reader is requested to do the basic configuration explained in the chapter.
 
+- Introduce file terms "commited", "modified" and "staged" that have been removed from previous chapter introducing version control and Git.
 
 - Using remotes as backups initiatedby git clone: by default the remote is probably not saving a hard copy of repo (to save space). Look at --no-hardlinks options for git clone to see how to circumvent this.
 
@@ -21,10 +22,6 @@
 
 - Consider if it is better to merge the git reflog appendix into this chapter as a final section since it is a natural extension of this topic.
 
-
-**"Introduction to git" chapter:**
-
-- "Everything is checksummed" section: maybe add some more details and/or write an appendix?
 
 
 **"Configuration of Git" chapter:**

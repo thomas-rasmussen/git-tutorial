@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>1&nbsp; Introduction to Git – Git tutorial</title>
+<title>1&nbsp; Introduction to version control and Git – Git tutorial</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -89,7 +89,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part1-ch01-introduction-to-git.html">Part I</a></li><li class="breadcrumb-item"><a href="./part1-ch01-introduction-to-git.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to Git</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part1-ch01-introduction-to-git.html">Part I</a></li><li class="breadcrumb-item"><a href="./part1-ch01-introduction-to-git.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to version control and Git</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -135,7 +135,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./part1-ch01-introduction-to-git.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to Git</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to version control and Git</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -258,8 +258,9 @@ ul.task-list li input[type="checkbox"] {
   </ul></li>
   <li><a href="#what-is-git" id="toc-what-is-git" class="nav-link" data-scroll-target="#what-is-git"><span class="header-section-number">1.2</span> What is Git?</a>
   <ul class="collapse">
-  <li><a href="#the-main-sections-of-a-git-project" id="toc-the-main-sections-of-a-git-project" class="nav-link" data-scroll-target="#the-main-sections-of-a-git-project">The main sections of a Git project</a></li>
-  <li><a href="#sec-file-storage-in-git" id="toc-sec-file-storage-in-git" class="nav-link" data-scroll-target="#sec-file-storage-in-git">File storing in Git</a></li>
+  <li><a href="#main-parts-of-a-git-project" id="toc-main-parts-of-a-git-project" class="nav-link" data-scroll-target="#main-parts-of-a-git-project">Main parts of a Git project</a></li>
+  <li><a href="#sec-file-storage-in-git" id="toc-sec-file-storage-in-git" class="nav-link" data-scroll-target="#sec-file-storage-in-git">How Git stores data</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -267,9 +268,9 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part1-ch01-introduction-to-git.html">Part I</a></li><li class="breadcrumb-item"><a href="./part1-ch01-introduction-to-git.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to Git</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part1-ch01-introduction-to-git.html">Part I</a></li><li class="breadcrumb-item"><a href="./part1-ch01-introduction-to-git.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to version control and Git</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-introduction-to-git" class="quarto-section-identifier"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to Git</span></span></h1>
+<h1 class="title"><span id="sec-introduction-to-git" class="quarto-section-identifier"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to version control and Git</span></span></h1>
 </div>
 
 
@@ -286,35 +287,37 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>So, what is Git? We will start this tutorial with a short introduction to version control in general, and talk about what Git is and how it works.</p>
+<p>What is version control and what is Git? We will begin this tutorial with a brief introduction to version control before explaining what Git is and how it works at a broad level.</p>
 <section id="what-is-version-control" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="what-is-version-control"><span class="header-section-number">1.1</span> What is version control?</h2>
-<p><em>Version control</em> is the practice of organizing and tracking different versions of computer files over time. Generally, you can do this for any type of file, but it is primarily done for source code, i.e.&nbsp;plain text files. A <em>version control system</em> (VCS) is a software tool that automates version control.</p>
+<p><em>Version control</em> is the practice of organizing and tracking different versions of computer files over time. Version control can be used for almost any type of file, but is particularly useful for source code, which is typically stored in plain-text files. A <em>version control system</em> (VCS) is a software tool that automates version control.</p>
 <div style="display: grid">
 <div style="grid-column: 1">
-<p>You might not realise it, but you are probably already using some form of primitive version control. Does the image on the right look familiar? It is common for people to do manual version control of files by making copies of it and renaming the file. You might even make a folder where you store the old versions separately. The unstructured choice of filenames shown here might seem a bit exaggerated to you, but this pattern of haphazardly naming different versions of files is very common in practice. This approach to version control is obviously less than ideal. Even with a single file, it quickly becomes impossible to discern what version of the file is the newest, and whether or not the history of the file is linear, or if some versions diverge in different direction from some common base version. Furthermore, it is impossible to assess what exactly has changed between versions. Even for small projects with a single developer, this approach clearly has some serious limitations.</p>
+<p>You might not realize it, but you are probably already using some form of primitive version control. Does the image on the right look familiar? It is common for people to do manual version control by making copies of files and renaming them. You might even create a separate folder for older versions. The filenames shown here might seem exaggerated, but inconsistent naming like this is common in practice.</p>
+<p>Even with a single file, manual version control quickly makes it difficult to determine which version of the file is the newest, and whether the versions follow a linear history or have diverged from a common starting point. Furthermore, it is difficult to assess what exactly has changed between versions. Even for small projects with a single developer, this approach clearly has serious limitations.</p>
 </div>
-<div style="grid-column: 2;">
+<div style="grid-column: 2;margin-left:1em;">
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<img src="images/code_file_history.png" class="figure-img">
-<figcaption>
-Versions of a code file
-</figcaption>
+<p><img src="./images/code_file_history.png" class="img-fluid figure-img"></p>
+<figcaption>Different versions of a file</figcaption>
 </figure>
 </div>
 </div>
-<p>If the above example of file naming seems ludicrous to you, good. That means you have probably already, either implicitly or explicitly, thought about how to organize different versions of your files. You are already on your way to overcoming the biggest hurdle with working with VCS’s: working in a structured manner. It is usually not that hard to figure out how to use VCS’s, but some people can struggle with the amount of structure that is forced upon them, and have difficulties using VCS’s in an effective way, because they are less inclined to accept the premise of working in a structured way that is very unfamiliar to them. If that sounds like like you, try to keep an open mind going forward. To get the full benefit of using a VCS, it might be necessary to make some changes to how you work.</p>
+</div>
+<p>Using a VCS provides a more structured way of managing different versions of files. Learning the basics of a VCS is usually straightforward, but if you are not already working in a structured way, getting the full benefit of version control may require adapting some existing work habits.</p>
+<p>A VCS addresses many of the problems with manual version control. It keeps a history of changes in a repository, making it possible to see what has changed, when it changed, and who made the changes. It also makes it easier to restore previous versions of files and, depending on the type of VCS, collaborate with others on the same project.</p>
 <section id="local-vcs" class="level3">
 <h3 class="anchored" data-anchor-id="local-vcs">Local VCS</h3>
 <div style="display:flex">
 <div style="flex:50%;">
-<p>The first development away from manual version control solutions was so-called local VCS’s. A local VCS is a local database on a single computer that keeps track of changes to files. Using a local VCS is can improvement over manual version control and can be useful for small and/or personal projects, but these types of VCS’s still have important limitations:</p>
+<p>One type of version control system is the <em>local VCS</em>. A local VCS stores the repository on your computer, where changes to files are tracked. Using a local VCS is an improvement over manual version control and can be useful for small or personal projects, but this type of VCS still has important limitations:</p>
 <ul>
-<li><p>All file versions are stored locally, making it vulnerable to data loss.</p></li>
-<li><p>It is difficult to collaborate with others using a local VCS, since changes can’t easily be shared or consolidated.</p></li>
+<li><p>All file versions are stored on your computer, making them vulnerable to data loss if that computer fails.</p></li>
+<li><p>It is difficult to collaborate with others using a local VCS, since changes cannot easily be shared or consolidated.</p></li>
 </ul>
 </div>
-<div style="flex:50%;">
+<div style="flex:50%;margin-left:1em;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="./diagrams/local-vcs.svg" class="img-fluid figure-img"></p>
@@ -328,24 +331,24 @@ Versions of a code file
 <h3 class="anchored" data-anchor-id="centralized-vcs">Centralized VCS</h3>
 <div style="display:flex">
 <div style="flex:50%">
-<p>To overcome the collaboration issues with local VCS’s, the next type of VCS that was developed was centralized VCS’s. These systems work by having a single central server that contains all the files that are version controlled. Developers can “checkout” files from that server and “commit” changes back to the server. This setup has many advantages over local VCS’s.</p>
+<p>To make collaboration easier, <em>centralized VCSs</em> use a repository on a central server. Developers can check out files from the repository and commit changes back to it. Centralized VCSs have several advantages over local VCSs.</p>
 <ul>
-<li><p>A single central repository makes it easy for developers to see the history of changes and current state of files.</p></li>
-<li><p>Makes it easy to collaborate with other people.</p></li>
+<li><p>A single central repository makes it easy for developers to see the history of changes and the current state of files.</p></li>
+<li><p>A central repository also makes it easier to collaborate with others.</p></li>
 <li><p>Administrators can control what files each developer can access and modify.</p></li>
 </ul>
-<p>However, centralized VCS’s still have limitations:</p>
+<p>However, centralized VCSs still have limitations:</p>
 <ul>
-<li><p>Single point of failure: If the server dies and no proper backup has been kept, the entire history of the project is lost except whatever snapshots of files people happen to have on their local machines.</p></li>
-<li><p>It is typically not possible to work offline. If the central server is temporarily offline or if the developer does not have an internet connection, it is not possible to “commit” changes to files.</p></li>
-<li><p>Operations requires communication with the central server which can be slow, especially for large projects.</p></li>
+<li><p>If the server fails and no proper backup exists, the project’s version history may be lost, although developers may still have copies of individual files stored locally.</p></li>
+<li><p>Committing changes typically requires access to the central server, making it difficult to work fully offline.</p></li>
+<li><p>Operations require communication with the central server, which can be slow, especially for large projects.</p></li>
 </ul>
 </div>
-<div style="flex:50%;">
+<div style="flex:50%;margin-left:1em;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="./diagrams/centralized-vcs.svg" class="img-fluid figure-img"></p>
-<figcaption>Centalized VCS</figcaption>
+<figcaption>Centralized VCS</figcaption>
 </figure>
 </div>
 </div>
@@ -355,24 +358,24 @@ Versions of a code file
 <h3 class="anchored" data-anchor-id="distributed-vcs">Distributed VCS</h3>
 <div style="display:flex">
 <div style="flex:50%">
-<p>The final type of VCS’s is <em>distributed</em> VCS’s. With a distributed VCS, developers don’t just checkout the latest version of files, they make a copy of the entire history of all files. Distributed VCS’s have several advantages over centralized VCS’s.</p>
+<p>A different approach is the <em>distributed VCS</em>. With a distributed VCS, each developer typically has a local copy of the repository and its history. Distributed VCSs have several advantages over centralized VCSs.</p>
 <ul>
-<li><p>No single point of failure. Each developer has the entire history of files.</p></li>
-<li><p>Instead of relying on a central server, developers can share and synchronize changes directly with each others.</p></li>
+<li><p>There is no single point of failure for the repository’s history.</p></li>
+<li><p>Developers can also share and synchronize changes directly with each other.</p></li>
 <li><p>Developers can work offline.</p></li>
-<li><p>Allows for more flexible workflows that are not possible with a single centralized server.</p></li>
-<li><p>Some types of operations are faster since you don’t need to communicate with a server.</p></li>
+<li><p>Distributed VCSs allow for more flexible workflows than centralized VCSs.</p></li>
+<li><p>Some operations are faster because they can be performed locally without communicating with a server.</p></li>
 </ul>
-<p>On the other hand distributed VCS’s also comes with some downsides:</p>
+<p>However, distributed VCSs also have some limitations:</p>
 <ul>
-<li><p>Storing the complete history of files can take up a lot more disc space, especially if files includes binary files or the project has a long and complicated history.</p></li>
-<li><p>Administrators can not control which individual files each developer can see/modify.</p></li>
+<li><p>Storing a complete repository history can take up more disk space, especially if the project contains binary files or has a long and complicated history.</p></li>
+<li><p>It is difficult to control which files individual developers can access, since they typically have a complete copy of the repository.</p></li>
 </ul>
 </div>
-<div style="flex:50%;margin:1em;">
+<div style="flex:50%;margin-left:1em;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./diagrams/distributed-vcs.svg" class="img-fluid figure-img"></p>
+<p><img src="./diagrams/distributed-vcs.drawio.svg" class="img-fluid figure-img"></p>
 <figcaption>Distributed VCS</figcaption>
 </figure>
 </div>
@@ -382,48 +385,49 @@ Versions of a code file
 </section>
 <section id="what-is-git" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="what-is-git"><span class="header-section-number">1.2</span> What is Git?</h2>
-<p>So what is Git and how did it come to be? Git is a distributed VCS, and it is born from controversy. In 2005 the relationship soured between the Linux kernel project and the company owning the proprietary distributed VCS, BitKeeper, that the Linux community was using as a VCS. This resulted in the free licence of BitKeeper that the Linux community was using being revoked. Prompted by this, the Linux developer community (in particular Linus Thorvald, the creator of Linux) developed their own tool, Git, to replace BitKeeper. Git was designed with several key goals in mind that was needed for the Linux kernel project: speed, simple design, strong support for non-linear development, a fully distributed nature, and the ability to handle large projects efficiently.</p>
-<p>Git basically works by storing snapshots of the state of your files over time. Git makes it easy to switch between different versions of your code, compare different versions of the same file, see the history of a file over time and much more.</p>
-<section id="the-main-sections-of-a-git-project" class="level3">
-<h3 class="anchored" data-anchor-id="the-main-sections-of-a-git-project">The main sections of a Git project</h3>
-<p>There are three main sections of a Git project: the working tree, the staging area, and the Git directory.</p>
-<div style="display:flex; justify-content:center">
+<p>So what is Git, and how did it come to be? Git is a distributed VCS, and it was born out of controversy. In 2005, relations broke down between the Linux kernel development community and the company behind BitKeeper, the proprietary distributed VCS they had been using. This resulted in the withdrawal of BitKeeper’s free-of-charge availability to Linux kernel developers. In response, the Linux development community, particularly Linus Torvalds, developed Git as a replacement for BitKeeper.</p>
+<p>Git was designed to meet several important requirements of the Linux kernel project: speed, a simple design, strong support for non-linear development, a fully distributed model, and the ability to handle large projects efficiently.</p>
+<p>In Git, a project and its version history are managed in what is called a <em>repository</em>, often shortened to <em>repo</em>. Git works by recording snapshots of your files over time. Git makes it easy to switch between versions of your files, compare versions of the same file, and review the history of individual files.</p>
+<p>Although Git was originally developed for large projects involving many developers, it is equally useful for small projects with a single developer.</p>
+<section id="main-parts-of-a-git-project" class="level3">
+<h3 class="anchored" data-anchor-id="main-parts-of-a-git-project">Main parts of a Git project</h3>
+<p>There are three main parts involved when working with a Git project: the Git directory, the working tree, and the staging area.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./diagrams/the-three-states-of-files.svg" class="img-fluid figure-img"></p>
-<figcaption>The three states of files</figcaption>
+<p><img src="./diagrams/git-project-main-parts.drawio.svg" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption>The three main parts of a Git project</figcaption>
 </figure>
 </div>
-</div>
-<p>The <strong>working tree</strong> is a version of the project that has been checked out. These files are pulled out of the compressed database of the Git directory and placed on disk for you to use or modify.</p>
-<p>The <strong>staging area</strong> is a file in your Git directory that stores information about what will go into your next commit. Its technical name in is the “index”, but the phrase “staging area” is also commonly used.</p>
-<p>The <strong>Git directory</strong> is where Git stores the metadata and object database for your project. It is located in the “.git” folder. This is the most important part of Git, and it is what is copied when you <em>clone</em> (make a copy of) a repository from another computer.</p>
-<p>The basic workflow when using Git is something like:</p>
+<p>The <em>Git directory</em> is where Git stores the history of your project, including previous versions of your files.</p>
+<p>The <em>working tree</em> contains the files you are currently working on. This is where you make changes to your project.</p>
+<p>The <em>staging area</em> is where you select the changes you want to include in the next commit.</p>
+<p>The typical Git workflow is as follows:</p>
 <ol type="1">
-<li><p>You checkout a version of your project you want to work on into the working tree (usually the newest version that is already there).</p></li>
-<li><p>You modify the files in the working tree.</p></li>
-<li><p>You stage (some) changes to be included in the next commit.</p></li>
-<li><p>Commit the changes to the Git repository.</p></li>
-<li><p>Repeat.</p></li>
+<li><p>Modify files in the working tree.</p></li>
+<li><p>Stage the changes you want to include in the next commit.</p></li>
+<li><p>Commit the staged changes to the Git repository.</p></li>
 </ol>
-<p>If a particular version of a file is in the Git directory, it is considered <strong>committed</strong>. If it has been modified and added to the staging area it is <strong>staged</strong>, and if it was changed since it was checked out but has not been staged, it is said to be <em>modified</em>.</p>
 </section>
 <section id="sec-file-storage-in-git" class="level3">
-<h3 class="anchored" data-anchor-id="sec-file-storage-in-git">File storing in Git</h3>
-<p>A major difference between Git and many other VCS’s is how Git stores data. In other systems, files are typically stored as a set of base versions of files and the changes made to each file over time. This is commonly called <em>delta-based</em> version control.</p>
+<h3 class="anchored" data-anchor-id="sec-file-storage-in-git">How Git stores data</h3>
+<p>A major difference between Git and many other VCSs is how Git stores data. In other VCSs, file histories are typically represented by storing a base version and subsequent changes to each file. This is commonly called <em>delta-based</em> version control.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="./diagrams/delta-based-version-control.svg" class="img-fluid figure-img"></p>
 <figcaption>Delta-based version control - data is stored as changes to a base version of each file</figcaption>
 </figure>
 </div>
-<p>This is not how Git stores data. In Git, data is stored as a series of snapshots of your files. Every time you save the state of your files, Git basically takes a picture of how all the files looks like, and stores a reference to that snapshot. To be efficient, if a file has not changed, Git does not store the file again, but saves a link to the previous identical file instead.</p>
+<p>This is not how Git stores data. In Git, data is stored as a series of snapshots of your files. Every time you commit changes, Git records a snapshot of the files in your project and stores a reference to that snapshot. To be efficient, if a file has not changed, Git can reuse its existing stored contents rather than storing them again.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="./diagrams/snapshot-version-control.svg" class="img-fluid figure-img"></p>
 <figcaption>Snapshot version control - data is stored as snapshots</figcaption>
 </figure>
 </div>
+</section>
+<section id="summary" class="level3">
+<h3 class="anchored" data-anchor-id="summary">Summary</h3>
+<p>In summary, version control provides a structured way to track changes to files, restore earlier versions, and collaborate with others. Git is a distributed version control system that allows developers to keep and work with a project’s history locally. In the following chapters, we will look at how to use Git in practice and how Git works in more detail.</p>
 
 
 </section>
