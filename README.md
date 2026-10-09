@@ -3,16 +3,60 @@
 [Link to tutorial](https://thomas-rasmussen.github.io/git-tutorial/)
 
 
-
 **---TODO: content---**
 
 **"Getting started" chapter:**
 
+- Mention in the start of the chapter that we are assuming the reader is familiar with basic Bash commands, and
+  refer to the "Git Bash" appendix for readers who have missed this in the preface.
+
+- Remove comments on basic Bash commands. It is assumed the reader is familiar with these at this point.
+
 - Add exercise where reader is requested to do the basic configuration explained in the chapter.
 
-- Introduce file terms "commited", "modified" and "staged" that have been removed from previous chapter introducing version control and Git.
+- Introduce file terms "commited", "modified" and "staged" that have been removed from previous chapter introducing version control and Git. Incorporate in the "Lifecycle of files" section?
 
 - Using remotes as backups initiatedby git clone: by default the remote is probably not saving a hard copy of repo (to save space). Look at --no-hardlinks options for git clone to see how to circumvent this.
+
+- Consider adding a very short introductino to git diff in this chapter to show changes that are staged etc. Keep it very short, focused on how to use it, and then refer to the chapter concerned with git diff for more details.
+
+- As above, illustrating basic uses of git log could be valuable.
+
+- after creating a repo, there is a git message mentioning the branch name. Make a short comment on this name might be different depending on your setup / version of Git. But d not go into any details. maybe reference branch chapter.
+
+- introduce git add . as the second example, not the first.
+
+- Consider removing exercise 4 concerning .gitignore files. The reader is not equipped for this exercise at this point. 
+
+- The first time an example is made staging changes to the staging area prompting Git to give a warning about changing line endings from LF to CRLF, Assure the reader that this message can be ignored, it is some technical stuff working as intended. This is a level of detail we will not cover in the tutorial, it seems to technical and not worth it to discuss since everything is working as intended by default?
+
+- Change all uses of "index" to "staging area" to be consistent with previous chapter. Maybe once, at the start, mention that the staging area is also refered to as the index, especially in Git's internal documentation (at least sometimes). "staging area" is much easier to understand for beginners, is (the most?) common choice of term, and goes together with "staging" files etc.
+
+scope outline:
+1. Configure name and email; optionally editor.
+2. git init and briefly git clone.
+3. Explain working tree / staging area (index) / repository and tracked/untracked/modified/staged.
+4. git status.
+5. git add <file>, then mention git add ..
+6. Optionally git diff.
+7. git commit -m.
+8. Optionally git log --oneline just to see the resulting commit.
+9. git help <command> and git <command> -h.
+10. Exercises reproducing that workflow.
+
+
+**Introduction to version control and Git:**
+
+- Review diagrams and images in chapter:
+
+  - Would it be better to drop the two column design, and simply put diagrams in-between text? The current design does not look good on a mobile for example.
+
+  - Does the terminology in the diagrams match the terminology in the text
+
+  - Is the information in the diagrams correct and informative
+
+  - centralized VCS diagram: should a server be included in the diagram? Should it be mentioned in the text that a server is still often used as a primary repository?
+
 
 **"Undoing changes" chapter:**
 
@@ -21,18 +65,6 @@
 - Currently does not show how to "undo" a commit. This would require introducing git reset --hard <checksum>. Can this also be done with git restore? UPDATE: the chapter now includes this, but in an unfinished manner? Needs further work.
 
 - Consider if it is better to merge the git reflog appendix into this chapter as a final section since it is a natural extension of this topic.
-
-
-
-**"Configuration of Git" chapter:**
-
-- Consider if it makes sense to include some info on formatting and whitespace issues, and how git has the core.autocrlf and core.whitespace options to help with them. core.autocrlf = true is very important when working on a Windows system, but since this is already the default value when using Git for Windows which we assume people are using, maybe this is too much to include? UPDATE: seems important to look more into this, since Git is constantly spamming the user about chaning line endings. Important to understand what is going on.
-
-- Needs to be proof-read, there are multiple grammar issues, and technical mistakes with paths in examples, eg in local level subsection the path to the config file should not start with a "/" which indicates that the path is an absolute path from the root directory.
-
-- Consider if it would make sense to add some concrete examples and exercises. It would be easy and straight forward and might make the appendix a lot more useful?
-
-- Need to be more consistent with using "option" or "setting".
 
 
 **---TODO: technical stuff---**
@@ -51,6 +83,8 @@
 - git tag. Small subject, but useful. Maybe in chapter where refs and branches are introduced?
 
 - git show. Useful command that should probably be included somewhere.
+
+- git add -p. Too technical to add talk about early in the tutorial, but a very useful flag that should be discussed somewhere. Figure out where it would make most sense to include this. Could maybe also be as an exercise in a relevant chapter in the later part of the tutorial?
 
 - A part II chapter with some technical information that is of interest, but did not fit into any other chapter naturally maybe. Or maybe if it was not important enough to introduce elsewhere, then maybe it is too technical for this tutorial? 
 - Consider restructuring some of the more technical content in the tutorial. Instead of going into depth with technical introductions all over the place when new concepts have to be introduced, give a very brief introduction instead, and refer to an appendix with more in-depth explanations. In connection with this, maybe some of the chapters should be more focused on showing how to use Git commands as fast as possible with briefer technical introductions, that are then explained in more details later in the chapter and/or in an appendix.

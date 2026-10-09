@@ -298,16 +298,20 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>In this chapter we will look at some basic configurations of Git, introduce the most basic Git commands, talk about the different states of files, and finally how you can find help on how to use Git commands.</p>
+<p>In this chapter you will be introduced to the most basic git commands. We will start the chapter by talking about basic configuration of Git, and then we show how to initialize and clone Git repositories, add changes to the staging area, and make commits. Finally we will show how to access documentation for Git commands.</p>
 <section id="sec-basic-git-configuration-of-git" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="sec-basic-git-configuration-of-git"><span class="header-section-number">2.1</span> Basic configuration of Git</h2>
-<p>First of all, we need to do some basic configurations of Git, which we will do using the <code>git config</code> command. Here we will only briefly explain what commands to type in the terminal without any explanation on how commands actually work, and what exactly they do. If you want to learn more about how to configure Git, see <a href="app-configuration-of-git.html" class="quarto-xref"><span>Appendix B</span></a>.</p>
+<p>Before we start using Git, there are some basic configurations of the Git installation that should be done using the <code>git config</code> command. The focus at this point is to just provide you with the commands you need so that you can get started using Git, not to get into a long explanation about how they work. For further details see <a href="app-configuration-of-git.html" class="quarto-xref"><span>Appendix B</span></a>.</p>
 <section id="change-the-core-editor" class="level3">
 <h3 class="anchored" data-anchor-id="change-the-core-editor">Change the core editor</h3>
-<p>The first, and most important, thing we need to configure, is the text editor that Git opens when you need to type in a message. Git for Windows comes with a Vim installation, and by default Git uses Vim as a text editor. Vim is amazing, but it is also a complete mystery to people who do not know how it works.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> To change the default editor to Notepad, which is pre-installed on Windows, write the following command in your terminal:</p>
+<p>Git for Windows comes with a Vim installation, and Git uses Vim as the default text editor that the user will be prompted to use for writing commit messages for example. Vim is a modal text editor that is is primarily controlled using keyboard commands rather than a mouse. Vim is very efficient for programming, but also works in a very different way from your typical non-modal text editor. The only other thing we will mention about Vim, is how to exit it properly, if you somehow open Vim by accident. This can be done by typing <code>&lt;Esc&gt;:q!&lt;Enter&gt;</code>. Pressing <code>&lt;Esc&gt;</code> is to make sure you are in normal mode before typing anything else, and <code>:q!</code> is a command to quit Vim and discard any unsaved changes.</p>
+<p>This tutorial is aimed at Windows users with no prior experience working from the terminal, who would probably struggle to navigate Vim. So the first, and most important, thing to configure is the default text editor Git uses.</p>
+<p>To change the default text editor to Notepad, which is pre-installed on Windows, write the following command in your terminal:</p>
 <pre class="terminal">$ git config set --global core.editor notepad
 </pre>
-<p>This tells Git to use Notepad as a text editor in all your Git repositories.</p>
+<p>This tells Git to use Notepad as a text editor in all your Git repositories. Git Bash should be able locate your notepad executable, but if you later have problems when Git prompts you to use a text editor, try using the full path to the Notepad executable instead. This could look something liket this:</p>
+<pre class="terminal">$ git config set --global core.editor "/c/Windows/System32/notepad.exe"
+</pre>
 </section>
 <section id="identify-yourself" class="level3">
 <h3 class="anchored" data-anchor-id="identify-yourself">Identify yourself</h3>
@@ -690,12 +694,6 @@ $ git clone ../ex-init-repo # Clones the ex-init-repo repository located in the 
 
 
 </section>
-</section>
-<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
-<hr>
-<ol>
-<li id="fn1"><p>If you open Vim by accident, type <code>&lt;Esc&gt;:q!&lt;Enter&gt;</code> to exit it. Pressing <code>&lt;Esc&gt;</code> is to make sure you are in normal mode before typing anything else, and <code>:q!</code> is a command to quit Vim and discard any unsaved changes.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
 </section>
 
 </main> <!-- /main -->
