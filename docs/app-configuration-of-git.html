@@ -250,20 +250,32 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#git-configuration-file-hierarchy" id="toc-git-configuration-file-hierarchy" class="nav-link active" data-scroll-target="#git-configuration-file-hierarchy"><span class="header-section-number">B.1</span> Git configuration file hierarchy</a>
+  <li><a href="#git-configuration-file-structure" id="toc-git-configuration-file-structure" class="nav-link active" data-scroll-target="#git-configuration-file-structure"><span class="header-section-number">B.1</span> Git configuration file structure</a></li>
+  <li><a href="#git-configuration-scopes-and-precedence" id="toc-git-configuration-scopes-and-precedence" class="nav-link" data-scroll-target="#git-configuration-scopes-and-precedence"><span class="header-section-number">B.2</span> Git configuration scopes and precedence</a>
   <ul class="collapse">
   <li><a href="#system-level" id="toc-system-level" class="nav-link" data-scroll-target="#system-level">System level</a></li>
   <li><a href="#global-level" id="toc-global-level" class="nav-link" data-scroll-target="#global-level">Global level</a></li>
   <li><a href="#local-level" id="toc-local-level" class="nav-link" data-scroll-target="#local-level">Local level</a></li>
   </ul></li>
-  <li><a href="#working-with-configuration-files" id="toc-working-with-configuration-files" class="nav-link" data-scroll-target="#working-with-configuration-files"><span class="header-section-number">B.2</span> Working with configuration files</a></li>
-  <li><a href="#configuration-options-of-interest." id="toc-configuration-options-of-interest." class="nav-link" data-scroll-target="#configuration-options-of-interest."><span class="header-section-number">B.3</span> Configuration options of interest.</a>
+  <li><a href="#working-with-configuration-files" id="toc-working-with-configuration-files" class="nav-link" data-scroll-target="#working-with-configuration-files"><span class="header-section-number">B.3</span> Working with configuration files</a>
   <ul class="collapse">
-  <li><a href="#core.editor" id="toc-core.editor" class="nav-link" data-scroll-target="#core.editor">core.editor</a></li>
-  <li><a href="#commit.template" id="toc-commit.template" class="nav-link" data-scroll-target="#commit.template">commit.template</a></li>
-  <li><a href="#user.email-and-user.name" id="toc-user.email-and-user.name" class="nav-link" data-scroll-target="#user.email-and-user.name">user.email and user.name</a></li>
+  <li><a href="#list-configuration-settings" id="toc-list-configuration-settings" class="nav-link" data-scroll-target="#list-configuration-settings">List configuration settings</a></li>
+  <li><a href="#get-the-value-of-a-configuration-variable" id="toc-get-the-value-of-a-configuration-variable" class="nav-link" data-scroll-target="#get-the-value-of-a-configuration-variable">Get the value of a configuration variable</a></li>
+  <li><a href="#set-the-value-of-a-configuration-variable" id="toc-set-the-value-of-a-configuration-variable" class="nav-link" data-scroll-target="#set-the-value-of-a-configuration-variable">Set the value of a configuration variable</a></li>
+  <li><a href="#unset-the-value-of-a-configuration-variable" id="toc-unset-the-value-of-a-configuration-variable" class="nav-link" data-scroll-target="#unset-the-value-of-a-configuration-variable">Unset the value of a configuration variable</a></li>
+  <li><a href="#edit-a-configuration-file" id="toc-edit-a-configuration-file" class="nav-link" data-scroll-target="#edit-a-configuration-file">Edit a configuration file</a></li>
   </ul></li>
-  <li><a href="#aliases" id="toc-aliases" class="nav-link" data-scroll-target="#aliases"><span class="header-section-number">B.4</span> Aliases</a></li>
+  <li><a href="#useful-configuration-settings" id="toc-useful-configuration-settings" class="nav-link" data-scroll-target="#useful-configuration-settings"><span class="header-section-number">B.4</span> Useful configuration settings</a>
+  <ul class="collapse">
+  <li><a href="#core.editor" id="toc-core.editor" class="nav-link" data-scroll-target="#core.editor"><code>core.editor</code></a></li>
+  <li><a href="#commit.template" id="toc-commit.template" class="nav-link" data-scroll-target="#commit.template"><code>commit.template</code></a></li>
+  <li><a href="#user.name-and-user.email" id="toc-user.name-and-user.email" class="nav-link" data-scroll-target="#user.name-and-user.email"><code>user.name</code> and <code>user.email</code></a></li>
+  </ul></li>
+  <li><a href="#aliases" id="toc-aliases" class="nav-link" data-scroll-target="#aliases"><span class="header-section-number">B.5</span> Aliases</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">B.6</span> Exercises</a>
+  <ul class="collapse">
+  <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -289,127 +301,313 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Section <a href="part1-ch02-getting-started.html#sec-basic-git-configuration-of-git" class="quarto-xref"><span>Section 2.1</span></a> briefly explained about how to do some basic configuration of Git using <code>git config</code>. This appendix will go more in-depth with how Git can be configurated using configuration files.</p>
-<p>Git configuration files are simple text files with key-value pairs defining specific options, separated into sections enclosed in square brackets. A simple Git configuration file could look something like shown below:</p>
+<p>Section <a href="part1-ch02-getting-started.html#sec-basic-git-configuration-of-git" class="quarto-xref"><span>Section 2.1</span></a> briefly introduced how to configure Git using the <code>git config</code> command. This appendix explains how Git stores and organizes configuration settings in files. We also introduce several useful configuration variables and Git aliases.</p>
+<p>Understanding Git configuration can help you troubleshoot unexpected settings and customize Git’s behaviour. To keep the explanations accessible to beginners, this appendix focuses on common Git configuration scenarios and omits some advanced details and exceptions.</p>
+<section id="git-configuration-file-structure" class="level2" data-number="B.1">
+<h2 data-number="B.1" class="anchored" data-anchor-id="git-configuration-file-structure"><span class="header-section-number">B.1</span> Git configuration file structure</h2>
+<p>Git stores configuration settings in plain-text files, such as <code>~/.gitconfig</code>. A simple Git configuration file might look like this:</p>
 <div class="notepad-file">
 <div class="notepad-header">.gitconfig</div>
 <div class="notepad-body">
 [user]<br>
 &nbsp;&nbsp;&nbsp;&nbsp;name = Your Name<br>
-&nbsp;&nbsp;&nbsp;&nbsp;email = your.email@example.com<br>
+&nbsp;&nbsp;&nbsp;&nbsp;email = your@email.com<br>
 [core]<br>
 &nbsp;&nbsp;&nbsp;&nbsp;editor = notepad<br>
 </div>
 </div>
-<p>The name of an option is the section and key separated by a dot, for example <code>user.name</code>.</p>
-<section id="git-configuration-file-hierarchy" class="level2" data-number="B.1">
-<h2 data-number="B.1" class="anchored" data-anchor-id="git-configuration-file-hierarchy"><span class="header-section-number">B.1</span> Git configuration file hierarchy</h2>
-<div style="display:flex">
-<div style="flex:50%;margin-right:1em;">
-<p>Git has several levels of configuration files that can be used to customize how Git looks and works. Simplifying things a bit, there are three levels of configurations files: system, global, and local. Configuration settings at each narrower level overwrites settings from the more broader configuration files, i.e.&nbsp;local settings overwrites global settings, and global settings overwrite system settings.</p>
-</div>
-<div style="margin:1em;">
-<div class="quarto-figure quarto-figure-center">
+<p>The file contains <em>configuration settings</em> expressed as key-value pairs and grouped into sections identified by names in square brackets. A configuration setting is identified by its section name and key. For example, the <code>name</code> key in the <code>[user]</code> section is referenced as <code>user.name</code>. A configuration setting such as <code>user.name</code> is also called a <em>configuration variable</em>. The value assigned to this variable, such as <code>Your Name</code>, is called its <em>configuration value</em>.</p>
+</section>
+<section id="git-configuration-scopes-and-precedence" class="level2" data-number="B.2">
+<h2 data-number="B.2" class="anchored" data-anchor-id="git-configuration-scopes-and-precedence"><span class="header-section-number">B.2</span> Git configuration scopes and precedence</h2>
+<p>Git uses three main configuration scopes: <em>system</em>, <em>global</em>, and <em>local</em>. These scopes determine which users and repositories the settings apply to. The same setting can be defined in multiple scopes. When this happens, settings from more specific scopes generally take precedence over settings from broader scopes. In other words, local settings take precedence over global settings, which in turn take precedence over system settings.</p>
+<div style="display:flex;justify-content:center;">
 <figure class="figure">
-<p><img src="diagrams/git-configuration-hierarchy.svg" class="img-fluid figure-img"></p>
-<figcaption>Git Configuration Hierarchy</figcaption>
+<img src="diagrams/git-configuration-precedence.drawio.svg" class="figure-img">
+<figcaption>
+Git configuration precedence
+</figcaption>
 </figure>
 </div>
-</div>
-</div>
+<p>Suppose <code>core.editor</code> is set to <code>vim</code> in the system-level configuration file and to <code>notepad</code> in the global-level configuration file. Because global configuration takes precedence over system configuration, Git uses <code>notepad</code> as the effective value of <code>core.editor</code>. The system-level setting remains unchanged.</p>
 <section id="system-level" class="level3">
 <h3 class="anchored" data-anchor-id="system-level">System level</h3>
-<p>System level configurations applies to your entire system, ie your entire computer. The system level configuration file is located in a subfolder of your Git installation, for example at <code>C:\Program Files\Git\etc\gitconfig</code>. You need admin privileges on your computer to edit this file.</p>
-<p>Nowadays most people work on their own computer that they do not share with others, and in this case it is probably most appropriate to not change anything in the system level configuration file, but instead configure Git at the global level. An example of where you might want to make changes to the system level configuration file, is if you have Git installed on a server with multiple users. In that case, maybe you want to tweak the default behaviour of Git for all the users, eg by setting the default text editor Git uses.</p>
+<p>System-level configuration settings provide defaults for all users of the same Git installation. In a typical Git for Windows installation, the system-level configuration file is located at <code>C:/Program Files/Git/etc/gitconfig</code>. Editing this file typically requires administrator privileges on Windows.</p>
+<p>System-level settings are useful when an administrator wants to establish defaults for all users of a computer, such as on a shared workstation or server. For example, an administrator could configure Notepad as the default Git editor for all users of a Windows server.</p>
 </section>
 <section id="global-level" class="level3">
 <h3 class="anchored" data-anchor-id="global-level">Global level</h3>
-<p>Global level configurations applies to you as a user. Configuration at this level applies to all your Git repositories, and overwrites configurations set at the system level. The global level configuration file is located in your home directory at <code>C:\Users\[User name]\.gitconfig</code>.</p>
-<p>This is the level at which you should configure your username, email address, aliases etc, that you want to use across all your Git repositories.</p>
-<p>You can see what configurations are contained in your global level configuration file by running the following command in the terminal:</p>
+<p>Global configuration settings apply to Git commands run by a particular user. On Windows, the global configuration file is usually located in the user’s home directory, for example, <code>C:/Users/&lt;username&gt;/.gitconfig</code>.</p>
+<p>The global scope is generally the appropriate place to configure your name, email address, aliases, and other personal settings. These settings apply to Git commands you run, unless overridden by settings with higher precedence.</p>
 </section>
 <section id="local-level" class="level3">
 <h3 class="anchored" data-anchor-id="local-level">Local level</h3>
-<p>Local level configurations applies only to to the Git repository the configuration file is in, and overwrites configurations set at the global level. The local level configuration file can be found in <code>\.git\config</code> of a Git repository.</p>
-<p>As with the system level configuration file, you usually don’t manually change the local level configuration file. An example of where local level configuration can be useful, is if you want to have different email addresses associated with your identity depending on the project you are working on. You might have configured your global configuration file to use your work email, which you use the majority of the time, but you might also work on a personal project, where you want to use your private email. In this case you could simply configure the local configuration file in the personal project to use your private email.</p>
+<p>Local configuration settings apply to Git commands run in a particular Git repository. In a typical repository, the local configuration file is located at <code>.git/config</code> relative to the repository’s root directory.</p>
+<p>Local settings are useful when a repository needs different configuration settings than those defined globally. For example, if you are using Git on your work computer, you would probably set <code>user.email</code> to your work email in your global configuration file. If you also work on a personal Git project on the same computer, you could use the local configuration file to set <code>user.email</code> to your personal email in that specific repository.</p>
 </section>
 </section>
-<section id="working-with-configuration-files" class="level2" data-number="B.2">
-<h2 data-number="B.2" class="anchored" data-anchor-id="working-with-configuration-files"><span class="header-section-number">B.2</span> Working with configuration files</h2>
-<p>Git comes with a number of <code>git config</code> commands that can be used to read and set options in the configuration files. Here we will talk about basic use of the <code>git config list</code>, <code>git config get</code>, <code>git config set</code>, and <code>git config edit</code> commands together with the <code>--system</code>, <code>--global</code>, and <code>--local</code> options to list/get/set/edit option in specific configuration files.</p>
-<p>To list all options and their values in a config file you can use the the <code>git config list</code> command. If, for example, we wanted to list all global options we could use <code>git config list --global</code> which would give us something like</p>
-<pre class="terminal">user.name=Your name
-use.email=your@email.com
+<section id="working-with-configuration-files" class="level2" data-number="B.3">
+<h2 data-number="B.3" class="anchored" data-anchor-id="working-with-configuration-files"><span class="header-section-number">B.3</span> Working with configuration files</h2>
+<p>The <code>git config</code> command provides subcommands for inspecting and modifying Git configuration settings. You can use the <code>--system</code>, <code>--global</code>, and <code>--local</code> flags to work with settings from a particular configuration scope. Without these flags, Git generally reads settings from all applicable scopes and writes settings to the local scope.</p>
+<section id="list-configuration-settings" class="level3">
+<h3 class="anchored" data-anchor-id="list-configuration-settings">List configuration settings</h3>
+<p>To list the configuration settings Git reads in the current context, use <code>git config list</code>. To list only the settings from a specific scope, e.g.&nbsp;the global settings, use <code>git config list --global</code>. By default, <code>git config list</code> shows a list of settings with no additional information, and will include multiple instances of the same setting if it is defined in multiple configuration files that Git reads in the current context. For example, suppose <code>core.editor</code> is set to <code>vim</code> in the system configuration file and <code>notepad</code> in the global configuration file. The output of <code>git config list</code> might then look like this:</p>
+<pre class="terminal">$ git config list
+core.editor=vim
+user.name=Your name
+user.email=your@email.com
+core.editor=notepad
 </pre>
-<p>If we want to get the value of a specific option, we can use the <code>git config get</code> command. For example if we want the value of the user.name option in the global configuration file we could write <code>git config get --global user.name</code>.</p>
-<p>To set a specific option, we can use the <code>git config set</code> command. For example, if we wanted to set the core.editor option to “notepad” in the system level configuration file we could use the <code>git config set --system core.editor notepad</code> command.</p>
-<p>Finally, if we want to make changes to a configuration file, we might want to simply open the configuration file, and edit it by hand. This can be done with the <code>git config edit</code> command. For example if we wanted to manually edit the local level configuration file, we could do <code>git config edit</code> command, which will open the configuration file in a text editor. We did not add the <code>--local</code> option here to illustrate, that by default, many of the <code>git config</code> commands defaults to using the <code>--local</code> flag.</p>
+<p>In Exercise 1, you will learn how to display the source and scope of each setting.</p>
 </section>
-<section id="configuration-options-of-interest." class="level2" data-number="B.3">
-<h2 data-number="B.3" class="anchored" data-anchor-id="configuration-options-of-interest."><span class="header-section-number">B.3</span> Configuration options of interest.</h2>
-<p>There are A LOT of things that can be configured in Git. Here we briefly highlight a short list of options that are often of interest</p>
+<section id="get-the-value-of-a-configuration-variable" class="level3">
+<h3 class="anchored" data-anchor-id="get-the-value-of-a-configuration-variable">Get the value of a configuration variable</h3>
+<p>Use <code>git config get [&lt;scope&gt;] &lt;name&gt;</code> to retrieve the value of a configuration variable, where <code>[&lt;scope&gt;]</code> is optional. If the target scope is not provided, the command returns the effective value according to configuration precedence.</p>
+<p>To retrieve the configuration value of <code>user.name</code> from the global configuration scope, you could run the following command:</p>
+<pre class="terminal">$ git config get --global user.name
+Your name
+</pre>
+<p>If the requested variable is not defined, the command produces no output and exits with a nonzero status.</p>
+</section>
+<section id="set-the-value-of-a-configuration-variable" class="level3">
+<h3 class="anchored" data-anchor-id="set-the-value-of-a-configuration-variable">Set the value of a configuration variable</h3>
+<p>Use <code>git config set [&lt;scope&gt;] &lt;name&gt; &lt;value&gt;</code> to set a configuration variable to a specified value. If no scope is specified, Git attempts to write the setting to the local repository configuration file. If the current working directory is not inside a Git repository, the command fails unless another target configuration file or scope is specified.</p>
+<p>For example, to set <code>user.email</code> to <code>some@email.com</code> in the global configuration file, run:</p>
+<pre class="terminal">$ git config set --global user.email some@email.com
+</pre>
+</section>
+<section id="unset-the-value-of-a-configuration-variable" class="level3">
+<h3 class="anchored" data-anchor-id="unset-the-value-of-a-configuration-variable">Unset the value of a configuration variable</h3>
+<p>Use <code>git config unset [&lt;scope&gt;] &lt;name&gt;</code> to remove a configuration setting. For example, to remove the value of <code>core.editor</code> in the global configuration file, run:</p>
+<pre class="terminal">$ git config unset --global core.editor
+</pre>
+<p>Removing a setting does not necessarily remove its effective value if it is also defined in another scope.</p>
+</section>
+<section id="edit-a-configuration-file" class="level3">
+<h3 class="anchored" data-anchor-id="edit-a-configuration-file">Edit a configuration file</h3>
+<p>Finally, you can make manual changes to a configuration file with <code>git config edit [&lt;scope&gt;]</code>. This opens the configuration file for the specified scope in Git’s configured text editor. Without an explicit scope, this command opens the local configuration file and therefore requires a repository.</p>
+</section>
+</section>
+<section id="useful-configuration-settings" class="level2" data-number="B.4">
+<h2 data-number="B.4" class="anchored" data-anchor-id="useful-configuration-settings"><span class="header-section-number">B.4</span> Useful configuration settings</h2>
+<p>Git provides many configuration settings that control its behaviour. This section introduces a few particularly useful ones.</p>
 <section id="core.editor" class="level3">
-<h3 class="anchored" data-anchor-id="core.editor">core.editor</h3>
-<p>Specify what text editor Git should launch to edit text, eg when writing commmit messages. Git for Windows comes with an internal version of Vim that is used by default. If you do not know what Vim is, this is most certainly not the text editor you want Git to use. Notepad is pre-installed on all modern Windows operating systems, and you should be able to change the default text editor to Notepad across all your Git repositories by using the following command:</p>
-<pre class="terminal">git config set --global core.editor notepad
+<h3 class="anchored" data-anchor-id="core.editor"><code>core.editor</code></h3>
+<p>The <code>core.editor</code> setting specifies what text editor Git uses for operations that require editing text, such as writing commit messages. Git for Windows includes Vim, which is commonly used as the default text editor.</p>
+<p>If you are not familiar with Vim, you can configure Git to use Windows Notepad with the following command:</p>
+<pre class="terminal">$ git config set --global core.editor notepad
 </pre>
-<p>This command assumes that the notepad executable can be found in directories given in $PATH. If for some reason the above does not work, locate the Notepad executable manually, and specify the full path to executable instead. This could look something like the below:</p>
-<pre class="terminal">git config set --global core.editor "C:\Windows\System32\notepad.exe"
+<p>Git can normally locate the Notepad executable by its command name. Alternatively, you can specify the full path to the Notepad executable explicitly. For example:</p>
+<pre class="terminal">$ git config set --global core.editor "C:/Windows/System32/notepad.exe"
 </pre>
 </section>
 <section id="commit.template" class="level3">
-<h3 class="anchored" data-anchor-id="commit.template">commit.template</h3>
-<p>The commit.template option can be used to specify a pathname to a file that is used as the template for new commit messages. A simple commit template with useful advice on how to write a good commit message could be the following text<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, saved in a file we name something like .git-commit-template:</p>
+<h3 class="anchored" data-anchor-id="commit.template"><code>commit.template</code></h3>
+<p>The <code>commit.template</code> setting specifies a file whose contents Git uses as the initial text when Git opens a text editor for composing a commit message. For example, the following text could be used as a template containing reminders for writing a useful commit message.</p>
 <div class="notepad-file">
 <div class="notepad-header">.git-commit-template</div>
 <div class="notepad-body">
-<pre># Title: Summary, imperative, start upper case, don't end with a period
-# No more than 50 chars. #### 50 chars is here:  #
-
-# Remember blank line between title and body.
-
-# Body: Explain *what* and *why* (not *how*).
-# Wrap at 72 chars. ################################## which is here:  #
-
-# How to Write a Git Commit Message:
-# https://chris.beams.io/posts/git-commit/
-# 1. Separate subject from body with a blank line
-# 2. Limit the subject line to 50 characters
-# 3. Capitalize the subject line
-# 4. Do not end the subject line with a period
-# 5. Use the imperative mood in the subject line
-# 6. Wrap the body at 72 characters
-# 7. Use the body to explain what and why vs. how
+<pre># Subject: Brief summary in imperative mood (max. 50 characters)
+# Capitalize the first word; do not end with a period
+# This line is 50 characters######################
+# Body: Explain what changed and why, not how
+# Separate from subject with a blank line; wrap at 72 characters
+# This line is 72 characters############################################
 </pre>
 </div>
 </div>
-<p>To use this file as a template for commit messages, we could save file in the home directory, and tell git to use the template for all our Git reposities with the commmand <code>git config set --global commit.template ~/.git-commit-template</code>.</p>
-</section>
-<section id="user.email-and-user.name" class="level3">
-<h3 class="anchored" data-anchor-id="user.email-and-user.name">user.email and user.name</h3>
-<p>The user.name and user.email variables determines what ends up in the author field of commit objects. You should set these options with your name and email so it is clear from the commit object who made the commit.</p>
-</section>
-</section>
-<section id="aliases" class="level2" data-number="B.4">
-<h2 data-number="B.4" class="anchored" data-anchor-id="aliases"><span class="header-section-number">B.4</span> Aliases</h2>
-<p>Git aliases can be used to create shorter commands that map to longer commands. Aliases can be a great help to make it easier to use commands that you find yourself using often, but that are hard to remember and/or are tedious to type out. As a contrived example, consider the <code>git status</code> command. You will type that command a lot. Git doesn’t automatically infer your command if you type it in partially, but you could setup an alias so that you would only have to type <code>git st</code> if you don’t want to type the whole command each time:</p>
-<pre class="terminal">git config set --global alias.st status
+<p>By default, Git removes lines starting with <code>#</code> before saving the commit message. The template provides guidance, but you must write the commit message yourself.</p>
+<p>To use this file as a template for commit messages, save it as <code>~/.git-commit-template</code> and configure Git using the following command:</p>
+<pre class="terminal">$ git config set --global commit.template ~/.git-commit-template
 </pre>
-<p>As a more meaningful example consider the <code>git log</code> command. One of the biggest shortcomings of using Git from the terminal is the lack of a nice visualization of your commit history that comes with GUI’s. Git users often find themselves using some variation of the following command to get a visualization of the commit history of a project in the terminal:</p>
-<pre class="terminal">git log --graph --oneline --all
+</section>
+<section id="user.name-and-user.email" class="level3">
+<h3 class="anchored" data-anchor-id="user.name-and-user.email"><code>user.name</code> and <code>user.email</code></h3>
+<p>The <code>user.name</code> and <code>user.email</code> settings provide the default name and email address recorded in the author and committer information of new commits. Configure these settings to ensure that new commits are attributed to your intended name and email address.</p>
+</section>
+</section>
+<section id="aliases" class="level2" data-number="B.5">
+<h2 data-number="B.5" class="anchored" data-anchor-id="aliases"><span class="header-section-number">B.5</span> Aliases</h2>
+<p>Git aliases let you define shortcuts for Git commands. Aliases are particularly useful for commands that are frequently used but difficult to remember or tedious to type. As a contrived example, consider the <code>git status</code> command. You will probably use this command frequently. Git does not automatically recognize abbreviated subcommand names, but you could set up an alias allowing you to type <code>git st</code> instead of <code>git status</code>.</p>
+<pre class="terminal">$ git config set --global alias.st status
 </pre>
-<p>This is tedious to type out, and it can be difficult to remember all the options you need to add. Instead one could make an elegant alias:</p>
-<pre class="terminal">git config set --global alias.history "log --graph --oneline --all"
+<p>As seen above, aliases are settings in configuration files in the <code>alias</code> section. The value specifies the Git command and any additional arguments to use. If the alias value contains spaces, enclose the value in quotes. Choose a descriptive alias name that does not conflict with an existing Git subcommand.</p>
+<p>A more practical example is the <code>git log</code> command. Unlike graphical Git clients, Git’s command-line interface does not display the commit history as a graph by default. However, <code>git log --graph</code> can display a text-based representation of the history. For example, the following command displays a compact, text-based graph of the commit history:</p>
+<pre class="terminal">$ git log --graph --oneline --all
 </pre>
-<p>Now you can just use <code>git history</code> instead (or choose any other name that is meaningful to you that is not already used by Git).</p>
+<p>As mentioned above, <code>--graph</code> displays a text-based representation of the history, <code>--oneline</code> condenses information about each commit to one line, and <code>--all</code> tells Git to consider all references, including branches, when displaying the history. Because the command combines several flags, it is a useful candidate for an alias:</p>
+<pre class="terminal">$ git config set --global alias.graph "log --graph --oneline --all"
+</pre>
+<p>You can now run <code>git graph</code> to execute <code>git log --graph --oneline --all</code>.</p>
+</section>
+<section id="exercises" class="level2" data-number="B.6">
+<h2 data-number="B.6" class="anchored" data-anchor-id="exercises"><span class="header-section-number">B.6</span> Exercises</h2>
+<section id="exercise-1" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-1">Exercise 1</h3>
+<p>Your task in this exercise is to configure global settings, create a repository with local settings, and define an alias for a useful command.</p>
+<p><b>1. Configure global settings.</b></p>
+<p>Configure Git to use a text editor of your choice globally. If you are using Windows, Notepad is a sensible option. Also configure your name and email address in the global scope.</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Hint">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>You can use <code>git config set</code> to set values of configuration variables. You need to consider what scope you should specify with the command.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre class="terminal">$ git config set --global core.editor notepad
+$ git config set --global user.email your@email.com
+$ git config set --global user.name "Your Name"
+</pre>
+</div>
+</div>
+</div>
+<p><b>2. Create a repository and configure local settings.</b></p>
+<p>Create a directory named <code>ex01-git-config</code> in your home directory, navigate into it, and initialize a Git repository. In the repository’s local configuration file, set <code>user.email</code> to a different value.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre class="terminal">$ mkdir ~/ex01-git-config
+$ cd ~/ex01-git-config
+$ git init
+$ git config set --local user.email another@email.com
+</pre>
+</div>
+</div>
+</div>
+<p><b>3. Get the values of <code>core.editor</code> and <code>user.email</code>.</b></p>
+<p>While your current working directory is still <code>~/ex01-git-config</code>, retrieve the effective values of the <code>core.editor</code> and <code>user.email</code> configuration variables. Before running the commands, predict which values Git will return based on the configuration scopes and their precedence. Then run the commands to verify your predictions.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre class="terminal">$ git config get core.editor
+notepad
+$ git config get user.email
+another@email.com
+</pre>
+<p>The effective value of <code>core.editor</code> is <code>notepad</code> because it is defined globally and is not overridden by a local setting. The <code>user.email</code> setting is defined in both the global and local configuration files. The local value, <code>another@email.com</code>, takes precedence and is therefore returned.</p>
+</div>
+</div>
+</div>
+<p><b>4. List all configuration settings.</b></p>
+<p>List all configuration settings, including the scope and source file of each setting.</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Hint">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Consult the documentation for <code>git config list</code> to identify flags that display each setting’s scope and source file.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Your output may differ from the example below, which shows only settings relevant to this exercise.</p>
+<pre class="terminal">$ git config list --show-scope --show-origin
+global  file:C:/Users/<username>/.gitconfig       user.name=Your Name
+global  file:C:/Users/<username>/.gitconfig       user.email=your@email.com
+global  file:C:/Users/<username>/.gitconfig       core.editor=notepad
+local   file:.git/config        user.email=another@email.com
+</username></username></username></pre>
+</div>
+</div>
+</div>
+<p><b>5. Make an alias.</b></p>
+<p>Suppose you frequently use the command from the previous step but find its flags difficult to remember or tedious to type. Make an alias for the command in your global configuration file. Choose an alias name that does not conflict with an existing Git subcommand. For example, you could name the alias <code>config-show</code>.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre class="terminal">$ git config set --global alias.config-show "config list --show-scope --show-origin"
+</pre>
+</div>
+</div>
+</div>
+<p><b>6. Test the alias.</b></p>
+<p>Test the alias by running it and verifying that it displays the configuration settings with their scopes and source files.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre class="terminal">$ git config-show
+</pre>
+</div>
+</div>
+</div>
 
 
 </section>
-<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
-<hr>
-<ol>
-<li id="fn1"><p>Taken from <a href="https://gist.github.com/lisawolderiksen/a7b99d94c92c6671181611be1641c733">https://gist.github.com/lisawolderiksen/a7b99d94c92c6671181611be1641c733</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
 </section>
 
 </main> <!-- /main -->

@@ -1,20 +1,31 @@
 # Getting started
 
-In this chapter we will look at some basic configurations of Git, introduce the most basic Git commands, talk about the different states of files, and finally how you can find help on how to use Git commands.
+In this chapter you will be introduced to the most basic git commands. We will start the chapter by talking about basic configuration of Git, and then we show how to initialize and clone Git repositories, add changes to the staging area, and make commits. Finally we will show how to access documentation for Git commands.
+
 
 ## Basic configuration of Git {#sec-basic-git-configuration-of-git}
 
-First of all, we need to do some basic configurations of Git, which we will do using the `git config` command. Here we will only briefly explain what commands to type in the terminal without any explanation on how commands actually work, and what exactly they do. If you want to learn more about how to configure Git, see @sec-configuration-of-git.
+Before we start using Git, there are some basic configurations of the Git installation that should be done using the `git config` command. The focus at this point is to just provide you with the commands you need so that you can get started using Git, not to get into a long explanation about how they work. For further details see @sec-configuration-of-git.
+
 
 ### Change the core editor
 
-The first, and most important, thing we need to configure, is the text editor that Git opens when you need to type in a message. Git for Windows comes with a Vim installation, and by default Git uses Vim as a text editor. Vim is amazing, but it is also a complete mystery to people who do not know how it works.^[If you open Vim by accident, type `<Esc>:q!<Enter>` to exit it. Pressing `<Esc>` is to make sure you are in normal mode before typing anything else, and `:q!` is a command to quit Vim and discard any unsaved changes.] To change the default editor to Notepad, which is pre-installed on Windows, write the following command in your terminal:
+Git for Windows comes with a Vim installation, and Git uses Vim as the default text editor that the user will be prompted to use for writing commit messages for example. Vim is a modal text editor that is is primarily controlled using keyboard commands rather than a mouse. Vim is very efficient for programming, but also works in a very different way from your typical non-modal text editor. The only other thing we will mention about Vim, is how to exit it properly, if you somehow open Vim by accident. This can be done by typing `<Esc>:q!<Enter>`. Pressing `<Esc>` is to make sure you are in normal mode before typing anything else, and `:q!` is a command to quit Vim and discard any unsaved changes.
+
+This tutorial is aimed at Windows users with no prior experience working from the terminal, who would probably struggle to navigate Vim. So the first, and most important, thing to configure is the default text editor Git uses.
+
+To change the default text editor to Notepad, which is pre-installed on Windows, write the following command in your terminal:
 
 <pre class="terminal">
 $ git config set --global core.editor notepad
 </pre>
 
-This tells Git to use Notepad as a text editor in all your Git repositories.
+This tells Git to use Notepad as a text editor in all your Git repositories. Git Bash should be able locate your notepad executable, but if you later have problems when Git prompts you to use a text editor, try using the full path to the Notepad executable instead. This could look something liket this:
+
+<pre class="terminal">
+$ git config set --global core.editor "/c/Windows/System32/notepad.exe"
+</pre>
+
 
 ### Identify yourself
 
@@ -24,6 +35,7 @@ Another thing you should configure in your Git installation is your username and
 $ git config set --global user.name "Your name"
 $ git config set --global user.email "your@email.com"
 </pre>
+
 
 ## Initializing and cloning Git repositories
 
