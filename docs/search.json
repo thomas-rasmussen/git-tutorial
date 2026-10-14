@@ -1034,12 +1034,12 @@
   {
     "objectID": "app-resources.html",
     "href": "app-resources.html",
-    "title": "Appendix C — Resources",
+    "title": "Appendix C — Additional resources",
     "section": "",
-    "text": "An (incomplete) list of resources that was used as inspiration for this tutorial. Listed in no particular order.\nThe official documentation\nPro Git\natlassian.com/git\nboot.dev/courses/learn-git\nboot.dev/courses/learn-git-2\ngitexercises.fracz.com\nhappygitwithr.com\nr-cubed-intro.rostools.org/sessions/version-control",
+    "text": "The following resources were used as references and sources of inspiration when developing this tutorial. They also provide opportunities for further learning.\nOfficial Git documentation - Official reference documentation for Git commands, configuration settings, and other features.\nPro Git - A comprehensive, freely available book covering Git from basic concepts to advanced features.\nAtlassian Git tutorials - Tutorials explaining Git concepts and workflows, with practical examples.\nBoot.dev: Learn Git - An interactive course covering introductory and intermediate Git concepts.\nBoot.dev: Learn Git 2 - An interactive course covering more advanced Git concepts and collaborative workflows.\nGit Exercises - Interactive exercises for practicing Git commands and solving common Git problems.",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>C</span>  <span class='chapter-title'>Resources</span>"
+      "<span class='chapter-number'>C</span>  <span class='chapter-title'>Additional resources</span>"
     ]
   }
 ]

@@ -1,19 +1,15 @@
-# Resources
+# Additional resources
 
-An (incomplete) list of resources that was used as inspiration for this tutorial. Listed in no particular order.
+The following resources were used as references and sources of inspiration when developing this tutorial. They also provide opportunities for further learning.
 
-[The official documentation](https://git-scm.com/docs){target="_blank"}
+[Official Git documentation](https://git-scm.com/docs){target="_blank"} - Official reference documentation for Git commands, configuration settings, and other features.
 
-[Pro Git](https://git-scm.com/book/en/v2){target="_blank"}
+[Pro Git](https://git-scm.com/book/en/v2){target="_blank"} - A comprehensive, freely available book covering Git from basic concepts to advanced features.
 
-[atlassian.com/git](https://www.atlassian.com/git){target="_blank"}
+[Atlassian Git tutorials](https://www.atlassian.com/git){target="_blank"} - Tutorials explaining Git concepts and workflows, with practical examples.
 
-[boot.dev/courses/learn-git](https://www.boot.dev/courses/learn-git){target="_blank"}
+[Boot.dev: Learn Git](https://www.boot.dev/courses/learn-git){target="_blank"} - An interactive course covering introductory and intermediate Git concepts.
 
-[boot.dev/courses/learn-git-2](https://www.boot.dev/courses/learn-git-2){target="_blank"}
+[Boot.dev: Learn Git 2](https://www.boot.dev/courses/learn-git-2){target="_blank"} - An interactive course covering more advanced Git concepts and collaborative workflows.
 
-[gitexercises.fracz.com](https://gitexercises.fracz.com){target="_blank"}
-
-[happygitwithr.com](https://happygitwithr.com){target="_blank"}
-
-[r-cubed-intro.rostools.org/sessions/version-control](https://r-cubed-intro.rostools.org/sessions/version-control){target="_blank"}
+[Git Exercises](https://gitexercises.fracz.com){target="_blank"} - Interactive exercises for practicing Git commands and solving common Git problems.
