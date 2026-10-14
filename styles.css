@@ -24,6 +24,16 @@
   padding-right: 0.1em;
 }
 
+/* Class used for presenting directory structures */
+.dir-structure {
+  font-family: monospace;
+  background-color: #f6f8fa;
+  padding: 1rem;
+  border-radius: 6px;
+  line-height: 1.5;
+  overflow-x: auto;
+}
+
 
 /* Classes used to emulate notepad file content */
 .notepad-file {
@@ -100,10 +110,17 @@
   color: #00BF00;
 }
 
+.col-status-modified {
+  color: #00BF00;
+}
+
 .col-status-changed {
   color: #BF0000;
 }
 
+.col-status-untracked {
+  color: #BF0000;
+}
 
 /* Classes used to colour general output in terminal */
 .col-black {
@@ -184,4 +201,8 @@
 
 .col-dir {
   color: #7D97FF;
+}
+
+.col-prompt-branch {
+  color: #00BFBF;
 }

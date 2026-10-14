@@ -1,6 +1,6 @@
 # Configuration of Git {#sec-configuration-of-git}
 
-Section @sec-basic-git-configuration-of-git briefly introduced how to configure Git using the `git config` command. This appendix explains how Git stores and organizes configuration settings in files. We also introduce several useful configuration variables and Git aliases.
+Section @sec-getting-started-basic-config briefly introduced how to configure Git using the `git config` command. This appendix explains how Git stores and organizes configuration settings in files. We also introduce several useful configuration variables and Git aliases.
 
 Understanding Git configuration can help you troubleshoot unexpected settings and customize Git's behaviour. To keep the explanations accessible to beginners, this appendix focuses on common Git configuration scenarios and omits some advanced details and exceptions.
 

@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Appendix C — Ignoring files – Git tutorial</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./app-resources.html" rel="next">
+<link href="./app-configuration-of-git.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-2aad03a8b4e422ea2bd4d420080b3680.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./app-git-bash.html">Appendices</a></li><li class="breadcrumb-item"><a href="./app-ignoring-files.html"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Ignoring files</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Git tutorial</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/thomas-rasmussen/git-tutorial" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part I</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./part1-ch01-introduction-to-git.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to version control and Git</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./part1-ch02-getting-started.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Getting started</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./part1-ch03-inspecting-the-commit-history.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Inspecting the commit history</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./part1-ch04-undoing-changes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Undoing changes</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./part1-ch05-branching-and-merging.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Branching and merging</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./part1-ch06-remotes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Remote repositories</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part II</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./part2-workflows.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Git workflows</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./part2-git-reflog.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Recovering deleted commits</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./part2-git-diff.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Using <code>git diff</code> to show code changes</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./part2-github.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Introduction to GitHub</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./part2-git-rebase.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Rebasing</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./app-git-bash.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Git Bash</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./app-configuration-of-git.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Configuration of Git</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./app-ignoring-files.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Ignoring files</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./app-resources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Additional resources</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#what-files-should-be-ignored" id="toc-what-files-should-be-ignored" class="nav-link active" data-scroll-target="#what-files-should-be-ignored"><span class="header-section-number">C.1</span> What files should be ignored?</a></li>
+  <li><a href="#ignore-patterns" id="toc-ignore-patterns" class="nav-link" data-scroll-target="#ignore-patterns"><span class="header-section-number">C.2</span> Ignore patterns</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">D</span> Exercises</a>
+  <ul class="collapse">
+  <li><a href="#exercise-1---using-a-.gitignore-file-in-a-project" id="toc-exercise-1---using-a-.gitignore-file-in-a-project" class="nav-link" data-scroll-target="#exercise-1---using-a-.gitignore-file-in-a-project"><span class="header-section-number">D.1</span> Exercise 1 - Using a <code>.gitignore</code> file in a project</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./app-git-bash.html">Appendices</a></li><li class="breadcrumb-item"><a href="./app-ignoring-files.html"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Ignoring files</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span id="sec-ignoring-files" class="quarto-section-identifier">Appendix C — Ignoring files</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>In <a href="part1-ch02-getting-started.html" class="quarto-xref"><span>Chapter 2</span></a>, we briefly mentioned that you can instruct Git to ignore certain files. In this appendix, we will explore this topic in more detail while keeping the explanations simple and relevant to beginners.</p>
+<p>When working with Git, you may not want to track changes to <em>all</em> files in your project. For example, your project might contain large files or files specific to your local environment that do not need to be shared with collaborators. You can tell Git which files to ignore by specifying patterns in a text file named <code>.gitignore</code>, usually placed at the root of the repository. It is often a good idea to create this file when initializing a repository to avoid accidentally committing files you do not wish to track.</p>
+<p>Git applies the patterns in <code>.gitignore</code> as soon as the file is created or modified, even if it has not been staged or committed. However, <code>.gitignore</code> only affects untracked files. If a file is already tracked by Git, adding it to <code>.gitignore</code> will not stop Git from tracking it. Although committing <code>.gitignore</code> is not necessary for its patterns to take effect, doing so ensures that the same ignore rules are available to others working with the repository.</p>
+<section id="what-files-should-be-ignored" class="level2" data-number="C.1">
+<h2 data-number="C.1" class="anchored" data-anchor-id="what-files-should-be-ignored"><span class="header-section-number">C.1</span> What files should be ignored?</h2>
+<p>A useful rule of thumb is to track files that define the project and to ignore files that are generated by the project and can easily be recreated, as well as files specific to your local environment. Small datasets that are difficult or time-consuming to reproduce may instead be worth tracking. The table below shows common categories of files that you might want to ignore:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Category</th>
+<th data-quarto-table-cell-role="th">Examples</th>
+<th data-quarto-table-cell-role="th">Reason for ignoring</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Temporary files</td>
+<td><code>*.tmp</code>, <code>*.bak</code></td>
+<td>Temporary files created by applications.</td>
+</tr>
+<tr class="even">
+<td>Operating system files</td>
+<td><code>.DS_Store</code>, <code>Thumbs.db</code></td>
+<td>Files automatically generated by the operating system.</td>
+</tr>
+<tr class="odd">
+<td>Editor and IDE files</td>
+<td><code>.Rproj.user/</code>, <code>*.swp</code></td>
+<td>Local editor settings and temporary files.</td>
+</tr>
+<tr class="even">
+<td>Build artifacts</td>
+<td><code>*.exe</code></td>
+<td>Generated files that can be recreated from source code.</td>
+</tr>
+<tr class="odd">
+<td>Data</td>
+<td><code>raw/</code>, <code>data/</code></td>
+<td>Large external datasets and generated data that can easily be reproduced.</td>
+</tr>
+<tr class="even">
+<td>Generated results</td>
+<td><code>output/</code>, <code>results/</code></td>
+<td>Generated results that can easily be reproduced.</td>
+</tr>
+</tbody>
+</table>
+<p>Git is particularly well suited to tracking changes in text-based files, such as source code and documentation. Although Git can also track large datasets and large binary files, doing so can substantially increase the size of a repository. This is because Git generally retains earlier versions of committed files, even when they are subsequently modified or deleted. Large files can therefore make repositories slower to work with.</p>
+</section>
+<section id="ignore-patterns" class="level2" data-number="C.2">
+<h2 data-number="C.2" class="anchored" data-anchor-id="ignore-patterns"><span class="header-section-number">C.2</span> Ignore patterns</h2>
+<p>A <code>.gitignore</code> file is a plain text file containing patterns that tell Git which files and directories to ignore. Each line can contain an ignore pattern or a comment. Git compares the names and paths of untracked files against these patterns to determine whether they should be ignored.</p>
+<p>The patterns use a form of wildcard matching known as <em>glob patterns</em>. These allow you to match multiple files using a single pattern. For example, the pattern <code>*.pdf</code> matches all files with the <code>.pdf</code> extension, regardless of the rest of their names.</p>
+<p>The table below shows some commonly used patterns and how they work. The examples assume that the <code>.gitignore</code> file is located at the root of the repository.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Pattern</th>
+<th data-quarto-table-cell-role="th">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>file.txt</code></td>
+<td>Matches files named <code>file.txt</code> anywhere in the repository.</td>
+</tr>
+<tr class="even">
+<td><code>/file.txt</code></td>
+<td>Matches <code>file.txt</code> only at the root of the repository.</td>
+</tr>
+<tr class="odd">
+<td><code>*.pdf</code></td>
+<td>Matches files ending in <code>.pdf</code> anywhere in the repository.</td>
+</tr>
+<tr class="even">
+<td><code>data/file.txt</code></td>
+<td>Matches <code>file.txt</code> in the <code>data/</code> directory at the root of the repository.</td>
+</tr>
+<tr class="odd">
+<td><code>data/*.txt</code></td>
+<td>Matches <code>.txt</code> files directly inside the root <code>data/</code> directory, but not in its subdirectories.</td>
+</tr>
+<tr class="even">
+<td><code>data/</code></td>
+<td>Matches directories named <code>data</code> anywhere in the repository, including their contents.</td>
+</tr>
+<tr class="odd">
+<td><code>file?.txt</code></td>
+<td>Matches names such as <code>file1.txt</code> and <code>fileA.txt</code>, but not <code>file12.txt</code>.</td>
+</tr>
+<tr class="even">
+<td><code>file[1-3].txt</code></td>
+<td>Matches <code>file1.txt</code>, <code>file2.txt</code>, and <code>file3.txt</code>.</td>
+</tr>
+</tbody>
+</table>
+<p>The most important wildcard characters are <code>*</code>, which matches zero or more characters, and <code>?</code>, which matches exactly one character. Neither matches a directory separator (<code>/</code>). Square brackets (<code>[]</code>) can be used to match a single character from a specified set or range.</p>
+<p>The forward slash <code>/</code> is used to separate directories in paths, even when working on Windows. A slash at the beginning of a pattern restricts it to the root of the repository, while a slash at the end indicates that the pattern matches directories rather than ordinary files.</p>
+<p>A <code>.gitignore</code> file can also contain comments and blank lines. Lines beginning with <code>#</code> are comments, while blank lines can be used to improve readability.</p>
+<p>There are additional rules for writing ignore patterns, but those described here cover most common situations. For a complete description, see the <a href="https://git-scm.com/docs/gitignore">Git documentation on gitignore</a>.</p>
+</section>
+<section id="exercises" class="level1" data-number="D">
+<h1 data-number="D"><span class="header-section-number">D</span> Exercises</h1>
+<section id="exercise-1---using-a-.gitignore-file-in-a-project" class="level2" data-number="D.1">
+<h2 data-number="D.1" class="anchored" data-anchor-id="exercise-1---using-a-.gitignore-file-in-a-project"><span class="header-section-number">D.1</span> Exercise 1 - Using a <code>.gitignore</code> file in a project</h2>
+<p>Imagine you are a researcher who has to clean and analyse a large dataset using the R programming language.</p>
+<p><b>1. Set up the project directory structure.</b></p>
+<p>First, prepare the directory structure for the project. A diagram depicting the structure is shown below. For each file shown in the diagram, create an empty file with the specified name.</p>
+<pre class="dir-structure"><code>~/ex01-ignoring-files/
+├── README.txt
+├── data/
+│   └── large-dataset.rds
+├── output/
+└── scripts/
+</code></pre>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>You can create the necessary directories and files using the following commands:</p>
+<pre class="terminal">$ mkdir ~/ex01-ignoring-files
+$ cd ex01-ignoring-files
+$ mkdir data output scripts
+$ touch README.txt data/large-dataset.rds
+</pre>
+</div>
+</div>
+</div>
+<p><b>2. Create a <code>.gitignore</code> file.</b></p>
+<p>Your initial plan is that you want to ignore <code>large-dataset.rds</code> because it is a large input dataset that will not be modified during the project. You also plan to save the results of your analyses as <code>.pdf</code> files in <code>output/</code>. These are generated from the source code, so you also want to ignore any <code>.pdf</code> files in <code>output/</code>.</p>
+<p>Create a <code>.gitignore</code> file in the root of <code>ex01-ignoring-files</code> that ignores the following files:</p>
+<ul>
+<li><p><code>data/large-dataset.rds</code></p></li>
+<li><p>All <code>.pdf</code> files in <code>output/</code>.</p></li>
+</ul>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>You can create the <code>.gitignore</code> file shown below with the following commands:</p>
+<pre class="terminal"><span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~/ex01-ignoring-files</span>
+$ echo "data/large-dataset.rds" &gt;&gt; .gitignore
+$ echo "output/*.pdf" &gt;&gt; .gitignore
+$ cat .gitignore
+data/large-dataset.rds
+output/*.pdf
+</pre>
+<div class="notepad-file">
+<div class="notepad-header">.gitignore</div>
+<div class="notepad-body">
+<pre>data/large-dataset.rds
+output/*.pdf</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p><b>3. Initialize repository and add files.</b></p>
+<p>Now that you have set up the project structure, initialize a Git repository in <code>ex01-ignoring-files</code>. Afterwards, run <code>git status</code> to see the states of files in the working tree. Before running the command, predict which files will appear as untracked and which will not appear in its output. Finally, add all changes to the staging area and make an initial commit.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre class="terminal">$ git init
+$ git status
+On branch main
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+<span class="col-status-untracked">        .gitignore</span>
+<span class="col-status-untracked">        README.txt</span>
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+$ git add .
+$ git commit -m"Initial commit"
+</file></pre>
+<p>The files <code>.gitignore</code> and <code>README.txt</code> show up as untracked. The dataset <code>data/large-dataset.rds</code> does not show up because its path matches a pattern in <code>.gitignore</code>. Note that the empty directories <code>output/</code> and <code>scripts/</code> do not appear in the <code>git status</code> output, because Git does not track empty directories. Notice that <code>.gitignore</code> itself appears as an untracked file, even though its patterns are already being applied by Git.</p>
+</div>
+</div>
+</div>
+<p><b>4. Work on project.</b></p>
+<p>After the initial set up, you start to work on the project. For each of the following files, add an empty file with the specified name:</p>
+<ul>
+<li><p><code>scripts/clean-data.R</code>: Script that cleans <code>large-dataset.rds</code>.</p></li>
+<li><p><code>scripts/analyses.R</code>: Script that performs the analyses.</p></li>
+<li><p><code>data/clean-data.rds</code>: Cleaned dataset generated from <code>large-dataset.rds</code>.</p></li>
+<li><p><code>output/analyses.pdf</code>: Analysis results.</p></li>
+</ul>
+<p>Afterwards, run <code>git status -u</code> to see the status of the files. The <code>-u</code> flag ensures that Git lists individual untracked files rather than grouping them by directory. Before running the command, predict which files will appear as untracked and which will be ignored. Finally, add all changes to the staging area and make another commit.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre class="terminal">$ touch scripts/clean-data.R scripts/analyses.R
+$ touch data/clean-data.rds output/analyses.pdf
+$ git status -u
+On branch main
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+<span class="col-status-untracked">        data/clean-data.rds</span>
+<span class="col-status-untracked">        scripts/analyses.R</span>
+<span class="col-status-untracked">        scripts/clean-data.R</span>
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+$ git add .
+$ git commit -m"Clean data and run analyses"
+</file></pre>
+<p>The files <code>data/clean-data.rds</code>, <code>scripts/analyses.R</code>, and <code>scripts/clean-data.R</code> appear as untracked files, but <code>output/analyses.pdf</code> does not, because the name matches a pattern in <code>.gitignore</code>.</p>
+</div>
+</div>
+</div>
+<p>If you have already committed a file, adding it to <code>.gitignore</code> will not stop Git from tracking it. To stop tracking a file without deleting it from your working tree, you can use <code>git rm --cached</code> followed by the path to the file. This stages the removal of the file from Git’s tracked contents while keeping it in your working tree. Once the removal is committed, Git will no longer track the file.</p>
+<p><b>5. Stop tracking a file.</b></p>
+<p>At this point you realise that you have committed <code>data/clean-data.rds</code> and are tracking changes to it. Since this dataset is also quite large and can easily be recreated using <code>scripts/clean-data.R</code>, you decide that Git should no longer track the file.</p>
+<ul>
+<li><p>Stop tracking <code>data/clean-data.rds</code> without deleting it from the working tree.</p></li>
+<li><p>Update <code>.gitignore</code> to ignore all <code>.rds</code> files in <code>data/</code>.</p></li>
+<li><p>Add all changes to the staging area.</p></li>
+<li><p>Run <code>git status</code> to see the status of files.</p></li>
+<li><p>Commit the changes.</p></li>
+</ul>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre class="terminal">$ git rm --cached data/clean-data.rds
+$ echo "data/*.rds" &gt;&gt; .gitignore
+$ git add .
+$ git status
+On branch main
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+<span class="col-status-modified">        modified:   .gitignore</span>
+<span class="col-status-modified">        deleted:    data/clean-data.rds</span>
+
+
+$ git commit -m"Stop tracking clean-data.rds"
+</file></pre>
+<p>Notice that <code>data/clean-data.rds</code> is shown as deleted, even though the file still exists in the working tree. This is because Git is preparing to record the file’s removal in the next commit, rather than deleting it from your computer.</p>
+<p>Notice that <code>data/*.rds</code> also matches <code>data/large-dataset.rds</code>, so the earlier pattern is now redundant.</p>
+</div>
+</div>
+</div>
+<p><b>6. Consider whether <code>data/clean-data.rds</code> is still in the repository.</b></p>
+<p>You have stopped tracking <code>data/clean-data.rds</code>, but does the file still exist in the repository’s history?</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Yes, <code>data/clean-data.rds</code> is still in the repository. Although Git no longer tracks the file in the current version, it remains available in earlier commits.</p>
+</div>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./app-configuration-of-git.html" class="pagination-link" aria-label="Configuration of Git">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Configuration of Git</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./app-resources.html" class="pagination-link" aria-label="Additional resources">
+        <span class="nav-page-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Additional resources</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
