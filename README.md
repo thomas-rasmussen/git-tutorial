@@ -1,6 +1,8 @@
 # Git tutorial
 
-[Link to tutorial](https://thomas-rasmussen.github.io/git-tutorial/)
+Source code for a Git tutorial for beginners. The rendered tutorial can be found [here](https://thomas-rasmussen.github.io/git-tutorial/).
+
+The tutorial was developed using Quarto and RStudio.
 
 
 **---TODO: content---**
@@ -74,7 +76,9 @@ Only rough outlines / first draft of chapters so far. These chapters need a lot 
 
 **---TODO: technical stuff---**
 
-- use of CSS to colour (Git) terminal output has been streamlined. Currently using default mintty colours, but they don't seem to correspond exactly with what is shown in Git BASH by default for some colours, even though they should be the same as the default mintty colours. Consider tweaking colours to match better.
+- Use of CSS to colour terminal output has been streamlined. Currently using some of the default mintty colours, but they don't seem to correspond
+  exactly with what is shown in Git BASH by default for some colours, even though they should be the same as the default mintty colours.
+  Consider tweaking colours to match better.
 
 
 **---Topics that might be needed/interesting to include---**
