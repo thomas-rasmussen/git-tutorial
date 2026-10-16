@@ -1,4 +1,4 @@
-# Using `git diff` to show code changes
+# Using `git diff` to show code changes {#sec-git-diff}
 
 A *diff* is a program that compares the content of files or directories, line by line, and shows the differences between them. Git comes with its own diff command, `git diff`, which can be used to compare different states of a repository. Using diffs allows developers to inspect changes before adding them to the index or making a commit, compare changes made in a feature branch with your main branch before merging and so on, which is an essential skill to learn when using Git.
 

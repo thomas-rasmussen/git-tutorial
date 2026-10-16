@@ -1,35 +1,35 @@
 # Getting started
 
-In this chapter you will be introduced to the most basic git commands. We will start the chapter by talking about basic configuration of Git, and then we show how to initialize and clone Git repositories, add changes to the staging area, and make commits. Finally we will show how to access documentation for Git commands.
+In this chapter we will do basic configuration of Git, and introduce the most basic git commands to create a Git repository, and stage and commit changes. We will also explain how to ignore certain files, and how to access documentation for Git commands.
+
+We will assume the reader is familiar with working from the terminal using Git Bash. If you are not, start by reading @sec-git-bash.
 
 
-## Basic configuration of Git {#sec-basic-git-configuration-of-git}
+## Basic configuration of Git {#sec-getting-started-basic-config}
 
-Before we start using Git, there are some basic configurations of the Git installation that should be done using the `git config` command. The focus at this point is to just provide you with the commands you need so that you can get started using Git, not to get into a long explanation about how they work. For further details see @sec-configuration-of-git.
+First and foremost, there are some basic configurations of Git that should be done using the `git config` command. Here, we will simply show which commands to use. For a more in-depth introduction to configuration of Git see @sec-configuration-of-git
 
 
 ### Change the core editor
 
-Git for Windows comes with a Vim installation, and Git uses Vim as the default text editor that the user will be prompted to use for writing commit messages for example. Vim is a modal text editor that is is primarily controlled using keyboard commands rather than a mouse. Vim is very efficient for programming, but also works in a very different way from your typical non-modal text editor. The only other thing we will mention about Vim, is how to exit it properly, if you somehow open Vim by accident. This can be done by typing `<Esc>:q!<Enter>`. Pressing `<Esc>` is to make sure you are in normal mode before typing anything else, and `:q!` is a command to quit Vim and discard any unsaved changes.
+Git for Windows comes with a Vim installation, and Git uses Vim as the default text editor that the user will be prompted to use for writing text. If you do not already know what Vim is, it is most certainly not an appropriate text editor for you to use. The only thing we will explain about Vim, is how to properly exit it if you open it by accident: type `<Esc>:q!<Enter>`. Pressing `<Esc>` is to make sure you are in normal mode, and `:q!` is a command to quit Vim and discard any unsaved changes.
 
-This tutorial is aimed at Windows users with no prior experience working from the terminal, who would probably struggle to navigate Vim. So the first, and most important, thing to configure is the default text editor Git uses.
-
-To change the default text editor to Notepad, which is pre-installed on Windows, write the following command in your terminal:
+This tutorial is aimed at Windows users, so a sensible text editor to use could be Notepad. To change the default text editor to Notepad, which is pre-installed on Windows systems, write the following command:
 
 <pre class="terminal">
 $ git config set --global core.editor notepad
 </pre>
 
-This tells Git to use Notepad as a text editor in all your Git repositories. Git Bash should be able locate your notepad executable, but if you later have problems when Git prompts you to use a text editor, try using the full path to the Notepad executable instead. This could look something liket this:
+This tells Git to use Notepad as a text editor in all your Git repositories. Git should be able locate your Notepad executable. If not, specify the full path to the Notepad, which is typically `C:/Windows/System32/notepad.ext`:
 
 <pre class="terminal">
-$ git config set --global core.editor "/c/Windows/System32/notepad.exe"
+$ git config set --global core.editor "C:/Windows/System32/notepad.exe"
 </pre>
 
 
 ### Identify yourself
 
-Another thing you should configure in your Git installation is your username and email. Every commit you make to your Git repository contains information on the identity of the person who made it, and this information should be informative, i.e. be your real name and email. This ensures that if you are collaborating on a Git repository or sharing the repository online, it is clear to others who made what commits to the repository. You can set your username and email by writing the following commands in your terminal:
+Another thing you should configure is your name and email, which is included in commits you make. You can specify this with the following commands:
 
 <pre class="terminal">
 $ git config set --global user.name "Your name"
@@ -39,112 +39,81 @@ $ git config set --global user.email "your@email.com"
 
 ## Initializing and cloning Git repositories
 
-To start using Git, we need to either initialize a new Git repository, or clone an existing one.
+To start using Git, you need to either initialize a new Git repository, or clone an existing one.
 
-### Initialize a new Git repository
+### Initialize a Git repository
 
-To initialize a Git repository in a directory, `cd` to the directory and use the `git init` command. This creates an empty Git repository in a new (hidden) subdirectory named ".git".
+To initialize a Git repository in a directory, use `git init`:
 
 <pre class="terminal">
-$ cd ~ # Change working directory to the home directory
-$ mkdir new-git-repository # Make a new directory in home directory
-$ cd new-git-repo # Change working directory
-$ git init # Initialize Git repository
-$ ls -A # List all subdirectories
-.git/
+<span class="col-user-id">username@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+$ mkdir ~/example-getting-started
+$ cd ~/example-getting-started
+<span class="col-user-id">username@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~/example-getting-started</span>
+$ git init
+Initialized empty Git repository in C:/Users/<username>/example-getting-started/.git/
+<span class="col-user-id">username@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~/example-getting-started</span> <span class="col-prompt-branch">(main)</span>
+$ ls -A
+<span class="col-dir">.git</span>/
 </pre>
+
+As you can see from the output of `git init`, this creates an empty Git repository in a subdirectory named `.git`. Furthermore, the prompt now ends with `(main)`. This is Git Bash telling us that we are in a Git repository and on the `main` branch. Depending on your Git installation, the name might be `master` instead of `main`. We will talk more about branches in @sec-branching-and-merging. 
+
 
 ### Clone an existing Git repository
 
-You can clone an existing Git repository using the `git clone` command. This makes a copy of the repository in a new directory in the working directory.
-
-You can clone a repository from anyway, e.g. from another folder on your machine, from a folder on a network drive, or from a url. The code for this tutorial is on available on Github. You could clone the repository by using the command below:
+To clone an existing Git repository use `git clone`. This makes a copy of the repository in your current working directory. You can clone a repository from another directory on your computer, from a directory on a network drive, or from an url. The source code for this tutorial is available on Github. You could make a clone of the repository in your home directory by using the commands:
 
 <pre class="terminal">
+$ cd  ~
 $ git clone "https://github.com/thomas-rasmussen/git-tutorial.git"
 </pre>
 
-This will clone the repository in a folder named "git-tutorial" in your current work directory.
+This will create a directory named `git-toturial`, and copy the repository there.
 
-## Lifecycle of files
 
-Whether you have initialized a new Git repository or cloned an existing one, you now have a Git repository on your local computer. At this point we are going to take a moment to talk about the different states that files in Git repository can be in.
+## States of files
 
-Each file in a Git repository can be in one of two states: *tracked* or *untracked*. Tracked files are files that Git know about, i.e. files that were included in the last snapshot and files that are staged. These files can be unmodified, modified, or staged, but they are all tracked. Untracked files is everything else.
+Before we introduce the commands you use add changes to the staging area, and commit changes to a repository, we need to introduce some terminology regarding the different states files can be in.
 
-When you edit a tracked file, Git sees it as modified since it is different from the last snapshot. You can then stage files for the next commit, and finally commit them. When you commit the file to a snapshot, the file goes back to being viewed as unmodified. You then then continue editing, staging and commiting files, and thus the cycle repeats.
+Each file in a Git repository can is either *tracked* or *untracked*. Tracked files are files that Git know about, i.e. files that are have previously been committed to your your repository or files that are in the staging area. Untracked files is everything else.
 
-![Life cycle of files](./diagrams/lifecycle-status-files.svg){width=100%}
+Additionally, tracked files in the working directory are further categorized as either *unmodified*, *modified*, and *staged*. A file is unmodified if no changes has been made to it. A file is modified if changes has been made to it, and a file is staged if changes to the file has been added to the staging area.
+
+When you edit a tracked file, Git sees it as modified since it is different from the last snapshot. You can then stage files for the next commit, and finally commit them. When you commit the file, the file goes back to being viewed as unmodified. You then then continue editing, staging and commiting files, and thus the cycle repeats.
+
+![State of files](./diagrams/states-of-files.drawio.svg){width=100%}
+
 
 ## Checking the state of files
 
-So how do we check the state of our files? The main command to do this is `git status`. If you run this command right after cloning a repository or commiting a snapshot of your files, you will see something like this.
+The main command to check the states of files is `git status`. If we run this command in the empty `example-getting-started` repository we created earlier we we see something like:
 
 <pre class="terminal">
-$ git status
-On branch main
-nothing to commit, working tree clean
-</pre>
-
-As the message states, the working tree is clean, i.e. the files in the repository are all unmodified with respect to the last commit. Furthermore, there are no untracked files in the repository, or they would be listed.
-
-## Adding files to the index
-
-To update the index, we use the `git add` command. This will update the index using the current content of the working tree, which can include updating files that are already in the index, include new files, or remove files that are no longer in the working tree. The index holds a snapshot of the content that we want to include in our next commit. To update the index based on all files in the repository you can use the commmand
-
-<pre class="terminal">
-$ git add .
-</pre>
-
-The "." means "current directory". You can also specify individual files to add to the index:
-
-<pre class="terminal">
-$git add file_a.txt file_b.txt
-</pre>
-
-
-## Committing files to the repository
-
-We can commit files to the repository with the `git commit` command. This commands
-uses the current content of the index to create a new commit to the repository.
-
-<pre class="terminal">
-$ git commit -m"Commit message"
-</pre>
-
-If you do not specify a commit message with the `-m` option, Git will open a text editor, and request that you enter one there. After typing the commit message, save the file, and exit the editor.
-
-## Example {#sec-getting-started-example}
-
-Let's create our own Git repository from scratch to illustrate the concepts that have been introduced so far. First, we initialize a new Git repository in the home directory, and `cd` into the directory.
-
-<pre class="terminal">
-$ cd ~
-$ mkdir git-tutorial-example
-$ cd git-tutorial-example
-$ git init
-</pre>
-
-Lets run `git status` to see the status of the working tree at this point.
-
-<pre class="terminal">
+<span class="col-user-id">username@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~/example-getting-started</span> <span class="col-prompt-branch">(main)</span>
 $ git status
 On branch main
 
 No commits yet
 
 nothing to commit (create/copy files and use "git add" to track)
+
 </pre>
 
-As expected we are told that nothing has been committed to the repository, and that no files are tracked.
+We are informed that there are no commits in the repository, and that there is nothing to commit at this point, e.g. all the files in the repository are unmodified. Finally, we are informed that we can create files and use `git add` to track them.
 
-Next, we create a new file in the directory.
+
+## Adding changes to the staging area
+
+To add changes to the staging area, we can use the `git add` command, as Git also informed informed us in the example above. This will update the staging area using the current contents of the working tree, which can include updating files that are already in the staging area, include new files, or remove files that are no longer in the working tree. The staging area holds a snapshot of the content that we want to include in our next commit. 
+
+Continuing our example, we first create a file in the working tree:
 
 <pre class="terminal">
-$ echo "Content of file_a.txt" > file_a.txt
+$ echo "Contents of file1.txt" > file1.txt
 </pre>
 
-If we run `git status` again:
+We now have an untracked file in our repository. If we run `git status` again we see the following:
 
 <pre class="terminal">
 $ git status
@@ -154,15 +123,28 @@ No commits yet
 
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
-        <span class="col-status-changed">file_a.txt</span>
+<span class="col-status-untracked">        file1.txt</span>
 
 nothing added to commit but untracked files present (use "git add" to track)
+
 </pre>
 
-Git now notifies us about the presence on an untracked file in the repository. Lets add the file to the index for the next commit, and run `git status` once more:
+Git is also noting that `file1.txt` is untracked.
+
+Now we add `file1.txt` to the staging area:
 
 <pre class="terminal">
-$ git add file_a.txt
+$ git add file1.txt
+warning: in the working copy of 'file1.txt', LF will be replaced by CRLF the next time Git touches it
+</pre>
+
+If we wanted to add multiple files to the staging area at once we could do so using e.g. `git add file1.txt file2.txt` or `git add .`, where `git add .` adds all files in the working tree to the staging area.
+
+When we add the file to the repository we get a warning that is quite cryptic at this point. The warning has to do with how line endings are handled in the repository, and is caused by the fact that we created the contents using a command in Git Bash instead of making it in e.g. Notepad manually. We will not go into details with why this happens, but rest assured that everything is fine and the warning can be ignored. (TODO: is it worth it to explain this in more details?).
+
+`file1.txt` has now been added to the staging area, and is no longer an untracked file, but instead a staged file. At this point let's use `git status` again:
+
+<pre class="terminal">
 $ git status
 On branch main
 
@@ -170,19 +152,106 @@ No commits yet
 
 Changes to be committed:
   (use "git rm --cached <file>..." to unstage)
-        <span class="col-status-added">new file:   file_a.txt</span>
+<span class="col-status-added">        new file:   file1.txt</span>
+
 </pre>
 
-Git now tells us that file_a.txt has been added to the index and will be included, in its current state, to the next commit. Finally, lets commit the file to the repository and run `git status` a final time:
+We are now informed that `file1.txt` has been added to the staging area, and will be included in the next commit. Git also helpfully informs us, that we can unstage file by using `git rm --cached ...`.
+
+
+## Viewing differences
+
+As we saw in the last section, we can stage files using `git add`. But before actually committing them, we might be interested in seeing exactly what changes we are commiting. We can do this using `git diff`. Continuing the example, lets try to use `git diff`. By default, `git diff` shows differences between the working tree and the last commit. What we want to see is the differences between the staging area and the last commit, and we can do this using the `--cached` flag:
 
 <pre class="terminal">
-$ git commit file_a.txt -m"Add file_a.txt to repository"
-$ git status
-On branch main
-nothing to commit, working tree clean
+$ git diff --cached
+<span class="col-diff-header">diff --git a/file1.txt b/file1.txt</span>
+<span class="col-diff-header">new file mode 100644</span>
+<span class="col-diff-metadata">index 0000000..85e8799</span>
+<span class="col-diff-markers">--- /dev/null</span>
+<span class="col-diff-markers">+++ b/file1.txt</span>
+<span class="col-diff-hunk-header">@@ -0,0 +1 @@</span>
+<span class="col-diff-added">+Contents of file1.txt</span>
+
 </pre>
 
-Git now informs us that there is nothing to commit and that the working tree is clean. This is because the current state of file_a.txt is the same as the state of file_a.txt in the repository.
+The output is quite complex, but we can see that the green line indicates the lines that will be added. We will not talk more about `git diff` at this point, but will go in-depth with that particular command in @sec-git-diff.
+
+
+## Committing files to the repository
+
+We have now seen how to add changes to the staging area using `git add` and how to inspect the added changes using `git diff`. To commit changes in the staging area to the repository, use `git commit`. This uses the current content of the staging areas to create a new commit to the repository. Continuing our example:
+
+<pre class="terminal">
+$ git commit
+</pre>
+
+When using this command, Git will open a text editor for you to enter a commit message. After writing the message, save the file, and exit the editor. This is why it is important to configure what text editor Git uses, as explained earlier. 
+
+You can also use the `-m` flag to write a commit message directly:
+
+<pre class="terminal">
+$ git commit -m"Commit message"
+</pre>
+
+After making the commit, `git commit` outputs something like the following in the terminal:
+
+<pre class="terminal">
+[main (root-commit) b68a80a] Commit message
+ 1 file changed, 1 insertion(+)
+ create mode 100644 file1.txt
+</pre>
+
+This is very technical, but we can discern that the commit included changes to `file1.txt`.
+
+After committing `file1.txt` to the repository, `file1.txt` goes back to being unmodified, since the file is now the same as in the repository.
+
+
+## Viewing the commit log
+
+To view the commit log of a repository use `git log`. Continuing our example:
+
+<pre class="terminal">
+<span class="col-user-id">username@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~/example-getting-started</span> <span class="col-prompt-branch">(main)</span>
+$ git log
+<span class="col-yellow">commit b68a80aa01df294c1eb6ee43146536b54c1f4b53 (</span><span class="col-head">HEAD</span> <span class="col-yellow">-> </span><span class="col-branch-local">main</span><span class="col-yellow">)</span>
+Author: Your Name <your@email.com>
+Date:   Fri Oct 16 12:20:47 2026 +0200
+
+    Commit message
+
+</pre>
+
+The repository only has one commit, and we can see that we are provided with information on the author and date of the commit together with the commit message. We will discuss `git log` in more details in @sec-inspecting-the-commit-history.
+
+
+## Ignoring files
+
+It is more common than not, that your repository contains files that you do not want Git to track. For example, you might have a directory with documents related to your project, that you store in your project to make it self-contained, but the documents themselves is not something that you want to version control. 
+
+In a Git repository you can make a file called `.gitignore`, and in this file you can specify files that Git should ignore. Each line in `.gitignore` specifies a pattern. A `.gitignore file` could look like this:
+
+```{=html}
+<div class="notepad-file">
+<div class="notepad-header">.gitignore</div>
+<div class="notepad-body">
+# Lines starting with a '#' are comments.
+# Ignore project description
+project-description.pdf
+# Ignore all files ending in ".pdf" or ".docx" in 'doc' subdirectory
+doc/*.pdf
+doc/*.docx
+</div>
+</div>
+```
+
+It is important that Git only ignores files that are not already tracked.
+
+`.gitignore` files are important when using Git in a real project but is not something that will pop up more in this tutorial. If you want to know more about how to ignore files when using Git, see @sec-ignoring-files.
+
+
+TODO: Would it be appropriate to make an appendix about .gitignore files. Talking more about patterns and how you can have multiple .gitignore files feels important, but also out of scope for this chapter, and any other chapter for that matter. An appendix with additional details seems like the best approahc to include some additional information that is important in general, but not necessarily that important in this tutorial.
+
 
 ## Accessing manual pages
 

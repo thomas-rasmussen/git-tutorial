@@ -104,6 +104,9 @@
   color: #BF0000;
 }
 
+.col-status-untracked {
+  color: #BF0000;
+}
 
 /* Classes used to colour general output in terminal */
 .col-black {
@@ -184,4 +187,8 @@
 
 .col-dir {
   color: #7D97FF;
+}
+
+.col-prompt-branch {
+  color: #00BFBF;
 }

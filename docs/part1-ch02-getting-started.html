@@ -250,23 +250,25 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#sec-basic-git-configuration-of-git" id="toc-sec-basic-git-configuration-of-git" class="nav-link active" data-scroll-target="#sec-basic-git-configuration-of-git"><span class="header-section-number">2.1</span> Basic configuration of Git</a>
+  <li><a href="#sec-getting-started-basic-config" id="toc-sec-getting-started-basic-config" class="nav-link active" data-scroll-target="#sec-getting-started-basic-config"><span class="header-section-number">2.1</span> Basic configuration of Git</a>
   <ul class="collapse">
   <li><a href="#change-the-core-editor" id="toc-change-the-core-editor" class="nav-link" data-scroll-target="#change-the-core-editor">Change the core editor</a></li>
   <li><a href="#identify-yourself" id="toc-identify-yourself" class="nav-link" data-scroll-target="#identify-yourself">Identify yourself</a></li>
   </ul></li>
   <li><a href="#initializing-and-cloning-git-repositories" id="toc-initializing-and-cloning-git-repositories" class="nav-link" data-scroll-target="#initializing-and-cloning-git-repositories"><span class="header-section-number">2.2</span> Initializing and cloning Git repositories</a>
   <ul class="collapse">
-  <li><a href="#initialize-a-new-git-repository" id="toc-initialize-a-new-git-repository" class="nav-link" data-scroll-target="#initialize-a-new-git-repository">Initialize a new Git repository</a></li>
+  <li><a href="#initialize-a-git-repository" id="toc-initialize-a-git-repository" class="nav-link" data-scroll-target="#initialize-a-git-repository">Initialize a Git repository</a></li>
   <li><a href="#clone-an-existing-git-repository" id="toc-clone-an-existing-git-repository" class="nav-link" data-scroll-target="#clone-an-existing-git-repository">Clone an existing Git repository</a></li>
   </ul></li>
-  <li><a href="#lifecycle-of-files" id="toc-lifecycle-of-files" class="nav-link" data-scroll-target="#lifecycle-of-files"><span class="header-section-number">2.3</span> Lifecycle of files</a></li>
+  <li><a href="#states-of-files" id="toc-states-of-files" class="nav-link" data-scroll-target="#states-of-files"><span class="header-section-number">2.3</span> States of files</a></li>
   <li><a href="#checking-the-state-of-files" id="toc-checking-the-state-of-files" class="nav-link" data-scroll-target="#checking-the-state-of-files"><span class="header-section-number">2.4</span> Checking the state of files</a></li>
-  <li><a href="#adding-files-to-the-index" id="toc-adding-files-to-the-index" class="nav-link" data-scroll-target="#adding-files-to-the-index"><span class="header-section-number">2.5</span> Adding files to the index</a></li>
-  <li><a href="#committing-files-to-the-repository" id="toc-committing-files-to-the-repository" class="nav-link" data-scroll-target="#committing-files-to-the-repository"><span class="header-section-number">2.6</span> Committing files to the repository</a></li>
-  <li><a href="#sec-getting-started-example" id="toc-sec-getting-started-example" class="nav-link" data-scroll-target="#sec-getting-started-example"><span class="header-section-number">2.7</span> Example</a></li>
-  <li><a href="#accessing-manual-pages" id="toc-accessing-manual-pages" class="nav-link" data-scroll-target="#accessing-manual-pages"><span class="header-section-number">2.8</span> Accessing manual pages</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">2.9</span> Exercises</a>
+  <li><a href="#adding-changes-to-the-staging-area" id="toc-adding-changes-to-the-staging-area" class="nav-link" data-scroll-target="#adding-changes-to-the-staging-area"><span class="header-section-number">2.5</span> Adding changes to the staging area</a></li>
+  <li><a href="#viewing-differences" id="toc-viewing-differences" class="nav-link" data-scroll-target="#viewing-differences"><span class="header-section-number">2.6</span> Viewing differences</a></li>
+  <li><a href="#committing-files-to-the-repository" id="toc-committing-files-to-the-repository" class="nav-link" data-scroll-target="#committing-files-to-the-repository"><span class="header-section-number">2.7</span> Committing files to the repository</a></li>
+  <li><a href="#viewing-the-commit-log" id="toc-viewing-the-commit-log" class="nav-link" data-scroll-target="#viewing-the-commit-log"><span class="header-section-number">2.8</span> Viewing the commit log</a></li>
+  <li><a href="#ignoring-files" id="toc-ignoring-files" class="nav-link" data-scroll-target="#ignoring-files"><span class="header-section-number">2.9</span> Ignoring files</a></li>
+  <li><a href="#accessing-manual-pages" id="toc-accessing-manual-pages" class="nav-link" data-scroll-target="#accessing-manual-pages"><span class="header-section-number">2.10</span> Accessing manual pages</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">2.11</span> Exercises</a>
   <ul class="collapse">
   <li><a href="#exercise-1---create-a-new-git-repository" id="toc-exercise-1---create-a-new-git-repository" class="nav-link" data-scroll-target="#exercise-1---create-a-new-git-repository">Exercise 1 - Create a new Git repository</a></li>
   <li><a href="#exercise-2---using-the-manual-pages" id="toc-exercise-2---using-the-manual-pages" class="nav-link" data-scroll-target="#exercise-2---using-the-manual-pages">Exercise 2 - Using the manual pages</a></li>
@@ -298,24 +300,24 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>In this chapter you will be introduced to the most basic git commands. We will start the chapter by talking about basic configuration of Git, and then we show how to initialize and clone Git repositories, add changes to the staging area, and make commits. Finally we will show how to access documentation for Git commands.</p>
-<section id="sec-basic-git-configuration-of-git" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="sec-basic-git-configuration-of-git"><span class="header-section-number">2.1</span> Basic configuration of Git</h2>
-<p>Before we start using Git, there are some basic configurations of the Git installation that should be done using the <code>git config</code> command. The focus at this point is to just provide you with the commands you need so that you can get started using Git, not to get into a long explanation about how they work. For further details see <a href="app-configuration-of-git.html" class="quarto-xref"><span>Appendix B</span></a>.</p>
+<p>In this chapter we will do basic configuration of Git, and introduce the most basic git commands to create a Git repository, and stage and commit changes. We will also explain how to ignore certain files, and how to access documentation for Git commands.</p>
+<p>We will assume the reader is familiar with working from the terminal using Git Bash. If you are not, start by reading <a href="app-git-bash.html" class="quarto-xref"><span>Appendix A</span></a>.</p>
+<section id="sec-getting-started-basic-config" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="sec-getting-started-basic-config"><span class="header-section-number">2.1</span> Basic configuration of Git</h2>
+<p>First and foremost, there are some basic configurations of Git that should be done using the <code>git config</code> command. Here, we will simply show which commands to use. For a more in-depth introduction to configuration of Git see <a href="app-configuration-of-git.html" class="quarto-xref"><span>Appendix B</span></a></p>
 <section id="change-the-core-editor" class="level3">
 <h3 class="anchored" data-anchor-id="change-the-core-editor">Change the core editor</h3>
-<p>Git for Windows comes with a Vim installation, and Git uses Vim as the default text editor that the user will be prompted to use for writing commit messages for example. Vim is a modal text editor that is is primarily controlled using keyboard commands rather than a mouse. Vim is very efficient for programming, but also works in a very different way from your typical non-modal text editor. The only other thing we will mention about Vim, is how to exit it properly, if you somehow open Vim by accident. This can be done by typing <code>&lt;Esc&gt;:q!&lt;Enter&gt;</code>. Pressing <code>&lt;Esc&gt;</code> is to make sure you are in normal mode before typing anything else, and <code>:q!</code> is a command to quit Vim and discard any unsaved changes.</p>
-<p>This tutorial is aimed at Windows users with no prior experience working from the terminal, who would probably struggle to navigate Vim. So the first, and most important, thing to configure is the default text editor Git uses.</p>
-<p>To change the default text editor to Notepad, which is pre-installed on Windows, write the following command in your terminal:</p>
+<p>Git for Windows comes with a Vim installation, and Git uses Vim as the default text editor that the user will be prompted to use for writing text. If you do not already know what Vim is, it is most certainly not an appropriate text editor for you to use. The only thing we will explain about Vim, is how to properly exit it if you open it by accident: type <code>&lt;Esc&gt;:q!&lt;Enter&gt;</code>. Pressing <code>&lt;Esc&gt;</code> is to make sure you are in normal mode, and <code>:q!</code> is a command to quit Vim and discard any unsaved changes.</p>
+<p>This tutorial is aimed at Windows users, so a sensible text editor to use could be Notepad. To change the default text editor to Notepad, which is pre-installed on Windows systems, write the following command:</p>
 <pre class="terminal">$ git config set --global core.editor notepad
 </pre>
-<p>This tells Git to use Notepad as a text editor in all your Git repositories. Git Bash should be able locate your notepad executable, but if you later have problems when Git prompts you to use a text editor, try using the full path to the Notepad executable instead. This could look something liket this:</p>
-<pre class="terminal">$ git config set --global core.editor "/c/Windows/System32/notepad.exe"
+<p>This tells Git to use Notepad as a text editor in all your Git repositories. Git should be able locate your Notepad executable. If not, specify the full path to the Notepad, which is typically <code>C:/Windows/System32/notepad.ext</code>:</p>
+<pre class="terminal">$ git config set --global core.editor "C:/Windows/System32/notepad.exe"
 </pre>
 </section>
 <section id="identify-yourself" class="level3">
 <h3 class="anchored" data-anchor-id="identify-yourself">Identify yourself</h3>
-<p>Another thing you should configure in your Git installation is your username and email. Every commit you make to your Git repository contains information on the identity of the person who made it, and this information should be informative, i.e.&nbsp;be your real name and email. This ensures that if you are collaborating on a Git repository or sharing the repository online, it is clear to others who made what commits to the repository. You can set your username and email by writing the following commands in your terminal:</p>
+<p>Another thing you should configure is your name and email, which is included in commits you make. You can specify this with the following commands:</p>
 <pre class="terminal">$ git config set --global user.name "Your name"
 $ git config set --global user.email "your@email.com"
 </pre>
@@ -323,85 +325,65 @@ $ git config set --global user.email "your@email.com"
 </section>
 <section id="initializing-and-cloning-git-repositories" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="initializing-and-cloning-git-repositories"><span class="header-section-number">2.2</span> Initializing and cloning Git repositories</h2>
-<p>To start using Git, we need to either initialize a new Git repository, or clone an existing one.</p>
-<section id="initialize-a-new-git-repository" class="level3">
-<h3 class="anchored" data-anchor-id="initialize-a-new-git-repository">Initialize a new Git repository</h3>
-<p>To initialize a Git repository in a directory, <code>cd</code> to the directory and use the <code>git init</code> command. This creates an empty Git repository in a new (hidden) subdirectory named “.git”.</p>
-<pre class="terminal">$ cd ~ # Change working directory to the home directory
-$ mkdir new-git-repository # Make a new directory in home directory
-$ cd new-git-repo # Change working directory
-$ git init # Initialize Git repository
-$ ls -A # List all subdirectories
-.git/
-</pre>
+<p>To start using Git, you need to either initialize a new Git repository, or clone an existing one.</p>
+<section id="initialize-a-git-repository" class="level3">
+<h3 class="anchored" data-anchor-id="initialize-a-git-repository">Initialize a Git repository</h3>
+<p>To initialize a Git repository in a directory, use <code>git init</code>:</p>
+<pre class="terminal"><span class="col-user-id">username@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+$ mkdir ~/example-getting-started
+$ cd ~/example-getting-started
+<span class="col-user-id">username@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~/example-getting-started</span>
+$ git init
+Initialized empty Git repository in C:/Users/<username>/example-getting-started/.git/
+<span class="col-user-id">username@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~/example-getting-started</span> <span class="col-prompt-branch">(main)</span>
+$ ls -A
+<span class="col-dir">.git</span>/
+</username></pre>
+<p>As you can see from the output of <code>git init</code>, this creates an empty Git repository in a subdirectory named <code>.git</code>. Furthermore, the prompt now ends with <code>(main)</code>. This is Git Bash telling us that we are in a Git repository and on the <code>main</code> branch. Depending on your Git installation, the name might be <code>master</code> instead of <code>main</code>. We will talk more about branches in <a href="part1-ch05-branching-and-merging.html" class="quarto-xref"><span>Chapter 5</span></a>.</p>
 </section>
 <section id="clone-an-existing-git-repository" class="level3">
 <h3 class="anchored" data-anchor-id="clone-an-existing-git-repository">Clone an existing Git repository</h3>
-<p>You can clone an existing Git repository using the <code>git clone</code> command. This makes a copy of the repository in a new directory in the working directory.</p>
-<p>You can clone a repository from anyway, e.g.&nbsp;from another folder on your machine, from a folder on a network drive, or from a url. The code for this tutorial is on available on Github. You could clone the repository by using the command below:</p>
-<pre class="terminal">$ git clone "https://github.com/thomas-rasmussen/git-tutorial.git"
+<p>To clone an existing Git repository use <code>git clone</code>. This makes a copy of the repository in your current working directory. You can clone a repository from another directory on your computer, from a directory on a network drive, or from an url. The source code for this tutorial is available on Github. You could make a clone of the repository in your home directory by using the commands:</p>
+<pre class="terminal">$ cd  ~
+$ git clone "https://github.com/thomas-rasmussen/git-tutorial.git"
 </pre>
-<p>This will clone the repository in a folder named “git-tutorial” in your current work directory.</p>
+<p>This will create a directory named <code>git-toturial</code>, and copy the repository there.</p>
 </section>
 </section>
-<section id="lifecycle-of-files" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="lifecycle-of-files"><span class="header-section-number">2.3</span> Lifecycle of files</h2>
-<p>Whether you have initialized a new Git repository or cloned an existing one, you now have a Git repository on your local computer. At this point we are going to take a moment to talk about the different states that files in Git repository can be in.</p>
-<p>Each file in a Git repository can be in one of two states: <em>tracked</em> or <em>untracked</em>. Tracked files are files that Git know about, i.e.&nbsp;files that were included in the last snapshot and files that are staged. These files can be unmodified, modified, or staged, but they are all tracked. Untracked files is everything else.</p>
-<p>When you edit a tracked file, Git sees it as modified since it is different from the last snapshot. You can then stage files for the next commit, and finally commit them. When you commit the file to a snapshot, the file goes back to being viewed as unmodified. You then then continue editing, staging and commiting files, and thus the cycle repeats.</p>
+<section id="states-of-files" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="states-of-files"><span class="header-section-number">2.3</span> States of files</h2>
+<p>Before we introduce the commands you use add changes to the staging area, and commit changes to a repository, we need to introduce some terminology regarding the different states files can be in.</p>
+<p>Each file in a Git repository can is either <em>tracked</em> or <em>untracked</em>. Tracked files are files that Git know about, i.e.&nbsp;files that are have previously been committed to your your repository or files that are in the staging area. Untracked files is everything else.</p>
+<p>Additionally, tracked files in the working directory are further categorized as either <em>unmodified</em>, <em>modified</em>, and <em>staged</em>. A file is unmodified if no changes has been made to it. A file is modified if changes has been made to it, and a file is staged if changes to the file has been added to the staging area.</p>
+<p>When you edit a tracked file, Git sees it as modified since it is different from the last snapshot. You can then stage files for the next commit, and finally commit them. When you commit the file, the file goes back to being viewed as unmodified. You then then continue editing, staging and commiting files, and thus the cycle repeats.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./diagrams/lifecycle-status-files.svg" class="img-fluid figure-img" style="width:100.0%"></p>
-<figcaption>Life cycle of files</figcaption>
+<p><img src="./diagrams/states-of-files.drawio.svg" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption>State of files</figcaption>
 </figure>
 </div>
 </section>
 <section id="checking-the-state-of-files" class="level2" data-number="2.4">
 <h2 data-number="2.4" class="anchored" data-anchor-id="checking-the-state-of-files"><span class="header-section-number">2.4</span> Checking the state of files</h2>
-<p>So how do we check the state of our files? The main command to do this is <code>git status</code>. If you run this command right after cloning a repository or commiting a snapshot of your files, you will see something like this.</p>
-<pre class="terminal">$ git status
-On branch main
-nothing to commit, working tree clean
-</pre>
-<p>As the message states, the working tree is clean, i.e.&nbsp;the files in the repository are all unmodified with respect to the last commit. Furthermore, there are no untracked files in the repository, or they would be listed.</p>
-</section>
-<section id="adding-files-to-the-index" class="level2" data-number="2.5">
-<h2 data-number="2.5" class="anchored" data-anchor-id="adding-files-to-the-index"><span class="header-section-number">2.5</span> Adding files to the index</h2>
-<p>To update the index, we use the <code>git add</code> command. This will update the index using the current content of the working tree, which can include updating files that are already in the index, include new files, or remove files that are no longer in the working tree. The index holds a snapshot of the content that we want to include in our next commit. To update the index based on all files in the repository you can use the commmand</p>
-<pre class="terminal">$ git add .
-</pre>
-<p>The “.” means “current directory”. You can also specify individual files to add to the index:</p>
-<pre class="terminal">$git add file_a.txt file_b.txt
-</pre>
-</section>
-<section id="committing-files-to-the-repository" class="level2" data-number="2.6">
-<h2 data-number="2.6" class="anchored" data-anchor-id="committing-files-to-the-repository"><span class="header-section-number">2.6</span> Committing files to the repository</h2>
-<p>We can commit files to the repository with the <code>git commit</code> command. This commands uses the current content of the index to create a new commit to the repository.</p>
-<pre class="terminal">$ git commit -m"Commit message"
-</pre>
-<p>If you do not specify a commit message with the <code>-m</code> option, Git will open a text editor, and request that you enter one there. After typing the commit message, save the file, and exit the editor.</p>
-</section>
-<section id="sec-getting-started-example" class="level2" data-number="2.7">
-<h2 data-number="2.7" class="anchored" data-anchor-id="sec-getting-started-example"><span class="header-section-number">2.7</span> Example</h2>
-<p>Let’s create our own Git repository from scratch to illustrate the concepts that have been introduced so far. First, we initialize a new Git repository in the home directory, and <code>cd</code> into the directory.</p>
-<pre class="terminal">$ cd ~
-$ mkdir git-tutorial-example
-$ cd git-tutorial-example
-$ git init
-</pre>
-<p>Lets run <code>git status</code> to see the status of the working tree at this point.</p>
-<pre class="terminal">$ git status
+<p>The main command to check the states of files is <code>git status</code>. If we run this command in the empty <code>example-getting-started</code> repository we created earlier we we see something like:</p>
+<pre class="terminal"><span class="col-user-id">username@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~/example-getting-started</span> <span class="col-prompt-branch">(main)</span>
+$ git status
 On branch main
 
 No commits yet
 
 nothing to commit (create/copy files and use "git add" to track)
+
 </pre>
-<p>As expected we are told that nothing has been committed to the repository, and that no files are tracked.</p>
-<p>Next, we create a new file in the directory.</p>
-<pre class="terminal">$ echo "Content of file_a.txt" &gt; file_a.txt
+<p>We are informed that there are no commits in the repository, and that there is nothing to commit at this point, e.g.&nbsp;all the files in the repository are unmodified. Finally, we are informed that we can create files and use <code>git add</code> to track them.</p>
+</section>
+<section id="adding-changes-to-the-staging-area" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="adding-changes-to-the-staging-area"><span class="header-section-number">2.5</span> Adding changes to the staging area</h2>
+<p>To add changes to the staging area, we can use the <code>git add</code> command, as Git also informed informed us in the example above. This will update the staging area using the current contents of the working tree, which can include updating files that are already in the staging area, include new files, or remove files that are no longer in the working tree. The staging area holds a snapshot of the content that we want to include in our next commit.</p>
+<p>Continuing our example, we first create a file in the working tree:</p>
+<pre class="terminal">$ echo "Contents of file1.txt" &gt; file1.txt
 </pre>
-<p>If we run <code>git status</code> again:</p>
+<p>We now have an untracked file in our repository. If we run <code>git status</code> again we see the following:</p>
 <pre class="terminal">$ git status
 On branch main
 
@@ -409,31 +391,98 @@ No commits yet
 
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
-        <span class="col-status-changed">file_a.txt</span>
+<span class="col-status-untracked">        file1.txt</span>
 
 nothing added to commit but untracked files present (use "git add" to track)
+
 </file></pre>
-<p>Git now notifies us about the presence on an untracked file in the repository. Lets add the file to the index for the next commit, and run <code>git status</code> once more:</p>
-<pre class="terminal">$ git add file_a.txt
-$ git status
+<p>Git is also noting that <code>file1.txt</code> is untracked.</p>
+<p>Now we add <code>file1.txt</code> to the staging area:</p>
+<pre class="terminal">$ git add file1.txt
+warning: in the working copy of 'file1.txt', LF will be replaced by CRLF the next time Git touches it
+</pre>
+<p>If we wanted to add multiple files to the staging area at once we could do so using e.g.&nbsp;<code>git add file1.txt file2.txt</code> or <code>git add .</code>, where <code>git add .</code> adds all files in the working tree to the staging area.</p>
+<p>When we add the file to the repository we get a warning that is quite cryptic at this point. The warning has to do with how line endings are handled in the repository, and is caused by the fact that we created the contents using a command in Git Bash instead of making it in e.g.&nbsp;Notepad manually. We will not go into details with why this happens, but rest assured that everything is fine and the warning can be ignored. (TODO: is it worth it to explain this in more details?).</p>
+<p><code>file1.txt</code> has now been added to the staging area, and is no longer an untracked file, but instead a staged file. At this point let’s use <code>git status</code> again:</p>
+<pre class="terminal">$ git status
 On branch main
 
 No commits yet
 
 Changes to be committed:
   (use "git rm --cached <file>..." to unstage)
-        <span class="col-status-added">new file:   file_a.txt</span>
+<span class="col-status-added">        new file:   file1.txt</span>
+
 </file></pre>
-<p>Git now tells us that file_a.txt has been added to the index and will be included, in its current state, to the next commit. Finally, lets commit the file to the repository and run <code>git status</code> a final time:</p>
-<pre class="terminal">$ git commit file_a.txt -m"Add file_a.txt to repository"
-$ git status
-On branch main
-nothing to commit, working tree clean
-</pre>
-<p>Git now informs us that there is nothing to commit and that the working tree is clean. This is because the current state of file_a.txt is the same as the state of file_a.txt in the repository.</p>
+<p>We are now informed that <code>file1.txt</code> has been added to the staging area, and will be included in the next commit. Git also helpfully informs us, that we can unstage file by using <code>git rm --cached ...</code>.</p>
 </section>
-<section id="accessing-manual-pages" class="level2" data-number="2.8">
-<h2 data-number="2.8" class="anchored" data-anchor-id="accessing-manual-pages"><span class="header-section-number">2.8</span> Accessing manual pages</h2>
+<section id="viewing-differences" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="viewing-differences"><span class="header-section-number">2.6</span> Viewing differences</h2>
+<p>As we saw in the last section, we can stage files using <code>git add</code>. But before actually committing them, we might be interested in seeing exactly what changes we are commiting. We can do this using <code>git diff</code>. Continuing the example, lets try to use <code>git diff</code>. By default, <code>git diff</code> shows differences between the working tree and the last commit. What we want to see is the differences between the staging area and the last commit, and we can do this using the <code>--cached</code> flag:</p>
+<pre class="terminal">$ git diff --cached
+<span class="col-diff-header">diff --git a/file1.txt b/file1.txt</span>
+<span class="col-diff-header">new file mode 100644</span>
+<span class="col-diff-metadata">index 0000000..85e8799</span>
+<span class="col-diff-markers">--- /dev/null</span>
+<span class="col-diff-markers">+++ b/file1.txt</span>
+<span class="col-diff-hunk-header">@@ -0,0 +1 @@</span>
+<span class="col-diff-added">+Contents of file1.txt</span>
+
+</pre>
+<p>The output is quite complex, but we can see that the green line indicates the lines that will be added. We will not talk more about <code>git diff</code> at this point, but will go in-depth with that particular command in <a href="part2-git-diff.html" class="quarto-xref"><span>Chapter 9</span></a>.</p>
+</section>
+<section id="committing-files-to-the-repository" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="committing-files-to-the-repository"><span class="header-section-number">2.7</span> Committing files to the repository</h2>
+<p>We have now seen how to add changes to the staging area using <code>git add</code> and how to inspect the added changes using <code>git diff</code>. To commit changes in the staging area to the repository, use <code>git commit</code>. This uses the current content of the staging areas to create a new commit to the repository. Continuing our example:</p>
+<pre class="terminal">$ git commit
+</pre>
+<p>When using this command, Git will open a text editor for you to enter a commit message. After writing the message, save the file, and exit the editor. This is why it is important to configure what text editor Git uses, as explained earlier.</p>
+<p>You can also use the <code>-m</code> flag to write a commit message directly:</p>
+<pre class="terminal">$ git commit -m"Commit message"
+</pre>
+<p>After making the commit, <code>git commit</code> outputs something like the following in the terminal:</p>
+<pre class="terminal">[main (root-commit) b68a80a] Commit message
+ 1 file changed, 1 insertion(+)
+ create mode 100644 file1.txt
+</pre>
+<p>This is very technical, but we can discern that the commit included changes to <code>file1.txt</code>.</p>
+<p>After committing <code>file1.txt</code> to the repository, <code>file1.txt</code> goes back to being unmodified, since the file is now the same as in the repository.</p>
+</section>
+<section id="viewing-the-commit-log" class="level2" data-number="2.8">
+<h2 data-number="2.8" class="anchored" data-anchor-id="viewing-the-commit-log"><span class="header-section-number">2.8</span> Viewing the commit log</h2>
+<p>To view the commit log of a repository use <code>git log</code>. Continuing our example:</p>
+<pre class="terminal"><span class="col-user-id">username@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~/example-getting-started</span> <span class="col-prompt-branch">(main)</span>
+$ git log
+<span class="col-yellow">commit b68a80aa01df294c1eb6ee43146536b54c1f4b53 (</span><span class="col-head">HEAD</span> <span class="col-yellow">-&gt; </span><span class="col-branch-local">main</span><span class="col-yellow">)</span>
+Author: Your Name <your@email.com>
+Date:   Fri Oct 16 12:20:47 2026 +0200
+
+    Commit message
+
+</your@email.com></pre>
+<p>The repository only has one commit, and we can see that we are provided with information on the author and date of the commit together with the commit message. We will discuss <code>git log</code> in more details in <a href="part1-ch03-inspecting-the-commit-history.html" class="quarto-xref"><span>Chapter 3</span></a>.</p>
+</section>
+<section id="ignoring-files" class="level2" data-number="2.9">
+<h2 data-number="2.9" class="anchored" data-anchor-id="ignoring-files"><span class="header-section-number">2.9</span> Ignoring files</h2>
+<p>It is more common than not, that your repository contains files that you do not want Git to track. For example, you might have a directory with documents related to your project, that you store in your project to make it self-contained, but the documents themselves is not something that you want to version control.</p>
+<p>In a Git repository you can make a file called <code>.gitignore</code>, and in this file you can specify files that Git should ignore. Each line in <code>.gitignore</code> specifies a pattern. A <code>.gitignore file</code> could look like this:</p>
+<div class="notepad-file">
+<div class="notepad-header">.gitignore</div>
+<div class="notepad-body">
+# Lines starting with a '#' are comments.
+# Ignore project description
+project-description.pdf
+# Ignore all files ending in ".pdf" or ".docx" in 'doc' subdirectory
+doc/*.pdf
+doc/*.docx
+</div>
+</div>
+<p>It is important that Git only ignores files that are not already tracked.</p>
+<p><code>.gitignore</code> files are important when using Git in a real project but is not something that will pop up more in this tutorial. If you want to know more about how to ignore files when using Git, see <span class="quarto-unresolved-ref">?sec-ignoring-files</span>.</p>
+<p>TODO: Would it be appropriate to make an appendix about .gitignore files. Talking more about patterns and how you can have multiple .gitignore files feels important, but also out of scope for this chapter, and any other chapter for that matter. An appendix with additional details seems like the best approahc to include some additional information that is important in general, but not necessarily that important in this tutorial.</p>
+</section>
+<section id="accessing-manual-pages" class="level2" data-number="2.10">
+<h2 data-number="2.10" class="anchored" data-anchor-id="accessing-manual-pages"><span class="header-section-number">2.10</span> Accessing manual pages</h2>
 <p>We will end this chapter with a note on how to access the comprehensive manual help page for any of the Git commands. The manual pages can be accessed in different equivalent ways one of which is:</p>
 <pre class="terminal">$ git help &lt;command&gt;
 </pre>
@@ -472,8 +521,8 @@ usage: git add [<options>] [--] <pathspec>...
                           with --pathspec-from-file, pathspec elements are separated with NUL character
 </file></pathspec></options></pre>
 </section>
-<section id="exercises" class="level2" data-number="2.9">
-<h2 data-number="2.9" class="anchored" data-anchor-id="exercises"><span class="header-section-number">2.9</span> Exercises</h2>
+<section id="exercises" class="level2" data-number="2.11">
+<h2 data-number="2.11" class="anchored" data-anchor-id="exercises"><span class="header-section-number">2.11</span> Exercises</h2>
 <section id="exercise-1---create-a-new-git-repository" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-1---create-a-new-git-repository">Exercise 1 - Create a new Git repository</h3>
 <div class="callout callout-style-default callout-note no-icon callout-titled" title="Exercise">
@@ -510,7 +559,7 @@ usage: git add [<options>] [--] <pathspec>...
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Look at the example in section <a href="#sec-getting-started-example" class="quarto-xref"><span>Section 2.7</span></a>.</p>
+<p>Look at the example in section <span class="quarto-unresolved-ref">?sec-getting-started-example</span>.</p>
 </div>
 </div>
 </div>

@@ -7,10 +7,12 @@ The tutorial was developed using Quarto and RStudio.
 
 **---TODO: content---**
 
-**"Getting started" chapter:**
+**"Git Bash" appendix:**
 
-- Mention in the start of the chapter that we are assuming the reader is familiar with basic Bash commands, and
-  refer to the "Git Bash" appendix for readers who have missed this in the preface.
+- Currently uses "user-id" in terminal consistently, but chapters use "username" and "<username>" in commands. This needs to be streamlined. Probably by changing "user-id" to "username" in this appendix.
+
+
+**"Getting started" chapter:**
 
 - Remove comments on basic Bash commands. It is assumed the reader is familiar with these at this point.
 
@@ -24,28 +26,11 @@ The tutorial was developed using Quarto and RStudio.
 
 - As above, illustrating basic uses of git log could be valuable.
 
-- after creating a repo, there is a git message mentioning the branch name. Make a short comment on this name might be different depending on your setup / version of Git. But d not go into any details. maybe reference branch chapter.
-
-- introduce git add . as the second example, not the first.
-
 - Remove/move exercise 4, and introduce .gitignore files as a section in the late part of the chapter, before talking about accessing the documentation.
 
 - The first time an example is made staging changes to the staging area prompting Git to give a warning about changing line endings from LF to CRLF, Assure the reader that this message can be ignored, it is some technical stuff working as intended. This is a level of detail we will not cover in the tutorial, it seems to technical and not worth it to discuss since everything is working as intended by default?
 
 - Change all uses of "index" to "staging area" to be consistent with previous chapter. Maybe once, at the start, mention that the staging area is also refered to as the index, especially in Git's internal documentation (at least sometimes). "staging area" is much easier to understand for beginners, is (the most?) common choice of term, and goes together with "staging" files etc.
-
-scope outline:
-1. Configure name and email; optionally editor.
-2. git init and briefly git clone.
-3. Explain working tree / staging area (index) / repository and tracked/untracked/modified/staged.
-4. git status.
-5. git add <file>, then mention git add ..
-6. Optionally git diff.
-7. git commit -m.
-8. Optionally git log --oneline just to see the resulting commit.
-9. .introduce .gitignore files
-10. git help <command> and git <command> -h.
-11. Exercises reproducing that workflow.
 
 
 **Introduction to version control and Git:**
