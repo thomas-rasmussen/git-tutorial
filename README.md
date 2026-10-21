@@ -2,7 +2,23 @@
 
 Source code for a Git tutorial for beginners. The rendered tutorial can be found [here](https://thomas-rasmussen.github.io/git-tutorial/).
 
+Slides for seminar on Git at the Department of Clinical Epidemiology (DCE) can be found [here]()
+
 The tutorial was developed using Quarto and RStudio.
+
+**---TODO: DCE seminar---**
+
+- Make slides using Quarto. Need to reread the documentation. Pick the same theme as used in tutorial, and generally make the style of the slides match that of the tutorial.
+
+- Make slides for seminar. Focus on including slides with diagrams from tutorial, and reminders on when to do live-coding examples. Add notes on these slides for what to go through in example?
+
+- How do I best remember what to do in examples without having to do excessive preparations for the seminar? Keep tutorial open on phone beside computer for help if I can't remember exact commands I want to illustrate?
+
+- Keep switching between full-screen slides and a full-screen terminal? Have to test this before seminar, and maybe configure font-size in terminal.
+
+- Have to prepare laptop for seminar. Make sure that the Git installation has not been configured, and is up to date. Remember to set core.editor to Vim if it has been changed. Maybe best to delete Git for Windows and make a fresh installation of everything needed for the seminar.
+
+- Need to familarize myself with the projector equipment. Pointer/slide changer often seems to not be working. Make sure to check this beforehand.
 
 
 **---TODO: content---**

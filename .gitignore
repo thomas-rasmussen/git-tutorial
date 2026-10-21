@@ -1,5 +1,3 @@
 /.quarto/
 .Rproj.user/
-git-tutorial.Rproj
-
 **/*.quarto_ipynb
