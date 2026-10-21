@@ -1,0 +1,36 @@
+---
+title: "DCE Git seminar"
+format: 
+  revealjs:
+    theme: default
+    embed-resources: true
+---
+
+# Overview of seminar
+
+## Scope
+
+Go through tutorial, chapter by chapter:
+
+1. "Git Bash" appendix
+
+2. Part I chapters
+
+3. Part II chapters and remaining appendices
+
+
+## Sessions
+
+Split into sessions, typically corresponding to a chapter.
+
+Each session:
+
+- I go through material in chapter, live-coding examples
+
+- You do the chapter exercises
+
+- Discussion and questions
+
+We will takes breaks as needed.
+
+# Git Bash

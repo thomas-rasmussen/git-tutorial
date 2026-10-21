@@ -2,13 +2,19 @@
 
 Source code for a Git tutorial for beginners. The rendered tutorial can be found [here](https://thomas-rasmussen.github.io/git-tutorial/).
 
-Slides for seminar on Git at the Department of Clinical Epidemiology (DCE) can be found [here]()
+How to render tutorial and slides:
+
+- To render the tutorial use the command "quarto render".
+
+- To render the slides use the command "quarto render slides.qmd"
+
+Note, that the slides are not hosted on GitHub Pages.
 
 The tutorial was developed using Quarto and RStudio.
 
 **---TODO: DCE seminar---**
 
-- Make slides using Quarto. Need to reread the documentation. Pick the same theme as used in tutorial, and generally make the style of the slides match that of the tutorial.
+- Slides currently just rendered in root of project with a separate "quarto render slides.qmd" command. This means that the rendered .html file is not published on GitHub pages. this is probably irrelevant. In any case it is not clear to me how to make a better solution. Could maybe manually move rendered slides to doc folder before making commits, but this does not seem feasible.
 
 - Make slides for seminar. Focus on including slides with diagrams from tutorial, and reminders on when to do live-coding examples. Add notes on these slides for what to go through in example?
 
@@ -18,7 +24,7 @@ The tutorial was developed using Quarto and RStudio.
 
 - Have to prepare laptop for seminar. Make sure that the Git installation has not been configured, and is up to date. Remember to set core.editor to Vim if it has been changed. Maybe best to delete Git for Windows and make a fresh installation of everything needed for the seminar.
 
-- Need to familarize myself with the projector equipment. Pointer/slide changer often seems to not be working. Make sure to check this beforehand.
+- Need to familiarize myself with the projector equipment. Pointer/slide changer often seems to not be working. Make sure to check this beforehand.
 
 
 **---TODO: content---**
