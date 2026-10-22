@@ -33,26 +33,9 @@ The tutorial was developed using Quarto and RStudio.
 
 - Currently uses "user-id" in terminal consistently, but chapters use "username" and "<username>" in commands. This needs to be streamlined. Probably by changing "user-id" to "username" in this appendix.
 
+- Use "option" instead of "flag" throughout the chapter.
 
-**"Getting started" chapter:**
-
-- Remove comments on basic Bash commands. It is assumed the reader is familiar with these at this point.
-
-- Add exercise where reader is requested to do the basic configuration explained in the chapter. Or maybe not, perhaps refer to "Configuration of Git" appendix instead, or don't go into this at all in this chapter. It is not what the chapter is primarily about.
-
-- Introduce file terms "commited", "modified" and "staged" that have been removed from previous chapter introducing version control and Git. Incorporate in the "Lifecycle of files" section? Consider simplifying one/boht of the diagrams to better illustrate the workflow.
-
-- Using remotes as backups initiatedby git clone: by default the remote is probably not saving a hard copy of repo (to save space). Look at --no-hardlinks options for git clone to see how to circumvent this.
-
-- Consider adding a very short introductino to git diff in this chapter to show changes that are staged etc. Keep it very short, focused on how to use it, and then refer to the chapter concerned with git diff for more details.
-
-- As above, illustrating basic uses of git log could be valuable.
-
-- Remove/move exercise 4, and introduce .gitignore files as a section in the late part of the chapter, before talking about accessing the documentation.
-
-- The first time an example is made staging changes to the staging area prompting Git to give a warning about changing line endings from LF to CRLF, Assure the reader that this message can be ignored, it is some technical stuff working as intended. This is a level of detail we will not cover in the tutorial, it seems to technical and not worth it to discuss since everything is working as intended by default?
-
-- Change all uses of "index" to "staging area" to be consistent with previous chapter. Maybe once, at the start, mention that the staging area is also refered to as the index, especially in Git's internal documentation (at least sometimes). "staging area" is much easier to understand for beginners, is (the most?) common choice of term, and goes together with "staging" files etc.
+- Only the "-r" option has been introduced for "git rm", but often it is necessary to also use the "-f" option or you have to approve the deleting of each file in some cases. Probably best to also introduce this option and consistently use "-rf" in tutorial.
 
 
 **Introduction to version control and Git:**
@@ -61,11 +44,22 @@ The tutorial was developed using Quarto and RStudio.
 
   - Would it be better to drop the two column design, and simply put diagrams in-between text? The current design does not look good on a mobile for example.
 
-  - Does the terminology in the diagrams match the terminology in the text
+  - Does the terminology in the diagrams match the terminology in the text?
+  
+  - Local VCS uses "Database" in diagram. Should be probably be "Repository".
+    
+  - Centralized and distributed VCS diagrams should have a repository box inside the server box.
 
+  - Should maybe be mentioned (and depicted in diagram) that distributed VCS's often still use a server repository as a central repository. This could be mentioned a "pro" of CVCSs: they can be used in a centralized way, and often is.
+  
   - Is the information in the diagrams correct and informative
-
-  - centralized VCS diagram: should a server be included in the diagram? Should it be mentioned in the text that a server is still often used as a primary repository?
+  
+  - "main part of Git project" diagram: maybe simplify diagram to show
+     working directory -> staging area -> git directory
+     and then an arrow back to working directory from git directory.
+     This enforces the mental model of the cycle of working with git.
+     
+  - "Commit" is used suddenly, when "snapshot" only used so far. Maybe add sentence that eachsnapshot is called a commit.
 
 
 **"Undoing changes" chapter:**
@@ -75,6 +69,8 @@ The tutorial was developed using Quarto and RStudio.
 - Currently does not show how to "undo" a commit. This would require introducing git reset --hard <checksum>. Can this also be done with git restore? UPDATE: the chapter now includes this, but in an unfinished manner? Needs further work.
 
 - Consider if it is better to merge the git reflog appendix into this chapter as a final section since it is a natural extension of this topic.
+
+- Centralized VCS diagram: Expand diagram to illustrate that each developer has a local copy of "file.txt".
 
 **Chapter 5-11:**
 
@@ -98,7 +94,7 @@ Only rough outlines / first draft of chapters so far. These chapters need a lot 
 
 - The concept of references is currently not properly introduced? In particular it is not explained what HEAD is anywhere? This needs to be remedied. Briefly introducing the concept of references when needed seems appropriate. Maybe make appendix chapter with more details? The way forward will probably be more clear when more of the tutorial is getting closer to be done.
 
-- The current scope of the tutorial does not include an in-depth look at what the index is and how it works. But it is very relevant to include some information about this, since it helps shape the correct mental model of how Git works. This information could be put in a separate part II chapter, or maybe there is an appropriate place in on of the chapters.
+- The current scope of the tutorial does not include an in-depth look at what the index / staging area is and how it works. But it is very relevant to include some information about this, since it helps shape the correct mental model of how Git works. This information could be put in a separate part II chapter, or maybe there is an appropriate place in on of the chapters. Perhaps a short appendix would be most appropriate? The question is more where can I find more technical details about what the index is? Not really explained in any detalis many places?
 
 - git tag. Small subject, but useful. Maybe in chapter where refs and branches are introduced? This is a subject that is not essential and might be a thing that can be introduced in an appendix.
 
@@ -109,3 +105,5 @@ Only rough outlines / first draft of chapters so far. These chapters need a lot 
 - Consider restructuring some of the more technical content in the tutorial. Instead of going into depth with technical introductions all over the place when new concepts have to be introduced, give a very brief introduction instead, and refer to an appendix with more in-depth explanations. In connection with this, maybe some of the chapters should be more focused on showing how to use Git commands as fast as possible with briefer technical introductions, that are then explained in more details later in the chapter and/or in an appendix.
 
 - GitHub CLI: there seems to be an issue where the GitHub CLI stores login credentials in plain text if the CLI is used by a user without admin privilies. This does not immidiately seem like a problem if the CLI was used through git BASH on Windows on a DCE work pc, since we (apparently) have admin privilies on these. But remember to test this on a fresh laptop later to make sure we do not use an approach that saves credentials in plain text.
+
+- "git rm" is not discussed properly anywhere? This should properly be redemied. But it is unclear where it would be appropriate to do so. "git rm --cached" is currnelty used in exercise in "Ignoring files" appendix, and  is also mentioned in "Getting started" chapter, where it is currently just noted that we get back to that command later in the tutorial. If we do, there should be an explicit reference at some point.

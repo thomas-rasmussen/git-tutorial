@@ -118,6 +118,14 @@
   color: #BF0000;
 }
 
+.col-status-not-staged {
+  color: #BF0000;
+}
+
+.col-status-staged {
+  color: #00BF00;
+}
+
 .col-status-untracked {
   color: #BF0000;
 }
