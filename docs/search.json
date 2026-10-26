@@ -200,40 +200,62 @@
     "href": "part1-ch03-inspecting-the-commit-history.html",
     "title": "3  Inspecting the commit history",
     "section": "",
-    "text": "3.1 Data integrity in Git\nAt this point you know how to initialize or clone a Git repository, and record changes to the repository with commits. The obvious question at this point is: how do you see a list of what commits have been made to a Git repository and what changes was made? This is what the git log command is for, and what we will talk about in this chapter.\nBefore we start talking about the commit histories and changes to files, we need to talk about data integrity and checksums in Git. Any stream of data, for example a file or a directory of files, can be summarized into a single value, a so-called checksum. Even a single bit flip in a data stream would result in an entirely new checksum. Git checksums everything. This means that if something changes (including data corruption), Git will know about it. Git uses this to ensure the integrity of a project. In Git everything is checksummed before it is stored, and stored files/directories are referred to by that checksum. It also means that if the checksum of your state of a project (a commit ID) matches the checksum of another clone of the project, you can be assured that the entire project up until that point is identical.\nThe method that Git uses for making checksums is called a SHA-1 hash. This is a 40-characters string composed of hexadecimal characters and looks something like shown below.\nSince Git uses checksums so much, you will see these checksums everywhere. In particular, every time you commit a snapshot of files to a Git repository, the snapshot is associated with a checksum value.",
+    "text": "3.1 Checksums\nIn the previous chapter, we briefly introduced git log. In this chapter, we will explore how to inspect the commit history of a repository and examine individual commits.\nTo understand how Git identifies commits, we first need to introduce the concept of checksums.\nA checksum is a value calculated from data, such as the contents of a file. By default, Git uses the SHA-1 hashing algorithm to calculate checksums. The algorithm produces a 40-character hexadecimal string from the data. For example, the SHA-1 hash of the string “hello world” is:\nAdding a single space to the end of the string produces the following hash:\nNotice that even a minor change to the input can produce a completely different hash.\nGit uses checksums to identify objects stored in its internal database, including commits. When calculating the hash of an object, Git includes the object’s type and size along with its contents. Because accidental hash collisions are extremely unlikely, these hashes can be treated as unique identifiers for practical purposes. The hash identifying a commit is called its commit ID.",
     "crumbs": [
       "Part I",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Inspecting the commit history</span>"
     ]
   },
   {
-    "objectID": "part1-ch03-inspecting-the-commit-history.html#data-integrity-in-git",
-    "href": "part1-ch03-inspecting-the-commit-history.html#data-integrity-in-git",
+    "objectID": "part1-ch03-inspecting-the-commit-history.html#checksums",
+    "href": "part1-ch03-inspecting-the-commit-history.html#checksums",
     "title": "3  Inspecting the commit history",
     "section": "",
-    "text": "840552db75d3d52894732b753892427b3f2cafa8",
+    "text": "2aae6c35c94fcfb415dbe95f408b9ce91ee846ed\n\n\n0b1f51a2c85a69ee1335df4eef69342169bd195b",
     "crumbs": [
       "Part I",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Inspecting the commit history</span>"
     ]
   },
   {
-    "objectID": "part1-ch03-inspecting-the-commit-history.html#basic-use-of-git-log",
-    "href": "part1-ch03-inspecting-the-commit-history.html#basic-use-of-git-log",
+    "objectID": "part1-ch03-inspecting-the-commit-history.html#contents-of-a-commit",
+    "href": "part1-ch03-inspecting-the-commit-history.html#contents-of-a-commit",
     "title": "3  Inspecting the commit history",
-    "section": "3.2 Basic use of git log",
-    "text": "3.2 Basic use of git log\nTo illustrate how how to inspect the commit history, we create a simple Git repository to work with.\n$ cd ~\n$ mkdir example-git-log\n$ cd example-git-log\n$ git init\n$ echo \"First commit\" &gt; file.txt\n$ git add file.txt\n$ git commit -m\"First commit\"\n\nIf you use git log on this repository, you will get output similar to the below:\n$ git log\ncommit 3d00987b9c770a8881e1ea1024c119e2c19b091a (HEAD -&gt; main)\nAuthor: Thomas Rasmussen &lt;thomasboejer@gmail.com&gt;\nDate:   Mon Oct 13 08:28:10 2025 +0200\n\n    First commit\n\nIn the output we can see that there have been one commit to the repository, and we are presented with information on the author of the commit, the date of the commit, the commit checksum, and the commit messsage.\nLets add another commit to the repository look at the commit history again:\n$ echo \"Second commit\" &gt;&gt; file.txt\n$ git add file.txt\n$ git commit -m\"Second commit\"\n$ git log\ncommit 6ea3956e99f1d0227c01e05622e952bffec0eafc (HEAD -&gt; main)\nAuthor: Thomas Rasmussen &lt;thomasboejer@gmail.com&gt;\nDate:   Mon Oct 13 08:33:54 2025 +0200\n\n    Second commit\n\ncommit 3d00987b9c770a8881e1ea1024c119e2c19b091a\nAuthor: Thomas Rasmussen &lt;thomasboejer@gmail.com&gt;\nDate:   Mon Oct 13 08:28:10 2025 +0200\n\n    First commit\n\nWe can see that commits are listed in reverse chronological orders, with the newest commit showing up first. We can also see that the information we are shown is quite verbose, and with many commits to a repository will make it hard to get an overview of the commit history. Typically, we are primarily interested in the commit checksum and the commit message of commits to a repository. We can get Git to show us exactly this using the --oneline option:\n$ git log --oneline\n6ea3956 (HEAD -&gt; main) Second commit\n3d00987 First commit\n\nNote that when using this option, only the first 7 characters of checksums are shown. Git will automatically show more characters if necessary to make the ID’s’ unique. At this point you might be concerned about the possibility of different commits having the same checksum, a so-called SHA-1 collision. Don’t worry, this is extremely unlikely1:\n\nHere’s an example to give you an idea of what it would take to get a SHA-1 collision. If all 6.5 billion humans on Earth were programming, and every second, each one was producing code that was the equivalent of the entire Linux kernel history (6.5 million Git objects) and pushing it into one enormous Git repository, it would take roughly 2 years until that repository contained enough objects to have a 50% probability of a single SHA-1 object collision. Thus, an organic SHA-1 collision is less likely than every member of your programming team being attacked and killed by wolves in unrelated incidents on the same night.\n\nAnother thing we are often interested in, is the exact changes that was introduced in a commit. We can tell Git to show us the differences (the patch output) introduced in each commit by applying the -p option to git log. Let’s apply this option together with--oneline:\n$ git log --oneline -p\n6ea3956 (HEAD -&gt; main) Second commit\ndiff --git a/file.text b/file.text\nnew file mode 100644\nindex 0000000..c133ee6\n--- /dev/null\n+++ b/file.text\n@@ -0,0 +1 @@\n+Second commit\n3d00987 First commit\ndiff --git a/file.txt b/file.txt\nnew file mode 100644\nindex 0000000..6eaf244\n--- /dev/null\n+++ b/file.txt\n@@ -0,0 +1 @@\n+First commit\n\nThere is a lot of technical information in this output, which we will not discuss, but we can see that the the line of text that was added in each commit is clearly marked in green.",
+    "section": "3.2 Contents of a commit",
+    "text": "3.2 Contents of a commit\nA commit represents a snapshot of the repository based on the contents of the staging area at the time the commit was created. A commit also contains information about its author, the time it was created, a commit message, and references to its parent commits. The first commit of a repository does not have a parent commit. These references to parent commits connect the commits into a history.\nTODO: Is the first sentence above correct enough or just misleading? The content of the snapshot depends on the content of the index, not the files in the repository?",
     "crumbs": [
       "Part I",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Inspecting the commit history</span>"
     ]
   },
   {
-    "objectID": "part1-ch03-inspecting-the-commit-history.html#todo",
-    "href": "part1-ch03-inspecting-the-commit-history.html#todo",
+    "objectID": "part1-ch03-inspecting-the-commit-history.html#inspecting-commit-history-with-git-log",
+    "href": "part1-ch03-inspecting-the-commit-history.html#inspecting-commit-history-with-git-log",
     "title": "3  Inspecting the commit history",
-    "section": "3.3 TODO",
-    "text": "3.3 TODO\nNotes: - Would probably be good to add another file in running example where we remove a line in each commit, so that we can show how removed text is shown with git log -p.",
+    "section": "3.3 Inspecting commit history with git log",
+    "text": "3.3 Inspecting commit history with git log\nTo illustrate how to inspect the commit history of a repository, we first create a Git repository containing a single file, file.txt, and make two commits:\n$ mkdir ~/example-git-log\n$ cd ~/example-git-log\n$ git init\n$ echo \"Changes in first commit\" &gt; file.txt\n$ git add file.txt\n$ git commit -m\"First commit\"\n$ echo \"Changes in second commit\" &gt;&gt; file.txt\n$ git add file.txt\n$ git commit -m\"Second commit\"\n\nRunning git log now produces output similar to the following:\n$ git log\ncommit bd1a5e136e4acd10d16fe0e4a6199dc42b7abbed (HEAD -&gt; main)\nAuthor: Your Name &lt;your@email.com&gt;\nDate:   &lt;Date and time of commit&gt;\n\n    Second commit\n\ncommit ad3facc8ab413488c4195b6c39b6bd8ce89d1a40\nAuthor: Your Name &lt;your@email.com&gt;\nDate:   &lt;Date and time of commit&gt;\n\n    First commit\n\n\nBy default, git log shows the history leading up to the current commit, starting with that commit and working backwards through its history. For each commit, Git displays the full commit ID, the author’s name and email address, the commit date, and the commit message. The output also shows HEAD, which normally refers to the current branch and therefore identifies the currently checked-out commit. We will explain this in greater detail later in the tutorial.\nThe default output of git log is quite verbose, and we are often interested only in the commit IDs and messages. We can use the --oneline option to show this information more concisely:\n$ git log --oneline\nbd1a5e1 (HEAD -&gt; main) Second commit\nad3facc First commit\n\nNotice that git log --oneline displays abbreviated commit IDs, rather than the full 40-character IDs. Git automatically chooses an abbreviation length sufficient to distinguish objects in the repository. These abbreviated IDs can also be used to refer to commits in Git commands.",
+    "crumbs": [
+      "Part I",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Inspecting the commit history</span>"
+    ]
+  },
+  {
+    "objectID": "part1-ch03-inspecting-the-commit-history.html#inspecting-individual-commits-with-git-show",
+    "href": "part1-ch03-inspecting-the-commit-history.html#inspecting-individual-commits-with-git-show",
+    "title": "3  Inspecting the commit history",
+    "section": "3.4 Inspecting individual commits with git show",
+    "text": "3.4 Inspecting individual commits with git show\nWe can use git show &lt;commit-id&gt; to inspect an individual commit. For example, we can use git log --oneline to find the ID of the first commit and then inspect it using git show:\n$ git log --oneline\nbd1a5e1 (HEAD -&gt; main) Second commit\nad3facc First commit\n$ git show ad3facc\ncommit ad3facc8ab413488c4195b6c39b6bd8ce89d1a40\nAuthor: Your Name &lt;your@email.com&gt;\nDate:   &lt;Date and time of commit&gt;\n\n    First commit\n\ndiff --git a/file.txt b/file.txt\nnew file mode 100644\nindex 0000000..b25e6e1\n--- /dev/null\n+++ b/file.txt\n@@ -0,0 +1 @@\n+Changes in first commit\n\n\ngit show displays the same basic commit information as git log, but also shows the changes introduced by the commit. We will learn how to interpret this output in the next chapter.",
+    "crumbs": [
+      "Part I",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Inspecting the commit history</span>"
+    ]
+  },
+  {
+    "objectID": "part1-ch03-inspecting-the-commit-history.html#summary",
+    "href": "part1-ch03-inspecting-the-commit-history.html#summary",
+    "title": "3  Inspecting the commit history",
+    "section": "3.5 Summary",
+    "text": "3.5 Summary\nIn this chapter, we explained how Git uses checksums to identify commits and how each commit represents a snapshot of the repository, together with metadata and references to its parent commits.\nWe then learned how to inspect the commit history of a repository using git log, and how the --oneline option provides a more concise overview. Finally, we introduced git show, which allows us to inspect an individual commit and the changes it introduced.",
     "crumbs": [
       "Part I",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Inspecting the commit history</span>"
@@ -243,19 +265,8 @@
     "objectID": "part1-ch03-inspecting-the-commit-history.html#exercises",
     "href": "part1-ch03-inspecting-the-commit-history.html#exercises",
     "title": "3  Inspecting the commit history",
-    "section": "3.4 Exercises",
-    "text": "3.4 Exercises\n\nExercise 1\nExercise ideas: - Construct a simple repository and use git log. Creating the repository ourself makes everything very simple and easy to understand as compared to cloning a real repository. - Exercise focusing on exploring use of options - Add exercise where reader has to look at documentation to figure out how to limit the number of log entries that are displayed “-” option.",
-    "crumbs": [
-      "Part I",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Inspecting the commit history</span>"
-    ]
-  },
-  {
-    "objectID": "part1-ch03-inspecting-the-commit-history.html#footnotes",
-    "href": "part1-ch03-inspecting-the-commit-history.html#footnotes",
-    "title": "3  Inspecting the commit history",
-    "section": "",
-    "text": "https://git-scm.com/book/en/v2/Git-Tools-Revision-Selection↩︎",
+    "section": "3.6 Exercises",
+    "text": "3.6 Exercises\n\nExercise 1 - Inspecting commit history\nIn this exercise, you will practice the commands introduced in this chapter. Note that your commit IDs will almost certainly differ from those shown in the solutions.\n1. Set up a repository.\n\nCreate a directory named ex01-git-log in your home directory.\nCreate an empty file named file1.txt and commit it.\nCreate an empty file named file2.txt and commit it.\n\n\n\n\n\n\n\nNoteSolution\n\n\n\n\n\n$ mkdir ~/ex01-git-log\n$ cd ~/ex01-git-log\n$ git init\n$ touch file1.txt\n$ git add file1.txt\n$ git commit -m\"Add file1.txt\"\n$ touch file2.txt\n$ git add file2.txt\n$ git commit -m\"Add file2.txt\"\n\n\n\n\n2. Display the commit history.\nDisplay a concise commit history in the terminal.\n\n\n\n\n\n\nNoteSolution\n\n\n\n\n\n$ git log --oneline\n68823cd (HEAD -&gt; main) Add file2.txt\n2ebb3e0 Add file1.txt\n\n\n\n\n3. Compare commit IDs.\nCompare your commit IDs with those shown in the solution to Step 2. Are they identical? Why or why not?\n\n\n\n\n\n\nNoteSolution\n\n\n\n\n\nThe commit IDs will almost certainly differ. Even if you used identical file contents and commit messages, the commits will normally have different metadata, such as author information and timestamps, which contribute to the commit IDs.\n\n\n\n4. Identify the relationship between the commits.\nWhat is the relationship between the two commits in the repository?\n\n\n\n\n\n\nNoteSolution\n\n\n\n\n\nThe first commit is the parent of the second commit. Since it is the initial commit in the repository, it has no parent itself.\n\n\n\n5. Show information about a commit.\nUse an appropriate Git command to inspect the first commit.\n\n\n\n\n\n\nNoteSolution\n\n\n\n\n\nWe can find the ID of the first commit using git log --oneline and then inspect it with git show.\n$ git show 2ebb3e0\ncommit 2ebb3e008027ef2f137cf7b2fad15fcfef8591ba\nAuthor: Your Name &lt;your@email.com&gt;\nDate:   &lt;Date and time of commit&gt;\n\n    Add file1.txt\n\ndiff --git a/file1.txt b/file1.txt\nnew file mode 100644\nindex 0000000..e69de29\n\nAs we saw earlier, git show displays the changes introduced by a commit. Here, the output shows the creation of an empty file, but no added or removed lines.\n\n\n\n6. Limit the number of displayed commits.\nA repository’s commit history can become very long, and sometimes we only want to view the most recent commits. Consult the git log documentation to find an option that limits the number of displayed commits. Use this option to show only the most recent commit.\n\n\n\n\n\n\nTipHint 1\n\n\n\n\n\nThe abbreviated help displayed by git log -h may not provide enough information. Consult the full manual using git log --help.\n\n\n\n\n\n\n\n\n\nTipHint 2\n\n\n\n\n\nLook for an appropriate option in the “Commit Limiting” section of the documentation.\n\n\n\n\n\n\n\n\n\nNoteSolution\n\n\n\n\n\nOne solution is to use -&lt;number&gt;, where &lt;number&gt; specifies the maximum number of commits to display.\n$ git log --oneline -1\n68823cd (HEAD -&gt; main) Add file2.txt",
     "crumbs": [
       "Part I",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Inspecting the commit history</span>"

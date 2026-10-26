@@ -74,7 +74,7 @@ The tutorial was developed using Quarto and RStudio.
 
 **Chapter 5-11:**
 
-Only rough outlines / first draft of chapters so far. These chapters need a lot of work still?
+Only rough outlines / first draft of chapters so far. These chapters need a lot of work still.
 
 
 **---TODO: technical stuff---**
@@ -97,8 +97,6 @@ Only rough outlines / first draft of chapters so far. These chapters need a lot 
 - The current scope of the tutorial does not include an in-depth look at what the index / staging area is and how it works. But it is very relevant to include some information about this, since it helps shape the correct mental model of how Git works. This information could be put in a separate part II chapter, or maybe there is an appropriate place in on of the chapters. Perhaps a short appendix would be most appropriate? The question is more where can I find more technical details about what the index is? Not really explained in any detalis many places?
 
 - git tag. Small subject, but useful. Maybe in chapter where refs and branches are introduced? This is a subject that is not essential and might be a thing that can be introduced in an appendix.
-
-- git show. Useful command that should probably be included somewhere. Unclear where at the moment.
 
 - git add -p. Too technical to add talk about early in the tutorial, but a very useful flag that should be discussed somewhere. Figure out where it would make most sense to include this. Could maybe also be as an exercise in a relevant chapter in the later part of the tutorial?
 
