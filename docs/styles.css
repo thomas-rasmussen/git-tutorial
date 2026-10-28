@@ -74,15 +74,15 @@
   color: #00BFBF;
 }
 
-.col-diff-added {
+.col-diff-addition {
   color: #00BF00;
 }
 
-.col-diff-deleted {
+.col-diff-deletion {
   color: #BF0000;
 }
 
-.col-diff-header {
+.col-diff-file-header {
   color: #FFFFFF;
 }
 
@@ -213,4 +213,57 @@
 
 .col-prompt-branch {
   color: #00BFBF;
+}
+
+/* Classes for git diff schematic */
+
+.diff-structure {
+  max-width: 650px;
+  margin: 1.5em auto;
+  font-family: inherit;
+}
+
+.diff-file {
+  border: 1px solid #adb5bd;
+  border-radius: 8px;
+  padding: 16px;
+  background-color: #f8f9fa;
+}
+
+.diff-file-title {
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.diff-file-content {
+  border-left: 2px solid #adb5bd;
+  margin-left: 8px;
+  padding-left: 16px;
+}
+
+.diff-component {
+  background-color: #ffffff;
+  border: 1px solid #dee2e6;
+  border-radius: 5px;
+  padding: 10px 14px;
+  margin-bottom: 8px;
+}
+
+.diff-component-title {
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.diff-component-description {
+  font-family: monospace;
+  font-size: 0.9em;
+  color: #495057;
+}
+
+.diff-ellipsis {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.2em;
+  color: #6c757d;
+  margin: 10px 0;
 }

@@ -1,0 +1,13 @@
+# Understanding the Git index
+
+TODO: add an appendix going into more detail what the staging area
+
+- Give a more detailed description of what the staging area / index is
+
+- Explain the content of the .git/index file
+
+- Talk about partially staged files
+
+- use git ls-files --stage to inspect index entries
+
+- how git commit uses the index to create a commit

@@ -218,13 +218,13 @@ At this point, `file1.txt` is tracked, and we have modified the file in the work
 
 <pre class="terminal">
 $ git diff
-<span class="col-diff-header">diff --git a/file1.txt b/file1.txt</span>
+<span class="col-diff-file-header">diff --git a/file1.txt b/file1.txt</span>
 <span class="col-diff-metadata">index 85e8799..0bcb801 100644</span>
 <span class="col-diff-markers">--- a/file1.txt</span>
 <span class="col-diff-markers">+++ b/file1.txt</span>
 <span class="col-diff-hunk-header">@@ -1 +1,2 @@</span>
  Contents of file1.txt
-<span class="col-diff-added">+New changes</span>
+<span class="col-diff-addition">+New changes</span>
 
 </pre>
 
