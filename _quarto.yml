@@ -20,14 +20,14 @@ book:
       - part1-ch01-introduction-to-git.qmd
       - part1-ch02-getting-started.qmd
       - part1-ch03-inspecting-the-commit-history.qmd
-      - part1-ch04-undoing-changes.qmd
-      - part1-ch05-branching-and-merging.qmd
-      - part1-ch06-remotes.qmd
+      - part1-ch04-git-diff.qmd
+      - part1-ch05-undoing-changes.qmd
+      - part1-ch06-branching-and-merging.qmd
+      - part1-ch07-remotes.qmd
     - part: "Part II"
       chapters:
       - part2-workflows.qmd
       - part2-git-reflog.qmd
-      - part2-git-diff.qmd
       - part2-github.qmd
       - part2-git-rebase.qmd
       
