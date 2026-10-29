@@ -1,0 +1,14 @@
+# Git references
+
+Write appendix on Git references. Topics to include
+
+- Explain what a reference is in general and how it is stored/used in .git?
+
+- HEAD
+
+- tags
+
+- explain how branches are just a reference?
+
+- introduce "git add -p" here
+

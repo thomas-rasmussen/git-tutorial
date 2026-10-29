@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>8&nbsp; Recovering deleted commits – Git tutorial</title>
+<title>9&nbsp; Recovering deleted commits – Git tutorial</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -36,7 +36,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./part2-git-diff.html" rel="next">
+<link href="./part2-github.html" rel="next">
 <link href="./part2-workflows.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -89,7 +89,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part2-workflows.html">Part II</a></li><li class="breadcrumb-item"><a href="./part2-git-reflog.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Recovering deleted commits</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part2-workflows.html">Part II</a></li><li class="breadcrumb-item"><a href="./part2-git-reflog.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Recovering deleted commits</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -152,20 +152,26 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part1-ch04-undoing-changes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Undoing changes</span></span></a>
+  <a href="./part1-ch04-git-diff.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Understanding Git diffs</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part1-ch05-branching-and-merging.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Branching and merging</span></span></a>
+  <a href="./part1-ch05-undoing-changes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Undoing changes</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part1-ch06-remotes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Remote repositories</span></span></a>
+  <a href="./part1-ch06-branching-and-merging.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Branching and merging</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./part1-ch07-remotes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Remote repositories</span></span></a>
   </div>
 </li>
       </ul>
@@ -182,19 +188,13 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./part2-workflows.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Git workflows</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Git workflows</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./part2-git-reflog.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Recovering deleted commits</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./part2-git-diff.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Using <code>git diff</code> to show code changes</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Recovering deleted commits</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -240,8 +240,20 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./app-git-references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Git references</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./app-git-index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Understanding the Git index</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./app-resources.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Additional resources</span></span></a>
+ <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Additional resources</span></span></a>
   </div>
 </li>
       </ul>
@@ -256,9 +268,9 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#when-does-git-actually-delete-an-object" id="toc-when-does-git-actually-delete-an-object" class="nav-link active" data-scroll-target="#when-does-git-actually-delete-an-object"><span class="header-section-number">8.1</span> When does Git actually delete an object?</a></li>
-  <li><a href="#identifying-and-recovering-unreachable-commits-using-the-reference-log" id="toc-identifying-and-recovering-unreachable-commits-using-the-reference-log" class="nav-link" data-scroll-target="#identifying-and-recovering-unreachable-commits-using-the-reference-log"><span class="header-section-number">8.2</span> Identifying and recovering unreachable commits using the reference log</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">8.3</span> Exercises</a>
+  <li><a href="#when-does-git-actually-delete-an-object" id="toc-when-does-git-actually-delete-an-object" class="nav-link active" data-scroll-target="#when-does-git-actually-delete-an-object"><span class="header-section-number">9.1</span> When does Git actually delete an object?</a></li>
+  <li><a href="#identifying-and-recovering-unreachable-commits-using-the-reference-log" id="toc-identifying-and-recovering-unreachable-commits-using-the-reference-log" class="nav-link" data-scroll-target="#identifying-and-recovering-unreachable-commits-using-the-reference-log"><span class="header-section-number">9.2</span> Identifying and recovering unreachable commits using the reference log</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">9.3</span> Exercises</a>
   <ul class="collapse">
   <li><a href="#recover-an-undone-commit" id="toc-recover-an-undone-commit" class="nav-link" data-scroll-target="#recover-an-undone-commit">Recover an “undone” commit</a></li>
   </ul></li>
@@ -268,9 +280,9 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part2-workflows.html">Part II</a></li><li class="breadcrumb-item"><a href="./part2-git-reflog.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Recovering deleted commits</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part2-workflows.html">Part II</a></li><li class="breadcrumb-item"><a href="./part2-git-reflog.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Recovering deleted commits</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-git-reflog" class="quarto-section-identifier"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Recovering deleted commits</span></span></h1>
+<h1 class="title"><span id="sec-git-reflog" class="quarto-section-identifier"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Recovering deleted commits</span></span></h1>
 </div>
 
 
@@ -288,8 +300,8 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p>When using Git, you will inevitable end up in a situation where you accidentally “delete” one or more commits, for example by deleting a branch before integrating the changes into the main code. The good news is, that the “deleted” commits are almost never truly gone, and they can be recovered. In this chapter we will introduce the reference log, also called reflog, which we can use to recover lost commits.</p>
-<section id="when-does-git-actually-delete-an-object" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="when-does-git-actually-delete-an-object"><span class="header-section-number">8.1</span> When does Git actually delete an object?</h2>
+<section id="when-does-git-actually-delete-an-object" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="when-does-git-actually-delete-an-object"><span class="header-section-number">9.1</span> When does Git actually delete an object?</h2>
 <div style="display: grid; grid-template-columns: 60% 40%">
 <div style="grid-column: 1">
 <p>If you delete a branch with commits that have not been integrated into the main code, the only thing you have done is deleting the reference to a specific commit, i.e.&nbsp;the pointer to the tip of a series of commits. The commit objects are still in the Git database, but they are now unreachable: they are not ancestors of any commits that are on a branch. From time to time Git <em>will</em> delete unnecessary (unreachable) commits and optimize the repository when it deems it necessary, but this only happens when you do specific operations or after a long period of time in very large repositories. If you want to recover a lost commit, you can always do this as long as you do so right after accidentally “deleting them”.</p>
@@ -304,8 +316,8 @@ Unreachable commits on a deleted branch
 </div>
 </div>
 </section>
-<section id="identifying-and-recovering-unreachable-commits-using-the-reference-log" class="level2" data-number="8.2">
-<h2 data-number="8.2" class="anchored" data-anchor-id="identifying-and-recovering-unreachable-commits-using-the-reference-log"><span class="header-section-number">8.2</span> Identifying and recovering unreachable commits using the reference log</h2>
+<section id="identifying-and-recovering-unreachable-commits-using-the-reference-log" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="identifying-and-recovering-unreachable-commits-using-the-reference-log"><span class="header-section-number">9.2</span> Identifying and recovering unreachable commits using the reference log</h2>
 <p>To recover a lost commit, the first step is to recover the SHA-1 checksum of that commit. Since this commit is now unreachable, we can not use <code>git log &lt;branch&gt;</code> to find the SHA-1 checksum, since <code>git log &lt;branch&gt;</code> only includes reachable commits from the tip of a branch. But Git has another tool that can help us: the reference log, or just reflog, which has its own command, <code>git reflog</code>. The reflog logs all changes to a reference that has happened over time, meaning that every time a reference is changed to point to something else, this is logged. Let’s see how this looks like in practice by creating a repository with the same history as illustrated above: a <code>main</code> branch with two commits, and a <code>feature</code> branch with a single commit off of <code>main</code>, where we delete the <code>feature</code> branch before integrating the changes into <code>main</code>:</p>
 <pre class="terminal">$ mkdir ~/reflog-example
 $ cd ~/reflog-example
@@ -340,11 +352,11 @@ $ git log --oneline --graph --all
 * <span class="col-hash">a961cba</span> C1
 </pre>
 </section>
-<section id="exercises" class="level2" data-number="8.3">
-<h2 data-number="8.3" class="anchored" data-anchor-id="exercises"><span class="header-section-number">8.3</span> Exercises</h2>
+<section id="exercises" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="exercises"><span class="header-section-number">9.3</span> Exercises</h2>
 <section id="recover-an-undone-commit" class="level3">
 <h3 class="anchored" data-anchor-id="recover-an-undone-commit">Recover an “undone” commit</h3>
-<p>In <a href="part1-ch04-undoing-changes.html" class="quarto-xref"><span>Chapter 4</span></a> we showed how we can “undo” a commit using <code>git reset</code>. In this exercise you will recover a commit that was accidentially “undone”.</p>
+<p>In <a href="part1-ch05-undoing-changes.html" class="quarto-xref"><span>Chapter 5</span></a> we showed how we can “undo” a commit using <code>git reset</code>. In this exercise you will recover a commit that was accidentially “undone”.</p>
 <p>Use the following commands to set up a repository with two commits on <code>main</code>:</p>
 <pre class="terminal">$ mkdir ~/ex-reflog-recover-undo
 $ cd ~/ex-reflog-recover-undo
@@ -698,12 +710,12 @@ $ git log --oneline
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./part2-workflows.html" class="pagination-link" aria-label="Git workflows">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Git workflows</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Git workflows</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./part2-git-diff.html" class="pagination-link" aria-label="Using `git diff` to show code changes">
-        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Using <code>git diff</code> to show code changes</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./part2-github.html" class="pagination-link" aria-label="Introduction to GitHub">
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Introduction to GitHub</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

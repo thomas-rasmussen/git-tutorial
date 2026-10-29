@@ -152,20 +152,26 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part1-ch04-undoing-changes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Undoing changes</span></span></a>
+  <a href="./part1-ch04-git-diff.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Understanding Git diffs</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part1-ch05-branching-and-merging.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Branching and merging</span></span></a>
+  <a href="./part1-ch05-undoing-changes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Undoing changes</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part1-ch06-remotes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Remote repositories</span></span></a>
+  <a href="./part1-ch06-branching-and-merging.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Branching and merging</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./part1-ch07-remotes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Remote repositories</span></span></a>
   </div>
 </li>
       </ul>
@@ -182,19 +188,13 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./part2-workflows.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Git workflows</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Git workflows</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./part2-git-reflog.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Recovering deleted commits</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./part2-git-diff.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Using <code>git diff</code> to show code changes</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Recovering deleted commits</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -240,8 +240,20 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./app-git-references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Git references</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./app-git-index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Understanding the Git index</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./app-resources.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Additional resources</span></span></a>
+ <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Additional resources</span></span></a>
   </div>
 </li>
       </ul>
@@ -345,7 +357,7 @@ Initialized empty Git repository in C:/Users/username/example-getting-started/.g
 $ ls -A
 <span class="col-dir">.git</span>/
 </pre>
-<p>As shown in the output of <code>git init</code>, this creates a hidden subdirectory named <code>.git</code>, which contains the Git repository’s internal data. Notice that the terminal prompt now ends with <code>(main)</code>. This is Git Bash telling us that we are in a Git repository and on the <code>main</code> branch. Depending on your Git installation, the name might be <code>master</code> instead of <code>main</code>. We will talk more about branches in <a href="part1-ch05-branching-and-merging.html" class="quarto-xref"><span>Chapter 5</span></a>.</p>
+<p>As shown in the output of <code>git init</code>, this creates a hidden subdirectory named <code>.git</code>, which contains the Git repository’s internal data. Notice that the terminal prompt now ends with <code>(main)</code>. This is Git Bash telling us that we are in a Git repository and on the <code>main</code> branch. Depending on your Git installation, the name might be <code>master</code> instead of <code>main</code>. We will talk more about branches in <a href="part1-ch06-branching-and-merging.html" class="quarto-xref"><span>Chapter 6</span></a>.</p>
 </section>
 <section id="clone-an-existing-git-repository" class="level3">
 <h3 class="anchored" data-anchor-id="clone-an-existing-git-repository">Clone an existing Git repository</h3>
@@ -459,7 +471,7 @@ Changes not staged for commit:
 no changes added to commit (use "git add" and/or "git commit -a")
 
 </file></file></pre>
-<p>As shown above, this changes the status of <code>file1.txt</code> from unmodified to modified. Git also informs us that we can discard the changes in the working tree using <code>git restore</code>. We will talk more about <code>git restore</code> in <a href="part1-ch04-undoing-changes.html" class="quarto-xref"><span>Chapter 4</span></a>.</p>
+<p>As shown above, this changes the status of <code>file1.txt</code> from unmodified to modified. Git also informs us that we can discard the changes in the working tree using <code>git restore</code>. We will talk more about <code>git restore</code> in <a href="part1-ch05-undoing-changes.html" class="quarto-xref"><span>Chapter 5</span></a>.</p>
 <p>At this point, <code>file1.txt</code> is tracked, and we have modified the file in the working tree. We can use <code>git diff</code> to view changes in the working tree that have not yet been staged:</p>
 <pre class="terminal">$ git diff
 <span class="col-diff-header">diff --git a/file1.txt b/file1.txt</span>
@@ -471,7 +483,7 @@ no changes added to commit (use "git add" and/or "git commit -a")
 <span class="col-diff-added">+New changes</span>
 
 </pre>
-<p>The line <code>+New changes</code> indicates that the content <code>New changes</code> has been added to the working-tree version of the file. We will explain how to use <code>git diff</code> in more detail in <a href="part2-git-diff.html" class="quarto-xref"><span>Chapter 9</span></a>.</p>
+<p>The line <code>+New changes</code> indicates that the content <code>New changes</code> has been added to the working-tree version of the file. We will explain how to use <code>git diff</code> in more detail in <a href="part1-ch04-git-diff.html" class="quarto-xref"><span>Chapter 4</span></a>.</p>
 <p>Let’s add the changes to the staging area and commit them:</p>
 <pre class="terminal">$ git add file1.txt
 $ git commit -m"Add changes to file1.txt"

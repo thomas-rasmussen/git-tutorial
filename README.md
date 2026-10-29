@@ -26,6 +26,8 @@ The tutorial was developed using Quarto and RStudio.
 
 - Need to familiarize myself with the projector equipment. Pointer/slide changer often seems to not be working. Make sure to check this beforehand.
 
+- Make a program for the day. Include information on each planned session and estimated start and end time. Include information on (lunch) breaks to get a timeline for the entire day.
+
 
 **---TODO: content---**
 
@@ -59,8 +61,45 @@ The tutorial was developed using Quarto and RStudio.
      and then an arrow back to working directory from git directory.
      This enforces the mental model of the cycle of working with git.
      
-  - "Commit" is used suddenly, when "snapshot" only used so far. Maybe add sentence that eachsnapshot is called a commit.
+  - "Commit" is used suddenly, when "snapshot" only used so far. Maybe add sentence that each snapshot is called a commit.
 
+**"Getting started" chapter:"**
+
+- Add a sentence or two the first time commit messages are introduced encouraging readers to write descriptive commit messages.
+
+- introduce "git rm". This is a fundamental command that should be introduced in this chapter.
+
+- Exercise 3: Should not be an optional exercise since it is important. Augment the exercise by adding commands to create a project that can be used if the reader does not have one of their own.
+
+- Add sentence to "Accessing manual pages" section (or make a more general "Getting help" section ) on the alternatives to getting help:
+
+ - Google it. In many case easy to find answers to common questions.
+ 
+ - Use LLM as "advanced" google: Git is open source and the most popular VCS in the world. LLMs are trained on the source code of Git, all the official documentation + at least one metric fuckton of code from the internet. LLM's (at least ChatGPT) is excellent at answering questions related to Git. This  is particular true for complicated niche questions that no one else have ever though to ask on stackoverflow etc. The official documentation is also vast and can be hard to navigate/understand, and LLMs can make getting answers to questions much easier.
+
+
+
+**"Inspecting the commit history" chapter:**
+
+- Add a dedicated section explaining good commit message conventions, supported by example of informative an uninformative commit histories.
+
+  - Add it near the end of the chapter
+  
+  - Draft title "Writing good commit messages"
+  
+  - Suggestions for recommendations:
+  
+    - Write a concise subject line (Summarize teh purpose of the commit clearly)
+    
+    - Use the imperative mood (Prefer "Add", "Fix", or "Update" over "Added" or "Fixed"
+    
+    - Describe what the commit accomplishes (Avoid vague messages such as "Changes" or "Update files")
+    
+    - Explain why when necessary (For more complex changes, provide additional context in the message body)
+    
+    - Keep messages consistent (Follow the conventions used by the project.)
+    
+    - 
 
 **"Undoing changes" chapter:**
 
@@ -77,31 +116,20 @@ The tutorial was developed using Quarto and RStudio.
 Only rough outlines / first draft of chapters so far. These chapters need a lot of work still.
 
 
+**"GitHub" chapter:**
+
+Consider in more detail how gh auth login -p https -cw works regarding storing of credentials. We are working under the assumption that readers have a credential manager installed/configured so that credentials are not stored as plain text which is a potential security risk. Figure out if a credential manager is always installed on a windows machine, and if not, if this is something that can be explained how to do.
+
 **---TODO: technical stuff---**
 
 - Use of CSS to colour terminal output has been streamlined. Currently using some of the default mintty colours, but they don't seem to correspond
   exactly with what is shown in Git BASH by default for some colours, even though they should be the same as the default mintty colours.
   Consider tweaking colours to match better.
   
-- So far, the "git commit" flag "-m" is consistently used on the form "git commit-m"commit message". Is it more correct to use "git commit -m "commit message". The current reason for not including a space is that this does not generally work for bash commands?
+- So far, the "git commit" flag "-m" is consistently used on the form "git commit-m"commit message". It is probably better to use "git commit -m "abc"" instead, since this is easier for beginners to understand.
 
 - In some cases, simulated output from the terminal and notepad documents contains blank lines at the end. Figure out how to remove these. This has probably something to do with multiple nested div and pre tags, and/or making a new line after starting a pre tag or putting </pre> on a new line.
 
 
-**---Topics that might be needed/interesting to include---**
 
-- How to write a "good" commit message. Seems like a natural thing to include. But where? It feel wrong to include it in the "Configuration of Git" appendix together with the commit.template setting. Maybe in the "Inspecting the commit history chapter"? At this point the basic commands have been introduced, and after talking about git log, it becomes clear why you should write good commmit messages.
 
-- The concept of references is currently not properly introduced? In particular it is not explained what HEAD is anywhere? This needs to be remedied. Briefly introducing the concept of references when needed seems appropriate. Maybe make appendix chapter with more details? The way forward will probably be more clear when more of the tutorial is getting closer to be done.
-
-- The current scope of the tutorial does not include an in-depth look at what the index / staging area is and how it works. But it is very relevant to include some information about this, since it helps shape the correct mental model of how Git works. This information could be put in a separate part II chapter, or maybe there is an appropriate place in on of the chapters. Perhaps a short appendix would be most appropriate? The question is more where can I find more technical details about what the index is? Not really explained in any detalis many places?
-
-- git tag. Small subject, but useful. Maybe in chapter where refs and branches are introduced? This is a subject that is not essential and might be a thing that can be introduced in an appendix.
-
-- git add -p. Too technical to add talk about early in the tutorial, but a very useful flag that should be discussed somewhere. Figure out where it would make most sense to include this. Could maybe also be as an exercise in a relevant chapter in the later part of the tutorial?
-
-- Consider restructuring some of the more technical content in the tutorial. Instead of going into depth with technical introductions all over the place when new concepts have to be introduced, give a very brief introduction instead, and refer to an appendix with more in-depth explanations. In connection with this, maybe some of the chapters should be more focused on showing how to use Git commands as fast as possible with briefer technical introductions, that are then explained in more details later in the chapter and/or in an appendix.
-
-- GitHub CLI: there seems to be an issue where the GitHub CLI stores login credentials in plain text if the CLI is used by a user without admin privilies. This does not immidiately seem like a problem if the CLI was used through git BASH on Windows on a DCE work pc, since we (apparently) have admin privilies on these. But remember to test this on a fresh laptop later to make sure we do not use an approach that saves credentials in plain text.
-
-- "git rm" is not discussed properly anywhere? This should properly be redemied. But it is unclear where it would be appropriate to do so. "git rm --cached" is currnelty used in exercise in "Ignoring files" appendix, and  is also mentioned in "Getting started" chapter, where it is currently just noted that we get back to that command later in the tutorial. If we do, there should be an explicit reference at some point.

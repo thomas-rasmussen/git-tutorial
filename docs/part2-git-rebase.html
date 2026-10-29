@@ -152,20 +152,26 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part1-ch04-undoing-changes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Undoing changes</span></span></a>
+  <a href="./part1-ch04-git-diff.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Understanding Git diffs</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part1-ch05-branching-and-merging.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Branching and merging</span></span></a>
+  <a href="./part1-ch05-undoing-changes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Undoing changes</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./part1-ch06-remotes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Remote repositories</span></span></a>
+  <a href="./part1-ch06-branching-and-merging.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Branching and merging</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./part1-ch07-remotes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Remote repositories</span></span></a>
   </div>
 </li>
       </ul>
@@ -182,19 +188,13 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./part2-workflows.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Git workflows</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Git workflows</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./part2-git-reflog.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Recovering deleted commits</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./part2-git-diff.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Using <code>git diff</code> to show code changes</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Recovering deleted commits</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -240,8 +240,20 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./app-git-references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Git references</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./app-git-index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Understanding the Git index</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./app-resources.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Additional resources</span></span></a>
+ <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Additional resources</span></span></a>
   </div>
 </li>
       </ul>
@@ -295,7 +307,7 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>The commit history of a Git repository is not always pretty. If you commit often you might have a lot of small “WIP”, bug fix, typo, and refactor commits. Furthermore, if you use a branching workflow, as introduced in <a href="part1-ch05-branching-and-merging.html" class="quarto-xref"><span>Chapter 5</span></a> (which you definitely should), you might also have a lot of merge commits which makes the commit history even more complicated. Ideally, we would like a simple linear commit history, where each commit is a meaningful change. It is impossible to get everything right in the first try, so what other tools does Git provide to help us with this? This is where rebasing comes into play. Rebasing allows you to rewrite the history of commits in a repository, by reapplying commits on top of another starting point, editing them while you do so. Rebasing has a reputation for being magical hocus pocus that beginners should stay away from, but it is an essential tool to manage a repository, especially when collaborating with others.</p>
+<p>The commit history of a Git repository is not always pretty. If you commit often you might have a lot of small “WIP”, bug fix, typo, and refactor commits. Furthermore, if you use a branching workflow, as introduced in <a href="part1-ch06-branching-and-merging.html" class="quarto-xref"><span>Chapter 6</span></a> (which you definitely should), you might also have a lot of merge commits which makes the commit history even more complicated. Ideally, we would like a simple linear commit history, where each commit is a meaningful change. It is impossible to get everything right in the first try, so what other tools does Git provide to help us with this? This is where rebasing comes into play. Rebasing allows you to rewrite the history of commits in a repository, by reapplying commits on top of another starting point, editing them while you do so. Rebasing has a reputation for being magical hocus pocus that beginners should stay away from, but it is an essential tool to manage a repository, especially when collaborating with others.</p>
 <div style="display: grid; grid-template-columns: 60% 40%">
 <div style="grid-column: 1">
 <p>Let’s start by illustrating how rebasing works. Imagine you have a repository with a main branch, from which you make a feature branch with a couple of commits. While working on the feature branch, a commit (C2) is made to the main branch (maybe you switched to the main branch and did the commit, then switched back to the <code>feature</code> branch, or maybe someone did the commit on a remote and you pulled the changes into your local clone). When the feature is done, you would normally merge the changes back into the main branch with a merge commit. Using rebasing we could instead replay the commits on the feature branch directly onto the main branch, which would avoid the merge commit altogether, keeping a nice linear commit history. The end result is the same, i.e.&nbsp;the state of the files in C5 and C4’ is identical, but the rebased version of the commit history is linear and clean, while the standard method of using a merge commit, creates an unnecessarily complicated commit history. Note that while the state of files in C5 and C4’ is the same, the commits are not identical as indicated. They are the results of different commit histories.</p>
@@ -1282,7 +1294,7 @@ $ git log --oneline
 </section>
 <section id="exercise-5---undoing-a-rebase" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-5---undoing-a-rebase">Exercise 5 - Undoing a rebase</h3>
-<p>This exercise assumes you have read <a href="part2-git-reflog.html" class="quarto-xref"><span>Chapter 8</span></a>.</p>
+<p>This exercise assumes you have read <a href="part2-git-reflog.html" class="quarto-xref"><span>Chapter 9</span></a>.</p>
 <p>Sometimes things will go wrong when using Git. This is also the case when doing a rebase. Maybe the rebase did not do what you wanted it to do, or maybe the whole rebase process went haywire for unknown reasons. If you realise something is wrong doing the rebase you should be able to use <code>git rebase --abort</code> to restore your repository back to the state before you initiated the rebase, but maybe even this might go wrong for whatever reason. A more general approach to recover from a rebase that goes wrong or that you regret, is to use <code>git reflog</code> to identify the commit ID HEAD was pointing to before the rebase, and use <code>git reset</code> to move HEAD back to the commit it was pointing to prior to the rebase. Use the following commands to set up a repository with 3 commits:</p>
 <pre class="terminal">$ mkdir ~/ex-rebase-undo
 $ cd ~/ex-rebase-undo

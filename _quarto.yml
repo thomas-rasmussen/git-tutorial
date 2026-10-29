@@ -35,6 +35,8 @@ book:
     - app-git-bash.qmd
     - app-configuration-of-git.qmd
     - app-ignoring-files.qmd
+    - app-git-references.qmd
+    - app-git-index.qmd
     - app-resources.qmd
 
 format:
