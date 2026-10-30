@@ -474,13 +474,13 @@ no changes added to commit (use "git add" and/or "git commit -a")
 <p>As shown above, this changes the status of <code>file1.txt</code> from unmodified to modified. Git also informs us that we can discard the changes in the working tree using <code>git restore</code>. We will talk more about <code>git restore</code> in <a href="part1-ch05-undoing-changes.html" class="quarto-xref"><span>Chapter 5</span></a>.</p>
 <p>At this point, <code>file1.txt</code> is tracked, and we have modified the file in the working tree. We can use <code>git diff</code> to view changes in the working tree that have not yet been staged:</p>
 <pre class="terminal">$ git diff
-<span class="col-diff-header">diff --git a/file1.txt b/file1.txt</span>
+<span class="col-diff-file-header">diff --git a/file1.txt b/file1.txt</span>
 <span class="col-diff-metadata">index 85e8799..0bcb801 100644</span>
 <span class="col-diff-markers">--- a/file1.txt</span>
 <span class="col-diff-markers">+++ b/file1.txt</span>
 <span class="col-diff-hunk-header">@@ -1 +1,2 @@</span>
  Contents of file1.txt
-<span class="col-diff-added">+New changes</span>
+<span class="col-diff-addition">+New changes</span>
 
 </pre>
 <p>The line <code>+New changes</code> indicates that the content <code>New changes</code> has been added to the working-tree version of the file. We will explain how to use <code>git diff</code> in more detail in <a href="part1-ch04-git-diff.html" class="quarto-xref"><span>Chapter 4</span></a>.</p>

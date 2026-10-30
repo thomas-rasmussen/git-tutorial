@@ -1,7 +1,5 @@
 # Understanding Git diffs {#sec-git-diff}
 
-TODO: Is it possible to make diagrams illustrating diffs that could help the reader?
-
 Some Git commands, in particular, `git diff` can be used to compare different states of a Git repository. In this chapter we will introduce the `git diff` command, learn how to interpret the output it produces, and show how it can be used to compare versions of files.
 
 
@@ -32,13 +30,13 @@ $ git add file1.txt
 $ git commit -m"Add file1.txt"
 $ echo "New content in working tree" >> file1.txt
 $ git diff
-<span class="col-diff-header">diff --git a/file1.txt b/file1.txt</span>
+<span class="col-diff-file-header">diff --git a/file1.txt b/file1.txt</span>
 <span class="col-diff-metadata">index 85e8799..4527427 100644</span>
 <span class="col-diff-markers">--- a/file1.txt</span>
 <span class="col-diff-markers">+++ b/file1.txt</span>
 <span class="col-diff-hunk-header">@@ -1 +1,2 @@</span>
  Contents of file1.txt</span>
-<span class="col-diff-added">+New content in working tree</span>
+<span class="col-diff-addition">+New content in working tree</span>
 
 </pre>
 
@@ -52,23 +50,25 @@ As you saw in the example in the previous section, the output from `git diff` is
 
 ### Structure of `git diff` output
 
-For each file being compared, Git groups changes into "hunks", sections of the file that contains changes, which are presented separately. In the simple example shown earlier we only have one file with a few lines, so there is only one hunk in the output.
+For each file being compared, Git displays a separate section of the diff output, beginning with a file header that identifies the file. Within each file section, Git groups changes into one or more *hunks*, which are sections of the file containing changes and surrounding unchanged lines. Each hunk begins with a *hunk header*.
+
+In our simple example, only one file has been modified, and its changes are contained in a single hunk.
 
 
-### The header
+### The file header
 
-The first line
+The first line of each file sectin is called the *file header*:
 
 <pre class="terminal">
-<span class="col-diff-header">diff --git a/file1.txt b/file1.txt</span>
+<span class="col-diff-file-header">diff --git a/file1.txt b/file1.txt</span>
 </pre>
 
-in each hunk is called the header. It is informing us what inputs has been given to the diff. We can see that two versions of file1.txt has been passed to the diff, a/file1.txt and b/file1.txt. It looks like Git is comparing two files with the file paths a/file1.txt and b/file1.txt, which is not the case. Git is just informing us, in a somewhat confusing way, that the first input has been assigned the symbol "a" and the second input has been assigned the symbol "b". In this example where we have called `git diff` with no arguments, the first input "a" is the version of `file1.txt` in the staging area, and "b" is the version of `file1.txt` in the working tree. You can think of version "a" as the "old" or "original" version of the file, and "b" as the "new" or "modified" version of the file. Again, this makes sense in our current example where we want to see the changes in the working tree not yet added to the staging area: the old version is the version in the staging area, and the new version is the version in the working tree.
+The file header identifies the file being compared and indicates that Git is comparing two versions of that file. It is informing us what inputs has been given to the diff. We can see that two versions of file1.txt has been passed to the diff, a/file1.txt and b/file1.txt. It looks like Git is comparing two files with the file paths a/file1.txt and b/file1.txt, which is not the case. Git is just informing us, in a somewhat confusing way, that the first input has been assigned the symbol "a" and the second input has been assigned the symbol "b". In this example where we have called `git diff` with no arguments, the first input "a" is the version of `file1.txt` in the staging area, and "b" is the version of `file1.txt` in the working tree. You can think of version "a" as the "old" or "original" version of the file, and "b" as the "new" or "modified" version of the file. Again, this makes sense in our current example where we want to see the changes in the working tree not yet added to the staging area: the old version is the version in the staging area, and the new version is the version in the working tree.
 
 The start of the line `diff --git` might look like that Git has run the BASH command  `diff` with a `--git` flag, but this is not actually the case. This is just Git's way of telling us that the diff has been produced by Git's own internal diff function.
 
 
-### Git meta data
+### File metadata
 
 The second line
 
@@ -99,7 +99,15 @@ The next line
 <span class="col-diff-hunk-header">@@ -1 +1,2 @@</span>
 </pre>
 
-is the "hunk header". It is a summary of shown lines from the files being compared. This is arguably the most confusing part of the diff output, and we will not discuss this is more detail in this tutorial since it is not essential for beginners.
+is called the hunk header. It identifies the line ranges shown in the hunk for each of the two versions being compared.
+
+The part beginning with - refers to the original version of the file, while the part beginning with + refers to the modified version. Each part contains the starting line number followed by the number of lines shown, separated by a comma.
+
+In our example, -1 indicates that the hunk contains one line from the original version, starting at line 1. Similarly, +1,2 indicates that the hunk contains two lines from the modified version, starting at line 1.
+
+When only one line is shown, the number of lines is omitted, as in -1.
+
+A file may contain multiple hunks, each with its own hunk header. We will see an example of this later in the chapter.
 
 
 ### The diff content
@@ -108,7 +116,7 @@ The remaining output
 
 <pre class="terminal">
  Contents of file1.txt
-<span class="col-diff-added">+New content in working tree</span>
+<span class="col-diff-addition">+New content in working tree</span>
 </pre>
 
 is the diff content, and consists of three different types of diff lines.
@@ -121,6 +129,91 @@ is the diff content, and consists of three different types of diff lines.
 
 The diff content essentially provides a before-and-after snapshot of parts of your file. You can see the context (what part of the file remained unchanged), the deletions (what parts were removed from the old version), and the additions (what parts were added in the new version). As indicated by the colors and symbols, you can think of the diff content as a chunk of changes in the file, with some context lines around changes to provide context, red deletion lines indicating what lines have been removed from the original file, and green addition lines showing what has been added in the modified version.
 
+### Schematic of diff output hieracrchy
+
+TODO: add a paragraph summaring the structure of a diff output here and explain the general diff output structure shown below.
+
+
+```{=html}
+<div class="diff-structure">
+
+  <!-- First file section -->
+  <div class="diff-file">
+    <div class="diff-file-title">
+      File section 1
+    </div>
+
+    <div class="diff-file-content">
+
+      <div class="diff-component">
+        <div class="diff-component-title">
+          File header and metadata
+        </div>
+        <div class="diff-component-description">
+          diff --git, index, ---, +++
+        </div>
+      </div>
+
+      <div class="diff-component">
+        <div class="diff-component-title">Hunk 1</div>
+        <div class="diff-component-description">
+          @@ ... @@ followed by diff lines
+        </div>
+      </div>
+
+      <div class="diff-ellipsis">...</div>
+
+      <div class="diff-component">
+        <div class="diff-component-title">Hunk m</div>
+        <div class="diff-component-description">
+          @@ ... @@ followed by diff lines
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Additional file sections -->
+  <div class="diff-ellipsis">...</div>
+
+  <!-- Last file section -->
+  <div class="diff-file">
+    <div class="diff-file-title">
+      File section n
+    </div>
+
+    <div class="diff-file-content">
+
+      <div class="diff-component">
+        <div class="diff-component-title">
+          File header and metadata
+        </div>
+        <div class="diff-component-description">
+          diff --git, index, ---, +++
+        </div>
+      </div>
+
+      <div class="diff-component">
+        <div class="diff-component-title">Hunk 1</div>
+        <div class="diff-component-description">
+          @@ ... @@ followed by diff lines
+        </div>
+      </div>
+
+      <div class="diff-ellipsis">...</div>
+
+      <div class="diff-component">
+        <div class="diff-component-title">Hunk m</div>
+        <div class="diff-component-description">
+          @@ ... @@ followed by diff lines
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+```
 
 ## Understanding diff output with changes to multiple files
 
@@ -141,20 +234,22 @@ Next we run `git diff`:
 
 <pre class="terminal">
 $ git diff
-<span class="col-diff-header">diff --git a/file1.txt b/file1.txt</span>
+<span class="col-diff-file-header">diff --git a/file1.txt b/file1.txt</span>
 <span class="col-diff-metadata">index e69de29..85e8799 100644</span>
 <span class="col-diff-markers">--- a/file1.txt</span>
 <span class="col-diff-markers">+++ b/file1.txt</span>
 <span class="col-diff-hunk-header">@@ -0,0 +1 @@</span>
-<span class="col-diff-added">+Contents of file1.txt</span>
-<span class="col-diff-header">diff --git a/file2.txt b/file2.txt</span>
+<span class="col-diff-addition">+Contents of file1.txt</span>
+<span class="col-diff-file-header">diff --git a/file2.txt b/file2.txt</span>
 <span class="col-diff-metadata">index e69de29..92e49c3 100644</span>
 <span class="col-diff-markers">--- a/file2.txt</span>
 <span class="col-diff-markers">+++ b/file2.txt</span>
 <span class="col-diff-hunk-header">@@ -0,0 +1 @@</span>
-<span class="col-diff-added">+Contents of file2.txt</span>
+<span class="col-diff-addition">+Contents of file2.txt</span>
 
 </pre>
+
+Notice that the output contains two separate file sections, one for `file1.txt` and another for `file2.txt`. Each section begins with a file header (diff --git) identifying the file being compared, followed by metadata and the changes to that file. In this example, each file section contains a single hunk, identified by its hunk header (@@ ... @@).
 
 
 ## Understanding diff output with multiple changes to a file
@@ -178,13 +273,13 @@ Next, we execute `git diff`:
 
 <pre class="terminal">
 $ git diff
-<span class="col-diff-header">diff --git a/file1.txt b/file1.txt</span>
+<span class="col-diff-file-header">diff --git a/file1.txt b/file1.txt</span>
 <span class="col-diff-metadata">index 0ff3bbb..b5ad34d 100644</span>
 <span class="col-diff-markers">--- a/file1.txt</span>
 <span class="col-diff-markers">+++ b/file1.txt</span>
 <span class="col-diff-hunk-header">@@ -1,4 +1,4 @@</span>
-<span class="col-diff-deleted">-1</span>
-<span class="col-diff-added">+Modified first line</span>
+<span class="col-diff-deletion">-1</span>
+<span class="col-diff-addition">+Modified first line</span>
  2
  3
  4
@@ -192,15 +287,21 @@ $ git diff
  17
  18
  19
-<span class="col-diff-deleted">-20</span>
-<span class="col-diff-added">+Modified last line</span>
+<span class="col-diff-deletion">-20</span>
+<span class="col-diff-addition">+Modified last line</span>
 
 </pre>
+
+Unlike the previous example, this diff contains only one file section, since only `file1.txt` has been modified. However, the file section contains two hunks because the changes occur in different parts of the file. Each hunk has its own hunk header, indicating which lines from the original and modified versions are shown.
+
+Notice that the first hunk shows changes around line 1, while the second shows changes around line 17. Instead of displaying the entire file, Git separates the changes into two hunks, each containing the modified lines and a few surrounding context lines.
 
 
 ## Compare staging area and latest commit
 
 To compare the the staging area and the latest commit (`HEAD`), we can use `git diff --staged`. This will show us the changes that have been added using `git add` and would be included in the next commit if `git commit` were executed. This also works if there is no commits in the repository. In this case, Git compares the staging area with a repository containing no files.
+
+In Git, HEAD is a special reference that identifies the current commit, which is normally the latest commit in the repository's history. We can use HEAD to refer to this commit without having to specify its commit ID. Git references, including HEAD, are explained in more detail in @sec-git-references.
 
 Let's illustrate this with a new example. First we set up a repository where we create and stage a file:
 
@@ -216,13 +317,13 @@ We can now execute `git diff --staged` to see the changed we have staged:
 
 <pre class="terminal">
 $ git diff --staged
-<span class="col-diff-header">diff --git a/file1.txt b/file1.txt</span>
+<span class="col-diff-file-header">diff --git a/file1.txt b/file1.txt</span>
 <span class="col-diff-metadata">new file mode 100644</span>
 <span class="col-diff-metadata">index 0000000..3b94cd9</span>
 <span class="col-diff-markers">--- /dev/null</span>
 <span class="col-diff-markers">+++ b/file1.txt</span>
 <span class="col-diff-hunk-header">@@ -0,0 +1 @@</span>
-<span class="col-diff-added">+Original content</span>
+<span class="col-diff-addition">+Original content</span>
 </pre>
 
 Notice the `/dev/null` output in the markers. This is because this version of the file does not exist.
@@ -234,16 +335,51 @@ $ git commit -m "Add file1.txt"
 $ echo "Change original content" > file1.txt
 $ git add .
 $ git diff --staged
-<span class="col-diff-header">diff --git a/file1.txt b/file1.txt</span>
+<span class="col-diff-file-header">diff --git a/file1.txt b/file1.txt</span>
 <span class="col-diff-metadata">index 3b94cd9..74e17e4 100644</span>
 <span class="col-diff-markers">--- a/file1.txt</span>
 <span class="col-diff-markers">+++ b/file1.txt</span>
 <span class="col-diff-hunk-header">@@ -1 +1 @@</span>
-<span class="col-diff-deleted">Original content</span>
-<span class="col-diff-added">+Change original content</span>
+<span class="col-diff-deletion">Original content</span>
+<span class="col-diff-addition">+Change original content</span>
 </pre>
 
 In this diff we can see that changing the line in the file, has resulted in a diff with a deletion line and an addition line. The line "Original content" is not in the version in the staging area, and the line "Change original content" has been added. 
+
+
+## Comparing the working tree to the last commit
+
+Sometimes it is useful to see all changes that have been made since the latest commit, regardless of whether they have been staged or not. To do this we can use `git diff HEAD` which compares `HEAD` (the previous commit) with the working tree. 
+
+Suppose we have a repository with the following history:
+
+<pre class="terminal">
+$ mkdir ~/example03-git-diff
+$ cd ~/example03-git-diff
+$ git init
+$ echo "Line 1" > file1.txt
+$ git add .
+$ git commit -m "Add file1.txt"
+$ echo "Line 2" >> file1.txt
+$ git add file1.txt
+$ echo "Line 3" >> file1.txt
+</pre>
+
+
+Here, We have made a file, `file1.txt` with one line in it, and committed it. Next, we have added another line and staged that change, and finally we have added a third line in the working tree that is not staged. If we ran `git diff` at this point would only show us the unstaged change of adding the third line, and using `git diff --staged` would only show us the staged change of adding the second line. But if we run `git diff HEAD` we both changes:
+
+<pre class="terminal">
+$ git diff HEAD
+<span class="col-diff-file-header">diff --git a/file1.txt b/file1.txt</span>
+<span class="col-diff-metadata">index 3be9c81..6ad36e5 100644</span>
+<span class="col-diff-markers">--- a/file1.txt</span>
+<span class="col-diff-markers">+++ b/file1.txt</span>
+<span class="col-diff-hunk-header">@@ -1 +1,3 @@</span>
+ Line 1
+<span class="col-diff-addition">+Line 2</span>
+<span class="col-diff-addition">+Line 3</span>
+</pre>
+
 
 ## Compare two commits
 
@@ -252,8 +388,8 @@ We can use the form `git diff <commit-id1> <commit-id2>` to compare two differen
 First, let's create a new repository with 3 commits:
 
 <pre class="terminal">
-$ mkdir ~/example03-git-diff
-$ cd ~/example03-git-diff
+$ mkdir ~/example04-git-diff
+$ cd ~/example04-git-diff
 $ git init
 $ echo "Line added in first commit" > file1.txt
 $ git add file1.txt
@@ -266,18 +402,18 @@ $ git add file1.txt
 $ git commit -m "Completely change content of file1.txt"
 </pre>
 
-The most commit invocation of this command is `git diff HEAD^ HEAD`, which shows changes committed in the latest commit:
+Git also provides a convenient way to refer to earlier commits using HEAD. By adding ^ to HEAD, we get HEAD^, which refers to the first parent of the commit identified by HEAD. In other words, for the simple commit history in our example, HEAD^ refers to the commit immediately preceding the latest commit. We can therefore use git diff HEAD^ HEAD to show the changes introduced in the latest commit:
 
 <pre class="terminal">
 $ git diff HEAD^ HEAD
-<span class="col-diff-header">diff --git a/file1.txt b/file1.txt</span>
+<span class="col-diff-file-header">diff --git a/file1.txt b/file1.txt</span>
 <span class="col-diff-metadata">index cecb547..c19ca71 100644</span>
 <span class="col-diff-markers">--- a/file1.txt</span>
 <span class="col-diff-markers">+++ b/file1.txt</span>
 <span class="col-diff-hunk-header">@@ -1,2 +1 @@</span>
-<span class="col-diff-deleted">-Line added in first commit</span>
-<span class="col-diff-deleted">-Line added in second commit</span>
-<span class="col-diff-added">+Completely change file contents in third commit</span>
+<span class="col-diff-deletion">-Line added in first commit</span>
+<span class="col-diff-deletion">-Line added in second commit</span>
+<span class="col-diff-addition">+Completely change file contents in third commit</span>
 
 </pre>
 
@@ -290,13 +426,13 @@ $ git log --oneline
 <span class="col-hash">d481959</span> Add line to file1.txt
 <span class="col-hash">a41cc0a</span> Add file1.txt
 $ git diff a41cc0a 1fdab67
-<span class="col-diff-header">diff --git a/file1.txt b/file1.txt</span>
+<span class="col-diff-file-header">diff --git a/file1.txt b/file1.txt</span>
 <span class="col-diff-metadata">index 67b6d9e..c19ca71 100644</span>
 <span class="col-diff-markers">--- a/file1.txt</span>
 <span class="col-diff-markers">+++ b/file1.txt</span>
 <span class="col-diff-hunk-header">@@ -1 +1 @@</span>
-<span class="col-diff-deleted">-Line added in first commit</span>
-<span class="col-diff-added">+Completely change file contents in third commit</span>
+<span class="col-diff-deletion">-Line added in first commit</span>
+<span class="col-diff-addition">+Completely change file contents in third commit</span>
 
 </pre>
 
@@ -393,20 +529,20 @@ Add `file1.txt` and `file2.txt` to the staging area, and run `git diff --staged`
 <pre class="terminal">
 $ git add file1.txt file2.txt
 $ git diff --staged
-<span class="col-diff-header">diff --git a/file1.txt b/file1.txt</span>
+<span class="col-diff-file-header">diff --git a/file1.txt b/file1.txt</span>
 <span class="col-diff-metadata">new file mode 100644</span>
 <span class="col-diff-metadata">index 0000000..edb460f</span>
 <span class="col-diff-markers">--- /dev/null</span>
 <span class="col-diff-markers">+++ b/file1.txt</span>
 <span class="col-diff-hunk-header">@@ -0,0 +1 @@</span>
-<span class="col-diff-added">+First line of file1.txt</span>
-<span class="col-diff-header">diff --git a/file2.txt b/file2.txt</span>
+<span class="col-diff-addition">+First line of file1.txt</span>
+<span class="col-diff-file-header">diff --git a/file2.txt b/file2.txt</span>
 <span class="col-diff-metadata"<new file mode 100644</span>
 <span class="col-diff-metadata">index 0000000..2ff87b8</span>
 <span class="col-diff-markers">--- /dev/null</span>
 <span class="col-diff-markers">+++ b/file2.txt</span>
 <span class="col-diff-hunk-header">@@ -0,0 +1 @@</span>
-<span class="col-diff-added">+First line of file2.txt</span>
+<span class="col-diff-addition">+First line of file2.txt</span>
 </pre>
 
 :::
@@ -431,13 +567,13 @@ Next, use `git HEAD^ HEAD` to show the changes included in the latest commit. Be
 
 <pre class="terminal">
 $ git HEAD^ HEAD
-<span class="col-diff-header">diff --git a/file1.txt b/file1.txt</span>
+<span class="col-diff-file-header">diff --git a/file1.txt b/file1.txt</span>
 <span class="col-diff-metadata">index edb460f..3366c1d 100644</span>
 <span class="col-diff-markers">--- a/file1.txt</span>
 <span class="col-diff-markers">+++ b/file1.txt</span>
 <span class="col-diff-hunk-header">@@ -1 +1,2 @@</span>
  First line of file1.txt
-<span class="col-diff-added">+Second line in file1.txt</span>
+<span class="col-diff-addition">+Second line in file1.txt</span>
 
 </pre>
 
@@ -470,13 +606,78 @@ index 0000000..e69de29
 :::
 
 
-### Exercise 2 - 
+### Exercise 2 - Practising comparing different states of a repository
 
-TODO: Add a more complicated exercise. Could include some of the following steps:
+In this exercise, you will practice comparing different states of a repository.
 
-  - Inspect diff of the deletion of a file.
-  
-  - diffs of file with changes both in the working tree and staging area.
+First, use the following commands to set up a repository:
+
+<pre class="terminal">
+$ mkdir ~/ex02-git-diff
+$ cd ~/ex02-git-diff
+$ git init
+$ touch file1.txt file2.txt file3.txt
+$ git add .
+</pre>
+
+<b>1. Display changes staged for next commit.</b>
+
+Use a `git diff` invocation to compare the working tree and staging area to see what changes would be added to the staging area if `git add .` was executed.
+
+::: {.callout-note title="Solution" collapse="true" icon="false"}
+
+<pre class="terminal">
+$ git diff --staged
+diff --git a/file1.txt b/file1.txt
+new file mode 100644
+index 0000000..e69de29
+diff --git a/file2.txt b/file2.txt
+new file mode 100644
+index 0000000..e69de29
+diff --git a/file3.txt b/file3.txt
+new file mode 100644
+index 0000000..e69de29
+</pre>
+
+:::
+
+<b>2. Display unstaged changes.</b>
+
+Run the following commands to commit the file, then make changes to `file1.txt` and `file2.txt`, stage some of the changes for `file1.txt`, and delete `file3.txt`:
+
+<pre class="terminal">
+$ git commit -m "Add files"
+$ echo "Staged contents of file1.txt" >> file1.txt
+$ git add file1.txt
+$ echo "Unstaged contents of file1.txt" >> file1.txt
+$ echo "Unstaged contents of file2.txt" >> file2.txt
+$ git rm file3.txt
+</pre>
+
+Use an invocation of `git diff` to compare the working tree and staging area, to see what changes would be added to the staging area if `git add .` was executed.
+
+::: {.callout-note title="Solution" collapse="true" icon="false"}
+
+<pre class="terminal">
+$ git diff
+</pre>
+
+:::
+
+
+<b>3. Compare working tree and last commit.</b>
+
+Use an invocation of `git diff` to compare the working tree with the latest commit.
+
+::: {.callout-not title="Solution collapse="true" icon="false"}
+
+<pre class="terminal">
+$ git diff HEAD
+</pre>
+
+:::
+
+TODO: Maybe add steps touches the following:
   
   - Using both `git HEAD^ HEAD` and `git <commit1> <commit2>` with explicit commit IDs to show the output is the same.
   

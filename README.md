@@ -130,6 +130,6 @@ Consider in more detail how gh auth login -p https -cw works regarding storing o
 
 - In some cases, simulated output from the terminal and notepad documents contains blank lines at the end. Figure out how to remove these. This has probably something to do with multiple nested div and pre tags, and/or making a new line after starting a pre tag or putting </pre> on a new line.
 
-
+-Diagrams looks all wrong in browsers with dark background. Maybe it is necessary to make the background of all diagrams white instead of transparent?
 
 
