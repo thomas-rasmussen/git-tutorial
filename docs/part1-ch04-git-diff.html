@@ -277,7 +277,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#markers-for-changes" id="toc-markers-for-changes" class="nav-link" data-scroll-target="#markers-for-changes">Markers for changes</a></li>
   <li><a href="#the-hunk-header" id="toc-the-hunk-header" class="nav-link" data-scroll-target="#the-hunk-header">The hunk header</a></li>
   <li><a href="#the-diff-content" id="toc-the-diff-content" class="nav-link" data-scroll-target="#the-diff-content">The diff content</a></li>
-  <li><a href="#schematic-of-diff-output-hieracrchy" id="toc-schematic-of-diff-output-hieracrchy" class="nav-link" data-scroll-target="#schematic-of-diff-output-hieracrchy">Schematic of diff output hieracrchy</a></li>
+  <li><a href="#genral-structure-of-diff-output" id="toc-genral-structure-of-diff-output" class="nav-link" data-scroll-target="#genral-structure-of-diff-output">Genral structure of diff output</a></li>
   </ul></li>
   <li><a href="#understanding-diff-output-with-changes-to-multiple-files" id="toc-understanding-diff-output-with-changes-to-multiple-files" class="nav-link" data-scroll-target="#understanding-diff-output-with-changes-to-multiple-files"><span class="header-section-number">4.3</span> Understanding diff output with changes to multiple files</a></li>
   <li><a href="#understanding-diff-output-with-multiple-changes-to-a-file" id="toc-understanding-diff-output-with-multiple-changes-to-a-file" class="nav-link" data-scroll-target="#understanding-diff-output-with-multiple-changes-to-a-file"><span class="header-section-number">4.4</span> Understanding diff output with multiple changes to a file</a></li>
@@ -289,6 +289,7 @@ ul.task-list li input[type="checkbox"] {
   <ul class="collapse">
   <li><a href="#exercise-1---interpreting-diff-output" id="toc-exercise-1---interpreting-diff-output" class="nav-link" data-scroll-target="#exercise-1---interpreting-diff-output">Exercise 1 - Interpreting diff output</a></li>
   <li><a href="#exercise-2---practising-comparing-different-states-of-a-repository" id="toc-exercise-2---practising-comparing-different-states-of-a-repository" class="nav-link" data-scroll-target="#exercise-2---practising-comparing-different-states-of-a-repository">Exercise 2 - Practising comparing different states of a repository</a></li>
+  <li><a href="#exercise-3---understanding-the-direction-of-comparisons" id="toc-exercise-3---understanding-the-direction-of-comparisons" class="nav-link" data-scroll-target="#exercise-3---understanding-the-direction-of-comparisons">Exercise 3 - Understanding the direction of comparisons</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -401,9 +402,9 @@ $ git diff
 </ul>
 <p>The diff content essentially provides a before-and-after snapshot of parts of your file. You can see the context (what part of the file remained unchanged), the deletions (what parts were removed from the old version), and the additions (what parts were added in the new version). As indicated by the colors and symbols, you can think of the diff content as a chunk of changes in the file, with some context lines around changes to provide context, red deletion lines indicating what lines have been removed from the original file, and green addition lines showing what has been added in the modified version.</p>
 </section>
-<section id="schematic-of-diff-output-hieracrchy" class="level3">
-<h3 class="anchored" data-anchor-id="schematic-of-diff-output-hieracrchy">Schematic of diff output hieracrchy</h3>
-<p>TODO: add a paragraph summaring the structure of a diff output here and explain the general diff output structure shown below.</p>
+<section id="genral-structure-of-diff-output" class="level3">
+<h3 class="anchored" data-anchor-id="genral-structure-of-diff-output">Genral structure of diff output</h3>
+<p>The general structure of a diff is illustrated below. The output consists of one or more file sections, each beginning with a file header and associated metadata. Within each file section, changes are grouped into one or more hunks, each beginning with a hunk header followed by the lines showing the changes. The number of file sections and hunks depends on the files being compared and the changes made to them.</p>
 <div class="diff-structure">
 
   <!-- First file section -->
@@ -554,7 +555,7 @@ $ sed -i '$s/.*/Modified last line/' file.txt
 <section id="compare-staging-area-and-latest-commit" class="level2" data-number="4.5">
 <h2 data-number="4.5" class="anchored" data-anchor-id="compare-staging-area-and-latest-commit"><span class="header-section-number">4.5</span> Compare staging area and latest commit</h2>
 <p>To compare the the staging area and the latest commit (<code>HEAD</code>), we can use <code>git diff --staged</code>. This will show us the changes that have been added using <code>git add</code> and would be included in the next commit if <code>git commit</code> were executed. This also works if there is no commits in the repository. In this case, Git compares the staging area with a repository containing no files.</p>
-<p>In Git, HEAD is a special reference that identifies the current commit, which is normally the latest commit in the repository’s history. We can use HEAD to refer to this commit without having to specify its commit ID. Git references, including HEAD, are explained in more detail in <span class="quarto-unresolved-ref">?sec-git-references</span>.</p>
+<p>In Git, HEAD is a special reference that identifies the current commit, which is normally the latest commit in the repository’s history. We can use HEAD to refer to this commit without having to specify its commit ID. Git references, including HEAD, are explained in more detail in <a href="app-git-references.html" class="quarto-xref"><span>Appendix D</span></a>.</p>
 <p>Let’s illustrate this with a new example. First we set up a repository where we create and stage a file:</p>
 <pre class="terminal">$ mkdir example02-git-diff
 $ cd example02-git-diff
@@ -878,21 +879,277 @@ index 0000000..e69de29
 </div>
 </div>
 <p><b>2. Display unstaged changes.</b></p>
-<p>Run the following commands to make changes to <code>file1.txt</code> and <code>file2.txt</code>, stage some of the changes for <code>file1.txt</code>, and delete <code>file3.txt</code>:</p>
-<pre class="terminal">$ echo "Staged contents of file1.txt" &gt;&gt; file1.txt
+<p>Run the following commands to commit the file, then make changes to <code>file1.txt</code> and <code>file2.txt</code>, stage some of the changes for <code>file1.txt</code>, and delete <code>file3.txt</code>:</p>
+<pre class="terminal">$ git commit -m "Add files"
+$ echo "Staged contents of file1.txt" &gt;&gt; file1.txt
 $ git add file1.txt
 $ echo "Unstaged contents of file1.txt" &gt;&gt; file1.txt
 $ echo "Unstaged contents of file2.txt" &gt;&gt; file2.txt
 $ git rm file3.txt
 </pre>
-<p>Use an invocation of <code>git diff</code> to see</p>
+<p>Use an invocation of <code>git diff</code> to compare the working tree and staging area, to see what changes would be added to the staging area if <code>git add .</code> was executed.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre class="terminal">$ git diff
+diff --git a/file1.txt b/file1.txt
+index c79d91d..caaf2c0 100644
+--- a/file1.txt
++++ b/file1.txt
+@@ -1 +1,2 @@
+ Staged contents of file1.txt
++Unstaged contents of file1.txt
+diff --git a/file2.txt b/file2.txt
+index e69de29..5dd500d 100644
+--- a/file2.txt
++++ b/file2.txt
+@@ -0,0 +1 @@
++Unstaged contents of file2.txt
+</pre>
+</div>
+</div>
+</div>
+<p><b>3. Compare working tree and last commit.</b></p>
+<p>Use an invocation of <code>git diff</code> to compare the working tree with the latest commit.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre class="terminal">$ git diff HEAD
+diff --git a/file1.txt b/file1.txt
+index e69de29..caaf2c0 100644
+--- a/file1.txt
++++ b/file1.txt
+@@ -0,0 +1,2 @@
++Staged contents of file1.txt
++Unstaged contents of file1.txt
+diff --git a/file2.txt b/file2.txt
+index e69de29..5dd500d 100644
+--- a/file2.txt
++++ b/file2.txt
+@@ -0,0 +1 @@
++Unstaged contents of file2.txt
+diff --git a/file3.txt b/file3.txt
+deleted file mode 100644
+index e69de29..0000000
+</pre>
+</div>
+</div>
+</div>
+<p><b>4. Showing changes in most recent commit.</b></p>
+<p>Run the following commands to stage and commit all changes from the previous step, and make an additional commit with more changes to <code>file1.txt</code> and <code>file2.txt</code>:</p>
+<pre class="terminal">$ git add .
+$ git commit -m "Add content to file1.txt and file2.txt and remove file3.txt"
+$ echo "More content" &gt;&gt; file1.txt
+$ echo "More content" &gt;&gt; file2.txt
+$ git add .
+$ git commit -m "Add more content to file1.txt and file2.txt"
+</pre>
+<p>The repository now has as commit history with three commits:</p>
+<pre class="terminal">d42df25 (HEAD -&gt; main) Add more content to file1.txt and file2.txt
+19c0e5f Add content to file1.txt and file2.txt and remove file3.txt
+55cef4f Add files
+</pre>
+<p>Use a invocation of <code>git diff</code> to see the changes introduced in the most recent commit.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre class="terminal">$ git diff HEAD^ HEAD
+diff --git a/file1.txt b/file1.txt
+index caaf2c0..6c52455 100644
+--- a/file1.txt
++++ b/file1.txt
+@@ -1,2 +1,3 @@
+ Staged contents of file1.txt
+ Unstaged contents of file1.txt
++More content
+diff --git a/file2.txt b/file2.txt
+index 5dd500d..17fce18 100644
+--- a/file2.txt
++++ b/file2.txt
+@@ -1 +1,2 @@
+ Unstaged contents of file2.txt
++More content
+</pre>
+</div>
+</div>
+</div>
+<p><b>5. Compare two commits.</b></p>
+<p>Use an invocation to compare the first and the most recent commit in the repository.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre class="terminal">$ git diff 55cef4f d42df25
+diff --git a/file1.txt b/file1.txt
+index e69de29..6c52455 100644
+--- a/file1.txt
++++ b/file1.txt
+@@ -0,0 +1,3 @@
++Staged contents of file1.txt
++Unstaged contents of file1.txt
++More content
+diff --git a/file2.txt b/file2.txt
+index e69de29..17fce18 100644
+--- a/file2.txt
++++ b/file2.txt
+@@ -0,0 +1,2 @@
++Unstaged contents of file2.txt
++More content
+diff --git a/file3.txt b/file3.txt
+deleted file mode 100644
+index e69de29..0000000
+</pre>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-3---understanding-the-direction-of-comparisons" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-3---understanding-the-direction-of-comparisons">Exercise 3 - Understanding the direction of comparisons</h3>
+<p>In this exercise, we will explore how the order of commits specified when using <code>git diff</code> affects the output. Remember that <code>git diff</code> comapres two versions of a file, treating the first as the original versino and the second as the modified version.</p>
+<p>First, create a Git repository with two commits containing different verisons of a file named <code>article.txt</code>:</p>
+<pre class="terminal">$ mkdir ~/ex03-git-diff
+$ cd ~/ex03-git-diff
+$ git init
+$ echo "Introduction" &gt; article.txt
+$ echo "Methods" &gt;&gt; article.txt
+$ echo "Results" &gt;&gt; article.txt
+$ git add article.txt
+$ # Rebuild article draft from sratch in next commit
+$ git commit -m "Add article draft"
+$ echo "Introduction" &gt; article.txt
+$ echo "Methods" &gt;&gt; article.txt
+$ echo "Discussion" &gt;&gt; article.txt
+$ git add article.txt
+$ git commit -m "Revise article draft"
+</pre>
+<p><b>1. Compare the first commit with the second commit</b></p>
+<p>Use <code>git diff HEAD^ HEAD</code> to compare the first commit with the second commit.</p>
+<p>Before running the command, consider the following questions:</p>
 <ul>
-<li><p>Inspect diff of the deletion of a file.</p></li>
-<li><p>diffs of file with changes both in the working tree and staging area.</p></li>
-<li><p>Using both <code>git HEAD^ HEAD</code> and <code>git &lt;commit1&gt; &lt;commit2&gt;</code> with explicit commit IDs to show the output is the same.</p></li>
-<li><p>Comparing <code>git diff</code> and <code>git diff HEAD</code> in scenarios where they give the same / different results.</p></li>
-<li><p>Using <code>git diff &lt;commit1&gt; &lt;commit2&gt;</code> and `git diff <commit2> <commit1> to show reversion of addition and deletion of lines.</commit1></commit2></p></li>
+<li><p>Which commit is treated as the original version, and which is treated as the modified version?</p></li>
+<li><p>Which lines do you expect to b displayed as additions and deletions?</p></li>
 </ul>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre class="terminal">$ git diff HEAD^ HEAD
+diff --git a/article.txt b/article.txt
+index ... 100644
+--- a/article.txt
++++ b/article.txt
+@@ -1,3 +1,3 @@
+ Introduction
+ Methods
+-Results
++Discussion 
+</pre>
+<p>The first commit (<code>HEAD^</code>) is treated as the original version, while the second commit (<code>HEAD</code>) is treated as the modified version.</p>
+<p>The line <code>Results</code> appears as a deletino because it was presente in the first commit but no in the second. The line <code>Discussion</code> appears an addition because it is present in the second commit bu not in the first.</p>
+</div>
+</div>
+</div>
+<p><b>2. Reverse the order of the commits.</b></p>
+<p>Now use <code>git diff HEAD HEAD^</code> to reverse the order of th ecommits being compared.</p>
+<p>Before running the command, predict how the output will differ from the previous comparison.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre class="terminal">$ git diff HEAD HEAD^
+diff --git a/article.txt b/article.txt
+index ... 100644
+--- a/article.txt
++++ b/article.txt
+@@ -1,3 +1,3 @@
+ Introduction
+ Methods
+-Discussion
++Results
+</pre>
+<p>$ git diff HEAD HEAD^ diff –git a/article.txt b/article.txt index … 100644 — a/article.txt +++ b/article.txt @@ -1,3 +1,3 @@ Introduction Methods -Discussion +Results</p>
+<p>The same two versions of the file are being compared, but their order has been reversed. The second commit (<code>HEAD</code>) is now treated as the original version, while the first commit (<code>HEAD^</code>) is treated as the modified version.</p>
+<p>Consequently, <code>Discussion</code> is displayed as a deletion, while <code>Results</code> is displayed as an addition.</p>
+<p>Notice that reversing the order of the commits reverses the additions and deletions, even though the contents of the two commits have not changed.</p>
+</div>
+</div>
+</div>
+<p><b>3. Interpreting a reverse comparison</b></p>
+<p>Imagine that you have discovered a problem with the changes introduced in the second commit and are considering restoring article.txt to its state in the first commit.</p>
+<p>Which of the two comparisons would be more useful for understanding the changes needed to restore the earlier version? Explain your answer.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The reverse comparison, git diff HEAD HEAD^, shows the differences between the current version and the earlier version, treating the earlier version as the desired result.</p>
+<p>In our example, it shows that restoring the earlier version would involve replacing Discussion with Results.</p>
+<p>Remember that <code>git diff</code> only displays differences between versions of files. It does not modify files or undo commits.</p>
+</div>
+</div>
+</div>
+<p>Wrap up by deleting the example repository:</p>
+<pre class="terminal">$ cd
+$ cd rm -rf ~/ex03-git-diff
+</pre>
 
 
 </section>

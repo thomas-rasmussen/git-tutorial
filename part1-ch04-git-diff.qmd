@@ -129,9 +129,11 @@ is the diff content, and consists of three different types of diff lines.
 
 The diff content essentially provides a before-and-after snapshot of parts of your file. You can see the context (what part of the file remained unchanged), the deletions (what parts were removed from the old version), and the additions (what parts were added in the new version). As indicated by the colors and symbols, you can think of the diff content as a chunk of changes in the file, with some context lines around changes to provide context, red deletion lines indicating what lines have been removed from the original file, and green addition lines showing what has been added in the modified version.
 
-### Schematic of diff output hieracrchy
+### Genral structure of diff output
 
-TODO: add a paragraph summaring the structure of a diff output here and explain the general diff output structure shown below.
+The general structure of a diff is illustrated below. The output consists of one or more file sections, each beginning with a file header and associated metadata. Within each file section, changes are grouped into one or more hunks, each beginning with a hunk header followed by the lines showing the changes. The number of file sections and hunks depends on the files being compared and the changes made to them.
+
+
 
 
 ```{=html}
@@ -660,7 +662,21 @@ Use an invocation of `git diff` to compare the working tree and staging area, to
 
 <pre class="terminal">
 $ git diff
+diff --git a/file1.txt b/file1.txt
+index c79d91d..caaf2c0 100644
+--- a/file1.txt
++++ b/file1.txt
+@@ -1 +1,2 @@
+ Staged contents of file1.txt
++Unstaged contents of file1.txt
+diff --git a/file2.txt b/file2.txt
+index e69de29..5dd500d 100644
+--- a/file2.txt
++++ b/file2.txt
+@@ -0,0 +1 @@
++Unstaged contents of file2.txt
 </pre>
+
 
 :::
 
@@ -669,23 +685,223 @@ $ git diff
 
 Use an invocation of `git diff` to compare the working tree with the latest commit.
 
-::: {.callout-not title="Solution collapse="true" icon="false"}
+::: {.callout-note title="Solution" collapse="true" icon="false"}
 
 <pre class="terminal">
 $ git diff HEAD
+diff --git a/file1.txt b/file1.txt
+index e69de29..caaf2c0 100644
+--- a/file1.txt
++++ b/file1.txt
+@@ -0,0 +1,2 @@
++Staged contents of file1.txt
++Unstaged contents of file1.txt
+diff --git a/file2.txt b/file2.txt
+index e69de29..5dd500d 100644
+--- a/file2.txt
++++ b/file2.txt
+@@ -0,0 +1 @@
++Unstaged contents of file2.txt
+diff --git a/file3.txt b/file3.txt
+deleted file mode 100644
+index e69de29..0000000
 </pre>
 
 :::
 
-TODO: Maybe add steps touches the following:
-  
-  - Using both `git HEAD^ HEAD` and `git <commit1> <commit2>` with explicit commit IDs to show the output is the same.
-  
-  - Comparing `git diff` and `git diff HEAD` in scenarios where they give the same / different results.
-  
-  - Using `git diff <commit1> <commit2>` and `git diff <commit2> <commit1> to show reversion of addition and deletion of lines.
-  
-  
+<b>4. Showing changes in most recent commit.</b>
+
+Run the following commands to stage and commit all changes from the previous step, and make an additional commit with more changes to `file1.txt` and `file2.txt`:
+
+<pre class="terminal">
+$ git add .
+$ git commit -m "Add content to file1.txt and file2.txt and remove file3.txt"
+$ echo "More content" >> file1.txt
+$ echo "More content" >> file2.txt
+$ git add .
+$ git commit -m "Add more content to file1.txt and file2.txt"
+</pre>
+
+The repository now has as commit history with three commits:
+
+<pre class="terminal">
+d42df25 (HEAD -> main) Add more content to file1.txt and file2.txt
+19c0e5f Add content to file1.txt and file2.txt and remove file3.txt
+55cef4f Add files
+</pre>
+
+Use a invocation of `git diff` to see the changes introduced in the most recent commit.
+
+::: {.callout-note title="Solution" collapse="true" icon="false"}
+
+<pre class="terminal">
+$ git diff HEAD^ HEAD
+diff --git a/file1.txt b/file1.txt
+index caaf2c0..6c52455 100644
+--- a/file1.txt
++++ b/file1.txt
+@@ -1,2 +1,3 @@
+ Staged contents of file1.txt
+ Unstaged contents of file1.txt
++More content
+diff --git a/file2.txt b/file2.txt
+index 5dd500d..17fce18 100644
+--- a/file2.txt
++++ b/file2.txt
+@@ -1 +1,2 @@
+ Unstaged contents of file2.txt
++More content
+</pre>
+
+:::
+
+<b>5. Compare two commits.</b>
+
+Use an invocation to compare the first and the most recent commit in the repository.
+
+::: {.callout-note title="Solution" collapse="true" icon="false"}
+
+<pre class="terminal">
+$ git diff 55cef4f d42df25
+diff --git a/file1.txt b/file1.txt
+index e69de29..6c52455 100644
+--- a/file1.txt
++++ b/file1.txt
+@@ -0,0 +1,3 @@
++Staged contents of file1.txt
++Unstaged contents of file1.txt
++More content
+diff --git a/file2.txt b/file2.txt
+index e69de29..17fce18 100644
+--- a/file2.txt
++++ b/file2.txt
+@@ -0,0 +1,2 @@
++Unstaged contents of file2.txt
++More content
+diff --git a/file3.txt b/file3.txt
+deleted file mode 100644
+index e69de29..0000000
+</pre>
+
+:::
+
+
+### Exercise 3 - Understanding the direction of comparisons
+
+In this exercise, we will explore how the order of commits specified when using `git diff` affects the output. Remember that `git diff` comapres two versions of a file, treating the first as the original versino and the second as the modified version.
+
+First, create a Git repository with two commits containing different verisons of a file named `article.txt`:
+
+<pre class="terminal">
+$ mkdir ~/ex03-git-diff
+$ cd ~/ex03-git-diff
+$ git init
+$ echo "Introduction" > article.txt
+$ echo "Methods" >> article.txt
+$ echo "Results" >> article.txt
+$ git add article.txt
+$ # Rebuild article draft from sratch in next commit
+$ git commit -m "Add article draft"
+$ echo "Introduction" > article.txt
+$ echo "Methods" >> article.txt
+$ echo "Discussion" >> article.txt
+$ git add article.txt
+$ git commit -m "Revise article draft"
+</pre>
+
+<b>1. Compare the first commit with the second commit</b>
+
+Use `git diff HEAD^ HEAD` to compare the first commit with the second commit.
+
+Before running the command, consider the following questions:
+
+- Which commit is treated as the original version, and which is treated as the modified version?
+
+- Which lines do you expect to b displayed as additions and deletions?
+
+::: {.callout-note title="Solution" collapse="true" icon="false"}
+
+<pre class="terminal">
+$ git diff HEAD^ HEAD
+diff --git a/article.txt b/article.txt
+index ... 100644
+--- a/article.txt
++++ b/article.txt
+@@ -1,3 +1,3 @@
+ Introduction
+ Methods
+-Results
++Discussion 
+</pre>
+
+The first commit (`HEAD^`) is treated as the original version, while the second commit (`HEAD`) is treated as the modified version.
+
+The line `Results` appears as a deletino because it was presente in the first commit but no in the second. The line `Discussion` appears an addition because it is present in the second commit bu not in the first.
+
+:::
+
+<b>2. Reverse the order of the commits.</b>
+
+Now use `git diff HEAD HEAD^` to reverse the order of th ecommits being compared.
+
+Before running the command, predict how the output will differ from the previous comparison.
+
+::: {.callout-note title="Solution" collapse="true" icon="false"}
+
+<pre class="terminal">
+$ git diff HEAD HEAD^
+diff --git a/article.txt b/article.txt
+index ... 100644
+--- a/article.txt
++++ b/article.txt
+@@ -1,3 +1,3 @@
+ Introduction
+ Methods
+-Discussion
++Results
+</pre>
+
+$ git diff HEAD HEAD^
+diff --git a/article.txt b/article.txt
+index ... 100644
+--- a/article.txt
++++ b/article.txt
+@@ -1,3 +1,3 @@
+ Introduction
+ Methods
+-Discussion
++Results
+
+The same two versions of the file are being compared, but their order has been reversed. The second commit (`HEAD`) is now treated as the original version, while the first commit (`HEAD^`) is treated as the modified version.
+
+Consequently, `Discussion` is displayed as a deletion, while `Results` is displayed as an addition.
+
+Notice that reversing the order of the commits reverses the additions and deletions, even though the contents of the two commits have not changed.
+
+:::
+
+<b>3. Interpreting a reverse comparison</b>
+
+Imagine that you have discovered a problem with the changes introduced in the second commit and are considering restoring article.txt to its state in the first commit.
+
+Which of the two comparisons would be more useful for understanding the changes needed to restore the earlier version? Explain your answer.
+
+::: {.callout-note title="Solution" collapse="true" icon="false"}
+
+The reverse comparison, git diff HEAD HEAD^, shows the differences between the current version and the earlier version, treating the earlier version as the desired result.
+
+In our example, it shows that restoring the earlier version would involve replacing Discussion with Results.
+
+Remember that `git diff` only displays differences between versions of files. It does not modify files or undo commits.
+
+:::
+
+Wrap up by deleting the example repository:
+
+<pre class="terminal">
+$ cd
+$ cd rm -rf ~/ex03-git-diff
+</pre>
 
 
 
