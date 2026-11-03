@@ -115,6 +115,9 @@ The tutorial was developed using Quarto and RStudio.
 
 Only rough outlines / first draft of chapters so far. These chapters need a lot of work still.
 
+**"Git references" chapter:**
+
+Outline of scope of chapter has been made, but wait with actually writing the chapter until it is clear what is covered in the "Branches and merging" and "Remote repositories" chapters.
 
 **"GitHub" chapter:**
 
@@ -133,3 +136,7 @@ Consider in more detail how gh auth login -p https -cw works regarding storing o
 -Diagrams looks all wrong in browsers with dark background. Maybe it is necessary to make the background of all diagrams white instead of transparent?
 
 - So far, when colouring commit IDs in lines from git log output that includes eg "(HEAD -> main)", the opening "(" has been included in the colouring of the commit ID, since the same colour is (currently) used. This was originally a decision based on laziness. Fix this throughout the entire tutorial, giving the "() its own span using the .col-yellow CSS class.
+
+**---TODO: potential topics that are not yet included---**
+
+- "git add -p": seems important and relevant but does not really fit anywhere currently. Maybe in an appendix on the staging area?

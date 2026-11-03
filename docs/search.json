@@ -1168,7 +1168,84 @@
     "href": "app-git-references.html",
     "title": "Appendix D — Git references",
     "section": "",
-    "text": "Write appendix on Git references. Topics to include\n\nExplain what a reference is in general and how it is stored/used in .git?\nHEAD\ntags\nexplain how branches are just a reference?\nintroduce “git add -p” here",
+    "text": "D.1 What are Git references?\nTODO: mention that the chapter assumes readers are familiar with branches and remotes. refer to “Branching and merging” and “Remote repositories” chapters.\nTODO:\nA useful opening example could be a diagram:\ncommit1 &lt;- commit2 &lt;- commit3 &lt;- main\nShowing that main is a reference identifying the last commit in a branch.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>D</span>  <span class='chapter-title'>Git references</span>"
+    ]
+  },
+  {
+    "objectID": "app-git-references.html#what-are-git-references",
+    "href": "app-git-references.html#what-are-git-references",
+    "title": "Appendix D — Git references",
+    "section": "",
+    "text": "Establish the basic idea that Git identifies objects using object IDs, but that remembering and using this IDs are inconvenient. References provide meaningful names that identify particular objects.\nIntroduce the distinction between a Git object and a reference to that object. Explain that references can change without changing the underlying IDs.\nInclude brief explanation of the “.git/refs/” directory and perhaps show the contents of a branch reference file. However, avoid discussing reference storage in considerable technical detail.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>D</span>  <span class='chapter-title'>Git references</span>"
+    ]
+  },
+  {
+    "objectID": "app-git-references.html#branch-references",
+    "href": "app-git-references.html#branch-references",
+    "title": "Appendix D — Git references",
+    "section": "D.2 Branch references",
+    "text": "D.2 Branch references\nTODO:\n\nThis should probably be the most substantial section, since it is the most important.\nExplain that a branch is essentially a reference to a commit and that the branch reference is updated when new commits are added to that branch.\nThe important lession is that a branch is not a separate collection of commits. Its reference identifies a commit from which Git can follow the commit history.\nCould include a diagram illustrating a branch before and after a new commit, showing how the branch ref is moved. Would help explain why brnaches are commonly described as movable pointers.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>D</span>  <span class='chapter-title'>Git references</span>"
+    ]
+  },
+  {
+    "objectID": "app-git-references.html#the-head-reference",
+    "href": "app-git-references.html#the-head-reference",
+    "title": "Appendix D — Git references",
+    "section": "D.3 The HEAD reference",
+    "text": "D.3 The HEAD reference\nTODO:\n\nBuilding on the preceding section, explain that HEAD normally identifies the current branch through a symbolic reference.\nThe conceptual distinction is particularly important:\n\nA branch reference identifies a commit\nHEAD normally identifies a branch reference\nWhen a new commit is created, the current branch reference advances.\n\nMaybe briefly explain detached HEAD, where HEAD erfers directly t oa commit rather than through a branch. this is useful for understanding why checking out a particular commit behaves differently from switching branches.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>D</span>  <span class='chapter-title'>Git references</span>"
+    ]
+  },
+  {
+    "objectID": "app-git-references.html#tags",
+    "href": "app-git-references.html#tags",
+    "title": "Appendix D — Git references",
+    "section": "D.4 Tags",
+    "text": "D.4 Tags\nTODO:\n\nThe central prupose of this section would be to compare tags with branches.\nExplain that both provide meaningful names for particular points in the repository’s history, but that a branhc normally advances as commits are created, while a tag generally remains associated with the same object.\nThere is one technical distinction worth introducing: lightweight versus annotated tags. A lightweight tag points directly to an object, whereas an annotated tag points to a tag object containing additional information. Keep lightweight tags in focus and only briefly mention annotated tags.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>D</span>  <span class='chapter-title'>Git references</span>"
+    ]
+  },
+  {
+    "objectID": "app-git-references.html#remote-tracking-branches",
+    "href": "app-git-references.html#remote-tracking-branches",
+    "title": "Appendix D — Git references",
+    "section": "D.5 Remote-tracking branches",
+    "text": "D.5 Remote-tracking branches\nTODO:\n\nNatural extension of the explanation of branch references. connects appendix to the chapter on remotes.\nExplain tht remote-tracking branches such as origin/main are referenes maintained in the local repository to record the state of branches observed in a remote repository.\nEmphasize that origin/main is not the branch in the remote repository itself, and that fetching normally updates remote-tracking referenes without moving the corresponding local branches.\nKeep this section relative short.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>D</span>  <span class='chapter-title'>Git references</span>"
+    ]
+  },
+  {
+    "objectID": "app-git-references.html#summary",
+    "href": "app-git-references.html#summary",
+    "title": "Appendix D — Git references",
+    "section": "D.6 Summary",
+    "text": "D.6 Summary\nTODO: Add a summary.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>D</span>  <span class='chapter-title'>Git references</span>"
+    ]
+  },
+  {
+    "objectID": "app-git-references.html#exercises",
+    "href": "app-git-references.html#exercises",
+    "title": "Appendix D — Git references",
+    "section": "D.7 Exercises",
+    "text": "D.7 Exercises\nTODO: Add exercises.",
     "crumbs": [
       "Appendices",
       "<span class='chapter-number'>D</span>  <span class='chapter-title'>Git references</span>"

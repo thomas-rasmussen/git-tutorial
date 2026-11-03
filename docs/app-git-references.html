@@ -263,8 +263,20 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#what-are-git-references" id="toc-what-are-git-references" class="nav-link active" data-scroll-target="#what-are-git-references"><span class="header-section-number">D.1</span> What are Git references?</a></li>
+  <li><a href="#branch-references" id="toc-branch-references" class="nav-link" data-scroll-target="#branch-references"><span class="header-section-number">D.2</span> Branch references</a></li>
+  <li><a href="#the-head-reference" id="toc-the-head-reference" class="nav-link" data-scroll-target="#the-head-reference"><span class="header-section-number">D.3</span> The HEAD reference</a></li>
+  <li><a href="#tags" id="toc-tags" class="nav-link" data-scroll-target="#tags"><span class="header-section-number">D.4</span> Tags</a></li>
+  <li><a href="#remote-tracking-branches" id="toc-remote-tracking-branches" class="nav-link" data-scroll-target="#remote-tracking-branches"><span class="header-section-number">D.5</span> Remote-tracking branches</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">D.6</span> Summary</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">D.7</span> Exercises</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -288,16 +300,72 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Write appendix on Git references. Topics to include</p>
+<p>TODO: mention that the chapter assumes readers are familiar with branches and remotes. refer to “Branching and merging” and “Remote repositories” chapters.</p>
+<section id="what-are-git-references" class="level2" data-number="D.1">
+<h2 data-number="D.1" class="anchored" data-anchor-id="what-are-git-references"><span class="header-section-number">D.1</span> What are Git references?</h2>
+<p>TODO:</p>
 <ul>
-<li><p>Explain what a reference is in general and how it is stored/used in .git?</p></li>
-<li><p>HEAD</p></li>
-<li><p>tags</p></li>
-<li><p>explain how branches are just a reference?</p></li>
-<li><p>introduce “git add -p” here</p></li>
+<li><p>Establish the basic idea that Git identifies objects using object IDs, but that remembering and using this IDs are inconvenient. References provide meaningful names that identify particular objects.</p></li>
+<li><p>Introduce the distinction between a Git object and a reference to that object. Explain that references can change without changing the underlying IDs.</p></li>
+<li><p>Include brief explanation of the “.git/refs/” directory and perhaps show the contents of a branch reference file. However, avoid discussing reference storage in considerable technical detail.</p></li>
 </ul>
+<p>A useful opening example could be a diagram:</p>
+<p>commit1 &lt;- commit2 &lt;- commit3 &lt;- main</p>
+<p>Showing that main is a reference identifying the last commit in a branch.</p>
+</section>
+<section id="branch-references" class="level2" data-number="D.2">
+<h2 data-number="D.2" class="anchored" data-anchor-id="branch-references"><span class="header-section-number">D.2</span> Branch references</h2>
+<p>TODO:</p>
+<ul>
+<li><p>This should probably be the most substantial section, since it is the most important.</p></li>
+<li><p>Explain that a branch is essentially a reference to a commit and that the branch reference is updated when new commits are added to that branch.</p></li>
+<li><p>The important lession is that a branch is not a separate collection of commits. Its reference identifies a commit from which Git can follow the commit history.</p></li>
+<li><p>Could include a diagram illustrating a branch before and after a new commit, showing how the branch ref is moved. Would help explain why brnaches are commonly described as movable pointers.</p></li>
+</ul>
+</section>
+<section id="the-head-reference" class="level2" data-number="D.3">
+<h2 data-number="D.3" class="anchored" data-anchor-id="the-head-reference"><span class="header-section-number">D.3</span> The HEAD reference</h2>
+<p>TODO:</p>
+<ul>
+<li><p>Building on the preceding section, explain that HEAD normally identifies the current branch through a symbolic reference.</p></li>
+<li><p>The conceptual distinction is particularly important:</p>
+<ul>
+<li>A branch reference identifies a commit</li>
+<li>HEAD normally identifies a branch reference</li>
+<li>When a new commit is created, the current branch reference advances.</li>
+</ul></li>
+<li><p>Maybe briefly explain detached HEAD, where HEAD erfers directly t oa commit rather than through a branch. this is useful for understanding why checking out a particular commit behaves differently from switching branches.</p></li>
+</ul>
+</section>
+<section id="tags" class="level2" data-number="D.4">
+<h2 data-number="D.4" class="anchored" data-anchor-id="tags"><span class="header-section-number">D.4</span> Tags</h2>
+<p>TODO:</p>
+<ul>
+<li><p>The central prupose of this section would be to compare tags with branches.</p></li>
+<li><p>Explain that both provide meaningful names for particular points in the repository’s history, but that a branhc normally advances as commits are created, while a tag generally remains associated with the same object.</p></li>
+<li><p>There is one technical distinction worth introducing: lightweight versus annotated tags. A lightweight tag points directly to an object, whereas an annotated tag points to a tag object containing additional information. Keep lightweight tags in focus and only briefly mention annotated tags.</p></li>
+</ul>
+</section>
+<section id="remote-tracking-branches" class="level2" data-number="D.5">
+<h2 data-number="D.5" class="anchored" data-anchor-id="remote-tracking-branches"><span class="header-section-number">D.5</span> Remote-tracking branches</h2>
+<p>TODO:</p>
+<ul>
+<li><p>Natural extension of the explanation of branch references. connects appendix to the chapter on remotes.</p></li>
+<li><p>Explain tht remote-tracking branches such as origin/main are referenes maintained in the local repository to record the state of branches observed in a remote repository.</p></li>
+<li><p>Emphasize that origin/main is not the branch in the remote repository itself, and that fetching normally updates remote-tracking referenes without moving the corresponding local branches.</p></li>
+<li><p>Keep this section relative short.</p></li>
+</ul>
+</section>
+<section id="summary" class="level2" data-number="D.6">
+<h2 data-number="D.6" class="anchored" data-anchor-id="summary"><span class="header-section-number">D.6</span> Summary</h2>
+<p>TODO: Add a summary.</p>
+</section>
+<section id="exercises" class="level2" data-number="D.7">
+<h2 data-number="D.7" class="anchored" data-anchor-id="exercises"><span class="header-section-number">D.7</span> Exercises</h2>
+<p>TODO: Add exercises.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
