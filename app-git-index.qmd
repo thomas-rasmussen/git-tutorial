@@ -1,13 +1,61 @@
-# Understanding the Git index
+# The staging area
 
-TODO: add an appendix going into more detail what the staging area
+TODO: 
 
-- Give a more detailed description of what the staging area / index is
+- add an appendix going into more detail what the staging area is
+
+- The central message of the chapter should be: The staging area is not simply a place where Git keeps a list of files to include in the next commit. It represents the proposed contents of the next commit.
+
+Below is an initial draft of the scope of the chapter.
+
+
+## The three states of a file
+
+TODO:
+
+- Recap of the working tree, staging area, and current commit, and how they relate to one another.
+
+
+## What is the staging area?
+
+TODO:
+
+Explain the index as a representation of the next commit's proposed file tree, not a list of pending changes.
+
+## How the staging area works
+
+TODO:
+
+Explain snapshots, the index file, and how staging a file updates the index without creating a commit.
+
+
+## Partial staging
+
+TODO:
+
+Explain how the staging area can contain a different version of a file from both the working tree and the current commit.
+
+## Inspecting and modifying the staging area
+
+TODO:
+
+- Connect the conceptual model to git status, git diff, git add, git restore, and optionally git add -p.
+
+## From the staging area to a commit
+
+TODO:
+
+- Explain how git commit uses the indexto construct the next commit's tree.
+
+
+
+
+Subject to maybe include in chapter 
 
 - Explain the content of the .git/index file
 
-- Talk about partially staged files
 
 - use git ls-files --stage to inspect index entries
 
-- how git commit uses the index to create a commit
+
+- Introduce "git add -p" in this chapter.

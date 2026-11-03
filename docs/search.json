@@ -1254,12 +1254,78 @@
   {
     "objectID": "app-git-index.html",
     "href": "app-git-index.html",
-    "title": "Appendix E — Understanding the Git index",
+    "title": "Appendix E — The staging area",
     "section": "",
-    "text": "TODO: add an appendix going into more detail what the staging area\n\nGive a more detailed description of what the staging area / index is\nExplain the content of the .git/index file\nTalk about partially staged files\nuse git ls-files –stage to inspect index entries\nhow git commit uses the index to create a commit",
+    "text": "E.1 The three states of a file\nTODO:\nBelow is an initial draft of the scope of the chapter.\nTODO:",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>E</span>  <span class='chapter-title'>Understanding the Git index</span>"
+      "<span class='chapter-number'>E</span>  <span class='chapter-title'>The staging area</span>"
+    ]
+  },
+  {
+    "objectID": "app-git-index.html#the-three-states-of-a-file",
+    "href": "app-git-index.html#the-three-states-of-a-file",
+    "title": "Appendix E — The staging area",
+    "section": "",
+    "text": "Recap of the working tree, staging area, and current commit, and how they relate to one another.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>E</span>  <span class='chapter-title'>The staging area</span>"
+    ]
+  },
+  {
+    "objectID": "app-git-index.html#what-is-the-staging-area",
+    "href": "app-git-index.html#what-is-the-staging-area",
+    "title": "Appendix E — The staging area",
+    "section": "E.2 What is the staging area?",
+    "text": "E.2 What is the staging area?\nTODO:\nExplain the index as a representation of the next commit’s proposed file tree, not a list of pending changes.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>E</span>  <span class='chapter-title'>The staging area</span>"
+    ]
+  },
+  {
+    "objectID": "app-git-index.html#how-the-staging-area-works",
+    "href": "app-git-index.html#how-the-staging-area-works",
+    "title": "Appendix E — The staging area",
+    "section": "E.3 How the staging area works",
+    "text": "E.3 How the staging area works\nTODO:\nExplain snapshots, the index file, and how staging a file updates the index without creating a commit.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>E</span>  <span class='chapter-title'>The staging area</span>"
+    ]
+  },
+  {
+    "objectID": "app-git-index.html#partial-staging",
+    "href": "app-git-index.html#partial-staging",
+    "title": "Appendix E — The staging area",
+    "section": "E.4 Partial staging",
+    "text": "E.4 Partial staging\nTODO:\nExplain how the staging area can contain a different version of a file from both the working tree and the current commit.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>E</span>  <span class='chapter-title'>The staging area</span>"
+    ]
+  },
+  {
+    "objectID": "app-git-index.html#inspecting-and-modifying-the-staging-area",
+    "href": "app-git-index.html#inspecting-and-modifying-the-staging-area",
+    "title": "Appendix E — The staging area",
+    "section": "E.5 Inspecting and modifying the staging area",
+    "text": "E.5 Inspecting and modifying the staging area\nTODO:\n\nConnect the conceptual model to git status, git diff, git add, git restore, and optionally git add -p.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>E</span>  <span class='chapter-title'>The staging area</span>"
+    ]
+  },
+  {
+    "objectID": "app-git-index.html#from-the-staging-area-to-a-commit",
+    "href": "app-git-index.html#from-the-staging-area-to-a-commit",
+    "title": "Appendix E — The staging area",
+    "section": "E.6 From the staging area to a commit",
+    "text": "E.6 From the staging area to a commit\nTODO:\n\nExplain how git commit uses the indexto construct the next commit’s tree.\n\nSubject to maybe include in chapter\n\nExplain the content of the .git/index file\nuse git ls-files –stage to inspect index entries\nIntroduce “git add -p” in this chapter.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>E</span>  <span class='chapter-title'>The staging area</span>"
     ]
   },
   {

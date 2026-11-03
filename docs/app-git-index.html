@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Appendix E — Understanding the Git index – Git tutorial</title>
+<title>Appendix E — The staging area – Git tutorial</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -89,7 +89,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./app-git-bash.html">Appendices</a></li><li class="breadcrumb-item"><a href="./app-git-index.html"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Understanding the Git index</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./app-git-bash.html">Appendices</a></li><li class="breadcrumb-item"><a href="./app-git-index.html"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">The staging area</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -247,7 +247,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./app-git-index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Understanding the Git index</span></span></a>
+ <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">The staging area</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -263,15 +263,26 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#the-three-states-of-a-file" id="toc-the-three-states-of-a-file" class="nav-link active" data-scroll-target="#the-three-states-of-a-file"><span class="header-section-number">E.1</span> The three states of a file</a></li>
+  <li><a href="#what-is-the-staging-area" id="toc-what-is-the-staging-area" class="nav-link" data-scroll-target="#what-is-the-staging-area"><span class="header-section-number">E.2</span> What is the staging area?</a></li>
+  <li><a href="#how-the-staging-area-works" id="toc-how-the-staging-area-works" class="nav-link" data-scroll-target="#how-the-staging-area-works"><span class="header-section-number">E.3</span> How the staging area works</a></li>
+  <li><a href="#partial-staging" id="toc-partial-staging" class="nav-link" data-scroll-target="#partial-staging"><span class="header-section-number">E.4</span> Partial staging</a></li>
+  <li><a href="#inspecting-and-modifying-the-staging-area" id="toc-inspecting-and-modifying-the-staging-area" class="nav-link" data-scroll-target="#inspecting-and-modifying-the-staging-area"><span class="header-section-number">E.5</span> Inspecting and modifying the staging area</a></li>
+  <li><a href="#from-the-staging-area-to-a-commit" id="toc-from-the-staging-area-to-a-commit" class="nav-link" data-scroll-target="#from-the-staging-area-to-a-commit"><span class="header-section-number">E.6</span> From the staging area to a commit</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./app-git-bash.html">Appendices</a></li><li class="breadcrumb-item"><a href="./app-git-index.html"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Understanding the Git index</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./app-git-bash.html">Appendices</a></li><li class="breadcrumb-item"><a href="./app-git-index.html"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">The staging area</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Appendix E — Understanding the Git index</h1>
+<h1 class="title">Appendix E — The staging area</h1>
 </div>
 
 
@@ -288,16 +299,56 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>TODO: add an appendix going into more detail what the staging area</p>
+<p>TODO:</p>
 <ul>
-<li><p>Give a more detailed description of what the staging area / index is</p></li>
+<li><p>add an appendix going into more detail what the staging area is</p></li>
+<li><p>The central message of the chapter should be: The staging area is not simply a place where Git keeps a list of files to include in the next commit. It represents the proposed contents of the next commit.</p></li>
+</ul>
+<p>Below is an initial draft of the scope of the chapter.</p>
+<section id="the-three-states-of-a-file" class="level2" data-number="E.1">
+<h2 data-number="E.1" class="anchored" data-anchor-id="the-three-states-of-a-file"><span class="header-section-number">E.1</span> The three states of a file</h2>
+<p>TODO:</p>
+<ul>
+<li>Recap of the working tree, staging area, and current commit, and how they relate to one another.</li>
+</ul>
+</section>
+<section id="what-is-the-staging-area" class="level2" data-number="E.2">
+<h2 data-number="E.2" class="anchored" data-anchor-id="what-is-the-staging-area"><span class="header-section-number">E.2</span> What is the staging area?</h2>
+<p>TODO:</p>
+<p>Explain the index as a representation of the next commit’s proposed file tree, not a list of pending changes.</p>
+</section>
+<section id="how-the-staging-area-works" class="level2" data-number="E.3">
+<h2 data-number="E.3" class="anchored" data-anchor-id="how-the-staging-area-works"><span class="header-section-number">E.3</span> How the staging area works</h2>
+<p>TODO:</p>
+<p>Explain snapshots, the index file, and how staging a file updates the index without creating a commit.</p>
+</section>
+<section id="partial-staging" class="level2" data-number="E.4">
+<h2 data-number="E.4" class="anchored" data-anchor-id="partial-staging"><span class="header-section-number">E.4</span> Partial staging</h2>
+<p>TODO:</p>
+<p>Explain how the staging area can contain a different version of a file from both the working tree and the current commit.</p>
+</section>
+<section id="inspecting-and-modifying-the-staging-area" class="level2" data-number="E.5">
+<h2 data-number="E.5" class="anchored" data-anchor-id="inspecting-and-modifying-the-staging-area"><span class="header-section-number">E.5</span> Inspecting and modifying the staging area</h2>
+<p>TODO:</p>
+<ul>
+<li>Connect the conceptual model to git status, git diff, git add, git restore, and optionally git add -p.</li>
+</ul>
+</section>
+<section id="from-the-staging-area-to-a-commit" class="level2" data-number="E.6">
+<h2 data-number="E.6" class="anchored" data-anchor-id="from-the-staging-area-to-a-commit"><span class="header-section-number">E.6</span> From the staging area to a commit</h2>
+<p>TODO:</p>
+<ul>
+<li>Explain how git commit uses the indexto construct the next commit’s tree.</li>
+</ul>
+<p>Subject to maybe include in chapter</p>
+<ul>
 <li><p>Explain the content of the .git/index file</p></li>
-<li><p>Talk about partially staged files</p></li>
 <li><p>use git ls-files –stage to inspect index entries</p></li>
-<li><p>how git commit uses the index to create a commit</p></li>
+<li><p>Introduce “git add -p” in this chapter.</p></li>
 </ul>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
