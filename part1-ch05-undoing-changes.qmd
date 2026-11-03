@@ -2,7 +2,10 @@
 
 While working with Git, you will undoubtedly end up in a situation where you want to "undo" something. Maybe you want to change the commit message of the commit you just did, maybe you forgot to add a file to the staging area before committing, or maybe you committed changes to the repository that you want to delete. Git comes with several commands that can be used to "undo" things, some of which we will illustrate in this chapter. We will also illustrate that some of these commands needs to be used with care, since they can result in you losing work that has not been committed to the Git repository.
 
-## `git commit --amend` - Amending the lastest commit
+
+## Amending the current commit
+
+TODO: add example to go with the diagram in this section.
 
 A common mistake is to make an error in the commit log message, or making a premature commit where you forgot to stage all the intended changes. You could fix the mistake by making another commit where you staged the forgotten changes and/or updated the commit message, but there is a more convenient way to fix these types of issues. You can simply stage the changes you forgot, and use the `git commit --amend` command. 
 
@@ -18,7 +21,7 @@ This will replace the original commit with a new commit where the additional cha
 
 It's important to understand that what Git is doing here is not so much "amending" the commit, but *replacing* it with a new commit that will have a new checksum, as also illustrated in the above diagram. Amending a commit is an example of rewriting the commit history of the Git repository. We will not go into more details on this at this point, but rewriting the commit history should be done with care if you are collaborating with other on a Git repository.
 
-## `git restore` - unstaging staged files and unmodifying modified files.
+## Unstaging staged files and unmodifying modified files.
 
 In this section we will show how we can use `git restore` to restore files in the staging area and working directory with content from a restore source. We can use this to "undo" changes we have staged, or unmodify files we have modified in the working directory.
 
@@ -71,6 +74,8 @@ It is important to understand that `git restore <file>` is a dangerous command t
 
 
 ## `git rm` - Removing files from a Git repository
+
+TODO: Move this to "Getting started" chapter.
 
 A common scenario is that you want to stop tracking a file. Git will recognize if you manually delete files in the working directory and will update the working directory automatically. But it will not update the index with the removal of the file, which you would then have to do yourself using `git add`. This two-step process can be done more effectively using the `git rm` command which can be used to remove files from the working tree and index. Lets illustrate it with an example. First, lets set up a repository where we have committed a couple of files:
 
