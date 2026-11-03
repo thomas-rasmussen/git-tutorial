@@ -1,6 +1,6 @@
 # Getting started {#sec-getting-started}
 
-In this chapter, we will configure some basic Git settings and introduce the essential Git commands for creating a repository, staging changes, and making commits. We will also explain how to ignore certain files and access Git's documentation.
+In this chapter, we will configure some basic Git settings and introduce the essential Git commands for creating a repository, staging changes, and making commits. We will also introduce commands for inspecting and removing files, explain how to ignore files, and show where to find help when using Git.
 
 We assume that you are familiar with using Git Bash to work from the terminal. If you are not, start by reading @sec-git-bash.
 
@@ -155,7 +155,7 @@ Changes to be committed:
 
 </pre>
 
-The output confirms that `file1.txt` is staged and will be included in the next commit. Git also suggests a command for removing the file from the staging area. We will discuss this command later in the tutorial.
+The output confirms that `file1.txt` is staged and will be included in the next commit. Git also suggests a command for removing the file from the staging area without deleting it from the working tree. We will discuss this command later in the chapter.
 
 
 ## Committing files to the repository
@@ -167,18 +167,18 @@ We have now seen how to add changes to the staging area using `git add`. To comm
 $ git commit
 </pre>
 
-After running the command, Git opens the configured text editor, where you can write a commit message. After writing the message, save the file and exit the editor. This is why we configured Git's text editor earlier in the chapter. 
+After running the command, Git opens the configured text editor, where you can write a commit message. A commit message should briefly describe the changes made in the commit. Writing clear and descriptive commit messages makes it easier to understand the history of a project and identify when particular changes were made. After writing the message, save the file and exit the editor. This is why we configured Git's text editor earlier in the chapter. 
 
-You can also use the `-m` option to write a commit message directly:
+Alternatively, you can use the `-m` option to write a commit message directly without opening a text editor:
 
 <pre class="terminal">
-$ git commit -m"Commit message"
+$ git commit -m "Add file1.txt"
 </pre>
 
 After creating the commit, `git commit` displays output similar to the following:
 
 <pre class="terminal">
-[main (root-commit) b68a80a] Commit message
+[main (root-commit) 5daad2bc] Add file1.txt
  1 file changed, 1 insertion(+)
  create mode 100644 file1.txt
 </pre>
@@ -194,9 +194,42 @@ nothing to commit, working tree clean
 </pre>
 
 
+## Removing files from the repository
+
+To remove a tracked file from the repository, use `git rm`. This command removes the file from the working tree and stages its deletion.
+
+Suppose another repository contains a tracked file named `tmp.txt` that we want to remove. We could use the following command:
+
+<pre class="terminal">
+$ git rm tmp.txt
+rm 'tmp.txt'
+</pre>
+
+If we then ran `git status`, we would see output similar to the following:
+
+<pre class="terminal">
+$ git status
+On branch main
+Changes to be committed:
+  (use "git restore --staged &lt;file&gt;..." to unstage)
+<span class="col-status-staged">        deleted:    tmp.txt</span>
+
+</pre>
+
+The output shows that the deletion has been staged. The deletion will be recorded in the repository when we make the next commit. The file will no longer be present in the working directory or the latest commit, but it will still be available in earlier commits.
+
+Sometimes, we want Git to stop tracking a file without deleting it from the working tree. To do this, use the `--cached` option. For example, we could instead run:
+
+<pre class="terminal">
+$ git rm --cached tmp.txt
+</pre>
+
+This would stage the removal of `tmp.txt` from the repository while keeping the file in the working tree. This can be useful when a file should no longer be version-controlled, for example, because we want to ignore it using `.gitignore`. Unless the file is ignored, it will subsequently appear as an untracked file.
+
+
 ## Viewing differences
 
-We now have a commit in our example repository. Let's make some additional changes to `file1.txt`:
+Returning to our running example, we now have a commit in our example repository. Let's make some additional changes to `file1.txt`:
 
 <pre class="terminal">
 <span class="col-user-id">username@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~/example-getting-started</span> <span class="col-prompt-branch">(main)</span>
@@ -234,7 +267,7 @@ Let's add the changes to the staging area and commit them:
 
 <pre class="terminal">
 $ git add file1.txt
-$ git commit -m"Add changes to file1.txt"
+$ git commit -m "Add changes to file1.txt"
 </pre>
 
 
@@ -243,18 +276,18 @@ $ git commit -m"Add changes to file1.txt"
 We have now created two commits in our example. To view the repository's commit history, we use `git log`:
 
 <pre class="terminal">
-<span class="col-user-id">username@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~/example-getting-started</span> <span class="col-prompt-branch">(main)</span>
-<span class="col-yellow">commit 91860202c61448c4c72ca70709a6e843b51d6a0c (</span><span class="col-head">HEAD</span> <span class="col-yellow">-></span> <span class="col-branch-local">main</span><span class="col-yellow">)</span>
+<span class="col-user-id">username@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~/example-getting-started</span> <span class="col-prompt-branch">(main)</span> $ git log
+<span class="col-hash">commit 91860202c61448c4c72ca70709a6e843b51d6a0c</span> <span class="col-yellow">(</span><span class="col-head">HEAD</span> <span class="col-yellow">-></span> <span class="col-branch-local">main</span><span class="col-yellow">)</span>
 Author: Your Name &lt;your@email.com&gt;
 Date:   &lt;Date and time of commit&gt;
 
     Add changes to file1.txt
 
-<span class="col-yellow">commit 5daad2bc8d1280cf7bf0d83ef2a7c676ff50028b</span>
+<span class="col-hash">commit 5daad2bc8d1280cf7bf0d83ef2a7c676ff50028b</span>
 Author: Your Name &lt;your@email.com&gt;
 Date:   &lt;Date and time of commit&gt;
 
-    Commit message
+    Add file1.txt
 
 </pre>
 
@@ -293,9 +326,11 @@ Patterns in `.gitignore` do not cause Git to stop tracking files that are alread
 Although `.gitignore` files are important in real projects, we will not discuss them further in the main chapters of this tutorial. For more information about ignoring files when using Git, see @sec-ignoring-files.
 
 
-## Accessing manual pages
+## Getting help
 
-We will end this chapter by explaining how to access Git's documentation. There are several ways to access the manual pages. One is the `git help` command. For example, to open the manual page for `git add`, run:
+When working with Git, you will inevitably encounter unfamiliar commands, options, and problems. Knowing how to find information about Git is therefore an important skill.
+
+Git comes with extensive documentation that describes its commands and their available options. You can access the manual pages using the `git help` command. For example, to open the manual page for `git add`, run:
 
 <pre class="terminal">
 $ git help add
@@ -303,10 +338,14 @@ $ git help add
 
 The manual pages are available locally, so you can consult them even without an internet connection. You can also display a concise summary of a command's options directly in the terminal using the `-h` option with a Git command. For example, run `git add -h` to display a summary of the options available for `git add`.
 
+In addition to Git's official documentation, search engines and large language models (LLMs), such as ChatGPT, can be valuable resources. Search engines are useful for finding explanations and solutions to common problems, while LLMs allow you to ask questions in natural language and can be particularly helpful when exploring unfamiliar concepts or troubleshooting specific problems. However, information from these sources is not always accurate, so it is worth consulting Git's official documentation when in doubt.
+
+Throughout this tutorial, we will encourage you to consult Git's manual pages when learning new commands and options. Becoming familiar with the official documentation will help you understand Git and provide a reliable reference as you become a more experienced user.
+
 
 ## Summary
 
-In this chapter, we have introduced the basic commands needed to start using Git. We have learned how to initialize or clone a repository, inspect the state of files, stage changes, and create commits. We have also introduced commands for viewing differences and commit history, explained how to ignore files, and shown how to access Git's documentation.
+In this chapter, we have introduced the basic commands needed to start using Git. We have learned how to initialize or clone a repository, inspect the state of files, stage changes, create commits, and remove files from the repository. We have also introduced commands for viewing differences and commit history, explained how to ignore files, and discussed how to find help when using Git.
 
 The most important concept is the distinction between the working tree, staging area, and repository. Understanding how changes move between these components is fundamental to using Git.
 
@@ -315,7 +354,7 @@ The most important concept is the distinction between the working tree, staging 
 
 ### Exercise 1 - Create your first repository
 
-In this exercise, you will practice creating a repository, staging and committing changes, and identifying the state of files at each step in the process.
+In this exercise, you will practice creating a repository, adding, modifying, and removing files, staging and committing changes, and identifying the state of files at each step in the process.
 
 <b>1. Create a repository.</b>
 
@@ -398,7 +437,7 @@ Commit the staged file to the repository. In what state is `file1.txt` after the
 ::: {.callout-note title="Solution" collapse="true" icon="false"}
 
 <pre class="terminal">
-$ git commit -m"Add file1.txt"
+$ git commit -m "Add file1.txt"
 $ git status
 On branch main
 nothing to commit, working tree clean
@@ -445,7 +484,7 @@ Changes to be committed:
 The file is now staged. Finally, we commit the changes:
 
 <pre class="terminal">
-$ git commit -m"Update file1.txt"
+$ git commit -m "Update file1.txt"
 $ git status
 On branch main
 nothing to commit, working tree clean
@@ -456,10 +495,51 @@ After committing the changes, `file1.txt` goes back to being unmodified.
 
 :::
 
+<b>6. Remove a file.</b>
+
+Create a new file named `file2.txt`, add it to the staging area, and commit it to the repository.
+
+Next, remove `file2.txt` using `git rm`. Use `git status` to inspect the state of the file after removing it. Has the deletion been staged? Commit the deletion and check the state of the repository again.
+
+::: {.callout-note title="Solution" collapse="true" icon="false"}
+
+First, we create `file2.txt` and commit it to the repository:
+
+<pre class="terminal">
+$ echo "Contents of file2.txt" > file2.txt
+$ git add file2.txt
+$ git commit -m "Add file2.txt"
+</pre>
+
+Next, we remove the file using `git rm` and inspect the state of the repository:
+
+<pre class="terminal">
+$ git rm file2.txt
+rm 'file2.txt'
+$ git status
+On branch main
+Changes to be committed:
+  (use "git restore --staged &lt;file&gt;..." to unstage)
+<span class="col-status-staged">        deleted:    file2.txt</span>
+
+</pre>
+
+The deletion has been staged but has not yet been committed. Finally, we commit the deletion and check the state of the repository:
+
+<pre class="terminal">
+$ git commit -m "Remove file2.txt"
+$ git status
+On branch main
+nothing to commit, working tree clean
+</pre>
+
+The deletion has now been recorded in a commit, and the working tree is clean.
+
+:::
 
 ### Exercise 2 - Learn to use Git documentation
 
-Knowing how to consult Git's documentation is useful when learning new commands or looking up options. In this exercise, you will consult the documentation to find an option that makes the output of `git status` more concise.
+Although search engines and LLMs can be useful for finding information about Git, it is important to know how to consult Git's official documentation. In this exercise, you will practice using the documentation to find an option that makes the output of `git status` more concise.
 
 <b>1. Set up a repository.</b>
 
@@ -483,7 +563,7 @@ $ cd ~/ex02-getting-started
 $ git init
 $ echo "Contents of file1.txt" > file1.txt
 $ git add file1.txt
-$ git commit -m"Add file1.txt"
+$ git commit -m "Add file1.txt"
 $ echo "More content" >> file1.txt
 $ echo "Contents of file2.txt" > file2.txt
 $ git add file2.txt
@@ -546,9 +626,24 @@ The short format uses two status columns. For tracked files, the first column de
 :::
 
 
-### Exercise 3 - Start using Git in an existing project (optional)
+### Exercise 3 - Start using Git in a project
 
-In this exercise, you will start using Git in one of your existing projects:
+In this exercise, you will start using Git to version-control a project. You can use one of your own projects or create a fictional project using the commands below.
+
+If you do not have a suitable project, run the following commands to create a simple project containing a few files:
+
+<pre class="terminal">
+$ mkdir ~/my-project
+$ cd ~/my-project
+$ mkdir data
+$ mkdir scripts
+$ echo "Some notes about the project." > notes.txt
+$ echo "Some results" > data/results.txt
+$ echo "Data for project" > data/large-dataset.txt
+$ echo "Some code" > scripts/code.txt
+</pre>
+
+These commands create a project directory containing project notes, a small dataset with results, a file with code, and a placeholder representing a large dataset.
 
 1. Navigate to the directory containing your project and initialize a Git repository.
 
@@ -558,6 +653,34 @@ In this exercise, you will start using Git in one of your existing projects:
 
 4. Use `git status` to check which files will be included in the commit.
 
-5. Commit the staged files.
+5. Commit the staged files with a descriptive commit message.
 
 Congratulations! You are now using Git to version-control your project. This is all it takes to get started.
+
+::: {.callout-note title="Solution" collapse="true" icon="false"}
+
+The following commands complete the exercise using the fictional project. We want to version-control the project files but exclude the large dataset. We therefore create a `.gitignore` file containing a pattern matching `data/large-dataset.txt`:
+
+<pre class="terminal">
+$ cd ~/my-project
+$ git init
+$ echo "data/large-dataset.txt" > .gitignore
+$ git add .
+$ git status
+On branch main
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached &lt;file&gt;..." to unstage)
+        new file:   .gitignore
+        new file:   data/results.txt
+        new file:   notes.txt
+        new file:   scripts/code.txt
+
+$ git commit -m "Initial commit"
+</pre>
+
+The `.gitignore` file prevents Git from including `data/large-dataset.txt` when staging files with `git add .`. All other files, including `.gitignore` itself, are included in the commit.
+
+:::

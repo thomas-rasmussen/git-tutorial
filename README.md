@@ -63,21 +63,6 @@ The tutorial was developed using Quarto and RStudio.
      
   - "Commit" is used suddenly, when "snapshot" only used so far. Maybe add sentence that each snapshot is called a commit.
 
-**"Getting started" chapter:"**
-
-- Add a sentence or two the first time commit messages are introduced encouraging readers to write descriptive commit messages.
-
-- introduce "git rm". This is a fundamental command that should be introduced in this chapter.
-
-- Exercise 3: Should not be an optional exercise since it is important. Augment the exercise by adding commands to create a project that can be used if the reader does not have one of their own.
-
-- Add sentence to "Accessing manual pages" section (or make a more general "Getting help" section ) on the alternatives to getting help:
-
- - Google it. In many case easy to find answers to common questions.
- 
- - Use LLM as "advanced" google: Git is open source and the most popular VCS in the world. LLMs are trained on the source code of Git, all the official documentation + at least one metric fuckton of code from the internet. LLM's (at least ChatGPT) is excellent at answering questions related to Git. This  is particular true for complicated niche questions that no one else have ever though to ask on stackoverflow etc. The official documentation is also vast and can be hard to navigate/understand, and LLMs can make getting answers to questions much easier.
-
-
 
 **"Inspecting the commit history" chapter:**
 

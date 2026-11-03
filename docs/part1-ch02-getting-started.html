@@ -282,16 +282,17 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#checking-the-state-of-files" id="toc-checking-the-state-of-files" class="nav-link" data-scroll-target="#checking-the-state-of-files"><span class="header-section-number">2.4</span> Checking the state of files</a></li>
   <li><a href="#adding-changes-to-the-staging-area" id="toc-adding-changes-to-the-staging-area" class="nav-link" data-scroll-target="#adding-changes-to-the-staging-area"><span class="header-section-number">2.5</span> Adding changes to the staging area</a></li>
   <li><a href="#committing-files-to-the-repository" id="toc-committing-files-to-the-repository" class="nav-link" data-scroll-target="#committing-files-to-the-repository"><span class="header-section-number">2.6</span> Committing files to the repository</a></li>
-  <li><a href="#viewing-differences" id="toc-viewing-differences" class="nav-link" data-scroll-target="#viewing-differences"><span class="header-section-number">2.7</span> Viewing differences</a></li>
-  <li><a href="#viewing-the-commit-log" id="toc-viewing-the-commit-log" class="nav-link" data-scroll-target="#viewing-the-commit-log"><span class="header-section-number">2.8</span> Viewing the commit log</a></li>
-  <li><a href="#ignoring-files" id="toc-ignoring-files" class="nav-link" data-scroll-target="#ignoring-files"><span class="header-section-number">2.9</span> Ignoring files</a></li>
-  <li><a href="#accessing-manual-pages" id="toc-accessing-manual-pages" class="nav-link" data-scroll-target="#accessing-manual-pages"><span class="header-section-number">2.10</span> Accessing manual pages</a></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">2.11</span> Summary</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">2.12</span> Exercises</a>
+  <li><a href="#removing-files-from-the-repository" id="toc-removing-files-from-the-repository" class="nav-link" data-scroll-target="#removing-files-from-the-repository"><span class="header-section-number">2.7</span> Removing files from the repository</a></li>
+  <li><a href="#viewing-differences" id="toc-viewing-differences" class="nav-link" data-scroll-target="#viewing-differences"><span class="header-section-number">2.8</span> Viewing differences</a></li>
+  <li><a href="#viewing-the-commit-log" id="toc-viewing-the-commit-log" class="nav-link" data-scroll-target="#viewing-the-commit-log"><span class="header-section-number">2.9</span> Viewing the commit log</a></li>
+  <li><a href="#ignoring-files" id="toc-ignoring-files" class="nav-link" data-scroll-target="#ignoring-files"><span class="header-section-number">2.10</span> Ignoring files</a></li>
+  <li><a href="#getting-help" id="toc-getting-help" class="nav-link" data-scroll-target="#getting-help"><span class="header-section-number">2.11</span> Getting help</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">2.12</span> Summary</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">2.13</span> Exercises</a>
   <ul class="collapse">
   <li><a href="#exercise-1---create-your-first-repository" id="toc-exercise-1---create-your-first-repository" class="nav-link" data-scroll-target="#exercise-1---create-your-first-repository">Exercise 1 - Create your first repository</a></li>
   <li><a href="#exercise-2---learn-to-use-git-documentation" id="toc-exercise-2---learn-to-use-git-documentation" class="nav-link" data-scroll-target="#exercise-2---learn-to-use-git-documentation">Exercise 2 - Learn to use Git documentation</a></li>
-  <li><a href="#exercise-3---start-using-git-in-an-existing-project-optional" id="toc-exercise-3---start-using-git-in-an-existing-project-optional" class="nav-link" data-scroll-target="#exercise-3---start-using-git-in-an-existing-project-optional">Exercise 3 - Start using Git in an existing project (optional)</a></li>
+  <li><a href="#exercise-3---start-using-git-in-a-project" id="toc-exercise-3---start-using-git-in-a-project" class="nav-link" data-scroll-target="#exercise-3---start-using-git-in-a-project">Exercise 3 - Start using Git in a project</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -318,7 +319,7 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>In this chapter, we will configure some basic Git settings and introduce the essential Git commands for creating a repository, staging changes, and making commits. We will also explain how to ignore certain files and access Git’s documentation.</p>
+<p>In this chapter, we will configure some basic Git settings and introduce the essential Git commands for creating a repository, staging changes, and making commits. We will also introduce commands for inspecting and removing files, explain how to ignore files, and show where to find help when using Git.</p>
 <p>We assume that you are familiar with using Git Bash to work from the terminal. If you are not, start by reading <a href="app-git-bash.html" class="quarto-xref"><span>Appendix A</span></a>.</p>
 <section id="sec-getting-started-basic-config" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="sec-getting-started-basic-config"><span class="header-section-number">2.1</span> Basic configuration of Git</h2>
@@ -432,7 +433,7 @@ Changes to be committed:
 <span class="col-status-added">        new file:   file1.txt</span>
 
 </file></pre>
-<p>The output confirms that <code>file1.txt</code> is staged and will be included in the next commit. Git also suggests a command for removing the file from the staging area. We will discuss this command later in the tutorial.</p>
+<p>The output confirms that <code>file1.txt</code> is staged and will be included in the next commit. Git also suggests a command for removing the file from the staging area without deleting it from the working tree. We will discuss this command later in the chapter.</p>
 </section>
 <section id="committing-files-to-the-repository" class="level2" data-number="2.6">
 <h2 data-number="2.6" class="anchored" data-anchor-id="committing-files-to-the-repository"><span class="header-section-number">2.6</span> Committing files to the repository</h2>
@@ -440,12 +441,12 @@ Changes to be committed:
 <pre class="terminal"><span class="col-user-id">username@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~/example-getting-started</span> <span class="col-prompt-branch">(main)</span>
 $ git commit
 </pre>
-<p>After running the command, Git opens the configured text editor, where you can write a commit message. After writing the message, save the file and exit the editor. This is why we configured Git’s text editor earlier in the chapter.</p>
-<p>You can also use the <code>-m</code> option to write a commit message directly:</p>
-<pre class="terminal">$ git commit -m"Commit message"
+<p>After running the command, Git opens the configured text editor, where you can write a commit message. A commit message should briefly describe the changes made in the commit. Writing clear and descriptive commit messages makes it easier to understand the history of a project and identify when particular changes were made. After writing the message, save the file and exit the editor. This is why we configured Git’s text editor earlier in the chapter.</p>
+<p>Alternatively, you can use the <code>-m</code> option to write a commit message directly without opening a text editor:</p>
+<pre class="terminal">$ git commit -m "Add file1.txt"
 </pre>
 <p>After creating the commit, <code>git commit</code> displays output similar to the following:</p>
-<pre class="terminal">[main (root-commit) b68a80a] Commit message
+<pre class="terminal">[main (root-commit) 5daad2bc] Add file1.txt
  1 file changed, 1 insertion(+)
  create mode 100644 file1.txt
 </pre>
@@ -456,9 +457,30 @@ On branch main
 nothing to commit, working tree clean
 </pre>
 </section>
-<section id="viewing-differences" class="level2" data-number="2.7">
-<h2 data-number="2.7" class="anchored" data-anchor-id="viewing-differences"><span class="header-section-number">2.7</span> Viewing differences</h2>
-<p>We now have a commit in our example repository. Let’s make some additional changes to <code>file1.txt</code>:</p>
+<section id="removing-files-from-the-repository" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="removing-files-from-the-repository"><span class="header-section-number">2.7</span> Removing files from the repository</h2>
+<p>To remove a tracked file from the repository, use <code>git rm</code>. This command removes the file from the working tree and stages its deletion.</p>
+<p>Suppose another repository contains a tracked file named <code>tmp.txt</code> that we want to remove. We could use the following command:</p>
+<pre class="terminal">$ git rm tmp.txt
+rm 'tmp.txt'
+</pre>
+<p>If we then ran <code>git status</code>, we would see output similar to the following:</p>
+<pre class="terminal">$ git status
+On branch main
+Changes to be committed:
+  (use "git restore --staged &lt;file&gt;..." to unstage)
+<span class="col-status-staged">        deleted:    tmp.txt</span>
+
+</pre>
+<p>The output shows that the deletion has been staged. The deletion will be recorded in the repository when we make the next commit. The file will no longer be present in the working directory or the latest commit, but it will still be available in earlier commits.</p>
+<p>Sometimes, we want Git to stop tracking a file without deleting it from the working tree. To do this, use the <code>--cached</code> option. For example, we could instead run:</p>
+<pre class="terminal">$ git rm --cached tmp.txt
+</pre>
+<p>This would stage the removal of <code>tmp.txt</code> from the repository while keeping the file in the working tree. This can be useful when a file should no longer be version-controlled, for example, because we want to ignore it using <code>.gitignore</code>. Unless the file is ignored, it will subsequently appear as an untracked file.</p>
+</section>
+<section id="viewing-differences" class="level2" data-number="2.8">
+<h2 data-number="2.8" class="anchored" data-anchor-id="viewing-differences"><span class="header-section-number">2.8</span> Viewing differences</h2>
+<p>Returning to our running example, we now have a commit in our example repository. Let’s make some additional changes to <code>file1.txt</code>:</p>
 <pre class="terminal"><span class="col-user-id">username@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~/example-getting-started</span> <span class="col-prompt-branch">(main)</span>
 $ echo "New changes" &gt;&gt; file1.txt
 $ git status
@@ -486,30 +508,30 @@ no changes added to commit (use "git add" and/or "git commit -a")
 <p>The line <code>+New changes</code> indicates that the content <code>New changes</code> has been added to the working-tree version of the file. We will explain how to use <code>git diff</code> in more detail in <a href="part1-ch04-git-diff.html" class="quarto-xref"><span>Chapter 4</span></a>.</p>
 <p>Let’s add the changes to the staging area and commit them:</p>
 <pre class="terminal">$ git add file1.txt
-$ git commit -m"Add changes to file1.txt"
+$ git commit -m "Add changes to file1.txt"
 </pre>
 </section>
-<section id="viewing-the-commit-log" class="level2" data-number="2.8">
-<h2 data-number="2.8" class="anchored" data-anchor-id="viewing-the-commit-log"><span class="header-section-number">2.8</span> Viewing the commit log</h2>
+<section id="viewing-the-commit-log" class="level2" data-number="2.9">
+<h2 data-number="2.9" class="anchored" data-anchor-id="viewing-the-commit-log"><span class="header-section-number">2.9</span> Viewing the commit log</h2>
 <p>We have now created two commits in our example. To view the repository’s commit history, we use <code>git log</code>:</p>
-<pre class="terminal"><span class="col-user-id">username@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~/example-getting-started</span> <span class="col-prompt-branch">(main)</span>
-<span class="col-yellow">commit 91860202c61448c4c72ca70709a6e843b51d6a0c (</span><span class="col-head">HEAD</span> <span class="col-yellow">-&gt;</span> <span class="col-branch-local">main</span><span class="col-yellow">)</span>
+<pre class="terminal"><span class="col-user-id">username@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~/example-getting-started</span> <span class="col-prompt-branch">(main)</span> $ git log
+<span class="col-hash">commit 91860202c61448c4c72ca70709a6e843b51d6a0c</span> <span class="col-yellow">(</span><span class="col-head">HEAD</span> <span class="col-yellow">-&gt;</span> <span class="col-branch-local">main</span><span class="col-yellow">)</span>
 Author: Your Name &lt;your@email.com&gt;
 Date:   &lt;Date and time of commit&gt;
 
     Add changes to file1.txt
 
-<span class="col-yellow">commit 5daad2bc8d1280cf7bf0d83ef2a7c676ff50028b</span>
+<span class="col-hash">commit 5daad2bc8d1280cf7bf0d83ef2a7c676ff50028b</span>
 Author: Your Name &lt;your@email.com&gt;
 Date:   &lt;Date and time of commit&gt;
 
-    Commit message
+    Add file1.txt
 
 </pre>
 <p>The output shows the author, date, and message of each commit. We will discuss <code>git log</code> in more detail in <a href="part1-ch03-inspecting-the-commit-history.html" class="quarto-xref"><span>Chapter 3</span></a>.</p>
 </section>
-<section id="ignoring-files" class="level2" data-number="2.9">
-<h2 data-number="2.9" class="anchored" data-anchor-id="ignoring-files"><span class="header-section-number">2.9</span> Ignoring files</h2>
+<section id="ignoring-files" class="level2" data-number="2.10">
+<h2 data-number="2.10" class="anchored" data-anchor-id="ignoring-files"><span class="header-section-number">2.10</span> Ignoring files</h2>
 <p>A repository will often contain files that you do not want Git to track. For example, you might store supporting documents in your project directory without wanting to version-control them.</p>
 <p>You can create a file named <code>.gitignore</code> in your repository to specify which files Git should ignore. Each line specifies an ignore pattern, except for empty lines and comments. For example, a <code>.gitignore</code> file might look like this:</p>
 <div class="notepad-file">
@@ -532,23 +554,26 @@ data/large-dataset.txt
 <p>Patterns in <code>.gitignore</code> do not cause Git to stop tracking files that are already tracked.</p>
 <p>Although <code>.gitignore</code> files are important in real projects, we will not discuss them further in the main chapters of this tutorial. For more information about ignoring files when using Git, see <a href="app-ignoring-files.html" class="quarto-xref"><span>Appendix C</span></a>.</p>
 </section>
-<section id="accessing-manual-pages" class="level2" data-number="2.10">
-<h2 data-number="2.10" class="anchored" data-anchor-id="accessing-manual-pages"><span class="header-section-number">2.10</span> Accessing manual pages</h2>
-<p>We will end this chapter by explaining how to access Git’s documentation. There are several ways to access the manual pages. One is the <code>git help</code> command. For example, to open the manual page for <code>git add</code>, run:</p>
+<section id="getting-help" class="level2" data-number="2.11">
+<h2 data-number="2.11" class="anchored" data-anchor-id="getting-help"><span class="header-section-number">2.11</span> Getting help</h2>
+<p>When working with Git, you will inevitably encounter unfamiliar commands, options, and problems. Knowing how to find information about Git is therefore an important skill.</p>
+<p>Git comes with extensive documentation that describes its commands and their available options. You can access the manual pages using the <code>git help</code> command. For example, to open the manual page for <code>git add</code>, run:</p>
 <pre class="terminal">$ git help add
 </pre>
 <p>The manual pages are available locally, so you can consult them even without an internet connection. You can also display a concise summary of a command’s options directly in the terminal using the <code>-h</code> option with a Git command. For example, run <code>git add -h</code> to display a summary of the options available for <code>git add</code>.</p>
+<p>In addition to Git’s official documentation, search engines and large language models (LLMs), such as ChatGPT, can be valuable resources. Search engines are useful for finding explanations and solutions to common problems, while LLMs allow you to ask questions in natural language and can be particularly helpful when exploring unfamiliar concepts or troubleshooting specific problems. However, information from these sources is not always accurate, so it is worth consulting Git’s official documentation when in doubt.</p>
+<p>Throughout this tutorial, we will encourage you to consult Git’s manual pages when learning new commands and options. Becoming familiar with the official documentation will help you understand Git and provide a reliable reference as you become a more experienced user.</p>
 </section>
-<section id="summary" class="level2" data-number="2.11">
-<h2 data-number="2.11" class="anchored" data-anchor-id="summary"><span class="header-section-number">2.11</span> Summary</h2>
-<p>In this chapter, we have introduced the basic commands needed to start using Git. We have learned how to initialize or clone a repository, inspect the state of files, stage changes, and create commits. We have also introduced commands for viewing differences and commit history, explained how to ignore files, and shown how to access Git’s documentation.</p>
+<section id="summary" class="level2" data-number="2.12">
+<h2 data-number="2.12" class="anchored" data-anchor-id="summary"><span class="header-section-number">2.12</span> Summary</h2>
+<p>In this chapter, we have introduced the basic commands needed to start using Git. We have learned how to initialize or clone a repository, inspect the state of files, stage changes, create commits, and remove files from the repository. We have also introduced commands for viewing differences and commit history, explained how to ignore files, and discussed how to find help when using Git.</p>
 <p>The most important concept is the distinction between the working tree, staging area, and repository. Understanding how changes move between these components is fundamental to using Git.</p>
 </section>
-<section id="exercises" class="level2" data-number="2.12">
-<h2 data-number="2.12" class="anchored" data-anchor-id="exercises"><span class="header-section-number">2.12</span> Exercises</h2>
+<section id="exercises" class="level2" data-number="2.13">
+<h2 data-number="2.13" class="anchored" data-anchor-id="exercises"><span class="header-section-number">2.13</span> Exercises</h2>
 <section id="exercise-1---create-your-first-repository" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-1---create-your-first-repository">Exercise 1 - Create your first repository</h3>
-<p>In this exercise, you will practice creating a repository, staging and committing changes, and identifying the state of files at each step in the process.</p>
+<p>In this exercise, you will practice creating a repository, adding, modifying, and removing files, staging and committing changes, and identifying the state of files at each step in the process.</p>
 <p><b>1. Create a repository.</b></p>
 <p>Create a directory named <code>ex01-getting-started</code> in your home directory, navigate into it, and initialize a Git repository.</p>
 <div class="callout callout-style-default callout-tip no-icon callout-titled" title="Hint">
@@ -676,7 +701,7 @@ Changes to be committed:
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre class="terminal">$ git commit -m"Add file1.txt"
+<pre class="terminal">$ git commit -m "Add file1.txt"
 $ git status
 On branch main
 nothing to commit, working tree clean
@@ -722,7 +747,7 @@ Changes to be committed:
 
 </file></pre>
 <p>The file is now staged. Finally, we commit the changes:</p>
-<pre class="terminal">$ git commit -m"Update file1.txt"
+<pre class="terminal">$ git commit -m "Update file1.txt"
 $ git status
 On branch main
 nothing to commit, working tree clean
@@ -732,19 +757,9 @@ nothing to commit, working tree clean
 </div>
 </div>
 </div>
-</section>
-<section id="exercise-2---learn-to-use-git-documentation" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-2---learn-to-use-git-documentation">Exercise 2 - Learn to use Git documentation</h3>
-<p>Knowing how to consult Git’s documentation is useful when learning new commands or looking up options. In this exercise, you will consult the documentation to find an option that makes the output of <code>git status</code> more concise.</p>
-<p><b>1. Set up a repository.</b></p>
-<ul>
-<li><p>Create a directory named <code>ex02-getting-started</code> in your home directory, navigate to it, and initialize a repository.</p></li>
-<li><p>Create a file named <code>file1.txt</code> with the line <code>Contents of file1.txt</code>.</p></li>
-<li><p>Add the file to the staging area and make a commit.</p></li>
-<li><p>Add changes to <code>file1.txt</code>.</p></li>
-<li><p>Create a file named <code>file2.txt</code> with the line <code>Contents of file2.txt</code> and add it to the staging area.</p></li>
-<li><p>Create a file named <code>file3.txt</code> with the line <code>Contents of file3.txt</code>.</p></li>
-</ul>
+<p><b>6. Remove a file.</b></p>
+<p>Create a new file named <code>file2.txt</code>, add it to the staging area, and commit it to the repository.</p>
+<p>Next, remove <code>file2.txt</code> using <code>git rm</code>. Use <code>git status</code> to inspect the state of the file after removing it. Has the deletion been staged? Commit the deletion and check the state of the repository again.</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -757,12 +772,62 @@ nothing to commit, working tree clean
 </div>
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
+<p>First, we create <code>file2.txt</code> and commit it to the repository:</p>
+<pre class="terminal">$ echo "Contents of file2.txt" &gt; file2.txt
+$ git add file2.txt
+$ git commit -m "Add file2.txt"
+</pre>
+<p>Next, we remove the file using <code>git rm</code> and inspect the state of the repository:</p>
+<pre class="terminal">$ git rm file2.txt
+rm 'file2.txt'
+$ git status
+On branch main
+Changes to be committed:
+  (use "git restore --staged &lt;file&gt;..." to unstage)
+<span class="col-status-staged">        deleted:    file2.txt</span>
+
+</pre>
+<p>The deletion has been staged but has not yet been committed. Finally, we commit the deletion and check the state of the repository:</p>
+<pre class="terminal">$ git commit -m "Remove file2.txt"
+$ git status
+On branch main
+nothing to commit, working tree clean
+</pre>
+<p>The deletion has now been recorded in a commit, and the working tree is clean.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-2---learn-to-use-git-documentation" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-2---learn-to-use-git-documentation">Exercise 2 - Learn to use Git documentation</h3>
+<p>Although search engines and LLMs can be useful for finding information about Git, it is important to know how to consult Git’s official documentation. In this exercise, you will practice using the documentation to find an option that makes the output of <code>git status</code> more concise.</p>
+<p><b>1. Set up a repository.</b></p>
+<ul>
+<li><p>Create a directory named <code>ex02-getting-started</code> in your home directory, navigate to it, and initialize a repository.</p></li>
+<li><p>Create a file named <code>file1.txt</code> with the line <code>Contents of file1.txt</code>.</p></li>
+<li><p>Add the file to the staging area and make a commit.</p></li>
+<li><p>Add changes to <code>file1.txt</code>.</p></li>
+<li><p>Create a file named <code>file2.txt</code> with the line <code>Contents of file2.txt</code> and add it to the staging area.</p></li>
+<li><p>Create a file named <code>file3.txt</code> with the line <code>Contents of file3.txt</code>.</p></li>
+</ul>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <pre class="terminal">$ mkdir ~/ex02-getting-started
 $ cd ~/ex02-getting-started
 $ git init
 $ echo "Contents of file1.txt" &gt; file1.txt
 $ git add file1.txt
-$ git commit -m"Add file1.txt"
+$ git commit -m "Add file1.txt"
 $ echo "More content" &gt;&gt; file1.txt
 $ echo "Contents of file2.txt" &gt; file2.txt
 $ git add file2.txt
@@ -791,7 +856,7 @@ Untracked files:
 </file></file></file></file></pre>
 <p>The output is rather verbose. Consult the documentation for <code>git status</code> to find an option that displays the status more concisely.</p>
 <div class="callout callout-style-default callout-tip no-icon callout-titled" title="Hint">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -800,14 +865,14 @@ Untracked files:
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>You can either look at the “OPTIONS” section of the manual page using <code>git help status</code>, or you can use <code>git status -h</code> to get a quick overview of how to use the command.</p>
 </div>
 </div>
 </div>
 <div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -816,7 +881,7 @@ Untracked files:
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>The <code>-s</code> option produces the short status format:</p>
 <pre class="terminal">$ git status -s
@@ -830,7 +895,7 @@ Untracked files:
 <p><b>3. Further explore the documentation.</b></p>
 <p>The output of <code>git status -s</code> from the previous step uses shorthand notation that might not be immediately clear. Consult the “OUTPUT” section of the manual page for <code>git status</code> to learn what the notation means.</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -839,24 +904,70 @@ Untracked files:
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>The short format uses two status columns. For tracked files, the first column describes changes in the staging area, while the second describes changes in the working tree. The letter <code>M</code> indicates a modification, <code>A</code> indicates an added file, and <code>??</code> indicates an untracked file.</p>
 </div>
 </div>
 </div>
 </section>
-<section id="exercise-3---start-using-git-in-an-existing-project-optional" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-3---start-using-git-in-an-existing-project-optional">Exercise 3 - Start using Git in an existing project (optional)</h3>
-<p>In this exercise, you will start using Git in one of your existing projects:</p>
+<section id="exercise-3---start-using-git-in-a-project" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-3---start-using-git-in-a-project">Exercise 3 - Start using Git in a project</h3>
+<p>In this exercise, you will start using Git to version-control a project. You can use one of your own projects or create a fictional project using the commands below.</p>
+<p>If you do not have a suitable project, run the following commands to create a simple project containing a few files:</p>
+<pre class="terminal">$ mkdir ~/my-project
+$ cd ~/my-project
+$ mkdir data
+$ mkdir scripts
+$ echo "Some notes about the project." &gt; notes.txt
+$ echo "Some results" &gt; data/results.txt
+$ echo "Data for project" &gt; data/large-dataset.txt
+$ echo "Some code" &gt; scripts/code.txt
+</pre>
+<p>These commands create a project directory containing project notes, a small dataset with results, a file with code, and a placeholder representing a large dataset.</p>
 <ol type="1">
 <li><p>Navigate to the directory containing your project and initialize a Git repository.</p></li>
 <li><p>Consider which files should be version-controlled and which should be ignored. If necessary, create a <code>.gitignore</code> file.</p></li>
 <li><p>Stage the files you want to version-control.</p></li>
 <li><p>Use <code>git status</code> to check which files will be included in the commit.</p></li>
-<li><p>Commit the staged files.</p></li>
+<li><p>Commit the staged files with a descriptive commit message.</p></li>
 </ol>
 <p>Congratulations! You are now using Git to version-control your project. This is all it takes to get started.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The following commands complete the exercise using the fictional project. We want to version-control the project files but exclude the large dataset. We therefore create a <code>.gitignore</code> file containing a pattern matching <code>data/large-dataset.txt</code>:</p>
+<pre class="terminal">$ cd ~/my-project
+$ git init
+$ echo "data/large-dataset.txt" &gt; .gitignore
+$ git add .
+$ git status
+On branch main
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached &lt;file&gt;..." to unstage)
+        new file:   .gitignore
+        new file:   data/results.txt
+        new file:   notes.txt
+        new file:   scripts/code.txt
+
+$ git commit -m "Initial commit"
+</pre>
+<p>The <code>.gitignore</code> file prevents Git from including <code>data/large-dataset.txt</code> when staging files with <code>git add .</code>. All other files, including <code>.gitignore</code> itself, are included in the commit.</p>
+</div>
+</div>
+</div>
 
 
 </section>
