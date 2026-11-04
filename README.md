@@ -109,7 +109,7 @@ Consider in more detail how gh auth login -p https -cw works regarding storing o
 
 - In some cases, simulated output from the terminal and notepad documents contains blank lines at the end. Figure out how to remove these. This has probably something to do with multiple nested div and pre tags, and/or making a new line after starting a pre tag or putting </pre> on a new line.
 
--Diagrams looks all wrong in browsers with dark background. Maybe it is necessary to make the background of all diagrams white instead of transparent?
+- Need to re-export all .drawio diagrams to .svg, and set "Appeareance" to "light" when exporting to make sure the diagrams are displayed correctly when viewed in a browser with a dark theme.
 
 - So far, when colouring commit IDs in lines from git log output that includes eg "(HEAD -> main)", the opening "(" has been included in the colouring of the commit ID, since the same colour is (currently) used. This was originally a decision based on laziness. Fix this throughout the entire tutorial, giving the "() its own span using the .col-yellow CSS class.
 
