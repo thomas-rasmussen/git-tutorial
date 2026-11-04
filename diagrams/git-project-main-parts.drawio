@@ -4,50 +4,38 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="tOh5A-E_HVtvksxm0UxM-1" value="Working directory" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1" parent="1" vertex="1">
+        <mxCell id="h4SUckekb3gQybAHpeHv-1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="tOh5A-E_HVtvksxm0UxM-1" target="tOh5A-E_HVtvksxm0UxM-2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tOh5A-E_HVtvksxm0UxM-1" value="Working tree" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1" parent="1" vertex="1">
           <mxGeometry x="40" y="40" width="160" height="40" as="geometry" />
         </mxCell>
+        <mxCell id="h4SUckekb3gQybAHpeHv-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="tOh5A-E_HVtvksxm0UxM-2" target="tOh5A-E_HVtvksxm0UxM-3" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="tOh5A-E_HVtvksxm0UxM-2" value="Staging area" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1" parent="1" vertex="1">
-          <mxGeometry x="280" y="40" width="160" height="40" as="geometry" />
+          <mxGeometry x="320" y="40" width="160" height="40" as="geometry" />
         </mxCell>
         <mxCell id="tOh5A-E_HVtvksxm0UxM-3" value="Git directory" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1" parent="1" vertex="1">
-          <mxGeometry x="520" y="40" width="160" height="40" as="geometry" />
+          <mxGeometry x="600" y="40" width="160" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="tOh5A-E_HVtvksxm0UxM-4" value="" style="endArrow=none;html=1;rounded=0;" parent="1" edge="1">
+        <mxCell id="h4SUckekb3gQybAHpeHv-4" value="" style="curved=1;endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="tOh5A-E_HVtvksxm0UxM-3" target="tOh5A-E_HVtvksxm0UxM-1" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="120" y="240" as="sourcePoint" />
-            <mxPoint x="120" y="80" as="targetPoint" />
+            <mxPoint x="390" y="210" as="sourcePoint" />
+            <mxPoint x="440" y="160" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="390" y="160" />
+            </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="tOh5A-E_HVtvksxm0UxM-5" value="" style="endArrow=none;html=1;rounded=0;" parent="1" edge="1">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="360" y="240" as="sourcePoint" />
-            <mxPoint x="359.5" y="80" as="targetPoint" />
-          </mxGeometry>
+        <mxCell id="h4SUckekb3gQybAHpeHv-5" value="Stage changes" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="200" y="30" width="120" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="tOh5A-E_HVtvksxm0UxM-6" value="" style="endArrow=none;html=1;rounded=0;" parent="1" edge="1">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="600" y="240" as="sourcePoint" />
-            <mxPoint x="600" y="80" as="targetPoint" />
-          </mxGeometry>
+        <mxCell id="h4SUckekb3gQybAHpeHv-6" value="Commit" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="480" y="30" width="120" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="tOh5A-E_HVtvksxm0UxM-7" value="Check out files" style="endArrow=classic;html=1;rounded=0;verticalAlign=bottom;labelPosition=left;verticalLabelPosition=middle;align=right;spacing=3;labelBackgroundColor=none;spacingLeft=0;spacingRight=70;" parent="1" edge="1">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="600" y="120" as="sourcePoint" />
-            <mxPoint x="120" y="120" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="tOh5A-E_HVtvksxm0UxM-8" value="Stage changes" style="endArrow=classic;html=1;rounded=0;verticalAlign=bottom;spacing=3;align=center;labelBackgroundColor=none;spacingRight=0;labelPosition=center;verticalLabelPosition=middle;" parent="1" edge="1">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="120" y="160" as="sourcePoint" />
-            <mxPoint x="360" y="160" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="tOh5A-E_HVtvksxm0UxM-9" value="Commit" style="endArrow=classic;html=1;rounded=0;labelBackgroundColor=none;labelPosition=center;verticalLabelPosition=middle;align=center;verticalAlign=bottom;spacing=3;" parent="1" edge="1">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="360" y="200" as="sourcePoint" />
-            <mxPoint x="600" y="200" as="targetPoint" />
-          </mxGeometry>
+        <mxCell id="h4SUckekb3gQybAHpeHv-7" value="Check out files" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="340" y="130" width="120" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

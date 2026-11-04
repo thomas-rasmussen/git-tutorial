@@ -31,30 +31,6 @@ The tutorial was developed using Quarto and RStudio.
 
 **---TODO: content---**
 
-**Introduction to version control and Git:**
-
-- Review diagrams and images in chapter:
-
-  - Would it be better to drop the two column design, and simply put diagrams in-between text? The current design does not look good on a mobile for example.
-
-  - Does the terminology in the diagrams match the terminology in the text?
-  
-  - Local VCS uses "Database" in diagram. Should be probably be "Repository".
-    
-  - Centralized and distributed VCS diagrams should have a repository box inside the server box.
-
-  - Should maybe be mentioned (and depicted in diagram) that distributed VCS's often still use a server repository as a central repository. This could be mentioned a "pro" of CVCSs: they can be used in a centralized way, and often is.
-  
-  - Is the information in the diagrams correct and informative
-  
-  - "main part of Git project" diagram: maybe simplify diagram to show
-     working directory -> staging area -> git directory
-     and then an arrow back to working directory from git directory.
-     This enforces the mental model of the cycle of working with git.
-     
-  - "Commit" is used suddenly, when "snapshot" only used so far. Maybe add sentence that each snapshot is called a commit.
-
-
 **"Inspecting the commit history" chapter:**
 
 - Add a dedicated section explaining good commit message conventions, supported by example of informative an uninformative commit histories.
@@ -112,6 +88,8 @@ Consider in more detail how gh auth login -p https -cw works regarding storing o
 - Need to re-export all .drawio diagrams to .svg, and set "Appeareance" to "light" when exporting to make sure the diagrams are displayed correctly when viewed in a browser with a dark theme.
 
 - So far, when colouring commit IDs in lines from git log output that includes eg "(HEAD -> main)", the opening "(" has been included in the colouring of the commit ID, since the same colour is (currently) used. This was originally a decision based on laziness. Fix this throughout the entire tutorial, giving the "() its own span using the .col-yellow CSS class.
+
+- Many diagrams look a little crude. If time permits it, work on making them more visually polished.
 
 **---TODO: potential topics that are not yet included---**
 

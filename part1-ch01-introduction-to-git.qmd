@@ -1,60 +1,46 @@
 # Introduction to version control and Git {#sec-introduction-to-git}
 
-What is version control and what is Git? We will begin this tutorial with a brief introduction to version control before explaining what Git is and how it works at a broad level.
+What is version control, and what is Git? We will begin this tutorial with a brief introduction to version control before explaining what Git is and how it works at a broad level.
 
 
 ## What is version control?
 
-*Version control* is the practice of organizing and tracking different versions of computer files over time. Version control can be used for almost any type of file, but is particularly useful for source code, which is typically stored in plain-text files. A *version control system* (VCS) is a software tool that automates version control.
+*Version control* is the practice of organizing and tracking different versions of computer files over time. Version control can be used for almost any type of file, but is particularly useful for source code, which is typically stored in plain-text files. A *version control system* (VCS) is software that helps manage and track changes to files.
 
-<div style="display: grid">
-<div style="grid-column: 1">
-  
-You might not realize it, but you are probably already using some form of primitive version control. Does the image on the right look familiar? It is common for people to do manual version control by making copies of files and renaming them. You might even create a separate folder for older versions. The filenames shown here might seem exaggerated, but inconsistent naming like this is common in practice.
+You might not realize it, but you are probably already using some form of primitive version control. Do the filenames below look familiar? It is common for people to do manual version control by making copies of files and renaming them. You might even create a separate folder for older versions. The filenames shown here might seem exaggerated, but inconsistent naming like this is common in practice.
 
-Even with a single file, manual version control quickly makes it difficult to determine which version of the file is the newest, and whether the versions follow a linear history or have diverged from a common starting point. Furthermore, it is difficult to assess what exactly has changed between versions. Even for small projects with a single developer, this approach clearly has serious limitations.
+<pre class="dir-structure"><code>scripts/
+├── code.txt
+├── code-2026-01-01.txt
+├── code-final.txt
+├── code-final-2026-02-02.txt
+└── code-final-fix.txt</code></pre>
 
-</div>
+Even with a single file, manual version control quickly makes it difficult to determine which version of the file is the newest, and whether the versions follow a linear history or have diverged from a common starting point. It is also difficult to determine exactly what has changed between versions. Even for small projects with a single developer, this approach clearly has serious limitations.
 
-<div style="grid-column: 2;margin-left:1em;">
-![Different versions of a file](./images/code_file_history.png)
-</div>
-
-</div>
-
-Using a VCS provides a more structured way of managing different versions of files. Learning the basics of a VCS is usually straightforward, but if you are not already working in a structured way, getting the full benefit of version control may require adapting some existing work habits.
-
-A VCS addresses many of the problems with manual version control. It keeps a history of changes in a repository, making it possible to see what has changed, when it changed, and who made the changes. It also makes it easier to restore previous versions of files and, depending on the type of VCS, collaborate with others on the same project.
+Using a VCS provides a more structured way of managing different versions of files. A VCS addresses many of the problems with manual version control. It keeps a history of changes, making it possible to see what has changed, when it changed, and who made the changes. It also makes it easier to restore previous versions of files and, depending on the type of VCS, collaborate with others on the same project.
 
 
 ### Local VCS
 
-<div style="display:flex">
-<div style="flex:50%;">
-
-One type of version control system is the *local VCS*. A local VCS stores the repository on your computer, where changes to files are tracked. Using a local VCS is an improvement over manual version control and can be useful for small or personal projects, but this type of VCS still has important limitations:
+One type of version control system is a *local VCS*. A local VCS uses a database on your computer, where changes to files are tracked. Using a local VCS is an improvement over manual version control and can be useful for small or personal projects, but this type of VCS still has important limitations:
 
 - All file versions are stored on your computer, making them vulnerable to data loss if that computer fails.
 
 - It is difficult to collaborate with others using a local VCS, since changes cannot easily be shared or consolidated.
 
-</div>
-<div style="flex:50%;margin-left:1em;">
-![Local VCS](./diagrams/local-vcs.svg)
-</div>
+<div style="width:50%;margin:auto">
+![Local VCS](./diagrams/local-vcs.drawio.svg)
 </div>
 
 
 ### Centralized VCS
 
-<div style="display:flex">
-<div style="flex:50%">
+In a *centralized VCS*, the version history is stored in a central database on a server. Developers can check out files from the database and commit changes back to it. A *commit* records a version of the project in its history. Centralized VCSs have several advantages over local VCSs.
 
-To make collaboration easier, *centralized VCSs* use a repository on a central server. Developers can check out files from the repository and commit changes back to it. Centralized VCSs have several advantages over local VCSs.
+- A single central database makes it easy for developers to see the history of changes and the current state of files.
 
-- A single central repository makes it easy for developers to see the history of changes and the current state of files.
-
-- A central repository also makes it easier to collaborate with others.
+- A central database also makes it easier to collaborate with others.
 
 - Administrators can control what files each developer can access and modify.
 
@@ -64,43 +50,35 @@ However, centralized VCSs still have limitations:
 
 - Committing changes typically requires access to the central server, making it difficult to work fully offline.
 
-- Operations require communication with the central server, which can be slow, especially for large projects.
+- Many operations require communication with the central server, which can make them slower.
 
-</div>
-<div style="flex:50%;margin-left:1em;">
-![Centralized VCS](./diagrams/centralized-vcs.svg)
-</div>
+<div style="width:50%;margin:auto">
+![Centralized VCS](./diagrams/centralized-vcs.drawio.svg)
 </div>
 
 
 ### Distributed VCS
 
-<div style="display:flex">
-<div style="flex:50%">
+A different approach is the *distributed VCS*. With a distributed VCS, each developer typically has a local copy of the database containing the project's version history. Distributed VCSs have several advantages over centralized VCSs.
 
-A different approach is the *distributed VCS*. With a distributed VCS, each developer typically has a local copy of the repository and its history. Distributed VCSs have several advantages over centralized VCSs.
+- Because multiple copies of the database exist, the version history is less vulnerable to the failure of a single computer or server.
 
-- There is no single point of failure for the repository's history.
-
-- Developers can also share and synchronize changes directly with each other.
+- Developers can share and synchronize changes directly with each other, or agree to use one central database for sharing changes.
 
 - Developers can work offline.
-
-- Distributed VCSs allow for more flexible workflows than centralized VCSs.
 
 - Some operations are faster because they can be performed locally without communicating with a server.
 
 However, distributed VCSs also have some limitations:
 
-- Storing a complete repository history can take up more disk space, especially if the project contains binary files or has a long and complicated history.
+- Storing the complete database history can take up more disk space, especially if the project contains binary files or has a long and complicated history.
 
-- It is difficult to control which files individual developers can access, since they typically have a complete copy of the repository.
+- It is difficult to control which files individual developers can access, since they typically have a complete copy of the database.
 
-</div>
-<div style="flex:50%;margin-left:1em;">
+<div style="width:50%;margin:auto">
 ![Distributed VCS](./diagrams/distributed-vcs.drawio.svg)
 </div>
-</div>
+
 
 ## What is Git?
 
@@ -108,24 +86,26 @@ So what is Git, and how did it come to be? Git is a distributed VCS, and it was 
 
 Git was designed to meet several important requirements of the Linux kernel project: speed, a simple design, strong support for non-linear development, a fully distributed model, and the ability to handle large projects efficiently.
 
-In Git, a project and its version history are managed in what is called a *repository*, often shortened to *repo*. Git works by recording snapshots of your files over time. Git makes it easy to switch between versions of your files, compare versions of the same file, and review the history of individual files.
+In Git, a project and its version history are managed in a *repository*, often shortened to *repo*. Git works by recording snapshots of your files over time. Git makes it easy to switch between versions of your files, compare versions of the same file, and review the history of individual files.
 
 Although Git was originally developed for large projects involving many developers, it is equally useful for small projects with a single developer.
 
 
 ### Main parts of a Git project
 
-There are three main parts involved when working with a Git project: the Git directory, the working tree, and the staging area.
+A typical Git project consists of three main parts: the Git directory, the working tree, and the staging area.
 
+<div style="width:80%;margin:auto">
 ![The three main parts of a Git project](./diagrams/git-project-main-parts.drawio.svg){width=100%}
+</div>
 
-The *Git directory* is where Git stores the history of your project, including previous versions of your files.
+The *Git directory* is where Git stores the history of your project, including previous versions of your files. In a typical Git repository, the Git directory is a hidden subdirectory named `.git` within the working tree.
 
-The *working tree* contains the files you are currently working on. This is where you make changes to your project.
+The *working tree* consists of the files and directories you work with in your project. In a typical Git repository, these are located in the main project directory, alongside the hidden `.git` directory. This is where you view and modify your project files.
 
-The *staging area* is where you select the changes you want to include in the next commit.
+The *staging area* contains a snapshot of the files that will be recorded in the next commit.
 
-The typical Git workflow is as follows:
+The typical Git workflow is a cycle involving the following steps:
 
 1. Modify files in the working tree.
 
@@ -136,15 +116,15 @@ The typical Git workflow is as follows:
 
 ### How Git stores data {#sec-file-storage-in-git}
 
-A major difference between Git and many other VCSs is how Git stores data. In other VCSs, file histories are typically represented by storing a base version and subsequent changes to each file. This is commonly called *delta-based* version control.
+A major difference between Git and many other VCSs is how Git stores data. Many other VCSs represent file histories by storing an initial version of each file and the changes made in subsequent versions. This is commonly called *delta-based* version control.
 
-![Delta-based version control - data is stored as changes to a base version of each file](./diagrams/delta-based-version-control.svg)
+![Delta-based version control - data is stored as changes to a base version of each file](./diagrams/delta-based-version-control.drawio.svg)
 
-This is not how Git stores data. In Git, data is stored as a series of snapshots of your files. Every time you commit changes, Git records a snapshot of the files in your project and stores a reference to that snapshot. To be efficient, if a file has not changed, Git can reuse its existing stored contents rather than storing them again.
+Git takes a different approach. Rather than representing each version as a collection of changes to individual files, Git represents versions of a project as snapshots of its files. Every time you commit changes, Git records a new snapshot. To be efficient, Git can reuse the stored contents of files that have not changed.
 
-![Snapshot version control - data is stored as snapshots](./diagrams/snapshot-version-control.svg)
+![Snapshot version control - data is stored as snapshots](./diagrams/snapshot-version-control.drawio.svg)
 
 
 ### Summary
 
-In summary, version control provides a structured way to track changes to files, restore earlier versions, and collaborate with others. Git is a distributed version control system that allows developers to keep and work with a project's history locally. In the following chapters, we will look at how to use Git in practice and how Git works in more detail.
+Version control provides a structured way to track changes to files, restore earlier versions, and collaborate with others. Git is a distributed version control system that allows developers to keep and work with a project's history locally. In the following chapters, we will look at how to use Git in practice and how Git works in more detail.
