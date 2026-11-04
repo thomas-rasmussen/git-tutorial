@@ -301,7 +301,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#exercise-2---specifying-paths-with-path-components" id="toc-exercise-2---specifying-paths-with-path-components" class="nav-link" data-scroll-target="#exercise-2---specifying-paths-with-path-components">Exercise 2 - Specifying paths with path components</a></li>
   <li><a href="#exercise-3---creating-non-existent-parent-directories-using-mkdir" id="toc-exercise-3---creating-non-existent-parent-directories-using-mkdir" class="nav-link" data-scroll-target="#exercise-3---creating-non-existent-parent-directories-using-mkdir">Exercise 3 - Creating non-existent parent directories using <code>mkdir</code></a></li>
   <li><a href="#exercise-4---filename-expansion" id="toc-exercise-4---filename-expansion" class="nav-link" data-scroll-target="#exercise-4---filename-expansion">Exercise 4 - Filename expansion</a></li>
-  <li><a href="#exercise-5---combining-flags" id="toc-exercise-5---combining-flags" class="nav-link" data-scroll-target="#exercise-5---combining-flags">Exercise 5 - Combining flags</a></li>
+  <li><a href="#exercise-5---combining-options" id="toc-exercise-5---combining-options" class="nav-link" data-scroll-target="#exercise-5---combining-options">Exercise 5 - Combining options</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -330,12 +330,12 @@ ul.task-list li input[type="checkbox"] {
 
 <p>Git Bash is a Bash emulation that allows you to use Git from the command line. It is part of <a href="https://gitforwindows.org/" target="_blank">Git for Windows</a>, which is a set of tools for Windows users, including a Bash emulator and a Git installation, among other things. Git Bash allows Windows users to run <code>git</code> commands in the same way as they would in Linux and Unix environments. Besides the full set of Git core commands, Git Bash is also packaged with additional basic Bash shell commands that can be useful.</p>
 <p>When you run Git Bash, a terminal window will open that looks something like this:</p>
-<pre class="terminal"><span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+<pre class="terminal"><span class="col-user-id">username@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
 $
 </pre>
 <p>Let’s break down what we see in the terminal:</p>
 <ul>
-<li><p><code>user-id@computer-id</code>: an ID based on the name of the logged-in user and the name of the device running Git Bash.</p></li>
+<li><p><code>username@computer-id</code>: an ID based on the name of the logged-in user and the name of the device running Git Bash.</p></li>
 <li><p><code>MINGW64</code>: indicates that Git Bash is running in the 64-bit MinGW environment provided by Git for Windows. This is technical information that we do not need to worry about here.</p></li>
 <li><p>The <code>~</code> at the end of the first line, shown in yellow, represents the current working directory (more on this later). When you open Git Bash, the current working directory is typically your home directory, shown as <code>~</code>. The tilde (<code>~</code>) is a special character in Bash that represents the user’s home directory.</p></li>
 </ul>
@@ -367,15 +367,15 @@ $
 <section id="prompts-and-outputs" class="level3">
 <h3 class="anchored" data-anchor-id="prompts-and-outputs">Prompts and outputs</h3>
 <p>Imagine we have the following session in the terminal:</p>
-<pre class="terminal"><span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+<pre class="terminal"><span class="col-user-id">username@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
 $ echo hello
 hello
-<span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+<span class="col-user-id">username@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
 $
 </pre>
-<p>The <em>prompt</em> is <code>user-id@computer-id MINGW64 ~ $</code>. The prompt indicates that the shell is ready to accept a new command. The command entered was <code>echo hello</code>, and the <em>output</em> is <code>hello</code>.</p>
+<p>The <em>prompt</em> is <code>username@computer-id MINGW64 ~ $</code>. The prompt indicates that the shell is ready to accept a new command. The command entered was <code>echo hello</code>, and the <em>output</em> is <code>hello</code>.</p>
 <p>After typing the command <code>echo hello</code> and pressing <kbd title="Enter" aria-hidden="true">Enter</kbd><span class="visually-hidden">Enter</span>, the shell reads the command, interprets it, executes it (or invokes another program to do so), prints any output, and then displays a new prompt, indicating that it is ready for another command.</p>
-<p>When illustrating sessions in the Git Bash terminal in this tutorial, we will often omit the <code>user-id@computer-id MINGW64 ~</code> part of the prompt when it is not relevant. We only show the <code>$</code> to avoid cluttering the terminal with the repeated long prompt.</p>
+<p>When illustrating sessions in the Git Bash terminal in this tutorial, we will often omit the <code>username@computer-id MINGW64 ~</code> part of the prompt when it is not relevant. We only show the <code>$</code> to avoid cluttering the terminal with the repeated long prompt.</p>
 </section>
 <section id="working-from-the-command-line-using-a-cli-and-working-in-the-terminal" class="level3">
 <h3 class="anchored" data-anchor-id="working-from-the-command-line-using-a-cli-and-working-in-the-terminal">Working from the command line, using a CLI, and working in the terminal</h3>
@@ -430,16 +430,16 @@ $
 <section id="comments" class="level3">
 <h3 class="anchored" data-anchor-id="comments">Comments</h3>
 <p>Lines starting with <code>#</code> are comments and will not be executed by the shell.</p>
-<pre class="terminal"><span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+<pre class="terminal"><span class="col-user-id">username@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
 $ # This is a comment that is not executed by the shell
 </pre>
 </section>
 <section id="the-current-working-directory-and-paths" class="level3">
 <h3 class="anchored" data-anchor-id="the-current-working-directory-and-paths">The current working directory and paths</h3>
 <p>The current working directory is the directory that the shell treats as the current location when resolving <em>relative paths</em> and executing commands. When you open Git Bash, the current working directory is typically your home directory, represented by <code>~</code>. Paths to files and directories can be written in two ways:</p>
-<p><b>Absolute paths:</b><br> An absolute path is a path that specifies the exact location of a file or directory, starting from the root directory (<code>/</code>). For example, <code>/c/Users/user-id</code> is the absolute path of your home directory (on a Windows system).</p>
+<p><b>Absolute paths:</b><br> An absolute path is a path that specifies the exact location of a file or directory, starting from the root directory (<code>/</code>). For example, <code>/c/Users/username</code> is the absolute path of your home directory (on a Windows system).</p>
 <p><b>Relative paths:</b><br> A relative path is a path that specifies the location of a file or directory relative to the current working directory. For example, if the current working directory is your home directory, <code>code/filename.txt</code> is a relative path to the <code>filename.txt</code> file in the <code>code</code> subdirectory of your home directory.</p>
-<p>If you specify a path starting with <code>/</code>, it will be interpreted as an absolute path, and if you do not, it will be interpreted as a relative path. The Bash shell has a feature called “tilde expansion”, which means you can also specify paths using, for example, <code>~/sub-directory</code> instead of <code>/c/Users/user-id/sub-directory</code>.</p>
+<p>If you specify a path starting with <code>/</code>, it will be interpreted as an absolute path, and if you do not, it will be interpreted as a relative path. The Bash shell has a feature called “tilde expansion”, which means you can also specify paths using, for example, <code>~/sub-directory</code> instead of <code>/c/Users/username/sub-directory</code>.</p>
 </section>
 <section id="command-line-completion" class="level3">
 <h3 class="anchored" data-anchor-id="command-line-completion">Command-line completion</h3>
@@ -449,26 +449,26 @@ $ # This is a comment that is not executed by the shell
 <section id="bash-commands" class="level2" data-number="A.3">
 <h2 data-number="A.3" class="anchored" data-anchor-id="bash-commands"><span class="header-section-number">A.3</span> Bash commands</h2>
 <p>The remainder of this chapter introduces basic Bash commands used throughout the tutorial to list and manipulate files and directories. You need to be familiar with these commands to understand the examples and exercises, although you do not necessarily need to use them yourself. File Explorer and a text editor can also be used to navigate directories and create or edit files. However, becoming comfortable with basic shell commands makes many of these tasks faster and will also make using Git from the command line more natural.</p>
-<p>The commands are introduced through common tasks, with a focus on basic uses of the commands, mostly without using flags (options).</p>
+<p>The commands are introduced through common tasks, with a focus on basic uses of the commands, mostly without using options.</p>
 <p>Documentation for some commands can be accessed by typing <code>command-name --help</code> in the terminal. Documentation for CMD, PowerShell, and Bash commands in general is available from many sources, for example <a href="https://ss64.com/" target="_blank">here</a>.</p>
 <section id="show-and-change-the-current-working-directory" class="level3">
 <h3 class="anchored" data-anchor-id="show-and-change-the-current-working-directory">Show and change the current working directory</h3>
 <p>You can use the <code>pwd</code> command to print the path of the current working directory, as illustrated below:</p>
-<pre class="terminal"><span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+<pre class="terminal"><span class="col-user-id">username@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
 $ pwd
-/c/Users/user-id
+/c/Users/username
 </pre>
 <p>To change the current working directory, use the <code>cd</code> command. If no path is provided, <code>cd</code> changes the current working directory to the user’s home directory:</p>
-<pre class="terminal"><span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+<pre class="terminal"><span class="col-user-id">username@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
 $ # Use absolute path to change working directory
 $ cd /c/test/some-folder
-<span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">/c/test/some-folder</span>
+<span class="col-user-id">username@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">/c/test/some-folder</span>
 $ # Use `cd` to change the working directory back to the home directory
 $ cd
-<span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+<span class="col-user-id">username@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
 $ # Use relative path to change working directory to an existing subdirectory of the home directory
 $ cd subdir
-<span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~/subdir</span>
+<span class="col-user-id">username@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~/subdir</span>
 $
 </pre>
 <p>Git for Windows also integrates Git Bash with File Explorer. Instead of opening a terminal window and using <code>cd</code> to change the working directory, you can also navigate to the directory using File Explorer, right-click the directory (<kbd title="Shift+right-click" aria-hidden="true">Shift+right-click</kbd><span class="visually-hidden">Shift+right-click</span> on Windows 11), and select “Open Git Bash here”. This opens a terminal window with that directory as the current working directory.</p>
@@ -476,7 +476,7 @@ $
 <section id="list-files-and-directories" class="level3">
 <h3 class="anchored" data-anchor-id="list-files-and-directories">List files and directories</h3>
 <p>To list files and directories in a directory, use the <code>ls</code> command. If you do not specify a path, <code>ls</code> lists the files and directories in the current working directory:</p>
-<pre class="terminal"><span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+<pre class="terminal"><span class="col-user-id">username@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
 $ # If we have two files, `file1.txt` and `file2.txt`, and a subdirectory
 $ # named `sub-dir` in the current working directory, running `ls` would
 $ # produce the following output:
@@ -487,18 +487,18 @@ file1.txt  file2.txt  <span class="col-dir">sub-dir</span>/
 <section id="create-a-directory" class="level3">
 <h3 class="anchored" data-anchor-id="create-a-directory">Create a directory</h3>
 <p>You can create a new directory using the <code>mkdir</code> command:</p>
-<pre class="terminal"><span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+<pre class="terminal"><span class="col-user-id">username@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
 $ # Create a directory named `new-dir` in the current working directory using a relative path
 $ mkdir new-dir
 $ # Create a subdirectory named `sub-dir` in `new-dir` using an absolute path
-$ mkdir /c/Users/user-id/new-dir/sub-dir
+$ mkdir /c/Users/username/new-dir/sub-dir
 </pre>
 <p>If you attempt to create a directory that already exists, you will receive an error, and the existing directory will remain unchanged.</p>
 </section>
 <section id="create-an-empty-file" class="level3">
 <h3 class="anchored" data-anchor-id="create-an-empty-file">Create an empty file</h3>
 <p>The <code>touch</code> command can be used to create an empty file:</p>
-<pre class="terminal"><span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+<pre class="terminal"><span class="col-user-id">username@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
 $ # Create a subdirectory in the current working directory and use `ls` to show that it is empty
 $ mkdir new-dir
 $ ls ~/new-dir
@@ -512,7 +512,7 @@ file.txt
 <section id="append-to-or-overwrite-a-file" class="level3">
 <h3 class="anchored" data-anchor-id="append-to-or-overwrite-a-file">Append to or overwrite a file</h3>
 <p>To append a line of text to a file, you can use the <code>echo</code> command together with the <code>&gt;&gt;</code> redirection operator, as shown below:</p>
-<pre class="terminal"><span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+<pre class="terminal"><span class="col-user-id">username@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
 $ # Create an empty file, then append a string as a new line to the file
 $ touch file.txt
 $ echo "New line" &gt;&gt; file.txt
@@ -523,7 +523,7 @@ $ echo "New line" &gt;&gt; file.txt
 <section id="print-the-contents-of-a-file" class="level3">
 <h3 class="anchored" data-anchor-id="print-the-contents-of-a-file">Print the contents of a file</h3>
 <p>In the previous sections, we showed how to create files and modify their contents, but we did not inspect the contents of the files during the examples. You can print the contents of a file in the terminal using the <code>cat</code> command:</p>
-<pre class="terminal"><span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+<pre class="terminal"><span class="col-user-id">username@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
 $ # Create file with two lines
 $ echo "First line" &gt;&gt; file.txt
 $ echo "Second line" &gt;&gt; file.txt
@@ -540,11 +540,11 @@ New content
 <section id="move-or-rename-a-file" class="level3">
 <h3 class="anchored" data-anchor-id="move-or-rename-a-file">Move or rename a file</h3>
 <p>Moving and renaming files are both performed with the <code>mv</code> command in Bash. The basic syntax of the command is <code>mv source destination</code>, where <code>source</code> is the file or directory to move or rename, and <code>destination</code> is the destination to which <code>source</code> should be moved, or the new name to assign to it. How, then, does <code>mv</code> know whether we want to rename or move a file or directory? <code>mv</code> checks whether <code>destination</code> is an existing directory. If it is, then <code>source</code> is moved to <code>destination</code>. If it is not, then <code>source</code> is renamed to <code>destination</code>. Let’s illustrate this with some examples:</p>
-<pre class="terminal"><span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+<pre class="terminal"><span class="col-user-id">username@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
 $ # Create subdirectory, `cd` into it, and create a file named `file1.txt`
 $ mkdir mv-test
 $ cd mv-test
-<span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">mv-test</span>
+<span class="col-user-id">username@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">mv-test</span>
 $ touch file1.txt
 $ # Rename `file1.txt` to `file2.txt`. Since `file2.txt` is not an existing
 $ # directory, `mv` will rename `file1.txt` to `file2.txt`
@@ -565,14 +565,16 @@ file2.txt
 </section>
 <section id="delete-a-file-or-directory" class="level3">
 <h3 class="anchored" data-anchor-id="delete-a-file-or-directory">Delete a file or directory</h3>
-<p>The previous commands have left several files and directories in the home directory. The <code>rm</code> command can be used to delete files and directories. By default, <code>rm</code> does not delete directories, but you can do so by using the <code>-r</code> flag, which allows <code>rm</code> to delete directories and their contents recursively:</p>
-<pre class="terminal"><span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+<p>The previous commands have left several files and directories in the home directory. The <code>rm</code> command can be used to delete files and directories. By default, <code>rm</code> does not delete directories, but you can do so by using the <code>-r</code> option, which allows <code>rm</code> to delete directories and their contents recursively. The <code>-f</code> option forces deletion without prompting for confirmation and suppresses errors for nonexistent files and directories. The two options can be used together, as demonstrated in the following example:</p>
+<pre class="terminal"><span class="col-user-id">username@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
 $ # Create subdirectory named `rm-test` with a file named `file1.txt`
 $ mkdir rm-test
 $ touch rm-test/file1.txt
-$ # Delete the `rm-test` directory
-$ rm -r rm-test
+$ # Delete the `rm-test` directory and its contents
+$ rm -r -f rm-test
 </pre>
+<p><strong>Warning:</strong> Be careful when using <code>rm</code>, especially with the <code>-r</code> and <code>-f</code> options. Deleted files and directories are not moved to the Recycle Bin and generally cannot be recovered.</p>
+<p>Note that using the <code>-f</code> option is optional. Using the <code>-r</code> option alone is usually sufficient to delete directories and their contents.</p>
 </section>
 </section>
 <section id="exercises" class="level2" data-number="A.4">
@@ -610,11 +612,11 @@ $ rm -r rm-test
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>You can change the current working directory using the <code>cd</code> command. If you have just opened your terminal window, the current working directory is typically already set to your home directory, represented by the character <code>~</code>.</p>
-<pre class="terminal"><span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">/your/current/working/directory</span>
+<pre class="terminal"><span class="col-user-id">username@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">/your/current/working/directory</span>
 $ # If no path is specified, cd sets the current working directory to
 $ # the home directory.
 $ cd
-<span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+<span class="col-user-id">username@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
 $
 </pre>
 </div>
@@ -651,9 +653,9 @@ $
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>You can use the <code>pwd</code> command to print the full path of the current working directory to the terminal:</p>
-<pre class="terminal"><span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+<pre class="terminal"><span class="col-user-id">username@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
 $ pwd
-/c/Users/user-id
+/c/Users/username
 </pre>
 <p>The form of the path shown above assumes you are using Windows.</p>
 </div>
@@ -690,12 +692,12 @@ $ pwd
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>You can use the <code>mkdir</code> command to create a directory:</p>
-<pre class="terminal"><span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+<pre class="terminal"><span class="col-user-id">username@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
 $ # Create a directory in the current working directory using a relative path.
-$ # This is equivalent to using the absolute path /c/Users/user-id/ex01-git-bash
+$ # This is equivalent to using the absolute path /c/Users/username/ex01-git-bash
 $ mkdir ex01-git-bash
 $ cd ex01-git-bash
-<span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~/ex01-git-bash</span>
+<span class="col-user-id">username@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~/ex01-git-bash</span>
 $
 </pre>
 </div>
@@ -732,7 +734,7 @@ $
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>You can create files using <code>touch</code> and list them using <code>ls</code>:</p>
-<pre class="terminal"><span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~/ex01-git-bash</span>
+<pre class="terminal"><span class="col-user-id">username@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~/ex01-git-bash</span>
 $ # You can create a file in the current working directory by simply writing
 $ # the name of the file (relative path).
 $ touch file1.txt
@@ -775,7 +777,7 @@ file1.txt file2.txt
 <div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>You can add a line to a file using <code>echo</code> together with the <code>&gt;&gt;</code> redirection operator, and you can print the contents of the file using the <code>cat</code> command:</p>
-<pre class="terminal"><span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~/ex01-git-bash</span>
+<pre class="terminal"><span class="col-user-id">username@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~/ex01-git-bash</span>
 $ # Print the contents of the empty files `file1.txt` and `file2.txt` before
 $ # adding lines to them
 $ cat file1.txt
@@ -795,7 +797,7 @@ This is file2.txt
 </div>
 </div>
 <p><b>6. Rename and move files.</b></p>
-<p>Rename <code>file1.txt</code> to <code>file1-new.txt</code>, create a subdirectory named <code>subdir</code> in the current working directory, and move <code>file2.txt</code> to this subdirectory. Finally, use <code>ls</code> to recursively list all files and directories in the current working directory. Note that you will need to use a flag with the <code>ls</code> command to do this.</p>
+<p>Rename <code>file1.txt</code> to <code>file1-new.txt</code>, create a subdirectory named <code>subdir</code> in the current working directory, and move <code>file2.txt</code> to this subdirectory. Finally, use <code>ls</code> to recursively list all files and directories in the current working directory. Note that you will need to use an option with the <code>ls</code> command to do this.</p>
 <div class="callout callout-style-default callout-tip no-icon callout-titled" title="Hint 1">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -824,7 +826,7 @@ This is file2.txt
 </div>
 <div id="callout-12" class="callout-12-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Use <code>ls --help</code> and look for a flag in the documentation that can be used to list subdirectories <strong>R</strong>ecursively.</p>
+<p>Use <code>ls --help</code> and look for an option in the documentation that can be used to list subdirectories <strong>R</strong>ecursively.</p>
 </div>
 </div>
 </div>
@@ -840,8 +842,8 @@ This is file2.txt
 </div>
 <div id="callout-13" class="callout-13-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>The <code>mv</code> command can be used to both rename and move files. The flag that you need to use with the <code>ls</code> command is <code>-R</code>, which will list subdirectories recursively.</p>
-<pre class="terminal"><span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~/ex01-git-bash</span>
+<p>The <code>mv</code> command can be used to both rename and move files. The option that you need to use with the <code>ls</code> command is <code>-R</code>, which will list subdirectories recursively.</p>
+<pre class="terminal"><span class="col-user-id">username@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~/ex01-git-bash</span>
 $ # Rename `file1.txt` to `file1-new.txt`. The command below will rename,
 $ # not move the file, since `file1-new.txt` is not an existing directory.
 $ mv file1.txt file1-new.txt
@@ -851,7 +853,7 @@ $ # to `subdir`, since `subdir` is an existing directory.
 $ mkdir subdir
 $ mv file2.txt subdir
 $ # Recursively list all files and directories in the current
-$ # working directory using the `-R` flag
+$ # working directory using the `-R` option
 $ ls -R
 .:
 file1-new.txt <span class="col-dir">subdir</span>/
@@ -893,7 +895,7 @@ file2.txt
 </div>
 <div id="callout-15" class="callout-15-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>You are trying to delete a directory, so you need to use a flag with the <code>rm</code> command to <strong>r</strong>ecursively remove the directory and its contents. If you cannot remember what flag to use, look at the documentation for the command using <code>rm --help</code>.</p>
+<p>You are trying to delete a directory, so you need to use an option with the <code>rm</code> command to <strong>r</strong>ecursively remove the directory and its contents. You can also use the <code>-f</code> option to suppress confirmation prompts. If you cannot remember what options to use, look at the documentation for the command using <code>rm --help</code>.</p>
 </div>
 </div>
 </div>
@@ -909,13 +911,13 @@ file2.txt
 </div>
 <div id="callout-16" class="callout-16-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>The <code>rm</code> command can be used to delete files and directories. Since we want to delete a directory and its contents, we need to use the <code>-r</code> flag:</p>
-<pre class="terminal"><span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~/ex01-git-bash</span>
+<p>The <code>rm</code> command can be used to delete files and directories. Since we want to delete a directory and its contents, we need to use the <code>-r</code> option. Furthermore, we use the <code>-f</code> option to suppress confirmation prompts:</p>
+<pre class="terminal"><span class="col-user-id">username@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~/ex01-git-bash</span>
 $ # `cd` back to the home directory
 $ cd
-<span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
-$ # Delete the `ex01-git-bash` directory and all its contents, recursively, using the `-r` flag
-$ rm -r ex01-git-bash
+<span class="col-user-id">username@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+$ # Recursively delete the `ex01-git-bash` directory and its contents without prompting for confirmation
+$ rm -r -f ex01-git-bash
 $ # Use the `ls` command to check that the directory has been deleted.
 $ # Output not shown here, since your home directory contains a long list
 $ # of files and directories that differs for each user.
@@ -963,13 +965,13 @@ $ ls
 <div id="callout-18" class="callout-18-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <pre class="terminal">$ cd
-<span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+<span class="col-user-id">username@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
 $ # Use `pwd` to find the absolute path of your home directory
 $ pwd
-/c/Users/user-id
+/c/Users/username
 $ # Use an absolute path to create a directory named `ex02-git-bash` in your
 $ # home directory
-$ mkdir /c/Users/user-id/ex02-git-bash
+$ mkdir /c/Users/username/ex02-git-bash
 </pre>
 </div>
 </div>
@@ -1003,10 +1005,10 @@ $ mkdir /c/Users/user-id/ex02-git-bash
 </div>
 <div id="callout-20" class="callout-20-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre class="terminal"><span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
+<pre class="terminal"><span class="col-user-id">username@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~</span>
 $ # This can be done in different ways, some more convenient than others:
 $ # 1. Using an absolute path:
-$ mkdir /c/Users/user-id/ex02-git-bash/subdir
+$ mkdir /c/Users/username/ex02-git-bash/subdir
 $ # 2. Using a relative path from the current working directory
 $ mkdir ex02-git-bash/subdir
 $ # 3. Using the special character `~`:
@@ -1016,8 +1018,8 @@ $ mkdir ./ex02-git-bash/subdir
 </pre>
 <p>Note that the paths specified in the last three solutions all refer to the same absolute path as the first solution:</p>
 <ol start="2" type="1">
-<li><p>This is a relative path from the current working directory <code>/c/Users/user-id</code>, so the relative path <code>ex02-git-bash/subdir</code> resolves to <code>/c/Users/user-id/ex02-git-bash/subdir</code>.</p></li>
-<li><p>and 4. Since the current working directory is the home directory, <code>~</code> expands and <code>.</code> refer to the same directory, <code>/c/Users/user-id</code>. Therefore, they refer to the same absolute path.</p></li>
+<li><p>This is a relative path from the current working directory <code>/c/Users/username</code>, so the relative path <code>ex02-git-bash/subdir</code> resolves to <code>/c/Users/username/ex02-git-bash/subdir</code>.</p></li>
+<li><p>and 4. Since the current working directory is the home directory, <code>~</code> expands and <code>.</code> refer to the same directory, <code>/c/Users/username</code>. Therefore, they refer to the same absolute path.</p></li>
 </ol>
 </div>
 </div>
@@ -1053,7 +1055,7 @@ $ mkdir ./ex02-git-bash/subdir
 <div class="callout-body-container callout-body">
 <pre class="terminal">$ # `cd` to the `subdir` directory
 $ cd ex02-git-bash/subdir
-<span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~/ex02-git-bash/subdir</span>
+<span class="col-user-id">username@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~/ex02-git-bash/subdir</span>
 $ # Create `file1.txt` in the parent directory `ex02-git-bash`
 $ # Approach using the path component `..`:
 $ touch ../file1.txt
@@ -1082,7 +1084,7 @@ $ # 1. The most obvious one:
 $ cd
 $ # 2. Using the `~` special character:
 $ cd ~
-$ # Delete the `ex02-git-bash` directory. We need to use the `-r` flag
+$ # Delete the `ex02-git-bash` directory. We need to use the `-r` option
 $ # since we want to delete a directory and its contents.
 $ rm -r ex02-git-bash
 </pre>
@@ -1092,7 +1094,7 @@ $ rm -r ex02-git-bash
 </section>
 <section id="exercise-3---creating-non-existent-parent-directories-using-mkdir" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-3---creating-non-existent-parent-directories-using-mkdir">Exercise 3 - Creating non-existent parent directories using <code>mkdir</code></h3>
-<p>You sometimes need to create multiple nested directories, which can quickly become cumbersome. The <code>mkdir</code> command provides a flag that makes this much easier.</p>
+<p>You sometimes need to create multiple nested directories, which can quickly become cumbersome. The <code>mkdir</code> command provides an option that makes this much easier.</p>
 <p><b>1. Create the directory <code>~/dir1/dir2/dir3/dir4</code> using a single <code>mkdir</code> command.</b></p>
 <div class="callout callout-style-default callout-tip no-icon callout-titled" title="Hint 1">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-24-contents" aria-controls="callout-24" aria-expanded="false" aria-label="Toggle callout">
@@ -1122,7 +1124,7 @@ $ rm -r ex02-git-bash
 </div>
 <div id="callout-25" class="callout-25-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>You are looking for a flag that creates <strong>p</strong>arent directories as needed.</p>
+<p>You are looking for an option that creates <strong>p</strong>arent directories as needed.</p>
 </div>
 </div>
 </div>
@@ -1138,7 +1140,7 @@ $ rm -r ex02-git-bash
 </div>
 <div id="callout-26" class="callout-26-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre class="terminal"># Use the `-p` flag to create non-existent parent directories
+<pre class="terminal"><span># Use the `-p` option to create non-existent parent directories</span>
 $ mkdir -p ~/dir1/dir2/dir3/dir4
 </pre>
 </div>
@@ -1157,7 +1159,7 @@ $ mkdir -p ~/dir1/dir2/dir3/dir4
 </div>
 <div id="callout-27" class="callout-27-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Use <code>ls --help</code> to look at the documentation and find a flag to list subdirectories <strong>R</strong>ecursively.</p>
+<p>Use <code>ls --help</code> to look at the documentation and find an option to list subdirectories <strong>R</strong>ecursively.</p>
 </div>
 </div>
 </div>
@@ -1173,18 +1175,18 @@ $ mkdir -p ~/dir1/dir2/dir3/dir4
 </div>
 <div id="callout-28" class="callout-28-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre class="terminal"># Use the `-R` flag to list subdirectories recursively
+<pre class="terminal"><span># Use the `-R` option to list subdirectories recursively</span>
 $ ls -R ~/dir1
-/c/Users/user-id/dir1:
+/c/Users/username/dir1:
 <span class="col-dir">dir2</span>/
 
-/c/Users/user-id/dir1/dir2:
+/c/Users/username/dir1/dir2:
 <span class="col-dir">dir3</span>/
 
-/c/Users/user-id/dir1/dir2/dir3:
+/c/Users/username/dir1/dir2/dir3:
 <span class="col-dir">dir4</span>/
 
-/c/Users/user-id/dir1/dir2/dir3/dir4:
+/c/Users/username/dir1/dir2/dir3/dir4:
 
 </pre>
 </div>
@@ -1247,7 +1249,7 @@ $ touch ~/file1.txt ~/file2.txt
 <div id="callout-31" class="callout-31-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <pre class="terminal">$ ls ~/file*
-/c/Users/user-id/file1.txt  /c/Users/user-id/file2.txt
+/c/Users/username/file1.txt  /c/Users/username/file2.txt
 </pre>
 </div>
 </div>
@@ -1272,9 +1274,9 @@ $ rm ~/file1.txt ~/file2.txt
 </div>
 </div>
 </section>
-<section id="exercise-5---combining-flags" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-5---combining-flags">Exercise 5 - Combining flags</h3>
-<p>When using a command with two or more flags, for example <code>command-name -a -b</code>, you can also combine the flags into a single option: <code>command-name -ab</code>.</p>
+<section id="exercise-5---combining-options" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-5---combining-options">Exercise 5 - Combining options</h3>
+<p>When using a command with two or more options, for example <code>command-name -a -b</code>, you can also combine the options into a single option: <code>command-name -ab</code>.</p>
 <p><b>1. In your home directory, create a directory named <code>ex05-git-bash</code> and <code>cd</code> into it.</b></p>
 <div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-33-contents" aria-controls="callout-33" aria-expanded="false" aria-label="Toggle callout">
@@ -1307,7 +1309,7 @@ $ cd ~/ex05-git-bash
 </div>
 <div id="callout-34" class="callout-34-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre class="terminal"><span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~/ex05-git-bash</span>
+<pre class="terminal"><span class="col-user-id">username@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~/ex05-git-bash</span>
 $ touch .gitignore
 $ mkdir .git
 </pre>
@@ -1318,7 +1320,7 @@ $ mkdir .git
 <ul>
 <li><p>List only one file or directory per line.</p></li>
 <li><p>Do not list the implied <code>.</code> and <code>..</code> directories.</p></li>
-<li><p>Combine the flags in your solution.</p></li>
+<li><p>Combine the options in your solution.</p></li>
 </ul>
 <div class="callout callout-style-default callout-tip no-icon callout-titled" title="Hint 1">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-35-contents" aria-controls="callout-35" aria-expanded="false" aria-label="Toggle callout">
@@ -1332,7 +1334,7 @@ $ mkdir .git
 </div>
 <div id="callout-35" class="callout-35-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>You need to use the <code>ls</code> command, but <code>ls</code> does not list files whose names start with <code>.</code>, so-called hidden files, by default. You will need to consult the documentation to figure out what flags to use to include hidden files, and how to list one file or directory per line in the output.</p>
+<p>You need to use the <code>ls</code> command, but <code>ls</code> does not list files whose names start with <code>.</code>, so-called hidden files, by default. You will need to consult the documentation to figure out what options to use to include hidden files, and how to list one file or directory per line in the output.</p>
 </div>
 </div>
 </div>
@@ -1364,7 +1366,7 @@ $ mkdir .git
 </div>
 <div id="callout-37" class="callout-37-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>You are looking for a flag to include almost all files, including hidden files, but excluding <code>.</code> and <code>..</code>, and a flag to list one file or directory per line.</p>
+<p>You are looking for an option to include almost all files, including hidden files, but excluding <code>.</code> and <code>..</code>, and an option to list one file or directory per line.</p>
 </div>
 </div>
 </div>
@@ -1380,12 +1382,12 @@ $ mkdir .git
 </div>
 <div id="callout-38" class="callout-38-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre class="terminal"><span class="col-user-id">user-id@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~/ex05-git-bash</span>
+<pre class="terminal"><span class="col-user-id">username@computer-id</span> <span class="col-compiler">MINGW64</span> <span class="col-cd">~/ex05-git-bash</span>
 $ ls -1A
 .git/
 .gitignore
 </pre>
-<p>When learning about Git, you will see that the Git object database is located in a <code>.git</code> directory. You will also see that <code>.gitignore</code> files can be used to tell Git which files to ignore. Understanding how <code>ls</code> handles these files therefore helps explain why they do not appear when using <code>ls</code> with no flags, and how to include them in the <code>ls</code> output.</p>
+<p>When learning about Git, you will see that the Git object database is located in a <code>.git</code> directory. You will also see that <code>.gitignore</code> files can be used to tell Git which files to ignore. Understanding how <code>ls</code> handles these files therefore helps explain why they do not appear when using <code>ls</code> with no options, and how to include them in the <code>ls</code> output.</p>
 </div>
 </div>
 </div>

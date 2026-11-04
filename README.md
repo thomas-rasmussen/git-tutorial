@@ -31,15 +31,6 @@ The tutorial was developed using Quarto and RStudio.
 
 **---TODO: content---**
 
-**"Git Bash" appendix:**
-
-- Currently uses "user-id" in terminal consistently, but chapters use "username" and "<username>" in commands. This needs to be streamlined. Probably by changing "user-id" to "username" in this appendix.
-
-- Use "option" instead of "flag" throughout the chapter.
-
-- Only the "-r" option has been introduced for "git rm", but often it is necessary to also use the "-f" option or you have to approve the deleting of each file in some cases. Probably best to also introduce this option and consistently use "-rf" in tutorial.
-
-
 **Introduction to version control and Git:**
 
 - Review diagrams and images in chapter:
