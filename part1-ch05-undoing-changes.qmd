@@ -107,7 +107,7 @@ What `git restore --staged file1.txt` has done here, is to restore the version o
 ### Restoring a previous version of a file
 
 
-TODO: update from here.
+TODO: update from here. Continue example01 by making some commits with changes to file1.txt, then restore the version from the first commit. Figure out what invocation of `git restore` is needed to do this.
 
 
 
