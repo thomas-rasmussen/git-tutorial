@@ -35,12 +35,6 @@ The tutorial was developed using Quarto and RStudio.
 
 - git revert not introduced on purpose since it will rarely be used by the intended audience. But it is a useful command, and it might be relevant to introduce at some point. Maybe at an appropriate place in Part II or as a stand-lone chapter.
 
-- Currently does not show how to "undo" a commit. This would require introducing git reset --hard <checksum>. Can this also be done with git restore? UPDATE: the chapter now includes this, but in an unfinished manner? Needs further work.
-
-- Consider if it is better to merge the git reflog appendix into this chapter as a final section since it is a natural extension of this topic.
-
-- Centralized VCS diagram: Expand diagram to illustrate that each developer has a local copy of "file.txt".
-
 **Chapter 5-11:**
 
 Only rough outlines / first draft of chapters so far. These chapters need a lot of work still.

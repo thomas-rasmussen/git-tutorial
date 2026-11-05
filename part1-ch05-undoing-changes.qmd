@@ -16,7 +16,7 @@ $ git commit --amend
 This will replace the original commit with a new commit where the additional changes have been added. When prompted to enter a commit message during the commit, you will see that the commit message from the original commit has already been filled in, and you can update it as you see fit.
 
 <div style="width:50%;margin:auto">
-![Amend commit](./diagrams/amend-commit.svg)
+![Amend commit](./diagrams/amend-commit.drawio.svg)
 </div>
 
 It's important to understand that what Git is doing here is not so much "amending" the commit, but *replacing* it with a new commit that will have a new checksum, as also illustrated in the above diagram. Amending a commit is an example of rewriting the commit history of the Git repository. We will not go into more details on this at this point, but rewriting the commit history should be done with care if you are collaborating with other on a Git repository.
