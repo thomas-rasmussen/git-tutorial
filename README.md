@@ -31,10 +31,6 @@ The tutorial was developed using Quarto and RStudio.
 
 **---TODO: content---**
 
-**"Undoing changes" chapter:**
-
-- git revert not introduced on purpose since it will rarely be used by the intended audience. But it is a useful command, and it might be relevant to introduce at some point. Maybe at an appropriate place in Part II or as a stand-lone chapter.
-
 **Chapter 5-11:**
 
 Only rough outlines / first draft of chapters so far. These chapters need a lot of work still.
