@@ -62,3 +62,5 @@ Consider in more detail how gh auth login -p https -cw works regarding storing o
 **---TODO: potential topics that are not yet included---**
 
 - "git add -p": seems important and relevant but does not really fit anywhere currently. Maybe in an appendix on the staging area?
+
+- it could be useful to introduce "git revert" in the context of how to safely revert changes that have shared with collaborators. Consider adding in remotes chapter or another appropriate place.

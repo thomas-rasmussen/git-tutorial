@@ -1,76 +1,121 @@
 # Undoing changes {#sec-undoing-changes}
 
-While working with Git, you will undoubtedly end up in a situation where you want to "undo" something. Maybe you want to change the commit message of the commit you just did, maybe you forgot to add a file to the staging area before committing, or maybe you committed changes to the repository that you want to delete. Git comes with several commands that can be used to "undo" things, some of which we will illustrate in this chapter. We will also illustrate that some of these commands needs to be used with care, since they can result in you losing work that has not been committed to the Git repository.
+When working with Git, you will inevitably make mistakes or changes that you later want to undo. For example, you might accidentally stage a file, make unwanted changes to a file, or discover an error in a commit.
+
+Git provides several commands for undoing changes, depending on whether the changes are in the working tree, the staging area, or have already been committed. Some commands allow you to undo changes while preserving your work, whereas others permanently discard changes.
+
+In this chapter, you will learn how to use `git commit --amend` to modify the most recent commit, `git restore` to unstage or discard changes, and `git reset` to undo commits. You will also learn when to use each command and how to avoid accidentally losing your work.
+
+TODO: how is the reader actually learning how to avoid accidentally losing their work?
 
 
 ## Amending the current commit
 
-TODO: add example to go with the diagram in this section.
-
-A common mistake is to make an error in the commit log message, or making a premature commit where you forgot to stage all the intended changes. You could fix the mistake by making another commit where you staged the forgotten changes and/or updated the commit message, but there is a more convenient way to fix these types of issues. You can simply stage the changes you forgot, and use the `git commit --amend` command. 
+A common mistake is to make an error in the commit log message, or making a premature commit where you forgot to stage all the intended changes. You could fix the mistake by making another commit where you staged the forgotten changes or updated the commit message, but there is a more elegant way to fix these types of issues. You can simply stage the changes you forgot, and use the `--amend` option with `git commit`. Let's illustrate with an example. First, we create a repository with a file named `file1.txt` which we commit:
 
 <pre class="terminal">
-$ git commit --amend
+$ mkdir ~/example01-undoing-changes
+$ cd ~/example01-undoing-changes
+$ git init
+$ echo "Some contents" > file1.txt
+$ git add file1.txt
+$ git commit -m "Add file.txt"
+$ git log --oneline
+<span class="col-hash">1d38fb6</span> <span class="col-yellow">(</span><span class="col-head">HEAD</span> <span class="col-yellow">-></span> <span class="col-branch-local">main</span><span class="col-yellow">)</span> Add file.txt
 </pre>
 
-This will replace the original commit with a new commit where the additional changes have been added. When prompted to enter a commit message during the commit, you will see that the commit message from the original commit has already been filled in, and you can update it as you see fit.
-
-<div style="width:50%;margin:auto">
-![Amend commit](./diagrams/amend-commit.drawio.svg)
-</div>
-
-It's important to understand that what Git is doing here is not so much "amending" the commit, but *replacing* it with a new commit that will have a new checksum, as also illustrated in the above diagram. Amending a commit is an example of rewriting the commit history of the Git repository. We will not go into more details on this at this point, but rewriting the commit history should be done with care if you are collaborating with other on a Git repository.
-
-## Unstaging staged files and unmodifying modified files.
-
-In this section we will show how we can use `git restore` to restore files in the staging area and working directory with content from a restore source. We can use this to "undo" changes we have staged, or unmodify files we have modified in the working directory.
-
-Lets say we made changes to a file and added the changes to the staging area. How can we "undo" this, ie unstage the file? What we want to do is to restore the staging area to match the content in the working directory. If we create an example Git repository and use the `git status` command, it will actually give us the answer:
+Now let's imagine we forgot to add some changes before making the commit. We also notice that we wrote `Add file.txt` not `Add file1.txt` in the commit message. We can amend the current commit by making the additional changes, add them to the staging area, and make another commit using the `--amend` option:
 
 <pre class="terminal">
-$ mkdir ~/example-git-restore
-$ cd ~/example-git-restore
+$ echo "More contents" >> file1.txt
+$ git add file1.txt
+$ git commit --amend -m "Add file1.txt"
+$ git log --oneline
+<span class="col-hash">32c7f65</span> <span class="col-yellow">(</span><span class="col-head">HEAD</span> <span class="col-yellow">-></span> <span class="col-branch-local">main</span><span class="col-yelloe">)</span> Add file1.txt
+$ cat file1.txt
+Some contents
+More contents
+</pre>
+
+Notice how we still only have one commit in the repository, but the commit ID has changed, and the commit message has been updated.
+
+It's important to understand that what Git is doing here is not so much "amending" the commit, but *replacing* it with a new commit that will have a new checksum, as also illustrated in the above example. Amending a commit is an example of rewriting the commit history of the Git repository. We will not go into more details on this at this point, but rewriting the commit history should be done with care if you are collaborating with other on a Git repository.
+
+
+## Restoring the working tree and staging area
+
+The `git restore` command can be used to restores files in the staging area and working directory with content from a restore source. We can use this command to undo changes we have made in the working tree, unstage changes from the staging area, and also restore earlier versions of files.
+
+
+### Discarding changes in the working tree
+
+Running `git restore <file>` without any options, restores `<file>` in the working tree using the content of the `<file>` in the current commit. That is to say, any unstaged changes in the working tree version of `<file>` are discarded. Let's illustrate this with an example. First, we create a repository with a commit of a file named `file1.txt`:
+
+<pre class="terminal">
+$ mkdir ~/example02-undoing-changes
+$ cd ~/example02-undoing-changes
 $ git init
-$ echo "content" > file_a.txt
-$ git add file_a.txt
-$ git commit -m"Add file_a.txt"
-$ git echo "more content" >> file_a.txt
-$ git add file_a.txt
+$ echo "Contents of first commit" > file1.txt
+$ git add file1.txt
+$ git commit -m "Add file1.txt"
+</pre>
+
+Next, we make changes in the working tree but decide, that we do not want those changes anyway. We can use `git restore file1.txt` to discard them:
+
+<pre class="terminal">
+$ echo "Unstaged changes in working tree" >> file1.txt
+$ cat file1.txt
+Contents of first commit
+Unstaged changes in working tree
+$ git restore file1.txt
+$ cat file1.txt
+Contents of first commit
+</pre>
+
+After using `git restore file1.txt` the working tree version of `file1.txt` has been restore using the version of `file1.txt` from the current commit.
+
+*Warning:* You need to be careful when using `git restore <file>`. You will discard any unstaged changes, and will not be able to recover them.
+
+
+### Unstaging changes
+
+We can unstage changes using `git restore --staged <file>`. This will restore the staging area with the staging area from the current commit, effectively unstaging changes you have staged. Let's illustrate this by continuing the previous example:
+
+<pre class="terminal">
+$ echo "Staged contents" >> file1.txt
+$ git add file1.txt
 $ git status
 On branch main
 Changes to be committed:
   (use "git restore --staged <file>..." to unstage)
-        <span class="col-status-added">modified:   file_a.txt</span>
-</pre>
+<span class="col-status-staged">        modified:   file1.txt</span>
 
-Git is directly telling us that if we want to unstage the changes in file_a.txt that has been added to the staging area, we can use the command `git restore --staged file_a.txt`. Let try that:
-
-<pre class="terminal">
-$ git restore --staged file_a.txt
+$ git restore --staged file1.txt
 $ git status
 On branch main
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git restore <file>..." to discard changes in working directory)
-        <span class="col-status-changed">modified:   file_a.txt</span>
+<span class="col-status-not-staged">        modified:   file1.txt</span>
+
+no changes added to commit (use "git add" and/or "git commit -a")
 </pre>
 
-So what does `git restore --staged file_a.txt` do? The `--staged` option is telling git to restore the file_a.txt content in the index, and since we have not specified what source to restore from, git uses the content of file_a.txt from HEAD. This amounts to unstaging the file. As we can see from the output, the file is back to being modfied, but unstaged.
+What `git restore --staged file1.txt` has done here, is to restore the version of `file1.txt` in the staging area, with the version of `file1.txt` from the current commit.
 
-What if we regret the changes we have made to file_a.txt and want to unmodify it entirely, ie restore the file back to how it looked in the last commit? As we can see from the previous output `git status` is again directly giving us the answer: We can use the command `git restore file_a.txt`. Let try it.
 
-<pre class="terminal">
-$ git restore file_a.txt
-$ git status
-On branch main
-nothing to commit, working tree clean
-$ cat file_a.txt
-content
-</pre>
+### Restoring a previous version of a file
 
-We can see that we have now unmodified file_a.txt, ie we have restored the file back to how it looked in the previous command. We have not specified what what to restore or what source to restore from, so by default the working tree is restored with the content from the index. `git restore file_a.txt` is equivalent with `git restore --worktree file_a.txt`
 
-It is important to understand that `git restore <file>` is a dangerous command to use. Git has replaced the file with the latest committed version. Any local changes that have been made are gone.
+TODO: update from here.
+
+
+
+
+
+
+
+
 
 
 ## `git reset` - "Undoing" a commit
@@ -104,8 +149,24 @@ $ git log --oneline
 </pre>
 
 
+## Summary
+
+In this chapter, you learned how to undo changes and correct mistakes in a Git repository.
+
+- `git commit --amend` allows you to modify the most recent commit, for example to correct its commit message or include additional changes.
+
+- `git restore` allows you to discard changes in the working tree or unstage changes without discarding them. You can also use it to restore earlier versions of files.
+
+- `git reset` allows you to move the current branch back to an earlier commit. Depending on the options used, you can either preserve or discard the changes introduced by subsequent commits.
+
+Some of these operations can permanently discard changes, while others modify the commit history. You should therefore use them carefully, particularly when working with commits that have already been shared with others.
+
 
 ## Exercises
+
+TODO:
+
+- Introduce the `--no-edit` option to `git commit --amend`.
 
 ### Exercise 1 - Amend a commit
 
@@ -225,59 +286,7 @@ file_b content
 </pre>
 :::
 
-### Exercise 3 (optional/hard) - Removing a modified/staged file from a Git repository
-
-Setup a Git repository with a modified and staged filed with the commands below:
-
-<pre class="terminal">
-$ mkdir ~/ex-git-rm
-$ cd ~/ex-git-rm
-$ git init
-$ echo "file_a" > file_a.txt
-$ echo "file_b" > file_b.txt
-$ git add .
-$ git commit -m"Add file_a.txt and file_b.txt"
-$ echo "more content" >> file_a.txt
-$ echo "more content" >> file_b.txt
-$ git add file_b.txt
-</pre>
-
-**1. Attempt to use `git rm` to remove file_a.txt. What happens?**
-
-**2. Explore the documentation to figure out why this happens**
-
-<pre class="terminal">
-$ git status
-On branch main
-Changes not staged for commit:
-  (use "git add <file>..." to update what will be committed)
-  (use "git restore <file>..." to discard changes in working directory)
-        <span class="col-status-changed">modified:   file_a.txt</span>
-
-no changes added to commit (use "git add" and/or "git commit -a")
-</pre>
-
-
-
-Remove file_a using git rm. Note that file_a is removed from the working tree and the index is updated.
-
-<pre class="terminal">
-$ git rm file_a.txt
-$ git status
-$ git commit -m"Remove file_a.txt"
-</pre>
-
-Manually remove file_b. Note Git recognizes that the file has been deleted from the repo, but the index is not updated.
-
-<pre class="terminal">
-$ rm file_b.txt
-$ git status
-$ git add file_b.txt
-$ git commmit -m"Remove file_b.txt"
-</pre>`
-
-
-## Exercise 4 - "Undo" commits
+## Exercise 3 - "Undo" commits
 
 Run the following commands to set-up a Git repository:
 

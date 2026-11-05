@@ -269,15 +269,20 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#amending-the-current-commit" id="toc-amending-the-current-commit" class="nav-link active" data-scroll-target="#amending-the-current-commit"><span class="header-section-number">5.1</span> Amending the current commit</a></li>
-  <li><a href="#unstaging-staged-files-and-unmodifying-modified-files." id="toc-unstaging-staged-files-and-unmodifying-modified-files." class="nav-link" data-scroll-target="#unstaging-staged-files-and-unmodifying-modified-files."><span class="header-section-number">5.2</span> Unstaging staged files and unmodifying modified files.</a></li>
+  <li><a href="#restoring-the-working-tree-and-staging-area" id="toc-restoring-the-working-tree-and-staging-area" class="nav-link" data-scroll-target="#restoring-the-working-tree-and-staging-area"><span class="header-section-number">5.2</span> Restoring the working tree and staging area</a>
+  <ul class="collapse">
+  <li><a href="#discarding-changes-in-the-working-tree" id="toc-discarding-changes-in-the-working-tree" class="nav-link" data-scroll-target="#discarding-changes-in-the-working-tree">Discarding changes in the working tree</a></li>
+  <li><a href="#unstaging-changes" id="toc-unstaging-changes" class="nav-link" data-scroll-target="#unstaging-changes">Unstaging changes</a></li>
+  <li><a href="#restoring-a-previous-version-of-a-file" id="toc-restoring-a-previous-version-of-a-file" class="nav-link" data-scroll-target="#restoring-a-previous-version-of-a-file">Restoring a previous version of a file</a></li>
+  </ul></li>
   <li><a href="#git-reset---undoing-a-commit" id="toc-git-reset---undoing-a-commit" class="nav-link" data-scroll-target="#git-reset---undoing-a-commit"><span class="header-section-number">5.3</span> <code>git reset</code> - “Undoing” a commit</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">5.4</span> Exercises</a>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">5.4</span> Summary</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">5.5</span> Exercises</a>
   <ul class="collapse">
   <li><a href="#exercise-1---amend-a-commit" id="toc-exercise-1---amend-a-commit" class="nav-link" data-scroll-target="#exercise-1---amend-a-commit">Exercise 1 - Amend a commit</a></li>
   <li><a href="#exercise-2---using-git-restore" id="toc-exercise-2---using-git-restore" class="nav-link" data-scroll-target="#exercise-2---using-git-restore">Exercise 2 - Using <code>git restore</code></a></li>
-  <li><a href="#exercise-3-optionalhard---removing-a-modifiedstaged-file-from-a-git-repository" id="toc-exercise-3-optionalhard---removing-a-modifiedstaged-file-from-a-git-repository" class="nav-link" data-scroll-target="#exercise-3-optionalhard---removing-a-modifiedstaged-file-from-a-git-repository">Exercise 3 (optional/hard) - Removing a modified/staged file from a Git repository</a></li>
   </ul></li>
-  <li><a href="#exercise-4---undo-commits" id="toc-exercise-4---undo-commits" class="nav-link" data-scroll-target="#exercise-4---undo-commits"><span class="header-section-number">5.5</span> Exercise 4 - “Undo” commits</a></li>
+  <li><a href="#exercise-3---undo-commits" id="toc-exercise-3---undo-commits" class="nav-link" data-scroll-target="#exercise-3---undo-commits"><span class="header-section-number">5.6</span> Exercise 3 - “Undo” commits</a></li>
   </ul>
 </nav>
     </div>
@@ -303,62 +308,87 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>While working with Git, you will undoubtedly end up in a situation where you want to “undo” something. Maybe you want to change the commit message of the commit you just did, maybe you forgot to add a file to the staging area before committing, or maybe you committed changes to the repository that you want to delete. Git comes with several commands that can be used to “undo” things, some of which we will illustrate in this chapter. We will also illustrate that some of these commands needs to be used with care, since they can result in you losing work that has not been committed to the Git repository.</p>
+<p>When working with Git, you will inevitably make mistakes or changes that you later want to undo. For example, you might accidentally stage a file, make unwanted changes to a file, or discover an error in a commit.</p>
+<p>Git provides several commands for undoing changes, depending on whether the changes are in the working tree, the staging area, or have already been committed. Some commands allow you to undo changes while preserving your work, whereas others permanently discard changes.</p>
+<p>In this chapter, you will learn how to use <code>git commit --amend</code> to modify the most recent commit, <code>git restore</code> to unstage or discard changes, and <code>git reset</code> to undo commits. You will also learn when to use each command and how to avoid accidentally losing your work.</p>
+<p>TODO: how is the reader actually learning how to avoid accidentally losing their work?</p>
 <section id="amending-the-current-commit" class="level2" data-number="5.1">
 <h2 data-number="5.1" class="anchored" data-anchor-id="amending-the-current-commit"><span class="header-section-number">5.1</span> Amending the current commit</h2>
-<p>TODO: add example to go with the diagram in this section.</p>
-<p>A common mistake is to make an error in the commit log message, or making a premature commit where you forgot to stage all the intended changes. You could fix the mistake by making another commit where you staged the forgotten changes and/or updated the commit message, but there is a more convenient way to fix these types of issues. You can simply stage the changes you forgot, and use the <code>git commit --amend</code> command.</p>
-<pre class="terminal">$ git commit --amend
-</pre>
-<p>This will replace the original commit with a new commit where the additional changes have been added. When prompted to enter a commit message during the commit, you will see that the commit message from the original commit has already been filled in, and you can update it as you see fit.</p>
-<div style="width:50%;margin:auto">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./diagrams/amend-commit.drawio.svg" class="img-fluid figure-img"></p>
-<figcaption>Amend commit</figcaption>
-</figure>
-</div>
-</div>
-<p>It’s important to understand that what Git is doing here is not so much “amending” the commit, but <em>replacing</em> it with a new commit that will have a new checksum, as also illustrated in the above diagram. Amending a commit is an example of rewriting the commit history of the Git repository. We will not go into more details on this at this point, but rewriting the commit history should be done with care if you are collaborating with other on a Git repository.</p>
-</section>
-<section id="unstaging-staged-files-and-unmodifying-modified-files." class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="unstaging-staged-files-and-unmodifying-modified-files."><span class="header-section-number">5.2</span> Unstaging staged files and unmodifying modified files.</h2>
-<p>In this section we will show how we can use <code>git restore</code> to restore files in the staging area and working directory with content from a restore source. We can use this to “undo” changes we have staged, or unmodify files we have modified in the working directory.</p>
-<p>Lets say we made changes to a file and added the changes to the staging area. How can we “undo” this, ie unstage the file? What we want to do is to restore the staging area to match the content in the working directory. If we create an example Git repository and use the <code>git status</code> command, it will actually give us the answer:</p>
-<pre class="terminal">$ mkdir ~/example-git-restore
-$ cd ~/example-git-restore
+<p>A common mistake is to make an error in the commit log message, or making a premature commit where you forgot to stage all the intended changes. You could fix the mistake by making another commit where you staged the forgotten changes or updated the commit message, but there is a more elegant way to fix these types of issues. You can simply stage the changes you forgot, and use the <code>--amend</code> option with <code>git commit</code>. Let’s illustrate with an example. First, we create a repository with a file named <code>file1.txt</code> which we commit:</p>
+<pre class="terminal">$ mkdir ~/example01-undoing-changes
+$ cd ~/example01-undoing-changes
 $ git init
-$ echo "content" &gt; file_a.txt
-$ git add file_a.txt
-$ git commit -m"Add file_a.txt"
-$ git echo "more content" &gt;&gt; file_a.txt
-$ git add file_a.txt
+$ echo "Some contents" &gt; file1.txt
+$ git add file1.txt
+$ git commit -m "Add file.txt"
+$ git log --oneline
+<span class="col-hash">1d38fb6</span> <span class="col-yellow">(</span><span class="col-head">HEAD</span> <span class="col-yellow">-&gt;</span> <span class="col-branch-local">main</span><span class="col-yellow">)</span> Add file.txt
+</pre>
+<p>Now let’s imagine we forgot to add some changes before making the commit. We also notice that we wrote <code>Add file.txt</code> not <code>Add file1.txt</code> in the commit message. We can amend the current commit by making the additional changes, add them to the staging area, and make another commit using the <code>--amend</code> option:</p>
+<pre class="terminal">$ echo "More contents" &gt;&gt; file1.txt
+$ git add file1.txt
+$ git commit --amend -m "Add file1.txt"
+$ git log --oneline
+<span class="col-hash">32c7f65</span> <span class="col-yellow">(</span><span class="col-head">HEAD</span> <span class="col-yellow">-&gt;</span> <span class="col-branch-local">main</span><span class="col-yelloe">)</span> Add file1.txt
+$ cat file1.txt
+Some contents
+More contents
+</pre>
+<p>Notice how we still only have one commit in the repository, but the commit ID has changed, and the commit message has been updated.</p>
+<p>It’s important to understand that what Git is doing here is not so much “amending” the commit, but <em>replacing</em> it with a new commit that will have a new checksum, as also illustrated in the above example. Amending a commit is an example of rewriting the commit history of the Git repository. We will not go into more details on this at this point, but rewriting the commit history should be done with care if you are collaborating with other on a Git repository.</p>
+</section>
+<section id="restoring-the-working-tree-and-staging-area" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="restoring-the-working-tree-and-staging-area"><span class="header-section-number">5.2</span> Restoring the working tree and staging area</h2>
+<p>The <code>git restore</code> command can be used to restores files in the staging area and working directory with content from a restore source. We can use this command to undo changes we have made in the working tree, unstage changes from the staging area, and also restore earlier versions of files.</p>
+<section id="discarding-changes-in-the-working-tree" class="level3">
+<h3 class="anchored" data-anchor-id="discarding-changes-in-the-working-tree">Discarding changes in the working tree</h3>
+<p>Running <code>git restore &lt;file&gt;</code> without any options, restores <code>&lt;file&gt;</code> in the working tree using the content of the <code>&lt;file&gt;</code> in the current commit. That is to say, any unstaged changes in the working tree version of <code>&lt;file&gt;</code> are discarded. Let’s illustrate this with an example. First, we create a repository with a commit of a file named <code>file1.txt</code>:</p>
+<pre class="terminal">$ mkdir ~/example02-undoing-changes
+$ cd ~/example02-undoing-changes
+$ git init
+$ echo "Contents of first commit" &gt; file1.txt
+$ git add file1.txt
+$ git commit -m "Add file1.txt"
+</pre>
+<p>Next, we make changes in the working tree but decide, that we do not want those changes anyway. We can use <code>git restore file1.txt</code> to discard them:</p>
+<pre class="terminal">$ echo "Unstaged changes in working tree" &gt;&gt; file1.txt
+$ cat file1.txt
+Contents of first commit
+Unstaged changes in working tree
+$ git restore file1.txt
+$ cat file1.txt
+Contents of first commit
+</pre>
+<p>After using <code>git restore file1.txt</code> the working tree version of <code>file1.txt</code> has been restore using the version of <code>file1.txt</code> from the current commit.</p>
+<p><em>Warning:</em> You need to be careful when using <code>git restore &lt;file&gt;</code>. You will discard any unstaged changes, and will not be able to recover them.</p>
+</section>
+<section id="unstaging-changes" class="level3">
+<h3 class="anchored" data-anchor-id="unstaging-changes">Unstaging changes</h3>
+<p>We can unstage changes using <code>git restore --staged &lt;file&gt;</code>. This will restore the staging area with the staging area from the current commit, effectively unstaging changes you have staged. Let’s illustrate this by continuing the previous example:</p>
+<pre class="terminal">$ echo "Staged contents" &gt;&gt; file1.txt
+$ git add file1.txt
 $ git status
 On branch main
 Changes to be committed:
   (use "git restore --staged <file>..." to unstage)
-        <span class="col-status-added">modified:   file_a.txt</span>
-</file></pre>
-<p>Git is directly telling us that if we want to unstage the changes in file_a.txt that has been added to the staging area, we can use the command <code>git restore --staged file_a.txt</code>. Let try that:</p>
-<pre class="terminal">$ git restore --staged file_a.txt
+<span class="col-status-staged">        modified:   file1.txt</span>
+
+$ git restore --staged file1.txt
 $ git status
 On branch main
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git restore <file>..." to discard changes in working directory)
-        <span class="col-status-changed">modified:   file_a.txt</span>
-</file></file></pre>
-<p>So what does <code>git restore --staged file_a.txt</code> do? The <code>--staged</code> option is telling git to restore the file_a.txt content in the index, and since we have not specified what source to restore from, git uses the content of file_a.txt from HEAD. This amounts to unstaging the file. As we can see from the output, the file is back to being modfied, but unstaged.</p>
-<p>What if we regret the changes we have made to file_a.txt and want to unmodify it entirely, ie restore the file back to how it looked in the last commit? As we can see from the previous output <code>git status</code> is again directly giving us the answer: We can use the command <code>git restore file_a.txt</code>. Let try it.</p>
-<pre class="terminal">$ git restore file_a.txt
-$ git status
-On branch main
-nothing to commit, working tree clean
-$ cat file_a.txt
-content
-</pre>
-<p>We can see that we have now unmodified file_a.txt, ie we have restored the file back to how it looked in the previous command. We have not specified what what to restore or what source to restore from, so by default the working tree is restored with the content from the index. <code>git restore file_a.txt</code> is equivalent with <code>git restore --worktree file_a.txt</code></p>
-<p>It is important to understand that <code>git restore &lt;file&gt;</code> is a dangerous command to use. Git has replaced the file with the latest committed version. Any local changes that have been made are gone.</p>
+<span class="col-status-not-staged">        modified:   file1.txt</span>
+
+no changes added to commit (use "git add" and/or "git commit -a")
+</file></file></file></pre>
+<p>What <code>git restore --staged file1.txt</code> has done here, is to restore the version of <code>file1.txt</code> in the staging area, with the version of <code>file1.txt</code> from the current commit.</p>
+</section>
+<section id="restoring-a-previous-version-of-a-file" class="level3">
+<h3 class="anchored" data-anchor-id="restoring-a-previous-version-of-a-file">Restoring a previous version of a file</h3>
+<p>TODO: update from here.</p>
+</section>
 </section>
 <section id="git-reset---undoing-a-commit" class="level2" data-number="5.3">
 <h2 data-number="5.3" class="anchored" data-anchor-id="git-reset---undoing-a-commit"><span class="header-section-number">5.3</span> <code>git reset</code> - “Undoing” a commit</h2>
@@ -384,8 +414,22 @@ $ git log --oneline
 <span class="col-hash">c481e82 (</span><span class="col-head">HEAD</span> <span class="col-hash">-&gt;</span> <span class="col-branch-local">main</span><span class="col-hash">)</span> Add file.txt
 </pre>
 </section>
-<section id="exercises" class="level2" data-number="5.4">
-<h2 data-number="5.4" class="anchored" data-anchor-id="exercises"><span class="header-section-number">5.4</span> Exercises</h2>
+<section id="summary" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="summary"><span class="header-section-number">5.4</span> Summary</h2>
+<p>In this chapter, you learned how to undo changes and correct mistakes in a Git repository.</p>
+<ul>
+<li><p><code>git commit --amend</code> allows you to modify the most recent commit, for example to correct its commit message or include additional changes.</p></li>
+<li><p><code>git restore</code> allows you to discard changes in the working tree or unstage changes without discarding them. You can also use it to restore earlier versions of files.</p></li>
+<li><p><code>git reset</code> allows you to move the current branch back to an earlier commit. Depending on the options used, you can either preserve or discard the changes introduced by subsequent commits.</p></li>
+</ul>
+<p>Some of these operations can permanently discard changes, while others modify the commit history. You should therefore use them carefully, particularly when working with commits that have already been shared with others.</p>
+</section>
+<section id="exercises" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="exercises"><span class="header-section-number">5.5</span> Exercises</h2>
+<p>TODO:</p>
+<ul>
+<li>Introduce the <code>--no-edit</code> option to <code>git commit --amend</code>.</li>
+</ul>
 <section id="exercise-1---amend-a-commit" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-1---amend-a-commit">Exercise 1 - Amend a commit</h3>
 <p>In this Exercise we will practice amending a commit. Run the following code to set-up a Git repository with a commit we want to amend:</p>
@@ -560,47 +604,9 @@ file_b content
 </div>
 </div>
 </section>
-<section id="exercise-3-optionalhard---removing-a-modifiedstaged-file-from-a-git-repository" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-3-optionalhard---removing-a-modifiedstaged-file-from-a-git-repository">Exercise 3 (optional/hard) - Removing a modified/staged file from a Git repository</h3>
-<p>Setup a Git repository with a modified and staged filed with the commands below:</p>
-<pre class="terminal">$ mkdir ~/ex-git-rm
-$ cd ~/ex-git-rm
-$ git init
-$ echo "file_a" &gt; file_a.txt
-$ echo "file_b" &gt; file_b.txt
-$ git add .
-$ git commit -m"Add file_a.txt and file_b.txt"
-$ echo "more content" &gt;&gt; file_a.txt
-$ echo "more content" &gt;&gt; file_b.txt
-$ git add file_b.txt
-</pre>
-<p><strong>1. Attempt to use <code>git rm</code> to remove file_a.txt. What happens?</strong></p>
-<p><strong>2. Explore the documentation to figure out why this happens</strong></p>
-<pre class="terminal">$ git status
-On branch main
-Changes not staged for commit:
-  (use "git add <file>..." to update what will be committed)
-  (use "git restore <file>..." to discard changes in working directory)
-        <span class="col-status-changed">modified:   file_a.txt</span>
-
-no changes added to commit (use "git add" and/or "git commit -a")
-</file></file></pre>
-<p>Remove file_a using git rm. Note that file_a is removed from the working tree and the index is updated.</p>
-<pre class="terminal">$ git rm file_a.txt
-$ git status
-$ git commit -m"Remove file_a.txt"
-</pre>
-<p>Manually remove file_b. Note Git recognizes that the file has been deleted from the repo, but the index is not updated.</p>
-<pre class="terminal">$ rm file_b.txt
-$ git status
-$ git add file_b.txt
-$ git commmit -m"Remove file_b.txt"
-</pre>
-<p>`</p>
 </section>
-</section>
-<section id="exercise-4---undo-commits" class="level2" data-number="5.5">
-<h2 data-number="5.5" class="anchored" data-anchor-id="exercise-4---undo-commits"><span class="header-section-number">5.5</span> Exercise 4 - “Undo” commits</h2>
+<section id="exercise-3---undo-commits" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="exercise-3---undo-commits"><span class="header-section-number">5.6</span> Exercise 3 - “Undo” commits</h2>
 <p>Run the following commands to set-up a Git repository:</p>
 <pre class="terminal">$ mkdir ~/ex-undo-commit
 $ cd ~/ex-undo-commit
