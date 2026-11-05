@@ -1,5 +1,4 @@
-
-# Rebasing
+# Rebasing {#sec-git-rebase}
 
 The commit history of a Git repository is not always pretty. If you commit often you might have a lot of small "WIP", bug fix, typo, and refactor commits. Furthermore, if you use a branching workflow, as introduced in @sec-branching-and-merging (which you definitely should), you might also have a lot of merge commits which makes the commit history even more complicated. Ideally, we would like a simple linear commit history, where each commit is a meaningful change. It is impossible to get everything right in the first try, so what other tools does Git provide to help us with this? This is where rebasing comes into play. Rebasing allows you to rewrite the history of commits in a repository, by reapplying commits on top of another starting point, editing them while you do so. Rebasing has a reputation for being magical hocus pocus that beginners should stay away from, but it is an essential tool to manage a repository, especially when collaborating with others.
 

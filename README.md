@@ -31,16 +31,6 @@ The tutorial was developed using Quarto and RStudio.
 
 **---TODO: content---**
 
-**"Undoing changes" chapter:**
-
-- git revert not introduced on purpose since it will rarely be used by the intended audience. But it is a useful command, and it might be relevant to introduce at some point. Maybe at an appropriate place in Part II or as a stand-lone chapter.
-
-- Currently does not show how to "undo" a commit. This would require introducing git reset --hard <checksum>. Can this also be done with git restore? UPDATE: the chapter now includes this, but in an unfinished manner? Needs further work.
-
-- Consider if it is better to merge the git reflog appendix into this chapter as a final section since it is a natural extension of this topic.
-
-- Centralized VCS diagram: Expand diagram to illustrate that each developer has a local copy of "file.txt".
-
 **Chapter 5-11:**
 
 Only rough outlines / first draft of chapters so far. These chapters need a lot of work still.
@@ -69,6 +59,14 @@ Consider in more detail how gh auth login -p https -cw works regarding storing o
 
 - Many diagrams look a little crude. If time permits it, work on making them more visually polished.
 
+**---TODO: exercises---**
+
+In some cases, the exercises are almost identical replications of examples in the corresponding chapters. Think about how the exercises can be modified to feel more unique. Maybe by trying to describe more realistic examples, or by introducing details and twists that separates them from the examples.
+
 **---TODO: potential topics that are not yet included---**
 
 - "git add -p": seems important and relevant but does not really fit anywhere currently. Maybe in an appendix on the staging area?
+
+- it could be useful to introduce "git revert" in the context of how to safely revert changes that have shared with collaborators. Consider adding in remotes chapter or another appropriate place.
+
+- Scenarios where rewriting history is problematic is currently discussed in part2-git-rebase. Would it be more appropriate to move this to part1-ch07-remotes?
