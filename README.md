@@ -31,28 +31,6 @@ The tutorial was developed using Quarto and RStudio.
 
 **---TODO: content---**
 
-**"Inspecting the commit history" chapter:**
-
-- Add a dedicated section explaining good commit message conventions, supported by example of informative an uninformative commit histories.
-
-  - Add it near the end of the chapter
-  
-  - Draft title "Writing good commit messages"
-  
-  - Suggestions for recommendations:
-  
-    - Write a concise subject line (Summarize teh purpose of the commit clearly)
-    
-    - Use the imperative mood (Prefer "Add", "Fix", or "Update" over "Added" or "Fixed"
-    
-    - Describe what the commit accomplishes (Avoid vague messages such as "Changes" or "Update files")
-    
-    - Explain why when necessary (For more complex changes, provide additional context in the message body)
-    
-    - Keep messages consistent (Follow the conventions used by the project.)
-    
-    - 
-
 **"Undoing changes" chapter:**
 
 - git revert not introduced on purpose since it will rarely be used by the intended audience. But it is a useful command, and it might be relevant to introduce at some point. Maybe at an appropriate place in Part II or as a stand-lone chapter.
