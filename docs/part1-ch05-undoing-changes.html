@@ -275,14 +275,14 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#unstaging-changes" id="toc-unstaging-changes" class="nav-link" data-scroll-target="#unstaging-changes">Unstaging changes</a></li>
   <li><a href="#restoring-a-previous-version-of-a-file" id="toc-restoring-a-previous-version-of-a-file" class="nav-link" data-scroll-target="#restoring-a-previous-version-of-a-file">Restoring a previous version of a file</a></li>
   </ul></li>
-  <li><a href="#git-reset---undoing-a-commit" id="toc-git-reset---undoing-a-commit" class="nav-link" data-scroll-target="#git-reset---undoing-a-commit"><span class="header-section-number">5.3</span> <code>git reset</code> - “Undoing” a commit</a></li>
+  <li><a href="#moving-head-to-undo-commits" id="toc-moving-head-to-undo-commits" class="nav-link" data-scroll-target="#moving-head-to-undo-commits"><span class="header-section-number">5.3</span> Moving <code>HEAD</code> to undo commits</a></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">5.4</span> Summary</a></li>
   <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">5.5</span> Exercises</a>
   <ul class="collapse">
-  <li><a href="#exercise-1---amend-a-commit" id="toc-exercise-1---amend-a-commit" class="nav-link" data-scroll-target="#exercise-1---amend-a-commit">Exercise 1 - Amend a commit</a></li>
-  <li><a href="#exercise-2---using-git-restore" id="toc-exercise-2---using-git-restore" class="nav-link" data-scroll-target="#exercise-2---using-git-restore">Exercise 2 - Using <code>git restore</code></a></li>
+  <li><a href="#exercise-1---amending-commits" id="toc-exercise-1---amending-commits" class="nav-link" data-scroll-target="#exercise-1---amending-commits">Exercise 1 - Amending commits</a></li>
+  <li><a href="#exercise-2---discarding-and-and-unstaging-changes" id="toc-exercise-2---discarding-and-and-unstaging-changes" class="nav-link" data-scroll-target="#exercise-2---discarding-and-and-unstaging-changes">Exercise 2 - Discarding and and unstaging changes</a></li>
   </ul></li>
-  <li><a href="#exercise-3---undo-commits" id="toc-exercise-3---undo-commits" class="nav-link" data-scroll-target="#exercise-3---undo-commits"><span class="header-section-number">5.6</span> Exercise 3 - “Undo” commits</a></li>
+  <li><a href="#exercise-3---removing-commits" id="toc-exercise-3---removing-commits" class="nav-link" data-scroll-target="#exercise-3---removing-commits"><span class="header-section-number">5.6</span> Exercise 3 - Removing commits</a></li>
   </ul>
 </nav>
     </div>
@@ -387,32 +387,93 @@ no changes added to commit (use "git add" and/or "git commit -a")
 </section>
 <section id="restoring-a-previous-version-of-a-file" class="level3">
 <h3 class="anchored" data-anchor-id="restoring-a-previous-version-of-a-file">Restoring a previous version of a file</h3>
-<p>TODO: update from here.</p>
-</section>
-</section>
-<section id="git-reset---undoing-a-commit" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="git-reset---undoing-a-commit"><span class="header-section-number">5.3</span> <code>git reset</code> - “Undoing” a commit</h2>
-<p>The <code>git reset</code> command is quite versatile and can also be used instead of the <code>git restore</code> command. For now, we will simply show how to use it to “undo” a commit that we have made, without going into details that uses concepts we have not introduced yet.</p>
-<p>Imagine you have the following Git repository where you just commmited some changes that you regret, and now you want to remove them.</p>
-<pre class="terminal">$ mkdir ~/example-git-reset
-$ cd ~/example-git-reset
-$ git init
-$ echo "content" &gt; file.txt
-$ git add .
-$ git commit -m"Add file.txt"
-$ echo "content we will regret adding" &gt;&gt; file.text
-$ git add .
-$ git commit -m"Update file.txt"
+<p>When not specified, the implicit restore source used by <code>git restore</code> is <code>HEAD</code>. We can explicitly specify it with the the <code>--source</code> option as <code>git restore --source=HEAD</code>. We can use the <code>--source</code> option to choose another restore source. Let’s illustrate by continuing our example. Let’s illustrate this with a new example. First, we create a repository with 3 commits of a file named <code>file1.txt</code>:</p>
+<pre class="terminal">$ mkdir ~/example03-undoing-changes
+$ cd ~example03-undoing-changes
+$ echo "Contents in first commit" &gt; file1.txt
+$ git add file1.txt
+$ git commit -m "First commit"
+$ echo "Contents in second commit" &gt; file2.txt
+$ git add file1.txt
+$ git commit -m "Second commit"
+$ echo "Contents in third commit" &gt; file3.txt
+$ git add file1.txt
+$ git commit -m "Third commit"
 </pre>
-<p>We can do this by finding the checksum of the previous commit and “reset” the Git repository to that commit:</p>
+<p>We can restore the first version of <code>file1.txt</code> in the working tree, by identifying the first commit ID, and using the <code>--source</code> option with <code>git restore</code>:</p>
 <pre class="terminal">$ git log --oneline
-<span class="col-hash">246b682 (</span><span class="col-head">HEAD</span> <span class="col-hash">-&gt;</span> <span class="col-branch-local">main</span><span class="col-hash">)</span> Update file.txt
-<span class="col-hash">c481e82</span> Add file.txt
-$ git reset --hard c481e82
-HEAD is now at c481e82 Add file.txt
+<span class="col-hash">85eef66</span> <span class="col-yellow">(</span><span class="col-head">HEAD</span> <span class="col-yellow">-&gt;</span> <span class="col-branch-local">main</span><span class="col-yellow">)</span> Third commit
+<span class="col-hash">5fa3962</span> Second commit
+<span class="col-hash">b9ab876</span> First commit
+$ cat fil1.txt
+Contents of third commit
+$ git restore --source=b9ab876 file1.txt
+$ cat file1.txt
+Contents of first commit
+$ git status
+On branch main
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+<span class="col-status-not-staged">        modified:   file1.txt</span>
+
+no changes added to commit (use "git add" and/or "git commit -a")
+</file></file></pre>
+<p>If we wanted to stage this change for the next commit we could use <code>git add</code>, but we could also restore the first version of <code>file1.txt</code> in the staging area using the <code>--staged</code> option:</p>
+<pre class="terminal">$ git restore --staged --source=b9ab876 file1.txt
+$ git status
+On branch main
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+<span class="col-status-staged">        modified:   file1.txt</span>
+
+</file></pre>
+<p>TODO: add use of –worktree and –staged at the same time to finish this section? Maybe –worktree should be mentioned at the start of the section to mention it is implicitly specified?</p>
+<p>TODO: add something to finish this section.</p>
+</section>
+</section>
+<section id="moving-head-to-undo-commits" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="moving-head-to-undo-commits"><span class="header-section-number">5.3</span> Moving <code>HEAD</code> to undo commits</h2>
+<p>You can move <code>HEAD</code> to an earlier commit using <code>git reset</code>, and depending on the options we use, we can either preserve or discard the changes introduced by the subsequent commits. This effectively allows us to undo commits. Let’s illustrate this with an example. First, we create a repository with two commits of a file named <code>file1.txt</code>:</p>
+<pre class="terminal">$ mkdir ~/example04-undoing-changes
+$ cd ~/example04-undoing-changes
+$ git init
+$ echo "Contents in first commit" &gt; file1.txt
+$ git add file1.txt
+$ git commit -m "Add file1.txt"
+$ echo "Contents added in second commit" &gt;&gt; file1.txt
+$ git add file1.txt
+$ git commit -m "Update file1.txt"
 $ git log --oneline
-<span class="col-hash">c481e82 (</span><span class="col-head">HEAD</span> <span class="col-hash">-&gt;</span> <span class="col-branch-local">main</span><span class="col-hash">)</span> Add file.txt
+32f2155 (HEAD -&gt; main) Update file1.txt
+0c68ac6 Add file1.txt
 </pre>
+<pre class="terminal">$ git reset HEAD^
+Unstaged changes after reset:
+M       file1.txt
+$ cat file1.txt
+Contents in first commit
+$ git log --oneline
+0c68ac6 (HEAD -&gt; main) Add file1.txt
+$ git status
+On branch main
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   file1.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+$ git diff
+diff --git a/file1.txt b/file1.txt
+index ce44375..bd77fb7 100644
+--- a/file1.txt
++++ b/file1.txt
+@@ -1 +1,2 @@
+ Contents in first commit
++Contents added in second commit
+$
+</file></file></pre>
+<p>We can see that <code>HEAD</code> has been moved to the first commit, effectively undoing the second commit. We also see that the changes introduced in the second commmit are still staged.</p>
 </section>
 <section id="summary" class="level2" data-number="5.4">
 <h2 data-number="5.4" class="anchored" data-anchor-id="summary"><span class="header-section-number">5.4</span> Summary</h2>
@@ -426,24 +487,18 @@ $ git log --oneline
 </section>
 <section id="exercises" class="level2" data-number="5.5">
 <h2 data-number="5.5" class="anchored" data-anchor-id="exercises"><span class="header-section-number">5.5</span> Exercises</h2>
-<p>TODO:</p>
-<ul>
-<li>Introduce the <code>--no-edit</code> option to <code>git commit --amend</code>.</li>
-</ul>
-<section id="exercise-1---amend-a-commit" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-1---amend-a-commit">Exercise 1 - Amend a commit</h3>
-<p>In this Exercise we will practice amending a commit. Run the following code to set-up a Git repository with a commit we want to amend:</p>
-<pre class="terminal">$ mkdir ~/ex-amend
-$ cd ~/ex-amend
+<section id="exercise-1---amending-commits" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-1---amending-commits">Exercise 1 - Amending commits</h3>
+<p>In this exercise you will practice amending commits. Run the following commands to set up a repository with a single commit of a file named <code>file1.txt</code>:</p>
+<pre class="terminal">$ mkdir ~/ex01-undoing-changes
+$ cd ~/ex01-undoing-changes
 $ git init
-$ echo "content of file_a" &gt; file_a.txt
-$ echo "content of file_b" &gt; file_b.txt
-$ echo "content of file_c" &gt; file_c.txt
-$ git add file_a.txt
-$ git commit -m"Add file_a.txt"
+$ echo "Draft of contents" &gt; file1.txt
+$ git add file1.txt
+$ git commit -m "Add file1.txt
 </pre>
-<p>In the Git repository created by these commands, we have made a commit adding file_a.txt to the repository, but we forgot to add file_b.txt and file_c.txt!</p>
-<p><strong>1. Find the checksum of the commit</strong><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a><strong>.</strong></p>
+<p><b>1. Update <code>file1.txt</code> by amending the commit.</b></p>
+<p>Change the line in <code>file1.txt</code> from <code>Draft of contents</code> to <code>Contents</code>, stage the changes, and amend the changes to the existing commit. Keep the existing commit message. Run <code>git log --oneline</code> before and after amending the commit, and explain what has changed and why.</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -456,55 +511,56 @@ $ git commit -m"Add file_a.txt"
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>You can use the <code>git log</code> command to see the checksum of the commit. You could also additionally use the <code>--oneline</code> option to get a nice one-line output with a short version of the checksum:</p>
-<pre class="terminal">$ git log --oneline
-<span class="col-hash">712d2c6 (</span><span class="col-head">HEAD</span> <span class="col-hash">-&gt;</span> <span class="col-branch-local">main</span><span class="col-hash">)</span> Add file_a.txt
+<pre class="terminal">$ echo "Contents" &gt; file1.txt
+$ git add file1.txt
+$ git log --oneline
+86b78d9 (HEAD -&gt; main) Add file1.txt
+$ git commit --amend -m "Add file1.txt"
+$ git log --oneline
+8d1a459 (HEAD -&gt; main) Add file1.txt
 </pre>
+<p>The commit ID of the commit has changed, because the commit has been amended, replacing the old commit with a new commit.</p>
 </div>
 </div>
 </div>
-<p><strong>2. Amend the commit by adding file_b.txt and file_c.txt. “Forget” to update the commit message.</strong></p>
-<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<p><b>2. Reusing the commit message.</b></p>
+<p>Run the following commands to stage additional changes to <code>file1.txt</code> that we once again wish to amend to the first commit:</p>
+<pre class="terminal">$ echo "More content" &gt;&gt; file1.txt
+$ git add file1.txt
+</pre>
+<p>In Step 1 we had to either use the <code>-m</code> option to specify the new commit message, or confirm the commit message in a text editor. When we are amending a commit but we do not wish to alter the commit message, this is inconvenient. Consult the <code>git commit</code> documentation to find an option that allows us use the existing commit message without launching a text editor, and use this option to amend the commit with the new changes.</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Hint 1">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Solution
+<span class="screen-reader-only">Tip</span>Hint 1
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-You can use the <code>--no-edit</code> option to tell Git to use reuse the original commit message:
-<pre class="terminal">$ git add file_b.txt file_c.txt
-$ git commit --amend --no-edit
-</pre>
-<p>Alternatively, you can omit the <code>--no-edit</code> option, and simply keep the current commit message that Git opens in a text editor.</p>
+<p>The <code>git commit</code> documentation is extensive, including many options. Press <code>&lt;Ctrl&gt; + f</code> in your browser and search for <code>--amend</code> to see if the option we are looking for is described near the use of <code>--amend</code> in the documentation.</p>
 </div>
 </div>
 </div>
-<p><strong>3. Look at the commit checksum again. Has it changed? Why?</strong></p>
-<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Hint 2">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Solution
+<span class="screen-reader-only">Tip</span>Hint 2
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre class="terminal">$ git log --oneline
-<span class="col-hash">0ef247d (</span><span class="col-head">HEAD</span> <span class="col-hash">-&gt;</span> <span class="col-branch-local">main</span><span class="col-hash">)</span> Add file_a.txt
-</pre>
-<p>The checksum has changed. The reason for this is that Git has amended the commit by <em>replacing</em> it with a new commit. This new commit does not have the same content, so the checksum is different.</p>
+<p>The option we are looking for is <code>--no-edit</code>.</p>
 </div>
 </div>
 </div>
-<p><strong>4. Amend the commit again to update the commit message we “forgot” to update in the previous amended commit.</strong></p>
 <div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -517,144 +573,21 @@ $ git commit --amend --no-edit
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre class="terminal">$ git commit --amend -m"Add file_a.txt, file_b.txt, and file_c.txt"
-</pre>
-<p>Here we use the optional <code>-m</code> option to specify the commit message directly in the command so that we don’t have to type it in the text editor Git would otherwise open.</p>
-</div>
-</div>
-</div>
-<p><strong>5. Look at the commit checksum again. Has it changed? Why?</strong></p>
-<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Solution
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<pre class="terminal">$ git log --oneline
-<span class="col-hash">cade118 (</span><span class="col-head">HEAD</span> <span class="col-hash">-&gt;</span> <span class="col-branch-local">main</span><span class="col-hash">)</span> Add file_a.txt, file_b.txt, and file_c.txt
-</pre>
-<p>The checksum has changed again. Again, the commit has been replaced by a new commit where we have updated the commit message. Since the commit message is part of the the commit that has been checksummed, the checksum has changed.</p>
-</div>
-</div>
-</div>
-</section>
-<section id="exercise-2---using-git-restore" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-2---using-git-restore">Exercise 2 - Using <code>git restore</code></h3>
-<p>Run the following commands to set-up a Git repository for the exercise.</p>
-<pre class="terminal">$ mkdir ~/ex-git-restore
-$ cd ~/ex-git-restore
-$ git init
-$ echo "file_a content" &gt; file_a.txt
-$ echo "file_b content" &gt; file_b.txt
-$ git add . # Add all files
-$ git commit -m"Add file_a.txt and file_b.txt"
-$ echo "more content" &gt;&gt; file_a.txt
-$ echo "more content" &gt;&gt; file_b.txt
-$ git add .
-</pre>
-<p>Here we have created a Git repository where we have committed two files, then made changes to both files and added them to the index.</p>
-<p><strong>1. Unstage file_b.txt and commit file_a.txt.</strong></p>
-<p>We were too fast on the trigger. We actually don’t want to commit the changes to both files at the same time. Unstage file_b.txt and commit only file_a.txt.</p>
-<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Solution
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<pre class="terminal">$ git restore --staged file_b.txt
-$ git commit -m"Update file_a.txt"
-</pre>
-</div>
-</div>
-</div>
-<p><strong>2. Unmodify file_b.txt</strong></p>
-<p>Upon further introspection, we decide that we do not want to commit the changes we have made to file_b.txt after all. Unmodify file_b.txt, ie restore the working directory to look like it did in the previous commit.</p>
-<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Solution
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<pre class="terminal">$ git restore file_b.txt
-$ git status
-On branch main
-nothing to commit, working tree clean
-$ cat file_b.txt
-file_b content
+<pre class="terminal">$ git commit --amend --no-edit
 </pre>
 </div>
 </div>
 </div>
 </section>
+<section id="exercise-2---discarding-and-and-unstaging-changes" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-2---discarding-and-and-unstaging-changes">Exercise 2 - Discarding and and unstaging changes</h3>
+<p>TODO: Make reader find figure out how to use both the –staged and –worktree option with git restore at the same time?</p>
 </section>
-<section id="exercise-3---undo-commits" class="level2" data-number="5.6">
-<h2 data-number="5.6" class="anchored" data-anchor-id="exercise-3---undo-commits"><span class="header-section-number">5.6</span> Exercise 3 - “Undo” commits</h2>
-<p>Run the following commands to set-up a Git repository:</p>
-<pre class="terminal">$ mkdir ~/ex-undo-commit
-$ cd ~/ex-undo-commit
-$ git init
-$ echo "content" &gt; file.txt
-$ git add .
-$ git commit -m"Add file.txt"
-$ echo "more content" &gt;&gt; file.txt
-$ git add .
-$ git commit -m"Update file.txt"
-$ echo "even more content" &gt;&gt; file.txt
-$ git add .
-$ git commit -m"Update file.txt again"
-</pre>
-<p>Here, we have added a file, file.txt, and made changes to it in two commits. At this point we realize that we do not want to make these changes to the file after all.</p>
-<p>“Undo” the last two commits to restore the file to the original state before we started making changes to it.</p>
-<div class="callout callout-style-default callout-note no-icon callout-titled" title="Solution">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Solution
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>We can use the `git reset`` command to reset the Git repository to the state before we started making changes to file.txt</p>
-<pre class="terminal">$ git log --oneline
-<span class="col-hash">2cd5429 </span>(<span class="col-head">HEAD</span> <span class="col-hash">-&gt;</span> <span class="col-branch-local">main</span><span class="col-hash">)</span> Update file.txt again
-<span class="col-hash">1836bbe</span> Update file.txt
-<span class="col-hash">4387462</span> Add file.txt
-$ git reset --hard 4387462
-$ git log --oneline
-<span class="col-hash">4387462 (</span><span class="col-head">HEAD</span> <span class="col-hash">-&gt;</span> <span class="col-branch-local">main</span><span class="col-hash">)</span> Add file.txt
-</pre>
-</div>
-</div>
-</div>
+</section>
+<section id="exercise-3---removing-commits" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="exercise-3---removing-commits"><span class="header-section-number">5.6</span> Exercise 3 - Removing commits</h2>
 
 
-</section>
-<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
-<hr>
-<ol>
-<li id="fn1"><p>Note that the checksums in this exercise will be different for every person<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
 </section>
 
 </main> <!-- /main -->
