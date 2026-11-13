@@ -26,10 +26,10 @@ book:
       - part1-ch07-remotes.qmd
     - part: "Part II"
       chapters:
-      - part2-workflows.qmd
-      - part2-git-reflog.qmd
       - part2-github.qmd
+      - part2-workflows.qmd
       - part2-git-rebase.qmd
+      - part2-git-reflog.qmd
       
   appendices:
     - app-git-bash.qmd
