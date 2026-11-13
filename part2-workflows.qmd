@@ -32,10 +32,6 @@ The simplest possible Git workflow is to work directly on the `main` branch of a
 
 For example, imagine that you maintain a text document containing work-related notes. You would like to use Git to keep track of changes so that you can recover old notes that you have accidentally deleted or modified. In this case, you could simply initialize a Git repository and make a new commit whenever you update the document.
 
-<div style="width:70%;margin:auto">
-![](./diagrams/workflows-simple.drawio.svg)
-</div>
-
 This workflow provides the basic benefits of version control without introducing any additional complexity. While it does not take advantage of many of Git's more advanced features, it may be perfectly sufficient for a small project developed by a single person.
 
 ## Centralized workflow
@@ -43,12 +39,6 @@ This workflow provides the basic benefits of version control without introducing
 The centralized workflow is based on using a shared remote repository as the central location for a project. Each collaborator has their own local clone of the repository, but everyone works on the same branch, typically `main`.
 
 Collaborators make changes and commits in their local repositories and push these commits to the central repository when they want to share their work. Before pushing, they may need to incorporate changes that other collaborators have already pushed to the central repository. If different collaborators have modified the same parts of a file, this may involve resolving merge conflicts.
-
-TODO: reconsider diagram. currently depicting rebasing onto central repository. seems like an unnecesary complicated example. The diagram should be more generic illustrating the general workflow?
-
-<div style="width:100%;margin:auto">
-![](./diagrams/workflows-centralized.drawio.svg)
-</div>
 
 The centralized workflow is relatively simple because development takes place on a single shared branch. It can work well for small teams where changes are straightforward and collaborators coordinate their work.
 
@@ -59,12 +49,6 @@ However, it also has limitations. Since everyone integrates their changes direct
 The feature branch workflow builds upon the idea of using a shared central repository, but instead of developing changes directly on `main`, development takes place on separate branches, called *feature branches*.
 
 When a developer wants to implement a new feature, fix a bug, or make some other change, they create a new branch for that task. Development takes place on this branch, leaving `main` unaffected. Once the work is completed, the changes are integrated into `main`, typically by merging the feature branch. The feature branch can then be deleted.
-
-TODO: Diagram currently depicts a local branch being integrated with a merge commit. Too specific? Should be more generic?
-
-<div style="width:50%;margin:auto">
-![Central repository](./diagrams/workflows-feature.drawio.svg)
-</div>
 
 An important advantage of this workflow is that development can take place independently of the main version of the project. This makes it possible to work on unfinished features without affecting `main`, which can be reserved for completed and working versions of the project.
 
@@ -98,7 +82,7 @@ When choosing a workflow, several considerations were made:
 
 - Development would involve many different tasks, such as writing new chapters, revising exisitng chapters, and creating illustrations. It would be useful to develop these changes independently using feature branches.
 
-- It would be useful to maintain a stable development version of the tutorial that was necessarily ready for publication.
+- It would be useful to maintain a stable development version of the tutorial that was not necessarily ready for publication.
 
 Based on these considerations, a workflow inspired by the feature branch workflow was selected. The repository was hosted on GitHub, with `main`serving as the braanch used to publish the tutorial on GitHub Pages. A second branch, `dev`, was created to maintain a stable development version of the tutorial.
 
@@ -112,7 +96,7 @@ This workflow made it possible to work on several different parts of the tutoria
 
 In practice, however, the role of the `dev` branch was less pronounced that originally anticipated. Most changes were suitable for publication as sson as the corresponding feature or revision was completed. Consequently, there was often little reason to maintain separate versions of the tutorial in `dev`and `main` for extended periods.
 
-The workflow nevertheless worked well for the project. Using feature branches proved useful for organizing development, while the `dev` branch provided an additional level of separation between development and publication when needed. In retrospect, the project could probably have been managed just as effectively without `dev`, integrating completed feature branches directly into `main`.
+The workflow nevertheless worked well for the project. Using feature branches proved useful for organizing development, while the `dev` branch provided an additional level of separation between development and publication when needed. In retrospect, the project could probably have been managed just as effectively without `dev`, integrating completed feature branches directly into `main`. This illustrates that a workflow can be appropriate for a project even if some aspects of it turn out to be less important than initially anticipated.
 
 
 ## Summary
@@ -146,16 +130,18 @@ While developing the code for the project, you want to ensure that the `main` br
 
 4. Imagine that your colleague starts working on a larger revision that will takes several weeks to complete. Would this change your choice of workflow? Explain why or why not.
 
+5. Suppose developed the project on your own. Would this affect your choice of workflow? How would you adapt your workflow if a collegaue later joined the project?
+
 ::: {.callout-note title="Suggested solution" collapse="true" icon="false"}
 
-A feature branch workflow would be an appropriate choice because it allows both collaborators to work independently without introducing unfinished changes into `main`.
+1. A feature branch workflow would be an appropriate choice because it allows both collaborators to work independently without introducing unfinished changes into `main`.
 
-Each collaborator could create a separate feature branch for their work. Once the changes are completed, the feature branch could be merged into `main`, and the updated `main` branch pushed to the central repository. The other collaborator could then fetch or pull these changes into their local clone.
+2. Each collaborator could create a separate feature branch for their work. Once the changes are completed, the feature branch could be merged into `main`, and the updated `main` branch pushed to the central repository. The other collaborator could then fetch or pull these changes into their local clone.
 
-An additional `dev` branch is probably not strictly necessary. Feature branches already provide a way to keep unfinished work separate from `main`, and introducing another permanent branch would make the workflow more complicated. On the other hand, it might be beneficial to have two stable version of the code. You switch the role of `main` onto `dev`, making feature branches off this branch. Then every time, the code in the project got to a specific milestones, all the commits on dev could be made into a single clean commit on main. These milestone could be the first complete draft of the code, and each version of results shared with other collaborators etc.
+3. An additional `dev` branch could be useful if the collaborators wanted to maintain a stable version of the code in `main`, while using `dev` to integrate changes that were still being tested or revised. Changes could then be integrated into `main` at important project milestones, such as the completion of a first draft or a new set of analyses. However, this additional separation would not necessarily be needed for the project.
 
-A larger revision would not necessarily require changing the workflow. Your colleague could simply continue working on the same feature branch until the revision was completed. Alternatively, the revision could be divided into smaller, independent tasks developed on separate feature branches.
+4. A larger revision would not necessarily require changing the workflow. Your colleague could simply continue working on the same feature branch until the revision was completed. Alternatively, the revision could be divided into smaller, independent tasks developed on separate feature branches.
+
+5. If you developed the project on your own, a feature branch workflow would still be appropriate. You could even still use a local remote as a backup instead. Alternatively, in this case it might also be perfectly reasonable to use a simple workflow commiting directly to main, and not using any remotes. If a collaborator later joined the project and you were already using a feature branch workflow, you would not need to change anything. The backup could simply now function as the central repository. If you had instead used a simple workflow, you could easily make a local remote and adapt a feature branch workflow.
 
 :::
-
-TODO: Consider adding another conceptional exercise focused on a project with a single developer, where a feature branch workflwo is also a good approach, but where the "simplest possislbe" workflow might also be just as viable. Maybe add step where collaborator is added to project and workflow needs to be adapted. for example by using a remote as a central reposiotry and switching to a feature branch workflow.
