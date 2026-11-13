@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.11.9">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>8&nbsp; Git workflows – Git tutorial</title>
+<title>9&nbsp; Git workflows – Git tutorial</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -36,18 +36,19 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./part2-git-reflog.html" rel="next">
-<link href="./part1-ch07-remotes.html" rel="prev">
+<link href="./part2-git-rebase.html" rel="next">
+<link href="./part2-github.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-2aad03a8b4e422ea2bd4d420080b3680.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-b794a9da44eaeedee9eb856166f9e867.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -80,17 +81,17 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-sidebar docked quarto-light">
+<body class="nav-sidebar docked quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
+  <nav class="quarto-secondary-nav" aria-label="Toolbar">
     <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part2-workflows.html">Part II</a></li><li class="breadcrumb-item"><a href="./part2-workflows.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Git workflows</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <nav class="quarto-page-breadcrumbs" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part2-github.html">Part II</a></li><li class="breadcrumb-item"><a href="./part2-workflows.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Git workflows</span></a></li></ol></nav>
+        <a class="flex-grow-1" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
@@ -101,7 +102,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto" aria-label="Site">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Git tutorial</a> 
@@ -125,13 +126,10 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Part I</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-controls="quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-1-label">Part I</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-1" aria-labelledby="quarto-sidebar-section-1-label" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./part1-ch01-introduction-to-git.html" class="sidebar-item-text sidebar-link">
@@ -178,48 +176,42 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Part II</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-controls="quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-2-label">Part II</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./part2-workflows.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Git workflows</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./part2-git-reflog.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Recovering deleted commits</span></span></a>
-  </div>
-</li>
+      <ul id="quarto-sidebar-section-2" aria-labelledby="quarto-sidebar-section-2-label" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./part2-github.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Introduction to GitHub</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Introduction to GitHub</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./part2-workflows.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Git workflows</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./part2-git-rebase.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Rebasing</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Rebasing</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./part2-git-reflog.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Recovering deleted commits</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Appendices</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-controls="quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-3-label">Appendices</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-3" aria-labelledby="quarto-sidebar-section-3-label" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./app-git-bash.html" class="sidebar-item-text sidebar-link">
@@ -264,25 +256,27 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active" data-toc-expanded="99">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#considerations-when-selecting-a-workflow" id="toc-considerations-when-selecting-a-workflow" class="nav-link active" data-scroll-target="#considerations-when-selecting-a-workflow"><span class="header-section-number">8.1</span> Considerations when selecting a workflow</a></li>
-  <li><a href="#the-simplest-possible-workflow" id="toc-the-simplest-possible-workflow" class="nav-link" data-scroll-target="#the-simplest-possible-workflow"><span class="header-section-number">8.2</span> The simplest possible workflow</a></li>
-  <li><a href="#centralized-workflow" id="toc-centralized-workflow" class="nav-link" data-scroll-target="#centralized-workflow"><span class="header-section-number">8.3</span> Centralized workflow</a></li>
-  <li><a href="#feature-branch-workflow" id="toc-feature-branch-workflow" class="nav-link" data-scroll-target="#feature-branch-workflow"><span class="header-section-number">8.4</span> Feature branch workflow</a></li>
-  <li><a href="#forking-workflow" id="toc-forking-workflow" class="nav-link" data-scroll-target="#forking-workflow"><span class="header-section-number">8.5</span> Forking workflow</a></li>
-  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example"><span class="header-section-number">9</span> Example</a></li>
+  <li><a href="#considerations-when-selecting-a-workflow" id="toc-considerations-when-selecting-a-workflow" class="nav-link active" data-scroll-target="#considerations-when-selecting-a-workflow"><span class="header-section-number">9.1</span> Considerations when selecting a workflow</a></li>
+  <li><a href="#the-simplest-possible-workflow" id="toc-the-simplest-possible-workflow" class="nav-link" data-scroll-target="#the-simplest-possible-workflow"><span class="header-section-number">9.2</span> The simplest possible workflow</a></li>
+  <li><a href="#centralized-workflow" id="toc-centralized-workflow" class="nav-link" data-scroll-target="#centralized-workflow"><span class="header-section-number">9.3</span> Centralized workflow</a></li>
+  <li><a href="#feature-branch-workflow" id="toc-feature-branch-workflow" class="nav-link" data-scroll-target="#feature-branch-workflow"><span class="header-section-number">9.4</span> Feature branch workflow</a></li>
+  <li><a href="#forking-workflow" id="toc-forking-workflow" class="nav-link" data-scroll-target="#forking-workflow"><span class="header-section-number">9.5</span> Forking workflow</a></li>
+  <li><a href="#a-workflow-in-practice-developing-this-tutorial" id="toc-a-workflow-in-practice-developing-this-tutorial" class="nav-link" data-scroll-target="#a-workflow-in-practice-developing-this-tutorial"><span class="header-section-number">9.6</span> A workflow in practice: Developing this tutorial</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">9.7</span> Summary</a></li>
+  <li><a href="#exercise---choosing-a-git-workflow" id="toc-exercise---choosing-a-git-workflow" class="nav-link" data-scroll-target="#exercise---choosing-a-git-workflow"><span class="header-section-number">9.8</span> Exercise - Choosing a Git workflow</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content" id="quarto-document-content" tabindex="-1">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part2-workflows.html">Part II</a></li><li class="breadcrumb-item"><a href="./part2-workflows.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Git workflows</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part2-github.html">Part II</a></li><li class="breadcrumb-item"><a href="./part2-workflows.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Git workflows</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Git workflows</span></h1>
+<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Git workflows</span></h1>
 </div>
 
 
@@ -299,57 +293,120 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Git is very flexible, and there is not one standardized approach on how to use it that you are supposed to follow. However, to use Git in a productive manner, it is important to develop or select a Git <em>workflow</em> to use, especially if you are collaborating with others. A Git workflow is a guideline on how to use Git, and a workflow should be selected and agreed upon by collaborators, before a project is initiated, so that it is clear to everyone how changes to the project is to be applied. In this chapter we will briefly introduce a couple of workflows and, as an example, explain the workflow that was used to develop this tutorial.</p>
-<section id="considerations-when-selecting-a-workflow" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="considerations-when-selecting-a-workflow"><span class="header-section-number">8.1</span> Considerations when selecting a workflow</h2>
-<p>When selecting a workflow you should consider several things:</p>
-<p><b>A workflow is a guideline, not a strict set of rules:</b><br> You don’t have to adhere strictly to a workflow you have selected. It is perfectly fine to make any kind of modifications you see fit. The only important thing is that your workflow works for you.</p>
-<p><b>Keep it simple:</b><br> Don’t select an overcomplicated workflow that you don’t need. You might end up in a situation where Git feels like it is hindering, not enhancing, productivity and collaboration. Also, your collaborators will not appreciate having to figure out how to manoeuvre some esoteric workflow that you concocted yourself.</p>
-<p><b>Have a plan for how to fix mistakes:</b><br> Consider how mistakes will be handled in the workflow. For example, if someone mistakenly rebases commits in the central repository, altering commits others are basing their work on, how will this be handled within the selected workflow? Using <code>git push -f</code> from another local clone to restore the history of the central repository, public lynching, using a forking workflow to restrict who can push to the central repository, or something else entirely?</p>
-<p><b>How the workflow scales :</b><br> If you know that the size of the team working on the project might increase, consider if the workflow also works in larger collaborations. For example, if you start a project on your own, but you know that collaborators will join the project in the future, you should probably, as a minimum, select a workflow using a remote as central repository.</p>
+<p>Git is a flexible tool that can be used in many different ways. There is no single correct way to organize development with Git, and different projects may benefit from different workflows. To make effective use of Git, especially when collaborating with others, it is useful to establish a <em>Git workflow</em>.</p>
+<p>A Git workflow is a set of guidelines for how Git is used in a project. For example, a workflow may describe how branches are used to develop new features, how changes are shared between collaborators, and when changes are integrated into the main version of the project. A workflow is not a feature of Git itself, but rather a way of organizing development using the functionality Git provides.</p>
+<p>In this chapter, we will briefly introduce some common Git workflows and discuss when they might be appropriate. Finally, we will use the development of this tutorial as an example of how a workflow can be selected and evaluated based on the needs of a particular project.</p>
+<section id="considerations-when-selecting-a-workflow" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="considerations-when-selecting-a-workflow"><span class="header-section-number">9.1</span> Considerations when selecting a workflow</h2>
+<p>When selecting a Git workflow, there are several things worth considering.</p>
+<p><strong>Keep it simple:</strong></p>
+<p>A workflow should make development easier, not more complicated. Git provides powerful tools for organizing development and collaboration, but not every project needs to use them all. An unnecessarily complicated workflow can make even simple tasks cumbersome. Generally, you should aim to use the simplest workflow that meets the needs of your project.</p>
+<p><strong>Consider how the project is developed:</strong></p>
+<p>A workflow that works well for a project developed by a single person may not be appropriate for a larger project with many collaborators. Consider how many people will be working on the project, whether they will be working on different tasks simultaneously, and how they will share their changes.</p>
+<p><strong>Consider how changes should be integrated:</strong></p>
+<p>An important consideration is how and when changes should become part of the main version of the project. For some projects, it may be perfectly acceptable to integrate changes as soon as they are made. For others, it may be important to ensure that changes have been completed, tested, or reviewed before they are integrated. For example, if a website is automatically updated whenever changes are pushed to the <code>main</code> branch, you may want to ensure that only completed changes are integrated into this branch.</p>
+<p><strong>Adapt the workflow as needed:</strong></p>
+<p>A workflow is a set of guidelines, not a rigid set of rules. The requirements of a project may change over time, and a workflow that was appropriate when the project started may no longer be the best choice. There is nothing wrong with modifying a workflow to better suit the needs of the project. However, when collaborating with others, it is important that everyone understands and agrees on how the workflow is used.</p>
 </section>
-<section id="the-simplest-possible-workflow" class="level2" data-number="8.2">
-<h2 data-number="8.2" class="anchored" data-anchor-id="the-simplest-possible-workflow"><span class="header-section-number">8.2</span> The simplest possible workflow</h2>
-<p>Let’s start with simplest possible workflow: working on a project on your own and simply making commits to <code>main</code> from time to time. You simply use <code>git init</code> to initialize a Git repository, and then use <code>git add .</code> and <code>git commit</code> when you feel like it. You are not exactly utilizing Git to the fullest using this workflow, but at the same time this is sometimes the most appropriate approach to use. For example, imagine you have a text document where you keep work-related notes, maybe as an alternative to using the Microsoft Sticky Notes app, and you would like to use Git so that you can easily recover old notes that you have deleted because you thought you didn’t need them any more. Making a commit on <code>main</code> every time you change your notes is probably all you need.</p>
-<div style="width:70%;margin:auto">
-<p><img src="./diagrams/workflows-simple.drawio.svg" class="img-fluid"></p>
-</div>
+<section id="the-simplest-possible-workflow" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="the-simplest-possible-workflow"><span class="header-section-number">9.2</span> The simplest possible workflow</h2>
+<p>The simplest possible Git workflow is to work directly on the <code>main</code> branch of a local repository, making commits whenever you want to save a new version of your work. There is no need to create additional branches or use remote repositories.</p>
+<p>For example, imagine that you maintain a text document containing work-related notes. You would like to use Git to keep track of changes so that you can recover earlier versions of your notes if you accidentally delete or modify them. In this case, you could simply initialize a Git repository and make a new commit whenever you update the document.</p>
+<p>This workflow provides the basic benefits of version control without introducing any additional complexity. While it does not take advantage of many of Git’s more advanced features, it may be perfectly sufficient for a small project developed by a single person.</p>
 </section>
-<section id="centralized-workflow" class="level2" data-number="8.3">
-<h2 data-number="8.3" class="anchored" data-anchor-id="centralized-workflow"><span class="header-section-number">8.3</span> Centralized workflow</h2>
-<p>The centralized workflow is a simple workflow using a remote as a central repository. Each developer clones the repository and works on their own local copy of the project, making changes and commits locally on their <code>main</code> branch. When a developer wants to integrate their local changes they first fetch from the central repository. If nothing has changed since they started their local work, they can simply push their changes to <code>main</code> in the central repository. In case new commits have been on the central repository by others in the meantime, they replay their local commits onto the tip of <code>main</code> in the central repository, fixing any merge-conflicts in the process.</p>
+<section id="centralized-workflow" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="centralized-workflow"><span class="header-section-number">9.3</span> Centralized workflow</h2>
+<p>The centralized workflow is based on using a shared remote repository as the central location for a project. Each collaborator has their own local clone of the repository, where they work on their local <code>main</code> branch.</p>
+<p>In a centralized workflow, collaborators commit changes on their local <code>main</code> branches and push them to the central repository to share their work. Before pushing, they may need to integrate changes made by other collaborators, potentially resolving merge conflicts in the process.</p>
+<p>The centralized workflow is relatively simple because everyone develops changes on their local version of the same branch. It can work well for small teams where changes are straightforward and collaborators coordinate their work.</p>
+<p>However, it also has limitations. Because development takes place directly on <code>main</code>, collaborators must take care not to push unfinished or untested changes to the central repository. Furthermore, collaborators may need to coordinate their work carefully to avoid interfering with each other’s changes.</p>
+</section>
+<section id="feature-branch-workflow" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="feature-branch-workflow"><span class="header-section-number">9.4</span> Feature branch workflow</h2>
+<p>In a feature branch workflow, development takes place on separate branches, called <em>feature branches</em>, rather than directly on <code>main</code>. When collaborating with others, a shared central repository can be used to exchange changes on these branches.</p>
+<p>When a developer wants to implement a new feature, fix a bug, or make some other change, they create a new branch for that task. Development takes place on this branch, leaving <code>main</code> unaffected. Once the work is completed, the feature branch is typically merged into <code>main</code>, after which it can be deleted.</p>
+<p>An important advantage of this workflow is that unfinished changes can be developed independently, while <code>main</code> can be reserved for completed and working versions of the project.</p>
+<p>Feature branches also facilitate collaboration. Different developers can work on separate tasks simultaneously, and branches can be pushed to the central repository so that other collaborators can inspect and review the changes before they are integrated. On hosting services such as GitHub, this process can be organized using <em>pull requests</em>, which are described in more detail in <a href="part2-github.html" class="quarto-xref"><span>Chapter 8</span></a>.</p>
+<p>The feature branch workflow is particularly useful for projects where multiple changes are developed simultaneously, or where it is important to review or test changes before integrating them into <code>main</code>. However, using feature branches does not eliminate merge conflicts, and maintaining many branches can introduce additional complexity.</p>
+</section>
+<section id="forking-workflow" class="level2" data-number="9.5">
+<h2 data-number="9.5" class="anchored" data-anchor-id="forking-workflow"><span class="header-section-number">9.5</span> Forking workflow</h2>
+<p>The forking workflow differs from the previous workflows primarily in how collaborators access and contribute to the central repository.</p>
+<p>In the centralized and feature branch workflows, collaborators typically have permission to push changes to a shared central repository. However, this is not always desirable or possible. The forking workflow offers an alternative that allows contributors to collaborate on a project without having write access to the central repository. Instead, contributors create their own copies, or <em>forks</em>, of the central repository on a hosting service such as GitHub.</p>
+<p>Each contributor clones their own fork and develops changes locally. They then push their changes to their fork and submit a pull request proposing that the changes be integrated into the original repository. The maintainers of the original repository can review the proposed changes and decide whether to accept them.</p>
+<p>This workflow is particularly useful for open-source projects, where contributors can propose changes while the maintainers retain control over which changes are integrated into the official repository.</p>
+<p>The forking workflow can also be combined with the feature branch workflow. For example, a contributor may create a feature branch in their own fork and submit a pull request when the changes are ready.</p>
+</section>
+<section id="a-workflow-in-practice-developing-this-tutorial" class="level2" data-number="9.6">
+<h2 data-number="9.6" class="anchored" data-anchor-id="a-workflow-in-practice-developing-this-tutorial"><span class="header-section-number">9.6</span> A workflow in practice: Developing this tutorial</h2>
+<p>To illustrate how a Git workflow can be selected and evaluated, let’s consider the workflow used to develop this tutorial.</p>
+<p>The choice of workflow was based on several considerations:</p>
+<ul>
+<li><p>The tutorial was developed by a single person, so there was little need for a workflow supporting extensive collaboration.</p></li>
+<li><p>The repository needed to be hosted on GitHub to make the tutorial available through GitHub Pages and allow development from different computers.</p></li>
+<li><p>The <code>main</code> branch would be used to publish the tutorial on GitHub Pages. It was therefore desirable to keep unfinished changes separate from this branch.</p></li>
+<li><p>Development would involve many different tasks, such as writing new chapters, revising existing chapters, and creating illustrations. It would be useful to develop these changes independently using feature branches.</p></li>
+<li><p>It would be useful to maintain a stable development version of the tutorial that was not necessarily ready for publication.</p></li>
+</ul>
+<p>Based on these considerations, a workflow inspired by the feature branch workflow was selected. The repository was hosted on GitHub, with <code>main</code> serving as the branch used to publish the tutorial on GitHub Pages. A second branch, <code>dev</code>, was created to maintain a stable development version of the tutorial.</p>
+<p>New features and revisions were developed in separate feature branches, created from <code>dev</code>. Once a task was completed, its feature branch could be merged into <code>dev</code>. When the development version had progressed sufficiently, the changes could then be integrated into <code>main</code>. Pushing the updated website files to GitHub would then trigger an update of the published tutorial.</p>
 <div style="width:100%;margin:auto">
-<p><img src="./diagrams/workflows-centralized.drawio.svg" class="img-fluid"></p>
-</div>
-</section>
-<section id="feature-branch-workflow" class="level2" data-number="8.4">
-<h2 data-number="8.4" class="anchored" data-anchor-id="feature-branch-workflow"><span class="header-section-number">8.4</span> Feature branch workflow</h2>
-<p>The feature branch workflow also uses a remote as a central repository, and the core idea behind the feature branch workflow is to move development of code away from the main branch and into other branches, so-called feature branches. This makes it easier to develop new features without disturbing the main version of the code. This keeps the main version of the code stable and always working. Pushing the feature branches to the central repository also enables the possibility of collaborators to review and discuss of code before it is integrated into <code>main</code>, either by the person who developed the feature or by a collaborator who has been assigned the task to be the only person who commits to <code>main</code>. If the central repository lives on a hosting site like GitHub this process is even smoother using pull request and discussion features of such sites. Developing code in a feature branch workflow where each task/feature is clearly defined and developed in a separate branch, will also lead to fewer and less complicated merge conflicts, since changes in each feature branch is less likely to be overlapping with changes made in other feature branches.</p>
-<div style="width:50%;margin:auto">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./diagrams/workflows-feature.drawio.svg" class="img-fluid figure-img"></p>
-<figcaption>Central repository</figcaption>
+<p><img src="./diagrams/workflows-example.drawio.svg" class="img-fluid figure-img"></p>
+<figcaption>Illustration of the workflow used to develop this tutorial</figcaption>
 </figure>
 </div>
 </div>
+<p>This workflow made it possible to work on several different parts of the tutorial independently, while maintaining a stable version for publication. It also provided some flexibility in deciding when completed changes should be made publicly available.</p>
+<p>In practice, however, the role of the <code>dev</code> branch was less pronounced than originally anticipated. Most changes were suitable for publication as soon as the corresponding feature or revision was completed. Consequently, there was often little reason to maintain separate versions of the tutorial in <code>dev</code> and <code>main</code> for extended periods.</p>
+<p>The workflow nevertheless worked well for the project. Using feature branches proved useful for organizing development, while the <code>dev</code> branch provided an additional level of separation between development and publication when needed. In retrospect, the project could probably have been managed just as effectively without <code>dev</code>, integrating completed feature branches directly into <code>main</code>. This illustrates that a workflow can be appropriate for a project even if some aspects of it turn out to be less important than initially anticipated.</p>
 </section>
-<section id="forking-workflow" class="level2" data-number="8.5">
-<h2 data-number="8.5" class="anchored" data-anchor-id="forking-workflow"><span class="header-section-number">8.5</span> Forking workflow</h2>
-<p>The forking workflow is fundamentally different from the previously introduced workflows. It is centered around using a Git hosting site, like GitHub, where you can fork a repository, i.e.&nbsp;collaborators can make a server-site clone of the official repository. Instead of cloning the central repository, collaborators make a fork of the official central repository, and clone that repository instead. In their local clone, collaborators develop changes, and then push them to their fork. Afterwards, they file a pull request to the maintainer of the official repository, and the maintainer can then decide if they want to integrate the changes. This workflow is often seen in public open source projects. The maintainer of the project is the only one with write access to the official project, but other people can still contribute to the project using this workflow.</p>
-</section>
-<section id="example" class="level1" data-number="9">
-<h1 data-number="9"><span class="header-section-number">9</span> Example</h1>
-<p>To give a concrete example of a Git workflow in a project, let’s look at the workflow that was used for the codebase used to make this tutorial. When deciding on a workflow the following considerations were made:</p>
+<section id="summary" class="level2" data-number="9.7">
+<h2 data-number="9.7" class="anchored" data-anchor-id="summary"><span class="header-section-number">9.7</span> Summary</h2>
+<p>In this chapter, we introduced the concept of Git workflows and discussed several common approaches to organizing development with Git.</p>
 <ul>
-<li><p>Project developed by a single developer, so no need to worry too much about a structured workflow or rebasing commits.</p></li>
-<li><p>Want to be able to access the project from my personal computer.</p></li>
-<li><p>Want to host tutorial and slides on GitHub pages. Need a stable branch for this, where every new commit to the branch triggers and automatic update of the static website.</p></li>
-<li><p>Want another primary branch where I have a stable, but less polished version of the tutorial that is not quite ready to trigger an update of the tutorial on GitHub pages.</p></li>
-<li><p>Want to use a feature branch inspired workflow.</p></li>
+<li><p>A Git workflow is a set of guidelines for how Git is used in a project, including how changes are developed, shared, and integrated.</p></li>
+<li><p>Different workflows are appropriate for different projects, depending on factors such as the number of collaborators and how changes should be integrated.</p></li>
+<li><p>Simple, centralized, feature branch, and forking workflows offer different ways of organizing development and collaboration.</p></li>
+<li><p>A workflow should be kept as simple as possible while still meeting the needs of the project.</p></li>
+<li><p>Workflows can be adapted as the requirements of a project change or as experience reveals that a different approach would be more appropriate.</p></li>
 </ul>
-<p>Based on these considerations, it was of course as given that a remote on GitHub should be used as the central repository for project. The <code>main</code> branch was chosen to be used to generate the static website on GitHub pages, and another primary branch <code>dev</code>, branching off of <code>main</code>, was used to have another stable branch, from which feature branches were made. Every time the stable version on <code>dev</code> had progressed enough to warrant updating the website, <code>dev</code> was integrated into <code>main</code>, triggering an automatic update of the website. Using this workflow it would also be easy for others to contribute by using a forking workflow (although this was deemed highly unlikely to happen in practice). Finally, it is expected that this project will receive updates beyond the first final version. In this case, the entire history of the repository might be rewritten as a single commit, since the entire history up until the first version is irrelevant, and it will make the history cleaner going forward.</p>
-<p>In practice, the <code>dev</code> branch was barely used in practice (at least up until this point), since most of the time it felt appropriate to update the website each time a new feature had been implemented, e.g.&nbsp;a new draft of a chapter was added, revised etc.</p>
+</section>
+<section id="exercise---choosing-a-git-workflow" class="level2" data-number="9.8">
+<h2 data-number="9.8" class="anchored" data-anchor-id="exercise---choosing-a-git-workflow"><span class="header-section-number">9.8</span> Exercise - Choosing a Git workflow</h2>
+<p>Imagine that you and a colleague are developing code for data management and statistical analyses in a research project. You are responsible for designing and implementing the code, and your colleague primarily makes corrections and improvements to existing code.</p>
+<p>You have created a bare Git repository in a shared network directory to serve as the central remote repository. Both of you have your own local clones of this repository.</p>
+<p>You want to ensure that the <code>main</code> branch always contains working code, even if the project is not yet complete, while allowing both of you to work independently.</p>
+<ol type="1">
+<li><p>Which of the workflows introduced in this chapter would you choose for this project? Explain your reasoning.</p></li>
+<li><p>Describe how you and your colleague would organize work using this workflow. Which branches would you use, and how would you integrate your changes into <code>main</code>?</p></li>
+<li><p>Would introducing an additional development branch, such as <code>dev</code>, offer any advantages? Do you think it would be necessary?</p></li>
+<li><p>Imagine instead that you had initially developed the project on your own. Would this affect your choice of workflow? How would you adapt your workflow if a colleague later joined the project?</p></li>
+</ol>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Suggested solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>For questions 2 and 3, we assume that the collaborators have chosen a feature branch workflow.</p>
+<ol type="1">
+<li><p>A feature branch workflow would be an appropriate choice because it allows both collaborators to work independently without introducing unfinished changes into <code>main</code>. However, a centralized workflow could also be appropriate, particularly if the collaborators coordinate their work closely and changes are relatively small.</p></li>
+<li><p>Each collaborator could create a separate feature branch for their work. Once the changes are completed, the feature branch could be merged into <code>main</code>, and the updated <code>main</code> branch pushed to the central repository. The other collaborator could then retrieve the changes from the central repository and integrate them into their own local branch.</p></li>
+<li><p>An additional <code>dev</code> branch could be useful if the collaborators wanted to maintain a stable version of the code in <code>main</code>, while using <code>dev</code> to integrate changes that were still being tested or revised. Changes could then be integrated into <code>main</code> at important project milestones, such as the completion of a first draft or a new set of analyses. However, this additional separation would not necessarily be needed for the project.</p></li>
+<li><p>If you developed the project on your own, both the simplest possible workflow and a feature branch workflow could be appropriate. You could commit directly to <code>main</code> without using a remote, or use feature branches to keep unfinished changes separate from <code>main</code>. In either case, you could also use a remote repository as a backup.</p>
+<p>If a colleague later joined the project, you would need a shared remote repository to facilitate collaboration. If you were already using a remote for backup, it could also serve as the central repository. You could then continue using a feature branch workflow or adopt one if you had previously worked directly on <code>main</code>. Alternatively, a centralized workflow might be sufficient for a small project involving only two collaborators.</p></li>
+</ol>
+</div>
+</div>
+</div>
 
 
 </section>
@@ -429,11 +486,30 @@ ul.task-list li input[type="checkbox"] {
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
         var filterRegex = new RegExp('/' + window.location.host + '/');
+      const newWindowLabel = "(opens in a new tab)";
+      const newWindowNoteId = "quarto-ext-newwindow-label";
+      // Links reference one hidden label through aria-describedby, so the
+      // announcement never changes their accessible name.
+      var describeNewWindow = (link) => {
+        if (!window.document.getElementById(newWindowNoteId)) {
+          var newWindowNote = window.document.createElement("span");
+          newWindowNote.id = newWindowNoteId;
+          newWindowNote.hidden = true;
+          newWindowNote.textContent = newWindowLabel;
+          window.document.body.appendChild(newWindowNote);
+        }
+        var describedBy = (link.getAttribute("aria-describedby") || "").split(/\s+/).filter(Boolean);
+        if (!describedBy.includes(newWindowNoteId)) {
+          describedBy.push(newWindowNoteId);
+          link.setAttribute("aria-describedby", describedBy.join(" "));
+        }
+      }
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
       // Inspect non-navigation links and adorn them if external
-     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
       for (var i=0; i<links.length; i++) {
         const link = links[i];
         if (!isInternal(link.href)) {
@@ -447,8 +523,70 @@ ul.task-list li input[type="checkbox"] {
             if (link.getAttribute("rel") === null) {
               link.setAttribute("rel", "noopener");
             }
+            describeNewWindow(link);
+          if (!link.classList.contains('no-external-icon')) {
+          }
         }
       }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
       const config = {
         allowHTML: true,
@@ -462,6 +600,7 @@ ul.task-list li input[type="checkbox"] {
         interactiveBorder: 10,
         theme: 'quarto',
         placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
       };
       if (contentFn) {
         config.content = contentFn;
@@ -506,44 +645,54 @@ ul.task-list li input[type="checkbox"] {
           const lineIds = lines.map((line) => {
             return targetCell + "-" + line;
           })
-          let top = null;
-          let height = null;
-          let parent = null;
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
           if (lineIds.length > 0) {
-              //compute the position of the single el (top and bottom and make a div)
-              const el = window.document.getElementById(lineIds[0]);
-              top = el.offsetTop;
-              height = el.offsetHeight;
-              parent = el.parentElement.parentElement;
-            if (lineIds.length > 1) {
-              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-              height = bottom - top;
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
             }
-            if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
-              let div = window.document.getElementById("code-annotation-line-highlight");
-              if (div === null) {
-                div = window.document.createElement("div");
-                div.setAttribute("id", "code-annotation-line-highlight");
-                div.style.position = 'absolute';
-                parent.appendChild(div);
-              }
-              div.style.top = top - 2 + "px";
-              div.style.height = height + 4 + "px";
-              div.style.left = 0;
-              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-              if (gutterDiv === null) {
-                gutterDiv = window.document.createElement("div");
-                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                gutterDiv.style.position = 'absolute';
-                const codeCell = window.document.getElementById(targetCell);
-                const gutter = codeCell.querySelector('.code-annotation-gutter');
-                gutter.appendChild(gutterDiv);
-              }
-              gutterDiv.style.top = top - 2 + "px";
-              gutterDiv.style.height = height + 4 + "px";
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
             }
+            placeBand(gutterDiv, el, lastEl);
             selectedAnnoteEl = annoteEl;
           }
         };
@@ -642,15 +791,18 @@ ul.task-list li input[type="checkbox"] {
     }
   });
   </script>
-<nav class="page-navigation">
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
+  </script>
+<nav class="page-navigation" aria-label="Page">
   <div class="nav-page nav-page-previous">
-      <a href="./part1-ch07-remotes.html" class="pagination-link" aria-label="Remote repositories">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Remote repositories</span></span>
+      <a href="./part2-github.html" class="pagination-link" aria-label="Introduction to GitHub">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Introduction to GitHub</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./part2-git-reflog.html" class="pagination-link" aria-label="Recovering deleted commits">
-        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Recovering deleted commits</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./part2-git-rebase.html" class="pagination-link" aria-label="Rebasing">
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Rebasing</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
