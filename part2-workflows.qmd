@@ -128,18 +128,19 @@ While developing the code for the project, you want to ensure that the `main` br
 
 3. Would there be any advantages to introducing a development branch, for example called `dev`, branching off from `main`? Do you think it would be necessary?
 
-4. Suppose developed the project on your own. Would this affect your choice of workflow? How would you adapt your workflow if a collegaue later joined the project?
+4. Imagine instead that you had initially developed the project on your own. Would this affect your choice of workflow? How would you adapt your workflow if a colleague later joined the project? 
 
 ::: {.callout-note title="Suggested solution" collapse="true" icon="false"}
 
-1. A feature branch workflow would be an appropriate choice because it allows both collaborators to work independently without introducing unfinished changes into `main`. However,, a centralized workflow could also be appropriate, particularly if the collaborators coordinate their work closely and changes are relatively small. 
+1. A feature branch workflow would be an appropriate choice because it allows both collaborators to work independently without introducing unfinished changes into `main`. However,, a centralized workflow could also be appropriate, particularly if the collaborators coordinate their work closely and changes are relatively small.
 
-TODO: need to add that the below answers assumes we have chosen a feature branch workflow?
+For the remainding questions, we will assume that the collaborators have chosen to use a feature branch workflow.
 
 2. Each collaborator could create a separate feature branch for their work. Once the changes are completed, the feature branch could be merged into `main`, and the updated `main` branch pushed to the central repository. The other collaborator could then fetch or pull these changes into their local clone.
 
 3. An additional `dev` branch could be useful if the collaborators wanted to maintain a stable version of the code in `main`, while using `dev` to integrate changes that were still being tested or revised. Changes could then be integrated into `main` at important project milestones, such as the completion of a first draft or a new set of analyses. However, this additional separation would not necessarily be needed for the project.
 
-4. If you developed the project on your own, a feature branch workflow would still be appropriate. You could even still use a local remote as a backup instead. Alternatively, in this case it might also be perfectly reasonable to use a simple workflow commiting directly to main, and not using any remotes. If a collaborator later joined the project and you were already using a feature branch workflow, you would not need to change anything. The backup could simply now function as the central repository. If you had instead used a simple workflow, you could easily make a local remote and adapt a feature branch workflow.
+4. If you developed the project on your own, a feature branch workflow would still be appropriate. You could even still use a local remote as a backup instead. Alternatively, in this case it might also be perfectly reasonable to use a simple workflow commiting directly to main, and not using any remotes.
+If you were already using a feature branch workflow with a shared remote serving as a backup, relatively few chagnes would be needed. The remote could also serve as the central repository for collaboration. If you had instead used the simplest possible workflow, you could create a central remote repository and adopt either a centralized or a feature branch workflow.
 
 :::
