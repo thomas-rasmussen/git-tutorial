@@ -59,6 +59,12 @@ Consider in more detail how gh auth login -p https -cw works regarding storing o
 
 - Many diagrams look a little crude. If time permits it, work on making them more visually polished.
 
+- Make a fresh installation of Git for Windows and check what the default branch name is using the newest
+version of Git for Windows. If it is not "main", consider if "master" should be used in tutorial.
+
+- Colouring git status output: it seems like the arrow after HEAD is always also the same colour,
+  but sofar it has been coloured yellow. check and change as necessary.
+
 **---TODO: exercises---**
 
 In some cases, the exercises are almost identical replications of examples in the corresponding chapters. Think about how the exercises can be modified to feel more unique. Maybe by trying to describe more realistic examples, or by introducing details and twists that separates them from the examples.

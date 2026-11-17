@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>11&nbsp; Recovering deleted commits – Git tutorial</title>
+<title>11&nbsp; Recovering lost commits – Git tutorial</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -90,7 +90,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part2-github.html">Part II</a></li><li class="breadcrumb-item"><a href="./part2-git-reflog.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Recovering deleted commits</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part2-github.html">Part II</a></li><li class="breadcrumb-item"><a href="./part2-git-reflog.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Recovering lost commits</span></a></li></ol></nav>
         <a class="flex-grow-1" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -201,7 +201,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./part2-git-reflog.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Recovering deleted commits</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Recovering lost commits</span></span></a>
   </div>
 </li>
       </ul>
@@ -260,11 +260,12 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#when-does-git-actually-delete-an-object" id="toc-when-does-git-actually-delete-an-object" class="nav-link active" data-scroll-target="#when-does-git-actually-delete-an-object"><span class="header-section-number">11.1</span> When does Git actually delete an object?</a></li>
-  <li><a href="#identifying-and-recovering-unreachable-commits-using-the-reference-log" id="toc-identifying-and-recovering-unreachable-commits-using-the-reference-log" class="nav-link" data-scroll-target="#identifying-and-recovering-unreachable-commits-using-the-reference-log"><span class="header-section-number">11.2</span> Identifying and recovering unreachable commits using the reference log</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">11.3</span> Exercises</a>
+  <li><a href="#what-happens-when-commits-become-unreachable" id="toc-what-happens-when-commits-become-unreachable" class="nav-link active" data-scroll-target="#what-happens-when-commits-become-unreachable"><span class="header-section-number">11.1</span> What happens when commits become unreachable?</a></li>
+  <li><a href="#recovering-commits-using-the-reflog" id="toc-recovering-commits-using-the-reflog" class="nav-link" data-scroll-target="#recovering-commits-using-the-reflog"><span class="header-section-number">11.2</span> Recovering commits using the reflog</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">11.3</span> Summary</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">11.4</span> Exercises</a>
   <ul class="collapse">
-  <li><a href="#recover-an-undone-commit" id="toc-recover-an-undone-commit" class="nav-link" data-scroll-target="#recover-an-undone-commit">Recover an “undone” commit</a></li>
+  <li><a href="#recover-an-undone-commit" id="toc-recover-an-undone-commit" class="nav-link" data-scroll-target="#recover-an-undone-commit">Recover an undone commit</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -272,9 +273,9 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content" tabindex="-1">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part2-github.html">Part II</a></li><li class="breadcrumb-item"><a href="./part2-git-reflog.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Recovering deleted commits</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part2-github.html">Part II</a></li><li class="breadcrumb-item"><a href="./part2-git-reflog.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Recovering lost commits</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-git-reflog" class="quarto-section-identifier"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Recovering deleted commits</span></span></h1>
+<h1 class="title"><span id="sec-git-reflog" class="quarto-section-identifier"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Recovering lost commits</span></span></h1>
 </div>
 
 
@@ -291,76 +292,84 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>When using Git, you will inevitable end up in a situation where you accidentally “delete” one or more commits, for example by deleting a branch before integrating the changes into the main code. The good news is, that the “deleted” commits are almost never truly gone, and they can be recovered. In this chapter we will introduce the reference log, also called reflog, which we can use to recover lost commits.</p>
-<section id="when-does-git-actually-delete-an-object" class="level2" data-number="11.1">
-<h2 data-number="11.1" class="anchored" data-anchor-id="when-does-git-actually-delete-an-object"><span class="header-section-number">11.1</span> When does Git actually delete an object?</h2>
-<div style="display: grid; grid-template-columns: 60% 40%">
-<div style="grid-column: 1">
-<p>If you delete a branch with commits that have not been integrated into the main code, the only thing you have done is deleting the reference to a specific commit, i.e.&nbsp;the pointer to the tip of a series of commits. The commit objects are still in the Git database, but they are now unreachable: they are not ancestors of any commits that are on a branch. From time to time Git <em>will</em> delete unnecessary (unreachable) commits and optimize the repository when it deems it necessary, but this only happens when you do specific operations or after a long period of time in very large repositories. If you want to recover a lost commit, you can always do this as long as you do so right after accidentally “deleting them”.</p>
-</div>
-<div style="grid-column: 2">
+<p>When working with Git, you may accidentally lose commits, for example by deleting a branch before merging its changes or by resetting a branch to an earlier commit. Fortunately, the commits themselves may still exist in Git’s database and can often be recovered. In this chapter, we will introduce the <em>reference log</em> (reflog) and demonstrate how it can be used to find and recover lost commits.</p>
+<section id="what-happens-when-commits-become-unreachable" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="what-happens-when-commits-become-unreachable"><span class="header-section-number">11.1</span> What happens when commits become unreachable?</h2>
+<p>A commit is unreachable when it can no longer be reached by following the commit history from any remaining reference. Commits can become unreachable when a branch is reset to an earlier commit or when a branch containing unmerged commits is deleted.</p>
+<p>The figure illustrates how a commit can become unreachable when a branch is deleted. Deleting the <code>feature</code> branch removes the reference pointing to commit C3. Since no other reference provides access to this commit, it becomes unreachable. However, the commit object still exists in Git’s database.</p>
+<div style="width:100%;margin:auto">
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<img src="diagrams/reflog-deleted-branch.drawio.svg" class="figure-img">
-<figcaption>
-Unreachable commits on a deleted branch
-</figcaption>
+<p><img src="./diagrams/reflog-deleted-branch.drawio.svg" class="img-fluid figure-img"></p>
+<figcaption>Unreachable commits on a deleted branch</figcaption>
 </figure>
 </div>
 </div>
+<p>Git may eventually remove unreachable commits as part of its regular maintenance. Therefore, lost commits can often be recovered, but recovery is not guaranteed indefinitely.</p>
 </section>
-<section id="identifying-and-recovering-unreachable-commits-using-the-reference-log" class="level2" data-number="11.2">
-<h2 data-number="11.2" class="anchored" data-anchor-id="identifying-and-recovering-unreachable-commits-using-the-reference-log"><span class="header-section-number">11.2</span> Identifying and recovering unreachable commits using the reference log</h2>
-<p>To recover a lost commit, the first step is to recover the SHA-1 checksum of that commit. Since this commit is now unreachable, we can not use <code>git log &lt;branch&gt;</code> to find the SHA-1 checksum, since <code>git log &lt;branch&gt;</code> only includes reachable commits from the tip of a branch. But Git has another tool that can help us: the reference log, or just reflog, which has its own command, <code>git reflog</code>. The reflog logs all changes to a reference that has happened over time, meaning that every time a reference is changed to point to something else, this is logged. Let’s see how this looks like in practice by creating a repository with the same history as illustrated above: a <code>main</code> branch with two commits, and a <code>feature</code> branch with a single commit off of <code>main</code>, where we delete the <code>feature</code> branch before integrating the changes into <code>main</code>:</p>
+<section id="recovering-commits-using-the-reflog" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="recovering-commits-using-the-reflog"><span class="header-section-number">11.2</span> Recovering commits using the reflog</h2>
+<p>When a commit becomes unreachable, we can no longer find it using <code>git log --all</code>, because this command only displays commits reachable from existing references. To recover a lost commit, we therefore need another way to identify it.</p>
+<p>Fortunately, Git maintains <em>reference logs</em>, or <em>reflogs</em>, which record changes to references over time. These logs allow us to see which commits references have pointed to in the past. We can inspect reflogs using the <code>git reflog</code> command, which displays the reflog of <code>HEAD</code> by default. Reflogs are maintained locally and are not shared when pushing or fetching changes.</p>
+<p>Let’s see how we can use the reflog to recover a commit that becomes unreachable when a branch is deleted. We will create a repository with the history illustrated above: two commits on <code>main</code> and an additional commit on <code>feature</code>. We will then switch back to <code>main</code> and delete the <code>feature</code> branch. Because <code>feature</code> contains a commit that has not been merged into <code>main</code>, Git will refuse to delete it using <code>git branch -d</code>. We therefore use <code>git branch -D</code> to force its deletion:</p>
 <pre class="terminal">$ mkdir ~/reflog-example
 $ cd ~/reflog-example
 $ git init
 $ echo "Content of C1" &gt; file.txt
 $ git add .
-$ git commit -m"C1"
+$ git commit -m "C1"
 $ echo "Content of C2" &gt;&gt; file.txt
-$ git commit -am"C2"
+$ git commit -am "C2"
 $ git switch -c feature
 $ echo "Content of C3" &gt;&gt; file.txt
-$ git commit -am"C3"
+$ git commit -am "C3"
 $ git switch main
 $ git branch -D feature
-$ git log --oneline --all --graph
-* <span class="col-hash">6891983 (</span><span class="col-head">HEAD</span> <span class="col-hash">-&gt;</span> <span class="col-branch-local">main</span><span class="col-hash">)</span> C2
-* <span class="col-hash">a961cba</span> C1
+Deleted branch feature (was b2d535d).
+$ git log --oneline --all
+<span class="col-hash">6891983</span> <span class="col-yellow">(</span><span class="col-head">HEAD -&gt;</span> <span class="col-branch-local">main</span><span class="col-yellow">)</span> C2
+<span class="col-hash">a961cba</span> C1
 </pre>
-<p>After deleting <code>feature</code>, we can no longer see the commits on that branch. If we run <code>git reflog</code> however, we can recover the branch:</p>
+<p>When deleting a branch, Git displays the commit ID of its tip. However, this information may no longer be available when we later discover that the branch contained commits we wanted to keep. Fortunately, we can use <code>git reflog</code> to locate the lost commit:</p>
 <pre class="terminal">$ git reflog
-<span class="col-hash">6891983 (</span><span class="col-head">HEAD</span> <span class="col-hash">-&gt;</span> <span class="col-branch-local">main</span><span class="col-hash">)</span> HEAD@{0}: checkout: moving from feature to main
+<span class="col-hash">6891983</span> <span class="col-yellow">(</span><span class="col-head">HEAD -&gt;</span> <span class="col-branch-local">main</span><span class="col-yellow">)</span> HEAD@{0}: checkout: moving from feature to main
 <span class="col-hash">b2d535d</span> HEAD@{1}: commit: C3
-<span class="col-hash">6891983 (</span><span class="col-head">HEAD</span> <span class="col-hash">-&gt;</span> <span class="col-branch-local">main</span><span class="col-hash">)</span> HEAD@{2}: checkout: moving from main to feature
-<span class="col-hash">6891983 (</span><span class="col-head">HEAD</span> <span class="col-hash">-&gt;</span> <span class="col-branch-local">main</span><span class="col-hash">)</span> HEAD@{3}: commit: C2
+<span class="col-hash">6891983</span> <span class="col-yellow">(</span><span class="col-head">HEAD -&gt;</span> <span class="col-branch-local">main</span><span class="col-yellow">)</span> HEAD@{2}: checkout: moving from main to feature
+<span class="col-hash">6891983</span> <span class="col-yellow">(</span><span class="col-head">HEAD -&gt;</span> <span class="col-branch-local">main</span><span class="col-yellow">)</span> HEAD@{3}: commit: C2
 <span class="col-hash">a961cba</span> HEAD@{4}: commit (initial): C1
 </pre>
-<p>By default, <code>git reflog</code> shows the reference log of HEAD. The format <code>HEAD @{x}</code>, means where was HEAD x moves ago. So <code>HEAD@{0}</code> means where is HEAD right now, <code>HEAD@{1}</code> means where was HEAD one move ago, and so one. From the reflog we can se that one move ago, HEAD was pointing to the C3 commit, the tip of the former <code>feature</code> branch, and we can see the SHA1 checksum of that commit is <code>b2d535d</code>. Now we can recover the <code>feature</code> branch simply by making a new branch pointing to that commit:</p>
+<p>Each entry in the reflog shows a commit ID, a reflog entry identifier such as <code>HEAD@{1}</code>, and a description of the operation that was performed. The entries are listed in reverse chronological order, with the most recent entry at the top. The notation <code>HEAD@{0}</code> refers to the current position of <code>HEAD</code>, while <code>HEAD@{1}</code> refers to its previous position, <code>HEAD@{2}</code> to the position before that, and so on.</p>
+<p>From the entry <code>HEAD@{1}</code>, we can see that <code>HEAD</code> previously pointed to commit C3, whose abbreviated commit ID is <code>b2d535d</code>. Although we have deleted the <code>feature</code> branch, this information is still available because the reflog of <code>HEAD</code> is maintained independently of the branch.</p>
+<p>We can now restore the <code>feature</code> branch by creating a new branch pointing to the lost commit:</p>
 <pre class="terminal">$ git branch feature b2d535d
-$ git log --oneline --graph --all
-* <span class="col-hash">b2d535d (</span><span class="col-branch-local">feature</span><span class="col-hash">)</span> C3
-* <span class="col-hash">6891983 (</span><span class="col-head">HEAD</span> <span class="col-hash">-&gt;</span> <span class="active-branch">main</span><span class="col-hash">)</span> C2
-* <span class="col-hash">a961cba</span> C1
+$ git log --oneline --all
+<span class="col-hash">b2d535d</span> <span class="col-yellow">(</span><span class="col-branch-local">feature</span><span class="col-yellow">)</span> C3
+<span class="col-hash">6891983</span> <span class="col-yellow">(</span><span class="col-head">HEAD -&gt;</span> <span class="col-branch-local">main</span><span class="col-yellow">)</span> C2
+<span class="col-hash">a961cba</span> C1
 </pre>
+<p>The <code>feature</code> branch has now been restored, and commit C3 is once again reachable.</p>
 </section>
-<section id="exercises" class="level2" data-number="11.3">
-<h2 data-number="11.3" class="anchored" data-anchor-id="exercises"><span class="header-section-number">11.3</span> Exercises</h2>
+<section id="summary" class="level2" data-number="11.3">
+<h2 data-number="11.3" class="anchored" data-anchor-id="summary"><span class="header-section-number">11.3</span> Summary</h2>
+<p>Deleting a branch or resetting a branch to an earlier commit can make commits unreachable without deleting them. Git maintains local reference logs, or <em>reflogs</em>, which can be used to locate lost commits. Once identified, a lost commit can be recovered by creating a new branch pointing to it or by resetting an existing branch to it. However, because reflog entries and unreachable commits are not retained indefinitely, recovery is not always possible.</p>
+</section>
+<section id="exercises" class="level2" data-number="11.4">
+<h2 data-number="11.4" class="anchored" data-anchor-id="exercises"><span class="header-section-number">11.4</span> Exercises</h2>
 <section id="recover-an-undone-commit" class="level3">
-<h3 class="anchored" data-anchor-id="recover-an-undone-commit">Recover an “undone” commit</h3>
-<p>In <a href="part1-ch05-undoing-changes.html" class="quarto-xref"><span>Chapter 5</span></a> we showed how we can “undo” a commit using <code>git reset</code>. In this exercise you will recover a commit that was accidentially “undone”.</p>
+<h3 class="anchored" data-anchor-id="recover-an-undone-commit">Recover an undone commit</h3>
+<p>In <a href="part1-ch05-undoing-changes.html" class="quarto-xref"><span>Chapter 5</span></a>, we showed how <code>git reset</code> can move a branch to an earlier commit. In this exercise, you will recover a commit that becomes unreachable after such a reset.</p>
 <p>Use the following commands to set up a repository with two commits on <code>main</code>:</p>
 <pre class="terminal">$ mkdir ~/ex-reflog-recover-undo
 $ cd ~/ex-reflog-recover-undo
 $ git init
 $ echo "Content" &gt; file.txt
 $ git add .
-$ git commit -m"First commit"
+$ git commit -m "First commit"
 $ echo "More content" &gt;&gt; file.txt
-$ git commit -am"Second commit"
+$ git commit -am "Second commit"
 </pre>
 <p><b>Step 1 - “Undo” the second commit</b></p>
-<p>Use <code>git reset</code> to “undo” the second commit and update the working directory and index to match the content of the first commit.</p>
+<p>Use <code>git reset</code> to “undo” the second commit and update the working tree and staging area to match the first commit.</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -378,8 +387,8 @@ $ git commit -am"Second commit"
 </div>
 </div>
 </div>
-<p><b>Step 2 - Recover the commit </b></p>
-<p>Print the commit log to check that the second commit is not unreachable. Then use the reference log to identify and recover the second commit using <code>git reset</code> again.</p>
+<p><b>Step 2 - Recover the commit</b></p>
+<p>Use <code>git log --all</code> to verify that the second commit is no longer reachable. Then use the reflog to identify the lost commit and recover it with <code>git reset</code>. Verify that the commit has been restored by inspecting the commit history.</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -393,14 +402,14 @@ $ git commit -am"Second commit"
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <pre class="terminal">$ git log --oneline --all
-<span class="col-hash">d3e3264 (</span><span class="col-head">HEAD</span> <span class="col-hash">-&gt;</span> <span class="col-branch-local">main</span><span class="col-hash">)</span> First commit
+<span class="col-hash">d3e3264</span> <span class="col-yellow">(</span><span class="col-head">HEAD -&gt;</span> <span class="col-branch-local">main</span><span class="col-yellow">)</span> First commit
 $ git reflog
-<span class="col-hash">d3e3264 (</span><span class="col-head">HEAD</span> <span class="col-hash">-&gt;</span> <span class="col-branch-local">main</span><span class="col-hash">)</span> HEAD@{0}: reset: moving to HEAD^
+<span class="col-hash">d3e3264</span> <span class="col-yellow">(</span><span class="col-head">HEAD -&gt;</span> <span class="col-branch-local">main</span><span class="col-yellow">)</span> HEAD@{0}: reset: moving to HEAD^
 <span class="col-hash">9071636</span> HEAD@{1}: commit: Second commit
-<span class="col-hash">d3e3264 (</span><span class="col-head">HEAD</span> <span class="col-hash">-&gt;</span> <span class="col-branch-local">main</span><span class="col-hash">)</span> HEAD@{2}: commit (initial): First commit
+<span class="col-hash">d3e3264</span> <span class="col-yellow">(</span><span class="col-head">HEAD -&gt;</span> <span class="col-branch-local">main</span><span class="col-yellow">)</span> HEAD@{2}: commit (initial): First commit
 $ git reset --hard 9071636
 $ git log --oneline
-<span class="col-hash">9071636 (</span><span class="col-head">HEAD</span> <span class="col-hash">-&gt;</span> <span class="col-branch-local">main</span><span class="col-hash">)</span> Second commit
+<span class="col-hash">9071636</span> <span class="col-yellow">(</span><span class="col-head">HEAD -&gt;</span> <span class="col-branch-local">main</span><span class="col-yellow">)</span> Second commit
 <span class="col-hash">d3e3264</span> First commit
 </pre>
 </div>

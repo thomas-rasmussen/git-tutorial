@@ -22,6 +22,8 @@ This tutorial assumes you are using Git version 2.51.0 or newer. If you are usin
 
 This tutorial assumes that you are using a Windows machine and have Git for Windows installed. See the start of @sec-git-bash for a link to download Git for Windows. We will be using Git exclusively from the terminal with Git Bash, a Bash environment for Windows. macOS users should be able to follow along with few or no changes, since the default shell on macOS is Zsh (or Bash on older systems). Linux users should also be able to follow along, regardless of which shell they use.
 
+Throughout this tutorial, we assume that the initial branch created by `git init` is named `main`. When installing Git for Windows, you can ensure this by selecting "Override the default branch name for new repositories" and specifying `main`. If your initial branch has a different name, you can either use that name instead of `main` in the examples or configure Git to use `main` by running `git config --global init.defaultBranch main`.
+
 As stated earlier, we will work exclusively from the terminal using Git Bash. You do not need any prior experience working from the terminal, but if you have no such experience, start by going through @sec-git-bash. 
 
 Finally, if you want to follow along in @sec-introduction-to-github, you will need to create a GitHub account and authenticate with GitHub using the GitHub CLI, which must also be installed. See @sec-introduction-to-github for details.

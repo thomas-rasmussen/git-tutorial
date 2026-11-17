@@ -1,30 +1,28 @@
-# Recovering deleted commits {#sec-git-reflog}
+# Recovering lost commits {#sec-git-reflog}
 
-When using Git, you will inevitable end up in a situation where you accidentally "delete" one or more commits, for example by deleting a branch before integrating the changes into the main code. The good news is, that the "deleted" commits are almost never truly gone, and they can be recovered. In this chapter we will introduce the reference log, also called reflog, which we can use to recover lost commits.
+When working with Git, you may accidentally lose commits, for example by deleting a branch before merging its changes or by resetting a branch to an earlier commit. Fortunately, the commits themselves may still exist in Git's database and can often be recovered. In this chapter, we will introduce the *reference log* (reflog) and demonstrate how it can be used to find and recover lost commits.
 
 
-## When does Git actually delete an object?
+## What happens when commits become unreachable?
 
-<div style="display: grid; grid-template-columns: 60% 40%">
-<div style="grid-column: 1">
+A commit is unreachable when it can no longer be reached by following the commit history from any remaining reference. Commits can become unreachable when a branch is reset to an earlier commit or when a branch containing unmerged commits is deleted.
 
-If you delete a branch with commits that have not been integrated into the main code, the only thing you have done is deleting the reference to a specific commit, i.e. the pointer to the tip of a series of commits. The commit objects are still in the Git database, but they are now unreachable: they are not ancestors of any commits that are on a branch. From time to time Git *will* delete unnecessary (unreachable) commits and optimize the repository when it deems it necessary, but this only happens when you do specific operations or after a long period of time in very large repositories. If you want to recover a lost commit, you can always do this as long as you do so right after accidentally "deleting them".
+The figure illustrates how a commit can become unreachable when a branch is deleted. Deleting the `feature` branch removes the reference pointing to commit C3. Since no other reference provides access to this commit, it becomes unreachable. However, the commit object still exists in Git's database.
 
+<div style="width:100%;margin:auto">
+![Unreachable commits on a deleted branch](./diagrams/reflog-deleted-branch.drawio.svg)
 </div>
 
-<div style="grid-column: 2">
-  <figure>
-    <img src="diagrams/reflog-deleted-branch.drawio.svg">
-    <figcaption>Unreachable commits on a deleted branch</figcaption>
-  </figure>
-</div>
-
-</div>
+Git may eventually remove unreachable commits as part of its regular maintenance. Therefore, lost commits can often be recovered, but recovery is not guaranteed indefinitely.
 
 
-## Identifying and recovering unreachable commits using the reference log
+## Recovering commits using the reflog
 
-To recover a lost commit, the first step is to recover the SHA-1 checksum of that commit. Since this commit is now unreachable, we can not use `git log <branch>` to find the SHA-1 checksum, since `git log <branch>` only includes reachable commits from the tip of a branch. But Git has another tool that can help us: the reference log, or just reflog, which has its own command, `git reflog`. The reflog logs all changes to a reference that has happened over time, meaning that every time a reference is changed to point to something else, this is logged. Let's see how this looks like in practice by creating a repository with the same history as illustrated above: a `main` branch with two commits, and a `feature` branch with a single commit off of `main`, where we delete the `feature` branch before integrating the changes into `main`:
+When a commit becomes unreachable, we can no longer find it using `git log --all`, because this command only displays commits reachable from existing references. To recover a lost commit, we therefore need another way to identify it.
+
+Fortunately, Git maintains *reference logs*, or *reflogs*, which record changes to references over time. These logs allow us to see which commits references have pointed to in the past. We can inspect reflogs using the `git reflog` command, which displays the reflog of `HEAD` by default. Reflogs are maintained locally and are not shared when pushing or fetching changes.
+
+Let's see how we can use the reflog to recover a commit that becomes unreachable when a branch is deleted. We will create a repository with the history illustrated above: two commits on `main` and an additional commit on `feature`. We will then switch back to `main` and delete the `feature` branch. Because `feature` contains a commit that has not been merged into `main`, Git will refuse to delete it using `git branch -d`. We therefore use `git branch -D` to force its deletion:
 
 <pre class="terminal">
 $ mkdir ~/reflog-example
@@ -32,47 +30,58 @@ $ cd ~/reflog-example
 $ git init
 $ echo "Content of C1" > file.txt
 $ git add .
-$ git commit -m"C1"
+$ git commit -m "C1"
 $ echo "Content of C2" >> file.txt
-$ git commit -am"C2"
+$ git commit -am "C2"
 $ git switch -c feature
 $ echo "Content of C3" >> file.txt
-$ git commit -am"C3"
+$ git commit -am "C3"
 $ git switch main
 $ git branch -D feature
-$ git log --oneline --all --graph
-* <span class="col-hash">6891983 (</span><span class="col-head">HEAD</span> <span class="col-hash">-></span> <span class="col-branch-local">main</span><span class="col-hash">)</span> C2
-* <span class="col-hash">a961cba</span> C1
+Deleted branch feature (was b2d535d).
+$ git log --oneline --all
+<span class="col-hash">6891983</span> <span class="col-yellow">(</span><span class="col-head">HEAD -></span> <span class="col-branch-local">main</span><span class="col-yellow">)</span> C2
+<span class="col-hash">a961cba</span> C1
 </pre>
 
-After deleting `feature`, we can no longer see the commits on that branch. If we run `git reflog` however, we can recover the branch:
+When deleting a branch, Git displays the commit ID of its tip. However, this information may no longer be available when we later discover that the branch contained commits we wanted to keep. Fortunately, we can use `git reflog` to locate the lost commit:
 
 <pre class="terminal">
 $ git reflog
-<span class="col-hash">6891983 (</span><span class="col-head">HEAD</span> <span class="col-hash">-></span> <span class="col-branch-local">main</span><span class="col-hash">)</span> HEAD@{0}: checkout: moving from feature to main
+<span class="col-hash">6891983</span> <span class="col-yellow">(</span><span class="col-head">HEAD -></span> <span class="col-branch-local">main</span><span class="col-yellow">)</span> HEAD@{0}: checkout: moving from feature to main
 <span class="col-hash">b2d535d</span> HEAD@{1}: commit: C3
-<span class="col-hash">6891983 (</span><span class="col-head">HEAD</span> <span class="col-hash">-></span> <span class="col-branch-local">main</span><span class="col-hash">)</span> HEAD@{2}: checkout: moving from main to feature
-<span class="col-hash">6891983 (</span><span class="col-head">HEAD</span> <span class="col-hash">-></span> <span class="col-branch-local">main</span><span class="col-hash">)</span> HEAD@{3}: commit: C2
+<span class="col-hash">6891983</span> <span class="col-yellow">(</span><span class="col-head">HEAD -></span> <span class="col-branch-local">main</span><span class="col-yellow">)</span> HEAD@{2}: checkout: moving from main to feature
+<span class="col-hash">6891983</span> <span class="col-yellow">(</span><span class="col-head">HEAD -></span> <span class="col-branch-local">main</span><span class="col-yellow">)</span> HEAD@{3}: commit: C2
 <span class="col-hash">a961cba</span> HEAD@{4}: commit (initial): C1
 </pre>
 
-By default, `git reflog` shows the reference log of HEAD. The format `HEAD @{x}`, means where was HEAD x moves ago. So `HEAD@{0}` means where is HEAD right now, `HEAD@{1}` means where was HEAD one move ago, and so one. From the reflog we can se that one move ago, HEAD was pointing to the C3 commit, the tip of the former `feature` branch, and we can see the SHA1 checksum of that commit is `b2d535d`. Now we can recover the `feature` branch simply by making a new branch pointing to that commit:
+Each entry in the reflog shows a commit ID, a reflog entry identifier such as `HEAD@{1}`, and a description of the operation that was performed. The entries are listed in reverse chronological order, with the most recent entry at the top. The notation `HEAD@{0}` refers to the current position of `HEAD`, while `HEAD@{1}` refers to its previous position, `HEAD@{2}` to the position before that, and so on.
+
+From the entry `HEAD@{1}`, we can see that `HEAD` previously pointed to commit C3, whose abbreviated commit ID is `b2d535d`. Although we have deleted the `feature` branch, this information is still available because the reflog of `HEAD` is maintained independently of the branch.
+
+We can now restore the `feature` branch by creating a new branch pointing to the lost commit:
 
 <pre class="terminal">
 $ git branch feature b2d535d
-$ git log --oneline --graph --all
-* <span class="col-hash">b2d535d (</span><span class="col-branch-local">feature</span><span class="col-hash">)</span> C3
-* <span class="col-hash">6891983 (</span><span class="col-head">HEAD</span> <span class="col-hash">-></span> <span class="active-branch">main</span><span class="col-hash">)</span> C2
-* <span class="col-hash">a961cba</span> C1
+$ git log --oneline --all
+<span class="col-hash">b2d535d</span> <span class="col-yellow">(</span><span class="col-branch-local">feature</span><span class="col-yellow">)</span> C3
+<span class="col-hash">6891983</span> <span class="col-yellow">(</span><span class="col-head">HEAD -></span> <span class="col-branch-local">main</span><span class="col-yellow">)</span> C2
+<span class="col-hash">a961cba</span> C1
 </pre>
 
+The `feature` branch has now been restored, and commit C3 is once again reachable.
+
+
+## Summary
+
+Deleting a branch or resetting a branch to an earlier commit can make commits unreachable without deleting them. Git maintains local reference logs, or *reflogs*, which can be used to locate lost commits. Once identified, a lost commit can be recovered by creating a new branch pointing to it or by resetting an existing branch to it. However, because reflog entries and unreachable commits are not retained indefinitely, recovery is not always possible.
 
 
 ## Exercises
 
-### Recover an "undone" commit
+### Recover an undone commit
 
-In @sec-undoing-changes we showed how we can "undo" a commit using `git reset`. In this exercise you will recover a commit that was accidentially "undone".
+In @sec-undoing-changes, we showed how `git reset` can move a branch to an earlier commit. In this exercise, you will recover a commit that becomes unreachable after such a reset.
 
 Use the following commands to set up a repository with two commits on `main`:
 
@@ -82,14 +91,14 @@ $ cd ~/ex-reflog-recover-undo
 $ git init
 $ echo "Content" > file.txt
 $ git add .
-$ git commit -m"First commit"
+$ git commit -m "First commit"
 $ echo "More content" >> file.txt
-$ git commit -am"Second commit"
+$ git commit -am "Second commit"
 </pre>
 
 <b>Step 1 - "Undo" the second commit</b>
 
-Use `git reset` to "undo" the second commit and update the working directory and index to match the content of the first commit.
+Use `git reset` to "undo" the second commit and update the working tree and staging area to match the first commit.
 
 ::: {.callout-note title="Solution" collapse="true" icon="false"}
 
@@ -99,22 +108,22 @@ $ git reset --hard HEAD^
 
 :::
 
-<b>Step 2 - Recover the commit </b>
+<b>Step 2 - Recover the commit</b>
 
-Print the commit log to check that the second commit is not unreachable. Then use the reference log to identify and recover the second commit using `git reset` again.
+Use `git log --all` to verify that the second commit is no longer reachable. Then use the reflog to identify the lost commit and recover it with `git reset`. Verify that the commit has been restored by inspecting the commit history.
 
 ::: {.callout-note title="Solution" collapse="true" icon="false"}
 
 <pre class="terminal">
 $ git log --oneline --all
-<span class="col-hash">d3e3264 (</span><span class="col-head">HEAD</span> <span class="col-hash">-></span> <span class="col-branch-local">main</span><span class="col-hash">)</span> First commit
+<span class="col-hash">d3e3264</span> <span class="col-yellow">(</span><span class="col-head">HEAD -></span> <span class="col-branch-local">main</span><span class="col-yellow">)</span> First commit
 $ git reflog
-<span class="col-hash">d3e3264 (</span><span class="col-head">HEAD</span> <span class="col-hash">-></span> <span class="col-branch-local">main</span><span class="col-hash">)</span> HEAD@{0}: reset: moving to HEAD^
+<span class="col-hash">d3e3264</span> <span class="col-yellow">(</span><span class="col-head">HEAD -></span> <span class="col-branch-local">main</span><span class="col-yellow">)</span> HEAD@{0}: reset: moving to HEAD^
 <span class="col-hash">9071636</span> HEAD@{1}: commit: Second commit
-<span class="col-hash">d3e3264 (</span><span class="col-head">HEAD</span> <span class="col-hash">-></span> <span class="col-branch-local">main</span><span class="col-hash">)</span> HEAD@{2}: commit (initial): First commit
+<span class="col-hash">d3e3264</span> <span class="col-yellow">(</span><span class="col-head">HEAD -></span> <span class="col-branch-local">main</span><span class="col-yellow">)</span> HEAD@{2}: commit (initial): First commit
 $ git reset --hard 9071636
 $ git log --oneline
-<span class="col-hash">9071636 (</span><span class="col-head">HEAD</span> <span class="col-hash">-></span> <span class="col-branch-local">main</span><span class="col-hash">)</span> Second commit
+<span class="col-hash">9071636</span> <span class="col-yellow">(</span><span class="col-head">HEAD -></span> <span class="col-branch-local">main</span><span class="col-yellow">)</span> Second commit
 <span class="col-hash">d3e3264</span> First commit
 </pre>
 
