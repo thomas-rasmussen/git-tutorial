@@ -32,6 +32,7 @@ Follow the link given in the terminal. If you are not logged into your GitHub ac
 
 The rest of this chapter assumes that you have created a GitHub account, and have authenticated with it to allow you to access and modify your repositories.
 
+TODO: add note on how the CLI stores credentials.
 
 ## Licenses 
 
