@@ -39,10 +39,6 @@ Only rough outlines / first draft of chapters so far. These chapters need a lot 
 
 Outline of scope of chapter has been made, but wait with actually writing the chapter until it is clear what is covered in the "Branches and merging" and "Remote repositories" chapters.
 
-**"GitHub" chapter:**
-
-Consider in more detail how gh auth login -p https -cw works regarding storing of credentials. We are working under the assumption that readers have a credential manager installed/configured so that credentials are not stored as plain text which is a potential security risk. Figure out if a credential manager is always installed on a windows machine, and if not, if this is something that can be explained how to do.
-
 **---TODO: technical stuff---**
 
 - Use of CSS to colour terminal output has been streamlined. Currently using some of the default mintty colours, but they don't seem to correspond

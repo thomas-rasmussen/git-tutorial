@@ -4,6 +4,10 @@ GitHub is a web-based service that hosts Git repositories. Simply put, you can h
 
 GitHub has a web user-interface that is easy to navigate and use, and is most likely the easiest way to to interact with your GitHub account and your repositories for most people, especially if you are not comfortable using a CLI. But illustrating how to use the web user-interface in a tutorial with an enormous amount of screenshots, is most certainly not the best way to learn how to use GitHub. Because of this, and in line with the philosophy of this tutorial, we will instead opt to use the GitHub CLI to interact with GitHub from the command line. This will work just as well for the simple features we will introduce in this tutorial, but there might be some advanced features that are not possible to use through the GitHub CLI, or it simply easier to do through the web user-interface. Keep this in mind if you want to use GitHub in the future. There is plenty of documentation on the [GitHub website](https://docs.github.com/en) on how to use the web-interface.
 
+It is important to distinguish between Git and and GitHub. Git is a version control system that we use to manage repositories, commits, branches, and remotes, whereas GitHub is a web-based service for hosting Git repositories and facilitating collaboration. Similarly, the `git` and `gh` commands serve different purposes. We use `git` commands to perform Git operations, while `gh` commands are part of the GitHub CLI andn is used to interact with GitHub-specific features, such as creating repositories on GitHub, managing issues, and creating pull requests. Throughout this chapter, we will use both type of commands, depending on the task at hand.
+
+TODO: distinguishing between Git and GitHub should probably be at the start of the section, not the end. Also, directly referencing `gh` at this point might not be helpful since the reader does not know what that means yet. similarly, avoiding terms like pull requests etc might be better since they have not been introduced yet.
+
 
 ## Create a GitHub account and install the GitHub CLI
 
@@ -25,26 +29,20 @@ You need to restart your terminal before you can use the GitHub CLI `gh` command
 The most technical aspect of using GitHub is to authenticate with your GitHub account. You need to do this to verify to GitHub that you are who you claim to be, so that you are allowed to access your GitHub account and push changes to your repositories etc. You can authenticate with your GitHub account from the command line using either HTTPS or SSH. It is outside the scope of this tutorial to go into any details about what this means, and to explain the pros and cons of each protocol. Here we will simply show how you can authenticate using HTTPS using the GitHub CLI. To authenticate with your GitHub account, run the following command:
 
 <pre class="terminal">
-$ gh auth login -p"https" -cw
+$ gh auth login --git-protocol https --web --clipboard
 </pre>
 
-Follow the link given in the terminal. If you are not logged into your GitHub account already, you will be prompted to do so first. Then you will be asked to enter the one-time code that was provided in the terminal output (which should already be copied to the clipboard). You should only need to do this once for each machine you work on.^[This might not be entirely true.]
+Follow the link given in the terminal. If you are not logged into your GitHub account already, you will be prompted to do so first. Then you will be asked to enter the one-time code that was provided in the terminal output (which should already be copied to the clipboard).
+
+After doing this, use the following command to verify that authentication has succeeded:
+
+<pre class="terminal">
+$ gh auth status
+</pre>
+
+After authentication, the GitHub CLI normally stores your credentials securely in Windows Credential Manager,, so you do not need to authenticate every time you use GitHub. If secure credential storage is unavailable,, the GitHub CLI will instead store your credentials in a plain text file. You can use `gh auth status` to check your authentication status and see where your credentials are stored.
 
 The rest of this chapter assumes that you have created a GitHub account, and have authenticated with it to allow you to access and modify your repositories.
-
-TODO: add note on how the CLI stores credentials.
-
-## Licenses 
-
-Before talking about how to host repositories on GitHub, we need to talk briefly about licences. If you put a repository on GitHub to share it with others, you should include a license that specifies what other people can do with your code. You are not obligated to include a license, but if you don't, default copyright laws apply, meaning that you retain all rights to your source code and no one may reproduce, distribute, or create derivative works from your work. This might not be what you want. GitHub strongly encourages you to include an open source licence, the MIT licence being a common choice. The MIT licence is a short permissive software license, that basically allows people to do whatever they want with your code, as long as they include the original copyright and licence in any copy of the code. Also, the licence states that you hold zero liability for use of the code. In many cases, this is a very reasonable license, and a good default choice. If you want to to learn more about licences, here are few resources that might be of interest:
-
-[https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository)
-
-[https://opensource.guide/legal/#which-open-source-license-is-appropriate-for-my-project](https://opensource.guide/legal/#which-open-source-license-is-appropriate-for-my-project)
-
-[https://choosealicense.com](https://choosealicense.com)
-
-[https://www.tldrlegal.com](https://www.tldrlegal.com)
 
 
 ## Creating a repository on GitHub
@@ -326,6 +324,26 @@ As an example, the tutorial you are currently reading is hosted as a static webs
 It is outside the scope of this tutorial to go into details on how to use GitHub pages, but for more information see the official documentation at <a href="https://docs.github.com/en/pages">https://docs.github.com/en/pages</a>
 
 
+## A note on licences
+
+when making a Git repository publicly available on GitHub, it is important to consider how others are allowed to use its contents. If you put a repository on GitHub to share it with others, you should include a license that specifies what other people can do with your code. You are not obligated to include a license, but if you don't, default copyright laws apply, meaning that you retain all rights to your source code and no one may reproduce, distribute, or create derivative works from your work. This might not be what you want. GitHub strongly encourages you to include an open source licence, the MIT licence being a common choice. The MIT licence is a short permissive software license, that basically allows people to do whatever they want with your code, as long as they include the original copyright and licence in any copy of the code. Also, the licence states that you hold zero liability for use of the code. In many cases, this is a very reasonable license, and a good default choice. If you want to to learn more about licences, here are few resources that might be of interest:
+
+[https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository)
+
+[https://opensource.guide/legal/#which-open-source-license-is-appropriate-for-my-project](https://opensource.guide/legal/#which-open-source-license-is-appropriate-for-my-project)
+
+[https://choosealicense.com](https://choosealicense.com)
+
+[https://www.tldrlegal.com](https://www.tldrlegal.com)
+
+
+## Summary
+
+In this chapter, we have introduced GitHub as a platform for hosting Git repositories and facilitate collaboration. We have learned how to create and manage repositories on GitHub, use issues to organize work, and use forks and pull requests to contribute to projects. We have also briefly introduced GitHub Pages and discussed the importance of licensing when sharing code.
+
+Throughout the chapter, we have used the GitHub CLI to interact with GitHub from the command line. However, the web user interface is often more convenient for many tasks, particularly when browsing repositories and reviewing changes. Both interfaces have their advantages, and which one to use ultimately comes down to the task at hand and personal preferences.
+
+
 ## Exercises
 
 ### Exercise 1 - Managing GitHub repositories using the GitHub CLI
@@ -507,6 +525,8 @@ $ rm my-repo -rf
 
 
 ### Exercise 2 - Contributing to an open-source project ###
+
+TODO: rewrite exercise to use the fork repository used earlier, instead of the repository of the tutorial.
 
 In this exercise we will practice forking a repository and making a pull request by contributing to an open-source project, namely the GitHub repository with the source code for this tutorial. The GitHub repository can be found at [https://github.com/thomas-rasmussen/git-tutorial](https://github.com/thomas-rasmussen/git-tutorial).
 
