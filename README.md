@@ -39,17 +39,16 @@ Only rough outlines / first draft of chapters so far. These chapters need a lot 
 
 Outline of scope of chapter has been made, but wait with actually writing the chapter until it is clear what is covered in the "Branches and merging" and "Remote repositories" chapters.
 
-**"GitHub" chapter:**
-
-Consider in more detail how gh auth login -p https -cw works regarding storing of credentials. We are working under the assumption that readers have a credential manager installed/configured so that credentials are not stored as plain text which is a potential security risk. Figure out if a credential manager is always installed on a windows machine, and if not, if this is something that can be explained how to do.
-
 **---TODO: technical stuff---**
+
+- Rerun all examples and exercises from a clean Git for Windows installation,
+  to make sure everything works as intended.
 
 - Use of CSS to colour terminal output has been streamlined. Currently using some of the default mintty colours, but they don't seem to correspond
   exactly with what is shown in Git BASH by default for some colours, even though they should be the same as the default mintty colours.
   Consider tweaking colours to match better.
-  
-- So far, the "git commit" flag "-m" is consistently used on the form "git commit-m"commit message". It is probably better to use "git commit -m "abc"" instead, since this is easier for beginners to understand.
+
+- Make sure that "git commit -m 'message'" is consistently used instead of "git commit -m'message'".
 
 - In some cases, simulated output from the terminal and notepad documents contains blank lines at the end. Figure out how to remove these. This has probably something to do with multiple nested div and pre tags, and/or making a new line after starting a pre tag or putting </pre> on a new line.
 
@@ -62,8 +61,9 @@ Consider in more detail how gh auth login -p https -cw works regarding storing o
 - Make a fresh installation of Git for Windows and check what the default branch name is using the newest
 version of Git for Windows. If it is not "main", consider if "master" should be used in tutorial.
 
-- Colouring git status output: it seems like the arrow after HEAD is always also the same colour,
-  but sofar it has been coloured yellow. check and change as necessary.
+- Colouring git status output: it seems like the arrow after HEAD is sometimes blue
+  instead of yellow. This is some colouring error in Git for Windows? Make sure that
+  the arrow is consistently coloured yellow in output.
 
 **---TODO: exercises---**
 
