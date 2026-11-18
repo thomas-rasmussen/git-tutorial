@@ -1,12 +1,10 @@
 # Introduction to GitHub {#sec-introduction-to-github}
 
-GitHub is a web-based service that hosts Git repositories. Simply put, you can host a remote of your Git repository on GitHub instead of having a remote locally on your network. This makes it possible for you to access your Git repository from any computer with an internet connection, which is obviously beneficial. But GitHub is also much more than that. GitHub offers many features that facilitate collaboration, and can be used for much more than simply storing your repository on the internet. It is outside the scope of this tutorial to go into much detail about what GitHub can be used for and how, since it would quickly become an entire tutorial in itself, but we will introduce and illustrate some basic features that should make it clear how valuable a tool GitHub can be.
+GitHub is a web-based service for hosting Git repositories. Simply put, you can host a remote repository on GitHub instead of hosting it locally on your computer or network. This makes it easy to access your repository from different computers and share it with others. However, GitHub is much more than a service for hosting repositories. It also provides a wide range of features that facilitate collaboration and can be used for many other purposes. Covering all these features would require an entire tutorial in itself, so in this chapter we will only introduce and illustrate a selection of GitHub's features.
 
-GitHub has a web user-interface that is easy to navigate and use, and is most likely the easiest way to to interact with your GitHub account and your repositories for most people, especially if you are not comfortable using a CLI. But illustrating how to use the web user-interface in a tutorial with an enormous amount of screenshots, is most certainly not the best way to learn how to use GitHub. Because of this, and in line with the philosophy of this tutorial, we will instead opt to use the GitHub CLI to interact with GitHub from the command line. This will work just as well for the simple features we will introduce in this tutorial, but there might be some advanced features that are not possible to use through the GitHub CLI, or it simply easier to do through the web user-interface. Keep this in mind if you want to use GitHub in the future. There is plenty of documentation on the [GitHub website](https://docs.github.com/en) on how to use the web-interface.
+GitHub has a web user interface that is easy to navigate and is often the most convenient way to interact with GitHub. However, explaining how to use the web interface in a written tutorial would require numerous screenshots and detailed instructions. Instead, in line with the philosophy of this tutorial, we will use the GitHub CLI to interact with GitHub from the command line. This works well for the features we will introduce, but keep in mind that the web interface may be more convenient for many tasks. You can find documentation on how to use GitHub, including its web interface, on the [GitHub website](https://docs.github.com/en).
 
-It is important to distinguish between Git and and GitHub. Git is a version control system that we use to manage repositories, commits, branches, and remotes, whereas GitHub is a web-based service for hosting Git repositories and facilitating collaboration. Similarly, the `git` and `gh` commands serve different purposes. We use `git` commands to perform Git operations, while `gh` commands are part of the GitHub CLI andn is used to interact with GitHub-specific features, such as creating repositories on GitHub, managing issues, and creating pull requests. Throughout this chapter, we will use both type of commands, depending on the task at hand.
-
-TODO: distinguishing between Git and GitHub should probably be at the start of the section, not the end. Also, directly referencing `gh` at this point might not be helpful since the reader does not know what that means yet. similarly, avoiding terms like pull requests etc might be better since they have not been introduced yet.
+It is important to understand that Git and GitHub are two different things. Git is a version control system, whereas GitHub is a web-based service for hosting Git repositories and facilitating collaboration. Similarly, the `git` and `gh` commands serve different purposes. We use `git` commands to perform Git operations, while we use `gh` commands to interact with GitHub through the GitHub CLI.
 
 
 ## Create a GitHub account and install the GitHub CLI
@@ -110,61 +108,22 @@ GitHub has a ton of features that are useful when collaborating on a project. He
 
 ### Issues
 
-GitHub has a built-in tracking tool called "issues" that can be used to manage tasks, make bug report, request features to be implemented etc. You can think of GitHub issues as a collaborative to-do list or a message board directly attached to a repository, allowing developers and users to discuss and organize work.
+GitHub has a built-in issue tracking system that can be used to organize tasks, report bugs, request new features, and discuss work on a project. You can think of GitHub issues a collaborative to-do list or message board attached to a repository, allowing developers and users to discuss and organize work.
 
-The GitHub CLI has a bunch of commands related to issues. Here, we will illustrate how to do basic tasks like create, list, view, and close issues using the following commands:
-
-```{=html}
-<div style="margin-top:2em; margin-bottom:2em">
-<table class="table-striped">
-  <thead>
-    <tr>
-      <th>Description</th>
-      <th>Command</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Create an issue</td>
-      <td style="font-family:monospace">gh issue create &lt;issue-name&gt;</td>
-    </tr>
-    <tr>
-      <td>List issues</td>
-      <td style="font-family:monospace">gh issue list</td>
-    </tr>
-    <tr>
-      <td>View issue</td>
-      <td style="font-family:monospace">gh issue view &lt;issue-number&gt;</td>
-    </tr>
-    <tr>
-      <td>Add comment to issue</td>
-      <td style="font-family:monospace">gh issue comment &lt;issue-number&gt;</td>
-    </tr>
-    <tr>
-      <td>Close issue</td>
-      <td style="font-family:monospace">gh issue close &lt;issue-number&gt;</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-```
-
-A full list of GitHub CLI commands related to issues, optional flags, and how to use them can be found at [https://cli.github.com/manual/gh_issue](https://cli.github.com/manual/gh_issue)
+The GitHub CLI provides several commands for managing issues, which we will illustrate in the following example. For a complete list of commands and their options, see the [GitHub CLI documentation](https://cli.github.com/manual/gh_issue)
 
 
 #### Example 
 
-To illustrate how issues can be used, imagine a project with two collaborators that initiate and upload a repository they are going to work on to GitHub:
+Imagine we are working on a project with several collaborators. to illustrate how issues can be used to coordinate work, we first create a repository on GitHub and clone it locally:
 
 <pre class="terminal">
-$ mkdir ~/issues-example
-$ cd ~/issues-example
-$ git init
-$ echo "Project README" > README.txt
-$ git add .
-$ git commit -m"Initial commit"
-$ gh repo create issues-example --public --source=. --remote=origin --push
+$ cd ~
+$ gh repo create issues-example --public --add-readme --clone
+$ cd issues-example
 </pre>
+
+TODO: update from here
 
 Let's say that collaborator A wants a feature implemented in the project. He communicate this to collaborator B by making an issue describing what he wants to implement:
 
