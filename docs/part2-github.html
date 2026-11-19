@@ -270,7 +270,8 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#tools-to-facilitate-collaboration" id="toc-tools-to-facilitate-collaboration" class="nav-link" data-scroll-target="#tools-to-facilitate-collaboration"><span class="header-section-number">8.4</span> Tools to facilitate collaboration</a>
   <ul class="collapse">
   <li><a href="#issues" id="toc-issues" class="nav-link" data-scroll-target="#issues">Issues</a></li>
-  <li><a href="#forks-and-pull-requests" id="toc-forks-and-pull-requests" class="nav-link" data-scroll-target="#forks-and-pull-requests">Forks and pull requests</a></li>
+  <li><a href="#pull-requests" id="toc-pull-requests" class="nav-link" data-scroll-target="#pull-requests">Pull requests</a></li>
+  <li><a href="#forks" id="toc-forks" class="nav-link" data-scroll-target="#forks">Forks</a></li>
   </ul></li>
   <li><a href="#github-pages" id="toc-github-pages" class="nav-link" data-scroll-target="#github-pages"><span class="header-section-number">8.5</span> GitHub pages</a></li>
   <li><a href="#a-note-on-licences" id="toc-a-note-on-licences" class="nav-link" data-scroll-target="#a-note-on-licences"><span class="header-section-number">8.6</span> A note on licences</a></li>
@@ -381,68 +382,51 @@ origin  https://github.com/your-user-name/init-local-repo (push)
 <p>The GitHub CLI provides several commands for managing issues, which we will illustrate in the following example. For a complete list of commands and their options, see the <a href="https://cli.github.com/manual/gh_issue">GitHub CLI documentation</a></p>
 <section id="example" class="level4">
 <h4 class="anchored" data-anchor-id="example">Example</h4>
-<p>Imagine we are working on a project with several collaborators. to illustrate how issues can be used to coordinate work, we first create a repository on GitHub and clone it locally:</p>
+<p>Imagine we are working on a project with several collaborators. To illustrate how issues can be used to coordinate work, we first create a repository on GitHub and clone it locally:</p>
 <pre class="terminal">$ cd ~
 $ gh repo create issues-example --public --add-readme --clone
 $ cd issues-example
 </pre>
-<p>TODO: update from here</p>
-<p>Let’s say that collaborator A wants a feature implemented in the project. He communicate this to collaborator B by making an issue describing what he wants to implement:</p>
-<pre class="terminal">$ gh issue create --title "Implement feature A" --body "Text describing what to add and how."
+<p>Suppose we want a new feature implemented in the project. We can create an issue describing the proposed feature using <code>gh issue create</code>:</p>
+<pre class="terminal">$ gh issue create --title "Implement feature A" --body "Description of the feature to implement."
 </pre>
-<p>Collaborator B is notified (either directly by collaborator A or by a notification from GitHub) that collaborator A has created an issue in the repository, so he uses <code>gh issue list</code> to get an overview of the issues in the repository:</p>
+<p>GitHub assigns each issue a unique number within the repository. We can use <code>gh issue list</code> to list the issues in the repository:</p>
 <pre class="terminal">$ gh issue list
 
 <span style="color:grey"><u>ID</u>  <u>TITLE              </u>  <u>LABELS</u>  <u>UPDATED           </u></span>
 <span class="col-bright-green">#1</span>  Implement feature A          <span style="color:grey">about 1 minute ago</span>
 
 </pre>
-<p>He then uses <code>gh issue view</code> to get some more detailed information on the issue that collaborator A has made:</p>
-<pre class="terminal"><span># Note that we are referring to the issue by its ID value</span>
-$ gh issue view 1
-<span style="color:white">Implement feature A</span> thomas-rasmussen/issues-example#1
-<span class="bash-green">Open</span> • thomas-rasmussen opened about 1 hour ago • 0 comments
-
-
-  Text describing what to add and how.
-
-
-<span style="color:grey">View this issue on GitHub: https://github.com/thomas-rasmussen/issues-example/issues/1</span>
-
+<p>We can see that the issue has been assigned the number 1. We can use this number to refer to the issue, for example when using <code>gh issue view</code> to inspect its contents:</p>
+<pre class="terminal">$ gh issue view 1
 </pre>
-<p>Collaborator B then adds a comment to the issue telling collaborator A to go ahead and implement the feature:</p>
-<pre class="terminal">$ gh issue comment 1 --body "LGTM"
+<p>Other collaborators can now see the issue and discuss the proposed feature. For example, we can add a comment indicating that we will implement the feature:</p>
+<pre class="terminal">$ gh issue comment 1 --body "I'll implement this feature."
 </pre>
-<p>Collaborator A sees this, implements the feature in a feature branch, merge the changes into the main branch, and pushes the changes to the remote on GitHub:</p>
-<pre class="terminal">$ git switch -c implement-feature-A
-$ echo "Implementation of feature A" &gt; feature_a.txt
-$ git add .
-$ git commit
-$ git switch main
-$ git merge implement-feature-A
-$ git push
-$ git branch -d implement-feature-A
+<p>Once the feature has been implemented and the changes pushed to GitHub, we can close the issue using <code>gh issue close</code>:</p>
+<pre class="terminal">$ gh issue close 1
 </pre>
-<p>Finally, collaborator A adds a comment to the issue saying that the feature has been added and pushed to the main branch, and then closes the issue:</p>
-<pre class="terminal">$ gh issue comment 1 --body "Implemented and merged to main branch"
-$ gh issue close 1
-</pre>
-<p>Let’s wrap up this example by deleting the GitHub repository:</p>
+<p>Finally, we clean up by deleting the example repository from GitHub and removing the clone:</p>
 <pre class="terminal">$ gh repo delete issues-example --yes
+$ cd
+$ rm -rf issues-example
 </pre>
-<p>You might not have permission to use this command. If this is the case run the following command and try again:</p>
-<pre class="terminal">$ gh auth refresh -s delete_repo
-</pre>
-<p>We have only scraped the surface of what you can do with GitHub issues in this example, but it is hopefully clear how this tool can be valuable to organize work on a project.</p>
+<p>If the GitHub CLI reports insufficient permissions to delete the repository, you may need to run <code>gh auth refresh -s delete_repo</code> and try again.</p>
 </section>
 </section>
-<section id="forks-and-pull-requests" class="level3">
-<h3 class="anchored" data-anchor-id="forks-and-pull-requests">Forks and pull requests</h3>
-<p>It is common to control which collaborators has write-access in a GitHub project. If everyone could push changes to the repository, the commit history could very quickly descend into chaos. Put if collaborators don’t have write-access, how are they supposed to contribute to the project? And in extension of that, how can you contribute to open-source projects on GitHub that you are not a part of? This is where forks and pull requests comes into play.</p>
-<p>A fork is a copy of a repository that you own, connected to the original repository, called the upstream repository. A fork enables you to make changes in your own copy of the GitHub repository without affecting the upstream project, and when you are ready you can propose changes back to the upstream repository with a pull request. This is different than cloning a repository. If you clone a repository where you don’t have write-access, you won’t be able to push changes.</p>
-<p>Pull requests are proposals to merge code changes into a project. The changes can be reviewed and commented upon in the pull request before they are merged into the repository by someone with write-access.</p>
+<section id="pull-requests" class="level3">
+<h3 class="anchored" data-anchor-id="pull-requests">Pull requests</h3>
+<p>A pull request is a GitHub feature that allows you to propose changes to a repository by requesting that changes from one branch be merged into another. Before the changes are merged, other collaborators can review the proposed changes, discuss them, and suggest improvements. Pull requests are therefore useful for coordinating and reviewing changes before they are integrated into a project.</p>
+<p>For example, when developing a new feature in a separate branch, you can create a pull request to propose merging the feature into the main branch. This allows other collaborators to review the changes before they become part of the main version of the project.</p>
+</section>
+<section id="forks" class="level3">
+<h3 class="anchored" data-anchor-id="forks">Forks</h3>
+<p>In some projects, not everyone has permission to push changes directly to the repository. This is particularly common in open-source projects, where anyone can contribute, but only certain people have write access to the repository.</p>
+<p>GitHub addresses this through a feature called <em>forking</em>. A fork is a copy of a GitHub repository under your own account, linked to the original repository, which is called the <em>upstream repository</em>. Since you own the fork, you can make changes and push commits to it without affecting the original repository. You can then use a pull request to propose merging your changes into the upstream repository.</p>
+<p>Forking is different from cloning a repository. While cloning creates a local copy of a repository on your computerr, forking creates a separate repository on GitHub.</p>
 <section id="example-1" class="level4">
 <h4 class="anchored" data-anchor-id="example-1">Example</h4>
+<p>Let’s illustrate how forks and pull requests can be used together to contribute to a projects where we do not have write access.</p>
 <p>Let’s imagine that we want to contribute to the GitHub repository <a href="github.com/thomas-rasmussen-alt/git-tutorial-fork-example">github.com/thomas-rasmussen-alt/git-tutorial-fork-example</a>. First we make a fork of the repository and make a clone of the repository at the same time:</p>
 <pre class="terminal">$ cd
 $ gh repo fork thomas-rasmussen-alt/git-tutorial-fork-example --clone
