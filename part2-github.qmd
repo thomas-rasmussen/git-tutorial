@@ -11,13 +11,13 @@ It is important to understand that Git and GitHub are two different things. Git 
 
 To do basically anything other than browsing and cloning repositories on GitHub, you need to create an account. You can create a free GitHub account by going to [https://github.com](https://github.com) and sign up.
 
-As stated, we will interact with GitHub from the command line using the GitHub CLI. You can install it from Git BASH by running the following command:
+As stated, we will interact with GitHub from the command line using the GitHub CLI. You can install it by running the following command:
 
 <pre class="terminal">
 $ winget install --id GitHub.cli
 </pre>
 
-This should work from git BASH. If not, try running the command in PowerShell. Alternatively, download and install it from [https://cli.github.com/](https://cli.github.com/).
+This should work from Git Bash. If not, try running the command in PowerShell. Alternatively, download and install it from [https://cli.github.com/](https://cli.github.com/).
 
 You need to restart your terminal before you can use the GitHub CLI `gh` commands.
 
@@ -32,13 +32,20 @@ $ gh auth login --git-protocol https --web --clipboard
 
 Follow the link given in the terminal. If you are not logged into your GitHub account already, you will be prompted to do so first. Then you will be asked to enter the one-time code that was provided in the terminal output (which should already be copied to the clipboard).
 
-After doing this, use the following command to verify that authentication has succeeded:
+After doing this, use the following command to verify that authentication has succeeded. The output should look something like:
 
 <pre class="terminal">
 $ gh auth status
+<span class="col-white">github.com</span>
+  <span class="col-green">✓</span> Logged in to github.com account <span class="col-white">your-user-name</span> (keyring)
+  - Active account: <span class="col-white">true</span>
+  - Git operations protocol: <span class="col-white">https</span>
+  - Token: <span class="col-white">gho_************************************</span>
+  - Token scopes: <span class="col-white">'delete_repo', 'gist', 'read:org', 'repo', 'workflow'</span>
+
 </pre>
 
-After authentication, the GitHub CLI normally stores your credentials securely in Windows Credential Manager,, so you do not need to authenticate every time you use GitHub. If secure credential storage is unavailable,, the GitHub CLI will instead store your credentials in a plain text file. You can use `gh auth status` to check your authentication status and see where your credentials are stored.
+After authentication, the GitHub CLI normally stores your credentials securely in Windows Credential Manager, so you do not need to authenticate every time you use GitHub. If secure credential storage is unavailable, the GitHub CLI will instead store your credentials in a plain text file.
 
 The rest of this chapter assumes that you have created a GitHub account, and have authenticated with it to allow you to access and modify your repositories.
 
@@ -47,7 +54,7 @@ The rest of this chapter assumes that you have created a GitHub account, and hav
 
 There are two ways to get a repository on GitHub. You can either initialize a new project directly on GitHub, or you can upload a repository to GitHub from an existing local repository. If you are starting a new Git repository and you want to have a remote on GitHub, you have two choices: Initialize the repository on GitHub and clone it, or initialize the repository locally, and then upload it to GitHub. There is no right or wrong way to do this, it comes down to personal preferences.
 
-You can initialize or upload a Git repository on GitHub using the `gh repo create [<name>] [flags]` command. You can find documentation on this command at [https://cli.github.com/manual/gh_repo_create](https://cli.github.com/manual/gh_repo_create), or you can use `gh repo create --help` in the terminal. It is possible to create a repository interactively in the terminal by running `gh repo create` with no arguments, but that is not something we will explore here. Instead we will create repositories non-interactively, and in this case we need, as a minimum, to specify a name for the repository and use flags to specify if the repository is to be (`--public`) or private (`--private`). Public repositories can be seen by everyone, whereas private repositories can only been seen by yourself. 
+You can initialize or upload a Git repository on GitHub using the `gh repo create [<name>] [flags]` command. You can find documentation on this command at [https://cli.github.com/manual/gh_repo_create](https://cli.github.com/manual/gh_repo_create), or you can use `gh repo create --help` in the terminal. It is possible to create a repository interactively in the terminal by running `gh repo create` with no arguments, but that is not something we will explore here. Instead we will create repositories non-interactively, and in this case we need, as a minimum, to specify a name for the repository and use flags to specify if the repository is to be  public (`--public`) or private (`--private`). Public repositories can be seen by everyone, whereas private repositories can only been seen by yourself. 
 
 
 ### Initialize a new Git repository on GitHub
@@ -67,7 +74,7 @@ $ cd ~
 $ git clone "https://github.com/your-user-name/init-on-github"
 $ cd init-on-github
 $ git log --oneline
-<span class="col-hash">9caef1d (</span><span class="col-head">HEAD </span><span class="col-hash">-></span> <span class="col-branch-local">main</span><span class="col-hash">,</span> <span class="col-branch-remote">origin/main</span><span class="col-hash">,</span> <span class="col-branch-remote">origin/HEAD</span><span class="col-hash">)</span> Initial commit
+<span class="col-hash">9caef1d</span> <span class="col-yellow">(</span><span class="col-head">HEAD </span><span class="col-yellow">-></span> <span class="col-branch-local">main</span><span class="col-yellow">,</span> <span class="col-branch-remote">origin/main</span><span class="col-yellow">,</span> <span class="col-branch-remote">origin/HEAD</span><span class="col-yellow">)</span> Initial commit
 $ ls
 README.md
 $ git remote -v
@@ -85,7 +92,7 @@ $ mkdir ~/init-local-repo
 $ cd ~/init-local-repo
 $ git init
 $ touch README.txt
-$ git add .
+$ git add README.txt
 $ git commit -m"Initial commit"
 </pre>
 
@@ -94,7 +101,7 @@ To upload the repository to GitHub, we can use `gh repo create` with the `--sour
 <pre class="terminal">
 $ gh repo create init-local-repo --public --source=. --remote=origin --push
 $ git log --oneline
-<span class="col-hash">f662630 (</span><span class="col-head">HEAD</span> <span class="col-hash">-></span> <span class="col-branch-local">main</span><span class="col-hash">,</span> <span class="col-branch-remote">origin/main</span><span class="col-hash">)</span> Initial commit
+<span class="col-hash">f662630</span> <span class="col-yellow">(</span><span class="col-head">HEAD</span> <span class="col-yellow">-></span> <span class="col-branch-local">main</span><span class="col-yellow">,</span> <span class="col-branch-remote">origin/main</span><span class="col-yellow">)</span> Initial commit
 $ git remote -v
 origin  https://github.com/your-user-name/init-local-repo (fetch)
 origin  https://github.com/your-user-name/init-local-repo (push)
@@ -181,66 +188,101 @@ In some projects, not everyone has permission to push changes directly to the re
 
 GitHub addresses this through a feature called *forking*. A fork is a copy of a GitHub repository under your own account, linked to the original repository, which is called the *upstream repository*. Since you own the fork, you can make changes and push commits to it without affecting the original repository. You can then use a pull request to propose merging your changes into the upstream repository.
 
-Forking is different from cloning a repository. While cloning creates a local copy of a repository on your computerr, forking creates a separate repository on GitHub.
+Forking is different from cloning a repository. While cloning creates a local copy of a repository on your computer, forking creates a separate repository on GitHub.
+
 
 #### Example
 
-Let's illustrate how forks and pull requests can be used together to contribute to a projects where we do not have write access.
+Let's illustrate how forks and pull requests can be used together to contribute to a project where we do not have write access. Imagine that we want to contribute to the GitHub repository [github.com/thomas-rasmussen-alt/git-tutorial-fork-example](github.com/thomas-rasmussen-alt/git-tutorial-fork-example).
 
-Let's imagine that we want to contribute to the GitHub repository [github.com/thomas-rasmussen-alt/git-tutorial-fork-example](github.com/thomas-rasmussen-alt/git-tutorial-fork-example). First we make a fork of the repository and make a clone of the repository at the same time:
+First we create a fork of the repository under our own GitHub account and clone it to our computer using `gh repo fork`:
 
 <pre class="terminal">
 $ cd
 $ gh repo fork thomas-rasmussen-alt/git-tutorial-fork-example --clone
-</pre>
-
-First of all, if we make a list of forked repositories on our account, we can see that a fork of git-tutorial-fork-example has been added:
-
-<pre class="terminal">
-gh repo list --fork
-
-Showing 1 of 1 repositories in @user-name that match your search
-
-<u>NAME                               </u>  <u>DESCRIPTION                                          </u>  <u>INFO        </u>  <u>UPDATED         </u>
-<span style="color:white">user-name/git-tutorial-fork-example</span>  Repository used to illustrate forking in Git tutorial  public, fork  about 3 days ago
-
-</pre>
-
-Next we `cd` in to the local clone of the repository we also made, and inspect the remotes that have been automatically made:
-
-<pre class="terminal">
 $ cd git-tutorial-fork-example
-$ git log --oneline
-<span class="col-hash">dd7b9d9 (</span><span class="col-head">HEAD</span> <span class="col-hash">-></span> <span class="col-branch-local">main</span><span class="col-hash">,</span> <span class="col-branch-remote">upstream/main</span><span class="col-hash">,</span> <span class="col-branch-remote">upstream/HEAD</span><span class="col-hash">,</span> <span class="col-branch-remote">origin/main</span><span class="col-hash">,</span> <span class="col-branch-remote">origin/HEAD</span><span class="col-hash">)</span> Initial commit
-$ git remote -v
-origin  https://github.com/thomas-rasmussen/git-tutorial-fork-example.git (fetch)
-origin  https://github.com/thomas-rasmussen/git-tutorial-fork-example.git (push)
-upstream        https://github.com/thomas-rasmussen-alt/git-tutorial-fork-example.git (fetch)
-upstream        https://github.com/thomas-rasmussen-alt/git-tutorial-fork-example.git (push)
 </pre>
 
-We can see that two remote have been set up: one to the fork (origin) and one to the original/upstream (upstream) repository. Next, we make the changes we want to contribute to the original project in our local clone and push the changes to the fork:
+Let's inspect the remote that have been configured in our local clone:
+
+<pre class="terminal">
+$ git remote -v
+origin    https://github.com/your-user-name/git-tutorial-fork-example.git (fetch)
+origin    https://github.com/your-user-name/git-tutorial-fork-example.git (push)
+upstream  https://github.com/thomas-rasmussen-alt/git-tutorial-fork-example.git (fetch)
+upstream  https://github.com/thomas-rasmussen-alt/git-tutorial-fork-example.git (push)
+</pre>
+
+We can se that two remotes have been configured automatically: `origin`, which points to our fork, and `upstream`, which points to the original repository. We can push changes to our fork through `origin`, but we do not have permission to push changes directly to the upstream repository.
+
+Next, we create a feature branch, implement a change, and push the new branch to our fork:
+
+<pre class="terminal">
+$ git switch -c implement-feature
+$ echo "Implementation of feature" > feature.txt
+$ git add feature.txt
+$ git commit -m "Implement feature"
+$ git push -u origin implement-feature
+</pre>
+
+We can inspect the commit history to see how the branches now differ:
+
+<pre class="terminal">
+$ git log --oneline
+$ git remote -v
+origin    https://github.com/your-user-name/git-tutorial-fork-example.git (fetch)
+origin    https://github.com/your-user-name/git-tutorial-fork-example.git (push)
+upstream  https://github.com/thomas-rasmussen-alt/git-tutorial-fork-example.git (fetch)
+upstream  https://github.com/thomas-rasmussen-alt/git-tutorial-fork-example.git (push)
+
+We can see that two remotes have been configured automatically: origin, which points to our fork, and upstream, which points to the original repository. We can push changes to our fork through origin, but we do not have permission to push changes directly to the upstream repository.
+
+Next, we create a feature branch, implement a change, and push the new branch to our fork:
 
 <pre class="terminal">
 $ git switch -c implement-feature
 $ echo "Implementation of feature" > feature.txt
 $ git add .
-$ git commit -m"Implement feature"
-$ git push
-$ git log --oneline
-<span class="col-hash">d134f37 (</span><span class="col-head">HEAD</span> <span class="col-hash">-> </span><span class="col-branch-local">main</span><span class="col-hash">,</span> <span class="col-branch-remote">origin/main</span><span class="col-hash">,</span> <span class="col-branch-remote">origin/HEAD</span><span class="col-hash">)</span> Implement feature
-<span class="col-hash">dd7b9d9 (</span><span class="col-branch-remote">upstream/main</span><span class="col-hash">,</span> <span class="col-branch-remote">upstream/HEAD</span><span class="col-hash">)</span> Initial commit
+$ git commit -m "Implement feature"
+$ git push -u origin implement-feature
 </pre>
 
-Finally, we send a pull request to the original repository, asking them to merge our suggested changes:
+We can inspect the commit history to see how the branches now differ:
 
 <pre class="terminal">
-$ gh pr create --title "Implement feature" --body "Implementation of important feature"
+$ git log --oneline
+d134f37 (HEAD -> implement-feature, origin/implement-feature) Implement feature
+dd7b9d9 (origin/main, origin/HEAD, upstream/main, upstream/HEAD) Initial commit
 </pre>
 
-TODO: This needs to be explained in more details. Also, could not get --base and --head flags to work. Got error "pull request create failed: GraphQL: No commits between main and main (createPullRequest), when specifying both as main. Finally, should have been implemented in a feature branch!
+The new commit is not present in our feature branch and has been pushed to our fork on GitHub. However, the `main` branch in the upstream repository still points to the original commit. TODO: yes, but would it not also be important to emphasize that upstream is unchanged. Our changes have not altered the upstream repository, no commits and no branches have been added there.
 
-The proposed changes can then be reviewed/discussed in the pull request before the owner of the original repository can merge the changes when and if they want to. We will omit illustrating this final step in this tutorial.
+We can now create a pull request proposing that our changes be merged into the `main` branch of the upstream repository:
+
+<pre class="terminal">
+$ gh pr create --repo thomas-rasmussen-alt/git-tutorial-fork-example --base main --head your-user-name:implement-feature --title "Implement feature" --body "Implementation of a new feature"
+</pre>
+
+TODO: in the above output, would it be better to omit the --body option? It does not add anything and the command is already really long?
+
+Here, `--repo` specifies the upstream repository where the pull request should be created, `--base` specifies the branch we want to merge our changes into, and `--head` specifies the branch containing our proposed changes. Replace `your-user-name` with your GitHub username.
+
+GitHub creates the pull request and displays its URL. We can inspect the pull request using `gh pr view`:
+
+<pre class="terminal">
+$ gh pr view
+</pre>
+
+The owner of the upstream repository can now review and discuss the proposed changes before deciding whether to merge them. We will not illustrate the review and merging process here.
+
+Finally, we can clean up by closing the pull request, deleting our fork, and removing the local clone. Replace `<number>` with the number assigned to the pull request:
+
+<pre class="terminal">
+$ gh pr close &lt;number&gt; --repo thomas-rasmussen-alt/git-tutorial-fork-example
+$ gh repo delete your-user-name/git-tutorial-fork-example --yes
+$ cd
+$ rm -rf git-tutorial-fork-example
+</pre>
 
 
 ## GitHub pages
