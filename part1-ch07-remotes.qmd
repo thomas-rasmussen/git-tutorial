@@ -1,4 +1,4 @@
-# Remote repositories
+# Remote repositories {#sec-remotes}
 
 Remote repositories, also just called remotes, are versions of your repository that are hosted somewhere else. This could be on the internet somewhere, for example on a Git hosting website like GitHub, or somewhere else on your computer/network. 
 

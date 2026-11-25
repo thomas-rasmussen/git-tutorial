@@ -31,15 +31,16 @@ The tutorial was developed using Quarto and RStudio.
 
 **---TODO: content---**
 
-**Chapter 5-11:**
+**"Merging and branching", "Remotes", and "The staging area" chapters**
 
 Only rough outlines / first draft of chapters so far. These chapters need a lot of work still.
 
-**"Git references" chapter:**
-
-Outline of scope of chapter has been made, but wait with actually writing the chapter until it is clear what is covered in the "Branches and merging" and "Remote repositories" chapters.
 
 **---TODO: technical stuff---**
+
+- Diagrams. For tags/references/HEAD, maybe use the same colours as is used in ther terminal? This would make all local branch references the same colour but maybe this might even be a good thing as that illustrates that they are the same type of Git reference.
+
+- Preface diagram: consider deleting this diagram. It does not add anything of values, and its design is fundamentally incompatible with the design that is going to be used for diagrams in the tutorial itself.
 
 - Rerun all examples and exercises from a clean Git for Windows installation,
   to make sure everything works as intended.

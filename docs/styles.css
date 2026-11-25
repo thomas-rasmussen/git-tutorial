@@ -59,19 +59,22 @@
 
 /* Classes used to colour git-specific output in terminal */
 .col-branch-local {
-  color: #00BF00;
+  color: #00F200;
+  font-weight: bold;
 }
 
 .col-branch-remote {
   color: #BF0000;
+  font-weight: bold;
 }
 
 .col-hash {
-  color: #BFBF00;
+  color: #C0A000;
 }
 
 .col-head {
   color: #00BFBF;
+  font-weight: bold;
 }
 
 .col-diff-addition {
@@ -128,6 +131,11 @@
 
 .col-status-untracked {
   color: #BF0000;
+}
+
+.col-tag {
+  color: #F2F200;
+  font-weight: bold;
 }
 
 /* Classes used to colour general output in terminal */
@@ -188,7 +196,7 @@
 }
 
 .col-yellow {
-  color: #BFBF00;
+  color: #C0A000;
 }
 
 .col-bright-yellow {
