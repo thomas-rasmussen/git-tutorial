@@ -582,8 +582,13 @@ $ git commit -m "Add file.txt"
 <td><code>?</code></td>
 <td>Display a description of the available options.</td>
 </tr>
+<tr class="odd">
+<td><code>s</code></td>
+<td>Split the current hunk into smaller hunks, if possible.</td>
+</tr>
 </tbody>
 </table>
+<p>Depending on how close together the changes to a file are, Git may display several changes in the same hunk. If the <code>s</code> option is available, we can use it to split the hunk into smaller hunks, allowing us to be more selective about which changes we stage.</p>
 <p>We answer <code>y</code> when Git prompts us to stage the first hunk and <code>n</code> when Git prompts us to stage the second hunk. Consequently, the change to the title has been staged, whereas the change to the footer has not been staged.</p>
 <div style="display:flex;justify-content:center;">
 <figure class="figure">
@@ -666,7 +671,11 @@ $ git add .
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Both <code>file1.txt</code> and <code>file2.txt</code> are represented in the staging area. The output of <code>git ls-files --stage</code> contains two entries with different file paths but identical object IDs. This is because the contents of the two files are identical. Git can use the same blob object to represent the contents of both files. The names of the files are recorded in the index, not in the blob.</p>
+<pre class="terminal">$ git ls-files --stage
+100644 3be9c81fd3d8fcf01e59701e5ee48041bcdf8631 0       file1.txt
+100644 3be9c81fd3d8fcf01e59701e5ee48041bcdf8631 0       file2.txt
+</pre>
+<p>Both <code>file1.txt</code> and <code>file2.txt</code> are represented in the staging area. The output contains two entries with different file paths but identical object IDs. This is because the contents of the two files are identical. Git can therefore use the same blob object to represent the contents of both files. The file paths are recorded in the index, not in the blob.</p>
 </div>
 </div>
 </div>
