@@ -31,33 +31,31 @@ The tutorial was developed using Quarto and RStudio.
 
 **---TODO: content---**
 
-**"Merging and branching", "Remotes", and "The staging area" chapters**
+**"Merging and branching" and "Remotes" chapters**
 
-Only rough outlines / first draft of chapters so far. These chapters need a lot of work still.
+Only rough outlines / first draft of chapters so far. These chapters need a lot of work still. A lot of the current content is now only explained in appendixes, so some topics can be removed/simplified to make the main chapters more focused on learning how to use Git without introducing too many technical details.
 
 
 **---TODO: technical stuff---**
 
-- Diagrams. For tags/references/HEAD, maybe use the same colours as is used in ther terminal? This would make all local branch references the same colour but maybe this might even be a good thing as that illustrates that they are the same type of Git reference.
+- Need to go through all the CSS classes defined in styles.css. Some are not used anymore, and it might be worth it to rename some of the existing classes to something more appropriate.
 
 - Preface diagram: consider deleting this diagram. It does not add anything of values, and its design is fundamentally incompatible with the design that is going to be used for diagrams in the tutorial itself.
 
 - Rerun all examples and exercises from a clean Git for Windows installation,
   to make sure everything works as intended.
 
-- Use of CSS to colour terminal output has been streamlined. Currently using some of the default mintty colours, but they don't seem to correspond
-  exactly with what is shown in Git BASH by default for some colours, even though they should be the same as the default mintty colours.
-  Consider tweaking colours to match better.
+- Use of CSS to colour terminal output has been streamlined. Currently using some of the default mintty colours, but they don't seem to correspond exactly with what is shown in Git BASH by default for some colours, even though they should be the same as the default mintty colours. Consider tweaking colours to match better.
 
 - Make sure that "git commit -m 'message'" is consistently used instead of "git commit -m'message'".
 
 - In some cases, simulated output from the terminal and notepad documents contains blank lines at the end. Figure out how to remove these. This has probably something to do with multiple nested div and pre tags, and/or making a new line after starting a pre tag or putting </pre> on a new line.
 
-- Need to re-export all .drawio diagrams to .svg, and set "Appeareance" to "light" when exporting to make sure the diagrams are displayed correctly when viewed in a browser with a dark theme.
+- When exporting .drawio diagrmas to .svg, remember to set "Appereance" to "light" to make sure diagrams are displayed correctly when viewed in a browser using a dark theme.
 
 - So far, when colouring commit IDs in lines from git log output that includes eg "(HEAD -> main)", the opening "(" has been included in the colouring of the commit ID, since the same colour is (currently) used. This was originally a decision based on laziness. Fix this throughout the entire tutorial, giving the "() its own span using the .col-yellow CSS class.
 
-- Many diagrams look a little crude. If time permits it, work on making them more visually polished.
+- Align the style of all diagrams to the style used in the "The staging area" appendix. Also combine all .drawi diagrams for a chapter in single files, including the individual diagrams in tabs.
 
 - Make a fresh installation of Git for Windows and check what the default branch name is using the newest
 version of Git for Windows. If it is not "main", consider if "master" should be used in tutorial.
@@ -68,11 +66,9 @@ version of Git for Windows. If it is not "main", consider if "master" should be 
 
 **---TODO: exercises---**
 
-In some cases, the exercises are almost identical replications of examples in the corresponding chapters. Think about how the exercises can be modified to feel more unique. Maybe by trying to describe more realistic examples, or by introducing details and twists that separates them from the examples.
+In some cases, the exercises are almost identical replications of examples in the corresponding chapters. Think about how the exercises can be modified to feel more unique. Maybe by trying to describe more realistic examples, or by introducing details and twists that separates them from the examples. At least for some exercises.
 
 **---TODO: potential topics that are not yet included---**
-
-- "git add -p": seems important and relevant but does not really fit anywhere currently. Maybe in an appendix on the staging area?
 
 - it could be useful to introduce "git revert" in the context of how to safely revert changes that have shared with collaborators. Consider adding in remotes chapter or another appropriate place.
 

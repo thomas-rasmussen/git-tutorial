@@ -9,7 +9,7 @@ As explained in @sec-getting-started, the staging area represents the snapshot o
 
 When we create a commit, we are not simply recording the changes that we have added to the staging area since the previous commit. We are recording a snapshot of the files in the repository. The staging area represents this entire snapshot, including the files that have not changed since the current commit. When we stage changes, we modify this proposed snapshot.
 
-To illustrate this, consider a repository containing three tracked files, `file1.txt`, `file2.txt`, and `file3.txt`. Suppose that we have modified both `file2.txt` and `file3.txt` in the working tree but have only staged the changes to `file2.txt`. The following figure illustrates the versions of the files represented in the current commit, the staging area, and the working tree.
+To illustrate this, consider a repository containing three tracked files, `file1.txt`, `file2.txt`, and `file3.txt`. Suppose that we have modified both `file2.txt` and `file3.txt` in the working tree but have only staged the changes to `file2.txt`. The following figure illustrates the versions of the files represented in the current commit, the staging area, and the working tree. TODO: could be made explicit that there is already at least one commit in the repository, so that a current commit exists.
 
 <div style="display:flex;justify-content:center;">
   <figure>
@@ -27,6 +27,19 @@ Thus, we should distinguish between the files represented in the staging area an
 When we use `git add` to stage a new file, Git adds an entry for the file to the staging area. When we stage changes to an existing file, Git updates its entry. When we stage the deletion of a file, for example using `git rm`, Git removes its entry from the staging area. In each case, we modify the snapshot that will be recorded in the next commit.
 
 
+## Why do we have a staging area?
+
+Throughout much of this tutorial, we have used `git add` followed immediately by git commit to record changes in the repository. You may therefore wonder why Git has a staging area at all rather than simply allowing us to commit changes directly from the working tree.
+
+When working on a project, we often make several changes before creating a commit, and these changes may serve different purposes. For example, while implementing a new feature, we may discover and fix an unrelated bug. Rather than recording all the changes in a single commit, we may want to create one commit for the bug fix and another for the new feature. Using the staging area, we can stage and commit the changes related to the bug fix while leaving the changes related to the new feature in the working tree to be committed later.
+
+The staging area also allows us to prepare a commit gradually by staging changes as we decide that they should be included in the next commit. Before creating the commit, we can review the changes we have staged using git diff --staged and, if necessary, stage additional changes or unstage changes that should not be included.
+
+As we will see later in this appendix, we can even stage individual changes to a file rather than all changes to that file.
+
+The staging area thus allows us to separate the process of making changes to a project from the process of deciding which changes to record together in a commit. This helps us create commits that each serve a well-defined purpose and thereby maintain a more meaningful commit history.
+
+
 ## How the staging area works
 
 So far, we have described the staging area as representing a snapshot of the files in the repository. However, the staging area does not actually contain copies of the files themselves.
@@ -42,7 +55,7 @@ When we stage an ordinary file using `git add`, Git stores its contents as a blo
   </figure>
 </div>
 
-We can use `git ls-files --stage` to examine the entries in the index. Let's create a new repository and create three files in the working tree. In the following examples, some output from setup and commit commands has been omitted. The object IDs shown are from a repository using SHA-1 and the file contents shown in the examples; the IDs or their abbreviated lengths may differ in your repository:
+We can use `git ls-files --stage` to examine the entries in the index. Let's create a new repository and create three files in the working tree. In the following examples, some output from setup and commit commands has been omitted. The object IDs shown are from a repository using SHA-1 and the file contents shown in the examples; the IDs or their abbreviated lengths may differ in your repository: (TODO: SHA-1 have been introduced in the main chapters, but for a beginner maybe it would be helpful to add a little more detail to the sentence of how SHA-1 is used to compute a checksum used as the object ID)
 
 <pre class="terminal">
 $ mkdir ~/example-staging-area
@@ -88,6 +101,7 @@ The output contains one line for each of the three files that we have added to t
   </tbody>
 </table>
 ```
+TODO: Add column number to table?
 
 Notice that Git has already stored the contents of the three files as objects and recorded their object IDs in the index, even though we have not yet created a commit in the repository. Staging a file does not create a commit.
 
@@ -457,6 +471,7 @@ The following table summarizes how some of the Git commands that we have examine
 </table>
 ```
 
+TODO: I wonder if this table will help the reader in any way. It does not summarize something from the chapter, but rather introduces references to the whole tutorial that the reader is expected to remember.
 
 ## Exercises
 
@@ -677,3 +692,5 @@ $ git status
 The commit log shows three commits. The current commit records the change to the project name, while its parent commit records the change to the version number. This can be verified by examining the output of `git show HEAD` and `git show HEAD^`. The working tree and staging area now match the current commit, so there are no staged or unstaged changes.
 
 :::
+
+TODO: the running example can be hard to follow. would it be easier for the reader with more self-contained examples that are shorter?

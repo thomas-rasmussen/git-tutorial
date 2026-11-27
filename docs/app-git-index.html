@@ -269,12 +269,13 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#what-is-the-staging-area" id="toc-what-is-the-staging-area" class="nav-link active" data-scroll-target="#what-is-the-staging-area"><span class="header-section-number">E.1</span> What is the staging area?</a></li>
-  <li><a href="#how-the-staging-area-works" id="toc-how-the-staging-area-works" class="nav-link" data-scroll-target="#how-the-staging-area-works"><span class="header-section-number">E.2</span> How the staging area works</a></li>
-  <li><a href="#different-versions-of-a-file" id="toc-different-versions-of-a-file" class="nav-link" data-scroll-target="#different-versions-of-a-file"><span class="header-section-number">E.3</span> Different versions of a file</a></li>
-  <li><a href="#from-the-staging-area-to-a-commit" id="toc-from-the-staging-area-to-a-commit" class="nav-link" data-scroll-target="#from-the-staging-area-to-a-commit"><span class="header-section-number">E.4</span> From the staging area to a commit</a></li>
-  <li><a href="#partial-staging" id="toc-partial-staging" class="nav-link" data-scroll-target="#partial-staging"><span class="header-section-number">E.5</span> Partial staging</a></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">E.6</span> Summary</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">E.7</span> Exercises</a>
+  <li><a href="#why-do-we-have-a-staging-area" id="toc-why-do-we-have-a-staging-area" class="nav-link" data-scroll-target="#why-do-we-have-a-staging-area"><span class="header-section-number">E.2</span> Why do we have a staging area?</a></li>
+  <li><a href="#how-the-staging-area-works" id="toc-how-the-staging-area-works" class="nav-link" data-scroll-target="#how-the-staging-area-works"><span class="header-section-number">E.3</span> How the staging area works</a></li>
+  <li><a href="#different-versions-of-a-file" id="toc-different-versions-of-a-file" class="nav-link" data-scroll-target="#different-versions-of-a-file"><span class="header-section-number">E.4</span> Different versions of a file</a></li>
+  <li><a href="#from-the-staging-area-to-a-commit" id="toc-from-the-staging-area-to-a-commit" class="nav-link" data-scroll-target="#from-the-staging-area-to-a-commit"><span class="header-section-number">E.5</span> From the staging area to a commit</a></li>
+  <li><a href="#partial-staging" id="toc-partial-staging" class="nav-link" data-scroll-target="#partial-staging"><span class="header-section-number">E.6</span> Partial staging</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">E.7</span> Summary</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">E.8</span> Exercises</a>
   <ul class="collapse">
   <li><a href="#exercise-1---investigating-the-staging-area" id="toc-exercise-1---investigating-the-staging-area" class="nav-link" data-scroll-target="#exercise-1---investigating-the-staging-area">Exercise 1 - Investigating the staging area</a></li>
   <li><a href="#exercise-2---practising-partial-staging" id="toc-exercise-2---practising-partial-staging" class="nav-link" data-scroll-target="#exercise-2---practising-partial-staging">Exercise 2 - Practising partial staging</a></li>
@@ -309,7 +310,7 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-number="E.1" class="anchored" data-anchor-id="what-is-the-staging-area"><span class="header-section-number">E.1</span> What is the staging area?</h2>
 <p>As explained in <a href="part1-ch02-getting-started.html" class="quarto-xref"><span>Chapter 2</span></a>, the staging area represents the snapshot of the files that will be recorded in the next commit. It is also commonly referred to as the <em>index</em> in Git’s documentation.</p>
 <p>When we create a commit, we are not simply recording the changes that we have added to the staging area since the previous commit. We are recording a snapshot of the files in the repository. The staging area represents this entire snapshot, including the files that have not changed since the current commit. When we stage changes, we modify this proposed snapshot.</p>
-<p>To illustrate this, consider a repository containing three tracked files, <code>file1.txt</code>, <code>file2.txt</code>, and <code>file3.txt</code>. Suppose that we have modified both <code>file2.txt</code> and <code>file3.txt</code> in the working tree but have only staged the changes to <code>file2.txt</code>. The following figure illustrates the versions of the files represented in the current commit, the staging area, and the working tree.</p>
+<p>To illustrate this, consider a repository containing three tracked files, <code>file1.txt</code>, <code>file2.txt</code>, and <code>file3.txt</code>. Suppose that we have modified both <code>file2.txt</code> and <code>file3.txt</code> in the working tree but have only staged the changes to <code>file2.txt</code>. The following figure illustrates the versions of the files represented in the current commit, the staging area, and the working tree. TODO: could be made explicit that there is already at least one commit in the repository, so that a current commit exists.</p>
 <div style="display:flex;justify-content:center;">
 <figure class="figure">
 <img src="diagrams/app-git-index01.drawio.svg" alt="Three columns show all three files in the current commit, staging area and working tree, with only the changes to file2.txt staged." style="max-width:100%;height:auto;" class="figure-img">
@@ -323,8 +324,16 @@ The staging area represents all three files, even though only the changes to <co
 <p>Thus, we should distinguish between the files represented in the staging area and the changes that have been staged. The former constitute the proposed snapshot, while the latter are the differences between this snapshot and the current commit.</p>
 <p>When we use <code>git add</code> to stage a new file, Git adds an entry for the file to the staging area. When we stage changes to an existing file, Git updates its entry. When we stage the deletion of a file, for example using <code>git rm</code>, Git removes its entry from the staging area. In each case, we modify the snapshot that will be recorded in the next commit.</p>
 </section>
-<section id="how-the-staging-area-works" class="level2" data-number="E.2">
-<h2 data-number="E.2" class="anchored" data-anchor-id="how-the-staging-area-works"><span class="header-section-number">E.2</span> How the staging area works</h2>
+<section id="why-do-we-have-a-staging-area" class="level2" data-number="E.2">
+<h2 data-number="E.2" class="anchored" data-anchor-id="why-do-we-have-a-staging-area"><span class="header-section-number">E.2</span> Why do we have a staging area?</h2>
+<p>Throughout much of this tutorial, we have used <code>git add</code> followed immediately by git commit to record changes in the repository. You may therefore wonder why Git has a staging area at all rather than simply allowing us to commit changes directly from the working tree.</p>
+<p>When working on a project, we often make several changes before creating a commit, and these changes may serve different purposes. For example, while implementing a new feature, we may discover and fix an unrelated bug. Rather than recording all the changes in a single commit, we may want to create one commit for the bug fix and another for the new feature. Using the staging area, we can stage and commit the changes related to the bug fix while leaving the changes related to the new feature in the working tree to be committed later.</p>
+<p>The staging area also allows us to prepare a commit gradually by staging changes as we decide that they should be included in the next commit. Before creating the commit, we can review the changes we have staged using git diff –staged and, if necessary, stage additional changes or unstage changes that should not be included.</p>
+<p>As we will see later in this appendix, we can even stage individual changes to a file rather than all changes to that file.</p>
+<p>The staging area thus allows us to separate the process of making changes to a project from the process of deciding which changes to record together in a commit. This helps us create commits that each serve a well-defined purpose and thereby maintain a more meaningful commit history.</p>
+</section>
+<section id="how-the-staging-area-works" class="level2" data-number="E.3">
+<h2 data-number="E.3" class="anchored" data-anchor-id="how-the-staging-area-works"><span class="header-section-number">E.3</span> How the staging area works</h2>
 <p>So far, we have described the staging area as representing a snapshot of the files in the repository. However, the staging area does not actually contain copies of the files themselves.</p>
 <p>In a typical Git repository, the staging area is stored in a binary file named <code>index</code> in the Git directory (<code>.git/index</code>). The contents of the files represented in the staging area are stored separately as objects in the Git directory. A Git object containing the contents of a file is called a <em>blob</em> (short for <em>binary large object</em>). Each blob has an object ID that is computed from its contents together with a small header, much like the IDs used to identify commits.</p>
 <p>When we stage an ordinary file using <code>git add</code>, Git stores its contents as a blob if the corresponding blob does not already exist. Git then records the path of the file relative to the root of the repository, the object ID of the blob, and some additional information in the index. If the file already has an entry in the index, Git updates that entry to represent the version we have just staged. The blob itself does not contain the name of the file.</p>
@@ -336,7 +345,7 @@ The index records file paths and object IDs, while the contents of the files are
 </figcaption>
 </figure>
 </div>
-<p>We can use <code>git ls-files --stage</code> to examine the entries in the index. Let’s create a new repository and create three files in the working tree. In the following examples, some output from setup and commit commands has been omitted. The object IDs shown are from a repository using SHA-1 and the file contents shown in the examples; the IDs or their abbreviated lengths may differ in your repository:</p>
+<p>We can use <code>git ls-files --stage</code> to examine the entries in the index. Let’s create a new repository and create three files in the working tree. In the following examples, some output from setup and commit commands has been omitted. The object IDs shown are from a repository using SHA-1 and the file contents shown in the examples; the IDs or their abbreviated lengths may differ in your repository: (TODO: SHA-1 have been introduced in the main chapters, but for a beginner maybe it would be helpful to add a little more detail to the sentence of how SHA-1 is used to compute a checksum used as the object ID)</p>
 <pre class="terminal">$ mkdir ~/example-staging-area
 $ cd ~/example-staging-area
 $ git init
@@ -376,6 +385,7 @@ $ git ls-files --stage
 </tr>
 </tbody>
 </table>
+<p>TODO: Add column number to table?</p>
 <p>Notice that Git has already stored the contents of the three files as objects and recorded their object IDs in the index, even though we have not yet created a commit in the repository. Staging a file does not create a commit.</p>
 <p>Now let’s create the first commit in the repository:</p>
 <pre class="terminal">$ git commit -m "Add three files"
@@ -411,8 +421,8 @@ Staging a modified file updates its index entry to point to a blob containing th
 <p>The output shows that the changes to <code>file2.txt</code> have been staged, while the changes to <code>file3.txt</code> have not. In contrast to <code>git ls-files --stage</code>, the output does not contain an entry for <code>file1.txt</code>, as the version of this file is the same in the current commit, the staging area, and the working tree.</p>
 <p>We can use <code>git ls-files --stage</code> whenever we want to examine the entries in the index. In practice, however, we will generally be more interested in the differences between the staging area and the current commit or the working tree than in the entries themselves.</p>
 </section>
-<section id="different-versions-of-a-file" class="level2" data-number="E.3">
-<h2 data-number="E.3" class="anchored" data-anchor-id="different-versions-of-a-file"><span class="header-section-number">E.3</span> Different versions of a file</h2>
+<section id="different-versions-of-a-file" class="level2" data-number="E.4">
+<h2 data-number="E.4" class="anchored" data-anchor-id="different-versions-of-a-file"><span class="header-section-number">E.4</span> Different versions of a file</h2>
 <p>In the previous example, the versions of <code>file2.txt</code> in the staging area and the working tree are identical but differ from the version in the current commit. Conversely, the versions of <code>file3.txt</code> in the staging area and the current commit are identical but differ from the version in the working tree.</p>
 <p>However, the three versions of a file can also differ from one another. To illustrate this, let’s modify <code>file2.txt</code> again without staging the new changes:</p>
 <pre class="terminal">$ echo "Further updated contents of file2" &gt; file2.txt
@@ -455,8 +465,8 @@ The current commit, staging area, and working tree can contain three different v
 <p>In our example, if we were to use <code>git add file2.txt</code> again, Git would update the staging area to represent the version of the file in the working tree, and there would no longer be unstaged changes to the file. If we instead used <code>git restore file2.txt</code>, Git would restore the version of the file in the working tree using the version in the staging area, thereby discarding the unstaged changes. Finally, if we used <code>git restore --staged file2.txt</code>, Git would restore the staging area using the version of the file in the current commit without modifying the working tree. In the latter case, all changes to the file would be unstaged.</p>
 <p>For now, we will leave the versions of the files in the example unchanged.</p>
 </section>
-<section id="from-the-staging-area-to-a-commit" class="level2" data-number="E.4">
-<h2 data-number="E.4" class="anchored" data-anchor-id="from-the-staging-area-to-a-commit"><span class="header-section-number">E.4</span> From the staging area to a commit</h2>
+<section id="from-the-staging-area-to-a-commit" class="level2" data-number="E.5">
+<h2 data-number="E.5" class="anchored" data-anchor-id="from-the-staging-area-to-a-commit"><span class="header-section-number">E.5</span> From the staging area to a commit</h2>
 <p>When we use <code>git commit</code> without specifying any files or options that modify what is committed, Git creates a commit based on the snapshot represented in the staging area. As explained in <a href="part1-ch03-inspecting-the-commit-history.html" class="quarto-xref"><span>Chapter 3</span></a>, the commit also contains information such as the author, the commit message, and references to its parent commits.</p>
 <p>More specifically, Git uses the entries in the index to construct the snapshot as one or more objects called <em>tree objects</em>. Tree objects represent the structure of the files and directories in the snapshot and point to the objects containing their contents. The commit object points to the tree object representing the root of the snapshot. Git can reuse objects that already exist in the object database. In particular, the blobs containing the staged file contents have already been stored when the files were staged.</p>
 <div style="display:flex;justify-content:center;">
@@ -490,8 +500,8 @@ After creating a commit, the current commit matches the staging area, while the 
 </figure>
 </div>
 </section>
-<section id="partial-staging" class="level2" data-number="E.5">
-<h2 data-number="E.5" class="anchored" data-anchor-id="partial-staging"><span class="header-section-number">E.5</span> Partial staging</h2>
+<section id="partial-staging" class="level2" data-number="E.6">
+<h2 data-number="E.6" class="anchored" data-anchor-id="partial-staging"><span class="header-section-number">E.6</span> Partial staging</h2>
 <p>So far, when we have staged changes to a file, we have staged all changes to that file. However, sometimes we may want to include only some of the changes to a file in a commit. For example, we may have corrected an error and added a new feature in the same file, and we may want to record these two changes in separate commits.</p>
 <p>We can stage individual changes using <code>git add -p</code>, where <code>-p</code> is short for <code>--patch</code>. Git displays the differences between the staging area and the working tree one hunk at a time and prompts us to decide whether to stage each hunk. This is commonly referred to as <em>partial staging</em>.</p>
 <p>Let’s create a new repository to illustrate how this works. In this example, we use <code>echo</code> with a quoted string spanning several lines to create a text file. If we enter the command one line at a time, Git Bash displays a continuation prompt (<code>&gt;</code>) until we enter the closing quotation mark. We do not type the continuation prompts ourselves.</p>
@@ -617,8 +627,8 @@ $ git log --oneline
 <p>The commit log now shows three commits: the initial commit, a commit recording the change to the title, and a commit recording the change to the footer. The two modifications to the file have been recorded in separate commits, even though we made both modifications in the working tree before creating either commit.</p>
 <p>When we make several unrelated changes to a file, partial staging allows us to organize these changes into separate commits. This can make the commit history easier to understand and is particularly useful when we want each commit to represent a single logical change, as discussed in <a href="part1-ch03-inspecting-the-commit-history.html" class="quarto-xref"><span>Chapter 3</span></a>.</p>
 </section>
-<section id="summary" class="level2" data-number="E.6">
-<h2 data-number="E.6" class="anchored" data-anchor-id="summary"><span class="header-section-number">E.6</span> Summary</h2>
+<section id="summary" class="level2" data-number="E.7">
+<h2 data-number="E.7" class="anchored" data-anchor-id="summary"><span class="header-section-number">E.7</span> Summary</h2>
 <p>The staging area, also referred to as the index, represents the proposed snapshot that will be recorded in the next commit. It represents the versions of all files to be included in the snapshot, not just the files that have been modified since the current commit.</p>
 <p>The index contains information about the files represented in the staging area, including their paths and the object IDs of the objects containing their contents. For ordinary files, these objects are referred to as blobs. When we stage changes, Git updates the entries in the index to represent the new versions of the files. Creating a commit does not empty the staging area.</p>
 <p>The versions of a file in the current commit, the staging area, and the working tree can all differ from one another. The distinction between staged and unstaged changes is based on comparisons between these versions. Using <code>git add -p</code>, we can stage individual hunks of a file rather than staging all changes to the file at once.</p>
@@ -673,9 +683,10 @@ $ git log --oneline
 </tr>
 </tbody>
 </table>
+<p>TODO: I wonder if this table will help the reader in any way. It does not summarize something from the chapter, but rather introduces references to the whole tutorial that the reader is expected to remember.</p>
 </section>
-<section id="exercises" class="level2" data-number="E.7">
-<h2 data-number="E.7" class="anchored" data-anchor-id="exercises"><span class="header-section-number">E.7</span> Exercises</h2>
+<section id="exercises" class="level2" data-number="E.8">
+<h2 data-number="E.8" class="anchored" data-anchor-id="exercises"><span class="header-section-number">E.8</span> Exercises</h2>
 <section id="exercise-1---investigating-the-staging-area" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-1---investigating-the-staging-area">Exercise 1 - Investigating the staging area</h3>
 <p>The purpose of this exercise is to investigate how some of the Git operations introduced throughout this tutorial affect the staging area. Throughout the exercise, try to predict the versions of the files represented in the current commit, the staging area, and the working tree before examining them using Git commands.</p>
@@ -930,6 +941,7 @@ $ git status
 </div>
 </div>
 </div>
+<p>TODO: the running example can be hard to follow. would it be easier for the reader with more self-contained examples that are shorter?</p>
 
 
 </section>
