@@ -10,7 +10,7 @@ As explained in @sec-getting-started, the staging area represents the snapshot o
 
 When we create a commit, we are not simply recording the changes that we have added to the staging area since the previous commit. We are recording a snapshot of the files in the repository. The staging area represents this entire snapshot, including the files that have not changed since the current commit. When we stage changes, we modify this proposed snapshot.
 
-To illustrate this, consider a repository containing three tracked files, `file1.txt`, `file2.txt`, and `file3.txt`. Suppose that we have modified both `file2.txt` and `file3.txt` in the working tree but have only staged the changes to `file2.txt`. The following figure illustrates the versions of the files represented in the current commit, the staging area, and the working tree. TODO: could be made explicit that there is already at least one commit in the repository, so that a current commit exists.
+To illustrate this, consider a repository in which the current commit contains three tracked files, `file1.txt`, `file2.txt`, and `file3.txt`. Suppose that we have subsequently modified both `file2.txt` and `file3.txt` in the working tree but have only staged the changes to `file2.txt`. The following figure illustrates the versions of the files represented in the current commit, the staging area, and the working tree.
 
 <div style="display:flex;justify-content:center;">
   <figure>
@@ -45,7 +45,9 @@ The staging area thus allows us to separate the process of making changes to a p
 
 So far, we have described the staging area as representing a snapshot of the files in the repository. However, the staging area does not actually contain copies of the files themselves.
 
-In a typical Git repository, the staging area is stored in a binary file named `index` in the Git directory (`.git/index`). The contents of the files represented in the staging area are stored separately as objects in the Git directory. A Git object containing the contents of a file is called a *blob* (short for *binary large object*). Each blob has an object ID that is computed from its contents together with a small header, much like the IDs used to identify commits.
+In a typical Git repository, the staging area is stored in a binary file named `index` in the Git directory (`.git/index`). The contents of the files represented in the staging area are stored separately as objects in the Git directory. A Git object containing the contents of a file is called a *blob* (short for *binary large object*). 
+
+As explained in @sec-inspecting-the-commit-history, Git uses checksums to identify the objects stored in its internal database. By default, these checksums are calculated using the SHA-1 hashing algorithm. To calculate the checksum of a blob, Git uses the contents of the file together with information about the type and size of the object. The resulting checksum is the object ID of the blob.
 
 When we stage an ordinary file using `git add`, Git stores its contents as a blob if the corresponding blob does not already exist. Git then records the path of the file relative to the root of the repository, the object ID of the blob, and some additional information in the index. If the file already has an entry in the index, Git updates that entry to represent the version we have just staged. The blob itself does not contain the name of the file.
 
@@ -56,7 +58,7 @@ When we stage an ordinary file using `git add`, Git stores its contents as a blo
   </figure>
 </div>
 
-We can use `git ls-files --stage` to examine the entries in the index. Let's create a new repository and create three files in the working tree. In the following examples, some output from setup and commit commands has been omitted. The object IDs shown are from a repository using SHA-1 and the file contents shown in the examples; the IDs or their abbreviated lengths may differ in your repository: (TODO: SHA-1 have been introduced in the main chapters, but for a beginner maybe it would be helpful to add a little more detail to the sentence of how SHA-1 is used to compute a checksum used as the object ID)
+We can use `git ls-files --stage` to examine the entries in the index. Let's create a new repository and create three files in the working tree, and add them to the staging area:
 
 <pre class="terminal">
 $ mkdir ~/example-staging-area
@@ -72,37 +74,48 @@ $ git ls-files --stage
 100644 994e4be8b752fa9ea15655efa78d815eb9c2250d 0       file3.txt
 </pre>
 
-The output contains one line for each of the three files that we have added to the staging area. The following table describes the four columns of the output.
+In the examples in this appendix, some output from setup and commit commands has been omitted. The examples are based on a repository using SHA-1 to calculate object IDs. Depending on your Git configuration, the object IDs displayed in your repository and the lengths of abbreviated object IDs may differ from those shown here.
+
+The output contains one line for each of the three files that we have added to the staging area. The following table describes the four columns of the output, using the fine line of the output as an example.
 
 ```{=html}
 <table>
   <thead>
     <tr>
       <th>Column</th>
+      <th>Name</th>
+      <th>Example</th>
       <th>Description</th>
     </tr>
   </thead>
   <tbody>
     <tr>
+      <td>1</td>
       <td>File mode</td>
+      <td><code>100644</code></td>
       <td>Indicates the type of file and, for ordinary files, whether the file is executable. The value <code>100644</code> represents an ordinary non-executable file.</td>
     </tr>
     <tr>
+      <td>2</td>
       <td>Object ID</td>
-      <td>The ID of the object containing the staged file contents (a blob for an ordinary file).</td>
+      <td><code>7808d22...</code></td>
+      <td>The ID of the object containing the staged file contents (a blob for an ordinary file). The object ID in this table has been abbreviated.</td>
     </tr>
     <tr>
+      <td>3</td>
       <td>Stage number</td>
+      <td><code>0</code></td>
       <td>Normally <code>0</code>. Other values are used to represent different versions of a file during the resolution of merge conflicts.</td>
     </tr>
     <tr>
+      <td>4</td>
       <td>File path</td>
+      <td><code>file1.txt</code></td>
       <td>The path of the file, relative to the root of the repository when the command is run from that directory.</td>
     </tr>
   </tbody>
 </table>
 ```
-TODO: Add column number to table?
 
 Notice that Git has already stored the contents of the three files as objects and recorded their object IDs in the index, even though we have not yet created a commit in the repository. Staging a file does not create a commit.
 

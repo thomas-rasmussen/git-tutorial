@@ -302,7 +302,7 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-number="E.1" class="anchored" data-anchor-id="what-is-the-staging-area"><span class="header-section-number">E.1</span> What is the staging area?</h2>
 <p>As explained in <a href="part1-ch02-getting-started.html" class="quarto-xref"><span>Chapter 2</span></a>, the staging area represents the snapshot of the files that will be recorded in the next commit. It is also commonly referred to as the <em>index</em> in Git’s documentation.</p>
 <p>When we create a commit, we are not simply recording the changes that we have added to the staging area since the previous commit. We are recording a snapshot of the files in the repository. The staging area represents this entire snapshot, including the files that have not changed since the current commit. When we stage changes, we modify this proposed snapshot.</p>
-<p>To illustrate this, consider a repository containing three tracked files, <code>file1.txt</code>, <code>file2.txt</code>, and <code>file3.txt</code>. Suppose that we have modified both <code>file2.txt</code> and <code>file3.txt</code> in the working tree but have only staged the changes to <code>file2.txt</code>. The following figure illustrates the versions of the files represented in the current commit, the staging area, and the working tree. TODO: could be made explicit that there is already at least one commit in the repository, so that a current commit exists.</p>
+<p>To illustrate this, consider a repository in which the current commit contains three tracked files, <code>file1.txt</code>, <code>file2.txt</code>, and <code>file3.txt</code>. Suppose that we have subsequently modified both <code>file2.txt</code> and <code>file3.txt</code> in the working tree but have only staged the changes to <code>file2.txt</code>. The following figure illustrates the versions of the files represented in the current commit, the staging area, and the working tree.</p>
 <div style="display:flex;justify-content:center;">
 <figure class="figure">
 <img src="diagrams/app-git-index01.drawio.svg" alt="Three columns show all three files in the current commit, staging area and working tree, with only the changes to file2.txt staged." style="max-width:100%;height:auto;" class="figure-img">
@@ -327,7 +327,8 @@ The staging area represents all three files, even though only the changes to <co
 <section id="how-the-staging-area-works" class="level2" data-number="E.3">
 <h2 data-number="E.3" class="anchored" data-anchor-id="how-the-staging-area-works"><span class="header-section-number">E.3</span> How the staging area works</h2>
 <p>So far, we have described the staging area as representing a snapshot of the files in the repository. However, the staging area does not actually contain copies of the files themselves.</p>
-<p>In a typical Git repository, the staging area is stored in a binary file named <code>index</code> in the Git directory (<code>.git/index</code>). The contents of the files represented in the staging area are stored separately as objects in the Git directory. A Git object containing the contents of a file is called a <em>blob</em> (short for <em>binary large object</em>). Each blob has an object ID that is computed from its contents together with a small header, much like the IDs used to identify commits.</p>
+<p>In a typical Git repository, the staging area is stored in a binary file named <code>index</code> in the Git directory (<code>.git/index</code>). The contents of the files represented in the staging area are stored separately as objects in the Git directory. A Git object containing the contents of a file is called a <em>blob</em> (short for <em>binary large object</em>).</p>
+<p>As explained in <a href="part1-ch03-inspecting-the-commit-history.html" class="quarto-xref"><span>Chapter 3</span></a>, Git uses checksums to identify the objects stored in its internal database. By default, these checksums are calculated using the SHA-1 hashing algorithm. To calculate the checksum of a blob, Git uses the contents of the file together with information about the type and size of the object. The resulting checksum is the object ID of the blob.</p>
 <p>When we stage an ordinary file using <code>git add</code>, Git stores its contents as a blob if the corresponding blob does not already exist. Git then records the path of the file relative to the root of the repository, the object ID of the blob, and some additional information in the index. If the file already has an entry in the index, Git updates that entry to represent the version we have just staged. The blob itself does not contain the name of the file.</p>
 <div style="display:flex;justify-content:center;">
 <figure class="figure">
@@ -337,7 +338,7 @@ The index records file paths and object IDs, while the contents of the files are
 </figcaption>
 </figure>
 </div>
-<p>We can use <code>git ls-files --stage</code> to examine the entries in the index. Let’s create a new repository and create three files in the working tree. In the following examples, some output from setup and commit commands has been omitted. The object IDs shown are from a repository using SHA-1 and the file contents shown in the examples; the IDs or their abbreviated lengths may differ in your repository: (TODO: SHA-1 have been introduced in the main chapters, but for a beginner maybe it would be helpful to add a little more detail to the sentence of how SHA-1 is used to compute a checksum used as the object ID)</p>
+<p>We can use <code>git ls-files --stage</code> to examine the entries in the index. Let’s create a new repository and create three files in the working tree, and add them to the staging area:</p>
 <pre class="terminal">$ mkdir ~/example-staging-area
 $ cd ~/example-staging-area
 $ git init
@@ -350,34 +351,44 @@ $ git ls-files --stage
 100644 90268164ca5861890a917879c7b09a0f7c93f514 0       file2.txt
 100644 994e4be8b752fa9ea15655efa78d815eb9c2250d 0       file3.txt
 </pre>
-<p>The output contains one line for each of the three files that we have added to the staging area. The following table describes the four columns of the output.</p>
+<p>In the examples in this appendix, some output from setup and commit commands has been omitted. The examples are based on a repository using SHA-1 to calculate object IDs. Depending on your Git configuration, the object IDs displayed in your repository and the lengths of abbreviated object IDs may differ from those shown here.</p>
+<p>The output contains one line for each of the three files that we have added to the staging area. The following table describes the four columns of the output, using the fine line of the output as an example.</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th">Column</th>
+<th data-quarto-table-cell-role="th">Name</th>
+<th data-quarto-table-cell-role="th">Example</th>
 <th data-quarto-table-cell-role="th">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
+<td>1</td>
 <td>File mode</td>
+<td><code>100644</code></td>
 <td>Indicates the type of file and, for ordinary files, whether the file is executable. The value <code>100644</code> represents an ordinary non-executable file.</td>
 </tr>
 <tr class="even">
+<td>2</td>
 <td>Object ID</td>
-<td>The ID of the object containing the staged file contents (a blob for an ordinary file).</td>
+<td><code>7808d22...</code></td>
+<td>The ID of the object containing the staged file contents (a blob for an ordinary file). The object ID in this table has been abbreviated.</td>
 </tr>
 <tr class="odd">
+<td>3</td>
 <td>Stage number</td>
+<td><code>0</code></td>
 <td>Normally <code>0</code>. Other values are used to represent different versions of a file during the resolution of merge conflicts.</td>
 </tr>
 <tr class="even">
+<td>4</td>
 <td>File path</td>
+<td><code>file1.txt</code></td>
 <td>The path of the file, relative to the root of the repository when the command is run from that directory.</td>
 </tr>
 </tbody>
 </table>
-<p>TODO: Add column number to table?</p>
 <p>Notice that Git has already stored the contents of the three files as objects and recorded their object IDs in the index, even though we have not yet created a commit in the repository. Staging a file does not create a commit.</p>
 <p>Now let’s create the first commit in the repository:</p>
 <pre class="terminal">$ git commit -m "Add three files"
