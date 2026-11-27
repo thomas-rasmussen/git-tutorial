@@ -1,3 +1,4 @@
+
 # The staging area {#sec-git-index}
 
 Throughout this tutorial, we have used the staging area to prepare changes to be included in commits. We have also compared the contents of the staging area with those of the working tree and the current commit and used several commands to modify the contents of the staging area. In this appendix, we will examine the staging area in more detail to gain a better understanding of how these operations work. We will also learn how to stage individual changes to a file rather than all changes to the file.
@@ -205,9 +206,7 @@ Notice that the line removed in this output corresponds to the line added in the
 
 The example illustrates an important property of the staging area: when we stage a file, we stage its contents at that particular point in time. Subsequent modifications to the file in the working tree do not affect the version represented in the staging area.
 
-In our example, if we were to use `git add file2.txt` again, Git would update the staging area to represent the version of the file in the working tree, and there would no longer be unstaged changes to the file. If we instead used `git restore file2.txt`, Git would restore the version of the file in the working tree using the version in the staging area, thereby discarding the unstaged changes. Finally, if we used `git restore --staged file2.txt`, Git would restore the staging area using the version of the file in the current commit without modifying the working tree. In the latter case, all changes to the file would be unstaged.
-
-For now, we will leave the versions of the files in the example unchanged.
+What happens if we create a commit at this point without staging any further changes? We will examine this in the following section.
 
 
 ## From the staging area to a commit
@@ -223,7 +222,7 @@ More specifically, Git uses the entries in the index to construct the snapshot a
   </figure>
 </div>
 
-Let's commit the staged changes in our example without staging any further changes:
+Recall that we have staged changes to `file2.txt` and subsequently modified the file again without staging the new changes. We also have unstaged changes to `file3.txt`. Let's create a commit without staging any further changes:
 
 <pre class="terminal">
 $ git commit -m "Update file2.txt"
@@ -400,30 +399,29 @@ The change to the footer remains unstaged. We can therefore commit the change to
 $ git commit -m "Update title"
 $ git add file.txt
 $ git commit -m "Update footer"
-$ git log --oneline
 </pre>
 
-The commit log now shows three commits: the initial commit, a commit recording the change to the title, and a commit recording the change to the footer. The two modifications to the file have been recorded in separate commits, even though we made both modifications in the working tree before creating either commit.
+We have now recorded the two modifications to the file in separate commits, even though we made both modifications in the working tree before creating either commit.
 
 When we make several unrelated changes to a file, partial staging allows us to organize these changes into separate commits. This can make the commit history easier to understand and is particularly useful when we want each commit to represent a single logical change, as discussed in @sec-inspecting-the-commit-history.
 
 
 ## Summary
 
-The staging area, also referred to as the index, represents the proposed snapshot that will be recorded in the next commit. It represents the versions of all files to be included in the snapshot, not just the files that have been modified since the current commit.
+The staging area, also referred to as the *index*, represents the proposed snapshot that will be recorded in the next commit. It represents the versions of all files to be included in the snapshot, not just the files that have been modified since the current commit.
 
-The index contains information about the files represented in the staging area, including their paths and the object IDs of the objects containing their contents. For ordinary files, these objects are referred to as blobs. When we stage changes, Git updates the entries in the index to represent the new versions of the files. Creating a commit does not empty the staging area.
+The index contains information about the files represented in the staging area, including their paths and the object IDs of the objects containing their contents. For ordinary files, these objects are referred to as blobs. When we stage changes, Git updates the entries in the index. Creating a commit does not empty the staging area. We can examine the entries in the index using `git ls-files --stage`.
 
-The current commit, the staging area, and the working tree can contain different versions of the same file. Staged an unstaged changes are determined by comparing these versions.
+The current commit, the staging area, and the working tree can contain different versions of the same file. Staged and unstaged changes are determined by comparing these versions.
 
-The staging area allows to separate the process of making changes to a project from the process of deciding which changes to record together in a commit. Using `git add -p`, we can even stage individual hunks of changes to a file rather than staging all changes to the file at once. This helps us create commits that each server a well-defined purpose.
+The staging area allows us to separate the process of making changes to a project from the process of deciding which changes to record together in a commit. Using `git add -p`, we can even stage individual hunks of changes to a file rather than staging all changes to the file at once. This helps us create commits that each serve a well-defined purpose.
 
 
 ## Exercises
 
 ### Exercise 1 - Investigating the staging area
 
-The purpose of this exercise is to investigate how some of the Git operations introduced throughout this tutorial affect the staging area. Throughout the exercise, try to predict the versions of the files represented in the current commit, the staging area, and the working tree before examining them using Git commands.
+The purpose of this exercise is to investigate how different Git operations affect the entries in the index. Throughout the exercise, try to predict how the entries in the index will change before examining them using `git ls-files --stage`.
 
 <b>Step 1.</b>
 
@@ -470,76 +468,56 @@ The entries in the index are unchanged. Git has created a commit recording the s
 
 <b>Step 3.</b>
 
-Append the line `Line 2` to `file1.txt` and stage the change. Then append the line `Line 3` to the same file without staging the new change.
+Append the line `Line 2` to `file1.txt` without staging the change. Examine the entries in the index using `git ls-files --stage`.
 
-Before using `git ls-files --stage`, `git status -s`, `git diff`, and `git diff --staged` to examine the repository, answer the following questions:
+Next, stage the change to `file1.txt` and examine the entries in the index again.
 
-- Which files are represented in the staging area, and which versions of the files are represented there?
-- Which object IDs in the index have changed since step 2?
-- Which changes to `file1.txt` are staged, and which are unstaged?
+Finally, append the line `Line 3` to `file1.txt` without staging the new change and examine the entries in the index once more.
+
+- After which of these three operations does the object ID associated with `file1.txt` change?
+- Does the object ID associated with `file2.txt` change?
+- Which versions of the two files are now represented in the staging area?
 
 ::: {.callout-note title="Solution" collapse="true" icon="false"}
 
 <pre class="terminal">
 $ echo "Line 2" >> file1.txt
+$ git ls-files --stage
 $ git add file1.txt
+$ git ls-files --stage
 $ echo "Line 3" >> file1.txt
 $ git ls-files --stage
-$ git status -s
-<span class="col-green">M</span><span class="col-red">M</span> file1.txt
-$ git diff
-$ git diff --staged
 </pre>
 
-Both files are still represented in the staging area. The version of `file1.txt` in the staging area contains two lines, whereas the version of `file2.txt` still contains one line. Only the object ID associated with `file1.txt` has changed. The subsequent addition of `Line 3` in the working tree does not update the index entry.
+The object ID associated with `file1.txt` changes only when we stage the change using `git add`. When we modify the file in the working tree without staging the change, the entry in the index remains unchanged.
 
-The output of `git status -s` indicates that `file1.txt` contains both staged and unstaged changes. The output of `git diff --staged` shows the addition of `Line 2`, while the output of `git diff` shows the addition of `Line 3`.
+The object ID associated with `file2.txt` remains unchanged throughout the step, as we have not modified or staged any changes to this file.
+
+The staging area now represents the version of `file1.txt` containing two lines and the version of `file2.txt` containing one line. The addition of `Line 3` to `file1.txt` has not been staged and is therefore not represented in the staging area.
 
 :::
 
 <b>Step 4.</b>
 
-Commit the staged changes with a descriptive commit message without staging the remaining changes. Examine the repository using the same four commands as in step 3.
+Commit the staged changes with a descriptive commit message without staging the remaining changes. Examine the entries in the index using `git ls-files --stage` and check the state of the files using `git status`.
 
+- Have any of the entries in the index changed?
 - Which versions of `file1.txt` are now represented in the current commit, the staging area, and the working tree?
-- Has the output of `git ls-files --stage` changed?
-- Which changes does Git now report as staged and unstaged?
+- Why does Git still report unstaged changes to `file1.txt`?
 
 ::: {.callout-note title="Solution" collapse="true" icon="false"}
 
 <pre class="terminal">
 $ git commit -m "Add second line to file1.txt"
 $ git ls-files --stage
-$ git status -s
- <span class="col-red">M</span> file1.txt
-$ git diff
-$ git diff --staged
+$ git status
 </pre>
 
-Both the current commit and the staging area now represent the version of `file1.txt` containing two lines. The version in the working tree still contains three lines. The output of `git ls-files --stage` has not changed because the index still represents the same file contents as before the commit.
+The entries in the index remain unchanged, as creating a commit does not empty the staging area or change the versions of the files represented there.
 
-The output of `git diff --staged` is empty because the staging area matches the current commit. The output of `git diff` still shows the addition of `Line 3`. The unstaged change was not included in the commit and has not been discarded.
+Both the current commit and the staging area now represent the version of `file1.txt` containing two lines, whereas the version in the working tree still contains three lines.
 
-:::
-
-<b>Step 5.</b>
-
-Remove `file2.txt` using `git rm`. Examine the index and the staged changes using `git ls-files --stage` and `git diff --staged`.
-
-- Which files are now represented in the staging area?
-- If we were to create another commit at this point, which files and which versions of their contents would be recorded in the commit?
-
-::: {.callout-note title="Solution" collapse="true" icon="false"}
-
-<pre class="terminal">
-$ git rm file2.txt
-$ git ls-files --stage
-$ git diff --staged
-</pre>
-
-The index now contains only an entry for `file1.txt`. The entry for `file2.txt` has been removed. The output of `git diff --staged` shows the deletion of `file2.txt`, as this file is present in the current commit but is no longer represented in the staging area.
-
-If we were to create a commit at this point, it would record a snapshot containing only the version of `file1.txt` with two lines. The unstaged addition of `Line 3` to `file1.txt` would not be included.
+Git therefore reports unstaged changes to `file1.txt`. The addition of `Line 3` was not included in the commit and remains in the working tree.
 
 :::
 
@@ -603,7 +581,7 @@ With the default diff context, the output contains two hunks. The first hunk sho
 
 Suppose that you want to commit the change to the version number first and the change to the project name afterwards. Use partial staging to stage only the change to the version number.
 
-Before creating a commit, use `git diff`, `git diff --staged`, and `git status -s` to verify that the intended change has been staged and the other change remains unstaged.
+Before creating a commit, use `git diff --staged` and `git diff` to verify that the intended change has been staged and the other change remains unstaged.
 
 ::: {.callout-note title="Solution" collapse="true" icon="false"}
 
@@ -611,32 +589,29 @@ Use `git add -p file.txt` and answer `n` when prompted to stage the first hunk a
 
 <pre class="terminal">
 $ git add -p file.txt
+$ git diff --staged
+$ git diff
 </pre>
 
-The output of `git diff --staged` now shows only the change from `Version: 1` to `Version: 2`, whereas the output of `git diff` shows only the change to the project name. The output of `git status -s` shows two `M`s for `file.txt`, indicating that there are both staged and unstaged changes to the file.
+The output of `git diff --staged` now shows only the change from `Version: 1` to `Version: 2`, whereas the output of `git diff` shows only the change to the project name.
 
 :::
 
 <b>Step 4.</b>
 
-Create a commit containing the staged change, then stage and commit the remaining change. Use descriptive commit messages for both commits.
-
-Finally, use `git log --oneline` and `git show` to verify that the two changes have been recorded in separate commits in the intended order. Use `git status` to check that there are no remaining changes to the file.
+Create a commit containing the staged change, then stage the remaining change. Use `git diff --staged` to verify that the remaining change has been staged before creating another commit. Use descriptive commit messages for both commits.
 
 ::: {.callout-note title="Solution" collapse="true" icon="false"}
 
 <pre class="terminal">
 $ git commit -m "Update version number"
 $ git add file.txt
+$ git diff --staged
 $ git commit -m "Update project name"
-$ git log --oneline
-$ git show HEAD^
-$ git show HEAD
-$ git status
 </pre>
 
-The commit log shows three commits. The current commit records the change to the project name, while its parent commit records the change to the version number. This can be verified by examining the output of `git show HEAD` and `git show HEAD^`. The working tree and staging area now match the current commit, so there are no staged or unstaged changes.
+After creating the first commit and staging the remaining change, the output of `git diff --staged` shows only the change from `Project: Example` to `Project: Git tutorial`.
+
+We have thus recorded the two modifications to the file in separate commits in the intended order, even though both modifications were made before either commit was created.
 
 :::
-
-TODO: the running example can be hard to follow. would it be easier for the reader with more self-contained examples that are shorter?
