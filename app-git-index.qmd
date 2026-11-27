@@ -414,64 +414,10 @@ The staging area, also referred to as the index, represents the proposed snapsho
 
 The index contains information about the files represented in the staging area, including their paths and the object IDs of the objects containing their contents. For ordinary files, these objects are referred to as blobs. When we stage changes, Git updates the entries in the index to represent the new versions of the files. Creating a commit does not empty the staging area.
 
-The versions of a file in the current commit, the staging area, and the working tree can all differ from one another. The distinction between staged and unstaged changes is based on comparisons between these versions. Using `git add -p`, we can stage individual hunks of a file rather than staging all changes to the file at once.
+The current commit, the staging area, and the working tree can contain different versions of the same file. Staged an unstaged changes are determined by comparing these versions.
 
-The following table summarizes how some of the Git commands that we have examined throughout this tutorial relate to the staging area. The commands are shown using their ordinary behaviour with the specified options and without additional options that change their behaviour.
+The staging area allows to separate the process of making changes to a project from the process of deciding which changes to record together in a commit. Using `git add -p`, we can even stage individual hunks of changes to a file rather than staging all changes to the file at once. This helps us create commits that each server a well-defined purpose.
 
-```{=html}
-<table>
-  <thead>
-    <tr>
-      <th>Command</th>
-      <th>Relationship to the staging area</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>git status</code></td>
-      <td>Reports staged and unstaged changes, along with untracked files.</td>
-    </tr>
-    <tr>
-      <td><code>git ls-files --stage</code></td>
-      <td>Displays information about entries in the index.</td>
-    </tr>
-    <tr>
-      <td><code>git diff</code></td>
-      <td>Compares the staging area with the tracked files in the working tree.</td>
-    </tr>
-    <tr>
-      <td><code>git diff --staged</code></td>
-      <td>Compares the current commit with the staging area. If there are no commits, it compares the staging area with an empty snapshot.</td>
-    </tr>
-    <tr>
-      <td><code>git add &lt;file&gt;</code></td>
-      <td>Updates the staging area to represent the state of the specified file in the working tree.</td>
-    </tr>
-    <tr>
-      <td><code>git add -p &lt;file&gt;</code></td>
-      <td>Updates the staging area with selected hunks of changes to the specified file.</td>
-    </tr>
-    <tr>
-      <td><code>git rm &lt;file&gt;</code></td>
-      <td>Removes the specified file from both the working tree and the staging area, if Git permits the removal.</td>
-    </tr>
-    <tr>
-      <td><code>git restore &lt;file&gt;</code></td>
-      <td>Restores the specified file in the working tree using the staging area as the restore source.</td>
-    </tr>
-    <tr>
-      <td><code>git restore --staged &lt;file&gt;</code></td>
-      <td>Restores the specified file in the staging area using the current commit as the restore source.</td>
-    </tr>
-    <tr>
-      <td><code>git commit</code></td>
-      <td>Creates a commit using the snapshot represented in the staging area.</td>
-    </tr>
-  </tbody>
-</table>
-```
-
-TODO: I wonder if this table will help the reader in any way. It does not summarize something from the chapter, but rather introduces references to the whole tutorial that the reader is expected to remember.
 
 ## Exercises
 
